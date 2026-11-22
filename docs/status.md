@@ -1,14 +1,14 @@
 # Verification and handoff
 
-The verification host is Windows 11 x64 with a GeForce RTX 4090 Laptop GPU. The checkout on branch `fagrishot` has local commits over upstream `ba87770fece1066f736e11e81e36b714ec56df0d`. Use `git rev-parse HEAD` and `git status --short --branch` to identify the current revision and local changes. The private [game session record](../work/verification/game-session.md) holds the latest observed milestone, executable identity, screenshots and direct-launch result on this machine.
+The verification host ran Windows 11 x64 with a GeForce RTX 4090 Laptop GPU. FagriShot builds on upstream `ba87770fece1066f736e11e81e36b714ec56df0d`. The results below summarize the local playtests. Screenshots, player files and logs stay in the tester's private workspace.
 
 | Milestone | Evidence or dependency |
 | --- | --- |
 | **M0 — Foundation established** | Verified host hardware and Vulkan, reviewed six candidate URLs, pinned the title-specific engine and toolchains, identified the executable profile, built native host components and tested intake. |
 | **M1 — Actual game recompilation** | The six modules and descriptor matched the pinned update 131072 hashes. The local build linked a Windows x64 executable after translating 149,641 functions and 9,798,033 instructions, with zero instructions reported untranslated. |
-| M2 — Title/menu | The windowed game rendered its opening Autosave prompt. A Return key press advanced into the dated opening cinematic. Private frames and the input log are under `work/private/visual-input-3ilmlqq1/`. |
-| M3 — Gameplay | The opening cinematic and the transition into it have local coverage. A playable tactical battle, enemy turn and chapter progression still need verification. |
-| M4 — Saves and stability | Blocked on a playable title and an ordinary game-created save. File-level backup tests use synthetic data. |
+| **M2 — Game boot and responsive menu** | The windowed game accepted Return at the Autosave prompt, played the opening movie and rendered the Casual/Classic menu and character creation. The project owner also reported a successful local playtest. |
+| M3 — Gameplay | The opening chapter card, dialogue and world map have local coverage. A tactical battle, an enemy turn and chapter progression still need verification. |
+| M4 — Saves and stability | A campaign save/load round trip and sustained play still need verification. File-level backup tests use synthetic data. |
 | M5 — Player features tested in game | Blocked on playable baseline and representative saves. |
 | M6 — Local game release candidate | Blocked on gameplay, compatibility and recovery evidence. The current archive is a development tools package. |
 
@@ -52,6 +52,6 @@ Double-click `work/private/game/FagriShot.exe` for a verified play attempt. Open
 
 ## Resume
 
-Use the saved locations in the launcher. For a private test of an uncatalogued local pairing, see [input enrollment](inputs.md). After shader preparation, double-click the private game executable. Establish M2 by observing the actual title screen and verifying input.
+Use the saved locations in the launcher. For a private test of an uncatalogued local pairing, see [input enrollment](inputs.md). After shader preparation, double-click the private game executable. The next gameplay milestone requires a tactical action and an enemy turn.
 
 Verification outputs and compiler products live in ignored directories. `work/cpu/` holds the CPU-oracle and game-graph logs, `work/runtime-release/Testing/Temporary/LastTest.log` has CTest cases, `tools/shaders/build/verification/` has SPIR-V evidence, and `work/launcher/ui-*/` contains the actual launcher screenshot and UI test record. The private build writes its own command log under `work/private/logs/` after inputs validate.
