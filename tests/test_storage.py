@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -83,6 +84,30 @@ class StorageTests(unittest.TestCase):
         with patch("sys.platform","win32"), patch.dict("os.environ",{"LOCALAPPDATA":str(self.root)}):
             self.assertEqual(locations()["settings"], self.root / "FagriShot/settings")
             self.assertEqual(len(set(locations().values())),6)
+
+    @unittest.skipUnless(sys.platform == "win32", "Windows redirected output")
+    def test_cli_preserves_unicode_paths_with_legacy_windows_encoding(self):
+        tool = Path(__file__).resolve().parents[1] / "scripts/fagrishot.py"
+        command = [sys.executable, "-I", "-X", "utf8=0", tool]
+        env = {**os.environ, "LOCALAPPDATA": str(self.root / "profile")}
+        folder = self.root / "\u65e5\u672c\u8a9e \u0627\u062e\u062a\u0628\u0627\u0631 \u00e9"
+        exefs, romfs = folder / "exefs", folder / "romfs"
+
+        def run(*args):
+            return subprocess.run([*command, *args], env=env, capture_output=True, encoding="utf-8")
+
+        saved = run("configure", "--exefs", exefs, "--romfs", romfs)
+        self.assertEqual(saved.returncode, 0, saved.stderr)
+        status = run("status", "--json")
+        self.assertEqual(status.returncode, 0, status.stderr)
+        self.assertEqual(json.loads(status.stdout)["exefs"], str(exefs))
+        doctor = run("doctor")
+        self.assertEqual(doctor.returncode, 0, doctor.stderr)
+        self.assertIn(str(romfs), doctor.stdout)
+        overlapping = Path(env["LOCALAPPDATA"]) / "FagriShot" / "settings" / folder.name
+        rejected = run("configure", "--exefs", overlapping, "--romfs", romfs)
+        self.assertEqual(rejected.returncode, 2)
+        self.assertIn(str(overlapping), rejected.stderr)
 
     def test_config_replacement_and_exclusive_build(self):
         cfg = self.root / "settings/config.json"

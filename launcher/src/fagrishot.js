@@ -47,7 +47,7 @@ async function run(action) {
   running = true;
   controls();
   q('cancel').hidden = action === 'play';
-  q('feedback').textContent = 'RunningÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦';
+  q('feedback').textContent = 'Running\u2026';
   q('output').replaceChildren();
   try {
     await invoke('action',{action,exefs:q('exefs').value,romfs:q('romfs').value, backupId:q('snapshot').value});

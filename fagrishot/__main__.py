@@ -174,6 +174,11 @@ def execute(opts):
 
 
 def main():
+    if sys.platform == "win32":
+        # Pipes and redirected files otherwise use the legacy Windows code page.
+        for stream in (sys.stdout, sys.stderr):
+            if hasattr(stream, "reconfigure") and not stream.isatty():
+                stream.reconfigure(encoding="utf-8")
     try:
         execute(parser().parse_args())
         return 0

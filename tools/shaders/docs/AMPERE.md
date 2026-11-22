@@ -139,7 +139,7 @@ C# library `AmpereDecoder` (shared model `SassInst.cs`; `SassDecoder.Decode(lo, 
 ## 8. nn::gfx containers (Fire Emblem Fortune's Weave)
 
 Fortune's Weave keeps its shaders in BNSH files (nn::gfx): `romfs/Shaders/*.bfsha.zst`, `romfs/Effect/Particle/*.ptcl.zst`
-(VFXB), the SARC layout archives `*.arc.zst` and `main`. BNSH: `BNSH    `, u16 BOM 0xfeff at +0xc, u16 first block at
+(VFXB), the SARC layout archives `*.arc.zst` and `main`. BNSH: `BNSH\0\0\0\0`, u16 BOM 0xfeff at +0xc, u16 first block at
 +0x16 (`grsc`), u32 file size at +0x1c; all pointers are u64 offsets from the BNSH start. `grsc`: +0x1c variation count,
 +0x20 variations (0x40 each: source, intermediate, binary program, parent). Binary program: +0x8 six ShaderCode pointers
 (vertex, hull, domain, geometry, pixel, compute). ShaderCode: +0x8 control, +0x10 code, +0x18 u32 code size, +0x1c u32 control
