@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "fefw-launcher",
-  "version": "0.2.11",
-  "identifier": "io.github.goldoire.fefw-launcher",
+  "productName": "FagriShot",
+  "version": "0.1.0",
+  "identifier": "local.fagrishot.launcher",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -13,7 +13,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "fefw recomp launcher",
+        "title": "FagriShot",
         "width": 1080,
         "height": 720,
         "minWidth": 860,

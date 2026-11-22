@@ -10,7 +10,7 @@ const game::Info& data_info() {
         game::Info g;
         g.id = "fefw";
         g.title = "Fire Emblem: Fortune's Weave";
-        g.product = "Fire Emblem: Fortune's Weave PC";
+        g.product = "FagriShot";
         g.short_title = "Fortune's Weave";
         g.program_id = 0x04007EF01F8AE000ull;
         g.version = "131072";     // the update's title version; its control.nacp (display version) is not in the dump
@@ -25,8 +25,8 @@ const game::Info& data_info() {
         g.movie_video_decoder = true;     // AV1 movies through the host movie::VideoDecoder (subsdk2's), on the player's CPU-frame path
         g.vi_hdr_status_sdr = true;       // the SDK's answer (format 1, HDR off) gives it 0 nits: NaN tone map and bloom (core/switch2.cpp)
         g.present_interval_hz = 60;       // logic steps 60 / target per frame; the present interval is 60 / target (notes/pacing.md)
-        g.exe_name = "fefw.exe";
-        g.setup_exe_name = "fefw_setup.exe";
+        g.exe_name = "FagriShot.exe";
+        g.setup_exe_name = "FagriShotLauncher.exe";
         g.launcher_ini = "fefw_launcher.ini";
         g.game_ini = "fefw.ini";
         g.shader_pack = "shader_cache.fefwshc";

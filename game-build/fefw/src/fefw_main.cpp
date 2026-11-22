@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// fefw.exe: Fire Emblem: Fortune's Weave (Switch 2, 04007EF01F8AE000, update 131072) as a native Windows process. A minimal pkp_main.cpp:
+// FagriShot.exe: Fire Emblem: Fortune's Weave (Switch 2, 04007EF01F8AE000, update 131072) as a native Windows process. A minimal pkp_main.cpp:
 //   1. map the six NSOs (rtld, main, subsdk0 dlss, subsdk1 cuda, subsdk2 movie, sdk) at the bases the lifter baked into the generated code
 //      (recomp/games/fefw/config.py; each library's NxModule carries its base),
 //   2. register the lifted module tables with the runtime (each library carries the ABI version it was built with),
@@ -10,7 +10,7 @@
 //   fefw [--exefs DIR] [--main FILE] [--romfs DIR] [--ini FILE] [--log FILE] [--max-seconds N] [--link rtld|host] [--no-nvn] [--headless|--window]
 // The dump is read where it is, nothing is copied: [fs] exefs (the update's ExeFS folder), [fs] main (main as an uncompressed NSO: the
 // console's main is ZBIC-compressed, which the runtime's NSO loader cannot read), [fs] romfs (the extracted RomFS folder). Their defaults
-// are set by the build (fefw_paths.h). The ini is --ini, else NXRT_INI, else fefw.ini in the working directory when it exists, else nxrt.ini.
+// are set by the build (fefw_paths.h). A double-click opens the launcher. Diagnostic boots require --ini and an explicit [fs] save_dir.
 // The command line and the NXRT_FS_* variables win over the ini. [boot] keys as in pkp_main.cpp (docs/CONFIG.md).
 #include <windows.h>
 
@@ -44,10 +44,11 @@
 #include "fefw/fefw_game.h"   // the Fortune's Weave game module (runtime/games/fefw)
 #include "fefw_cpu.h"         // the CPU features the lifted code needs (per build: FMA3 + AVX or SSE4.2 + POPCNT; CX16), checked first
 #include "fefw_paths.h"       // FEFW_EXEFS_DEFAULT, FEFW_MAIN_DEFAULT, FEFW_ROMFS_DEFAULT (game-build/fefw/CMakeLists.txt)
+#include "fagrishot_entry.h"
 
 // Two builds of this file (game-build/fefw/CMakeLists.txt):
-//   fefw.exe     (default): the lifted libraries are linked in, main() below names their module tables.
-//   fefw_rt.dll  (FEFW_RT_DLL, the release package): the runtime alone, no game code. fefw.exe is then linked on the player's PC from the
+//   FagriShot.exe     (default): the lifted libraries are linked in, main() below names their module tables.
+//   fefw_rt.dll  (FEFW_RT_DLL, the release package): the runtime alone, no game code. FagriShot.exe is then linked on the player's PC from the
 //                libraries lifted out of their own dump and src/fefw_stub.cpp, which hands the module tables to fefw_rt_main()
 //                (src/fefw_rt_api.h). Errors also show in a message box there (the exe is a GUI program).
 #ifdef FEFW_RT_DLL
@@ -82,7 +83,7 @@ std::unique_ptr<nxrt::gfx::Renderer> g_gfx_renderer;
 #ifdef FEFW_RT_DLL
     char msg[1024];
     std::snprintf(msg, sizeof msg, fmt, a, b);
-    MessageBoxA(nullptr, msg, "fefw", MB_OK | MB_ICONERROR);
+    MessageBoxA(nullptr, msg, "FagriShot", MB_OK | MB_ICONERROR);
 #endif
     TerminateProcess(GetCurrentProcess(), 1);
     for (;;) {}
@@ -104,7 +105,7 @@ bool dir_exists(const std::string& p) {
     return a != INVALID_FILE_ATTRIBUTES && (a & FILE_ATTRIBUTE_DIRECTORY);
 }
 
-// The game's own files cannot be read: says so (message box, stderr, the log and fefw_fatal.txt, which the launcher shows) and ends with
+// The game's own files cannot be read: says so (message box, stderr, the log and FagriShot_fatal.txt, which the launcher shows) and ends with
 // code 1, before the game's first fs call turns it into a guest abort and a bare "code 4" crash report (issue 142). Under Wine / Proton
 // the usual cause is Steam's container (the Steam Linux Runtime), which sees only the home folder, /mnt, /media, /run/media and the
 // Steam libraries: a dump elsewhere does not exist inside it.
@@ -126,12 +127,12 @@ bool dir_exists(const std::string& p) {
                " %command% in the game's launch options in Steam.";
     NXLOG_E("boot", "RomFS folder '%s' cannot be read (wine: %s)", romfs.c_str(), wine ? "yes" : "no");
     nxrt::log_flush();
-    std::fprintf(stderr, "fefw: %s\n", msg.c_str());
-    if (FILE* f = std::fopen("fefw_fatal.txt", "w")) {
-        std::fprintf(f, "fefw cannot find the game's files.\n\n%s\n", msg.c_str());
+    std::fprintf(stderr, "FagriShot: %s\n", msg.c_str());
+    if (FILE* f = std::fopen("FagriShot_fatal.txt", "w")) {
+        std::fprintf(f, "FagriShot cannot find the game's files.\n\n%s\n", msg.c_str());
         std::fclose(f);
     }
-    MessageBoxW(nullptr, widen_utf8(msg).c_str(), L"fefw: the game's files cannot be read", MB_OK | MB_ICONERROR);
+    MessageBoxW(nullptr, widen_utf8(msg).c_str(), L"FagriShot: the game's files cannot be read", MB_OK | MB_ICONERROR);
     TerminateProcess(GetCurrentProcess(), 1);
     for (;;) {}
 }
@@ -235,6 +236,14 @@ std::string fs_path(const char* key, const std::string& cli, const char* def) {
 
 int fefw_run(int argc, char** argv);
 
+int direct_start() {
+    const std::wstring error = fagrishot_entry::start_launcher();
+    if (error.empty()) return 0;
+    std::fwprintf(stderr, L"FagriShot: %ls\n", error.c_str());
+    MessageBoxW(nullptr, error.c_str(), L"FagriShot", MB_OK | MB_ICONERROR);
+    return 2;
+}
+
 // The processor features the build of the game code needs (FEFW_CPU_*), logged at start-up. The CMake build sets FEFW_CPU_NEEDS from
 // FEFW_CPU_VARIANT (game-build/fefw/CMakeLists.txt); a build that does not name one is the FMA3 build.
 #ifndef FEFW_CPU_NEEDS
@@ -244,21 +253,21 @@ uint32_t g_cpu_needs = FEFW_CPU_NEEDS;
 
 // Before the first lifted instruction: a CPU without what this build of the game code needs (`needs`: FMA3 / AVX for the default build,
 // SSE4.2 / POPCNT for the compatible one, CX16 for both) would die on an illegal instruction in a blank window (issues 33, 5). Says which
-// feature is missing in a message box, on stderr and in fefw_fatal.txt (the launcher offers it), then ends with code 4.
+// feature is missing in a message box, on stderr and in FagriShot_fatal.txt (the launcher offers it), then ends with code 4.
 void check_cpu_or_exit(uint32_t needs) {
     g_cpu_needs = needs;
     const fefw_cpu::Report r = fefw_cpu::probe();
     if (!r.missing(needs)) return;
     const std::string msg = fefw_cpu::message(r, needs);
-    std::fprintf(stderr, "fefw: %s\n", msg.c_str());
-    if (FILE* f = std::fopen("fefw_fatal.txt", "w")) {
+    std::fprintf(stderr, "FagriShot: %s\n", msg.c_str());
+    if (FILE* f = std::fopen("FagriShot_fatal.txt", "w")) {
         auto yes = [&](uint32_t bit) { return (r.have & bit) ? "yes" : "NO"; };
-        std::fprintf(f, "fefw cannot start on this processor.\n\n%s\n\nfefw.exe build: %s\nCPU features: FMA3 %s, AVX %s, SSE4.2 %s, POPCNT %s, CMPXCHG16B %s\n",
+        std::fprintf(f, "FagriShot cannot start on this processor.\n\n%s\n\nFagriShot.exe build: %s\nCPU features: FMA3 %s, AVX %s, SSE4.2 %s, POPCNT %s, CMPXCHG16B %s\n",
                      msg.c_str(), fefw_cpu::build_name(needs), yes(FEFW_CPU_FMA), yes(FEFW_CPU_AVX), yes(FEFW_CPU_SSE42), yes(FEFW_CPU_POPCNT),
                      yes(FEFW_CPU_CX16));
         std::fclose(f);
     }
-    MessageBoxA(nullptr, msg.c_str(), "fefw: this processor is too old", MB_OK | MB_ICONERROR);
+    MessageBoxA(nullptr, msg.c_str(), "FagriShot: this processor is too old", MB_OK | MB_ICONERROR);
     TerminateProcess(GetCurrentProcess(), 4);
     for (;;) {}
 }
@@ -267,11 +276,12 @@ void check_cpu_or_exit(uint32_t needs) {
 
 #ifdef FEFW_RT_DLL
 extern "C" int fefw_rt_main(int argc, char** argv, const FefwRtModules* m) {
+    if (argc == 1) return direct_start();
     // the build's processor features; a stub from before cpu_needs (0.1.6 and older) was always the FMA3 build
     const bool has_needs = m && m->size >= offsetof(FefwRtModules, cpu_needs) + sizeof(uint32_t);
     check_cpu_or_exit(has_needs ? m->cpu_needs : FEFW_CPU_NEEDS_FMA_BUILD);
     if (!m || m->size < offsetof(FefwRtModules, cpu_needs) || m->api != FEFW_RT_API) {
-        MessageBoxA(nullptr, "fefw.exe and fefw_rt.dll are from different releases: run Set up again in the launcher.", "fefw", MB_OK | MB_ICONERROR);
+        MessageBoxA(nullptr, "FagriShot.exe and fefw_rt.dll are from different releases: run Set up again in the launcher.", "FagriShot", MB_OK | MB_ICONERROR);
         return 3;
     }
     const NxModule* nx[6] = {m->rtld, m->main, m->subsdk0, m->subsdk1, m->subsdk2, m->sdk};
@@ -284,6 +294,7 @@ extern "C" int fefw_rt_main(int argc, char** argv, const FefwRtModules* m) {
 }
 #else
 int main(int argc, char** argv) {
+    if (argc == 1) return direct_start();
     check_cpu_or_exit(FEFW_CPU_NEEDS);               // what the libraries of recomp/games/fefw were compiled for (FEFW_CPU_VARIANT)
     const NxModule* nx[6] = {&nxmod_rtld, &nxmod_main, &nxmod_subsdk0, &nxmod_subsdk1, &nxmod_subsdk2, &nxmod_sdk};
     const uint32_t* abi[6] = {&nxmod_rtld_abi, &nxmod_main_abi, &nxmod_subsdk0_abi, &nxmod_subsdk1_abi, &nxmod_subsdk2_abi, &nxmod_sdk_abi};
@@ -355,11 +366,14 @@ int fefw_run(int argc, char** argv) {
         else if (!std::strcmp(argv[i], "--window")) boot_opts.emplace_back("gfx", "window");
         else { std::fprintf(stderr, "fefw: unknown argument %s\n", argv[i]); return 2; }
     }
-    if (!ini && !std::getenv("NXRT_INI") && file_exists(nxrt::game::info().game_ini)) ini = nxrt::game::info().game_ini;
+    if (const char* error = fagrishot_entry::prepare_save_directory(ini)) {
+        std::fprintf(stderr, "FagriShot: %s\n", error);
+        return 2;
+    }
 
     nxrt::InitOptions opt;
     opt.ini_path = ini;
-    opt.log_path = logp;
+    opt.log_path = logp ? logp : "FagriShot.log";
     if (!nxrt::init(opt)) die("runtime start-up failed (address-space layout)");
     for (const auto& kv : boot_opts) nxrt::config_set("boot", kv.first.c_str(), kv.second.c_str());
     const std::string exefs = fs_path("exefs", exefs_arg, FEFW_EXEFS_DEFAULT);
@@ -369,7 +383,7 @@ int fefw_run(int argc, char** argv) {
     // the complete RomFS of update 131072 (base and update merged): 252,686 files. Dumps well short of it crash at boot (#64: 157,847 is the
     // base game's RomFS, 221,339 a partial copy); services/fs.cpp names the cause in the crash report. 0 turns the check off.
     if (!nxrt::config_has("fs", "romfs_files")) nxrt::config_set("fs", "romfs_files", "252686");
-    NXLOG_I("boot", "fefw.exe build: %s", fefw_cpu::build_name(g_cpu_needs));
+    NXLOG_I("boot", "FagriShot.exe build: %s", fefw_cpu::build_name(g_cpu_needs));
     nxrt::cpu::set_game_build(fefw_cpu::build_name(g_cpu_needs));   // the F1 menu's Debug page shows it
     NXLOG_I("boot", "CPU: %s", nxrt::cpu::summary_line().c_str());
     NXLOG_I("boot", "%s (update %s): exefs '%s', main '%s', romfs '%s'", nxrt::game::info().title, nxrt::game::info().version, exefs.c_str(),
@@ -389,7 +403,7 @@ int fefw_run(int argc, char** argv) {
                 disp = nxrt::play::display();       // controls.ini: window size, present mode, frame cap
                 nxrt::platform::init();
                 nxrt::platform::WindowDesc wd;
-                wd.title = nxrt::game::info().title;
+                wd.title = "FagriShot \xE2\x80\x94 Fire Emblem: Fortune\xE2\x80\x99s Weave";
                 wd.width = disp.width;
                 wd.height = disp.height;
                 if (!nxrt::platform::create_window(wd)) die("cannot create the game window (Vulkan 1.3 driver needed; the reason is in the log)");

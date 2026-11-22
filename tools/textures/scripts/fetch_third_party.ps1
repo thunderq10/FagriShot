@@ -1,8 +1,10 @@
 # Fetch the pinned third-party sources into tools\textures\third_party (git-ignored). Versions: THIRD_PARTY.md.
+# -CppOnly skips the ISPC compiler. The default C++ runtime transcoder needs only the source archives.
 # The two sources come down as release archives and are unpacked with Windows' own curl.exe and tar.exe, so a build needs no Git install.
 # Safe to interrupt and to run twice: a download goes to <name>.part and is moved into place only once its SHA-256 matches the pinned one
 # (retried a few times), an archive is unpacked into a staging folder and moved into place only when the files the build needs are there,
 # and a folder that exists without those files is thrown away and fetched again.
+param([switch]$CppOnly)
 $ErrorActionPreference = 'Stop'
 $tp = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\third_party'))
 New-Item -ItemType Directory -Force $tp | Out-Null
@@ -59,6 +61,7 @@ Get-Source -Url 'https://github.com/richgel999/bc7enc_rdo/archive/b9438627eef73a
     -Sha256 'bbb33d1dbb6178a3a2c044956c3cc0b8ea9fc2f2903824379dd86f87d53b64c6' `
     -Name 'bc7enc_rdo-b9438627' -Inner 'bc7enc_rdo-b9438627eef73a1157e84201b6fa6eb2ffd6d9f0' -Folder 'bc7enc_rdo' -Required 'CMakeLists.txt'
 
+if ($CppOnly) { Write-Output "C++ texture dependencies ready in $tp"; return }
 $ispcExe = "$tp\ispc\ispc-v1.32.0-windows\bin\ispc.exe"
 if (-not (Test-Path $ispcExe)) {
     Remove-Item -Recurse -Force "$tp\ispc" -ErrorAction SilentlyContinue

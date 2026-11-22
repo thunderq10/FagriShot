@@ -1,10 +1,15 @@
 [package]
-name = "fefw-launcher"
-version = "0.2.11"
-description = "Launcher for the fefw static recompilation: set up from your own dump, build, configure and play"
+name = "fagrishot"
+autobins = false
+version = "0.1.0"
+description = "FagriShot launcher and local game build tools"
 edition = "2021"
-authors = ["Goldoire"]
+authors = ["thunderq10", "Goldoire and upstream contributors"]
 license = "GPL-3.0-or-later"
+
+[[bin]]
+name = "FagriShotLauncher"
+path = "src/fagrishot.rs"
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
@@ -12,11 +17,7 @@ tauri-build = { version = "2", features = [] }
 [dependencies]
 tauri = { version = "2", features = [] }
 tauri-plugin-dialog = "2"
-serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-zstd = "0.13"
-sha2 = "0.10"
-flate2 = { version = "1.1.11", default-features = false, features = ["rust_backend"] }
 
 [profile.release]
 opt-level = "s"

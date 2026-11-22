@@ -104,7 +104,7 @@ inline std::string message(const Report& r, uint32_t needs) {
     }
     if (!r.missing(FEFW_CPU_NEEDS_COMPAT_BUILD)) {
         // a build for another processor (the game folder moved to this PC, or the processor changed): Set up builds the right one
-        m += " does not support " + feature_names(missing) + ", which this build of fefw.exe was made for.\n\n"
+        m += " does not support " + feature_names(missing) + ", which this build of FagriShot.exe was made for.\n\n"
              "Run Set up again in the launcher: it builds the compatible version of the game for this processor.";
     } else {
         m += " does not support " + feature_names(r.missing(FEFW_CPU_NEEDS_COMPAT_BUILD)) + ", which the game needs.\n\n"

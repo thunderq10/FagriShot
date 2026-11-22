@@ -13,6 +13,7 @@ import re
 import shutil
 import struct
 import sys
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from nso_unpack import unpack     # noqa: E402
@@ -35,6 +36,10 @@ def main():
     ap.add_argument('--out', default=os.path.join(ROOT, 'game', 'dump', 'exefs'))
     ap.add_argument('--game', default='fefw')
     a = ap.parse_args()
+
+    source, output = Path(a.exefs).resolve(), Path(a.out).resolve()
+    if output.is_relative_to(source) or source.is_relative_to(output):
+        sys.exit("prepare_exefs: input and output must be separate directories. The input must remain read-only.")
 
     missing = [f for f in FILES if not os.path.isfile(os.path.join(a.exefs, f))]
     if missing:

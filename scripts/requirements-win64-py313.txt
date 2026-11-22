@@ -1,0 +1,7 @@
+# Windows x64 CPython 3.13 wheels published on PyPI for recomp/requirements.txt.
+capstone==5.0.9 --hash=sha256:732cedbbb56d42e723f14d7af6387f1454194a820b4b96b56d1e53f865ef85d0
+lz4==4.4.5 --hash=sha256:da68497f78953017deb20edff0dba95641cc86e7423dfadf7c0264e1ac60dc22
+pyelftools==0.33 --hash=sha256:f215ad5f47d3f1373a21496a6c9e0707c622840d0622f23ff7ce08678b020036
+unicorn==2.1.4 --hash=sha256:d7107500c64ce5c168fbff6bef9485b5db1350050036f4cea568650cf8bdbdf5
+zbic==1.0.1.post1 --hash=sha256:7fb94bb72f6f37d291d1fa6adae4b0d65efb9a5ad97bb6b4a0ef6e5aa802ef3d
+zstandard==0.25.0 --hash=sha256:1f830a0dac88719af0ae43b8b2d6aef487d437036468ef3c2ea59c51f9d55fd5

@@ -51,7 +51,10 @@ else()
     add_compile_options("-fmacro-prefix-map=${FEFW_ROOT}=.")
 endif()
 set(FEFW_RUNTIME_DIR "${FEFW_ROOT}/runtime" CACHE PATH "runtime source tree compiled into fefw.exe")
-set(NXRT_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+option(NXRT_BUILD_TESTS "Build runtime verification targets with this game or runtime build" OFF)
+if(NXRT_BUILD_TESTS)
+    enable_testing()
+endif()
 set(NXRT_GAMES "fefw" CACHE STRING "" FORCE)            # runtime/games/fefw only
 set(NXRT_RECOMP_INCLUDE "${FEFW_ROOT}/recomp/include" CACHE PATH "")
 # The ASTC transcoder: the ISPC build of tools/textures when it exists, else built from its sources (cmake/gfx.cmake). Only without
@@ -110,6 +113,7 @@ endforeach()
 # nx_hle_zstd_multiframe); the release links the same file on the player's PC (game-build/release/fefw_build.py). Its zstd comes
 # from nxrt_zstd through nxrt_gfx.
 add_executable(fefw src/fefw_main.cpp src/fefw_hle.cpp res/fefw.rc)
+set_target_properties(fefw PROPERTIES OUTPUT_NAME FagriShot)
 set_source_files_properties(res/fefw.rc PROPERTIES OBJECT_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/res/fefw.manifest;${CMAKE_CURRENT_SOURCE_DIR}/res/fefw.ico")
 target_include_directories(fefw PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
 target_link_libraries(fefw PRIVATE ${FEFW_LIBS} nxrt_game_fefw nxrt_gfx nxrt)

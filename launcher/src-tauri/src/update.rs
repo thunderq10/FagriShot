@@ -16,8 +16,7 @@ use std::time::Duration;
 
 /// The GitHub repository whose releases the launcher follows. FEFW_UPDATE_REPO at build time: a fork's launcher follows the fork.
 pub const REPO: &str = match option_env!("FEFW_UPDATE_REPO") {
-    Some(r) => r,
-    None => "aidankinzett/fefw-recomp",
+    _ => "",
 };
 /// FEFW_BUILD_ID at build time: the release tag this launcher was built for (a fork tagging its releases by commit). Any other
 /// latest release then counts as newer, as tags like that have no order.
@@ -108,6 +107,7 @@ pub(crate) fn curl() -> Command {
 /// The latest published release of REPO and its package for this platform. A release without one (Linux, while only the Windows
 /// zip is published) comes back with an empty asset: it can be shown, not installed.
 pub fn latest() -> Result<Release, String> {
+    if REPO.is_empty() { return Err("FagriShot uses manual updates.".into()); }
     let url = format!("https://api.github.com/repos/{REPO}/releases/latest");
     let out = curl()
         .args(["--retry", "2", "--retry-all-errors", "--max-time", "30", "--header", "Accept: application/vnd.github+json", &url])

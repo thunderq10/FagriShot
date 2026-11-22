@@ -26,6 +26,11 @@ if(NXRT_DAV1D_ASM)
     if(NOT NXRT_NASM)
         message(FATAL_ERROR "NXRT_DAV1D_ASM is on but nasm was not found")
     endif()
+    # NASM 2.15.05+ can omit wall-clock timestamps from COFF objects. Older supported assemblers omit the flag.
+    execute_process(COMMAND "${NXRT_NASM}" -h OUTPUT_VARIABLE _nasm_help)
+    if(_nasm_help MATCHES "--reproducible")
+        set(_nasm_repro --reproducible)
+    endif()
     list(APPEND _d1d_src "${CMAKE_CURRENT_SOURCE_DIR}/src/x86/cpu.c")
     # Assembled with explicit commands (not CMake's ASM_NASM language), so the project-wide clang-cl flags never reach NASM;
     # the arguments are upstream's nasm generator's (src/meson.build).
@@ -37,8 +42,8 @@ if(NXRT_DAV1D_ASM)
         set(_out "${CMAKE_CURRENT_BINARY_DIR}/asm/${_a}.obj")
         add_custom_command(OUTPUT "${_out}"
             COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/asm"
-            COMMAND "${NXRT_NASM}" -f win64 -I "${CMAKE_CURRENT_SOURCE_DIR}/src/" -I "${CMAKE_CURRENT_SOURCE_DIR}/config/"
-                    -MQ "${_out}" -MF "${_out}.d" "${_in}" -o "${_out}"
+            COMMAND "${NXRT_NASM}" ${_nasm_repro} -f win64 -I "${CMAKE_CURRENT_SOURCE_DIR}/src/" -I "${CMAKE_CURRENT_SOURCE_DIR}/config/"
+                    -MQ "${_out}" -MD "${_out}.d" "${_in}" -o "${_out}"
             DEPENDS "${_in}" "${CMAKE_CURRENT_SOURCE_DIR}/config/config.asm" "${CMAKE_CURRENT_SOURCE_DIR}/src/ext/x86/x86inc.asm"
                     "${CMAKE_CURRENT_SOURCE_DIR}/src/x86/filmgrain_common.asm"
             DEPFILE "${_out}.d"

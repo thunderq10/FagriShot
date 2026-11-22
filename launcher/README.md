@@ -1,11 +1,7 @@
-# fefw recomp launcher
+# FagriShot launcher
 
-Tauri 2 launcher for this repository's `fefw.exe`. It ships no game files and never writes to your dump. It works on a checkout of
-the repository: it finds the checkout from its own location (or Settings, Repository folder), checks your dump, runs the repository's
-own setup steps on your PC (see docs/BUILDING.md), writes `fefw.ini` in a run folder (`work/play` by default) and starts the game.
+The Windows launcher retains Tauri 2, WebView2, Vite and the upstream host CPU check. Its active Rust entry is `src-tauri/src/fagrishot.rs`. The active view is `src/fagrishot.js`. Both desktop actions and executable CLI arguments invoke the adjacent FagriShot Python tooling. The registered command set has no application download or update handler.
 
-- Build: `npm install`, then `npm run tauri build -- --no-bundle`; the exe is `src-tauri/target/release/fefw-launcher.exe`.
-- Development: `npm run tauri dev`; `cargo test` in `src-tauri` runs the unit tests.
-- Setup state is read from what exists on disk (the copied ExeFS, the lifted libraries, `fefw.exe`, the shader cache and its
-  `work/shaders/setup.json`), so a paused setup continues where it stopped. The full log is `work/setup.log`.
-- The icon is drawn by `icon/make_icon.py` (no outside artwork); `npx tauri icon icon/icon.png -o src-tauri/icons` makes the sizes.
+Build from the repository root with `python -I scripts/build_launcher.py --bootstrap`. Open `work/tools/FagriShotLauncher.exe` to select input directories, validate a dump, start the private build, manage backups or inspect diagnostics. The webview integration check runs with `node scripts/verify_launcher.mjs` and writes results under `work/launcher/`.
+
+The upstream Rust and JavaScript pages are retained as reference for future verified player features. Cargo selects the FagriShot entry explicitly. The original source remains attributable to its upstream authors. [Foundation](../docs/foundation.md) · [Data and recovery](../docs/storage.md)

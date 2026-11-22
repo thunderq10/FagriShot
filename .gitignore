@@ -38,3 +38,20 @@ obj/
 __pycache__/
 /export/
 /saves/
+
+# FagriShot local inputs, generated products, reports and user state
+/private/
+/dist/
+/backups/
+/mods/
+/settings/
+/logs/
+/base/
+/updates/
+*.nup
+*.cnmt
+*.nacp
+main
+rtld
+sdk
+subsdk[0-9]*
