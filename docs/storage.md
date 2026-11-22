@@ -6,7 +6,7 @@ The normal Windows namespace is `%LOCALAPPDATA%\FagriShot\`. The source checkout
 | --- | --- |
 | settings | Selected input paths in `launcher.json`, runtime `fefw.ini`, controls and a save-operation lock. |
 | saves | The game’s local save tree. The launcher provides this root explicitly at launch. |
-| backups | Timestamped snapshots with per-file SHA-256 digests. The ten most recent completed backups are retained. |
+| backups | Timestamped snapshots with per-file SHA-256 digests. Retention keeps the ten most recent verified snapshots. It also preserves damaged or unrecognized backup folders for inspection. |
 | caches | Shader corpus, validated SPIR-V, runtime pipeline and texture cache. A new identity gets a different namespace. |
 | logs | Input fingerprints and the main runtime `FagriShot.log`. Runtime exception and hang reports default to the private game executable directory. |
 | mods | Reserved product namespace. Baseline launch disables file overrides and native mod DLLs. |
@@ -23,6 +23,6 @@ python -I scripts/fagrishot.py restore <backup-id>
 
 A restore verifies the source backup, stages a complete copy and switches directories with same-volume renames. The next save operation recovers an interrupted switch. The snapshot tests use disposable files. Existing upstream saves and settings require an independently validated, compatible game format before import. Ordinary FagriShot backup and restore operate only on its own save directory.
 
-Input paths persist when **Save locations** is selected. Engine technical names including `fefw.ini`, exported `nx_*` symbols, `fefw_rt.dll`, NSO module names and title IDs remain stable. The registered game title remains the original title. FagriShot owns the host window title, game/launcher file names and default log.
+Input paths persist when **Save locations** is selected. If the saved locations are unreadable, Game setup shows a warning. Select both folders and click **Save locations** to repair them. Backup and restore remain available under **Local files** while you repair the locations. Engine technical names including `fefw.ini`, exported `nx_*` symbols, `fefw_rt.dll`, NSO module names and title IDs remain stable. The registered game title remains the original title. FagriShot owns the host window title, game/launcher file names and default log.
 
 Application updates use a fresh local tools folder. Keep the previous tools folder for rollback. The selected application entry point has no network updater, online release repository or automatic telemetry. The build tools fetch public dependencies from pinned or integrity-checked sources. There is no application release service or installer configured.

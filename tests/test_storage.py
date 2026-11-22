@@ -1,10 +1,12 @@
 import json
+import io
 import os
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stderr
 from unittest.mock import patch
 
 from fagrishot.saves import list_backups, recover, restore, snapshot
@@ -65,6 +67,94 @@ class StorageTests(unittest.TestCase):
         self.assertEqual(len(list_backups(self.dirs)), 10)
         self.assertTrue(keep.is_dir())
 
+    def test_retention_preserves_extra_files_in_completed_backup(self):
+        with patch("fagrishot.saves.KEEP", 1):
+            key = snapshot(self.dirs)
+            note = self.dirs["backups"] / key / "player notes.txt"
+            note.write_bytes(b"unrelated")
+            with redirect_stderr(io.StringIO()) as warning:
+                snapshot(self.dirs)
+            self.assertIn("additional files", warning.getvalue())
+            self.assertEqual(note.read_bytes(), b"unrelated")
+
+    def test_corrupt_newer_backup_does_not_evict_last_good_copy(self):
+        with patch("fagrishot.saves.KEEP", 2):
+            first = snapshot(self.dirs)
+            corrupt = snapshot(self.dirs)
+            (self.dirs["backups"] / corrupt / "data/slot").write_bytes(b"damaged")
+            with redirect_stderr(io.StringIO()) as warning:
+                latest = snapshot(self.dirs)
+            self.assertIn(corrupt, warning.getvalue())
+            self.assertEqual(set(list_backups(self.dirs)), {first, corrupt, latest})
+
+    def test_failed_restore_of_oldest_backup_remains_retryable(self):
+        with patch("fagrishot.saves.KEEP", 1):
+            key = snapshot(self.dirs)
+            self.slot.write_bytes(b"current state")
+            rename = Path.rename
+
+            def fail_install(path, target):
+                if path.name.startswith(".incoming-"):
+                    raise OSError("fixture failed to install")
+                return rename(path, target)
+
+            with patch.object(Path, "rename", fail_install):
+                with self.assertRaisesRegex(OSError, "failed to install"):
+                    restore(self.dirs, key)
+            self.assertEqual(self.slot.read_bytes(), b"current state")
+            self.assertIn(key, list_backups(self.dirs))
+            restore(self.dirs, key)
+            self.assertEqual(self.slot.read_bytes(), b"original synthetic save")
+
+    def test_retry_after_interrupted_old_tree_cleanup(self):
+        (self.saves / "other").write_bytes(b"previous file")
+        previous = snapshot(self.dirs)
+        journal = self.root / ".fagrishot-restore.json"
+        write_json(journal, {"previous": previous})
+        old = self.root / ".saves-before-restore"
+        self.saves.rename(old)
+        self.saves.mkdir()
+        self.slot.write_bytes(b"restored state")
+        (old / "other").unlink()
+        recover(self.dirs)
+        recover(self.dirs)
+        self.assertFalse(old.exists())
+        self.assertFalse(journal.exists())
+        self.assertEqual(self.slot.read_bytes(), b"restored state")
+        self.assertEqual((self.dirs["backups"] / previous / "data/other").read_bytes(), b"previous file")
+
+    def test_recovery_preserves_unrecognized_or_changed_previous_tree(self):
+        previous = snapshot(self.dirs)
+        journal = self.root / ".fagrishot-restore.json"
+        write_json(journal, {"previous": previous})
+        old = self.root / ".saves-before-restore"
+        self.saves.rename(old)
+        (old / "slot").write_bytes(b"edited old state")
+        with self.assertRaisesRegex(ValueError, "differ"):
+            recover(self.dirs)
+        self.saves.mkdir()
+        self.slot.write_bytes(b"published")
+        with self.assertRaisesRegex(ValueError, "changed"):
+            recover(self.dirs)
+        self.assertTrue(journal.exists())
+        self.assertEqual((old / "slot").read_bytes(), b"edited old state")
+        self.assertEqual(self.slot.read_bytes(), b"published")
+
+    def test_recovery_reinstates_verified_backup_when_both_save_trees_are_missing(self):
+        previous = snapshot(self.dirs)
+        write_json(self.root / ".fagrishot-restore.json", {"previous": previous})
+        self.saves.rename(self.root / "fixture-set-aside")
+        recover(self.dirs)
+        self.assertEqual(self.slot.read_bytes(), b"original synthetic save")
+        self.assertFalse((self.root / ".fagrishot-restore.json").exists())
+
+    def test_invalid_journal_returns_a_recoverable_error(self):
+        journal = self.root / ".fagrishot-restore.json"
+        write_json(journal, [])
+        with self.assertRaisesRegex(ValueError, "journal is invalid"):
+            recover(self.dirs)
+        self.assertTrue(journal.exists())
+
     def test_exefs_preparation_rejects_an_input_as_output(self):
         tool = Path(__file__).resolve().parents[1] / "tools/nso/prepare_exefs.py"
         before = self.slot.read_bytes()
@@ -84,6 +174,16 @@ class StorageTests(unittest.TestCase):
         with patch("sys.platform","win32"), patch.dict("os.environ",{"LOCALAPPDATA":str(self.root)}):
             self.assertEqual(locations()["settings"], self.root / "FagriShot/settings")
             self.assertEqual(len(set(locations().values())),6)
+
+    def test_namespace_requires_absolute_windows_location_and_checks_each_input(self):
+        with patch("sys.platform", "win32"):
+            for location in ("", "relative"):
+                with patch.dict(os.environ, {"LOCALAPPDATA": location}):
+                    with self.assertRaisesRegex(ValueError, "absolute"):
+                        locations()
+        outputs = iter([self.dirs["backups"] / "output"])
+        with self.assertRaisesRegex(ValueError, "overlap"):
+            check_separation([self.saves, self.dirs["backups"]], outputs)
 
     @unittest.skipUnless(sys.platform == "win32", "Windows redirected output")
     def test_cli_preserves_unicode_paths_with_legacy_windows_encoding(self):

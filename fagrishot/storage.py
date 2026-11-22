@@ -9,7 +9,10 @@ from pathlib import Path
 
 def locations():
     if sys.platform == "win32":
-        root = Path(os.environ["LOCALAPPDATA"]) / "FagriShot"
+        local = Path(os.environ.get("LOCALAPPDATA", ""))
+        if not local.is_absolute():
+            raise ValueError("Windows LOCALAPPDATA must point to an absolute user-data directory.")
+        root = local / "FagriShot"
         config, data, state, cache = root / "settings", root, root, root / "caches"
     else:
         home = Path.home()
@@ -57,14 +60,15 @@ def build_lock(path):
                 import fcntl
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except OSError as exc:
-            raise ValueError("Another FagriShot operation is using the private build folder.") from exc
+            raise ValueError(f"Another FagriShot operation is using {path.name}. Wait for it to finish.") from exc
         yield
 
 
 def check_separation(inputs, destinations):
     """Reject overlap in either direction, including a junction to an existing directory."""
-    for src in inputs:
-        for dst in destinations:
-            src, dst = Path(src).resolve(), Path(dst).resolve()
+    outputs = tuple(Path(dst).resolve() for dst in destinations)
+    for path in inputs:
+        src = Path(path).resolve()
+        for dst in outputs:
             if src.is_relative_to(dst) or dst.is_relative_to(src):
                 raise ValueError(f"Input and output folders overlap: {src} and {dst}. Select the extracted input subfolder.")

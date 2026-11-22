@@ -87,7 +87,8 @@ def build_game(exefs, inventory, jobs):
     except ValueError:
         reuse = False
     if not reuse:
-        run([VENV, "-I", ROOT / "tools/nso/prepare_exefs.py", "--exefs", exefs, "--out", prepared], log=log)
+        run([VENV, "-I", "-X", "utf8", ROOT / "tools/nso/prepare_exefs.py",
+             "--exefs", exefs, "--out", prepared], log=log)
         current = inspect_exefs(prepared)
         check_executable(current, CATALOG)
         if current["modules"]["main"]["sha256"] != candidate["main_plain_sha256"]:

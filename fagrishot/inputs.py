@@ -22,9 +22,22 @@ def _plain_path(path, label, directory=False):
         raise InputError(f"{label} contains a link or reparse point. Select an ordinary extracted copy.")
     if not (stat.S_ISDIR(info.st_mode) if directory else stat.S_ISREG(info.st_mode)):
         raise InputError(f"{label} must be a regular {'directory' if directory else 'file'}.")
-    if directory and path.parent == path:
-        raise InputError(f"Select the extracted {label} directory inside the drive.")
     return path
+
+
+def _resolved_root(path, label):
+    root = Path(path).resolve(strict=False)
+    if root.parent == root:
+        raise InputError(f"Select the extracted {label} directory inside the drive.")
+    return root
+
+
+def check_input_roots(exefs, romfs):
+    """Check a prospective selection even before its directories exist."""
+    left = _resolved_root(exefs, "ExeFS")
+    right = _resolved_root(romfs, "RomFS")
+    if left == right or left in right.parents or right in left.parents:
+        raise InputError("Select separate, non-overlapping ExeFS and RomFS directories.")
 
 
 def _stable_stat(info):
@@ -122,7 +135,7 @@ def _program(stream, size):
 
 def inspect_exefs(exefs):
     """Fingerprint every ExeFS entry and inventory root NSO0 modules and main.npdm."""
-    root = _plain_path(exefs, "ExeFS", directory=True)
+    root = _resolved_root(_plain_path(exefs, "ExeFS", directory=True), "ExeFS")
     _plain_path(root / "main", "ExeFS main")
     modules = {}
     program = None
@@ -186,9 +199,7 @@ def inspect_inputs(exefs, romfs, *, base_cnmt=None, update_cnmt=None):
     """Inventory the selected ExeFS and effective RomFS. Optional raw CNMTs identify releases."""
     exe_root = _plain_path(exefs, "ExeFS", directory=True)
     rom_root = _plain_path(romfs, "RomFS", directory=True)
-    left, right = exe_root.resolve(), rom_root.resolve()
-    if left == right or left in right.parents or right in left.parents:
-        raise InputError("Select separate, non-overlapping ExeFS and RomFS directories.")
+    check_input_roots(exe_root, rom_root)
     try:
         base, update = _cnmt(base_cnmt, "base"), _cnmt(update_cnmt, "update")
         if base and update and (base["id"] != update["application_id"] or base["patch_id"] != update["id"]):
@@ -247,7 +258,7 @@ def _match_executable(inventory, catalog):
             if observed[name] == expected[name] or (name == "main" and observed[name] == candidate["main_plain_sha256"]):
                 continue
             differences.add(name)
-        if not modules["main"]["build_id"].startswith(candidate["main_build_id"]):
+        if "main" in modules and not modules["main"]["build_id"].startswith(candidate["main_build_id"]):
             differences.add("main (build ID)")
         if not differences:
             return candidate

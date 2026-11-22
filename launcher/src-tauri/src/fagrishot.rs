@@ -9,8 +9,14 @@ use std::sync::Mutex;
 use tauri::{Emitter, Manager};
 use tauri_plugin_dialog::DialogExt;
 
+struct ActiveTask {
+    pid: u32,
+    cancellable: bool,
+    cancelled: bool,
+}
+
 #[derive(Default)]
-struct Task(Mutex<Option<(u32, bool)>>);
+struct Task(Mutex<Option<ActiveTask>>);
 
 fn source() -> Result<PathBuf, String> {
     let exe = std::env::current_exe().map_err(|e| e.to_string())?;
@@ -71,7 +77,9 @@ async fn action(app: tauri::AppHandle, action: String, exefs: String, romfs: Str
             let mut job = state.0.lock().unwrap();
             if job.is_some() { return Err("Another action is running.".into()); }
             let child = cmd.stdout(Stdio::piped()).stderr(Stdio::piped()).spawn().map_err(|e| format!("Could not run Python: {e}"))?;
-            *job = Some((child.id(), action != "play"));
+            let cancellable = matches!(action.as_str(), "inspect" | "build-code" | "prepare");
+            *job = Some(ActiveTask { pid: child.id(), cancellable, cancelled: false });
+            if cancellable { let _ = app.emit("action-cancellable", &action); }
             child
         };
         let stdout = child.stdout.take().unwrap();
@@ -82,24 +90,32 @@ async fn action(app: tauri::AppHandle, action: String, exefs: String, romfs: Str
             s.spawn(move || for line in BufReader::new(stderr).lines().map_while(Result::ok) { let _ = a.emit("build-line", line); });
         });
         let result = child.wait().map_err(|e| e.to_string());
-        *state.0.lock().unwrap() = None;
+        let cancelled = state.0.lock().unwrap().take().is_some_and(|job| job.cancelled);
+        if cancelled { return Err("Cancelled. Run the interrupted operation again when ready.".into()); }
         if result?.success() { Ok(()) } else { Err("The operation stopped. See the last diagnostic below.".into()) }
     }).await.map_err(|e| e.to_string())?
 }
 
-fn stop(state: &Task) {
-    let job = state.0.lock().unwrap();
-    if let Some((pid, true)) = *job {
+fn stop(state: &Task) -> Result<bool, String> {
+    let mut job = state.0.lock().unwrap();
+    if let Some(job) = job.as_mut().filter(|job| job.cancellable) {
+        if job.cancelled { return Ok(true); }
         #[cfg(windows)]
         {
             use std::os::windows::process::CommandExt;
-            let _ = Command::new("taskkill").args(["/T", "/F", "/PID", &pid.to_string()])
-                .creation_flags(0x08000000).output();
+            let result = Command::new("taskkill").args(["/T", "/F", "/PID", &job.pid.to_string()])
+                .creation_flags(0x08000000).output().map_err(|e| format!("Could not cancel the operation: {e}"))?;
+            if !result.status.success() { return Err("Windows could not stop this operation.".into()); }
+            job.cancelled = true;
+            return Ok(true);
         }
     }
+    Ok(false)
 }
 #[tauri::command]
-fn cancel(state: tauri::State<Task>) { stop(&state); }
+async fn cancel(app: tauri::AppHandle) -> Result<bool, String> {
+    tauri::async_runtime::spawn_blocking(move || stop(&app.state::<Task>())).await.map_err(|e| e.to_string())?
+}
 
 fn main() {
     let args: Vec<_> = std::env::args().skip(1).collect();
@@ -112,7 +128,7 @@ fn main() {
     }
     tauri::Builder::default().plugin(tauri_plugin_dialog::init()).manage(Task::default())
         .on_window_event(|win, ev| {
-            if matches!(ev, tauri::WindowEvent::Destroyed) { stop(&win.state::<Task>()); }
+            if matches!(ev, tauri::WindowEvent::Destroyed) { let _ = stop(&win.state::<Task>()); }
         })
         .invoke_handler(tauri::generate_handler![overview, pick, action, cancel])
         .run(tauri::generate_context!()).expect("FagriShot launcher could not start");

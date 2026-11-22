@@ -22,14 +22,14 @@ try {
     $ninja = (Get-Command ninja -ErrorAction SilentlyContinue).Source
     if (!$ninja) { $ninja = Join-Path $vs 'Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe' }
     $common = @('-G', 'Ninja', "-DCMAKE_MAKE_PROGRAM:FILEPATH=$ninja", '-DCMAKE_BUILD_TYPE=Release',
-        '-DCMAKE_NINJA_FORCE_RESPONSE_FILE=ON', "-DCMAKE_TOOLCHAIN_FILE=$root/recomp/cmake/clang-cl.cmake")
+        '-DCMAKE_NINJA_FORCE_RESPONSE_FILE=ON')
     Write-Output "Fresh build directories under $build"
     Write-Output "Visual Studio $vs, MSVC $env:VCToolsVersion, Windows SDK $env:WindowsSDKVersion"
     & (Join-Path $env:NX_LLVM 'clang-cl.exe') --version
     & $cmake --version
     & $ninja --version
     $lift = Join-Path $build 'libs'
-    & $cmake -S "$root/recomp/games/fefw" -B $lift @common "-DFEFW_EXEFS=$build/exefs" "-DFEFW_GEN=$build/generated" -DFEFW_LIFT_JOBS=2 2>&1 | Tee-Object (Join-Path $build 'configure-lift.log')
+    & $cmake -S "$root/recomp/games/fefw" -B $lift @common "-DCMAKE_TOOLCHAIN_FILE=$root/recomp/cmake/clang-cl.cmake" "-DFEFW_EXEFS=$build/exefs" "-DFEFW_GEN=$build/generated" -DFEFW_LIFT_JOBS=2 2>&1 | Tee-Object (Join-Path $build 'configure-lift.log')
     if ($LASTEXITCODE) { throw 'Six-module CMake configure failed.' }
     $graph = (& $ninja -C $lift -t query fefw_modules) -join "`n"
     if ($LASTEXITCODE) { throw 'Ninja could not query the module target.' }
@@ -44,11 +44,23 @@ try {
     }
     $missing | Set-Content -LiteralPath (Join-Path $build 'missing-input.log')
     $game = Join-Path $build 'game'
-    $settings = @("-DFEFW_LIB_DIR=$lift", "-DNXRT_DEPS_DIR=$build/vendor-downloads", '-DNXRT_ASTC2BC7=ON')
+    # Use the same explicit compilers as build_game.ps1. A conflicting PATH entry exercises the RC selection bug.
+    $shadow = New-Item -ItemType Directory -Path (Join-Path $build 'other-tools')
+    Set-Content -LiteralPath (Join-Path $shadow.FullName 'llvm-rc.exe') -Value 'Unexpected PATH resource compiler'
+    $env:PATH = $shadow.FullName + ';' + $env:PATH
+    $rc = Join-Path $env:NX_LLVM 'llvm-rc.exe'
+    $settings = @("-DFEFW_LIB_DIR=$lift", "-DNXRT_DEPS_DIR=$root/work/runtime-dependencies", '-DNXRT_ASTC2BC7=ON',
+        "-DCMAKE_C_COMPILER:FILEPATH=$env:NX_LLVM/clang-cl.exe", "-DCMAKE_CXX_COMPILER:FILEPATH=$env:NX_LLVM/clang-cl.exe",
+        "-DCMAKE_RC_COMPILER:FILEPATH=$rc")
     $nasm = Join-Path $root 'work/runtime-dependencies/nasm-3.01/nasm.exe'
     if (Test-Path -LiteralPath $nasm) { $settings += "-DNXRT_NASM=$nasm" }
     & $cmake -S "$root/game-build/fefw" -B $game @common @settings 2>&1 | Tee-Object (Join-Path $build 'configure-game.log')
     if ($LASTEXITCODE) { throw 'Game CMake configure failed.' }
+    $expected = 'CMAKE_RC_COMPILER:FILEPATH=' + $rc.Replace('\','/')
+    if (-not (Select-String -LiteralPath "$game/CMakeCache.txt" -Pattern $expected -SimpleMatch -Quiet)) {
+        throw "Game configure did not retain the selected resource compiler: $rc"
+    }
+    Write-Output "Game resource compiler: $rc"
     $graph = (& $ninja -C $game -t query FagriShot.exe) -join "`n"
     if ($LASTEXITCODE) { throw 'Ninja could not query the game target.' }
     Write-Output $graph

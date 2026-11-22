@@ -1,5 +1,6 @@
 // Exercise the installed Windows WebView2 UI with disposable per-user settings.
-import { spawn } from 'node:child_process';
+import { execFile, spawn } from 'node:child_process';
+import { promisify } from 'node:util';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import net from 'node:net';
@@ -15,6 +16,9 @@ await new Promise(resolve => portProbe.listen(0, '127.0.0.1', resolve));
 const port = portProbe.address().port;
 await new Promise(resolve => portProbe.close(resolve));
 const local = path.join(run, 'LocalAppData');
+const settingsFile = path.join(local,'FagriShot','settings','launcher.json');
+await fs.mkdir(path.dirname(settingsFile),{recursive:true});
+await fs.writeFile(settingsFile,JSON.stringify({schema:42}));
 const app = spawn(exe, [], {windowsHide:true, env:{...process.env, LOCALAPPDATA:local,
   WEBVIEW2_USER_DATA_FOLDER:path.join(run, 'webview'),
   WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port='+port}});
@@ -49,7 +53,20 @@ try {
     if(r.exceptionDetails) throw Error(r.exceptionDetails.text);
     return r.result.value;
   }
-  await until(()=>evalPage("document.querySelector('#exefs')?.value"), 'selected paths');
+  await until(()=>evalPage("document.querySelector('#retry')?.hidden === false"),'unsupported settings retry');
+  assert.ok(await evalPage("document.querySelector('[data-action=configure]').disabled && document.querySelector('[data-action=backup]').disabled"));
+  await fs.writeFile(settingsFile,'{');
+  await evalPage("document.querySelector('#retry').click()");
+  await until(()=>evalPage("document.querySelector('#settings-warning')?.hidden === false && document.querySelector('#exefs').value"),'damaged settings recovery');
+  assert.equal(await evalPage("document.querySelector('[data-action=inspect]').disabled"),true);
+  await evalPage("document.querySelector('[data-page=data]').click(); document.querySelector('[data-action=backup]').click()");
+  await until(()=>evalPage("document.querySelector('#feedback').textContent==='Finished.' && !document.querySelector('[data-action=backups]').disabled"),'backup with damaged game settings');
+  await evalPage("document.querySelector('[data-action=backups]').click()");
+  await until(()=>evalPage("document.querySelector('#feedback').textContent==='Finished.' && document.querySelector('#output').textContent.includes('No backups yet.') && !document.querySelector('[data-action=configure]').disabled"),'list with damaged game settings');
+  await evalPage("document.querySelector('[data-page=setup]').click()");
+  assert.equal(await evalPage("document.querySelector('#settings-warning').hidden"),false);
+  await evalPage("document.querySelector('[data-action=configure]').click()");
+  await until(()=>evalPage("document.querySelector('#settings-warning').hidden && !document.querySelector('[data-action=inspect]').disabled"),'settings repair');
   assert.equal(await evalPage('document.characterSet'),'UTF-8');
   assert.equal(await evalPage('document.title'),'FagriShot');
   const version = JSON.parse(await fs.readFile(path.join(root, 'launcher/src-tauri/tauri.conf.json'), 'utf8')).version;
@@ -65,12 +82,40 @@ try {
   await evalPage("document.querySelector('#exefs').value = " + JSON.stringify(unicodePath));
   await evalPage("document.querySelector('[data-action=configure]').click()");
   await until(()=>evalPage("document.querySelector('#feedback').textContent==='Finished.' && !document.querySelector('[data-action=doctor]').disabled"),'settings write');
-  const settings=JSON.parse(await fs.readFile(path.join(local,'FagriShot','settings','launcher.json'),'utf8'));
+  const settings=JSON.parse(await fs.readFile(settingsFile,'utf8'));
   assert.equal(settings.schema,1);
   assert.equal(settings.exefs,unicodePath);
   await evalPage("document.querySelector('[data-page=data]').click(); document.querySelector('[data-action=doctor]').click()");
   await until(()=>evalPage("document.querySelector('#output').textContent.includes('Updates: manual')"),'diagnostics');
   assert.ok((await evalPage("document.querySelector('#output').textContent")).includes(unicodePath));
+  // Editing the form and working with saves are independent, including when a second tool creates a backup.
+  const draft = unicodePath + '-unsaved';
+  await evalPage("document.querySelector('[data-page=setup]').click(); document.querySelector('#exefs').value=" + JSON.stringify(draft) +
+    ";document.querySelector('#exefs').dispatchEvent(new Event('input'));document.querySelector('[data-page=data]').click()");
+  const saves = path.join(local, 'FagriShot', 'saves');
+  await fs.mkdir(saves, {recursive:true});
+  await fs.writeFile(path.join(saves, 'fixture'), 'launcher save fixture');
+  await evalPage("document.querySelector('[data-action=backup]').click()");
+  await until(()=>evalPage("document.querySelector('#feedback').textContent==='Finished.' && !document.querySelector('#restore').disabled"),'backup creation');
+  assert.equal(await evalPage("document.querySelector('#exefs').value"), draft, 'backup refresh discarded an unsaved location');
+  const selectedBackup = await evalPage("document.querySelector('#snapshot').value");
+  await fs.writeFile(path.join(saves, 'fixture'), 'second launcher save fixture');
+  const external = await promisify(execFile)(exe, ['backup'], {env:{...process.env, LOCALAPPDATA:local}, windowsHide:true});
+  const secondBackup = external.stdout.trim();
+  assert.notEqual(secondBackup,selectedBackup);
+  await evalPage("document.querySelector('[data-action=backups]').click()");
+  await until(()=>evalPage("document.querySelector('#feedback').textContent==='Finished.' && !document.querySelector('#restore').disabled"),'backup list');
+  assert.ok(await evalPage("Array.from(document.querySelector('#snapshot').options, o=>o.value).includes(" + JSON.stringify(secondBackup) + ")"), 'Restore list missed an external backup');
+  assert.equal(await evalPage("document.querySelector('#snapshot').value"),selectedBackup,'refresh changed the chosen restore target');
+  await evalPage("window.confirm=()=>false; document.querySelector('#restore').click()");
+  assert.equal(await fs.readFile(path.join(saves,'fixture'),'utf8'),'second launcher save fixture');
+  await evalPage("window.confirm=msg=>{window.testRestorePrompt=msg; return true;}; document.querySelector('#restore').click()");
+  await until(()=>evalPage("document.querySelector('#feedback').textContent==='Finished.' && !document.querySelector('#restore').disabled"),'snapshot restore');
+  assert.ok((await evalPage('window.testRestorePrompt')).includes(selectedBackup));
+  assert.equal(await fs.readFile(path.join(saves,'fixture'),'utf8'),'launcher save fixture');
+  await evalPage("document.querySelector('[data-page=setup]').click(); document.querySelector('#exefs').value=' '; document.querySelector('#exefs').dispatchEvent(new Event('input'))");
+  assert.equal(await evalPage("document.querySelector('[data-action=configure]').disabled"),true,'blank ExeFS can silently reuse a saved path');
+  assert.equal(await evalPage("document.querySelector('[data-action=inspect]').disabled"),true);
   await evalPage("document.querySelector('[data-page=about]').click()");
   const credits = await evalPage("document.querySelector('#about').innerText");
   assert.match(credits,/thunderq10/);
@@ -78,7 +123,10 @@ try {
   assert.ok(credits.includes('drakolordx7\u2019s nxrecomp work'));
   await fs.writeFile(path.join(run,'verification.json'),JSON.stringify({title:'FagriShot',passed:['window title',
     'default inputs','Play gate','missing ExeFS diagnostic','isolated settings write','diagnostics','credits',
-    'Unicode title, footer, progress and credits','Unicode path in settings and diagnostics']},null,2));
+    'Unicode title, footer, progress and credits','Unicode path in settings and diagnostics',
+    'unsaved locations survive backup','external backups refresh without changing restoration target','blank locations rejected',
+    'failed status blocks operations and retries','damaged settings warning and repair','backup and list during settings recovery',
+    'declined restore leaves saves intact','confirmed restore recovers the selected synthetic save']},null,2));
   console.log('Verified actual Windows launcher UI:',run);
 } finally {
   ws?.close();

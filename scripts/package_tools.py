@@ -142,7 +142,8 @@ def contents(revision, draft):
     for file in ("__init__", "__main__", "build", "inputs", "saves", "shaders", "storage"):
         source(f"fagrishot/{file}.py")
     for file in ("scripts/fagrishot.py", "compatibility/supported.json", "docs/package.md", "docs/inputs.md", "docs/storage.md", "docs/status.md",
-                 "docs/foundation.md", "docs/runtime-verification.md", "docs/shader-verification.md", "LICENSE"):
+                 "docs/foundation.md", "docs/longshot.md", "docs/cpu-verification.md", "docs/runtime-verification.md",
+                 "docs/shader-verification.md", "LICENSE"):
         source(file)
     for file in ("runtime/THIRD_PARTY_NOTICES.md", "recomp/THIRD_PARTY.md", "runtime/assets/fonts/LICENSE-DejaVu.txt",
                  "runtime/assets/prompts/LICENSE-Kenney-InputPrompts.txt", "runtime/LICENSE", "launcher/LICENSE",
@@ -182,7 +183,7 @@ def contents(revision, draft):
 def verify(archive):
     with tempfile.TemporaryDirectory(prefix="FagriShot-package-") as temp:
         area = Path(temp)
-        install = area / "install"
+        install = area / "FagriShot \u65e5\u672c\u8a9e"
         with zipfile.ZipFile(archive) as bundle:
             if corrupt := bundle.testzip():
                 raise ValueError(f"Archive CRC failure at {corrupt}.")
@@ -207,12 +208,12 @@ def verify(archive):
         doctor = action("doctor")
         if str(install / "runtime-bin/fefw_rt.dll") not in doctor:
             raise ValueError("Packaged diagnostics missed the distributed runtime DLL.")
-        game = area / "synthetic-inputs"
+        game = area / "synthetic #1 \u0627\u062e\u062a\u0628\u0627\u0631"
         action("configure", "--exefs", str(game / "exefs"), "--romfs", str(game / "romfs"))
         selected = json.loads(action("status", "--json"))
         if Path(selected["exefs"]) != game / "exefs" or Path(selected["romfs"]) != game / "romfs":
             raise ValueError("The extracted setup did not persist its selected paths.")
-        rejected = subprocess.run([packaged_exe, "inspect"], cwd=area, env=env, capture_output=True, text=True)
+        rejected = subprocess.run([packaged_exe, "inspect"], cwd=area, env=env, capture_output=True, encoding="utf-8")
         if rejected.returncode == 0 or "missing or unreadable" not in rejected.stderr:
             raise ValueError("The extracted input checker did not diagnose absent source data.")
         saves = Path(selected["saves"])

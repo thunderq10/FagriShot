@@ -10,17 +10,32 @@ import sys
 
 from . import UPSTREAM, VERSION
 from .build import CATALOG, EXE, PRIVATE, ROOT, VENV, build_game, sha, source_state
-from .inputs import check_executable, check_support, inspect_exefs, inspect_inputs
+from .inputs import check_executable, check_input_roots, check_support, inspect_exefs, inspect_inputs
 from .storage import build_lock, check_separation, locations, write_json
 
 
 def selections(opts, dirs):
     config = dirs["settings"] / "launcher.json"
-    settings = json.loads(config.read_text("utf-8")) if config.exists() else {}
-    if not isinstance(settings, dict) or settings.get("schema", 1) != 1:
-        raise ValueError(f"Unsupported settings format in {config}.")
+    warning = None
+    try:
+        settings = json.loads(config.read_text(encoding="utf-8-sig"))
+    except FileNotFoundError:
+        settings = {}
+    except ValueError:
+        settings = None
+    if isinstance(settings, dict) and settings.get("schema", 1) != 1:
+        raise ValueError(f"Unsupported settings version in {config}. Use the matching launcher version.")
+    if not isinstance(settings, dict) or any(
+        value is not None and (not isinstance(value, str) or "\0" in value)
+        for value in (settings.get("exefs"), settings.get("romfs"))
+    ):
+        settings = {}
+        warning = f"Could not read the saved folder locations in {config}. Select both folders and save the locations again."
+        can_repair = opts.command == "configure" and opts.exefs is not None and opts.romfs is not None
+        if opts.command not in ("status", "doctor") and not can_repair:
+            raise ValueError(warning) from None
     return {k: Path(getattr(opts, k, None) or settings.get(k) or ROOT / k).absolute()
-            for k in ("exefs", "romfs")}
+            for k in ("exefs", "romfs")}, warning
 
 
 def parser():
@@ -62,12 +77,25 @@ def diagnostic(dirs, paths):
     print("Updates: manual. Online application updates are unavailable.")
 
 
-def ensure_exe(inv):
+def linked_record():
     stamp = PRIVATE / "linked.json"
-    if not stamp.is_file() or not EXE.is_file():
-        raise ValueError("Build the six game modules with build-code first.")
-    record = json.loads(stamp.read_text("utf-8"))
-    if record.get("input", {}).get("exefs") != inv["exefs"] or record.get("exe_sha256") != sha(EXE):
+    if not EXE.is_file():
+        return None
+    try:
+        record = json.loads(stamp.read_text(encoding="utf-8"))
+    except (FileNotFoundError, ValueError):
+        return None
+    if (isinstance(record, dict) and record.get("product") == "FagriShot"
+            and isinstance(record.get("input"), dict) and isinstance(record.get("exe_sha256"), str)):
+        return record
+    return None
+
+
+def ensure_exe(inv):
+    record = linked_record()
+    if record is None:
+        raise ValueError("A complete game build is required. Run build-code for the six game modules first.")
+    if record["input"].get("exefs") != inv["exefs"] or record["exe_sha256"] != sha(EXE):
         raise ValueError("The linked game differs from this ExeFS or has changed. Run build-code again.")
     if record.get("source") != source_state() or inspect_exefs(PRIVATE / "prepared-exefs")["exefs"] != record.get("prepared_exefs"):
         raise ValueError("The runtime source or prepared module set changed. Run build-code again.")
@@ -78,13 +106,14 @@ def launch(paths, inv, dirs):
     from .shaders import require_ready
     cache = require_ready(inv, dirs)
     ini_file = dirs["settings"] / "fefw.ini"
-    ini = configparser.RawConfigParser()
+    ini = configparser.RawConfigParser(strict=False)
     if ini_file.exists():
-        with ini_file.open(encoding="utf-8") as stream:
+        with ini_file.open(encoding="utf-8-sig") as stream:
             ini.read_file(stream)
     else:
         ini.read_dict({"fefw": {"fps60": "0", "output": "console"}, "boot": {"gfx": "window"}})
-    managed = {"fs": {"exefs": PRIVATE / "prepared-exefs", "romfs": paths["romfs"],
+    prepared = PRIVATE / "prepared-exefs"
+    managed = {"fs": {"exefs": prepared, "main": prepared / "main", "romfs": paths["romfs"],
                       "save_dir": dirs["saves"], "dll_mods": "false", "mods": ""},
                "nvn": {"shader_cache": cache / "spirv", "bc7_cache": cache / "bc7",
                        "pipeline_cache": cache / "pipeline_cache.bin"},
@@ -93,7 +122,8 @@ def launch(paths, inv, dirs):
         if not ini.has_section(section):
             ini.add_section(section)
         for key, value in values.items():
-            ini.set(section, key, value.as_posix() if isinstance(value, Path) else value)
+            # The runtime treats whitespace followed by # or ; as an inline comment outside quotes.
+            ini.set(section, key, f'"{value.as_posix()}"' if isinstance(value, Path) else value)
     tmp = ini_file.with_suffix(".new")
     with tmp.open("w", encoding="utf-8") as stream:
         ini.write(stream)
@@ -106,22 +136,7 @@ def launch(paths, inv, dirs):
 
 def execute(opts):
     dirs = locations()
-    paths = selections(opts, dirs)
     cmd = opts.command
-    source_checkout = (ROOT / "recomp/games/fefw/config.py").is_file()
-    if cmd == "status":
-        from .saves import list_backups
-        result = {"version": VERSION, **{k: str(p) for k,p in paths.items()},
-                  "exefs_present": (paths["exefs"] / "main").is_file(), "romfs_present": paths["romfs"].is_dir(),
-                  "settings": str(dirs["settings"]), "saves": str(dirs["saves"]),
-                  "logs": str(dirs["logs"]), "exe_built": EXE.is_file() and (PRIVATE / "linked.json").is_file(),
-                  "source_checkout": source_checkout, "backup_ids": list_backups(dirs),
-                  "has_pair": bool(json.loads(CATALOG.read_text("utf-8"))["supported"])}
-        print(json.dumps(result, ensure_ascii=False, indent=None if opts.json else 2))
-        return
-    if cmd == "doctor":
-        diagnostic(dirs, paths)
-        return
     if cmd in ("backup", "backups", "restore"):
         from .saves import list_backups, recover, restore, snapshot
         with build_lock(dirs["settings"] / "save.lock"):
@@ -134,8 +149,27 @@ def execute(opts):
                 restore(dirs, opts.backup_id)
                 print("Restored the verified snapshot.")
         return
-    check_separation(paths.values(), [*dirs.values(), ROOT / "work", ROOT / "tools", ROOT / "game-build"])
+    paths, warning = selections(opts, dirs)
+    source_checkout = (ROOT / "recomp/games/fefw/config.py").is_file()
+    if cmd == "status":
+        from .saves import list_backups
+        result = {"version": VERSION, **{k: str(p) for k,p in paths.items()},
+                  "exefs_present": (paths["exefs"] / "main").is_file(), "romfs_present": paths["romfs"].is_dir(),
+                  "settings": str(dirs["settings"]), "saves": str(dirs["saves"]),
+                  "logs": str(dirs["logs"]), "exe_built": linked_record() is not None,
+                  "source_checkout": source_checkout, "settings_warning": warning, "backup_ids": list_backups(dirs),
+                  "has_pair": bool(json.loads(CATALOG.read_text("utf-8"))["supported"])}
+        print(json.dumps(result, ensure_ascii=False, indent=None if opts.json else 2))
+        return
+    if cmd == "doctor":
+        if warning:
+            print(warning)
+        diagnostic(dirs, paths)
+        return
+    inputs = [paths["exefs"]] if cmd == "build-code" else paths.values()
+    check_separation(inputs, [*dirs.values(), ROOT / "work", ROOT / "tools", ROOT / "game-build"])
     if cmd == "configure":
+        check_input_roots(paths["exefs"], paths["romfs"])
         for directory in dirs.values():
             directory.mkdir(parents=True, exist_ok=True)
         write_json(dirs["settings"] / "launcher.json", {"schema": 1, **{k: str(v) for k,v in paths.items()}})

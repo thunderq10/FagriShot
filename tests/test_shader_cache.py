@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import shutil
 import struct
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -20,8 +21,8 @@ class ShaderCache(unittest.TestCase):
         self.fields = "hash\tgroup\tstage\tstages_using\tstatus\tspv_bytes\tresources\terror\n"
         self.requested = {self.hash: ("cs", 1)}
 
-    def write_row(self, state):
-        row = f"{self.hash}\tcs\tcompute\t1\t{state}\t20\t\t\n"
+    def write_row(self, state, size=20, error=""):
+        row = f"{self.hash}\tcs\tcompute\t1\t{state}\t{size}\t\t{error}\n"
         self.results.write_text(self.fields + row, encoding="utf-8")
 
     def test_batch_success_with_any_rejected_status_blocks_cache(self):
@@ -32,6 +33,9 @@ class ShaderCache(unittest.TestCase):
                     shaders._check_outputs(self.root, self.requested, "unused", 1)
 
     def test_missing_rows_stale_and_truncated_outputs(self):
+        self.results.write_text(self.fields + f"{self.hash}\tcs\tcompute\t1\tok", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "Incomplete shader table row"):
+            shaders._check_outputs(self.root, self.requested, "unused", 1)
         self.results.write_text(self.fields, encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "sets disagree"):
             shaders._check_outputs(self.root, self.requested, "unused", 1)
@@ -49,6 +53,29 @@ class ShaderCache(unittest.TestCase):
     def test_native_validator_rejects_invalid_module_despite_ok_row(self):
         self.write_row("ok")
         (self.root / (self.hash + ".spv")).write_bytes(bytes(20))
+        with self.assertRaisesRegex(ValueError, "failed vulkan1.3 validation"):
+            shaders._check_outputs(self.root, self.requested, shaders._validator(), 1)
+
+    @unittest.skipUnless(shutil.which("spirv-as") and shutil.which("spirv-val"), "SPIRV-Tools is required.")
+    def test_validated_retry_may_retain_first_attempt_diagnostic(self):
+        module = self.root / (self.hash + ".spv")
+        instructions = """OpCapability Shader
+OpMemoryModel Logical GLSL450
+OpEntryPoint GLCompute %main "main"
+OpExecutionMode %main LocalSize 1 1 1
+%void = OpTypeVoid
+%func = OpTypeFunction %void
+%main = OpFunction %void None %func
+%label = OpLabel
+OpReturn
+OpFunctionEnd
+"""
+        subprocess.run([shutil.which("spirv-as"), "--target-env", shaders.TARGET, "-o", module, "-"],
+                       input=instructions, text=True, check=True)
+        self.write_row("ok-retry", size=module.stat().st_size, error="Exception from the first translation attempt")
+        self.assertEqual(shaders._check_outputs(self.root, self.requested, shaders._validator(), 1),
+                         {self.hash: hashlib.sha256(module.read_bytes()).hexdigest()})
+        module.write_bytes(bytes(module.stat().st_size))
         with self.assertRaisesRegex(ValueError, "failed vulkan1.3 validation"):
             shaders._check_outputs(self.root, self.requested, shaders._validator(), 1)
 
@@ -76,7 +103,14 @@ class ShaderCache(unittest.TestCase):
         struct.pack_into("<III", main, 0x10, 0x100, 0, len(blob))
         (prepared / "main").write_bytes(main)
         romfs = self.root / "romfs"
-        romfs.mkdir()
+        asset_dir = romfs / "motor_asset_re"
+        asset_dir.mkdir(parents=True)
+        payload = b"_S2G" + blob
+        entry = bytearray(0x30)
+        entry[:8] = b"IDRK0000"
+        struct.pack_into("<QQQ", entry, 8, len(entry) + len(payload), len(payload), len(payload))
+        asset = asset_dir / "音声-é.fdata"
+        asset.write_bytes(entry + payload)
         exe = self.root / "synthetic-host-marker"
         exe.write_bytes(b"stand-in cache identity only")
         dirs = {"caches": self.root / "cache"}
@@ -87,6 +121,8 @@ class ShaderCache(unittest.TestCase):
             self.assertEqual(cache, shaders.prepare_shaders({"romfs": romfs}, inv, dirs, 1))
             marker = json.loads((cache / "ready.json").read_text(encoding="utf-8"))
             self.assertEqual(set(marker["modules"]), {hashlib.sha1(code).hexdigest()[:16]})
+            manifest = (cache / "corpus/manifest.tsv").read_text(encoding="utf-8")
+            self.assertIn(asset.name, manifest)
             next((cache / "spirv").glob("*.spv")).write_bytes(b"changed")
             with self.assertRaisesRegex(ValueError, "missing or changed"):
                 shaders.require_ready(inv, dirs)

@@ -19,6 +19,7 @@
 #include "nxrt/input_source.h"
 #include "nxrt/platform.h"
 #include "nxrt/play.h"
+#include "play/play_game.h"
 
 namespace nxrt::services {
 void vibration_dispatch(uint32_t npad_slot, int hand, const hid::VibrationValue& v);   // src/services/input_source.cpp: what hid calls for a game's vibration command
@@ -33,7 +34,6 @@ namespace platform = nxrt::platform;
 namespace play = nxrt::play;
 
 constexpr uint64_t kBase = 0x5B00000000ull;
-constexpr uint64_t kUpdate = 0x3c81c8;
 
 struct Rumble {
     uint16_t low = 0, high = 0;
@@ -71,7 +71,7 @@ bool setup() {
     std::filesystem::create_directories(dir);
     nxrt::config_set("play", "controls", (dir / "controls.ini").string().c_str());
     nxrt::config_set("play", "game_base", "0x5B00000000");
-    if (!platform::init()) return false;
+    if (!platform::init() || !play::game_play() || !play::game_play()->frame_update) return false;
     play::load();
     play::StartOptions o;
     o.overlay = false;
@@ -123,12 +123,12 @@ bool other_pad_connected() {
         }                                                                                                  \
     } while (0)
 
-// One frame boundary, then what the hid service would read.
+// Dispatch the frame entry that play::start registered for this adapter, then read HID as the game would.
 hid::InputSnapshot sample() {
     SDL_UpdateJoysticks();
     platform::pump_events();
     ::Ctx c{};
-    nx_hook_entry(&c, kBase + kUpdate);
+    nx_hook_entry(&c, kBase + play::game_play()->frame_update);
     hid::InputSnapshot s;
     auto src = hid::input_source();
     if (src) src->poll(s);

@@ -6,7 +6,7 @@ import struct
 import tempfile
 import unittest
 
-from fagrishot.inputs import InputError, check_executable, check_support, inspect_exefs, inspect_inputs
+from fagrishot.inputs import InputError, check_executable, check_input_roots, check_support, inspect_exefs, inspect_inputs
 
 
 PROGRAM = 0xABCD
@@ -178,6 +178,23 @@ class GameInputs(unittest.TestCase):
         (self.exe / "main.npdm").write_bytes(npdm()[:0x80])
         with self.assertRaisesRegex(InputError, "incomplete ACI0"):
             inspect_exefs(self.exe)
+
+    def test_prospective_overlapping_inputs_and_drive_alias(self):
+        later = self.root / "not-created"
+        check_input_roots(later / "exe", later / "rom")
+        for pair in ((later, later), (later, later / "rom"), (later / "exe", later)):
+            with self.assertRaisesRegex(InputError, "overlapping"):
+                check_input_roots(*pair)
+        drive = Path(self.root.anchor)
+        alias = drive / self.root.parts[1] / ".."
+        with self.assertRaisesRegex(InputError, "inside the drive"):
+            check_input_roots(later, alias)
+
+    def test_executable_profile_reports_missing_canonical_main_name(self):
+        inventory = inspect_exefs(self.exe)
+        inventory["modules"]["MAIN"] = inventory["modules"].pop("main")
+        with self.assertRaisesRegex(InputError, "differs at MAIN, main"):
+            check_executable(inventory, self.catalog_with([]))
 
     def test_linked_file_rejected(self):
         try:

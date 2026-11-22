@@ -8,6 +8,7 @@
 <main><header><h1 id="title">Game setup</h1></header>
 <section id="setup"><div class="card"><div class="row between"><h2>Fire Emblem: Fortune&rsquo;s Weave</h2><span class="tag" id="input-state"></span></div>
 <p>Select the extracted executable modules and merged content for update 131072.</p>
+<p id="settings-warning" role="alert" hidden></p>
 <label for="exefs">ExeFS folder</label><div class="field"><input id="exefs" spellcheck="false"><button data-pick="ExeFS" aria-label="Browse for ExeFS">Browse</button></div>
 <label for="romfs">RomFS folder</label><div class="field"><input id="romfs" spellcheck="false"><button data-pick="RomFS" aria-label="Browse for RomFS">Browse</button></div>
 <div class="row actions"><button data-action="configure">Save locations</button><button data-action="inspect">Check files</button></div></div>
@@ -16,5 +17,5 @@
 <section id="data" hidden><div class="card"><h2>FagriShot storage</h2><dl><dt>Settings</dt><dd id="loc-settings"></dd><dt>Saves</dt><dd id="loc-saves"></dd><dt>Logs and input inventory</dt><dd id="loc-logs"></dd></dl><div class="row"><button data-action="doctor">Run diagnostics</button><button data-action="backup">Back up saves</button><button data-action="backups">List backups</button></div><label for="snapshot">Restore backup</label><div class="row"><select id="snapshot" aria-label="Backup to restore"></select><button id="restore" data-action="restore" disabled>Restore</button></div></div></section>
 <section id="about" hidden><div class="card"><h2>FagriShot 0.1.0</h2><p>Independent PC recompilation software owned and maintained by thunderq10. Based on the Fortune&rsquo;s Weave port created by Goldoire, its fork maintainers and contributors, and drakolordx7&rsquo;s nxrecomp work.</p><h3>Updates</h3><p>Updates are manual. Extract the local tooling package into a fresh folder. Settings and saves live in your FagriShot data directory. Online updating is unavailable.</p>
 <h3>Credits and licenses</h3><p>FagriShot code and its original monogram are GPL-3.0-or-later. The runtime, Tauri, shader translator and other components retain their own notices. The included LICENSE and third-party notices identify the contributors and terms.</p></div></section>
-<footer aria-label="Activity"><div class="row between"><span role="status" id="feedback"></span><button id="cancel" hidden>Cancel operation</button></div><pre id="output" tabindex="0" aria-label="Operation log"></pre></footer>
+<footer aria-label="Activity"><div class="row between"><span role="status" id="feedback"></span><button id="retry" hidden>Retry loading status</button><button id="cancel" hidden>Cancel operation</button></div><pre id="output" tabindex="0" aria-label="Operation log"></pre></footer>
 </main></div><script type="module" src="/src/fagrishot.js"></script></body></html>

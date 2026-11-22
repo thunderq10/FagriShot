@@ -1,4 +1,4 @@
-"""Test for bc7dec.exe: builds DDS files with known BC7 mode-6 solid-colour blocks and checks the decode.
+r"""Test for bc7dec.exe: builds DDS files with known BC7 mode-6 solid-colour blocks and checks the decode.
 
 Run:  tools\.venv\Scripts\python.exe test_bc7dec.py [--bc7dec <exe>]   (from the project root)
 

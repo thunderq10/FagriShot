@@ -62,7 +62,10 @@ def _rows(path, fields):
         rows = csv.DictReader(stream, delimiter="\t", quoting=csv.QUOTE_NONE)
         if not set(fields).issubset(rows.fieldnames or []):
             raise ValueError(f"Unexpected shader table layout in {path.name}.")
-        yield from rows
+        for row in rows:
+            if any(row[field] is None for field in fields):
+                raise ValueError(f"Incomplete shader table row in {path.name} at line {rows.line_num}.")
+            yield row
 
 
 def _corpus(corpus):
@@ -92,7 +95,9 @@ def _check_outputs(spirv, jobs, validator, workers):
         name = row["hash"]
         if name not in jobs or name in results:
             raise ValueError("Shader results include a duplicate or unrequested block.")
-        if row["status"] not in {"ok", "ok-retry"} or row["error"].strip():
+        # The harness retains the first exception in this field when its retry succeeds.
+        # The final status and the independent validation below describe the emitted module.
+        if row["status"] not in {"ok", "ok-retry"} or (row["status"] == "ok" and row["error"].strip()):
             raise ValueError(f"Shader {name} returned {row['status']}. Inspect the private results.tsv.")
         if (row["group"], int(row["stages_using"])) != jobs[name]:
             raise ValueError(f"Shader {name} differs from its requested group or occurrence count.")
@@ -161,8 +166,10 @@ def prepare_shaders(paths, inv, dirs, jobs):
     print(f"Preparing private shaders in {stage}", flush=True)
     corpus, spirv = stage / "corpus", stage / "spirv"
     prepared = PRIVATE / "prepared-exefs"
-    prepare_args = [VENV, "-I", EXTRACT, "--romfs", paths["romfs"], "--exefs", prepared, "--main", prepared / "main",
-                    "--out", corpus, "--programs-bin", stage / "programs.bin", "--jobs", str(jobs), "--progress"]
+    # The extractor writes manifests with Python's default encoding. Its C# reader expects UTF-8.
+    prepare_args = [VENV, "-I", "-X", "utf8", EXTRACT, "--romfs", paths["romfs"], "--exefs", prepared,
+                    "--main", prepared / "main", "--out", corpus, "--programs-bin", stage / "programs.bin",
+                    "--jobs", str(jobs), "--progress"]
     log = stage / "extraction-errors.log"
     with log.open("w", encoding="utf-8") as errors:
         process = subprocess.run(prepare_args, cwd=ROOT, stderr=errors)
