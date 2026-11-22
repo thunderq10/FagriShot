@@ -1,4 +1,8 @@
-# FagriShot Windows x64 tooling preview
+# FagriShot Windows packages
+
+For the Windows player, download **FagriShot-Windows-x64.zip**, extract it into a writable folder and open **FagriShotLauncher.exe**. Choose your supported ExeFS and RomFS folders, click **Build game code**, then **Play**. The ZIP includes the compiler, Python, shader translator and validator. Windows 11 x64 supplies the desktop environment. The launcher uses Microsoft Edge WebView2 and the game needs a Vulkan 1.3-capable graphics driver. [Player guide](../README.md) · [دليل التشغيل](../README.ar.md)
+
+## Developer tooling preview
 
 Extract the entire archive into its own directory. Use Windows 11 x64, Python 3.13 x64 on PATH as `python`, and the Microsoft Edge WebView2 Runtime for the graphical launcher. Run `FagriShotLauncher.exe` for the desktop interface. The same executable forwards command-line arguments to the adjacent Python tools.
 

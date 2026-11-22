@@ -21,5 +21,14 @@
       "source": "https://github.com/metrist38/fefw-recomp/blob/ba87770fece1066f736e11e81e36b714ec56df0d/game-build/release/dump_hashes.json"
     }
   ],
-  "supported": []
+  "supported": [
+    {
+      "candidate": "fefw-131072",
+      "exefs_tree_sha256": "3118715b144c472df624469fbf843bb27fac51bcd5e1af5cc67cf50262d36104",
+      "romfs_tree_sha256": "72776f873eb7904579a1bd62ed895bfe84f0f22a61af1519c8fad4a3e0e5e929",
+      "base_cnmt_sha256": null,
+      "update_cnmt_sha256": null,
+      "evidence": "The original seven-file ExeFS and merged RomFS used together in the Windows playtests recorded in docs/status.md."
+    }
+  ]
 }

@@ -23,6 +23,8 @@ inline std::filesystem::path launcher_for(const std::filesystem::path& game_dir)
         _wcsicmp(work.filename().c_str(), L"work") == 0 &&
         is_file(work.parent_path() / L"compatibility" / L"supported.json") &&
         is_file(work.parent_path() / L"fagrishot" / L"__main__.py")) {
+        const auto packaged = work.parent_path() / L"FagriShotLauncher.exe";
+        if (is_file(work.parent_path() / L"player-package.json") && is_file(packaged)) return packaged;
         const auto tools = work / L"tools" / L"FagriShotLauncher.exe";
         if (is_file(tools)) return tools;
     }

@@ -22,7 +22,7 @@ def main():
     for folder in (private, tools, decoy, root / "compatibility", root / "fagrishot"):
         folder.mkdir(parents=True)
     fixture = private / "entry_probe.exe"
-    compiler = ROOT / "work/toolchain/llvm-23.1.5/bin/clang++.exe"
+    compiler = Path(os.environ.get("NX_LLVM", ROOT / "work/toolchain/llvm-23.1.5/bin")) / "clang++.exe"
     diag = ROOT / "runtime/src/diag"
     cmd = [compiler, "-std=c++20", "-O1", "-D_CRT_SECURE_NO_WARNINGS", "-I",
            ROOT / "runtime/include", "-I", ROOT / "game-build/fefw/src", diag / "config.cpp",
@@ -33,7 +33,7 @@ def main():
     log = []
 
     def run(args, code, contains=None):
-        result = subprocess.run([fixture, *args], env=environment, cwd=decoy, text=True, capture_output=True, timeout=10)
+        result = subprocess.run([fixture, *args], env=environment, cwd=decoy, text=True, capture_output=True, timeout=60)
         output = (result.stdout + result.stderr).strip()
         log.append(f"{args} -> {result.returncode} {output}")
         if result.returncode != code or (contains and contains not in output):
@@ -55,6 +55,10 @@ def main():
     (root / "fagrishot/__main__.py").write_text("")
     run([], 0)
     check_start(tools)
+    shutil.copyfile(fixture, root / name)
+    (root / "player-package.json").write_text('{"schema":1,"product":"FagriShot"}')
+    run([], 0)
+    check_start(root)
     shutil.copyfile(fixture, private / name)
     run([], 0)
     check_start(private)

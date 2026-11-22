@@ -61,8 +61,8 @@ def external_text(name, url, digest):
     return data
 
 
-def launcher_licenses(payload):
-    base = WORK / "launcher"
+def launcher_licenses(payload, base=None):
+    base = WORK / "launcher" if base is None else Path(base)
     rust = base / "rust-1.100.0"
     env = {**os.environ, "CARGO_HOME": str(base / "cargo"), "CARGO_TARGET_DIR": str(base / "target"),
            "PATH": str(rust / "bin") + os.pathsep + os.environ["PATH"]}

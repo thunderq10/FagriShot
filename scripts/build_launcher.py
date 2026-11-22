@@ -67,6 +67,13 @@ def main():
     run([cargo, "fetch", "--locked", "--target", TARGET], source / "src-tauri")
     if args.deps_only:
         return
+    encoded = env.get("CARGO_ENCODED_RUSTFLAGS")
+    flags = encoded.split("\x1f") if encoded else env.get("RUSTFLAGS", "").split()
+    # Rust's file!() and panic locations otherwise contain absolute build paths.
+    for prefix, replacement in [(Path.home(), "build-home"), (Path(cargo).parent.parent, "rust"),
+                                (ROOT, "."), (WORK / "cargo", "cargo")]:
+        flags.append(f"--remap-path-prefix={prefix}={replacement}")
+    env["CARGO_ENCODED_RUSTFLAGS"] = "\x1f".join(flags)
     run(["npm.cmd", "run", "build"], source)
     run([cargo, "build", "--release", "--locked", "--features", "tauri/custom-protocol"],
         source / "src-tauri")

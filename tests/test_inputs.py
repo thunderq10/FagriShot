@@ -94,7 +94,9 @@ class GameInputs(unittest.TestCase):
 
     def test_published_catalog_matches_pinned_upstream(self):
         data = json.loads(CATALOG.read_text(encoding="utf-8"))
-        self.assertEqual(data["supported"], [])
+        self.assertEqual({r["candidate"] for r in data["supported"]}, {"fefw-131072"})
+        self.assertTrue(all(len(r["romfs_tree_sha256"]) == 64 and len(r["exefs_tree_sha256"]) == 64
+                            for r in data["supported"]))
         source = CATALOG.parents[1] / "game-build/release/dump_hashes.json"
         upstream = json.loads(source.read_text(encoding="utf-8"))
         for key, value in upstream.items():

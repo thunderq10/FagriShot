@@ -57,7 +57,7 @@ pub fn run() -> Result<(), String> {
     let mut progress = progress::Dialog::show();
     let mut child = super::command(&["play".into()])?
         .stdout(Stdio::piped()).stderr(Stdio::piped()).spawn()
-        .map_err(|e| format!("Could not run Play. Install Python 3.11 or later and try again. {e}"))?;
+        .map_err(|e| format!("Could not start FagriShot's local tools for Play: {e}"))?;
     let stderr = child.stderr.take().unwrap();
     let diagnostic = std::thread::spawn(move || last_diagnostic(stderr));
     let mut stdout = BufReader::new(child.stdout.take().unwrap());

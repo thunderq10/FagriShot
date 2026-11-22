@@ -14,13 +14,14 @@ import subprocess
 import tempfile
 import uuid
 
-from .build import EXE, PRIVATE, ROOT, VENV, run, sha
+from .build import EXE, PLAYER_PACKAGE, PRIVATE, ROOT, VENV, run, sha
 from .storage import write_json
 
 
 SHADERS = ROOT / "tools/shaders"
-EXTRACT = SHADERS / "ampere/extract_corpus.py"
-HARNESS = SHADERS / "build/bin/Release/net10.0/spirv_harness.dll"
+EXTRACT = SHADERS / ("extract_corpus.py" if PLAYER_PACKAGE.is_file() else "ampere/extract_corpus.py")
+HARNESS = (ROOT / "tools/spirv_harness/spirv_harness.dll" if PLAYER_PACKAGE.is_file()
+           else SHADERS / "build/bin/Release/net10.0/spirv_harness.dll")
 LOCAL_DOTNET = SHADERS / "build/sdk-cache/sdk/dotnet.exe"
 TARGET = "vulkan1.3"
 HASH16 = re.compile(r"[0-9a-f]{16}")
@@ -30,6 +31,11 @@ STAGE_NAMES = {"vs": "vertex", "ps": "fragment", "cs": "compute", "gs": "geometr
 
 
 def _validator():
+    if PLAYER_PACKAGE.is_file():
+        path = ROOT / "tools/spirv-val/spirv-val.exe"
+        if not path.is_file():
+            raise ValueError("The bundled shader validator is missing. Extract the complete FagriShot ZIP again.")
+        return path
     path = shutil.which("spirv-val")
     if not path:
         raise ValueError("Install the Vulkan SDK with spirv-val on PATH before preparing shaders.")
@@ -194,7 +200,7 @@ def _ready(cache, identity):
         if not modules or modules != marker["modules"]:
             raise ValueError
     except (KeyError, TypeError, ValueError, OSError):
-        raise ValueError("Run prepare for this game and translator. The validated shader cache is missing or changed.") from None
+        raise ValueError("The validated shader cache is missing or changed. Choose Build game code in the launcher to prepare it again.") from None
     return cache
 
 
@@ -221,7 +227,8 @@ def prepare_shaders(paths, inv, dirs, jobs):
             return _ready(cache, identity)
         except ValueError:
             print("The cached shader outputs changed. Preparing a fresh copy.", flush=True)
-    dotnet, validator = _dotnet(), _validator()
+    harness_cmd = [HARNESS.with_suffix(".exe")] if PLAYER_PACKAGE.is_file() else [_dotnet(), HARNESS]
+    validator = _validator()
     if not VENV.is_file():
         raise ValueError("Initialize the pinned Python environment with python scripts/setup_python.py.")
     cache.parent.mkdir(parents=True, exist_ok=True)
@@ -245,7 +252,7 @@ def prepare_shaders(paths, inv, dirs, jobs):
     programs = _check_programs(stage / "programs.bin", expected, console_cuda)
     # The batch process can exit successfully after individual failures. Validate every accepted output below.
     env = {**os.environ, "DOTNET_CLI_TELEMETRY_OPTOUT": "1"}
-    run([dotnet, HARNESS, "--batch", corpus, "--out", spirv, "--jobs", str(jobs), "--target-env", TARGET,
+    run([*harness_cmd, "--batch", corpus, "--out", spirv, "--jobs", str(jobs), "--target-env", TARGET,
          "--host", "desktop", "--no-val"], env=env)
     modules = _check_outputs(spirv, expected, validator, jobs, console_cuda)
     fields = ["hash", "status", "stages_using", "error"]

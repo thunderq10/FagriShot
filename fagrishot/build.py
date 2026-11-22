@@ -3,6 +3,7 @@ import hashlib
 import datetime
 import json
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -15,12 +16,33 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "compatibility" / "supported.json"
 PRIVATE = ROOT / "work" / "private"
 EXE = PRIVATE / "game" / "FagriShot.exe"
-VENV = ROOT / "tools" / ".venv" / "Scripts" / "python.exe"
+PLAYER_PACKAGE = ROOT / "player-package.json"
+VENV = ROOT / ("tools/python/python.exe" if PLAYER_PACKAGE.is_file() else "tools/.venv/Scripts/python.exe")
 
 
 def sha(path):
     with path.open("rb") as src:
         return hashlib.file_digest(src, "sha256").hexdigest()
+
+
+def player_manifest():
+    manifest = json.loads(PLAYER_PACKAGE.read_bytes())
+    if (not isinstance(manifest, dict) or manifest.get("schema") != 1 or manifest.get("product") != "FagriShot"
+            or not re.fullmatch(r"[0-9a-f]{40}", str(manifest.get("revision")))
+            or not isinstance(manifest.get("files"), dict) or not manifest["files"]):
+        raise ValueError("The player package manifest is damaged. Extract the complete FagriShot ZIP again.")
+    return manifest
+
+
+def verify_player_installation():
+    for name, digest in player_manifest()["files"].items():
+        parts = name.split("/")
+        if (any(part in {"", ".", ".."} for part in parts) or "\\" in name or ":" in name
+                or not re.fullmatch(r"[0-9a-f]{64}", str(digest))):
+            raise ValueError("Invalid file entry in the player package. Extract a fresh copy of the ZIP.")
+        path = ROOT.joinpath(*parts)
+        if not path.is_file() or sha(path) != digest:
+            raise ValueError(f"The player package file {name} is missing or changed. Extract a fresh copy of the ZIP.")
 
 
 def run(args, env=None, log=None):
@@ -40,6 +62,9 @@ def run(args, env=None, log=None):
 
 
 def source_state():
+    if PLAYER_PACKAGE.is_file():
+        manifest = player_manifest()
+        return {"commit": manifest["revision"], "tracked_diff_sha256": sha(PLAYER_PACKAGE)}
     def git(*args):
         return subprocess.check_output(["git", *args], cwd=ROOT)
     return {"commit": git("rev-parse", "HEAD").decode().strip(),

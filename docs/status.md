@@ -10,7 +10,7 @@ The verification host ran Windows 11 x64 with a GeForce RTX 4090 Laptop GPU. Fag
 | M3 — Gameplay | The opening chapter card, dialogue and world map have local coverage. A tactical battle, an enemy turn and chapter progression still need verification. |
 | M4 — Saves and stability | A campaign save/load round trip and sustained play still need verification. File-level backup tests use synthetic data. |
 | M5 — Player features tested in game | Blocked on playable baseline and representative saves. |
-| M6 — Local game release candidate | Blocked on gameplay, compatibility and recovery evidence. The current archive is a development tools package. |
+| M6 — Game release candidate | Further campaign, compatibility and recovery evidence is needed. The downloadable Windows player builds the game locally from the tested input pairing. |
 
 ## Component and feature matrix
 
@@ -52,6 +52,6 @@ Double-click `work/private/game/FagriShot.exe` for a verified play attempt. Open
 
 ## Resume
 
-Use the saved locations in the launcher. For a private test of an uncatalogued local pairing, see [input enrollment](inputs.md). After shader preparation, double-click the private game executable. The next gameplay milestone requires a tactical action and an enemy turn.
+Open the Windows player launcher, select both folders, click **Build game code**, then **Play**. For developers testing an uncatalogued local pairing, the source checkout supports private input enrollment. The next gameplay milestone requires a tactical action and an enemy turn. [Player guide](../README.md) · [Developer input enrollment](inputs.md)
 
 Verification outputs and compiler products live in ignored directories. `work/cpu/` holds the CPU-oracle and game-graph logs, `work/runtime-release/Testing/Temporary/LastTest.log` has CTest cases, `tools/shaders/build/verification/` has SPIR-V evidence, and `work/launcher/ui-*/` contains the actual launcher screenshot and UI test record. The private build writes its own command log under `work/private/logs/` after inputs validate.

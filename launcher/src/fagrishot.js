@@ -1,4 +1,5 @@
 import {invoke} from '@tauri-apps/api/core';
+import {getVersion} from '@tauri-apps/api/app';
 import {listen} from '@tauri-apps/api/event';
 import './fagrishot.css';
 
@@ -22,25 +23,21 @@ function controls() {
   const exefs = q('exefs').value;
   const romfs = q('romfs').value;
   const bothEntered = Boolean(exefs.trim() && romfs.trim());
-  const saved = exefs === status?.exefs && romfs === status?.romfs;
+  const saved = status?.locations_saved && exefs === status.exefs && romfs === status.romfs;
   const needsRepair = Boolean(status?.settings_warning);
   for (const button of document.querySelectorAll('[data-action],[data-pick]')) {
     button.disabled = blocked;
   }
-  document.querySelector('[data-action="configure"]').disabled = blocked || !bothEntered;
-  document.querySelector('[data-action="inspect"]').disabled = blocked || needsRepair || !bothEntered;
-  q('build-code').disabled = blocked || needsRepair || !status?.source_checkout || !exefs.trim() ||
-    (exefs === status?.exefs && !status?.exefs_present);
-  const canUseGame = saved && bothEntered && status?.exefs_present && status?.romfs_present &&
-    (status?.has_pair || status?.local_trial) && status?.exe_built;
-  q('prepare').disabled = blocked || needsRepair || !canUseGame || !status?.source_checkout;
-  q('play').disabled = blocked || needsRepair || !canUseGame;
+  q('build-code').disabled = blocked || !bothEntered || !status?.build_available;
+  q('play').disabled = blocked || needsRepair || !saved || !bothEntered || status?.play_ready !== true;
   q('restore').disabled = q('snapshot').disabled = blocked || !q('snapshot').value;
   q('exefs').disabled = q('romfs').disabled = blocked;
   q('cancel').hidden = !active?.canCancel;
   q('cancel').disabled = !active?.canCancel || active.cancelPending;
   if (status) {
-    q('input-state').textContent = !saved ? 'Unsaved locations' : !status.exefs_present ? 'Awaiting ExeFS' :
+    q('input-state').textContent = !exefs.trim() && !romfs.trim() ? 'Choose both folders' :
+      !exefs.trim() ? 'Choose ExeFS' : !romfs.trim() ? 'Choose RomFS' :
+      !saved ? 'New folder selection' : status.play_ready ? 'Ready to play' : !status.exefs_present ? 'Awaiting ExeFS' :
       !status.romfs_present ? 'Awaiting RomFS' : 'Folders found';
   }
 }
@@ -48,21 +45,23 @@ function controls() {
 async function refresh(reloadLocations = false) {
   const next = await invoke('overview');
   for (const key of ['exefs','romfs']) {
-    if (!loadedLocations || reloadLocations || q(key).value === status?.[key]) q(key).value = next[key];
+    const previous = status?.locations_saved ? status[key] : '';
+    if (!loadedLocations || reloadLocations || q(key).value === previous) q(key).value = next.locations_saved ? next[key] : '';
   }
   loadedLocations = true;
   status = next;
   for (const key of ['settings','saves','logs']) q('loc-'+key).textContent = status[key];
   q('settings-warning').textContent = status.settings_warning || '';
   q('settings-warning').hidden = !status.settings_warning;
-  q('local-trial').hidden = !status.local_trial || status.has_pair;
   const snapshots = q('snapshot');
   const previous = snapshots.value;
   snapshots.replaceChildren();
   for (const id of [...status.backup_ids].reverse()) snapshots.add(new Option(id,id));
   if (status.backup_ids.includes(previous)) snapshots.value = previous;
   if (!snapshots.options.length) snapshots.add(new Option('No backups yet',''));
-  if (!status.source_checkout) q('build-help').textContent = 'The local tools package supports diagnostics and save recovery. Open the launcher inside your FagriShot source checkout to build game code.';
+  q('build-help').textContent = status.build_available
+    ? 'Build game code verifies both folders, compiles your game and prepares its shaders. The first build can take a while.'
+    : 'To build the game, extract the complete FagriShot Windows player ZIP into a fresh folder and open its launcher.';
   q('retry').hidden = true;
   controls();
 }
@@ -79,6 +78,10 @@ function log(line) {
   out.append(document.createTextNode(line+'\n'));
   while (out.childNodes.length > 400) out.firstChild.remove();
   out.scrollTop = out.scrollHeight;
+  if (active?.action === 'build-and-prepare') {
+    const phase = /^\[setup (\d+)\/(\d+)\]\s+(.+)$/.exec(line);
+    if (phase) q('build-phase').textContent = `Step ${phase[1]} of ${phase[2]} · ${phase[3]}`;
+  }
 }
 
 async function run(action) {
@@ -87,18 +90,25 @@ async function run(action) {
   const backupId = q('snapshot').value;
   if (action === 'restore' && !window.confirm(`Restore snapshot ${backupId}? FagriShot will back up your current saves first.`)) return;
   active = {action, canCancel:false, cancelPending:false};
+  const building = action === 'build-and-prepare';
+  q('build-progress').hidden = !building;
+  if (building) q('build-phase').textContent = 'Starting build…';
   controls();
   q('feedback').textContent = 'Running\u2026';
   q('output').replaceChildren();
   try {
     await invoke('action',{action, exefs:q('exefs').value, romfs:q('romfs').value, backupId});
-    if (['configure','build-code','prepare','play'].includes(action)) q('direct-play-error').hidden = true;
-    q('feedback').textContent = 'Finished.';
-    if (['configure','build-code','restore','backup','backups','prepare'].includes(action)) {
-      await refresh(action === 'configure').catch(statusFailed);
+    if (building || action === 'play') q('direct-play-error').hidden = true;
+    if (building || ['restore','backup','backups'].includes(action)) {
+      try { await refresh(building); } catch (error) { statusFailed(error); return; }
     }
-  } catch (error) { q('feedback').textContent = String(error); }
-  finally { active = undefined; controls(); }
+    q('feedback').textContent = building && status?.play_ready ? 'Build complete. Your game is ready to play.' : 'Finished.';
+  } catch (error) {
+    q('feedback').textContent = String(error);
+    if (building || action === 'play') {
+      try { await refresh(); } catch (refreshError) { statusFailed(refreshError); log(String(error)); }
+    }
+  } finally { active = undefined; q('build-progress').hidden = true; controls(); }
 }
 
 for (const button of document.querySelectorAll('[data-page]')) button.onclick = () => navigate(button.dataset.page);
@@ -147,6 +157,9 @@ async function loadStatus() {
 q('retry').onclick = loadStatus;
 navigate('setup');
 controls();
+getVersion().then(version => {
+  for (const label of document.querySelectorAll('[data-version]')) label.textContent = version;
+}).catch(error => log(String(error)));
 invoke('startup_play_error').then(error => {
   if (error) {
     q('play-diagnostic').textContent = error;

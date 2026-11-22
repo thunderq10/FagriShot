@@ -21,15 +21,27 @@ struct Task(Mutex<Option<ActiveTask>>);
 
 fn source() -> Result<PathBuf, String> {
     let exe = std::env::current_exe().map_err(|e| e.to_string())?;
-    exe.ancestors().skip(1).find(|p| p.join("fagrishot/__main__.py").is_file()
-        && p.join("compatibility/supported.json").is_file())
-        .map(|p| p.to_owned()).ok_or_else(|| "Keep the launcher with the FagriShot tools or inside its source checkout.".into())
+    exe.ancestors().skip(1).find(|p| p.join("player-package.json").is_file() ||
+        (p.join("fagrishot/__main__.py").is_file() && p.join("compatibility/supported.json").is_file()))
+        .map(|p| p.to_owned()).ok_or_else(|| "Extract the entire player ZIP into one folder, then open FagriShotLauncher.exe there.".into())
 }
 
 fn command(args: &[String]) -> Result<Command, String> {
     let root = source()?;
     let local = root.join("tools/.venv/Scripts/python.exe");
-    let mut cmd = Command::new(if local.is_file() { local } else { PathBuf::from("python") });
+    let bundled = root.join("tools/python/python.exe");
+    let python = if root.join("player-package.json").is_file() || bundled.is_file() {
+        if !bundled.is_file() || !root.join("player-package.json").is_file() ||
+            !root.join("scripts/fagrishot.py").is_file() {
+            return Err("The player installation is incomplete. Extract the entire FagriShot ZIP into a fresh folder and open its launcher.".into());
+        }
+        bundled
+    } else if local.is_file() {
+        local
+    } else {
+        PathBuf::from("python")
+    };
+    let mut cmd = Command::new(python);
     // -I excludes user-controlled Python imports. Run only the adjacent project through its explicit entry point.
     cmd.current_dir(&root).args(["-I", "-X", "utf8", "-u"]).arg(root.join("scripts/fagrishot.py")).args(args);
     #[cfg(windows)]
@@ -50,7 +62,7 @@ async fn pick(app: tauri::AppHandle, kind: String) -> Option<String> {
 #[tauri::command]
 async fn overview() -> Result<serde_json::Value, String> {
     tauri::async_runtime::spawn_blocking(|| {
-        let output = command(&["status".into(), "--json".into()])?.output().map_err(|e| format!("Python 3.11+ is required: {e}"))?;
+        let output = command(&["status".into(), "--json".into()])?.output().map_err(|e| format!("Could not start FagriShot's local tools: {e}"))?;
         if !output.status.success() { return Err(String::from_utf8_lossy(&output.stderr).into_owned()); }
         serde_json::from_slice(&output.stdout).map_err(|e| format!("Could not read setup status: {e}"))
     }).await.map_err(|e| e.to_string())?
@@ -58,7 +70,7 @@ async fn overview() -> Result<serde_json::Value, String> {
 
 #[tauri::command]
 async fn action(app: tauri::AppHandle, action: String, exefs: String, romfs: String, backup_id: String) -> Result<(), String> {
-    if !["configure","inspect","build-code","prepare","play","doctor","backup","backups","restore"].contains(&action.as_str()) {
+    if !["build-and-prepare","play","doctor","backup","backups","restore"].contains(&action.as_str()) {
         return Err("Unknown launcher action.".into());
     }
     let mut args = vec![action.clone()];
@@ -67,9 +79,8 @@ async fn action(app: tauri::AppHandle, action: String, exefs: String, romfs: Str
         if !exefs.is_empty() { args.extend(["--exefs".into(), exefs]); }
         if !romfs.is_empty() { args.extend(["--romfs".into(), romfs]); }
     }
-    if matches!(action.as_str(),"build-code"|"play") {
+    if matches!(action.as_str(),"build-and-prepare"|"play") {
         if let Some(reason) = cpu::check() { return Err(reason); }
-        if let Some(note) = cpu::note() { let _ = app.emit("build-line", note); }
     }
     tauri::async_runtime::spawn_blocking(move || {
         let mut cmd = command(&args)?;
@@ -77,8 +88,8 @@ async fn action(app: tauri::AppHandle, action: String, exefs: String, romfs: Str
         let mut child = {
             let mut job = state.0.lock().unwrap();
             if job.is_some() { return Err("Another action is running.".into()); }
-            let child = cmd.stdout(Stdio::piped()).stderr(Stdio::piped()).spawn().map_err(|e| format!("Could not run Python: {e}"))?;
-            let cancellable = matches!(action.as_str(), "inspect" | "build-code" | "prepare");
+            let child = cmd.stdout(Stdio::piped()).stderr(Stdio::piped()).spawn().map_err(|e| format!("Could not start FagriShot's local tools: {e}"))?;
+            let cancellable = action == "build-and-prepare";
             *job = Some(ActiveTask { pid: child.id(), cancellable, cancelled: false });
             if cancellable { let _ = app.emit("action-cancellable", &action); }
             child

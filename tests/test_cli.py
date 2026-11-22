@@ -31,6 +31,7 @@ class CliTests(unittest.TestCase):
         self.dirs["saves"].mkdir()
         slot = self.dirs["saves"] / "slot"
         slot.write_bytes(b"before repair")
+        self.assertFalse(json.loads(self.invoke("status", "--json"))["locations_saved"])
         for damaged in (b"{", b'{"romfs":123}', b"\xff"):
             with self.subTest(damaged=damaged):
                 self.config.write_bytes(damaged)
@@ -43,6 +44,7 @@ class CliTests(unittest.TestCase):
                 self.invoke("configure", "--exefs", self.exefs, "--romfs", self.romfs)
                 status = json.loads(self.invoke("status", "--json"))
                 self.assertIsNone(status["settings_warning"])
+                self.assertTrue(status["locations_saved"])
                 self.assertEqual((status["exefs"], status["romfs"]), (str(self.exefs), str(self.romfs)))
                 self.assertEqual(slot.read_bytes(), b"before repair")
 
@@ -70,9 +72,8 @@ class CliTests(unittest.TestCase):
         private = self.root / "build #1"
         cache = self.dirs["caches"] / "compiled"
         with (patch.object(cli, "PRIVATE", private),
-              patch("fagrishot.shaders.require_ready", return_value=cache),
               patch("fagrishot.saves.snapshot"), patch.object(cli.subprocess, "run") as game):
-            cli.launch({"romfs": self.romfs}, {}, self.dirs)
+            cli.launch({"romfs": self.romfs}, cache, self.dirs)
         game.assert_called_once()
         ini = configparser.RawConfigParser()
         ini.read(ini_file, encoding="utf-8")
@@ -95,6 +96,56 @@ class CliTests(unittest.TestCase):
                     self.assertFalse(json.loads(self.invoke("status", "--json"))["exe_built"])
                     with self.assertRaisesRegex(ValueError, "Run build-code"):
                         cli.ensure_exe({})
+
+    def test_one_click_build_saves_locations_and_only_enables_play_after_shaders(self):
+        self.exefs.mkdir(parents=True)
+        (self.exefs / "main").touch()
+        self.romfs.mkdir(parents=True)
+        inventory = {"exefs": {"tree_sha256": "e" * 64}, "romfs": {"tree_sha256": "f" * 64}}
+        linked = {"exe_sha256": "c" * 64, "source": {"commit": "d" * 40}}
+        cache = self.dirs["caches"] / "shaders" / ("a" * 64)
+        cache.mkdir(parents=True)
+        (cache / "ready.json").write_text("{}")
+        private = self.root / "private"
+        args = ["build-and-prepare", "--exefs", self.exefs, "--romfs", self.romfs]
+        with (patch.object(cli, "PRIVATE", private), patch.object(cli, "inspect_exefs"),
+              patch.object(cli, "inspect_inputs", return_value=inventory) as inspect,
+              patch.object(cli, "check_executable", return_value={"version": "fixture"}),
+              patch.object(cli, "check_support") as supported,
+              patch.object(cli, "build_game") as build, patch.object(cli, "ensure_exe", return_value=linked),
+              patch.object(cli, "linked_record", return_value=linked),
+              patch.object(cli, "source_state", return_value=linked["source"]),
+              patch("fagrishot.shaders.prepare_shaders") as shaders):
+            self.assertFalse(json.loads(self.invoke("status", "--json"))["play_ready"])
+            shaders.side_effect = ValueError("shader preparation failed")
+            with self.assertRaisesRegex(ValueError, "shader preparation failed"):
+                self.invoke(*args)
+            self.assertFalse((private / "play-ready.json").exists())
+            shaders.side_effect = None
+            shaders.return_value = cache
+            output = self.invoke(*args)
+            self.assertIn("[setup 3/3]", output)
+            self.assertEqual(inspect.call_count, 2)
+            self.assertEqual(supported.call_count, 2)
+            self.assertEqual(build.call_count, 2)
+            status = json.loads(self.invoke("status", "--json"))
+            self.assertEqual(status["romfs"], str(self.romfs))
+            self.assertTrue(status["play_ready"])
+            self.invoke("configure", "--exefs", self.exefs, "--romfs", self.root / "other")
+            self.assertFalse(json.loads(self.invoke("status", "--json"))["play_ready"])
+            self.invoke("configure", "--exefs", self.exefs, "--romfs", self.romfs)
+            (cache / "ready.json").unlink()
+            self.assertFalse(json.loads(self.invoke("status", "--json"))["play_ready"])
+            (cache / "ready.json").write_text("{}")
+            self.assertTrue(json.loads(self.invoke("status", "--json"))["play_ready"])
+            with patch("fagrishot.shaders.require_ready", side_effect=ValueError("cache changed")), \
+                    self.assertRaisesRegex(ValueError, "cache changed"):
+                self.invoke("play")
+            self.assertFalse(json.loads(self.invoke("status", "--json"))["play_ready"])
+            supported.side_effect = cli.InputError("wrong game folders")
+            with self.assertRaisesRegex(cli.InputError, "wrong game folders"):
+                self.invoke(*args)
+            self.assertEqual(build.call_count, 2)
 
     def test_explicit_enrollment_and_inspection_of_private_trial(self):
         private = self.root / "private"
