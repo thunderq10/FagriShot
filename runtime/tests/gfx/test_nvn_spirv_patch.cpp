@@ -17,6 +17,7 @@
 #include "nvn_spirv_patch.h"
 #include "test_framework.h"
 #include "project_root.h"
+#include "spirv_validator.h"
 NXTEST_GROUP(gfx_nvn_spirv_patch)
 
 using namespace nxrt::nvn::be;
@@ -27,22 +28,7 @@ namespace {
 
 const std::string kSpvDirStr = nxtest::project_path("work/shader_cache/spirv");
 const char* kSpvDir = kSpvDirStr.c_str();
-// spirv-val of the Vulkan SDK: %VULKAN_SDK%\Bin (set by the SDK installer), else the newest C:\VulkanSDK\<version>\Bin.
-std::string find_spirv_val() {
-    std::error_code ec;
-    if (const char* sdk = std::getenv("VULKAN_SDK"); sdk && *sdk) {
-        const fs::path p = fs::path(sdk) / "Bin" / "spirv-val.exe";
-        if (fs::exists(p, ec)) return p.string();
-    }
-    fs::path best;
-    for (const auto& e : fs::directory_iterator("C:\\VulkanSDK", ec)) {
-        const fs::path p = e.path() / "Bin" / "spirv-val.exe";
-        if (fs::exists(p, ec) && (best.empty() || e.path().filename().string() > best.parent_path().parent_path().filename().string())) best = p;
-    }
-    return best.empty() ? std::string("spirv-val.exe (not found)") : best.string();
-}
-const std::string kSpirvValStr = find_spirv_val();
-const char* kSpirvVal = kSpirvValStr.c_str();
+const std::string kSpirvVal = nxtest::find_spirv_val();
 const char* kVertexHash = "a656883b0cdb8ebc";      // position only, no varyings
 const char* kConstFragHash = "062cfa5657f5388d";   // constant colour fragment shader, no Location 1 output
 
@@ -55,7 +41,7 @@ const char* absent_input() {
     std::error_code ec;
     if (!fs::exists(fs::path(kSpvDir) / (std::string(kVertexHash) + ".spv"), ec))
         return "shader cache absent (a656883b0cdb8ebc.spv not under work/shader_cache/spirv)";
-    if (!fs::exists(kSpirvVal, ec)) return "spirv-val not found (VULKAN_SDK\\Bin or C:\\VulkanSDK\\<version>\\Bin)";
+    if (kSpirvVal.empty()) return "spirv-val not found (NXRT_SPIRV_VAL)";
     return nullptr;
 }
 
@@ -84,9 +70,7 @@ int run_spirv_val(const std::vector<uint32_t>& w, const std::string& tag, std::s
     const std::string spv = tag + ".spv", txt = tag + ".log";
     if (!write_words(spv, w)) return -1;
     // a path with spaces is quoted, and the whole line again: cmd /c drops the outer pair of quotes
-    const std::string exe = kSpirvValStr.find(' ') == std::string::npos ? kSpirvValStr : "\"" + kSpirvValStr + "\"";
-    std::string cmd = exe + " --target-env vulkan1.3 " + spv + " > " + txt + " 2>&1";
-    if (exe[0] == '"') cmd = "\"" + cmd + "\"";
+    const std::string cmd = "\"\"" + kSpirvVal + "\" --target-env vulkan1.3 " + spv + " > " + txt + " 2>&1\"";
     const int rc = std::system(cmd.c_str());
     std::ifstream f(txt);
     std::string text((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
@@ -629,8 +613,8 @@ NXTEST(native_float_add_on_real_compute_shader) {
     std::vector<uint32_t> again = {7u};
     CHECK_EQ(gpu::spirv_native_float_add(out, again), 0);   // nothing left to rewrite: out untouched
     CHECK_EQ(again.size(), size_t(1));
-    if (!fs::exists(kSpirvVal, ec)) {
-        nxtest::skip("spirv-val not found (VULKAN_SDK\\Bin or C:\\VulkanSDK\\<version>\\Bin)");
+    if (kSpirvVal.empty()) {
+        nxtest::skip("spirv-val not found (NXRT_SPIRV_VAL)");
         return;
     }
     std::string log;
@@ -677,8 +661,7 @@ PushCensus push_census(const std::vector<uint32_t>& w) {
 }
 
 void check_valid(const std::vector<uint32_t>& w, const char* tag) {
-    std::error_code ec;
-    if (!fs::exists(kSpirvVal, ec)) return;   // the structural checks still ran
+    if (kSpirvVal.empty()) return;   // the structural checks still ran
     std::string log;
     const int rc = run_spirv_val(w, tag, log);
     CHECK_MSG(rc == 0, std::string(tag) + ": spirv-val exit " + std::to_string(rc) + ": " + log);

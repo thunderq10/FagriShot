@@ -13,6 +13,7 @@
 
 #include "test_framework.h"
 #include "project_root.h"
+#include "spirv_validator.h"
 
 #include "extras/hdr_tonemap_patch.h"
 #include "post_patch_spirv.inc"
@@ -26,7 +27,7 @@ namespace hdr = nxrt::extras;
 
 const fs::path kSpvDir = nxtest::project_path("work/shader_cache/spirv");
 const fs::path kTonemapPath = kSpvDir / "e728113b14f3564a.spv";
-const char* kSpirvVal = "C:\\VulkanSDK\\1.4.363.0\\Bin\\spirv-val.exe";
+const std::string kSpirvVal = nxtest::find_spirv_val();
 
 constexpr uint32_t kOpExtInst = 12, kOpFMul = 133, kOpStore = 62, kOpImageSampleImplicitLod = 87;
 constexpr uint32_t kGlslFMax = 40;
@@ -160,7 +161,7 @@ NXTEST(spirv_val_accepts_patched_output) {
         return;
     }
     std::error_code ec;
-    if (!fs::is_regular_file(kSpirvVal, ec)) {
+    if (kSpirvVal.empty()) {
         nxtest::skip("spirv-val not present");
         return;
     }
@@ -295,7 +296,7 @@ NXTEST(gt_keep_wide_refuses_an_unexpected_clamp_count) {
 
 NXTEST(gt_keep_wide_output_validates) {
     std::error_code ec;
-    if (!fs::is_regular_file(kSpirvVal, ec)) {
+    if (kSpirvVal.empty()) {
         nxtest::skip("spirv-val not present");
         return;
     }

@@ -42,6 +42,14 @@ No game benchmark or frame-rate claim is available. Record the revision, input h
 | Current failed game build | `pwsh -NoProfile -File scripts/build_game.ps1 -Stage Lift -Jobs 2` configured the actual production graph. Ninja reported the missing `work/private/prepared-exefs/main` needed for `generated/main/c_000.cpp`. See `work/verification/game-lift.log`. |
 | Deliverable | `python scripts/package_tools.py` rebuilds the local host tools, archives the clean source revision's allowlist, verifies hashes and smoke-tests a fresh extraction. The adjacent verification JSON names the revision and actual package digest. |
 
+## Pre-test verification
+
+The Windows launcher was exercised with a disposable profile. It recovered damaged folder settings, retained unsaved edits while managing backups, and restored the selected snapshot's exact bytes. A separate cancellation check stopped both the test operation and its child process, then completed another operation in the same window.
+
+All 40 project regression tests and all 146 native runtime test groups passed. The controller group exercised all nine cases using an SDL virtual controller and the Fortune’s Weave adapter. Individual native cases that require an unavailable shader corpus, another game profile, or a different GPU can skip. The shader toolchain separately validated 46 synthetic modules for Vulkan 1.3.
+
+For a first test with this checkout, open `work/tools/FagriShotLauncher.exe`, select **Local files**, and click **Run diagnostics**. Use **Game setup** to select and check an extracted ExeFS and matching RomFS. The game milestones above still require original inputs.
+
 ## Resume
 
 Open the local launcher or run the commands in the README. To reproduce the current blocker, run `python -I scripts/fagrishot.py build-code --exefs .\exefs`. It returns exit code 2 at input validation. The smallest remaining M1 dependency is the extracted ExeFS. Once available, build from that folder. To establish M2, inspect a matching merged RomFS, preserve independent evidence of the update pairing, and use an isolated save directory for the first title/menu test.
