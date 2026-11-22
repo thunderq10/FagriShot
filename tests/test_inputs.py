@@ -1,12 +1,17 @@
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import struct
 import tempfile
+import threading
 import unittest
+from unittest.mock import patch
 
-from fagrishot.inputs import InputError, check_executable, check_input_roots, check_support, inspect_exefs, inspect_inputs
+from fagrishot import inputs
+from fagrishot.inputs import (InputError, check_executable, check_input_roots, check_local_trial, check_support,
+                              inspect_exefs, inspect_inputs, local_trial_receipt, local_trial_scope_matches)
 
 
 PROGRAM = 0xABCD
@@ -154,6 +159,50 @@ class GameInputs(unittest.TestCase):
         original.write_bytes(original.read_bytes()[:-1] + b"x")
         self.assertNotEqual(self.inventory["romfs"]["tree_sha256"], inspect_inputs(target, self.rom)["romfs"]["tree_sha256"])
 
+    def test_parallel_romfs_keeps_original_digest_with_out_of_order_reads(self):
+        first = self.rom / "a"
+        first.write_bytes(b"")
+        (self.rom / "b").write_bytes(b"second")
+        nested = self.rom / "b!"
+        nested.mkdir()
+        (nested / "é").write_bytes(b"X" * (1024 * 1024 + 1))
+        (nested / "empty").mkdir()
+        serial = inputs._tree(self.rom, "RomFS")
+        second_finished = threading.Event()
+        read = inputs._romfs_file
+
+        def reordered(path, listed):
+            if Path(path) == first:
+                self.assertTrue(second_finished.wait(5))
+            result = read(path, listed)
+            if Path(path).name == "b":
+                second_finished.set()
+            return result
+
+        with patch.object(inputs, "_romfs_file", reordered):
+            self.assertEqual(inspect_inputs(self.exe, self.rom)["romfs"], serial)
+
+    def test_parallel_romfs_rejects_file_or_directory_changes_during_scan(self):
+        read = inputs._romfs_file
+
+        def replace_before_read(path, listed):
+            Path(path).write_bytes(b"updated while queued")
+            return read(path, listed)
+
+        with patch.object(inputs, "_romfs_file", replace_before_read), self.assertRaisesRegex(InputError, "changed"):
+            inspect_inputs(self.exe, self.rom)
+
+        def add_after_read(path, listed):
+            result = read(path, listed)
+            old = self.rom.stat()
+            (self.rom / "new entry").touch()
+            # Make the directory change visible even on filesystems with coarse timestamps.
+            os.utime(self.rom, ns=(old.st_atime_ns, old.st_mtime_ns + 2_000_000_000))
+            return result
+
+        with patch.object(inputs, "_romfs_file", add_after_read), self.assertRaisesRegex(InputError, "changed"):
+            inspect_inputs(self.exe, self.rom)
+
     def test_invalid_bounds_and_compression_inspection(self):
         payload = nso(b"opaque compressed bytes for inventory only", flags=0x81)
         (self.exe / "main").write_bytes(payload)
@@ -203,3 +252,84 @@ class GameInputs(unittest.TestCase):
             self.skipTest("Creating symbolic links requires filesystem privileges.")
         with self.assertRaisesRegex(InputError, "link or reparse"):
             inspect_inputs(self.exe, self.rom)
+
+    def trial_scope(self):
+        checkout = self.root / "source"
+        marker = checkout / "recomp/games/fefw/config.py"
+        marker.parent.mkdir(parents=True)
+        marker.touch()
+        return {"checkout": checkout, "paths": {"exefs": self.exe, "romfs": self.rom},
+                "source": {"commit": "d" * 40, "tracked_diff_sha256": "e" * 64}}
+
+    @patch.dict("fagrishot.inputs._TRIAL_FILE_COUNTS", {("000000000000ABCD", 3): 1})
+    def test_trial_requires_enrollment_and_remains_outside_public_catalog(self):
+        path = self.catalog_with([])
+        scope = self.trial_scope()
+        with self.assertRaisesRegex(InputError, "no matching local trial"):
+            check_local_trial(self.inventory, path, None, **scope)
+        receipt = local_trial_receipt(self.inventory, path, **scope)
+        saved = json.loads(json.dumps(receipt))
+        self.assertEqual(check_local_trial(self.inventory, path, saved, **scope), receipt)
+        self.assertTrue(local_trial_scope_matches(saved, **scope))
+        self.assertNotIn(self.root.name, json.dumps(receipt))
+        self.assertNotIn("private-title-name", json.dumps(receipt))
+        with self.assertRaisesRegex(InputError, "no verified"):
+            check_support(self.inventory, path)
+        self.assertEqual(json.loads(path.read_text())["supported"], [])
+        for bad in (None, {}, {**receipt, "romfs": {}}, {**receipt, "kind": "public"}):
+            self.assertFalse(local_trial_scope_matches(bad, **scope))
+
+    @patch.dict("fagrishot.inputs._TRIAL_FILE_COUNTS", {("000000000000ABCD", 3): 1})
+    def test_trial_binds_locations_checkout_and_tracked_source(self):
+        path = self.catalog_with([])
+        scope = self.trial_scope()
+        receipt = local_trial_receipt(self.inventory, path, **scope)
+        other = self.root / "second checkout"
+        shutil.copytree(scope["checkout"], other)
+        variants = [
+            {**scope, "checkout": other},
+            {**scope, "paths": {**scope["paths"], "romfs": self.root / "other romfs"}},
+            {**scope, "source": {**scope["source"], "tracked_diff_sha256": "1" * 64}},
+            {**scope, "source": {**scope["source"], "commit": "2" * 40}},
+        ]
+        for changed in variants:
+            self.assertFalse(local_trial_scope_matches(receipt, **changed))
+            with self.assertRaisesRegex(InputError, "no matching local trial"):
+                check_local_trial(self.inventory, path, receipt, **changed)
+        with self.assertRaisesRegex(InputError, "source checkout"):
+            local_trial_receipt(self.inventory, path, **{**scope, "checkout": self.root})
+
+    @patch.dict("fagrishot.inputs._TRIAL_FILE_COUNTS", {("000000000000ABCD", 3): 1})
+    def test_local_trial_rechecks_file_bytes_executable_and_metadata(self):
+        path, scope = self.catalog_with([]), self.trial_scope()
+        original = local_trial_receipt(self.inventory, path, **scope)
+        args = {"base_cnmt": self.base, "update_cnmt": self.update}
+        with self.assertRaisesRegex(InputError, "no matching local trial"):
+            check_local_trial(inspect_inputs(self.exe, self.rom), path, original, **scope)
+        self.base.write_bytes(cnmt(application=1))
+        with self.assertRaisesRegex(InputError, "different application"):
+            check_local_trial(inspect_inputs(self.exe, self.rom, base_cnmt=self.base), path, original, **scope)
+        self.base.write_bytes(cnmt())
+        asset = self.rom / "private-title-name"
+        payload = asset.read_bytes()
+        asset.write_bytes(payload[:-1] + b"X")
+        with self.assertRaisesRegex(InputError, "no matching local trial"):
+            check_local_trial(inspect_inputs(self.exe, self.rom, **args), path, original, **scope)
+        asset.write_bytes(payload)
+        (self.exe / "extra metadata").write_bytes(b"changed effective executable tree")
+        with self.assertRaisesRegex(InputError, "no matching local trial"):
+            check_local_trial(inspect_inputs(self.exe, self.rom, **args), path, original, **scope)
+        (self.exe / "sdk").write_bytes(nso(b"same build ID, different payload"))
+        with self.assertRaisesRegex(InputError, "differs at sdk"):
+            local_trial_receipt(inspect_inputs(self.exe, self.rom, **args), path, **scope)
+
+    def test_local_trial_needs_known_complete_count_and_full_inventory(self):
+        path, scope = self.catalog_with([]), self.trial_scope()
+        with self.assertRaisesRegex(InputError, "no upstream file-count reference"):
+            local_trial_receipt(self.inventory, path, **scope)
+        with patch.dict("fagrishot.inputs._TRIAL_FILE_COUNTS", {("000000000000ABCD", 3): 252686}):
+            with self.assertRaisesRegex(InputError, "252,686 files"):
+                local_trial_receipt(self.inventory, path, **scope)
+            partial = {**self.inventory, "romfs": {"files": 252686, "bytes": 123}}
+            with self.assertRaisesRegex(InputError, "complete inspection"):
+                local_trial_receipt(partial, path, **scope)

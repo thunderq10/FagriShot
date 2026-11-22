@@ -10,7 +10,17 @@ The pinned upstream profile identifies program `04007EF01F8AE000`, update `13107
 
 **Directory identity.** Each root gets a SHA-256 over this deterministic sequence. Start with UTF-8 `FagriShot extracted tree v1` and a zero byte. Visit children depth first in UTF-8 basename order. For each child, write ASCII `D` or `F`, its relative path's length as an unsigned 64-bit big-endian integer, then the exact UTF-8 path with slash separators. For files, append its byte count in the same integer format and the 32 raw SHA-256 bytes. Empty directories contribute entries. The analysis reads all RomFS file bytes, so the first inventory of a large extraction can take time. Reports contain aggregate RomFS counts and digests without asset names, absolute source paths or file contents.
 
-**Compatibility decisions.** `check_executable` returns an exact candidate for further local translation work. `check_support` additionally requires a matching record in `compatibility/supported.json` that binds the candidate ID, ExeFS and RomFS tree digests, and optional base/update metadata hashes. The upstream catalog has no RomFS digest. The shipped supported list is empty pending a locally evidenced pairing. Do not promote a directory because its name resembles the release, or because it contains a plausible resource. A maintainer should retain private evidence of the base and update origin, observed digests, translator/runtime revisions, applied patches, and build and verification results when recording a pairing.
+**Public compatibility.** `check_executable` returns an exact candidate for further local translation work. `check_support` additionally requires a matching record in `compatibility/supported.json` that binds the candidate ID, ExeFS and RomFS tree digests, and optional base/update metadata hashes. The upstream catalog has no RomFS digest. The shipped supported list is empty. A public entry requires independent evidence for the content pairing.
+
+**Testing your own pairing.** In a source checkout, run the following command to enroll the configured folders for a private play test.
+
+```powershell
+python scripts/fagrishot.py enroll-local
+```
+
+Enrollment checks all executable modules, the program descriptor and any supplied CNMTs. It reads the complete ExeFS and RomFS and checks that the RomFS has the 252,686 files upstream recorded for the merged base and update 131072. A matching count can corroborate the extraction layout. Different content can have the same count. [Upstream file count](https://github.com/metrist38/fefw-recomp/blob/ba87770fece1066f736e11e81e36b714ec56df0d/game-build/fefw/src/fefw_main.cpp#L369-L371)
+
+The private receipt lives in `work/private/local-trial.json`. It records the two complete tree digests, counts and byte totals, program and build identities, optional CNMT hashes, a fingerprint of the selected paths and checkout location, and the checkout's commit and tracked code changes. `status --json` reports `local_trial` for a receipt recorded for the current locations and source. Prepare and play inspect the selected files again and require an exact match to use that receipt. Moving either folder, changing its contents or changing the source revision requires fresh enrollment. Removing the receipt ends enrollment. A local trial records the user's decision to test these inputs and makes no claim about gameplay milestones or public release support.
 
 Run the independent synthetic regression suite from the repository root.
 

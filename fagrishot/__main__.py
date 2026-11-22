@@ -10,7 +10,8 @@ import sys
 
 from . import UPSTREAM, VERSION
 from .build import CATALOG, EXE, PRIVATE, ROOT, VENV, build_game, sha, source_state
-from .inputs import check_executable, check_input_roots, check_support, inspect_exefs, inspect_inputs
+from .inputs import (InputError, check_executable, check_input_roots, check_local_trial, check_support,
+                     inspect_exefs, inspect_inputs, local_trial_receipt, local_trial_scope_matches)
 from .storage import build_lock, check_separation, locations, write_json
 
 
@@ -46,11 +47,11 @@ def parser():
     commands.add_parser("backups")
     commands.add_parser("backup")
     commands.add_parser("restore").add_argument("backup_id")
-    for cmd in ("configure", "inspect", "build-code", "prepare", "play"):
+    for cmd in ("configure", "inspect", "build-code", "enroll-local", "prepare", "play"):
         sub = commands.add_parser(cmd)
         sub.add_argument("--exefs", type=Path)
         sub.add_argument("--romfs", type=Path)
-        if cmd in ("inspect", "prepare", "play"):
+        if cmd in ("inspect", "enroll-local", "prepare", "play"):
             sub.add_argument("--base-cnmt", type=Path)
             sub.add_argument("--update-cnmt", type=Path)
         if cmd in ("build-code", "prepare"):
@@ -102,6 +103,13 @@ def ensure_exe(inv):
     return record
 
 
+def read_trial():
+    try:
+        return json.loads((PRIVATE / "local-trial.json").read_text(encoding="utf-8"))
+    except (FileNotFoundError, ValueError):
+        return None
+
+
 def launch(paths, inv, dirs):
     from .shaders import require_ready
     cache = require_ready(inv, dirs)
@@ -131,6 +139,7 @@ def launch(paths, inv, dirs):
     from .saves import snapshot
     snapshot(dirs)
     env = {k: v for k, v in os.environ.items() if not k.upper().startswith(("NXRT_", "FEFW_"))}
+    print("Starting FagriShot.", flush=True)
     subprocess.run([EXE, "--ini", ini_file], cwd=dirs["settings"], env=env, check=True)
 
 
@@ -153,12 +162,15 @@ def execute(opts):
     source_checkout = (ROOT / "recomp/games/fefw/config.py").is_file()
     if cmd == "status":
         from .saves import list_backups
+        trial = read_trial() if source_checkout else None
         result = {"version": VERSION, **{k: str(p) for k,p in paths.items()},
                   "exefs_present": (paths["exefs"] / "main").is_file(), "romfs_present": paths["romfs"].is_dir(),
                   "settings": str(dirs["settings"]), "saves": str(dirs["saves"]),
                   "logs": str(dirs["logs"]), "exe_built": linked_record() is not None,
                   "source_checkout": source_checkout, "settings_warning": warning, "backup_ids": list_backups(dirs),
-                  "has_pair": bool(json.loads(CATALOG.read_text("utf-8"))["supported"])}
+                  "has_pair": bool(json.loads(CATALOG.read_text("utf-8"))["supported"]),
+                  "local_trial": bool(trial and local_trial_scope_matches(
+                      trial, checkout=ROOT, paths=paths, source=source_state()))}
         print(json.dumps(result, ensure_ascii=False, indent=None if opts.json else 2))
         return
     if cmd == "doctor":
@@ -184,14 +196,31 @@ def execute(opts):
         with build_lock(PRIVATE / "build.lock"):
             build_game(paths["exefs"], inv, opts.jobs)
         return
+    if cmd == "enroll-local" and not source_checkout:
+        raise ValueError("Enroll a local game test from the source checkout containing the private game build.")
     print("Reading the selected ExeFS and RomFS. Fingerprints cover every file.", flush=True)
     inv = inspect_inputs(**paths, base_cnmt=opts.base_cnmt, update_cnmt=opts.update_cnmt)
     write_json(dirs["logs"] / "input-inventory.json", inv)
     candidate = check_executable(inv, CATALOG)
     print(f"Executable modules match {candidate['version']}. Inventory saved to {dirs['logs'] / 'input-inventory.json'}.", flush=True)
-    check_support(inv, CATALOG)
+    if cmd == "enroll-local":
+        with build_lock(PRIVATE / "build.lock"):
+            linked = ensure_exe(inv)
+            receipt = local_trial_receipt(inv, CATALOG, checkout=ROOT, paths=paths, source=linked["source"])
+            write_json(PRIVATE / "local-trial.json", receipt)
+        print("Enrolled these exact folders for a local game test in this checkout.")
+        return
+    try:
+        check_support(inv, CATALOG)
+    except InputError:
+        trial = read_trial() if source_checkout else None
+        if trial is None:
+            raise
+        check_local_trial(inv, CATALOG, trial, checkout=ROOT, paths=paths, source=source_state())
+        print("The complete input fingerprints match the private local test pairing.", flush=True)
+    else:
+        print("Executable and content fingerprints match the compatibility record.", flush=True)
     if cmd == "inspect":
-        print("Executable and content fingerprints match the compatibility record.")
         return
     for directory in dirs.values():
         directory.mkdir(parents=True, exist_ok=True)

@@ -2,7 +2,7 @@
 
 FagriShot is thunderq10’s independently maintained static recompilation project for *Fire Emblem: Fortune’s Weave* on Nintendo Switch 2. Its first Windows x64 development build includes a native launcher, the title-specific AArch64 translator, a compiled compatibility runtime, a Vulkan renderer and an Ampere-to-SPIR-V shader toolchain.
 
-**Current milestone: M0.** The host tools build and execute on Windows 11. Genuine title boot, tactical combat, save/load and campaign coverage are awaiting locally supplied game modules and matching content. The [verification record](docs/status.md) distinguishes fixture results from game results.
+**The Windows build renders the game's opening.** The six original update 131072 modules translated and linked into a private Windows executable. A keyboard input advanced from the Autosave screen into the opening cinematic. Title-screen, gameplay and save testing are tracked in the [verification record](docs/status.md).
 
 ## Run on Windows
 
@@ -17,6 +17,15 @@ python -I scripts/fagrishot.py build-code --exefs .\exefs --jobs 8
 ```
 
 The final command builds the six private native libraries and links `work/private/game/FagriShot.exe` once the executable inputs pass verification. An absent or changed input produces a diagnostic. No generated game executable is in the current tooling package.
+
+After building, a source checkout can enroll the selected extraction for a private test and prepare its shaders. Both commands use the folders saved in Game setup. See [input verification](docs/inputs.md) for how enrollment checks the pairing.
+
+```powershell
+python -I scripts/fagrishot.py enroll-local
+python -I scripts/fagrishot.py prepare
+```
+
+Double-click `work/private/game/FagriShot.exe` to play. A Windows progress dialog stays open while FagriShot checks the saved files, then the game window opens. If startup fails, Game setup displays the reason. Open `work/tools/FagriShotLauncher.exe` to change locations or manage backups.
 
 ## Rebuild the tools
 

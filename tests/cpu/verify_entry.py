@@ -42,7 +42,7 @@ def main():
     def check_start(folder):
         receipt = folder / "launcher-started.txt"
         for _ in range(100):
-            if receipt.is_file() and receipt.read_text() == "received":
+            if receipt.is_file() and receipt.read_text() == "--play-game":
                 return
             time.sleep(0.05)
         raise RuntimeError(f"Expected the launcher to run in {folder}")
@@ -50,13 +50,13 @@ def main():
     name = "FagriShotLauncher.exe"
     shutil.copyfile(fixture, decoy / name)
     shutil.copyfile(fixture, tools / name)
-    run(["direct"], 2, "FagriShotLauncher.exe")  # Unrelated trees and PATH cannot supply the launcher.
+    run([], 2, "FagriShotLauncher.exe")  # Unrelated trees and PATH cannot supply the launcher.
     (root / "compatibility/supported.json").write_text("{}")
     (root / "fagrishot/__main__.py").write_text("")
-    run(["direct"], 0)
+    run([], 0)
     check_start(tools)
     shutil.copyfile(fixture, private / name)
-    run(["direct"], 0)
+    run([], 0)
     check_start(private)
     if (decoy / "launcher-started.txt").exists():
         raise RuntimeError("Used the working directory or PATH to locate the launcher.")

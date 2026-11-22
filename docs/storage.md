@@ -2,6 +2,8 @@
 
 The normal Windows namespace is `%LOCALAPPDATA%\FagriShot\`. The source checkout and application package may be replaced independently of these folders.
 
+With Microsoft Store Python, Windows can redirect this folder into the Python package's local cache. **Local files** and `python -I scripts/fagrishot.py doctor` show the physical paths passed to the native game.
+
 | Folder | Contents |
 | --- | --- |
 | settings | Selected input paths in `launcher.json`, runtime `fefw.ini`, controls and a save-operation lock. |

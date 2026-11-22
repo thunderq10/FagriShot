@@ -5,13 +5,14 @@
 #include <fstream>
 
 int main(int argc, char** argv) {
-    if (argc == 1) {
-        // The harness copies this binary to the launcher location. Record its actual cwd.
-        std::ofstream("launcher-started.txt") << "received";
+    if (std::filesystem::path(argv[0]).filename() == "FagriShotLauncher.exe") {
+        // The harness copies this binary to the launcher location. Verify the exact Play request and cwd.
+        if (argc != 2 || std::string(argv[1]) != "--play-game") return 2;
+        std::ofstream("launcher-started.txt") << argv[1];
         return 0;
     }
-    if (std::string(argv[1]) == "direct") {
-        auto error = fagrishot_entry::start_launcher();
+    if (argc == 1) {
+        auto error = fagrishot_entry::request_play();
         if (error.empty()) return 0;
         std::fwprintf(stderr, L"%ls\n", error.c_str());
         return 2;

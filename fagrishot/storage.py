@@ -12,7 +12,8 @@ def locations():
         local = Path(os.environ.get("LOCALAPPDATA", ""))
         if not local.is_absolute():
             raise ValueError("Windows LOCALAPPDATA must point to an absolute user-data directory.")
-        root = local / "FagriShot"
+        # Store Python virtualizes LocalAppData. Give the native game and shader tools the physical path.
+        root = (local / "FagriShot").resolve()
         config, data, state, cache = root / "settings", root, root, root / "caches"
     else:
         home = Path.home()

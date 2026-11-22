@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 mod cpu;
+mod direct_play;
 
 use std::io::{BufRead, BufReader, Write};
 use std::path::PathBuf;
@@ -117,19 +118,43 @@ async fn cancel(app: tauri::AppHandle) -> Result<bool, String> {
     tauri::async_runtime::spawn_blocking(move || stop(&app.state::<Task>())).await.map_err(|e| e.to_string())?
 }
 
+#[tauri::command]
+fn startup_play_error(error: tauri::State<'_, Option<String>>) -> Option<String> {
+    error.inner().clone()
+}
+
 fn main() {
     let args: Vec<_> = std::env::args().skip(1).collect();
-    if !args.is_empty() {
+    let play_error = if args == ["--play-game"] {
+        match direct_play::run() {
+            Ok(()) => return,
+            Err(error) => Some(error),
+        }
+    } else if !args.is_empty() {
         let result = command(&args).and_then(|mut cmd| cmd.status().map_err(|e| e.to_string()));
         match result {
             Ok(status) => std::process::exit(status.code().unwrap_or(1)),
             Err(e) => { let _ = writeln!(std::io::stderr(), "{e}"); std::process::exit(2); }
         }
-    }
-    tauri::Builder::default().plugin(tauri_plugin_dialog::init()).manage(Task::default())
+    } else {
+        None
+    };
+    let startup = tauri::Builder::default().plugin(tauri_plugin_dialog::init()).manage(Task::default()).manage(play_error.clone())
         .on_window_event(|win, ev| {
             if matches!(ev, tauri::WindowEvent::Destroyed) { let _ = stop(&win.state::<Task>()); }
         })
-        .invoke_handler(tauri::generate_handler![overview, pick, action, cancel])
-        .run(tauri::generate_context!()).expect("FagriShot launcher could not start");
+        .invoke_handler(tauri::generate_handler![overview, pick, action, cancel, startup_play_error])
+        .run(tauri::generate_context!());
+    if let Err(error) = startup {
+        let detail = format!("{}Could not open Game setup. Check that Microsoft Edge WebView2 Runtime is installed.\n{error}",
+            play_error.map(|e| format!("{e}\n\n")).unwrap_or_default());
+        let _ = writeln!(std::io::stderr(), "{detail}");
+        #[cfg(windows)]
+        unsafe {
+            use windows::core::{w, HSTRING};
+            use windows::Win32::UI::WindowsAndMessaging::{MessageBoxW, MB_ICONERROR, MB_OK};
+            let _ = MessageBoxW(None, &HSTRING::from(detail), w!("FagriShot"), MB_OK | MB_ICONERROR);
+        }
+        std::process::exit(2);
+    }
 }

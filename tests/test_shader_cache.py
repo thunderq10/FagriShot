@@ -32,6 +32,61 @@ class ShaderCache(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, state):
                     shaders._check_outputs(self.root, self.requested, "unused", 1)
 
+    def test_only_verified_subsdk0_cuda_can_report_unsupported_without_output(self):
+        self.write_row("unsupported", size=0, error="unsupported instruction")
+        modules = shaders._check_outputs(self.root, self.requested, "unused", 1, {self.hash})
+        self.assertEqual(modules, {})
+        for source in ("another-module", "subsdk0/path", "Subsdk0"):
+            with self.subTest(source=source):
+                names = self.cuda_classification(source)
+                self.assertEqual(names, set())
+                with self.assertRaisesRegex(ValueError, "unsupported"):
+                    shaders._check_outputs(self.root, self.requested, "unused", 1, names)
+        self.write_row("invalid", size=0, error="bad module")
+        with self.assertRaisesRegex(ValueError, "invalid"):
+            shaders._check_outputs(self.root, self.requested, "unused", 1, {self.hash})
+        self.write_row("unsupported", size=0, error="unsupported instruction")
+        (self.root / (self.hash + ".spv")).write_bytes(b"stale")
+        with self.assertRaisesRegex(ValueError, "Inconsistent"):
+            shaders._check_outputs(self.root, self.requested, "unused", 1, {self.hash})
+
+    def cuda_classification(self, source="subsdk0", *, overlap=False, kernel_offset="0x20", magic=0x41445543):
+        descriptor = struct.pack("<17I", magic, 1, 88, 16, *([0] * 13))
+        ctrl = hashlib.sha1(descriptor).hexdigest()[:16]
+        (self.root / "ctrl").mkdir(exist_ok=True)
+        (self.root / "ctrl" / (ctrl + ".bin")).write_bytes(descriptor)
+        header = "code_sha1_16\tsource\tentry_off\tglslc_off\tcontainer\tstage\tctrl_sha1_16\tglslc_sha1_16\tcode_size\n"
+        row = f"{self.hash}\t{source}\t0x10\t0x20\tCUBIN\tcs\t{ctrl}\t-\t0x10\n"
+        if overlap:
+            row += f"{self.hash}\tother.bnsh\t0x10\t0x20\tBNSH\tcs\t{ctrl}\t-\t0x10\n"
+        (self.root / "manifest.tsv").write_text(header + row, encoding="utf-8")
+        (self.root / "cuda_kernels.tsv").write_text("code_sha1_16\tsource\tfatbin_off\telf_off\tsm\n" +
+            f"{self.hash}\t{source}\t0x10\t{kernel_offset}\t88\n", encoding="utf-8")
+        return shaders._console_dlss_kernels(self.root)
+
+    def test_cuda_classification_requires_exact_occurrences_and_descriptor(self):
+        self.assertEqual(self.cuda_classification(), {self.hash})
+        with self.assertRaisesRegex(ValueError, "kernel table disagrees"):
+            self.cuda_classification(kernel_offset="0x30")
+        with self.assertRaisesRegex(ValueError, "descriptor header"):
+            self.cuda_classification(magic=0x98761234)
+        with self.assertRaisesRegex(ValueError, "also appears"):
+            self.cuda_classification(overlap=True)
+
+    def test_program_list_checks_each_referenced_runtime_stage(self):
+        path = self.root / "programs.bin"
+        path.write_bytes(b"MPRPRG01" + struct.pack("<IIQQQ", 1, 0, 1, 2, 3))
+        jobs = {f"{i:016x}": (stage, 1) for i, stage in enumerate(("vs", "ps", "gs"), 1)}
+        self.assertEqual(shaders._check_programs(path, jobs, set()), 1)
+        with self.assertRaisesRegex(ValueError, "incorrect ps"):
+            shaders._check_programs(path, jobs, {f"{2:016x}"})
+        jobs[f"{3:016x}"] = ("cs", 1)
+        with self.assertRaisesRegex(ValueError, "incorrect gs"):
+            shaders._check_programs(path, jobs, set())
+        del jobs[f"{1:016x}"]
+        with self.assertRaisesRegex(ValueError, "missing or incorrect vs"):
+            shaders._check_programs(path, jobs, set())
+
     def test_missing_rows_stale_and_truncated_outputs(self):
         self.results.write_text(self.fields + f"{self.hash}\tcs\tcompute\t1\tok", encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "Incomplete shader table row"):
@@ -121,6 +176,12 @@ OpFunctionEnd
             self.assertEqual(cache, shaders.prepare_shaders({"romfs": romfs}, inv, dirs, 1))
             marker = json.loads((cache / "ready.json").read_text(encoding="utf-8"))
             self.assertEqual(set(marker["modules"]), {hashlib.sha1(code).hexdigest()[:16]})
+            self.assertEqual(marker["identity"]["schema"], 2)
+            report_file = cache / "shader-report.json"
+            report = json.loads(report_file.read_text(encoding="utf-8"))
+            self.assertEqual(report["runtime_shaders"], 1)
+            self.assertEqual(report["host_replaced_subsdk0_cuda"], {})
+            self.assertEqual(marker["tables"]["shader-report.json"], hashlib.sha256(report_file.read_bytes()).hexdigest())
             manifest = (cache / "corpus/manifest.tsv").read_text(encoding="utf-8")
             self.assertIn(asset.name, manifest)
             next((cache / "spirv").glob("*.spv")).write_bytes(b"changed")

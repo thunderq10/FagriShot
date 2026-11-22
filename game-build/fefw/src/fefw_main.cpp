@@ -10,7 +10,7 @@
 //   fefw [--exefs DIR] [--main FILE] [--romfs DIR] [--ini FILE] [--log FILE] [--max-seconds N] [--link rtld|host] [--no-nvn] [--headless|--window]
 // The dump is read where it is, nothing is copied: [fs] exefs (the update's ExeFS folder), [fs] main (main as an uncompressed NSO: the
 // console's main is ZBIC-compressed, which the runtime's NSO loader cannot read), [fs] romfs (the extracted RomFS folder). Their defaults
-// are set by the build (fefw_paths.h). A double-click opens the launcher. Diagnostic boots require --ini and an explicit [fs] save_dir.
+// are set by the build (fefw_paths.h). A double-click requests verified Play. Diagnostic boots require --ini and an explicit [fs] save_dir.
 // The command line and the NXRT_FS_* variables win over the ini. [boot] keys as in pkp_main.cpp (docs/CONFIG.md).
 #include <windows.h>
 
@@ -237,7 +237,7 @@ std::string fs_path(const char* key, const std::string& cli, const char* def) {
 int fefw_run(int argc, char** argv);
 
 int direct_start() {
-    const std::wstring error = fagrishot_entry::start_launcher();
+    const std::wstring error = fagrishot_entry::request_play();
     if (error.empty()) return 0;
     std::fwprintf(stderr, L"FagriShot: %ls\n", error.c_str());
     MessageBoxW(nullptr, error.c_str(), L"FagriShot", MB_OK | MB_ICONERROR);

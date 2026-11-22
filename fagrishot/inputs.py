@@ -1,5 +1,7 @@
 """Read-only inspection of explicitly selected extracted game inputs."""
 
+from collections import deque
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 import os
@@ -89,6 +91,100 @@ def _tree(root, label, inspect_entry=None):
     visit(root)
     if not files:
         raise InputError(f"{label} is empty. Select the extracted content directory.")
+    return {"tree_sha256": digest.hexdigest(), "files": files, "bytes": total}
+
+
+def _regular_romfs_entry(info):
+    mode = info.st_mode
+    if stat.S_ISLNK(mode) or getattr(info, "st_file_attributes", 0) & stat.FILE_ATTRIBUTE_REPARSE_POINT:
+        raise InputError("RomFS contains a link or reparse point. Select an ordinary extracted copy.")
+    if not (stat.S_ISREG(mode) or stat.S_ISDIR(mode)):
+        raise InputError("RomFS entries must be regular files or directories.")
+
+
+def _open_romfs_file(path, flags):
+    if hasattr(os, "O_NOFOLLOW"):
+        return os.open(path, flags | os.O_NOFOLLOW | getattr(os, "O_NONBLOCK", 0))
+    # The Windows CRT follows links. Recheck the actual path immediately before opening
+    # it, since the directory enumeration can run several files ahead of the reader.
+    _regular_romfs_entry(os.lstat(path))
+    return os.open(path, flags)
+
+
+def _romfs_file(path, listed):
+    changed = "RomFS changed during inspection. Finish extracting it and retry."
+    with open(path, "rb", opener=_open_romfs_file) as stream:
+        start = os.fstat(stream.fileno())
+        # On Windows, DirEntry.stat() obtains size and timestamps from the directory listing,
+        # but its file ID can be zero. The handle and the final path check have full IDs.
+        if ((listed.st_size, listed.st_mtime_ns) != (start.st_size, start.st_mtime_ns)
+                or (listed.st_ino and _stable_stat(listed) != _stable_stat(start)) or not stat.S_ISREG(start.st_mode)):
+            raise InputError(changed)
+        size = 0
+        digest = hashlib.sha256()
+        block_size = min(start.st_size + 1, 1024 * 1024)
+        for block in iter(lambda: stream.read(block_size), b""):
+            size += len(block)
+            if size > start.st_size:
+                raise InputError(changed)
+            digest.update(block)
+        end = os.lstat(path)
+        _regular_romfs_entry(end)
+        if size != start.st_size or _stable_stat(start) != _stable_stat(end):
+            raise InputError(changed)
+    return size, digest.digest()
+
+
+def _romfs_tree(root, workers=4):
+    """Read independent files concurrently and append their hashes in canonical tree order."""
+    digest = hashlib.sha256(b"FagriShot extracted tree v1\0")
+    folders = []
+    files = total = 0
+
+    def entries(folder, prefix):
+        before = os.lstat(folder)
+        _regular_romfs_entry(before)
+        if not stat.S_ISDIR(before.st_mode):
+            raise InputError("RomFS directory changed during inspection. Finish extracting it and retry.")
+        folders.append((folder, _stable_stat(before)))
+        with os.scandir(folder) as scan:
+            children = sorted(scan, key=lambda entry: entry.name.encode("utf-8"))
+        for entry in children:
+            listed = entry.stat(follow_symlinks=False)
+            _regular_romfs_entry(listed)
+            name = prefix + entry.name.encode("utf-8")
+            framed = struct.pack(">Q", len(name)) + name
+            if stat.S_ISDIR(listed.st_mode):
+                yield b"D" + framed, None
+                yield from entries(entry.path, name + b"/")
+            else:
+                yield b"F" + framed, executor.submit(_romfs_file, entry.path, listed)
+
+    def append(item):
+        nonlocal files, total
+        framed, future = item
+        digest.update(framed)
+        if future is not None:
+            size, file_hash = future.result()
+            digest.update(struct.pack(">Q", size) + file_hash)
+            files += 1
+            total += size
+
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        pending = deque()
+        for item in entries(root, b""):
+            pending.append(item)
+            if len(pending) >= workers * 4:
+                append(pending.popleft())
+        for item in pending:
+            append(item)
+    for folder, before in folders:
+        after = os.lstat(folder)
+        _regular_romfs_entry(after)
+        if not stat.S_ISDIR(after.st_mode) or before != _stable_stat(after):
+            raise InputError("RomFS directory changed during inspection. Finish extracting it and retry.")
+    if not files:
+        raise InputError("RomFS is empty. Select the extracted content directory.")
     return {"tree_sha256": digest.hexdigest(), "files": files, "bytes": total}
 
 
@@ -205,7 +301,7 @@ def inspect_inputs(exefs, romfs, *, base_cnmt=None, update_cnmt=None):
         if base and update and (base["id"] != update["application_id"] or base["patch_id"] != update["id"]):
             raise InputError("The base and update CNMTs identify different applications. Select a matching pair.")
         inventory = inspect_exefs(exe_root)
-        return {**inventory, "base_cnmt": base, "update_cnmt": update, "romfs": _tree(rom_root, "RomFS")}
+        return {**inventory, "base_cnmt": base, "update_cnmt": update, "romfs": _romfs_tree(rom_root)}
     except (OSError, UnicodeError):
         raise InputError("Could not read all game inputs. Check extraction, permissions and filenames.") from None
 
@@ -271,9 +367,7 @@ def check_executable(inventory, manifest_path):
     return _match_executable(inventory, _catalog(manifest_path))
 
 
-def check_support(inventory, manifest_path):
-    """Require both the executable profile and an independently recorded complete content pairing."""
-    catalog = _catalog(manifest_path)
+def _content_candidate(inventory, catalog):
     candidate = _match_executable(inventory, catalog)
     if not inventory.get("romfs"):
         raise InputError("Select the matching extracted RomFS to check complete game compatibility.")
@@ -282,6 +376,14 @@ def check_support(inventory, manifest_path):
         raise InputError("The base CNMT identifies a different application from this Fortune’s Weave executable profile.")
     if update and (update["application_id"] != candidate["program_id"] or update["version"] != candidate["update_version"]):
         raise InputError("The update CNMT does not identify the same application and update as the selected executable.")
+    return candidate
+
+
+def check_support(inventory, manifest_path):
+    """Require both the executable profile and an independently recorded complete content pairing."""
+    catalog = _catalog(manifest_path)
+    candidate = _content_candidate(inventory, catalog)
+    base, update = inventory.get("base_cnmt"), inventory.get("update_cnmt")
     for record in catalog["supported"]:
         if (record["candidate"] == candidate["id"] and record["exefs_tree_sha256"] == inventory["exefs"]["tree_sha256"]
                 and record["romfs_tree_sha256"] == inventory["romfs"]["tree_sha256"]
@@ -290,3 +392,77 @@ def check_support(inventory, manifest_path):
             return record
     raise InputError(f"ExeFS matches {candidate['version']}. This RomFS and metadata combination has no verified "
                      "FagriShot pairing. Keep the inventory and check the content from the matching base and update.")
+
+
+# Merged, effective RomFS as recorded at the pinned upstream game-build/fefw/src/fefw_main.cpp:369.
+_TRIAL_FILE_COUNTS = {("04007EF01F8AE000", 131072): 252686}
+
+
+def _hex_digest(value, lengths=(64,)):
+    return isinstance(value, str) and len(value) in lengths and all(char in "0123456789abcdef" for char in value)
+
+
+def _trial_scope(checkout, paths, source):
+    checkout = Path(checkout).resolve()
+    if not (checkout / "recomp/games/fefw/config.py").is_file():
+        raise InputError("Local trials require the FagriShot source checkout.")
+    if (not isinstance(source, dict) or not _hex_digest(source.get("commit"), (40, 64))
+            or not _hex_digest(source.get("tracked_diff_sha256"))):
+        raise InputError("The local trial needs the current source revision and tracked-change fingerprint.")
+    # Only the fingerprint of the three absolute locations is persisted.
+    locations = [os.path.normcase(str(Path(folder).resolve())) for folder in (checkout, paths["exefs"], paths["romfs"])]
+    encoded = json.dumps(locations, ensure_ascii=True, separators=(",", ":")).encode("ascii")
+    return {"locations_sha256": hashlib.sha256(encoded).hexdigest(),
+            "commit": source["commit"], "tracked_diff_sha256": source["tracked_diff_sha256"]}
+
+
+def _trial_tree(tree):
+    if (not isinstance(tree, dict) or not _hex_digest(tree.get("tree_sha256"))
+            or type(tree.get("files")) is not int or tree["files"] <= 0
+            or type(tree.get("bytes")) is not int or tree["bytes"] <= 0):
+        raise InputError("A local trial requires the complete inspection of both extracted input trees.")
+    return {key: tree[key] for key in ("tree_sha256", "files", "bytes")}
+
+
+def local_trial_receipt(inventory, manifest_path, *, checkout, paths, source):
+    """Bind an explicit local trial to a complete inventory and the active source checkout."""
+    candidate = _content_candidate(inventory, _catalog(manifest_path))
+    expected = _TRIAL_FILE_COUNTS.get((candidate["program_id"], candidate["update_version"]))
+    if expected is None:
+        raise InputError("This executable profile has no upstream file-count reference for a local trial.")
+    exefs, romfs = _trial_tree(inventory.get("exefs")), _trial_tree(inventory.get("romfs"))
+    if romfs["files"] != expected:
+        raise InputError(f"Local trial for {candidate['version']} requires the merged RomFS with {expected:,} files. "
+                         f"The selected RomFS has {romfs['files']:,}.")
+    base, update = inventory.get("base_cnmt"), inventory.get("update_cnmt")
+    return {"schema": 1, "kind": "local-play-trial", "scope": _trial_scope(checkout, paths, source),
+            "candidate": candidate["id"], "program_id": candidate["program_id"], "update_version": candidate["update_version"],
+            "build_id": inventory["modules"]["main"]["build_id"], "exefs": exefs, "romfs": romfs,
+            "base_cnmt_sha256": base and base["sha256"], "update_cnmt_sha256": update and update["sha256"]}
+
+
+def local_trial_scope_matches(receipt, *, checkout, paths, source):
+    """Report whether a receipt is recorded for this selection without re-inspecting either tree."""
+    try:
+        if not isinstance(receipt, dict) or receipt.get("schema") != 1 or receipt.get("kind") != "local-play-trial":
+            return False
+        _trial_tree(receipt["exefs"])
+        romfs = _trial_tree(receipt["romfs"])
+        if romfs["files"] != _TRIAL_FILE_COUNTS.get((receipt["program_id"], receipt["update_version"])):
+            return False
+        if (not _hex_digest(receipt["build_id"]) or not isinstance(receipt["candidate"], str)
+                or not receipt["candidate"] or not all(receipt[key] is None or _hex_digest(receipt[key])
+                    for key in ("base_cnmt_sha256", "update_cnmt_sha256"))):
+            return False
+        return receipt["scope"] == _trial_scope(checkout, paths, source)
+    except (InputError, TypeError, KeyError, OSError):
+        return False
+
+
+def check_local_trial(inventory, manifest_path, receipt, *, checkout, paths, source):
+    """Authorize only the exact enrollment after a fresh full inspection and executable check."""
+    expected = local_trial_receipt(inventory, manifest_path, checkout=checkout, paths=paths, source=source)
+    if receipt != expected:
+        raise InputError("This selection and source revision have no matching local trial receipt. "
+                         "Use enroll-local to enroll the exact inputs for testing.")
+    return expected

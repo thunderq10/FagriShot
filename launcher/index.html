@@ -7,12 +7,14 @@
 <small>Windows x64 &middot; 0.1.0</small></aside>
 <main><header><h1 id="title">Game setup</h1></header>
 <section id="setup"><div class="card"><div class="row between"><h2>Fire Emblem: Fortune&rsquo;s Weave</h2><span class="tag" id="input-state"></span></div>
+<div id="direct-play-error" role="alert" hidden><h3>Play stopped</h3><pre id="play-diagnostic"></pre></div>
 <p>Select the extracted executable modules and merged content for update 131072.</p>
 <p id="settings-warning" role="alert" hidden></p>
 <label for="exefs">ExeFS folder</label><div class="field"><input id="exefs" spellcheck="false"><button data-pick="ExeFS" aria-label="Browse for ExeFS">Browse</button></div>
 <label for="romfs">RomFS folder</label><div class="field"><input id="romfs" spellcheck="false"><button data-pick="RomFS" aria-label="Browse for RomFS">Browse</button></div>
 <div class="row actions"><button data-action="configure">Save locations</button><button data-action="inspect">Check files</button></div></div>
 <div class="card"><h2>Native game build</h2><p id="build-help">Build checks all six modules and the program descriptor before translating. Shader preparation and Play require a verified content pairing and a linked executable.</p>
+<p id="local-trial" hidden>Local test pairing. Play and shader preparation check the files enrolled on this PC. Gameplay compatibility is unverified.</p>
 <div class="row"><button id="build-code" data-action="build-code" class="primary">Build game code</button><button id="prepare" data-action="prepare" disabled>Prepare shaders</button><button id="play" data-action="play" disabled>Play</button></div></div></section>
 <section id="data" hidden><div class="card"><h2>FagriShot storage</h2><dl><dt>Settings</dt><dd id="loc-settings"></dd><dt>Saves</dt><dd id="loc-saves"></dd><dt>Logs and input inventory</dt><dd id="loc-logs"></dd></dl><div class="row"><button data-action="doctor">Run diagnostics</button><button data-action="backup">Back up saves</button><button data-action="backups">List backups</button></div><label for="snapshot">Restore backup</label><div class="row"><select id="snapshot" aria-label="Backup to restore"></select><button id="restore" data-action="restore" disabled>Restore</button></div></div></section>
 <section id="about" hidden><div class="card"><h2>FagriShot 0.1.0</h2><p>Independent PC recompilation software owned and maintained by thunderq10. Based on the Fortune&rsquo;s Weave port created by Goldoire, its fork maintainers and contributors, and drakolordx7&rsquo;s nxrecomp work.</p><h3>Updates</h3><p>Updates are manual. Extract the local tooling package into a fresh folder. Settings and saves live in your FagriShot data directory. Online updating is unavailable.</p>

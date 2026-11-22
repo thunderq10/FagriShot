@@ -29,7 +29,7 @@ inline std::filesystem::path launcher_for(const std::filesystem::path& game_dir)
     return {};
 }
 
-inline std::wstring start_launcher() {
+inline std::wstring request_play() {
     std::wstring module(32768, L'\0');
     const DWORD length = GetModuleFileNameW(nullptr, module.data(), static_cast<DWORD>(module.size()));
     if (length == 0 || length >= module.size()) return L"Open FagriShotLauncher.exe to start FagriShot.";
@@ -40,7 +40,8 @@ inline std::wstring start_launcher() {
     STARTUPINFOW startup{};
     startup.cb = sizeof(startup);
     PROCESS_INFORMATION child{};
-    if (!CreateProcessW(launcher.c_str(), nullptr, nullptr, nullptr, FALSE, 0, nullptr,
+    std::wstring command = L"\"" + launcher.wstring() + L"\" --play-game";
+    if (!CreateProcessW(launcher.c_str(), command.data(), nullptr, nullptr, FALSE, 0, nullptr,
                         launcher.parent_path().c_str(), &startup, &child)) {
         const DWORD error = GetLastError();
         return L"Windows could not open " + launcher.wstring() + L" (error " + std::to_wstring(error) + L").";

@@ -9,7 +9,8 @@ import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const exe = process.argv[2] || path.join(root, 'work', 'tools', 'FagriShotLauncher.exe');
+const direct = process.argv.includes('--direct');
+const exe = process.argv.slice(2).find(arg => arg !== '--direct') || path.join(root, 'work', 'tools', 'FagriShotLauncher.exe');
 const run = await fs.mkdtemp(path.join(root, 'work', 'launcher', 'ui-'));
 const portProbe = net.createServer();
 await new Promise(resolve => portProbe.listen(0, '127.0.0.1', resolve));
@@ -19,7 +20,24 @@ const local = path.join(run, 'LocalAppData');
 const settingsFile = path.join(local,'FagriShot','settings','launcher.json');
 await fs.mkdir(path.dirname(settingsFile),{recursive:true});
 await fs.writeFile(settingsFile,JSON.stringify({schema:42}));
-const app = spawn(exe, [], {windowsHide:true, env:{...process.env, LOCALAPPDATA:local,
+if (direct) {
+  // A successful synthetic Play must return without opening Game setup or requiring a second click.
+  const fixture = path.join(run,'direct-play-fixture');
+  for (const folder of ['fagrishot','scripts','compatibility']) await fs.mkdir(path.join(fixture,folder),{recursive:true});
+  await fs.writeFile(path.join(fixture,'fagrishot','__main__.py'),'');
+  await fs.writeFile(path.join(fixture,'compatibility','supported.json'),'{}');
+  await fs.writeFile(path.join(fixture,'scripts','fagrishot.py'), [
+    'import sys', 'from pathlib import Path', 'assert sys.argv[1:] == ["play"]',
+    'print("Starting FagriShot.", flush=True)', 'Path("received.txt").write_text("play")',
+  ].join('\n'));
+  const launcher = path.join(fixture,'FagriShotLauncher.exe');
+  await fs.copyFile(exe,launcher);
+  await promisify(execFile)(launcher,['--play-game'],{windowsHide:true, timeout:30000,
+    env:{...process.env, LOCALAPPDATA:local, WEBVIEW2_USER_DATA_FOLDER:path.join(fixture,'webview')}});
+  assert.equal(await fs.readFile(path.join(fixture,'received.txt'),'utf8'),'play');
+  await assert.rejects(fs.access(path.join(fixture,'webview')), {code:'ENOENT'});
+}
+const app = spawn(exe, direct ? ['--play-game'] : [], {windowsHide:true, env:{...process.env, LOCALAPPDATA:local,
   WEBVIEW2_USER_DATA_FOLDER:path.join(run, 'webview'),
   WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port='+port}});
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -54,6 +72,11 @@ try {
     return r.result.value;
   }
   await until(()=>evalPage("document.querySelector('#retry')?.hidden === false"),'unsupported settings retry');
+  if (direct) {
+    await until(()=>evalPage("!document.querySelector('#direct-play-error').hidden && document.querySelector('#play-diagnostic').textContent.includes('Unsupported settings version')"),'failed direct Play opens setup with the CLI diagnostic');
+  } else {
+    assert.equal(await evalPage("document.querySelector('#direct-play-error').hidden"),true);
+  }
   assert.ok(await evalPage("document.querySelector('[data-action=configure]').disabled && document.querySelector('[data-action=backup]').disabled"));
   await fs.writeFile(settingsFile,'{');
   await evalPage("document.querySelector('#retry').click()");
@@ -67,6 +90,7 @@ try {
   assert.equal(await evalPage("document.querySelector('#settings-warning').hidden"),false);
   await evalPage("document.querySelector('[data-action=configure]').click()");
   await until(()=>evalPage("document.querySelector('#settings-warning').hidden && !document.querySelector('[data-action=inspect]').disabled"),'settings repair');
+  assert.equal(await evalPage("document.querySelector('#direct-play-error').hidden"),true);
   assert.equal(await evalPage('document.characterSet'),'UTF-8');
   assert.equal(await evalPage('document.title'),'FagriShot');
   const version = JSON.parse(await fs.readFile(path.join(root, 'launcher/src-tauri/tauri.conf.json'), 'utf8')).version;
@@ -126,7 +150,8 @@ try {
     'Unicode title, footer, progress and credits','Unicode path in settings and diagnostics',
     'unsaved locations survive backup','external backups refresh without changing restoration target','blank locations rejected',
     'failed status blocks operations and retries','damaged settings warning and repair','backup and list during settings recovery',
-    'declined restore leaves saves intact','confirmed restore recovers the selected synthetic save']},null,2));
+    'declined restore leaves saves intact','confirmed restore recovers the selected synthetic save',
+    ...(direct ? ['successful synthetic Play bypasses setup','failed direct Play opens setup with its diagnostic'] : [])]},null,2));
   console.log('Verified actual Windows launcher UI:',run);
 } finally {
   ws?.close();

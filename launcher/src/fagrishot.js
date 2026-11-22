@@ -31,7 +31,8 @@ function controls() {
   document.querySelector('[data-action="inspect"]').disabled = blocked || needsRepair || !bothEntered;
   q('build-code').disabled = blocked || needsRepair || !status?.source_checkout || !exefs.trim() ||
     (exefs === status?.exefs && !status?.exefs_present);
-  const canUseGame = saved && bothEntered && status?.exefs_present && status?.romfs_present && status?.has_pair && status?.exe_built;
+  const canUseGame = saved && bothEntered && status?.exefs_present && status?.romfs_present &&
+    (status?.has_pair || status?.local_trial) && status?.exe_built;
   q('prepare').disabled = blocked || needsRepair || !canUseGame || !status?.source_checkout;
   q('play').disabled = blocked || needsRepair || !canUseGame;
   q('restore').disabled = q('snapshot').disabled = blocked || !q('snapshot').value;
@@ -54,6 +55,7 @@ async function refresh(reloadLocations = false) {
   for (const key of ['settings','saves','logs']) q('loc-'+key).textContent = status[key];
   q('settings-warning').textContent = status.settings_warning || '';
   q('settings-warning').hidden = !status.settings_warning;
+  q('local-trial').hidden = !status.local_trial || status.has_pair;
   const snapshots = q('snapshot');
   const previous = snapshots.value;
   snapshots.replaceChildren();
@@ -90,6 +92,7 @@ async function run(action) {
   q('output').replaceChildren();
   try {
     await invoke('action',{action, exefs:q('exefs').value, romfs:q('romfs').value, backupId});
+    if (['configure','build-code','prepare','play'].includes(action)) q('direct-play-error').hidden = true;
     q('feedback').textContent = 'Finished.';
     if (['configure','build-code','restore','backup','backups','prepare'].includes(action)) {
       await refresh(action === 'configure').catch(statusFailed);
@@ -144,4 +147,10 @@ async function loadStatus() {
 q('retry').onclick = loadStatus;
 navigate('setup');
 controls();
+invoke('startup_play_error').then(error => {
+  if (error) {
+    q('play-diagnostic').textContent = error;
+    q('direct-play-error').hidden = false;
+  }
+}).catch(error => log(String(error)));
 loadStatus();

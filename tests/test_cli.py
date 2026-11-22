@@ -95,3 +95,26 @@ class CliTests(unittest.TestCase):
                     self.assertFalse(json.loads(self.invoke("status", "--json"))["exe_built"])
                     with self.assertRaisesRegex(ValueError, "Run build-code"):
                         cli.ensure_exe({})
+
+    def test_explicit_enrollment_and_inspection_of_private_trial(self):
+        private = self.root / "private"
+        inv = {"exefs": {"tree_sha256": "e" * 64}, "romfs": {"tree_sha256": "a" * 64}}
+        source = {"commit": "a" * 40, "tracked_diff_sha256": "b" * 64}
+        receipt = {"kind": "local-play-trial"}
+        with (patch.object(cli, "PRIVATE", private), patch.object(cli, "inspect_inputs", return_value=inv),
+              patch.object(cli, "check_executable", return_value={"version": "fixture"}),
+              patch.object(cli, "ensure_exe", return_value={"source": source}),
+              patch.object(cli, "local_trial_receipt", return_value=receipt) as enroll,
+              patch.object(cli, "source_state", return_value=source),
+              patch.object(cli, "check_support", side_effect=cli.InputError("no public pairing")),
+              patch.object(cli, "check_local_trial") as validate):
+            with self.assertRaisesRegex(cli.InputError, "no public pairing"):
+                self.invoke("inspect")
+            self.assertFalse((private / "local-trial.json").exists())
+            paths = ["--exefs", self.exefs, "--romfs", self.romfs]
+            self.invoke("enroll-local", *paths)
+            selected = {"exefs": self.exefs, "romfs": self.romfs}
+            enroll.assert_called_once_with(inv, cli.CATALOG, checkout=cli.ROOT, paths=selected, source=source)
+            self.assertEqual(json.loads((private / "local-trial.json").read_bytes()), receipt)
+            self.assertIn("private local test pairing", self.invoke("inspect", *paths))
+            validate.assert_called_once_with(inv, cli.CATALOG, receipt, checkout=cli.ROOT, paths=selected, source=source)
