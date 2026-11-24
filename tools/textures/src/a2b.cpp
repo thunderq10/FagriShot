@@ -155,6 +155,12 @@ double now_s() {
 
 uint64_t div_up(uint64_t a, uint64_t b) { return (a + b - 1) / b; }
 
+bool valid_astc_block_size(uint32_t w, uint32_t h) {
+    return (w == 4 && h == 4) || (w == 5 && (h == 4 || h == 5)) || (w == 6 && (h == 5 || h == 6)) ||
+           (w == 8 && (h == 5 || h == 6 || h == 8)) || (w == 10 && (h == 5 || h == 6 || h == 8 || h == 10)) ||
+           (w == 12 && (h == 10 || h == 12));
+}
+
 }  // namespace
 
 extern "C" {
@@ -199,7 +205,7 @@ uint32_t a2b_bcn_block_bytes(a2b_format f) {
 }
 
 uint64_t a2b_astc_size(uint32_t w, uint32_t h, uint32_t bw, uint32_t bh) {
-    if (!w || !h || bw < 4 || bw > 12 || bh < 4 || bh > 12) return 0;
+    if (!w || !h || !valid_astc_block_size(bw, bh)) return 0;
     return div_up(w, bw) * div_up(h, bh) * 16;
 }
 
@@ -427,6 +433,9 @@ a2b_status a2b_transcode(const a2b_input* in, const void* data, size_t data_size
         if (out_format) *out_format = in->format;
         return A2B_OK;
     }
+    const uint64_t expect = a2b_astc_size(in->width, in->height, in->block_w, in->block_h);
+    if (!expect) return A2B_ERR_ARGS;
+    if (data_size != expect) return A2B_ERR_SIZE;
     std::vector<uint8_t> rgba((size_t)in->width * in->height * 4);
     a2b_status st = a2b_decode_astc_rgba8(in, data, data_size, opt ? opt->threads : 0, rgba.data(), stats);
     if (st != A2B_OK) return st;
