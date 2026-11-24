@@ -21,7 +21,7 @@ If setup stops, the launcher shows which step needs attention. For a folder mism
 
 In **Game setup**, select **Arabic text preview** before clicking **Play**. On the first Arabic launch, FagriShot generates the translated resources from your verified RomFS. Clear the checkbox before launching to return to your usual text language. Voices use the audio language you selected.
 
-The launcher shows how many entries in your installed pack have received editorial review and how many are machine-translated drafts. The original 0.3.0 release translates all **64,503 visible message entries** in update 131072. Of these, **2,633 have received editorial review** and **61,870 are machine-translated drafts**. The reviewed entries include opening dialogue, campaign narration, chapter titles and selected menus. Dialogue appears from right to left. The release also translates the title logo, lettering in all 316 US-English tutorial illustrations, and place names in five map films. Small lettering inside some tutorial screenshots can still appear in English.
+The Arabic dialogue update for 0.3.0 covers all **64,503 visible message entries** in update 131072. **4,501 entries have received editorial review** and **60,002 remain machine-translated drafts**. The update revises character dialogue, forms of address, battle instructions and tournament cards. The launcher shows the counts for your installed pack. Dialogue appears from right to left. The release also translates the title logo, lettering in all 316 US-English tutorial illustrations, and place names in five map films. Small lettering inside some tutorial screenshots can still appear in English.
 
 ## Graphics settings
 
