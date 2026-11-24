@@ -69,6 +69,29 @@ std::vector<uint8_t> read_file(const char* p) {
     return v;
 }
 
+void put_u32(std::vector<uint8_t>& v, size_t off, uint32_t value) {
+    std::memcpy(v.data() + off, &value, sizeof value);
+}
+
+std::vector<uint8_t> minimal_nso(bool lz4 = false) {
+    const uint32_t stored_size = lz4 ? 9 : 8;
+    std::vector<uint8_t> v(0x100 + stored_size, 0);
+    std::memcpy(v.data(), "NSO0", 4);
+    put_u32(v, 0x0C, lz4 ? 1 : 0);
+    put_u32(v, 0x10, 0x100);       // Eight decoded text bytes at image offset zero.
+    put_u32(v, 0x14, 0);
+    put_u32(v, 0x18, 8);
+    put_u32(v, 0x20, 0x100 + stored_size);       // Empty rodata and data follow the text.
+    put_u32(v, 0x24, 8);
+    put_u32(v, 0x30, 0x100 + stored_size);
+    put_u32(v, 0x34, 8);
+    if (lz4) {
+        put_u32(v, 0x60, stored_size);
+        v[0x100] = 0x80;            // Final LZ4 sequence with eight literal zero bytes.
+    }
+    return v;
+}
+
 size_t dynamic_entry_offset(const std::vector<uint8_t>& image, int64_t tag) {
     elf::Ehdr eh{};
     if (image.size() < sizeof eh) return image.size();
