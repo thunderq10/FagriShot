@@ -29,6 +29,7 @@
 #include <filesystem>
 #include <fstream>
 #include <functional>
+#include <new>
 #include <unordered_set>
 #include <mutex>
 #include <set>
@@ -1132,20 +1133,38 @@ void gpl_stop() {
 // ---- shader preparation ----------------------------------------------------------------------------------------------------------
 namespace {
 struct ProgHashes { uint64_t vs, fs, gs; };
+static_assert(sizeof(ProgHashes) == 24, "program-list records have three 64-bit hashes");
+constexpr uint32_t kMaxPrograms = 400000;       // 9.6 MiB of records; the same ceiling used for recorded prewarm keys
 
 bool read_programs_file(const std::string& path, std::vector<ProgHashes>* out, std::string* error) {
     FILE* f = std::fopen(path.c_str(), "rb");
     if (!f) { *error = "cannot open " + path; return false; }
+    bool ok = std::fseek(f, 0, SEEK_END) == 0;
+    const long file_size = ok ? std::ftell(f) : -1;
+    ok = ok && file_size >= 0 && std::fseek(f, 0, SEEK_SET) == 0;
     char head[16];
-    bool ok = std::fread(head, 1, 16, f) == 16 && std::memcmp(head, "MPRPRG01", 8) == 0;
-    uint32_t count = 0;
-    if (ok) std::memcpy(&count, head + 8, 4);
+    ok = ok && std::fread(head, 1, sizeof head, f) == sizeof head && std::memcmp(head, "MPRPRG01", 8) == 0;
+    uint32_t count = 0, reserved = 0;
     if (ok) {
-        out->resize(count);
-        ok = count == 0 || std::fread(out->data(), sizeof(ProgHashes), count, f) == count;
+        std::memcpy(&count, head + 8, 4);
+        std::memcpy(&reserved, head + 12, 4);
+    }
+    const uint64_t expected_size = sizeof head + static_cast<uint64_t>(count) * sizeof(ProgHashes);
+    ok = ok && reserved == 0 && count <= kMaxPrograms && static_cast<uint64_t>(file_size) == expected_size;
+    std::vector<ProgHashes> parsed;
+    if (ok) {
+        try {
+            parsed.resize(count);
+        } catch (const std::bad_alloc&) {
+            std::fclose(f);
+            *error = "not enough memory to read " + path;
+            return false;
+        }
+        ok = count == 0 || std::fread(parsed.data(), sizeof(ProgHashes), count, f) == count;
     }
     std::fclose(f);
     if (!ok) *error = path + " is not a program list";
+    else out->swap(parsed);
     return ok;
 }
 
