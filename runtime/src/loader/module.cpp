@@ -378,10 +378,17 @@ bool LoaderAccess::link(Module& m, bool guest_relinks) {
     using namespace elf;
     if (m.linked_) return true;
     const uint64_t lo = m.base_ - m.bias_, hi = lo + m.size_;
+    auto relocation_slot = [&](uint64_t offset, uint64_t** slot) {
+        if (offset < lo || offset > hi || sizeof(uint64_t) > hi - offset) return false;
+        const uint64_t relative = offset - lo;
+        if (relative > UINT64_MAX - m.base_) return false;
+        *slot = reinterpret_cast<uint64_t*>(m.base_ + relative);
+        return true;
+    };
     std::vector<Sym> unused;
     bool ok = true;
     // guest_relinks: every slot written here, with the image's value, to put back once the module is checked (see below)
-    std::vector<std::pair<uint64_t, uint64_t>> written;
+    std::vector<std::pair<uint64_t*, uint64_t>> written;
     const uint64_t tables[2][2] = {{m.rela_, m.rela_sz_}, {m.jmprel_, m.jmprel_sz_}};
     for (auto& t : tables) {
         if (!t[0] || !t[1]) continue;
@@ -391,9 +398,9 @@ bool LoaderAccess::link(Module& m, bool guest_relinks) {
             memcpy(&r, reinterpret_cast<const void*>(m.bias_ + t[0] + i), sizeof r);
             m.stats_.total++;
             const uint32_t type = static_cast<uint32_t>(r.info), symidx = static_cast<uint32_t>(r.info >> 32);
-            if (r.offset < lo || r.offset + 8 > hi) { m.stats_.out_of_range++; NXLOG_W(kTag, "%s: relocation at 0x%llx is outside the image", m.name_.c_str(), (unsigned long long)r.offset); continue; }
-            uint64_t* slot = reinterpret_cast<uint64_t*>(m.bias_ + r.offset);
-            if (guest_relinks) written.emplace_back(r.offset, *slot);
+            uint64_t* slot;
+            if (!relocation_slot(r.offset, &slot)) { m.stats_.out_of_range++; NXLOG_W(kTag, "%s: relocation at 0x%llx is outside the image", m.name_.c_str(), (unsigned long long)r.offset); continue; }
+            if (guest_relinks) written.emplace_back(slot, *slot);
             bool weak_null = false;
             switch (type) {
                 case R_AARCH64_RELATIVE:
@@ -440,10 +447,10 @@ bool LoaderAccess::link(Module& m, bool guest_relinks) {
         } else {
             auto fix = [&](uint64_t off) {
                 m.stats_.total++;
-                if (off < lo || off + 8 > hi) { m.stats_.out_of_range++; return; }
+                uint64_t* slot;
+                if (!relocation_slot(off, &slot)) { m.stats_.out_of_range++; return; }
                 m.stats_.relative++;
-                uint64_t* slot = reinterpret_cast<uint64_t*>(m.bias_ + off);
-                if (guest_relinks) written.emplace_back(off, *slot);
+                if (guest_relinks) written.emplace_back(slot, *slot);
                 *slot += m.bias_;
             };
             uint64_t where = 0;
@@ -475,7 +482,7 @@ bool LoaderAccess::link(Module& m, bool guest_relinks) {
     // hold the image's PLT value). Every slot goes back to the image's value, newest write first; the checks, statistics and the
     // init/fini arrays above keep the host's result.
     if (guest_relinks && !written.empty()) {
-        for (auto it = written.rbegin(); it != written.rend(); ++it) *reinterpret_cast<uint64_t*>(m.bias_ + it->first) = it->second;
+        for (auto it = written.rbegin(); it != written.rend(); ++it) *it->first = it->second;
         NXLOG_I(kTag, "%s: %zu relocated slots restored to the image's values for the guest's dynamic linker", m.name_.c_str(), written.size());
     }
     if (m.tls_.present() && !g_tls.present()) g_tls = m.tls_;

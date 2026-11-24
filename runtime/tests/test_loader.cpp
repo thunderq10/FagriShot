@@ -6,6 +6,7 @@
 #include <fstream>
 #include <vector>
 
+#include "../src/loader/elf.h"
 #include "nxrt/dispatch.h"
 #include "nxrt/log.h"
 #include "nxrt/memory.h"
@@ -68,6 +69,41 @@ std::vector<uint8_t> read_file(const char* p) {
     return v;
 }
 
+size_t dynamic_entry_offset(const std::vector<uint8_t>& image, int64_t tag) {
+    elf::Ehdr eh{};
+    if (image.size() < sizeof eh) return image.size();
+    std::memcpy(&eh, image.data(), sizeof eh);
+    if (eh.phoff > image.size() || uint64_t(eh.phnum) * sizeof(elf::Phdr) > image.size() - eh.phoff) return image.size();
+    for (uint16_t i = 0; i < eh.phnum; i++) {
+        elf::Phdr ph{};
+        std::memcpy(&ph, image.data() + eh.phoff + uint64_t(i) * sizeof ph, sizeof ph);
+        if (ph.type != elf::PT_DYNAMIC || ph.offset > image.size() || ph.filesz > image.size() - ph.offset) continue;
+        for (uint64_t off = 0; off + sizeof(elf::Dyn) <= ph.filesz; off += sizeof(elf::Dyn)) {
+            elf::Dyn dyn{};
+            std::memcpy(&dyn, image.data() + ph.offset + off, sizeof dyn);
+            if (dyn.tag == tag) return static_cast<size_t>(ph.offset + off);
+            if (dyn.tag == elf::DT_NULL) break;
+        }
+    }
+    return image.size();
+}
+
+size_t vaddr_file_offset(const std::vector<uint8_t>& image, uint64_t vaddr, size_t bytes) {
+    elf::Ehdr eh{};
+    if (image.size() < sizeof eh) return image.size();
+    std::memcpy(&eh, image.data(), sizeof eh);
+    if (eh.phoff > image.size() || uint64_t(eh.phnum) * sizeof(elf::Phdr) > image.size() - eh.phoff) return image.size();
+    for (uint16_t i = 0; i < eh.phnum; i++) {
+        elf::Phdr ph{};
+        std::memcpy(&ph, image.data() + eh.phoff + uint64_t(i) * sizeof ph, sizeof ph);
+        if (ph.type != elf::PT_LOAD || vaddr < ph.vaddr) continue;
+        const uint64_t in_segment = vaddr - ph.vaddr;
+        if (in_segment > ph.filesz || bytes > ph.filesz - in_segment || ph.offset > image.size() || in_segment > image.size() - ph.offset || bytes > image.size() - ph.offset - in_segment) continue;
+        return static_cast<size_t>(ph.offset + in_segment);
+    }
+    return image.size();
+}
+
 }  // namespace
 
 NXTEST(map_and_symbols) {
@@ -124,6 +160,73 @@ NXTEST(packed_relative_relocations) {
     CHECK_EQ(s.unhandled, 0u);
     CHECK_EQ(s.out_of_range, 0u);
     CHECK_EQ(s.relative, 11u);                 // the same 11 RELATIVE relocations as the RELA fixture
+    reset();
+}
+
+NXTEST(wrapping_relocation_targets_are_rejected) {
+    reset();
+    const uint64_t max = UINT64_MAX;
+    const std::vector<uint8_t> rela_fixture = read_file(kFull);
+    const size_t rela_dynamic = dynamic_entry_offset(rela_fixture, elf::DT_RELA);
+    REQUIRE(rela_dynamic != rela_fixture.size());
+    elf::Dyn rela_tag{};
+    std::memcpy(&rela_tag, rela_fixture.data() + rela_dynamic, sizeof rela_tag);
+    const size_t rela_file = vaddr_file_offset(rela_fixture, rela_tag.val, sizeof(elf::Rela));
+    REQUIRE(rela_file != rela_fixture.size());
+    for (uint64_t delta = 0; delta < 8; delta++) {
+        std::vector<uint8_t> image = rela_fixture;
+        const uint64_t target = max - delta;
+        std::memcpy(image.data() + rela_file, &target, sizeof target);
+        Module* m = module_load_memory(image.data(), image.size());
+        REQUIRE(m);
+        CHECK(module_link_all());
+        CHECK_EQ(m->stats().out_of_range, 1u);
+        reset();
+    }
+
+    std::vector<uint8_t> relr_fixture = read_file(kRelr);
+    const size_t relr_dynamic = dynamic_entry_offset(relr_fixture, elf::DT_RELR);
+    const size_t relr_size_dynamic = dynamic_entry_offset(relr_fixture, elf::DT_RELRSZ);
+    REQUIRE(relr_dynamic != relr_fixture.size() && relr_size_dynamic != relr_fixture.size());
+    elf::Dyn relr_tag{}, relr_size_tag{};
+    std::memcpy(&relr_tag, relr_fixture.data() + relr_dynamic, sizeof relr_tag);
+    std::memcpy(&relr_size_tag, relr_fixture.data() + relr_size_dynamic, sizeof relr_size_tag);
+    relr_size_tag.val = sizeof(uint64_t);       // isolate the direct entry from its following bitmap
+    std::memcpy(relr_fixture.data() + relr_size_dynamic, &relr_size_tag, sizeof relr_size_tag);
+    const size_t relr_file = vaddr_file_offset(relr_fixture, relr_tag.val, sizeof(uint64_t));
+    REQUIRE(relr_file != relr_fixture.size());
+    const uint64_t relr_targets[] = {max - 7, max - 5, max - 3, max - 1};  // RELR direct entries have bit zero clear
+    for (uint64_t target : relr_targets) {
+        std::vector<uint8_t> image = relr_fixture;
+        std::memcpy(image.data() + relr_file, &target, sizeof target);
+        Module* m = module_load_memory(image.data(), image.size());
+        REQUIRE(m);
+        CHECK(module_link_all());
+        CHECK_EQ(m->stats().out_of_range, 1u);
+        reset();
+    }
+}
+
+NXTEST(last_relocation_slot_remains_valid) {
+    reset();
+    std::vector<uint8_t> image = read_file(kFull);
+    const size_t rela_dynamic = dynamic_entry_offset(image, elf::DT_RELA);
+    REQUIRE(rela_dynamic != image.size());
+    elf::Dyn rela_tag{};
+    std::memcpy(&rela_tag, image.data() + rela_dynamic, sizeof rela_tag);
+    const size_t rela_file = vaddr_file_offset(image, rela_tag.val, sizeof(elf::Rela));
+    REQUIRE(rela_file != image.size());
+    Module* probe = module_load_memory(image.data(), image.size());
+    REQUIRE(probe && probe->size() >= sizeof(uint64_t));
+    const uint64_t target = probe->size() - sizeof(uint64_t);
+    reset();
+
+    std::memcpy(image.data() + rela_file, &target, sizeof target);
+    Module* m = module_load_memory(image.data(), image.size());
+    REQUIRE(m);
+    CHECK(module_link_all());
+    CHECK_EQ(m->stats().out_of_range, 0u);
+    CHECK_EQ(peek64(m->base() + target), m->base() + kCtorA);
     reset();
 }
 
