@@ -168,9 +168,7 @@ class Image:
         from . import nso
         info = nso.nso_info(data)
         (tv, text), (rv, ro), (dv, dat) = [(s['vaddr'], s['data']) for s in info['segments']]
-        mem = bytearray(dv + len(dat))
-        for v, r in ((tv, text), (rv, ro), (dv, dat)):
-            mem[v:v + len(r)] = r
+        mem = nso.nso_memory_image(info)
         img = cls(name, base, bytes(mem), (tv, len(text)), bss=(dv + len(dat), info['bss']))
         img.segments = [(tv, len(text), 5), (rv, len(ro), 4), (dv, len(dat), 6)]
         img.mod0 = struct.unpack_from('<I', mem, 4)[0]
