@@ -1,0 +1,763 @@
+{
+  "SE_Ism_Cat_AS.msbt.zst": {
+    "MID_SE_Ism_Cat_S_001": {
+      "source_sha256": "3e0b9cb2a473e2d82384f1664ce160bc1811404286aeef6753d769e96aaa07ff",
+      "parts": [
+        "ساعدت في إنقاذ العالم، ومع ذلك...\nآه، يا أملنا الموعود، لم حدث هذا؟"
+      ]
+    },
+    "MID_SE_Ism_Cat_S_003": {
+      "source_sha256": "7962bad48bf0555ed4d19c15f2798428fae51fde586c744bd6ce195ceca5bd49",
+      "parts": [
+        "همم؟ ها أنت هنا يا أملنا الموعود.\nما زلت على قيد الحياة. طبعا، وكيف لا..."
+      ]
+    },
+    "MID_SE_Ism_Cat_S_017": {
+      "source_sha256": "6c521f8e03ad80f7d3f12e9bb53606db991d69a757ea8953023d29ec8b609035",
+      "parts": [
+        "فحياتك ترحال يا أملنا الموعود.\nحيثما احتاج أحد إلى النجدة، قصدته!"
+      ]
+    }
+  },
+  "SE_Ism_Die_AS.msbt.zst": {
+    "MID_SE_Ism_Die_S_001": {
+      "source_sha256": "e52f57a2f07b570ffc832465f68b65071fd752b45235750259ec6a6b010afa28",
+      "parts": [
+        "يا أملنا الموعود! أنت... أنت هنا!"
+      ]
+    }
+  },
+  "SE_Ism_Dit_AS.msbt.zst": {
+    "MID_SE_Ism_Dit_A_001": {
+      "source_sha256": "b3ebe832dcb1c6e95663a18f2fd4c50130705f99eba6822e6273b8371286652f",
+      "parts": [
+        "آه، يا أملنا الموعود.\nجئتني وأنا غارق في التأمل."
+      ]
+    },
+    "MID_SE_Ism_Dit_S_001": {
+      "source_sha256": "eb80a123983f90cddd7a98dd53cbee2acacc27f1964da4cd852805c681f8faf6",
+      "parts": [
+        "يا أملنا الموعود؟"
+      ]
+    },
+    "MID_SE_Ism_Dit_S_023": {
+      "source_sha256": "51a0ddd752a1a059a992134bd177639d46fa500a166357bf34a13b5f374a11ea",
+      "parts": [
+        "سأواصل رقصتي، وسأجذبك إليها! سنرقص معا يا أملنا الموعود!"
+      ]
+    }
+  },
+  "SE_Ism_Esm_AS.msbt.zst": {
+    "MID_SE_Ism_Esm_A_002": {
+      "source_sha256": "b73121345b0a400725b1ffa740e0e3fb880a817eb8927e1d819a2ce0820ff2d5",
+      "parts": [
+        "آه، يا أملنا الموعود! أعندك وقت؟\nأحتاج إلى يد أخرى مع هذا القارب. إليك الحبل!"
+      ]
+    },
+    "MID_SE_Ism_Esm_S_006": {
+      "source_sha256": "bd704ab011da4ce669fd3b1c3a1efd9d7154c7cf1269ca8c7ec62c6ba2e61644",
+      "parts": [
+        "يا أملنا الموعود... كم يغضبني ما فعلت!"
+      ]
+    }
+  },
+  "SE_Ism_Fab_AS.msbt.zst": {
+    "MID_SE_Ism_Fab_S_017": {
+      "source_sha256": "ec26e56297820691b725bf6c375f8cf41f6d8c5eaea5fd7eda637f1b48c6ab2b",
+      "parts": [
+        "مهمة جديدة إذن. أحسب أن هذا دأبك يا أملنا الموعود..."
+      ]
+    },
+    "MID_SE_Ism_Fab_S_022": {
+      "source_sha256": "d580ee36195affeb586f69a621d265d14b11e164dad0c7872f785fbdce13ac25",
+      "parts": [
+        "أنمضي يا أملنا الموعود؟ أنا متشوق إلى ما\nتحمله الأيام، وإلى ما سيتحقق على يديك."
+      ]
+    }
+  },
+  "SE_Ism_Fia_AS.msbt.zst": {
+    "MID_SE_Ism_Fia_A_002": {
+      "source_sha256": "ac636bda2acabca7c78d0c9ceac9d18bac3bf7bebbaea84b6e1bc5f8ccfd0c17",
+      "parts": [
+        "آه، يا أملنا الموعود! ما الذي جاء\nبك إلى العيادة؟ أأصابك جرح؟"
+      ]
+    },
+    "MID_SE_Ism_Fia_A_003": {
+      "source_sha256": "ec647f9e0fa6f136d6d2b6b10787d090a3a52221f2299715916996c746d86a23",
+      "parts": [
+        "فهمت. اطمأن قلبي. آه... يا لحرجي!\nأن يصيبني الدوار أمام الموعود!"
+      ]
+    },
+    "MID_SE_Ism_Fia_A_010": {
+      "source_sha256": "e20d82712b1125533e64c9a085f986d4310da2675a96e10f5d5cfe8dd0c07ac3",
+      "parts": [
+        "كلا يا أملنا الموعود. أرجوك، ليس عليك حمل\nهذا العبء وحدك. ولي هنا دور أؤديه أيضا..."
+      ]
+    },
+    "MID_SE_Ism_Fia_A_022": {
+      "source_sha256": "595234d4d9278dd3e6afc3e44667e701e6a513d1186806e4d011c6ff9ac13b99",
+      "parts": [
+        "أغمي علي أمامك يا أملنا الموعود...\nثم وضعت رأسي في حجرك أيضا!"
+      ]
+    }
+  },
+  "SE_Ism_Gat_AS.msbt.zst": {
+    "MID_SE_Ism_Gat_A_001": {
+      "source_sha256": "c99ff85fe67e64eefa5435e6659eb297746935c6ca9b5f67a05f3703937fbfd0",
+      "parts": [
+        "ما من رفيق لك اليوم يا أملنا الموعود؟\nأرى أن فورتونا ليست معك."
+      ]
+    },
+    "MID_SE_Ism_Gat_S_003": {
+      "source_sha256": "7817195661a840fb88ef071a5bd49c7f26d17bbf94e972b816f84f6711068d24",
+      "parts": [
+        "يا أملنا الموعود! لقد عدت."
+      ]
+    }
+  },
+  "SE_Ism_Guj_AS.msbt.zst": {
+    "MID_SE_Ism_Guj_A_001": {
+      "source_sha256": "0331c7dc58f8bf786ee5d4011ce6771c6c204ff245dded61dc2dcffdc21db9ca",
+      "parts": [
+        "يا أملنا الموعود، عندي لك بشرى!\nلم يمت أحد في البلدة التي أرسلتني إليها."
+      ]
+    },
+    "MID_SE_Ism_Guj_A_015": {
+      "source_sha256": "b963a8896b2330cea7c127879cb0b011e9008443f80938a717c9284346bf4743",
+      "parts": [
+        "أعني يا أملنا الموعود أن ما وعدتنا به لم\nيتحقق بعد. ما زال العالم ينتظر الخلاص."
+      ]
+    },
+    "MID_SE_Ism_Guj_A_016": {
+      "source_sha256": "16edae6c9bfc49b3d37152e784d8202a2f03861469c9f784af3535bc2b0a9cf8",
+      "parts": [
+        "أعني يا أملنا الموعود... أنت فرد واحد،\nومع ذلك آمن بمسعاك كل هؤلاء."
+      ]
+    },
+    "MID_SE_Ism_Guj_S_001": {
+      "source_sha256": "fb2c0e5c6bdcddbd21796744c16c2eb0932590f55cda2f4809e148fddebfee68",
+      "parts": [
+        "ها هو غوزران الذي لا يقتل على قيد الحياة.\nأما أملنا الموعود الذي أنقذ العالم... آه."
+      ]
+    }
+  },
+  "SE_Ism_Hal_AS.msbt.zst": {
+    "MID_SE_Ism_Hal_A_012": {
+      "source_sha256": "eaf3f39588162a0d7875150a02ca78fbb1e872746e04197db6151071bf392241",
+      "parts": [
+        "ما أجمل ابتسامتك يا أملنا الموعود. حقا، ما أطيب قلبك."
+      ]
+    },
+    "MID_SE_Ism_Hal_S_003": {
+      "source_sha256": "33a22b87f8443b0c09d51e524b4f9a120537e070b366e685c17e7902e2d5ca66",
+      "parts": [
+        "آه! يا... يا أملنا الموعود! لقد عدت! يا لفرحتي!"
+      ]
+    },
+    "MID_SE_Ism_Hal_S_014": {
+      "source_sha256": "ec16d372308b383619e50feaae44c00d5a6baed1d541e54408fdd30256de5353",
+      "parts": [
+        "يا أملنا الموعود، هل انتهى دورك في كل هذا؟"
+      ]
+    }
+  },
+  "SE_Ism_Hur_AS.msbt.zst": {
+    "MID_SE_Ism_Hur_A_002": {
+      "source_sha256": "33d9a23e6d164907a6db5ed125d18249a0db9077a9b6be2b0a74aa2b88b88102",
+      "parts": [
+        "عذرا يا أملنا الموعود. وصلتني رسالة من أهلي،\nويبدو أن هناك رسالة لك أيضا."
+      ]
+    },
+    "MID_SE_Ism_Hur_S_001": {
+      "source_sha256": "cf9edd9d9395ff5223adf7ab140aa68a5e45ed3c958e954347763de38d080e30",
+      "parts": [
+        "أرجوك يا أملنا الموعود... لا أريد إلا سلامتك."
+      ]
+    }
+  },
+  "SE_Ism_Iio_AS.msbt.zst": {
+    "MID_SE_Ism_Iio_A_002": {
+      "source_sha256": "68d3078a83efb356a0aee025ceadc281ae221732f88c34313d4eca9f704161b2",
+      "parts": [
+        "آه، يا أملنا الموعود. أكان فيما فعلت ما\nيستوقفك؟ الحق أنه لم يكن شيئا يذكر."
+      ]
+    },
+    "MID_SE_Ism_Iio_S_001": {
+      "source_sha256": "7787cb002340d275a0bd0874b214e0cfff2f6d9bf22da74d646e010b2ba428fb",
+      "parts": [
+        "بفضلك يا أملنا الموعود سيصير حالم مثلي فارسا أخيرا. ليتك هنا..."
+      ]
+    },
+    "MID_SE_Ism_Iio_S_018": {
+      "source_sha256": "ce95e3c54d09613f54652b8177297a9d18309cd9a80eb65f8dadd67e0b89bd9c",
+      "parts": [
+        "يا أملنا الموعود... ربما، أعني... هل لك في ذلك؟"
+      ]
+    }
+  },
+  "SE_Ism_Ini_AS.msbt.zst": {
+    "MID_SE_Ism_Ini_A_027": {
+      "source_sha256": "72a945b2213851817d39ee3a6b80af5d8f7e2edc3237e9d60e8d0a2c2ba41c1a",
+      "parts": [
+        "نعم! وأنت معي أيضا يا أملنا الموعود."
+      ]
+    },
+    "MID_SE_Ism_Ini_S_003": {
+      "source_sha256": "93e1b4aef786d0876f579ef93467d622706ccaead7f2fb21c07b9705b34d4a7a",
+      "parts": [
+        "يا أملنا الموعود! انتظرت هنا وتمنيت عودتك\nبكل جوارحي... ما أعظم هذه النعمة!"
+      ]
+    }
+  },
+  "SE_Ism_Jas_AS.msbt.zst": {
+    "MID_SE_Ism_Jas_A_002": {
+      "source_sha256": "cb19109f3f569c39ec50febf63d6c3a14f1ded1d941dfae4715a4fdce422a449",
+      "parts": [
+        "يا أملنا الموعود، ما الذي جاء بك إلى هنا؟\nآمل ألا يكون السبب مجرد الاطمئنان علي."
+      ]
+    },
+    "MID_SE_Ism_Jas_A_020": {
+      "source_sha256": "d53bb5ccd9f6e5b7b66d2798d74dc798207b4fd44071e4019d4183430f4768e0",
+      "parts": [
+        "يا له من شرف أن يأتيني التشجيع\nمن أملنا الموعود! لهذا عندي شأن كبير."
+      ]
+    },
+    "MID_SE_Ism_Jas_S_010": {
+      "source_sha256": "0ea3a16d8715595e5eff1e090ea73d62f0b7de66ed34bc7ccc7de0736b956fd8",
+      "parts": [
+        "أنا ممتنة لكلامك يا أملنا الموعود."
+      ]
+    },
+    "MID_SE_Ism_Jas_S_023": {
+      "source_sha256": "edf2b67ecdd16079e5c5ef39d9abc64c41f13334336cb6fde4baaf91575e4f87",
+      "parts": [
+        "هاها، بمباركتك يا أملنا الموعود،\nلا خوف أبدا على مستقبلي!"
+      ]
+    }
+  },
+  "SE_Ism_Kai_AS.msbt.zst": {
+    "MID_SE_Ism_Kai_A_002": {
+      "source_sha256": "157fec9ee2b24a1bd2adc53dc444deecb78db2149b5439dc1a84af427347edaf",
+      "parts": [
+        "آه، يا أملنا الموعود. ما سر سهرك في هذه الساعة؟"
+      ]
+    },
+    "MID_SE_Ism_Kai_A_022": {
+      "source_sha256": "9b41e3850f53f7b25a45d5edf8c13876e841170e5300ae048785955ffad8d3e4",
+      "parts": [
+        "يا أملنا الموعود، فيك قوة، وفيك أيضا...\nسعة. لا أدري كيف أشرح قصدي."
+      ]
+    },
+    "MID_SE_Ism_Kai_S_001": {
+      "source_sha256": "0cd0ab55512dfaee2fd3f379888ee88883533776eaa95c1e6fef7082e9040531",
+      "parts": [
+        "يا أملنا الموعود!"
+      ]
+    },
+    "MID_SE_Ism_Kai_S_017": {
+      "source_sha256": "de3535c8e465e078a63b087a6bee47c93ee3b86228ac075809b675e81bf7015e",
+      "parts": [
+        "هه، عجبا يا أملنا الموعود! كأنك قرأت أفكاري."
+      ]
+    },
+    "MID_SE_Ism_Kai_S_025": {
+      "source_sha256": "57f568c7644581a95c674a9cc407d3a8613a34630a8b0bf9e4789414cdadd5d3",
+      "parts": [
+        "يا أملنا الموعود، لعل طريقينا يفترقان."
+      ]
+    }
+  },
+  "SE_Ism_Kou_AS.msbt.zst": {
+    "MID_SE_Ism_Kou_A_006": {
+      "source_sha256": "e2d4831899b67540a09c1ad46ca5aaacfa4f882636095e29de8709c19b9345fe",
+      "parts": [
+        "هاه... هاه... أنقذتني مرة أخرى يا أملنا الموعود."
+      ]
+    },
+    "MID_SE_Ism_Kou_A_030": {
+      "source_sha256": "4d8c947814a198797d3c8743a211f765810f1b67c29521d4681482824e5cc49e",
+      "parts": [
+        "هيا يا أملنا الموعود. ما زال هناك من يحتاج إلى عوننا."
+      ]
+    },
+    "MID_SE_Ism_Kou_S_001": {
+      "source_sha256": "31764f320b76d01af0e8e26bab104aea907128ee1820eb2ee2ee9a56f05e572c",
+      "parts": [
+        "آه! يا أملنا الموعود!"
+      ]
+    }
+  },
+  "SE_Ism_Led_AS.msbt.zst": {
+    "MID_SE_Ism_Led_A_027": {
+      "source_sha256": "9ee440f9b72fd397cc66a528f27c87c974badb2f214bee6338e3ad0768537f8a",
+      "parts": [
+        "أي أغنية تروق لك يا أملنا الموعود؟\nأغنية تبعث فينا الشجاعة، أم أخرى تشحذ عزيمتنا للنصر؟"
+      ]
+    },
+    "MID_SE_Ism_Led_S_004": {
+      "source_sha256": "9fe7ae6904b3489284866b31412e3ee782c1f3e4b2650665b944609a0ec1ee16",
+      "parts": [
+        "آه! يا أملنا الموعود؟"
+      ]
+    },
+    "MID_SE_Ism_Led_S_021": {
+      "source_sha256": "4bc1017c87394f1607f18a74a0d8b6f058cee214808127f3e5c33da30227bb67",
+      "parts": [
+        "يا أملنا الموعود... هذه أول مرة أعزف فيها\nعلى أوبسيديان بمحض إرادتي، ومن صميم روحي..."
+      ]
+    }
+  },
+  "SE_Ism_Lil_AS.msbt.zst": {
+    "MID_SE_Ism_Lil_A_007": {
+      "source_sha256": "aedf49dcaac6f5f440c90eef4ffc71b4bcd8eacadc8375c1e59bba6292a27380",
+      "parts": [
+        "همم... يا أملنا الموعود، ما رأيك أن أترك هذه الأشياء عندك أمانة؟"
+      ]
+    },
+    "MID_SE_Ism_Lil_A_013": {
+      "source_sha256": "e65a831bfb4ff2ad1df8c647735cc760385b546a9cd473989cf8d639f32e64d3",
+      "parts": [
+        "آخ. هذه شيمتك يا أملنا الموعود! لا هوادة حتى في النصيحة."
+      ]
+    }
+  },
+  "SE_Ism_Lou_AS.msbt.zst": {
+    "MID_SE_Ism_Lou_A_001": {
+      "source_sha256": "1220bcbce48c413cf2c9788cccf6a5d2e097ad81ac3cab75cac090834d08929e",
+      "parts": [
+        "آه، يا أملنا الموعود! مم... ما سر هذه النظرة؟"
+      ]
+    }
+  },
+  "SE_Ism_Lys_AS.msbt.zst": {
+    "MID_SE_Ism_Lys_A_023": {
+      "source_sha256": "8dd9f373924b4a334b31cb63a56b33c1cebbb4382dc170e0a7f4793ffc02b102",
+      "parts": [
+        "لعله من الجرأة أن أقول لك هذا يا أملنا الموعود،\nلكنني أشعر الآن أن ما يربطني بك أقوى من ذي قبل."
+      ]
+    },
+    "MID_SE_Ism_Lys_S_005": {
+      "source_sha256": "41e4f003290d591e4262c9155ce9bb390ce34ee3fa736508ed26dae8c1fb5836",
+      "parts": [
+        "عذرا يا أملنا الموعود... لو سمحت، أريد أن أخرج من تحتك."
+      ]
+    }
+  },
+  "SE_Ism_Maj_AS.msbt.zst": {
+    "MID_SE_Ism_Maj_A_001": {
+      "source_sha256": "ab055f96d1c54bbd209fa8f314ae2e9b0f6850c09c3f1d1fa1b6d6e5c52184d7",
+      "parts": [
+        "تبا لهذا اليوم البائس... مهلا! أهذا أملنا الموعود؟"
+      ]
+    }
+  },
+  "SE_Ism_Max_AS.msbt.zst": {
+    "MID_SE_Ism_Max_A_001": {
+      "source_sha256": "26acfa29eea10d5a119284fbf73db927b618e777142d5b881a985e48851bcade",
+      "parts": [
+        "يا أملنا الموعود، انتهيت من رتق تلك الراية."
+      ]
+    },
+    "MID_SE_Ism_Max_A_020": {
+      "source_sha256": "d40dd50eabfc5a152804216fdcb52553f593768c4b532925177f95ed490b2a18",
+      "parts": [
+        "حسنا يا أملنا الموعود. سأحاول أن أصدق ذلك."
+      ]
+    },
+    "MID_SE_Ism_Max_S_006": {
+      "source_sha256": "31764f320b76d01af0e8e26bab104aea907128ee1820eb2ee2ee9a56f05e572c",
+      "parts": [
+        "آه! يا أملنا الموعود!"
+      ]
+    }
+  },
+  "SE_Ism_Mic_AS.msbt.zst": {
+    "MID_SE_Ism_Mic_A_023": {
+      "source_sha256": "c20b431ed5f0d2cfab94591a22d0cfa69adf14f503a48febfeb2f2c9583138f2",
+      "parts": [
+        "لعلك فهمت قصدي يا أملنا الموعود.\nإننا نبني عالما تعود فيه البسمة إلى وجوه الأطفال."
+      ]
+    },
+    "MID_SE_Ism_Mic_S_001": {
+      "source_sha256": "d170ccb29b0da236503a6e2cf2badbf83c91e16f7e36c8a3e09548d60a410958",
+      "parts": [
+        "يا أملنا الموعود! متى عدت؟"
+      ]
+    }
+  },
+  "SE_Ism_Moo_AS.msbt.zst": {
+    "MID_SE_Ism_Moo_A_001": {
+      "source_sha256": "a4e7f40930a9cc182d35b36e5a0419252aa83af961a8d4c9428fe1003ef65ef3",
+      "parts": [
+        "يا أملنا الموعود! ها أنت هنا من جديد، وبخير!"
+      ]
+    },
+    "MID_SE_Ism_Moo_S_001": {
+      "source_sha256": "46fa8016b379c43aafc64891c2bf673ea1d10936d60ed775bbe519cab99b6b7f",
+      "parts": [
+        "يا أملنا الموعود، أقسم أن أمضي في مهمتك حتى أتمها."
+      ]
+    }
+  },
+  "SE_Ism_Naz_AS.msbt.zst": {
+    "MID_SE_Ism_Naz_A_001": {
+      "source_sha256": "317b1d3657dec06351f1ab0334faa4d8a35f31c1f6dd8c727080f4f8e0ceab85",
+      "parts": [
+        "مهلا يا أملنا الموعود! عندي أمر أود\nالحديث معك فيه. ألست من الوسطاء؟"
+      ]
+    },
+    "MID_SE_Ism_Naz_S_001": {
+      "source_sha256": "a172f0f5db0411adaf6ef970f1fa8c4cd086874eb3c58b60ec9c5aa6576ee3ea",
+      "parts": [
+        "هيه! يا أملنا الموعود!"
+      ]
+    }
+  },
+  "SE_Ism_Ned_AS.msbt.zst": {
+    "MID_SE_Ism_Ned_S_002": {
+      "source_sha256": "7b5f04237e36349c6cd78be491d99ff79d120129138e3719abc0edb07e7ef656",
+      "parts": [
+        "هاه... هاه... يا أملنا الموعود. عدت أخيرا إذن."
+      ]
+    },
+    "MID_SE_Ism_Ned_S_021": {
+      "source_sha256": "282bbee6719d2b0f1cf3d6ea907d58fce1bd49a7d84f37f665db87727935ed70",
+      "parts": [
+        "فلنواصل الحياة معا يا أملنا الموعود.\nنمضي إلى الأمام، معركة بعد معركة."
+      ]
+    }
+  },
+  "SE_Ism_Nin_AS.msbt.zst": {
+    "MID_SE_Ism_Nin_A_007": {
+      "source_sha256": "f62d3059829731a1deb4f16025986a4feb8482024d9b43cf79176673a47f3a49",
+      "parts": [
+        "أراها جميلة أنا أيضا، يا أملنا الموعود.\nوهذه القلادة عزيزة علي."
+      ]
+    },
+    "MID_SE_Ism_Nin_A_008": {
+      "source_sha256": "e81e70141fd37cc7cdfab85f027fc29ef6146f5223e2644e7b7ba6d651bb863d",
+      "parts": [
+        "نعم يا أملنا الموعود، لهذه القلادة شأن كبير عندي."
+      ]
+    }
+  },
+  "SE_Ism_Oly_AS.msbt.zst": {
+    "MID_SE_Ism_Oly_A_002": {
+      "source_sha256": "2e36b4430a2216a278a4e04b6c259a9c3dd456cdf8e43979aecaa765f04f452f",
+      "parts": [
+        "(تشهق) يا أملنا الموعود!\nجئتني في ساعة ما عرفت فيها كيف أتدبر أمري."
+      ]
+    },
+    "MID_SE_Ism_Oly_A_011": {
+      "source_sha256": "7576c54c84fd8eb908a907e02cdf50d4475d99b9cc9d8f7bdadc651396835117",
+      "parts": [
+        "يا أملنا الموعود، لو سمعت منك أنت بالذات،\nفلا بد أنها ستعيد النظر في قرارها."
+      ]
+    },
+    "MID_SE_Ism_Oly_A_019": {
+      "source_sha256": "e5d419fc54cf3fe0dce6b4ddc0e0fd7292f53af7fc09733723ef58460f535bd5",
+      "parts": [
+        "(تشهق) حتى لقب الأمل الموعود\nلا يبيح لك إهانتي هكذا!"
+      ]
+    },
+    "MID_SE_Ism_Oly_A_029": {
+      "source_sha256": "6034f9552d2b809ba3d99f50c4de05deaa71877060e5a1119d535faaf3a5fc50",
+      "parts": [
+        "يا أملنا الموعود. آه..."
+      ]
+    },
+    "MID_SE_Ism_Oly_S_003": {
+      "source_sha256": "6833a9ccb39f1626f10ac45b4ba1597d38ad61176bd85ddd2b309bddd1b10eff",
+      "parts": [
+        "أعدت يا أملنا الموعود؟ ما أطول غيابك."
+      ]
+    },
+    "MID_SE_Ism_Oly_S_009": {
+      "source_sha256": "d13f3764094d8b84e09dd86e899716ef868b690edc0baaf7225aa248efcad593",
+      "parts": [
+        "لكن عندي ما هو أهم يا أملنا الموعود، إن أذنت لي أن أبوح لك به."
+      ]
+    }
+  },
+  "SE_Ism_Pep_AS.msbt.zst": {
+    "MID_SE_Ism_Pep_A_001": {
+      "source_sha256": "cff81396261679d312045a9516fa9fa3bc720b0b364915ac948ba71b90ad01ee",
+      "parts": [
+        "يا أملنا الموعود! كم أسعدنا حسن تدبيرك للمعركة الأخيرة!"
+      ]
+    },
+    "MID_SE_Ism_Pep_S_001": {
+      "source_sha256": "abce92dec2bce00ba4ff9931f78abf5b6f7e21d353ea60210b704b5b86791d5e",
+      "parts": [
+        "يا أملنا الموعود! ما أسعدنا بعودتك!"
+      ]
+    },
+    "MID_SE_Ism_Pep_S_023": {
+      "source_sha256": "242c5467d2e3c70109a774d45f339860de2bb1c7a63ccec2967b28b9c75318ed",
+      "parts": [
+        "لنا سؤال يا أملنا الموعود... أفي نيتك\nمواصلة الرحلة لمساعدة أهل هذا العالم؟"
+      ]
+    }
+  },
+  "SE_Ism_Pet_AS.msbt.zst": {
+    "MID_SE_Ism_Pet_A_002": {
+      "source_sha256": "f88598116f80df456d2b1652a4be9186251fd1d4956fc404c02cba9b9a811dd1",
+      "parts": [
+        "يا أملنا الموعود! ها أنا ذا! هاااه!"
+      ]
+    },
+    "MID_SE_Ism_Pet_A_017": {
+      "source_sha256": "fce8995d4b46e1dcd5d52fb971a6c2a321473d664b2255e06f71e7137ae9ccf6",
+      "parts": [
+        "سآخذ ذلك الجانب يا أملنا الموعود. أترك لك الجانب الآخر."
+      ]
+    },
+    "MID_SE_Ism_Pet_S_002": {
+      "source_sha256": "8dbbe25479b7003bbfff9965675004022df2bcfe28730af5c733c6e2dff6635c",
+      "parts": [
+        "يا أملنا الموعود... لقد جئت لنجدتي."
+      ]
+    }
+  },
+  "SE_Ism_Sar_AS.msbt.zst": {
+    "MID_SE_Ism_Sar_A_001": {
+      "source_sha256": "a4f053d2340fb4e9c065bc8bccd2fc32e33e95ed995bcf11914be18ea6d0ecc1",
+      "parts": [
+        "يا أملنا الموعود؟ أطلبت رؤيتي؟"
+      ]
+    },
+    "MID_SE_Ism_Sar_S_003": {
+      "source_sha256": "9515d803dab778c0ce50298d552e7da237afd943e02e238618a5b5ef765f8c4d",
+      "parts": [
+        "يا أملنا الموعود! أحقا نجوت؟"
+      ]
+    }
+  },
+  "SE_Ism_Sci_AS.msbt.zst": {
+    "MID_SE_Ism_Sci_A_003": {
+      "source_sha256": "7cbf2aa4f31d2dfd8578b97cbcf57cb80981ee1313f2ea2388e49775215a7cee",
+      "parts": [
+        "يا أملنا الموعود، كنت قبل لحظات فقط في مخدع حسناء."
+      ]
+    },
+    "MID_SE_Ism_Sci_A_016": {
+      "source_sha256": "e610cd6d5f181358586725f6645779618780858dda3e0b81e98754a2713a58ba",
+      "parts": [
+        "يا أملنا الموعود، ألك أسرة؟ أب وأم؟"
+      ]
+    },
+    "MID_SE_Ism_Sci_S_002": {
+      "source_sha256": "ed9113c72a73408591ec5920a8421b7f886bdb532d44bc33f8d6d8cc7346b178",
+      "parts": [
+        "تأخرت يا أملنا الموعود."
+      ]
+    },
+    "MID_SE_Ism_Sci_S_019": {
+      "source_sha256": "c0befe82b50b1bdd12f8506a820c7bd7ff4bf5ef514e948abf8e5f95c22f9898",
+      "parts": [
+        "يا أملنا الموعود، لك طريقة تجعلني أتخلى عن حذري."
+      ]
+    }
+  },
+  "SE_Ism_Seo_AS.msbt.zst": {
+    "MID_SE_Ism_Seo_A_015": {
+      "source_sha256": "d512af9efe3da71c663a6d21810874cc4c7c468b98c93644972e67cda0f5ad44",
+      "parts": [
+        "ماذا؟ يا أملنا الموعود... أهذا اقتراح بالتخلي عن إيماننا؟"
+      ]
+    },
+    "MID_SE_Ism_Seo_S_001": {
+      "source_sha256": "0cd0ab55512dfaee2fd3f379888ee88883533776eaa95c1e6fef7082e9040531",
+      "parts": [
+        "يا أملنا الموعود!"
+      ]
+    },
+    "MID_SE_Ism_Seo_S_012": {
+      "source_sha256": "684fd031331ee6e815c3c7cbf30a3f40cca730b59f95f6e5e52a032323164821",
+      "parts": [
+        "أحقا يا أملنا الموعود؟ إن كنت قد استأثرت\nباهتمامك، فلم يذهب تجملي اليوم سدى."
+      ]
+    }
+  },
+  "SE_Ism_Sim_AS.msbt.zst": {
+    "MID_SE_Ism_Sim_A_005": {
+      "source_sha256": "5ec1b241dba4e4fab6e56c6b32130381034178047204c8eee80f06cae7dbf577",
+      "parts": [
+        "آه، أنت هنا يا أملنا الموعود... لا شيء، مجرد هذيان سكران."
+      ]
+    }
+  },
+  "SE_Ism_Tia_AS.msbt.zst": {
+    "MID_SE_Ism_Tia_A_026": {
+      "source_sha256": "171b11d91bad7804b24c6849e3079be923f42ddc7ac97457656c4927423cf7ce",
+      "parts": [
+        "كلمة منك يا أملنا الموعود،\nوأنا مستعدة لفعل ما بوسعي لمساعدتك."
+      ]
+    },
+    "MID_SE_Ism_Tia_S_001": {
+      "source_sha256": "eb80a123983f90cddd7a98dd53cbee2acacc27f1964da4cd852805c681f8faf6",
+      "parts": [
+        "يا أملنا الموعود؟"
+      ]
+    }
+  },
+  "SE_Ism_Tob_AS.msbt.zst": {
+    "MID_SE_Ism_Tob_A_025": {
+      "source_sha256": "2e25fc792f587b035efcd6c3b72748295e353b041e9e6a33679c716524bcde32",
+      "parts": [
+        "هيا بنا يا أملنا الموعود. الموتى العائدون\nلا يرتاحون، ولا يسعنا نحن أن نرتاح!"
+      ]
+    },
+    "MID_SE_Ism_Tob_S_004": {
+      "source_sha256": "4749d599e7d27e38b0cb409cb162b6b2693e6b83a2ab387eaf162524ff4a9974",
+      "parts": [
+        "آخ... أوجعتني حقا يا أملنا الموعود!"
+      ]
+    }
+  },
+  "SE_Ism_Ven_AS.msbt.zst": {
+    "MID_SE_Ism_Ven_S_031": {
+      "source_sha256": "19a545911a9f2232409264472050cda34e616e94e9090cd677295e14062cef67",
+      "parts": [
+        "فلنحتفل ببداية جديدة في الحياة يا أملنا الموعود!\nلا حد لما نستطيع فعله، لا حد أبدا!"
+      ]
+    }
+  },
+  "SE_Ism_Yan_AS.msbt.zst": {
+    "MID_SE_Ism_Yan_S_002": {
+      "source_sha256": "adc2a9ad9af620118dffb4613bc704713e3b82d2e52be15714d2bf4c0b10f6bd",
+      "parts": [
+        "ها نحن نلتقي من جديد يا أملنا الموعود! ما أحلى لقاء\nالأصحاب القدامى. نجوت إذن، وجئت في أوان الشراب..."
+      ]
+    },
+    "MID_SE_Ism_Yan_S_015": {
+      "source_sha256": "993218a04c93f15ed48c12aa571ca86b6f5cd8997aac9b184bf42c9e54d82669",
+      "parts": [
+        "لا يسعنا أن ندير ظهورنا لمن يتألمون،\nأليس كذلك يا أملنا الموعود؟"
+      ]
+    }
+  },
+  "SE_Ism_Zac_AS.msbt.zst": {
+    "MID_SE_Ism_Zac_S_002": {
+      "source_sha256": "aa4d1218e0ed1270b81d30432810ce6172721813884d0959a6f9062d1bbef910",
+      "parts": [
+        "ماذا؟! يا أملنا الموعود! مهلا، من أين جئت؟\nأنت... على قيد الحياة؟! كيف؟"
+      ]
+    }
+  },
+  "SE_Sar_Kou_C.msbt.zst": {
+    "MID_SE_Sar_Kou_C_013": {
+      "source_sha256": "71ba2a47fd8e765ebd3ee8fca1f4adb6b59f60d178ef246dd7cb60076ae3eb32",
+      "parts": [
+        "ما استطعت تذكر وجه طفلي إلا\nبعدما وقفت إلى جانب أملنا الموعود."
+      ]
+    }
+  },
+  "Shop.msbt.zst": {
+    "MID_LGA_3_Dagsion_VandalCompany01_m01": {
+      "source_sha256": "094b32e27901331ec80fa3aca141598b94a29ef42d1d9ed89320e5d94767101c",
+      "parts": [
+        "نحن معك يا أملنا الموعود."
+      ]
+    }
+  },
+  "SubLobby.msbt.zst": {
+    "MID_LG_Sub_XXX_IoPort_B05_m01_001": {
+      "source_sha256": "a61b3472413ff7ec31c86a2b70dd1592e118055092bda9d9bd319e61ad7ca695",
+      "parts": [
+        "مهلا... أيعقل أنكم جيش أملنا الموعود؟"
+      ]
+    },
+    "MID_LG_Sub_XXX_Kassito_B01_m01_001": {
+      "source_sha256": "1dcea3ef3fc2cc99c69a28bd7327de26cec3a6b858d5d337ef92158493e5fc5f",
+      "parts": [
+        "شكرا لك. ما دمنا نحظى بعون\nأملنا الموعود، فلا يزال لنا ما نرجوه."
+      ]
+    }
+  },
+  "SubQuest.msbt.zst": {
+    "MID_LGV_SQID_JuraRequest_Jun_m02_003": {
+      "source_sha256": "88a051b7e8f798acbb734407cb0fbd814ad489f424da7214b51b3e94c940ec57",
+      "parts": [
+        "وسأجزيك بما يليق بك يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_SQID_MarsRequest_Mar_m01_001": {
+      "source_sha256": "80729a888ce802a671870631749d8cacd109bf8ed271f9bd85ff0b781d854800",
+      "parts": [
+        "أخيرا ألقى أملنا الموعود الذي كثر\nالحديث عنه! لطالما رجوت لقاءك."
+      ]
+    },
+    "MID_LGV_SQID_ClairRequest_Cla_m01_001": {
+      "source_sha256": "4f1e57678e639fb0effddfd8897abc1a4756a90ea0f38f5906ef60ecebcbcd4b",
+      "parts": [
+        "أهلا يا أملنا الموعود. عذرا لأنني لم أظهر قبل الآن."
+      ]
+    },
+    "MID_LGV_SQID_ClairRequest_Cla_m01_005": {
+      "source_sha256": "d41f294def862be32e894715627d436ea0f5e7602341f6b1121757eb50bd62cc",
+      "parts": [
+        "يا أملنا الموعود، هل لي بخدمة؟"
+      ]
+    },
+    "MID_LGV_SQID_ClairRequest_Cla_m02_009": {
+      "source_sha256": "cc88c1f714c4f251cf29a2ca2a8ad0972dbd72cc02027b8048919118bd37b86a",
+      "parts": [
+        "متى نزلت بك شدة يا أملنا الموعود،\nفأنا هنا لمشورتك وعونك. إلى اللقاء!"
+      ]
+    },
+    "MID_LGV_SQID_ReconstructionArena1_B01_m01_001": {
+      "source_sha256": "1911ea2dc39a6a72302ccca19b1051170438f58d533801e713f614b8b6656973",
+      "parts": [
+        "يا أملنا الموعود! الناجون من عهد\nاليأس يتوافدون على داغسيون أفواجا."
+      ]
+    },
+    "MID_LGV_SQID_ReconstructionArena1_B01_m02_001": {
+      "source_sha256": "465e831c9cc7ba9a28b0c44a600b1736fb659eca1d58a4aacc3d2823b78585a5",
+      "parts": [
+        "أحقا جمعت ",
+        "مواد البناء",
+        "؟\nشكرا لك يا أملنا الموعود! لا بد أن جمعها شق عليك."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_SQID_ReconstructionArena2_B01_m01_001": {
+      "source_sha256": "7a115cc393e359bc54cf934dba6cf365bb449d091d95f22aec3383e33ca79a95",
+      "parts": [
+        "يا أملنا الموعود! تتقدم أعمال إعادة بناء الحلبة\nعلى خير ما يرام. ما بلغناه أشبه بالمعجزة."
+      ]
+    },
+    "MID_LGV_SQID_ReconstructionArena2_B01_m02_002": {
+      "source_sha256": "9f3a8ca5d00f16754fb942026f0921e62d0f1cb33030a27e613c7e153f2437b5",
+      "parts": [
+        "ومتى فرغنا منها، أصبحت للناس منارة أمل.\nشكرا لك يا أملنا الموعود، من القلب."
+      ]
+    },
+    "MID_LGV_SQID_ReconstructionDining2_B01_m01_001": {
+      "source_sha256": "6118487911b74e7df28a3e1d2c8f30a784a0c68025cb0b84762250b659b3efee",
+      "parts": [
+        "آه، يا أملنا الموعود! ما أشد فرح\nزبائننا بأننا عدنا أخيرا إلى الطهو!"
+      ]
+    },
+    "MID_LGV_SQID_ReconstructionDining2_B01_m02_002": {
+      "source_sha256": "149d20a3ead5479d4c75c9116abe71e64e40216a6f5ed4bccda3606402fff94e",
+      "parts": [
+        "رسمت اليوم البسمة على وجوه كثيرة يا أملنا الموعود.\nنرجو أن نراك قريبا على مائدتنا!"
+      ]
+    },
+    "MID_LGV_SQID_Relief1_B01_m01_001": {
+      "source_sha256": "bfc90f662158fd39cd392ee51922167be6a39cd439ff8bfa72eb35a1d0abe215",
+      "parts": [
+        "يا أملنا الموعود، فارس مسرع يحمل\nخبرا عاجلا! سنتوريو في خطر!"
+      ]
+    }
+  },
+  "Tutorial.msbt.zst": {
+    "MID_TUT_Hub_SectionFree3_t": {
+      "source_sha256": "2bf48f90856f65b6a6a86c5bbd003dd58dfd69b5914a3a1c958ce850647f9074",
+      "parts": [
+        "استعدادات الأمل الموعود"
+      ]
+    }
+  }
+}

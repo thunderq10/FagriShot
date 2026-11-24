@@ -12,6 +12,21 @@ import zstandard
 from inference import PARAGRAPH, connect, editable, lexical, normalized, rows
 
 
+_GAMES = re.compile(r"\bHeroic\s+Games\b", re.IGNORECASE)
+_AR_GAMES = re.compile(
+    r"(لل[أا]لعاب|لألعاب|ال[أا]لعاب|(?<!\w)ألعاب)[ \t\n]+(?:البطولية|بطولية|البطولة)(?!\w)"
+)
+
+
+def tournament_title(source, target):
+    """Apply the approved event name only where the source names the tournament."""
+    if not _GAMES.search(source):
+        return target
+    return _AR_GAMES.sub(
+        lambda m: ("لألعاب" if m[1].startswith("ل") else "ألعاب") + " الأبطال", target
+    )
+
+
 def bitmap_text(text):
     # Arabic vowel signs have no positioning in the guest's advancing bitmap renderer.
     # NFC first retains the hamza on letters written as decomposed base + hamza.
@@ -35,7 +50,7 @@ def formatted(source, accepted):
             return None
         left = part[: len(part) - len(part.lstrip())]
         right = part[len(part.rstrip()) :]
-        result.append(left + bitmap_text(value) + right)
+        result.append(left + tournament_title(part, bitmap_text(value)) + right)
     return "".join(result)
 
 

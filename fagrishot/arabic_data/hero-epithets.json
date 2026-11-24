@@ -1,0 +1,156 @@
+{
+  "1_DIT_c12.msbt.zst": {
+    "MID_EV12_060_m01_031": {
+      "source_sha256": "31618b13adc8aaed6fa938ac5ce3ecbbbbde62b22e564764c5f77ca8e604ded6",
+      "parts": [
+        "ولثباتك هذا سيعرفك الناس جميعا بلقب الظل الفاتن."
+      ]
+    }
+  },
+  "1_KAI_c01.msbt.zst": {
+    "MID_EV11_001_m01_040": {
+      "source_sha256": "f3298282b432a33de31cd1aba08e3fb2a750e6c0c447fbb5d67fe968382a8181",
+      "parts": [
+        "أنت كاي ذو عين الجحيم،\nمن سادة اللهب في داغدا، أليس كذلك؟"
+      ]
+    }
+  },
+  "1_KAI_c12.msbt.zst": {
+    "MID_EV11_066_m01_075": {
+      "source_sha256": "f2320df8f358b1741168a34679672d16476fce1dc6963bd36d1c0e39942c972c",
+      "parts": [
+        "قوتك العجيبة أكسبتك لقبا سيعرفه الجميع،\nهو ذو عين الجحيم."
+      ]
+    }
+  },
+  "1_LED_c01.msbt.zst": {
+    "MID_EV14_000_m01_011": {
+      "source_sha256": "108297b4cc23641d88fd316100a023db3e554c8dde15e4642ba061e587dcb41e",
+      "parts": [
+        "إن صدق ظني، فأنت من سادة اللهب في داغدا.\nأأنت ليدا، ساحرة الأوتار الستة؟"
+      ]
+    }
+  },
+  "1_LED_c12.msbt.zst": {
+    "MID_EV14_065_m01_029": {
+      "source_sha256": "c4114e2aeb79ad79dbd2bf0d354cc5e9503200a6a20fea725bc36c126d80cfec",
+      "parts": [
+        "ولبراعتك في العزف على الفيهويلا\nستعرفين بين الناس بلقب ساحرة الأوتار الستة."
+      ]
+    }
+  },
+  "1_SEO_c02.msbt.zst": {
+    "MID_EV13_006_m01_009": {
+      "source_sha256": "bb5cb6f96efeeb2f1be8ed005515adcf16a9435610c20ecef28c748b3f11e5e9",
+      "parts": [
+        "أنت ثيودورا قاصمة الجيوش،\nمن سادة اللهب في داغدا، أليس كذلك؟"
+      ]
+    }
+  },
+  "1_SEO_c12.msbt.zst": {
+    "MID_EV13_063_m01_041": {
+      "source_sha256": "60641bcb7db85bbf7ff6893e3817bea1cd6ac1917842f0cd97e1d2c9f439e005",
+      "parts": [
+        "ولشدة بأسك في القتال\nستعرفين بين الناس بلقب قاصمة الجيوش."
+      ]
+    }
+  },
+  "Ending.msbt.zst": {
+    "MID_END_Solo_Living_Led_001": {
+      "source_sha256": "3c17c0c17b1bbefa6120d355d985cbac117290142f90b806940a1cac49de9460",
+      "parts": [
+        "لما طوت ليدا صفحة ثأرها من برتران،\nأقفلت على آلتها أوبسيديان في معبد كالا،\nثم راحت تجوب داغدا وتعزف لأهلها.\nوتتبع أحد المؤرخين الأغاني التي قيلت فيها،\nفخلص إلى أنها أمضت نحو أربعين عاما في الترحال،\nلا تطيل المقام في مكان. ولا يعرف أحد ما آل إليه أمرها\nفي أواخر حياتها، لكن أهل داغدا تناقلوا أسطورة\nساحرة الأوتار الستة جيلا بعد جيل."
+      ]
+    }
+  },
+  "MV12_01.msbt.zst": {
+    "MID_MV12_01_m003": {
+      "source_sha256": "472e432b31fa67bf5018d1eca74d28d44eec75e7d73e3a3d6951348d67e11b12",
+      "parts": [
+        "أنت أحد سادة اللهب في داغدا...\nديتريش، الملقب بالظل الفاتن؟"
+      ]
+    }
+  },
+  "Obelisk.msbt.zst": {
+    "MID_Obelisk_AnotherName_Kai": {
+      "source_sha256": "1fe12767b2d63108fc38b59a5732313d886532cb8b76bde369847d44d417d956",
+      "parts": [
+        "ذو عين الجحيم"
+      ]
+    },
+    "MID_Obelisk_AnotherName_Dit": {
+      "source_sha256": "ab0ead095c5bf01469584a28f22037477fe266b0f8a16d94d38303b02c75c108",
+      "parts": [
+        "الظل الفاتن"
+      ]
+    },
+    "MID_Obelisk_AnotherName_Seo": {
+      "source_sha256": "504b86de2787ab404d7808c26b09ba180092da8562cdb7051fe79bbd7b190649",
+      "parts": [
+        "قاصمة الجيوش"
+      ]
+    },
+    "MID_Obelisk_AnotherName_Led": {
+      "source_sha256": "f51395aa43a64463b22cdb1327478762e118098ab56750f332302a8542c11097",
+      "parts": [
+        "ساحرة الأوتار الستة"
+      ]
+    }
+  },
+  "Roster.msbt.zst": {
+    "MID_Roster_Position_Kai_003": {
+      "source_sha256": "9f98d37b17946cf0f37dee06cece5b01d15f09bbbe198e6d11d425c52a453c4f",
+      "parts": [
+        "ذو عين الجحيم"
+      ],
+      "flow": "auto"
+    },
+    "MID_Roster_Position_Dit_003": {
+      "source_sha256": "92fe6c65016e0217f2496fd4e0c211ba22489bb29c408ba7431cd558b385e992",
+      "parts": [
+        "الظل الفاتن"
+      ],
+      "flow": "auto"
+    },
+    "MID_Roster_Position_Seo_003": {
+      "source_sha256": "a6cd79f06db5fb8f7102ac686b4294f6110c68a6a35248d372196c9970504f8b",
+      "parts": [
+        "قاصمة الجيوش"
+      ],
+      "flow": "auto"
+    },
+    "MID_Roster_Position_Led_003": {
+      "source_sha256": "4d200d3365500602adb381002ff2840cd03cea81d493a5ee4b3190656cbd69d4",
+      "parts": [
+        "ساحرة الأوتار الستة"
+      ],
+      "flow": "auto"
+    }
+  },
+  "Tutorial.msbt.zst": {
+    "MID_TUT_Root_SalvationKAI_t": {
+      "source_sha256": "354d3079be6e5024bc5082f595e02d8533410d856dce1baf81b90b4f2dea8efa",
+      "parts": [
+        "كاي ذو عين الجحيم"
+      ]
+    },
+    "MID_TUT_Root_SalvationDIT_t": {
+      "source_sha256": "61c03642ea7532565370b5b86875425f937fbe71298198674cb72689a0f1df78",
+      "parts": [
+        "ديتريش، الظل الفاتن"
+      ]
+    },
+    "MID_TUT_Root_SalvationSEO_t": {
+      "source_sha256": "41f90d78c626637c4fc470432443a2a94d5700d68f8ba210dcd92e7d52e76019",
+      "parts": [
+        "ثيودورا، قاصمة الجيوش"
+      ]
+    },
+    "MID_TUT_Root_SalvationLED_t": {
+      "source_sha256": "d44369f5a5b31ad5067010ee71250ab8e02c10fb87b688a1d98af16d50caf7ff",
+      "parts": [
+        "ليدا، ساحرة الأوتار الستة"
+      ]
+    }
+  }
+}

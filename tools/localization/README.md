@@ -37,8 +37,23 @@ The chapter card inserts three separately rendered labels. Its fingerprinted for
 | The Beginning / Voice upon the Peak | البداية / صوت القمة |
 | Heart Core / Mediator | نواة القلب / الوسيط |
 | underworld / forbidden land | العالم السفلي / الأرض المحرمة |
+| Heroic Games / Flame Lords of Dagda | ألعاب الأبطال / سادة اللهب في داغدا |
+| Hell's-Eye / Ravishing Shadow | ذو عين الجحيم / الظل الفاتن |
+| Breaker of Armies / Siren of the Six-String | قاصمة الجيوش / ساحرة الأوتار الستة |
 
 اقرأ الحوار بصوت مسموع مع الرد الذي يليه. راجع مرجع الضمير وجنس المخاطب والعدد، وتأكد من أن كل جواب في قائمة الخيارات يناسب كلام الشخصية التي سترد عليه. وإذا توقف معنى العبارة على حركة قد يصعب عرضها، فاختر لفظا أوضح. استخدم «؟» و«،» في النص العربي، واحتفظ بترتيب أحرف الرموز مثل E34 عند عرضها داخل اللعبة.
+
+فرّق بين المتكلم والمخاطب ومن يدور الحديث عنه. حين تعتذر هونغ هوا عن فعلها تقول «أنا آسفة». أما إذا روت اعتذار رجل فصيغة الاعتذار تتبع صاحب الكلام المنقول. راجع اسم المتكلم في بيانات المشهد، وما يسبق العبارة ويلحقها، ثم قارن النص الفرنسي أو الياباني عند الالتباس. قد يحدد شرط المشهد جنس اللاعب بينما يكون المتكلم شخصا آخر. وإذا ورد جواب واحد على لسان البطل والبطلة معا، فاختر صيغة تصلح لكليهما، مثل «لنبدأ» حين يكون المقصود إعلان الاستعداد. وإذا نودي البطل أو البطلة في عبارة مشتركة، جاز «يا أملنا الموعود» لأن وصف «الموعود» يعود على الأمل. راجع ما يلي النداء أيضا، فقد يحتاج فعل الأمر نفسه إلى إعادة صياغة.
+
+حافظ على فصحى واحدة تتسع لاختلاف الأصوات. يستطيع الجندي أن يصيح «اثبتوا!» في المعركة، وتستطيع الأم أن تواسي ابنتها بكلمات يسيرة. وللمنادي في حفل التتويج فسحة في الإيقاع والألقاب. لا تثقل المزاح أو الحزن بالسجع، وأبق مصطلحات زينون التقنية دقيقة حين يشرح صنع الأجساد. عند ترجمة لقب، راجع ظهوره في التعريف بالشخصية وفي سجلها وفي خاتمة قصتها. عزف ليدا هو الذي يسحر سامعيها، ومنه جاء لقبها.
+
+The IGDA Localization SIG recommends giving translators the speaker, addressee and scene context. Ubisoft's Arabic localization team for *Mirage* describes building a shared vocabulary for its setting and reviewing character delivery. Those practices inform the checks above. [IGDA's guide to localization context](https://igda.org/news-archive/high-quality-localization-help-loc-help-you/) · [Ubisoft's account of Arabic localization](https://news.ubisoft.com/en-ca/article/YJZekvzJH1XyKlygfhSbF)
+
+To queue dialogue for bilingual review, run the audit against matching local resources and the Arabic pack in the player being tested. It checks visible first-person predicates and selected recurring mistranslations. A flagged line can be an accurate quotation or a reference to someone else. The report stores IDs and review reasons. Use a fresh filename for each run.
+
+```powershell
+python tools/localization/dialogue_review.py --romfs "D:\GameDumps\FortunesWeave\romfs" --reviewed fagrishot/arabic_data --campaign "D:\FagriShot\fagrishot\arabic_data\campaign" --report work/private/localization/dialogue-review.json
+```
 
 ## Verify an edit
 

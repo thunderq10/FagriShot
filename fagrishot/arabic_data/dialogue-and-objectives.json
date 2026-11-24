@@ -1,0 +1,887 @@
+{
+  "1_DIT_c04.msbt.zst": {
+    "MID_EV12_018_m01_017": {
+      "source_sha256": "b4f88668ac36c9f698b3d617a51d36eff70467bcce01ec3e67527a5710936f0d",
+      "parts": [
+        "أجل! كنت أعلم أنك ستفهمينني يا ميكايلا."
+      ]
+    }
+  },
+  "1_DIT_c07.msbt.zst": {
+    "MID_EV12_038_m01_020": {
+      "source_sha256": "7b597ba3ebe7b7e21f840166a251f496e4e0e033549ce8235fcbc13c37f32a20",
+      "parts": [
+        "لا تقلقي يا أورسولا. يخيل إلي أن هذا\nالسيف يستحق كل قطعة ذهب أبذلها فيه."
+      ]
+    }
+  },
+  "1_DIT_c09.msbt.zst": {
+    "MID_EV12_050_m01_001": {
+      "source_sha256": "cb5a154492c2dbeffee831340a7a52c0c2916bbd4af0f995099ca1579c7603b4",
+      "parts": [
+        "انظروا. هذه تشانغ آه، حاسوب كمي، وهي العقل المدبر لنوا."
+      ]
+    }
+  },
+  "1_DIT_c11.msbt.zst": {
+    "MID_EV12_057_m01_018": {
+      "source_sha256": "6e233a3d1e72193099cc5b97af628cccbb44795d0cea817ed1d169a294229d1a",
+      "parts": [
+        "حذار يا برتران. لا أظنه سيهون علينا الأمر."
+      ]
+    },
+    "MID_EV12_058_m01_002": {
+      "source_sha256": "79b9a6b5ddeb00cc0af8d913ea26df2e635211a859f42ab1ce2ad7abbd54c8ee",
+      "parts": [
+        "اسمي ليرا. أما اسمي الحق فهو المنادية."
+      ]
+    }
+  },
+  "1_KAI_Battle.msbt.zst": {
+    "MID_SC11_10_m01_007": {
+      "source_sha256": "6e746b00d474add3366faa30eca4b4ebf2b0f2717c2ce8d1102d097f6dfbd6ea",
+      "parts": [
+        "كلهم يحبونك يا ليدا! أفهكذا تجزينهم؟"
+      ]
+    },
+    "MID_BD11_10_m02_002": {
+      "source_sha256": "8cf74071044555f5e54ab3e405cad430d20105282dde8bfdbada44a3486ddfc7",
+      "parts": [
+        "شكرا يا بوكار! دعه لي!"
+      ]
+    }
+  },
+  "1_KAI_c04.msbt.zst": {
+    "MID_EV11_025_m01_005": {
+      "source_sha256": "54cef93fbf6ac8ea001017c1e9928ebcc187bb115613f301450a96d5021c93ac",
+      "parts": [
+        "ما أروع صنيعك يا أورشل!"
+      ]
+    }
+  },
+  "1_KAI_c05.msbt.zst": {
+    "MID_EV11_077_m01_012": {
+      "source_sha256": "22d9d9c774362dbeb95c11c4af13abd2fbcd8fc8622bc526631fd488482d59df",
+      "parts": [
+        "لي عندك رجاء يا كاي."
+      ]
+    }
+  },
+  "1_KAI_c07.msbt.zst": {
+    "MID_EV11_040_m01_023": {
+      "source_sha256": "6eb14a3681c614ccf73b135ecb01c71d8eb5e06b42d7178ba4aec78278cca3ba",
+      "parts": [
+        "ولكن أبشري يا إنيوني! ما زال في شفائك أمل،\nوسرعان ما تعودين إلى سابق عهدك."
+      ]
+    }
+  },
+  "1_KAI_c09.msbt.zst": {
+    "MID_EV11_050_m01_023": {
+      "source_sha256": "1f8e40f64b958e020cfa2d07adf0dd81e23f58e8d12c2a38b7016d50e6954ebc",
+      "parts": [
+        "أنت عزيزة علي يا أولتاند. أريد لك السعادة."
+      ]
+    }
+  },
+  "1_KAI_c10.msbt.zst": {
+    "MID_EV11_053_m01_024": {
+      "source_sha256": "3fce773ad2c6cf569203c6f502d54ba61c24420761416b973cdb25b8052f7867",
+      "parts": [
+        "أصبت تماما يا كاي."
+      ]
+    }
+  },
+  "1_KAI_c11.msbt.zst": {
+    "MID_EV11_085_m01_022": {
+      "source_sha256": "01ea8c3d36f45c1b65c7d13a926388365afa006b44edfa20f92d863233a07fb5",
+      "parts": [
+        "عذرا يا ثيودورا... أيمكنني أن أحدثك قليلا؟ على انفراد؟"
+      ]
+    },
+    "MID_EV11_060_m01_017": {
+      "source_sha256": "12a75eb5b994b6574d97617a0594b7088c3ce62c26e43fd5429cc96f45f100ab",
+      "parts": [
+        "شكرا يا أورورا. ما أطيب\nأن يستعيد المرء ذكرى الأيام الهانئة."
+      ]
+    }
+  },
+  "1_KAI_c12.msbt.zst": {
+    "MID_EV11_063_m01_013": {
+      "source_sha256": "eb1d7efb94f93d801114eeb063c4632a837ab147eb8abf47889ca089fa95fe26",
+      "parts": [
+        "شكرا يا كاي."
+      ]
+    },
+    "MID_EV11_064_m01_001": {
+      "source_sha256": "4a0c044a11afbda7cb52191418902a8fa1dcc6b95db2f4dc4b13059595b0fa72",
+      "parts": [
+        "هذه معركتك الأخيرة يا كاي."
+      ]
+    },
+    "MID_EV11_067_m01_002": {
+      "source_sha256": "55c3fdbf4b6dcfb7aa9268e14ad55ad4556db0ec8fb9e43b1b0fc8c01197f0a9",
+      "parts": [
+        "ما أشد فطنتك يا كاي! ولكن ماذا أفعل أنا؟"
+      ]
+    }
+  },
+  "1_LED_Battle.msbt.zst": {
+    "MID_SC14_12_m01_007": {
+      "source_sha256": "6e746b00d474add3366faa30eca4b4ebf2b0f2717c2ce8d1102d097f6dfbd6ea",
+      "parts": [
+        "كلهم يحبونك يا ليدا! أفهكذا تجزينهم؟"
+      ]
+    },
+    "MID_SC14_15_m01_009": {
+      "source_sha256": "21627c0c245f58ab97514537f3a6e808bb0ffbef7435d0db19b9e5c84d44e282",
+      "parts": [
+        "دعي الأمر كله لنا يا ليليدانا!"
+      ]
+    }
+  },
+  "1_LED_c05.msbt.zst": {
+    "MID_EV14_027_m01_005": {
+      "source_sha256": "9c6edac7913d92e7bb876f7e74c5623dfd0ab6877275845862b6241d58484bcc",
+      "parts": [
+        "أجل! فلنتعاون يا ليدا."
+      ]
+    },
+    "MID_EV14_027_m01_038": {
+      "source_sha256": "445276d13e48ad77e4a344fddf2ed6646b5179d665d0e1524e8e8cd75208e911",
+      "parts": [
+        "شكرا لك يا ليدا."
+      ]
+    }
+  },
+  "1_LED_c06.msbt.zst": {
+    "MID_EV14_030_m01_013": {
+      "source_sha256": "f0efd742b508f756e72daff1ad3570c4cbfbdb91b4f1fdf83e99183a48ab1ba5",
+      "parts": [
+        "شكرا لك يا كالا."
+      ]
+    }
+  },
+  "1_LED_c07.msbt.zst": {
+    "MID_EV14_035_m01_006": {
+      "source_sha256": "2f313bcf6ec5f875df4bbf18e5551143badff89a4c1468a62348f4ecfa34e1a3",
+      "parts": [
+        "هذا يضرك يا ليدا. كفي عنه."
+      ]
+    },
+    "MID_EV14_036_m01_044": {
+      "source_sha256": "efad5b6f993bbd14f2ce823de626ee58a04fa964c88f69fb344b62c3cd726f2c",
+      "parts": [
+        "ستخسر يا ليخنر. أتحتاج إلى من ينقذك؟ ما رأيك؟"
+      ]
+    }
+  },
+  "1_LED_c08.msbt.zst": {
+    "MID_EV14_043_m01_031": {
+      "source_sha256": "9f3593e2a11e5e0af11bd8cf2784b1fe04672c976efb5e2204a7fb856e6385ea",
+      "parts": [
+        "آخر زوجات فاندال، ملك المغامرين."
+      ]
+    }
+  },
+  "1_LED_c09.msbt.zst": {
+    "MID_EV14_044_m01_015": {
+      "source_sha256": "d6d9121e313dbc902f87fe02522e0cd19ae6d94930de49ae91dd42664e3d7cab",
+      "parts": [
+        "سأقتل برتران مهما كلفني ذلك!"
+      ]
+    }
+  },
+  "1_LED_c12.msbt.zst": {
+    "MID_EV14_060_m01_001": {
+      "source_sha256": "c1cc33dccb5b386aad7160c715ca327403aadaf42fc458eadd5ac86151b6611b",
+      "parts": [
+        "عندي لك خبر يا ليليدانا."
+      ]
+    },
+    "MID_EV14_064_m01_037": {
+      "source_sha256": "f8014c8d8a5f03f8ca1bddba04a55890300c24643c62a2113f3d5ffdb88741c4",
+      "parts": [
+        "شكرا يا ليدا. من قلبي، شكرا..."
+      ],
+      "flow": "auto"
+    }
+  },
+  "1_SEO_c01.msbt.zst": {
+    "MID_EV13_001_m01_038": {
+      "source_sha256": "49601fa8ddf9e96d968dc70f2cef0a73d4766ccf6d936056d9ee02a6e54b15f1",
+      "parts": [
+        "مهلا يا توبياس، أيعقل ما تقول؟"
+      ]
+    },
+    "MID_EV13_001_m01_014": {
+      "source_sha256": "89802a7b2beac56b516261dc5758ab843a5614af46e48b4fc9263a1f9da9d453",
+      "parts": [
+        "التجهم لدايان."
+      ]
+    },
+    "MID_EV13_003_m01_033": {
+      "source_sha256": "3d7b3d86dbf7a972d27566333249385d37e6c0e7fc444a738f6f5c8644c80c14",
+      "parts": [
+        "أتوسل إليك يا تروي. دليني على موضع ذراع ماهادو."
+      ]
+    }
+  },
+  "1_SEO_c02.msbt.zst": {
+    "MID_EV13_007_m01_005": {
+      "source_sha256": "0b4ff7714259ec8a4b1dca30aa0d0800537a31f89998014730ff8eb8655ea761",
+      "parts": [
+        "صه يا كوموس. لا ينعقد مجلس الزعماء الخاص إلا بحضورهم."
+      ]
+    },
+    "MID_EV13_008_m01_001": {
+      "source_sha256": "343805c7b3f98a777f0d09d0c13c310533a2c353885123a4ff8087ae8ffe04a6",
+      "parts": [
+        "استسلم يا دايان. لقد أدركتك تبعة آثامك."
+      ]
+    }
+  },
+  "1_SEO_c06.msbt.zst": {
+    "MID_EV13_035_m01_001": {
+      "source_sha256": "08e85af0e83589ce468bac6b1ed70269f66591d0ef560d1d8fbd049213ebf34e",
+      "parts": [
+        "بفضل ثيودورا ملكة ساراميس، استعدت باهر فان."
+      ]
+    }
+  },
+  "1_SEO_c07.msbt.zst": {
+    "MID_EV13_036_m01_027": {
+      "source_sha256": "60df595e270933ac6c2277597c40d67937b706a65b86f367d12e428c576873cd",
+      "parts": [
+        "الحديث عن دايان."
+      ]
+    }
+  },
+  "1_SEO_c08.msbt.zst": {
+    "MID_EV13_040_m01_021": {
+      "source_sha256": "d53df17cd50cfb9472db57a0e247481b39c1070f021dfedaf39dc5869c054f4c",
+      "parts": [
+        "أنا نوتزو، القيم على شؤون الهار هالي."
+      ]
+    },
+    "MID_EV13_041_m01_029": {
+      "source_sha256": "edadd2a42c34576a6a50848cbec382b5902d39c69634d314df90de8da43fe309",
+      "parts": [
+        "يا ملكة ساراميس، فيك شيء يذكرني بزعيمنا باهر فان."
+      ]
+    }
+  },
+  "1_SEO_c09.msbt.zst": {
+    "MID_EV13_046_m01_029": {
+      "source_sha256": "abeaadfa1bae92f40b870d1106743bd6e83a7e2e8f6d5675a158d938fb2a3908",
+      "parts": [
+        "اعلم يا زينون أني لا أثق بإله سوى\nيو فاس، ولا بمعبد إلا معبدها."
+      ]
+    }
+  },
+  "1_SEO_c11.msbt.zst": {
+    "MID_EV13_106_m01_020": {
+      "source_sha256": "89d0968f724e3bf696004fb3f00ee7f200d61850dfd42e14fc6e188b4bcc80eb",
+      "parts": [
+        "شكرا لك يا ثيودورا."
+      ]
+    }
+  },
+  "1_SEO_c12.msbt.zst": {
+    "MID_EV13_062_m01_008": {
+      "source_sha256": "87d2db14819eae6df8bfb589ff6a120a6c37be49011420e65be4bd07d84ae0bb",
+      "parts": [
+        "الالتفات إلى كلابكا."
+      ]
+    }
+  },
+  "2_XXX_c06.msbt.zst": {
+    "MID_EV22_031_m01_019": {
+      "source_sha256": "47117e6b44728d58e7026d7a29a85918cd342713d28ba82e93a7fa4dd697dcb5",
+      "parts": [
+        "سأرافقك يا ديتريش. وإن مت، فإلى جانبك."
+      ]
+    }
+  },
+  "3_ISM_Battle.msbt.zst": {
+    "MID_SC00_15_m28_001": {
+      "source_sha256": "97f84b20fa4da627e705f2d655ea899713a03c047917f1b0104217f39b57b521",
+      "parts": [
+        "بالور، إله الشياطين... يا له من مرعب! لكنني لن أفر، ولن أهزم!"
+      ]
+    }
+  },
+  "Item.msbt.zst": {
+    "MIID_H_ShinzaHarpoon1": {
+      "source_sha256": "f26ef2db53448f79b7a8b346d7455f660423c9f4b4b66b7b74bf164a6cab681a",
+      "parts": [
+        "رمح مفقود ذو ثلاث شعب كان لوالد\nإزميرالدا. يتيح فن الرمية الساحقة."
+      ]
+    },
+    "MIID_H_ShinzaHarpoon2": {
+      "source_sha256": "1167f6dfff089b15b426997d81be048b1a85d539ad3e89024b9213180c8641c6",
+      "parts": [
+        "رمح مفقود ذو ثلاث شعب كان لوالد إزميرالدا.\nيتيح فن الرمية الساحقة بقوة ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MIID_DagdaShield": {
+      "source_sha256": "dc3cf547e7a5c71c1077505a0ad3a06b4eb233ff03b204fdf664679d8aab9d16",
+      "parts": [
+        "ترس داغدا الإلهي"
+      ]
+    }
+  },
+  "LG_1_M09.msbt.zst": {
+    "MID_LGV_1_M09_B08_m01_001": {
+      "source_sha256": "0bc34c1799f1fcf588b0c19b0337376fa89161bc9e51b4133ad2e65c19fb4770",
+      "parts": [
+        "ولدت أورورا، بوق الملاحين، من سوليل حامل\nالشمس ويو فاس حارسة الموت والليل."
+      ]
+    },
+    "MID_LGA_1_M09_B21_m01": {
+      "source_sha256": "9a7519f33381caf8f983623d71bff8fa72a515b8b3253215ccea7278c852249c",
+      "parts": [
+        "أحسنت يا فاندال."
+      ]
+    }
+  },
+  "LG_1_M10.msbt.zst": {
+    "MID_LGV_1_M10_Cle_m01_004": {
+      "source_sha256": "bd01f4ec73a31390848a85d93bab7d089b2d33c3d0bcdcc84765847220503d4c",
+      "parts": [
+        "الأولى أن ألقي التهمة على ميسون."
+      ]
+    }
+  },
+  "LG_1KAI_c01.msbt.zst": {
+    "MID_LGA_1KAI_c01_B03_m01": {
+      "source_sha256": "248fb32ec7f32105d4db249b948f1f04a93d273ea11ed2ba67f8100cecb89332",
+      "parts": [
+        "حان وقت العودة يا كاي."
+      ]
+    }
+  },
+  "LG_1KAI_c06.msbt.zst": {
+    "MID_LGV_1KAI_c06_Cas_m01_001": {
+      "source_sha256": "882f53fc74c4724df2a59792546d677c930997248c09dda3a67e8737d462f578",
+      "parts": [
+        "يا كاي، حدثني غابرييل ببعض الأخبار."
+      ]
+    }
+  },
+  "LG_1KAI_c11.msbt.zst": {
+    "MID_LGV_1KAI_c11_Gab_m02_001": {
+      "source_sha256": "73cf35a0c588cd92a9ee41aed4c13861563d94e65846dc30138a04e5bf83fdd0",
+      "parts": [
+        "عليك أعتمد يا برتران. وعليك أيضا يا كاي!"
+      ]
+    }
+  },
+  "LG_1SEO_cAssist.msbt.zst": {
+    "MID_LGV_1SEO_TG13_002_m01_001": {
+      "source_sha256": "c566e3a082d4906fd404679992dbbd597b63c2dee8298fa2d87f2fac43a7bd72",
+      "parts": [
+        "مرحبا أيتها الملكة ثيودورا!"
+      ]
+    },
+    "MID_LGV_1SEO_c11_LG13_018_m01_002": {
+      "source_sha256": "8982fc3bf40adbcd2c013ce8c87e4c8b506d0204f9f1788af96173358ff21874",
+      "parts": [
+        "لقائي بأورورا، ابنة يو فاس."
+      ]
+    }
+  },
+  "LG_3_M03.msbt.zst": {
+    "MID_LGV_3_M03_Jun_m01_001": {
+      "source_sha256": "689814748f9e1f989c8b88d28d730c1bdc726abb85d073af2aa535cbc1cb0585",
+      "parts": [
+        "يحزنني مصير سوليل. لقد كانت ميتته على يد داغدا فاجعة."
+      ]
+    }
+  },
+  "LG_3_M06.msbt.zst": {
+    "MID_LGV_3_M06_Hur_m01_001": {
+      "source_sha256": "e8590e9e2cffc2c5ec6ffdf3a38a62be042b8bdc2263d799ea31d98de79ce8f4",
+      "parts": [
+        "لم يبق إلا القليل حتى نهاجم بالور.\nلا أكاد أصدق أننا اقتربنا إلى هذا الحد."
+      ]
+    }
+  },
+  "Meal.msbt.zst": {
+    "MID_SV_Meal_Lou_Buc_m01_01": {
+      "source_sha256": "e41c0bf57eee358030fe399ee9617381a3758f14f3959672909c22e0b2159aa1",
+      "parts": [
+        "يسرني الأكل معك يا بوكار!\nوالحق أنك أحسن مني أدبا على المائدة!"
+      ]
+    }
+  },
+  "MV12_05.msbt.zst": {
+    "MID_MV12_05_m007": {
+      "source_sha256": "a29e2027a12dab6d437a6261483a0065cc939e9c0491c09f5ddbf557a64ac497",
+      "parts": [
+        "شكرا يا ناثان!"
+      ]
+    }
+  },
+  "MV20_00.msbt.zst": {
+    "MID_MV20_00_m012": {
+      "source_sha256": "0efbad101ebbaa30d453658d8ec8f594b80c29d867c9c2dbabd36fd3559e5af0",
+      "parts": [
+        "أنا ناثان من أراغو."
+      ]
+    }
+  },
+  "Quest.msbt.zst": {
+    "MSQID_Goal_DIT_Challenge5": {
+      "source_sha256": "3385de3b203bf16d33dde6e2e6d79e619272fa457b43fe8f104988121da5954c",
+      "parts": [
+        "هزيمة إيل لارا."
+      ]
+    },
+    "MSQID_Goal_NegotiationMaxim2": {
+      "source_sha256": "de5c9403f6756dc44b44d370c7a3e2e49dac5c0b4d90e211a4d8b05bb7580226",
+      "parts": [
+        "هزيمة جماعة جيف دونانزو."
+      ]
+    },
+    "MSQID_Goal_BattleNapier": {
+      "source_sha256": "301704bd56540b9042c9eeacc88ccb6a166b99e019bd8ea97038ec6797479331",
+      "parts": [
+        "هزيمة فؤوس بهيلدا."
+      ]
+    },
+    "MSQID_Title_NegotiationMaxim2": {
+      "source_sha256": "395e6a677daf029206f184f7c5602e427612d5a00f3a2c831750cec69ec783be",
+      "parts": [
+        "طلب المهرج: جيف دونانزو"
+      ]
+    },
+    "MSQID_Title_BattleNapier": {
+      "source_sha256": "a897d6d29c29c56c7da4f54d10cedceddd445e9ae2446ec0eb40f6b10872739d",
+      "parts": [
+        "فؤوس بهيلدا"
+      ]
+    }
+  },
+  "Roster.msbt.zst": {
+    "MID_Roster_Career_Asw_003": {
+      "source_sha256": "1fe78f87d131f046bd2ff70a11e6969548031d90bfda361e9a24a0e837d5f6c6",
+      "parts": [
+        "تزوجت غيلكريس."
+      ]
+    },
+    "MID_Roster_Career_Tal_001": {
+      "source_sha256": "4437227e151c05ea27b65d217bd0fcdf1fb2d54f113cb74d3342233aaf358404",
+      "parts": [
+        "ولد لفاندال، ملك المغامرين."
+      ]
+    },
+    "MID_Roster_Position_Tal_004": {
+      "source_sha256": "0cb2284d442d031393d23979697a75342d1bae6ba4a94072394653f634bcacd1",
+      "parts": [
+        "وريث ملك المغامرين"
+      ],
+      "flow": "auto"
+    },
+    "MID_Roster_Position_Aur_001": {
+      "source_sha256": "c1ad4dcbfffbfd2a6ae86b50f9a145bdaa62691641cacfc37a0c012ba72eed46",
+      "parts": [
+        "بوق الملاحين"
+      ],
+      "flow": "auto"
+    },
+    "MID_Roster_Position_Sol_001": {
+      "source_sha256": "5d0ccbaea3d5473d3734c7cd5dfafe7cf67596a17916b26df13313f7b86a81a6",
+      "parts": [
+        "حامل الشمس"
+      ],
+      "flow": "auto"
+    }
+  },
+  "SE_Bon_Tob_CBA.msbt.zst": {
+    "MID_SE_Bon_Tob_A_003": {
+      "source_sha256": "9b4614a288b126277e99ef262d03d9bbcb8d8a6f992eac170126dfb4e34b6ba9",
+      "parts": [
+        "أف! ما أشد بأسك يا بونا! يعسر أن أعرف أينا الغالب!"
+      ]
+    }
+  },
+  "SE_Buc_Sci_CBA.msbt.zst": {
+    "MID_SE_Buc_Sci_C_002": {
+      "source_sha256": "b7afabcf6a3e11b349257b04382e920ea1c2dbc16746aff820e004eff007fdf2",
+      "parts": [
+        "ما أشبه هذا بك يا بوكار.\nتهون من شأني وكأن عملي لا ينفعنا جميعا."
+      ]
+    }
+  },
+  "SE_Dan_Set_CB.msbt.zst": {
+    "MID_SE_Dan_Set_B_002": {
+      "source_sha256": "b96babdafdacce10f49d9f2ef2633c21266c2855d9d00736277b630f4be8d2c2",
+      "parts": [
+        "سلام عليك يا سيتيث. أرى أن رائعتي قد نالت إعجابك."
+      ]
+    }
+  },
+  "SE_Dit_Fab_CBA.msbt.zst": {
+    "MID_SE_Dit_Fab_A_024": {
+      "source_sha256": "cc453c23ba5ce04a7ab7b008fbfcb43df0dc30ed86c22cd2c885605b44563c42",
+      "parts": [
+        "الآن فهمت ما شعرت به يا بيرياندروس... اضحك مني إن شئت."
+      ],
+      "flow": "auto"
+    }
+  },
+  "SE_Kai_Bel_BA.msbt.zst": {
+    "MID_SE_Kai_Bel_A_019": {
+      "source_sha256": "64fa5f7df8c3337f14e6c4720bd6c7d0a0b389d146d04aec6c867bf7d984d4cf",
+      "parts": [
+        "أقبل عونك يا كاي كاستور."
+      ]
+    }
+  },
+  "SE_Led_Asw_C.msbt.zst": {
+    "MID_SE_Led_Asw_C_001": {
+      "source_sha256": "4b138c5bf0c3a488887fd62b8d6f371c8d8c9f27dad120e8a1625ff6f0de5984",
+      "parts": [
+        "ما أبرعك يا ليدا! أتأذنين لي أن أتدرب معك؟"
+      ]
+    }
+  },
+  "SE_Max_Gol_CBA.msbt.zst": {
+    "MID_SE_Max_Gol_A_021": {
+      "source_sha256": "7439eb885d328dd6ee35b72c46209ee13e851388284e8f31e12915c6f8e1bde7",
+      "parts": [
+        "وإذا به يلهث: آه... أخ...!\nفضربته على رأسه. لو رأيت كيف سال دمه!"
+      ]
+    }
+  },
+  "SE_Oly_Ale_CB.msbt.zst": {
+    "MID_SE_Oly_Ale_C_028": {
+      "source_sha256": "9aacd5eeff13a710703fedba8fad36243ff6a360267d80fc51d9c91332d51386",
+      "parts": [
+        "شكرا لك يا أولمبيا."
+      ]
+    }
+  },
+  "SE_Orh_Bon_CB.msbt.zst": {
+    "MID_SE_Orh_Bon_B_026": {
+      "source_sha256": "735b0cacb4fa19c4f989206fe3b874c4fc5e31b16f8518e522e1793b4cc21ff6",
+      "parts": [
+        "هو هو هو! يا لها من أقمشة تليق بكريدنا هدية!"
+      ]
+    }
+  },
+  "SE_Pet_Hur_CBA.msbt.zst": {
+    "MID_SE_Pet_Hur_A_017": {
+      "source_sha256": "413325e7631db087f140f1fa1afe68de60f008b1ebe3633ed9ee17cf12782184",
+      "parts": [
+        "كانت حبلى بك يا بيتر حين رحلت إلى ريبيرا."
+      ]
+    }
+  },
+  "SE_Pet_Sop_CB.msbt.zst": {
+    "MID_SE_Pet_Sop_C_001": {
+      "source_sha256": "ddd738b99759adf0116f7c405b21939e06b4d0d27554afe943570344a7d2171d",
+      "parts": [
+        "عجبا! ما أمهر رميك يا بيتي!"
+      ]
+    }
+  },
+  "SE_Sci_Sar_CBA.msbt.zst": {
+    "MID_SE_Sci_Sar_C_002": {
+      "source_sha256": "0e43d849ba02c05e22ae297d01d103d7d7891b54a3009e4aca78422050718c4e",
+      "parts": [
+        "من هنا يا آنسة شا لان!"
+      ]
+    }
+  },
+  "SE_Seo_Led_BA.msbt.zst": {
+    "MID_SE_Seo_Led_B_002": {
+      "source_sha256": "af97f9e37928cdbe862d7ac7547c7915f7f94225b9e907f5e02f9e2f7ad08f70",
+      "parts": [
+        "رويدك يا حلوتي. آه، الملكة ثيودورا! مرحبا."
+      ]
+    }
+  },
+  "SE_Seo_Tro_C.msbt.zst": {
+    "MID_SE_Seo_Tro_C_001": {
+      "source_sha256": "10a936f5fe780e7e35fc676aa3e50498c135d4821fa78a066e79acd5a873624b",
+      "parts": [
+        "أهلا يا ثيودورا. أوحدك اليوم؟ أأصابك مكروه؟"
+      ]
+    }
+  },
+  "SE_Set_Dai_CBA.msbt.zst": {
+    "MID_SE_Set_Dai_A_013": {
+      "source_sha256": "3b897761687b3e149e3123e0cd2fad506633798dd16dacfc2203fdfaf34bcb18",
+      "parts": [
+        "أخيرا فهمت يا سيتيث.\nبطريقتك هذه لن أظفر بلقاء حبيبة أبدا."
+      ]
+    }
+  },
+  "SE_Sim_Fia_CBA.msbt.zst": {
+    "MID_SE_Sim_Fia_C_001": {
+      "source_sha256": "c57bca7471bab2daa0437bab73c14554426e06bef6d64ed9e2d35013dca21303",
+      "parts": [
+        "مرحبا يا فيانا. أيشكو المرء شيئا في مثل هذا الجو الجميل؟"
+      ]
+    },
+    "MID_SE_Sim_Fia_B_019": {
+      "source_sha256": "5680c0006b50db31c9ab7c2a8b19337503cf6294e0d1c9ac8f984eedd25f7475",
+      "parts": [
+        "ما أطيبك يا سيمون... شكرا لك..."
+      ]
+    }
+  },
+  "SE_Tia_Iio_CB.msbt.zst": {
+    "MID_SE_Tia_Iio_C_001": {
+      "source_sha256": "3f215fab5d2767a989813ef5ec79b728668fb1badbc1523a7adec1a2103c49d5",
+      "parts": [
+        "أحسنت اليوم يا روسينان. لك أن تفخر بصنيعك."
+      ]
+    }
+  },
+  "SE_Urs_Sim_CBA.msbt.zst": {
+    "MID_SE_Urs_Sim_A_024": {
+      "source_sha256": "1fe987decda0378a3a08e51ff3053782d8fd3108ef1bb11a965fde66ac7e7a56",
+      "parts": [
+        "شكرا لك يا سيمون."
+      ]
+    }
+  },
+  "SideStory_Seodola.msbt.zst": {
+    "MID_SCXX_02_03_m01_061": {
+      "source_sha256": "ed1318576cf43ac5ab4323eee63010f465d6cb767a43884f8eda52cada852582",
+      "parts": [
+        "أمسك لسانك يا توبياس. أما تدرك مبلغ ما تكابده جلالتها؟"
+      ]
+    }
+  },
+  "Skill.msbt.zst": {
+    "MSID_H_GaleToeFog": {
+      "source_sha256": "d0350f3fdcafba69f218388d8aa81bc25cb304ba514260d395b8c5f3dd6a540b",
+      "parts": [
+        "ينتقل من وقفة النسيم\nإلى وقفة الضباب."
+      ]
+    },
+    "MSID_PowerThrow": {
+      "source_sha256": "e3235eecf7489b5b52d0c5901b7e5ad2c3890b72764bb7ba9c5511aee35b57ba",
+      "parts": [
+        "الرمية الساحقة"
+      ]
+    },
+    "MSID_GaleStance": {
+      "source_sha256": "b6e898f330a20f42850f968b1ed873468867a70f26286873484cd8d1f71704f1",
+      "parts": [
+        "وقفة النسيم"
+      ]
+    },
+    "MSID_FogStance": {
+      "source_sha256": "e4d2a4f3b550b339b657558fa559a00855bf502418e90fd779f32d998bf9d197",
+      "parts": [
+        "وقفة الضباب"
+      ]
+    },
+    "MSID_RockStance": {
+      "source_sha256": "382a6a8472727c0bee3a43782ad9933298ec03d96abc0f028020ba0d326779ce",
+      "parts": [
+        "وقفة الحجر المقدس"
+      ]
+    },
+    "MSID_GaleToeFog": {
+      "source_sha256": "45a21b685782187b50db7b53b6d0c88ca4382f6ebbf86c053bfaea86566f2991",
+      "parts": [
+        "رقصة الضباب"
+      ]
+    },
+    "MSID_FogToeRock": {
+      "source_sha256": "a231bec4900e1625b253fa3f364a362e965dcd3bb8814d72e5ade6ecdc583cf2",
+      "parts": [
+        "سكون الحجر"
+      ]
+    },
+    "MSID_H_FogToeRock": {
+      "source_sha256": "076570550c41fd21cc1d2c5ec1439b863d3b94e2c1d797af55b8292587dff892",
+      "parts": [
+        "ينتقل من وقفة الضباب\nإلى وقفة الحجر المقدس."
+      ]
+    }
+  },
+  "SubLobby.msbt.zst": {
+    "MID_Gmap_KAI_Checkpoint00_No_m01_002": {
+      "source_sha256": "1af7f568f8883f350a94d31a09a6b67d653820952a160d8be5818d3385562662",
+      "parts": [
+        "يتعذر التقدم في مسار كاي."
+      ]
+    }
+  },
+  "SUP_11_Kai.msbt.zst": {
+    "MID_SUP_1KAI_c06_GM11_002_m02": {
+      "source_sha256": "66a2131b05029db916fff53eae8c3d5b527841f14c69db1d035427f42615f4f4",
+      "parts": [
+        "التوجه إلى آم لو."
+      ]
+    },
+    "MID_SUP_1KAI_c06_LG11_030_m01": {
+      "source_sha256": "ebaa3f3e44d27c34e95a0176cc89168928e419f67feb390067962c051bfc7360",
+      "parts": [
+        "التوجه إلى تل النسيم."
+      ]
+    }
+  },
+  "SUP_12_Ditlih.msbt.zst": {
+    "MID_SUP_1DIT_c08_LG12_008_m01": {
+      "source_sha256": "0ecdc436d7b40f53947bdd85202ce3a688bcba2dbd7406d32a5ea5d11a4a6835",
+      "parts": [
+        "الخروج لإخضاع سيتوس."
+      ]
+    }
+  },
+  "SUP_13_Seodola.msbt.zst": {
+    "MID_SUP_1SEO_c12_LG13_023_m01": {
+      "source_sha256": "671f32d17133cab25a646edbc1cb99d9ada673b6ed73fb56d8d57cf4106b1c06",
+      "parts": [
+        "الزحف لقتال جيش موسا."
+      ]
+    }
+  },
+  "SUP_14_Leda.msbt.zst": {
+    "MID_SUP_1LED_c02_GM14_002_m01": {
+      "source_sha256": "c576cc5043b4bd6ee49633658227954e10b609e924e243f63989a98e61352d3a",
+      "parts": [
+        "التوجه إلى منجم كوريس."
+      ]
+    },
+    "MID_SUP_1LED_c03_LG14_004_m01": {
+      "source_sha256": "3701d458a6e3b15ad104f45971c1877b4a238cbc54afc1170a7e3c0a052a59fa",
+      "parts": [
+        "لقاء كالا."
+      ]
+    },
+    "MID_SUP_1LED_c04_LG14_007_m01": {
+      "source_sha256": "a3fd6e5df6dea3d347c89198a6d73f21308f1b2ddc0a3c93c380d6a3afa0886b",
+      "parts": [
+        "الخروج في أثر ليخنر."
+      ]
+    }
+  },
+  "SUP_2_XXX.msbt.zst": {
+    "MID_SUP_2XXX_c01_LG20_001_m01": {
+      "source_sha256": "74a56bbd08ebc2eac31ddec80d17ab19f739cda880c9659012415d554f4b6922",
+      "parts": [
+        "التوجه إلى ساحة قتال ثيودورا."
+      ]
+    },
+    "MID_SUP_2SEO_c01_LG20_001_m01": {
+      "source_sha256": "e31e3ce11ca11c4ed47f748fc27a90504cb95606c4a2efaa937e237313e2d60f",
+      "parts": [
+        "المسير إلى داغسيون."
+      ]
+    },
+    "MID_SUP_2BEL_c01_LG20_002_m01": {
+      "source_sha256": "8736a408f450fcdb7b279627ffedcb4bfb76e65ded04b56668ce4f1af87cbf4f",
+      "parts": [
+        "المسير إلى سهول كليتيوس."
+      ]
+    },
+    "MID_SUP_2XXX_c06_LG20_007_m01": {
+      "source_sha256": "6b84ab270840c064f3b710ed080f95f2008d9cefebe547bef9d3915d412b98a8",
+      "parts": [
+        "التوجه إلى مرجل داغدا."
+      ]
+    }
+  },
+  "SUP_3_Ishmal.msbt.zst": {
+    "MID_SUP_3ISM_c01_DN30_001_m01": {
+      "source_sha256": "6b84ab270840c064f3b710ed080f95f2008d9cefebe547bef9d3915d412b98a8",
+      "parts": [
+        "التوجه إلى مرجل داغدا."
+      ]
+    },
+    "MID_SUP_3ISM_c06_DN30_002_m01": {
+      "source_sha256": "2f8bbc29fa379d496908096917235f9f62b73a5a1b09f38c7ec2a7a4147e1d35",
+      "parts": [
+        "التوجه إلى بالور."
+      ]
+    }
+  },
+  "System_Facility.msbt.zst": {
+    "MID_FT_CharacterHelp_Lil": {
+      "source_sha256": "56ec93bf3ca497801d451b502066782ca64e05cbcb7444aa0c2b74d89faf3546",
+      "parts": [
+        "رامية من ساراميس."
+      ]
+    },
+    "MID_FT_CharacterHelp_Cas": {
+      "source_sha256": "99bec86f6de0149003c23a7a1a5a8ca619b3b1bdf7001c2bb167a92742d6e5f8",
+      "parts": [
+        "والد كاي."
+      ]
+    },
+    "MID_FT_CharacterHelp_Aur": {
+      "source_sha256": "7530af0fd9fe89dc9056b539fffea39534690353ed2719e0515d39d625f5ff8b",
+      "parts": [
+        "بوق الملاحين."
+      ]
+    }
+  },
+  "Watching.msbt.zst": {
+    "MID_WD11_10_m01_004": {
+      "source_sha256": "6e746b00d474add3366faa30eca4b4ebf2b0f2717c2ce8d1102d097f6dfbd6ea",
+      "parts": [
+        "كلهم يحبونك يا ليدا! أفهكذا تجزينهم؟"
+      ]
+    }
+  },
+  "Clan.msbt.zst": {
+    "MID_Clan_BeherdaBandits": {
+      "source_sha256": "a897d6d29c29c56c7da4f54d10cedceddd445e9ae2446ec0eb40f6b10872739d",
+      "parts": [
+        "فؤوس بهيلدا"
+      ]
+    },
+    "MID_Clan_Scout_03": {
+      "source_sha256": "e35ca8ec2ff5245ca6be05e3bd89fbd76fceb66e65b7b8f08fb29748b2d8cef9",
+      "parts": [
+        "جيف دونانزو"
+      ]
+    }
+  },
+  "Job.msbt.zst": {
+    "MJID_NabataeanDragon_Lyra": {
+      "source_sha256": "ce8aa0ef2e7110940395350c7a4812eb576073a6f31cf6781d5c06dade46fd74",
+      "parts": [
+        "المنادية"
+      ]
+    }
+  },
+  "Spot.msbt.zst": {
+    "MID_Spot_Amour": {
+      "source_sha256": "10db51242bbbab8a71ec778ad102964b0574c23ddf5dc25c8f837fec978e63d3",
+      "parts": [
+        "آم لو"
+      ]
+    },
+    "MID_Spot_ClyteiosPlain": {
+      "source_sha256": "306eba6132f8549af4142dbcf74ba3e7cdf82e40890c4a8ce04f0063fa5fb7d8",
+      "parts": [
+        "سهول كليتيوس"
+      ]
+    },
+    "MID_EventLocation_DagsaCauldron": {
+      "source_sha256": "5d6a751656b4073d2b4451e3cded43f518beeb09247faf21fe0e4545bed6546d",
+      "parts": [
+        "مرجل داغدا"
+      ]
+    }
+  },
+  "Title.msbt.zst": {
+    "MID_Title_BGM_021": {
+      "source_sha256": "ce8aa0ef2e7110940395350c7a4812eb576073a6f31cf6781d5c06dade46fd74",
+      "parts": [
+        "المنادية"
+      ]
+    }
+  }
+}

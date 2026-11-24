@@ -44,6 +44,7 @@ def api(port, method, path, body=None):
 
 def units(catalog, jp_dir=None):
     selected = {}
+    first_cue = {}
     grouped = list(rows(catalog))
     table = None
     previous = ""
@@ -78,7 +79,14 @@ def units(catalog, jp_dir=None):
         for part in editable(row):
             for s in sections(part):
                 if lexical(s):
-                    selected.setdefault(s, (row["file"], tuple(neighbors), japanese))
+                    cue = (row["file"], row["label"])
+                    if s not in first_cue:
+                        first_cue[s] = cue
+                        selected[s] = (row["file"], tuple(neighbors), japanese)
+                    elif first_cue[s] != cue:
+                        # One draft is reused for this text in every cue. Its first
+                        # occurrence cannot establish a speaker for the other scenes.
+                        selected[s] = ("", (), "")
     return selected
 
 
@@ -98,6 +106,8 @@ def name_matcher(terms):
         "Aurora",
     }
     names = [n for n in terms.get("names", {}) if n not in ambiguous]
+    if not names:
+        return re.compile(r"(?!)")
     return re.compile(
         r"(?<!\w)(?:"
         + "|".join(map(re.escape, sorted(names, key=len, reverse=True)))
@@ -116,6 +126,11 @@ def make_prompt(source, context, terms, names):
             if word in terms.get("ui", {}):
                 hints[word] = terms["ui"][word]
     lines = []
+    if not file:
+        lines.append(
+            "This text occurs in several cues. Use natural wording that works for different "
+            "speakers and listeners when the English leaves their gender unspecified."
+        )
     if hints:
         lines.append(
             "Approved terminology: "
@@ -144,10 +159,12 @@ def refine(args):
     settings = {
         "model": file_hash(args.model),
         "terms": file_hash(args.terms) if args.terms else "",
-        "recipe": 1,
+        "recipe": 1 if args.plain else 2,
     }
     if args.plain:
         settings["plain"] = 1
+    else:
+        settings["catalog"] = file_hash(args.catalog)
     if args.editor:
         settings["editor"] = 1
     if args.jp_dir:

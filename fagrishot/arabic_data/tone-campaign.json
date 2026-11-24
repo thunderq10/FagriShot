@@ -1,0 +1,4496 @@
+{
+  "LG_3_M06.msbt.zst": {
+    "MID_LGA_3_M06_Moo_m01": {
+      "source_sha256": "04887d8e98b2d7def645dcb9f210797848706573d0d52a8874b85f8e1f3bb17f",
+      "parts": [
+        "أنا مستعدة!"
+      ]
+    },
+    "MID_LGV_3_M06_Moo_m01_001": {
+      "source_sha256": "1dc0cb1819e854e1ecde860947e222b58ef1b86d419a32365932eb38c229bb8b",
+      "parts": [
+        "أخيرا، حان موعد المعركة الأخيرة. أنا مستعدة."
+      ]
+    },
+    "MID_LGV_3_M06_Asw_m01_001": {
+      "source_sha256": "ae5b5a2aea1296e7384488fd245d32dbfea4f52f4333b665e204d8cb6a62792f",
+      "parts": [
+        "يا أملنا الموعود. المعركة الأخيرة تنتظرنا، وأنا مستعدة، كأي\nمحارب هنا، لبذل حياتي في سبيل النصر."
+      ]
+    },
+    "MID_LGV_3_M06_Tro_m01_002": {
+      "source_sha256": "c6fb71318d9bbaec1d57da6e0e21693dfb3222e9143584b55701ba80fee9e9fc",
+      "parts": [
+        "أكاد أطير شوقا إلى تسديد ضربة لذلك الملعون بالور."
+      ]
+    },
+    "MID_LGV_3_M06_Kai_m01_003": {
+      "source_sha256": "683643899a9c4f3a6a6f98b9cf4f119db9f7f6b0c5483353693798de9f492187",
+      "parts": [
+        "أظن أن نظرتنا إلى الأمور واحدة. أليس كذلك، يا أملنا الموعود؟"
+      ]
+    },
+    "MID_LGV_3_M06_Tia_m01_003": {
+      "source_sha256": "e64d999b4961f29da35fafe5cd4651c95525b876faa48e7eb011e979318dc6b2",
+      "parts": [
+        "وأريد أن أرى ذلك وأنا إلى جانبك، يا أملنا الموعود!"
+      ]
+    },
+    "MID_LGA_3_M06_Sim_m01": {
+      "source_sha256": "539626ca6a3989e6aed0e0af0c6c88af4e81c2eb7bbf92216bb56d7a5ca9eb5c",
+      "parts": [
+        "هل تم استعدادك يا أملنا الموعود؟"
+      ]
+    },
+    "MID_LGV_3_M06_Sci_m01_003": {
+      "source_sha256": "bd7a79b728b4e6524c86b540c661f0187fafa4c75caa9071bbef4d0c9df9d1c0",
+      "parts": [
+        "لنعمل على تحقيق ذلك جنبا إلى جنب. اتفقنا، يا أملنا الموعود؟"
+      ]
+    },
+    "MID_LGV_3_M06_Mic_m01_003": {
+      "source_sha256": "9fac071eb69b52ffa53dfb37167d91c1fef81149b80de63492d51b4dd7dd0c8a",
+      "parts": [
+        "لا أدري ما رأيك، يا أملنا الموعود، لكني وددت لو أسمعت أباهم\nكلمتين!"
+      ]
+    },
+    "MID_LGA_3_M06_Naz_m01": {
+      "source_sha256": "94b031e7b840e2da2bed594dbd638d65963853f531929ade0440dcbfb0df2c06",
+      "parts": [
+        "فلنفعلها، يا أملنا الموعود!"
+      ]
+    },
+    "MID_LGV_3_M06_Hal_m01_001": {
+      "source_sha256": "445d340f0abeb2f37ad1d8d6822c6dc489fd3730f0e655cb8b037c0518ce69d4",
+      "parts": [
+        "يا أملنا الموعود، إليك بعض حيلي! لنمرح ما دام في وسعنا ذلك!"
+      ]
+    },
+    "MID_LGV_3_M06_Guj_m01_001": {
+      "source_sha256": "6e7b384c63621c8f6e7a1387d9ebe454ec2cabb43b59e3a7e04c56a69bf5ac36",
+      "parts": [
+        "والآن، يا أملنا الموعود، حان الوقت لنلقن بالور درسا."
+      ]
+    },
+    "MID_LGV_3_M06_Zac_m01_002": {
+      "source_sha256": "b1378ebedfb83449bf3c46db2f811a96a174c276221addd36e36fa5cfe9d54f2",
+      "parts": [
+        "بحق الآلهة، أليس لقبك «الموعود»؟ ففيم التأخير؟ العالم ينتظر\nمنك عودة النور!"
+      ]
+    },
+    "MID_LGV_3_M06_Jas_m01_002": {
+      "source_sha256": "5d0d4f899c64f9928c4615b0d19c00af0479a6dbdcb39f1cb6daacb4a03a3713",
+      "parts": [
+        "وصولنا إلى هنا... ووقوفنا في وجه بالور... يرجع الفضل في ذلك\nكله إليك، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M06_Cen_m01_001": {
+      "source_sha256": "6b1a2af5bc0d33a0f2dc77386b93c94c7f31dad469184e83eb329e126be81e7f",
+      "parts": [
+        "يا أملنا الموعود، هل لي أن أسأل عن سر نظراتك الغامضة إلى\nأورورا أحيانا؟"
+      ]
+    },
+    "MID_LGA_3_M06_Cen_m01": {
+      "source_sha256": "f54c84e69ca70d8d05d82c75fd7806723acfced8f15fc1873fca6464b8eb6c5a",
+      "parts": [
+        "يا أملنا الموعود..."
+      ]
+    },
+    "MID_LGV_3_M06_Nat_m01_001": {
+      "source_sha256": "a762d622e88a79c3b2e6c897e6c1e0fa3d017d182a63fff64e0fb428ee2eb28c",
+      "parts": [
+        "شارفت حربنا على نهايتها، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M06_Car_m01_001": {
+      "source_sha256": "d45482861f8308e3f6d251d81640235d90822f8b0e94c5278b68828d04629dc1",
+      "parts": [
+        "حان وقت الرحيل، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M06_Aur_m01_002": {
+      "source_sha256": "6900a50687a5b07796b25a3300e1394047b9dfc24f7942020d3fe45ecdf3d21e",
+      "parts": [
+        "ولك أنت أيضا مكانة غالية، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M06_B04_m01_001": {
+      "source_sha256": "917ab5d4adb8075bd0e2546a31444c200c6f2d3973d2bc127676966d73215853",
+      "parts": [
+        "شكرا لك على كل شيء، يا أملنا الموعود! صورك أكثر ما أبيع\nرواجا."
+      ]
+    },
+    "MID_LGV_3_M06_B16_m01_001": {
+      "source_sha256": "d77b13f007ca5e202313affa1ebf2ee2f6ceed6d4dbf97ba4555573ea2c5af6c",
+      "parts": [
+        "يا أملنا الموعود... ألأجل نظرة أخيرة على البحيرة جئت، قبل موعد\nالمواجهة مع إله الشياطين؟"
+      ]
+    },
+    "MID_LGA_3_M06_B16_m01": {
+      "source_sha256": "29fcd1c3b0b373643d573040312655f3afd92943586f4d74d847cee632c66478",
+      "parts": [
+        "آه... يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M06_B19_m01_003": {
+      "source_sha256": "8e49e887b6d9bfba77fe84b355673044e7e65c5fb06d3e3a8ae6be50d11b9d9b",
+      "parts": [
+        "أظن أن بوسعنا أن نفعل أكثر، وأن نضم جهودنا لبناء مستقبل أزهى.\nأليس كذلك، يا أملنا الموعود؟"
+      ]
+    }
+  },
+  "LG_2_M01.msbt.zst": {
+    "MID_LGA_2_M01_Oly_m01": {
+      "source_sha256": "2e6b5955172fde52a52e2bb8dfc0437cb5095e21ae309191412d76194c58a58a",
+      "parts": [
+        "أنا مستعدة!"
+      ]
+    },
+    "MID_LGV_2_M01_Lil_m01_002": {
+      "source_sha256": "923ca9fcdf9c94a248c7d423b60d81bcb961aa7aeb969c916145b65df8ccfab1",
+      "parts": [
+        "حسنا، أنا أقاتل لقاء أجر، ولا أدقق في هوية خصمي. وقد استعددت\nللحرب منذ زمن طويل."
+      ]
+    }
+  },
+  "1_LED_Battle.msbt.zst": {
+    "MID_SC14_14_m01_006": {
+      "source_sha256": "2210dd0b8a671713f0ddbd6556a999da896ed6ed495324f5f6a2386c3b0aad20",
+      "parts": [
+        "آسفة يا ليدا."
+      ]
+    },
+    "MID_SC14_15_m01_005": {
+      "source_sha256": "0f2428cddc654fc1b50df96ec2086e57640c8fc69f48c64dcee8c3a1e6278a91",
+      "parts": [
+        "أجل... لكنني ما زلت أتساءل إن كان الثأر صوابا."
+      ]
+    },
+    "MID_SC14_15_m01_006": {
+      "source_sha256": "9b86cfca982c67fc25d07e0b88ef4f8f11386376964ea44188d73d64a278d88a",
+      "parts": [
+        "لكن إن كان ذلك سيساعدك على تجاوز الأمر إلى الأبد... فأنا\nبجانبك يا ليدا!"
+      ]
+    }
+  },
+  "Die.msbt.zst": {
+    "MID_DIE_SCXX_07_Kai_002": {
+      "source_sha256": "62608dcbfeff8c5197537d2ab663538afe210dc556ccd52c36cf05514188f006",
+      "parts": [
+        "كاي! أنا آسفة..."
+      ]
+    },
+    "MID_DIE_SCXX_07_Led_002": {
+      "source_sha256": "8db732e94254148e501d6e62a7f471dc94a375f64234f6e33340dd44f90908b1",
+      "parts": [
+        "ليدا! أنا آسفة..."
+      ]
+    },
+    "MID_DIE_SCXX_07_Dit_002": {
+      "source_sha256": "c0bc0bf54a451f45ff9d6c9fbfc7d053894d23da0d5158856c98671c79e8c551",
+      "parts": [
+        "ديتريش! أنا آسفة..."
+      ]
+    },
+    "MID_RETREAT_Moo0_01": {
+      "source_sha256": "32c9a4842ea56faf33c64f78a33275e1fc97ea64648dced3024e141911adb184",
+      "parts": [
+        "آسفة... أخرتكم بسببي."
+      ]
+    },
+    "MID_RETREAT_Moo1_01": {
+      "source_sha256": "32c9a4842ea56faf33c64f78a33275e1fc97ea64648dced3024e141911adb184",
+      "parts": [
+        "آسفة... أخرتكم بسببي."
+      ]
+    },
+    "MID_RETREAT_Lou0_01": {
+      "source_sha256": "2ea6c96ce12b0b1e8ad2c5f2c4f31ae8816b97c6b71ef4b246b74b2a61adee45",
+      "parts": [
+        "أنا آسفة! علي أن أغادر هذا المكان..."
+      ]
+    },
+    "MID_DIE_Tia0_01": {
+      "source_sha256": "8bd8de998a3191bd05d83ae8b950a205ace94910f2fb51ce061f04cad20112e7",
+      "parts": [
+        "جدي، أنا آسفة... لكنني لا أقوى على مواصلة السير..."
+      ]
+    },
+    "MID_DIE_Sar0_01": {
+      "source_sha256": "d2622eeafbc663778e883431945967a03e7b99e41b62aab58afcec027083d89f",
+      "parts": [
+        "أنا آسفة جدا. أرجوكم، احذروا على أنفسكم جميعا."
+      ]
+    },
+    "MID_EV_DIE_SC11_09_Kou_001": {
+      "source_sha256": "0f24b16bab82a7c8d339e65c1839ccd3bdddb1437bc5c5b8c783340f052846f9",
+      "parts": [
+        "آخ... تبا. يا معلمتي راكشا... أنا آسفة..."
+      ]
+    },
+    "MID_RETREAT_Led0_01": {
+      "source_sha256": "4369ae1c4298799709016cffa31cf859ee1882d9ac5e89ec359785eab42e4c25",
+      "parts": [
+        "آسفة، لكن لا يسعني أن أموت. ليس قبل أن أقتله."
+      ]
+    },
+    "MID_DIE_Hur0_01": {
+      "source_sha256": "3a2123776f546078956081fe1a7c7932545ec828f5bdf139e434d662cd07930a",
+      "parts": [
+        "نوح، سيزاري... أنا آسفة. أختكما الكبرى لن تعود إلى البيت."
+      ]
+    },
+    "MID_RETREAT_Ale0_01": {
+      "source_sha256": "9f1d1c737557c30cca65cb23dba865ad7e1a8ebc1632b878d7565d94881aba27",
+      "parts": [
+        "لم أعد أطيق المزيد... أنا آسفة جدا، لكن لا بد لي من\nالانسحاب."
+      ]
+    },
+    "MID_RETREAT_Sar0_01": {
+      "source_sha256": "d694c211e84956aad1b7b76ff912ae9443ccb4e5c79035a6566a624f6e4bc137",
+      "parts": [
+        "لا طاقة لي بإجهاد نفسي إلى هذا الحد. آسفة، لا بد أن أنسحب\nقليلا..."
+      ]
+    }
+  },
+  "Levelup.msbt.zst": {
+    "MID_LevelUp_Sop0_02": {
+      "source_sha256": "260191f3448c434844767fcead6a93085ff7e15f12724b932edcfbdf22ed4f2e",
+      "parts": [
+        "يسرني أن أكون نافعة."
+      ]
+    },
+    "MID_LevelUp_Max_Sar0_00": {
+      "source_sha256": "00e4d3662390ceed57b6cc5bff6e0e13ea3a0df0e41f4774f8e63697889d9af9",
+      "parts": [
+        "ما أشد فخري بنفسي!"
+      ]
+    },
+    "MID_Skill_LevelUp_Asw0_01": {
+      "source_sha256": "0de8e64f6e3da3335a43cb829d20091231883bc89bb7812a6b5fc0e0f72ee19a",
+      "parts": [
+        "يسرني أن أرى هذا التحسن!"
+      ]
+    },
+    "MID_Skill_LevelUp_Ale0_01": {
+      "source_sha256": "643fdae0a128750568e63962d39a9253d6018bb122a91541acd8daa27fecdb23",
+      "parts": [
+        "يسعدني أنني أستطيع الآن تقديم عون\nأكبر."
+      ]
+    },
+    "MID_LevelUp_Max_Moo0_00": {
+      "source_sha256": "c85fb1c2463b73470aadfa8730e57915fad48c096baca48286bb9516bfae0aa1",
+      "parts": [
+        "صرت قوية بما يكفي!"
+      ]
+    },
+    "MID_LevelUp_Max_Moo1_00": {
+      "source_sha256": "c85fb1c2463b73470aadfa8730e57915fad48c096baca48286bb9516bfae0aa1",
+      "parts": [
+        "صرت قوية بما يكفي!"
+      ]
+    }
+  },
+  "LikesDislikes.msbt.zst": {
+    "MID_Strengths_Ini_m02": {
+      "source_sha256": "bb9bf096954452bbbead78b4b24c0155bcc886facc4a09fa7b9ea100ec5dc550",
+      "parts": [
+        "أنا واثقة بأن الأمور ستكون\nبخير."
+      ]
+    },
+    "MID_Strengths_Asw_m01": {
+      "source_sha256": "93b407b58106b7595666f9db22a982e865a2a13a6ff5d8026733694db670a9dc",
+      "parts": [
+        "لا أدري إن كان بوسعي فعل هذا..."
+      ]
+    },
+    "MID_Likes_Lou_m01": {
+      "source_sha256": "86fca41cd565f1f9488ac9f5731ec0265053b5d2ed5d1c6ae6685a7c17b87be5",
+      "parts": [
+        "لا أدري أأنا مستعدة لهذا أم لا."
+      ]
+    },
+    "MID_Strengths_Tia0_m02": {
+      "source_sha256": "b21cc7119058ce7066aaaa1c9248d952d9757596b14590e249663353eb8d1b29",
+      "parts": [
+        "أظن أنني أستطيع، لكن ثقتي بنفسي ضعيفة."
+      ]
+    },
+    "MID_Likes_Moo0_m03": {
+      "source_sha256": "0b6e2b4e50d5c2c70b9c51c8134b0a88e9932b2c81dbe451e5ec1bc926b6589d",
+      "parts": [
+        "بكل سرور."
+      ]
+    },
+    "MID_Likes_Moo1_m03": {
+      "source_sha256": "0b6e2b4e50d5c2c70b9c51c8134b0a88e9932b2c81dbe451e5ec1bc926b6589d",
+      "parts": [
+        "بكل سرور."
+      ]
+    },
+    "MID_Likes_Nat_m04": {
+      "source_sha256": "8a0c907af0441c25df7ae20877045c3d3c184df88109b7951ba13d571422af41",
+      "parts": [
+        "أنا سعيد."
+      ]
+    },
+    "MID_Likes_Sop_m03": {
+      "source_sha256": "f7fa9f69e12b7a974a8eca077011f694448142972a7a14564a2b950c98db1400",
+      "parts": [
+        "بكل سرور."
+      ]
+    },
+    "MID_Likes_Ale_m04": {
+      "source_sha256": "6209dab216fa3892e165ab01dbe07ed595dd9a97829c9fc8e402c4b3eacafd44",
+      "parts": [
+        "أنا سعيدة حقا!"
+      ]
+    },
+    "MID_Likes_Ale_m03": {
+      "source_sha256": "94886a8dae1ba6b8cb56fa741b0e38fd66fdeed308bdafe26cd5cc75831829ed",
+      "parts": [
+        "يسرني أن أفعل..."
+      ]
+    },
+    "MID_Likes_Cen_m03": {
+      "source_sha256": "77abe434d34f6d2c4bdf7d57cc03c09040bed77dd639f58c6b4f13ec0dd9f0f6",
+      "parts": [
+        "أنا مسرور للغاية."
+      ]
+    },
+    "MID_Strengths_Kou_m01": {
+      "source_sha256": "0ce831b6026967f5dff6b94a281ce1b11edc7e55e57f957f4f314223b4a9a945",
+      "parts": [
+        "أأنا قادرة على هذا؟"
+      ]
+    },
+    "MID_Strengths_Ale_m02": {
+      "source_sha256": "84e349a50f077e247a8a3922757a04031ecd660c89d0b0efc8dde82391b72151",
+      "parts": [
+        "أنا واثقة بأنني أستطيع ذلك."
+      ]
+    },
+    "MID_Strengths_Orh_m02": {
+      "source_sha256": "e416bd40d22e639df51e24c813d081a348e28621f63937277a427ef1ee7dd792",
+      "parts": [
+        "يسرني أن أجرب هذا."
+      ]
+    },
+    "MID_Strengths_Led_m04": {
+      "source_sha256": "3b43ff908802ffb1b6d24ee965af9709cf1c8a3f07762e3c2f23ffaf3e2e1554",
+      "parts": [
+        "أنا واثقة بقدرتي على ذلك."
+      ]
+    }
+  },
+  "Serve.msbt.zst": {
+    "MID_SV_Serve_Ned_m01_04": {
+      "source_sha256": "72b3fd1658c5d3b6128c82ac733ebdd35906bd0ababcc6c3e221d0bf6a591676",
+      "parts": [
+        "يسرني أن أسهم بنصيبي."
+      ]
+    },
+    "MID_SV_Serve_Ini_m03_01": {
+      "source_sha256": "dde906f3d605581b069a52faa997f1eaadc04b6df3d07c99f1921a26c1423453",
+      "parts": [
+        "يسعدني أنني استطعت أن أنفعكم."
+      ]
+    },
+    "MID_SV_Serve_Jas_m05_01": {
+      "source_sha256": "d683295255c659cc17a477fddbbce897efc200700679df1ecae102eb1a71f8a2",
+      "parts": [
+        "وكنت واثقة من نفسي إلى هذا الحد..."
+      ]
+    },
+    "MID_SV_Serve_Noc_m04_01": {
+      "source_sha256": "7e330830819aeff48730771140c8b37ad7d8c13f8b03d2dc854adda8c4b0d1aa",
+      "parts": [
+        "أظنني مستعدة لتحمل مزيد من المسؤولية!"
+      ]
+    },
+    "MID_SV_Serve_Esm_Mic_m01_02": {
+      "source_sha256": "65b851666d1d9128592359275718fc0637c44c626be2be14002278aa3a372867",
+      "parts": [
+        "هذا كلام الكهنة! أعني ذلك على سبيل المديح. أنا مستعدة، فلنبدأ!"
+      ]
+    },
+    "MID_SV_Serve_Orh_Nin_m01_01": {
+      "source_sha256": "ece47376a08f583f3ce95873b639a135ed4118c9dc8261a5d4bc78bc4a796713",
+      "parts": [
+        "لقد بذلنا الكثير في خدمة معبد كريدنا. ولا شك عندي أننا\nسنحسن هذا أيضا!"
+      ]
+    },
+    "MID_SV_Serve_Pet0_m04_01": {
+      "source_sha256": "2d218b1be75b3c90d6b7b510ab6d1f25d29202459070ebca93ff2748ae96d8b4",
+      "parts": [
+        "هيهي. كم أنا سعيد!"
+      ]
+    },
+    "MID_SV_Serve_Naz_m04_01": {
+      "source_sha256": "d6539f856766c184e358506a22bfef430a0535629f20c5a51a4adeeb9bfb911c",
+      "parts": [
+        "أسهل ما يكون!"
+      ]
+    }
+  },
+  "1_KAI_c09.msbt.zst": {
+    "MID_EV11_050_m01_024": {
+      "source_sha256": "cd606b9c8bd4695415ef449037232b64ffddfd28a60bc752c6d0e5d4102aeabc",
+      "parts": [
+        "كم أنا سعيد أننا أنقذناك."
+      ]
+    },
+    "MID_EV11_050_m01_001": {
+      "source_sha256": "b445dbe36662515a8b9b8c97d9abf3da52f8192bcb5b5c4a79166ee245019aae",
+      "parts": [
+        "كاي! أورورا! ما أسعدني بعودتكما سالمين!"
+      ]
+    }
+  },
+  "Bird.msbt.zst": {
+    "MID_SV_Bird_Ale_m01_02": {
+      "source_sha256": "a5bb62f71b4163ad5205a30a0ce9471966f4d8266059419b689a0fd1ae4fd53e",
+      "parts": [
+        "ما أسعدني برؤيتك مجددا!"
+      ]
+    },
+    "MID_SV_Bird_Fia_m01_02": {
+      "source_sha256": "de29cf2ffb636d28c4602d1fd9eb901a3b6970598807afd573dc3731b5cd589e",
+      "parts": [
+        "أراك بخير. ما أسعدني بذلك..."
+      ]
+    },
+    "MID_SV_Bird_Nin_m01_02": {
+      "source_sha256": "480a075028bec2f4e97b8e547ee80efffc0d0bf8123485fca289dc083cd9177b",
+      "parts": [
+        "ما أسعدني بلقائك مرة أخرى."
+      ]
+    },
+    "MID_SV_Bird_Tia0_m01_02": {
+      "source_sha256": "54d6461546291a5e3f056110aded987ffee16c1e82c7220f314d393eef68c694",
+      "parts": [
+        "ما أسعدني أن أراك بخير!"
+      ]
+    },
+    "MID_SV_Bird_Moo1_m01_02": {
+      "source_sha256": "c8eff1f25d33bca7a46c7ff7ce337f063ea439142e321e2c3eacbe3198b6f772",
+      "parts": [
+        "ها نحن نلتقي من جديد! يسعدني أنك بخير!"
+      ]
+    },
+    "MID_SV_Bird_Iio_m02_04": {
+      "source_sha256": "57d61c2d4a3d24aecb3a2e938a142c0a230f67c13151652740e0d64c77b3dbfe",
+      "parts": [
+        "أشعر ببعض التعب. المعذرة إن غفوت."
+      ]
+    },
+    "MID_SV_Bird_Anh_m02_04": {
+      "source_sha256": "a144c0fd77f837ebf5a952a7bffcb3fb058a5e3e9664d82a605a53b2b6cbf62a",
+      "parts": [
+        "آه! ثمة قطة هناك! آسفة، لا أحسن التعامل مع القطط."
+      ]
+    },
+    "MID_SV_Bird_Anh_m01_02": {
+      "source_sha256": "9aa4e87e4010a37aab55c06e6312967788118de63056076a9d93161003767c89",
+      "parts": [
+        "يسرني أن أراك مجددا."
+      ]
+    }
+  },
+  "SE_Sar_Kou_C.msbt.zst": {
+    "MID_SE_Sar_Kou_C_008": {
+      "source_sha256": "9a6df2ba0e4e615712eab38f3afbce6404f3fbfa19928f6f689857376d12ba92",
+      "parts": [
+        "أنا واثقة بأن السبب ليس هذا..."
+      ]
+    }
+  },
+  "SE_Seo_Led_BA.msbt.zst": {
+    "MID_SE_Seo_Led_B_007": {
+      "source_sha256": "3a059b05bdc7269c5e5818aeb5f91f6f10f13bace57917daf1eed76e834729cc",
+      "parts": [
+        "لست متأكدة أنني فهمت قصدك."
+      ]
+    },
+    "MID_SE_Seo_Led_B_012": {
+      "source_sha256": "6919847f1e434287437f6ff83ba2134c58401bf9e8e2e1f573cac71bde94b04b",
+      "parts": [
+        "يبدو أنكم معشر النبلاء مولعون بالفروسية، ولا شك عندي أنك\nستقدرين حيوية هذه الفرس."
+      ]
+    },
+    "MID_SE_Seo_Led_A_016": {
+      "source_sha256": "5c22661f7738f44604261d950ed9b257d2c34bedbea73419f97e5410b00487eb",
+      "parts": [
+        "لا... لا أرغب في ذلك. ثم إن شيئا لم يبق من آل كوهينديا."
+      ]
+    }
+  },
+  "Stage_Act.msbt.zst": {
+    "MID_SV_StageAct_Ale_m02_01": {
+      "source_sha256": "efe56cd5a3fd74f3f36c4b89fb66ad7121311e4b930cf5e8460e6f0a13426004",
+      "parts": [
+        "ما أسعدني حين أعلم أنني أحسنت!"
+      ]
+    },
+    "MID_SV_StageAct_Orh_m01_01": {
+      "source_sha256": "27af7e27b5e4f0fb18b48b22e4620e1a9a545fad8c0a06316ba39048ab69674b",
+      "parts": [
+        "ما أسعدني أنهم استمتعوا بهذا إلى هذا الحد!"
+      ]
+    },
+    "MID_SV_StageAct_Asw_m01_01": {
+      "source_sha256": "81864d44b3d43683a18c9ff4438d241b0a887ee29e7fac1b28b10fd27592d4b7",
+      "parts": [
+        "يثلج صدري أن الجمهور استمتع بذلك!"
+      ]
+    },
+    "MID_SV_StageAct_Asw_m02_01": {
+      "source_sha256": "c74658c3d096b3f1b68dc25ebc1f502a779d6c0c1701b01d1d7cf80361696ca1",
+      "parts": [
+        "يسعدني أن أبعث الطمأنينة في قلوب الناس."
+      ]
+    },
+    "MID_SV_StageAct_Led_m03_01": {
+      "source_sha256": "33bb540986af8187bed335cc80ee05ae4f2e4cd1979b1078a344d0970c44531e",
+      "parts": [
+        "بوسعي أن أقدم ما هو أفضل."
+      ]
+    }
+  },
+  "GiftReaction.msbt.zst": {
+    "MID_GiftReaction_Gratitude_MORE_Ini_m01_001": {
+      "source_sha256": "e9646f716ea73abd5a6290cf65556206bd5452a81d5e69de412022f319b6c6b3",
+      "parts": [
+        "أنا ممتنة جدا. لك مني كل الشكر!"
+      ]
+    },
+    "MID_GiftReaction_Gratitude_BIRTHDAY_Hal_m01_001": {
+      "source_sha256": "2863c34a7aaa1ecc526063746ed0af95fd6c041eecf9a3bac9631686aca548a1",
+      "parts": [
+        "هدية عيد ميلاد؟ أحقا؟! ما أسعدني! شكرا لك!"
+      ]
+    },
+    "MID_GiftReaction_Gratitude_BIRTHDAY_Oly_m01_001": {
+      "source_sha256": "8a0420ebcf0458068260067c848a0c4fb83b051a119e5783bbb186a37f0ebd84",
+      "parts": [
+        "ألعلها هدية عيد ميلاد؟ يا لسروري بها!"
+      ]
+    },
+    "MID_GiftReaction_Gratitude_BIRTHDAY_Oly_m01_002": {
+      "source_sha256": "8a0420ebcf0458068260067c848a0c4fb83b051a119e5783bbb186a37f0ebd84",
+      "parts": [
+        "ألعلها هدية عيد ميلاد؟ يا لسروري بها!"
+      ]
+    },
+    "MID_GiftReaction_Gratitude_BIRTHDAY_Seo_m01_001": {
+      "source_sha256": "979122e56c5185508664088c8aff0399048d05c2aad1fd43fe782e8fea6e6475",
+      "parts": [
+        "أهذه هدية لأنك تعلم أن اليوم عيد ميلادي؟ لقد سررت بها.\nشكرا لك."
+      ]
+    },
+    "MID_GiftReaction_Gratitude_NORMAL_Ned_m01_001": {
+      "source_sha256": "3956fde70c5b48a459a6f3d1033e88f1bee0f09a7d74741d6f86bb7d7747fa11",
+      "parts": [
+        "لك علي جميل."
+      ]
+    },
+    "MID_GiftReaction_Gratitude_MORE_Jas_m01_002": {
+      "source_sha256": "f7923d4276860bba668b2ca0ebe86725012ee8b787d105ae389007dc1d943d26",
+      "parts": [
+        "هذا ما كنت أريده بالضبط. لن أنسى لك صنيعك!"
+      ]
+    }
+  },
+  "SE_Lor_Set_CBA.msbt.zst": {
+    "MID_SE_Lor_Set_A_027": {
+      "source_sha256": "24548592c52f524f33ac5a3792fdf16777f58c01a0e4c0af7a9d91058d74906d",
+      "parts": [
+        "أنا... أنا آسف جدا... هاهاها!"
+      ]
+    }
+  },
+  "Gmap_Explore.msbt.zst": {
+    "MID_Gmap_Explore_BAD_Fia_001": {
+      "source_sha256": "8d43fc165794cf20c0076211e40f014cc694ea8a4c6a7daa26d685ed968a7c82",
+      "parts": [
+        "آسفة، قليل هو ما أقدمه..."
+      ]
+    },
+    "MID_Gmap_Explore_BAD_Ini_001": {
+      "source_sha256": "066b68c280d4556443ce47a6f054ae13ddff8a35b447c2d55e8a6235c32b5403",
+      "parts": [
+        "آسفة... لم أحسن الأداء."
+      ]
+    },
+    "MID_Gmap_Explore_PERFECT_Anh_001": {
+      "source_sha256": "9b73d280ef28a3bb903ff606f2d690e7427c55d3ddc3945287cd499619e406a2",
+      "parts": [
+        "كم يسعدني أن هذا المسعى أثمر أكثر مما رجوت."
+      ]
+    },
+    "MID_Gmap_Explore_GOOD_Ale_001": {
+      "source_sha256": "466b0e2d4263a4c2515aebbe3d7fda130ccc7f9a153570eb8b4a4769212146fa",
+      "parts": [
+        "يسعدني أن يكون في هذا عون لك."
+      ]
+    },
+    "MID_Gmap_Explore_PERFECT_Kou_001": {
+      "source_sha256": "f8ed7d16a3f67c84fd1f1e90dba0bdcdf206e202c33768ed56c138456713ec72",
+      "parts": [
+        "حالفني الحظ هذه المرة."
+      ]
+    },
+    "MID_Gmap_Explore_PERFECT_Gol_001": {
+      "source_sha256": "33beccf6eb553a56349d82c71fab2e8c1d5caa51e3092e5e66795b2f0cf5db5f",
+      "parts": [
+        "هاهاها! ما أسهلها!"
+      ]
+    }
+  },
+  "Thermae.msbt.zst": {
+    "MID_SV_Thermae_Sar_m02_01": {
+      "source_sha256": "e5b1d84b0602304c22bf4c957e8f8bf4fc84cb9ec8f6084804146292dffc669e",
+      "parts": [
+        "أنا مستعدة لتحدي العالم بأسره."
+      ]
+    }
+  },
+  "SE_Lor_Sar_CB.msbt.zst": {
+    "MID_SE_Lor_Sar_B_010": {
+      "source_sha256": "d3afb2d0b3552dd575f98b792593abf823c249d3ba47a4616646a2a6ff121f4b",
+      "parts": [
+        "أنا آسفة حقا! وشكرا لك أيضا!"
+      ]
+    },
+    "MID_SE_Lor_Sar_B_027": {
+      "source_sha256": "7eebf1045e321966240cd3f605a2e9fcd83a458cdcdbae4db1b4848972d73f10",
+      "parts": [
+        "ها! أردت أن أمازحك فحسب."
+      ]
+    }
+  },
+  "3_ISM_c02.msbt.zst": {
+    "MID_EV30_104_m01_035": {
+      "source_sha256": "8ee39b61c74d0ba6f3a7967a772390bcfce184437ef4c148e5ab6214e65b0e5c",
+      "parts": [
+        "شكرا لك. هكذا صرت مستعدة."
+      ]
+    },
+    "MID_EV30_004_m01_060": {
+      "source_sha256": "ef3d2f33447a8fe1d75b0a58edad97ed3ef8e765d2cc2a49a21f8ce952d18e67",
+      "parts": [
+        "تلك خلاصة الأمر. ويسعدني أنك استوعبت درسي كل هذا الاستيعاب."
+      ]
+    },
+    "MID_EV30_110_m01_014": {
+      "source_sha256": "4783917abbc99e38fea104a9a4acb74b47fad760d02574ed036685efaf5ee695",
+      "parts": [
+        "وأنا أزداد يقينا بأنهم أمدوا بالور بقوة تفوق ما يخطر لي ببال."
+      ]
+    },
+    "MID_EV30_101_m01_001": {
+      "source_sha256": "1175441ce66a99ba7bad97d9ee5d0a58a048a3738bf3687151f5d140c2ef2090",
+      "parts": [
+        "آه، يا أملنا الموعود! ما الذي جاء بك إلى هنا؟"
+      ]
+    },
+    "MID_EV30_101_m01_008": {
+      "source_sha256": "238a3bdaaa785bc17f92d90932965b72ce6d609932feaf57d7474a25d3a211cb",
+      "parts": [
+        "يا أملنا الموعود، بعدما أنقذتني عدت مع أسرتي إلى ريبيرا."
+      ]
+    },
+    "MID_EV30_101_m01_027": {
+      "source_sha256": "1f9d61a6e26450ebfffff6ba711a199715a6368c9e9d329243ee20ef62aa2fd5",
+      "parts": [
+        "يا أملنا الموعود، فلنبذل معا كل ما في وسعنا لإنقاذ داغدا."
+      ]
+    },
+    "MID_EV30_103_m01_018": {
+      "source_sha256": "e3aa839a40746fe3360c562a7ceedbcad47b96c9844780754371628b751ea88c",
+      "parts": [
+        "لكن هذا ليس كل ما أردت بحثه. بقي أمر يخصك أنت، يا أملنا\nالموعود."
+      ]
+    },
+    "MID_EV30_104_m01_001": {
+      "source_sha256": "fc0ba31af3349020e518c486950363b428c32bb8087c10df4c5c39e3159f12ba",
+      "parts": [
+        "يا أملنا الموعود، أعندك وقت لنتحدث قليلا؟"
+      ]
+    },
+    "MID_EV30_104_m01_027": {
+      "source_sha256": "fe85a509ee11f79be2076c217b85a628e2b0bcea4623438f55bbf1fe042ce1ca",
+      "parts": [
+        "يا أملنا الموعود، لي عندك طلب."
+      ]
+    },
+    "MID_EV30_104_m01_036": {
+      "source_sha256": "1233aceb652311fb56d8e6f0f9bfa194f86edd84e43e76c00d7e3eccb0915bb9",
+      "parts": [
+        "لننطلق قريبا، يا أملنا الموعود، ونعد السلام إلى أرض داغدا."
+      ]
+    },
+    "MID_EV30_008_m01_032": {
+      "source_sha256": "550368814807402bbbbe0bc161a75b6d3682d0da6ffdc77c183908c63cec207d",
+      "parts": [
+        "يا أملنا الموعود! ها أنت أخيرا! كم كان المكان مملا في غيابك!"
+      ]
+    },
+    "MID_EV30_008_m01_052": {
+      "source_sha256": "9a296b8f141fa6c22d7dce4103ff8f6ee7ca956b9fd2cca3f845f9b59b438f2d",
+      "parts": [
+        "وآه، يا أملنا الموعود، ما أشد شوقي إلى خوض معركة مجيدة\nمعك!"
+      ]
+    },
+    "MID_EV30_009_m01_004": {
+      "source_sha256": "c922cf694037217cb7bc2a33d2a10e2b52837db61ca35886e52d34f72b16c7df",
+      "parts": [
+        "نعم، يا أملنا الموعود. شكرا لك على ما أعطيتني إياه في النهاية."
+      ]
+    }
+  },
+  "LG_1KAI_c06.msbt.zst": {
+    "MID_LGV_1KAI_c06_Cas_m01_003": {
+      "source_sha256": "fac54a49921f39752a7731dfa70f6ea5db40b0e62e56a182467921e7cdad7ae0",
+      "parts": [
+        "هذا ابني! أنا فخور بك."
+      ]
+    }
+  },
+  "SE_Ism_Fia_AS.msbt.zst": {
+    "MID_SE_Ism_Fia_S_017": {
+      "source_sha256": "6d257ffcfbd4a68fb54728445da0ef46eb98ada817a5c9a3f1ba8646e5c451ca",
+      "parts": [
+        "آسفة. لا أريد أن أبكي..."
+      ]
+    },
+    "MID_SE_Ism_Fia_A_004": {
+      "source_sha256": "b253da9d50266076ca7219c88b75a388e1f83548f4f962e812a4a1f54c662cd5",
+      "parts": [
+        "أنا آسفة. ما أردت أن أقلقك."
+      ]
+    },
+    "MID_SE_Ism_Fia_A_021": {
+      "source_sha256": "f50fc92f4fd84cc90de816df34992cceff504957b96025cc3fd72778a6063724",
+      "parts": [
+        "(تشهق) أغفوت؟ آه! أنا آسفة جدا!"
+      ]
+    }
+  },
+  "1_KAI_c02.msbt.zst": {
+    "MID_EV11_101_m01_011": {
+      "source_sha256": "aa4fadd53ab60a1f9d460b759b960e87df38ffaa2e63cbba87ef0fbae8e102ff",
+      "parts": [
+        "هاها... يسرني أنه أعجبك."
+      ]
+    },
+    "MID_EV11_100_m01_035": {
+      "source_sha256": "1707b2afb3865e9eb1eca9c37b705f10c93e361904d5e5f841d536a12d722161",
+      "parts": [
+        "وأجمل ما في الأمر أنك نشأت على خير. أنا فخور بك جدا."
+      ]
+    }
+  },
+  "1_SEO_c10.msbt.zst": {
+    "MID_EV13_105_m01_024": {
+      "source_sha256": "751ee1ac186f3c6ccb49d51641fb5aaebd17a0ef11fed5b99399fb8fbb578d9e",
+      "parts": [
+        "لست واثقة بأنني فهمت كيف توصلت إلى ذلك."
+      ]
+    },
+    "MID_EV13_051_m01_014": {
+      "source_sha256": "3a4ba7f06258fb640986aeb0d2594cb1f94f6fed97864dc89b343f08d299f437",
+      "parts": [
+        "الآن؟ جلالتها متعبة يا ليساندر. أنت تقلق راحتها."
+      ]
+    }
+  },
+  "SE_Hur_Cen_C.msbt.zst": {
+    "MID_SE_Hur_Cen_C_005": {
+      "source_sha256": "3861b72041e2ba5843e52683996be5b4d24a46f0bef10d1aa65406cb112aede6",
+      "parts": [
+        "ماذا؟! أتظن حقا أنني مستعدة لذلك؟"
+      ]
+    },
+    "MID_SE_Hur_Cen_C_027": {
+      "source_sha256": "59b778ba8e1375203df9f883e87b4da1d331b6fd8b2670882d93bfede4dba7ad",
+      "parts": [
+        "نـ... نعم يا سيدي! أنا آسفة جدا! سـ... سأحدثك عن التدريب\nفي وقت آخر."
+      ]
+    }
+  },
+  "1_KAI_c03.msbt.zst": {
+    "MID_EV11_015_m01_004": {
+      "source_sha256": "651bc1f44b819ee4b649d70ff510ade3065d6b52d419c467dea124096abaea8e",
+      "parts": [
+        "آسفة! أنا آسفة! كان الذنب ذنبي!"
+      ]
+    },
+    "MID_EV11_014_m01_016": {
+      "source_sha256": "10d0e1fa743a0b7b5c6e4e5ce11b51dcf68b948e5f3c0778ebc30a35350d43c1",
+      "parts": [
+        "أجل. شكرا على انتظاركم. أنا مستعد. اعتنوا بأنفسكم جميعا."
+      ]
+    }
+  },
+  "SE_Kai_Ale_CBA.msbt.zst": {
+    "MID_SE_Kai_Ale_B_027": {
+      "source_sha256": "7ab31377f5d1af35cd26f8deacda6ab61b0ba84d8bee992338e6a88a28ed6694",
+      "parts": [
+        "يا للراحة! كم أنا سعيد باجتماعكما من جديد!"
+      ]
+    }
+  },
+  "1_DIT_c04.msbt.zst": {
+    "MID_EV12_110_m01_028": {
+      "source_sha256": "f64b943da2740bbc11db2e93fc4a35865d4ee4fc0e32cea5d32439916e78a4a7",
+      "parts": [
+        "كانت ثقتي بنفسي في غير محلها."
+      ]
+    }
+  },
+  "SE_Sci_Ale_C.msbt.zst": {
+    "MID_SE_Sci_Ale_C_011": {
+      "source_sha256": "4f13d481dcc271ea4624df7ecc65aea229379c9f8dcbe88e4c6a268c000a95b8",
+      "parts": [
+        "أنا آسفة جدا! لقد أسأت الحكم عليك تماما!"
+      ]
+    }
+  },
+  "SE_Tal_Tia_CB.msbt.zst": {
+    "MID_SE_Tal_Tia_C_018": {
+      "source_sha256": "f033214fa6bef79ee26efd2be28e82a97e7bbb2a689e45178d054d4149df3abf",
+      "parts": [
+        "حسنا! كم يسعدني سماع ذلك يا سيدي."
+      ]
+    }
+  },
+  "Stage_Watch.msbt.zst": {
+    "MID_SV_StageWatch_Tro_m02_01": {
+      "source_sha256": "7df004d40b02ff27f011d84d87aca9291f2ee5d7d4a224ed983cca5257db2a87",
+      "parts": [
+        "يسعدني أنني تكبدت عناء السفر لأرى هذا."
+      ]
+    }
+  },
+  "Meal.msbt.zst": {
+    "MID_SV_Meal_Orh_Die_m01_01": {
+      "source_sha256": "f74f34ef22b9a7dbb494cc929ece826243439ec36eeb0e7443dacc62e260b050",
+      "parts": [
+        "يسرني أن أراك تأكل بهذه الشهية يا دييغو."
+      ]
+    },
+    "MID_SV_Meal_Urs_m01_01": {
+      "source_sha256": "28f74371b52a8ca9ad3f5e2face405400a61ddcab020e110fd78ba4c7bebf53a",
+      "parts": [
+        "لم يكن هذا في برنامجي، لكنني سعيدة لأنني أتيت."
+      ]
+    }
+  },
+  "LG_2_M04.msbt.zst": {
+    "MID_LGV_2_M04_Mic_m01_001": {
+      "source_sha256": "9468301dfaad5cf98710868591229b7b7199ee0237afa037c69cde8cd599c719",
+      "parts": [
+        "صدقني، أنا سعيدة بأن الآلهة تقف إلى جانبنا."
+      ]
+    },
+    "MID_LGV_2_M04_Lou_m01_002": {
+      "source_sha256": "1d9383bf1c0c699298ab4fa726ac7472f6a8a6738e353ad835d93f6f5be5c83c",
+      "parts": [
+        "أريد لهذه المعركة أن تنتهي أخيرا. أنا مستعدة لمغامرة من نوع\nآخر، أتعلم؟"
+      ]
+    },
+    "MID_LGA_2_M04_Gol_m01": {
+      "source_sha256": "46f1b957c4765d71288812dc4d132d6e9943fdc79f73beec2a77dbdfea584a7f",
+      "parts": [
+        "أشعر ببعض القلق."
+      ]
+    },
+    "MID_LGV_2_M04_Tia_m01_001": {
+      "source_sha256": "8af5086d3147226b0f0c4c751b8f0335873e85ae1b16b39465b41fb79bdaf29d",
+      "parts": [
+        "صاحبة السمو أسوان... عفوا، بل «صاحبة الجلالة» الآن. ما زلت\nأكاد لا أصدق أن لأراغو ملكة جديدة."
+      ]
+    },
+    "MID_LGV_2_M04_B02_m01_003": {
+      "source_sha256": "b9dffcf04f2330a844f4245a74bc4a6ab19ecc6044974f960300f859bf7ca6a5",
+      "parts": [
+        "إن هزمنا هنا فلن يكون لنا غد. وأنا على ثقة تامة بجلالتها ونحن\nنزحف إلى العاصمة!"
+      ]
+    }
+  },
+  "1_LED_c08.msbt.zst": {
+    "MID_EV14_039_m01_017": {
+      "source_sha256": "06c0eb0a7452b49fec15e56862b55a5cd0d7a64ea11d48267fdfae4d314e3223",
+      "parts": [
+        "لكنني، والحق يقال، دهشت لأنها تذكرتني."
+      ]
+    },
+    "MID_EV14_043_m01_017": {
+      "source_sha256": "c8becbf0f93234fa03fac9831f065bfeadb7b1072339820944af3b57a3b67e2e",
+      "parts": [
+        "طبعا. والعجب عندي أنك لم تدرك الأمر إلا الآن."
+      ]
+    }
+  },
+  "SE_Tia_Lou_CB.msbt.zst": {
+    "MID_SE_Tia_Lou_B_014": {
+      "source_sha256": "7a40786e91c905e4aaed940f485b0234d3d64a25de40b75e9c9e28ff2d66ff95",
+      "parts": [
+        "أخشى أنني لا أستطيع مساعدتك يا لوديا. أنا آسفة."
+      ]
+    },
+    "MID_SE_Tia_Lou_B_026": {
+      "source_sha256": "a006cd65e79dc84eb0c08cfed93d58e3e1e0127a621567f0355e395156dfb4c1",
+      "parts": [
+        "أنا واثقة بأن هذا غير صحيح. فرواية القصص فن نبيل."
+      ]
+    },
+    "MID_SE_Tia_Lou_B_002": {
+      "source_sha256": "67c09f27434e9ed1cbf3b11a32e95264e2468809d15b5fac8c536db7f13ed7a9",
+      "parts": [
+        "يسعدني أن الخطة نجحت. كانت الحيلة بسيطة إلى حد جعلني\nأخشى أن تخفق."
+      ]
+    },
+    "MID_SE_Tia_Lou_B_029": {
+      "source_sha256": "f1f287d67ed2b71df071e7b86b13f19e0cae47c1bf0cfc8ee39fc1425ba6cec3",
+      "parts": [
+        "يسرني أن أجرب!"
+      ]
+    },
+    "MID_SE_Tia_Lou_B_020": {
+      "source_sha256": "5135350b4717cbab02e15b72c89851f73f4e6bc1014e672235c464e83c37256f",
+      "parts": [
+        "ما أمتع قصصك يا تيالا! لك عندي جميل لأنك رويتها لي."
+      ]
+    }
+  },
+  "SE_Ism_Sar_AS.msbt.zst": {
+    "MID_SE_Ism_Sar_S_007": {
+      "source_sha256": "e1815c551b7a3f3d3c0426c179505485b8f302875df35da46f61a8e122b724cb",
+      "parts": [
+        "كم يسعدني أن أتحدث إليك هكذا من جديد."
+      ]
+    }
+  },
+  "2_XXX_c01.msbt.zst": {
+    "MID_EV22_002_m01_021": {
+      "source_sha256": "1fd64c0ffa9eb535e0b16054b4406aa4d3c9be1432358c48155cdc9add026eb5",
+      "parts": [
+        "أنا واثقة بأن الأمور ستكون بخير! أينما ذهبت ذهبت معك يا\nحبي!"
+      ]
+    },
+    "MID_EV24_002_m01_022": {
+      "source_sha256": "d842d01dc5517385f69b9fa5f7f4519ead425d504ae26325c876e828c39abdf2",
+      "parts": [
+        "ربما. لكن ثمة أمرا واحدا أنا على يقين منه."
+      ]
+    }
+  },
+  "1_KAI_c08.msbt.zst": {
+    "MID_EV11_045_m01_007": {
+      "source_sha256": "229416a9994efa953fdad5f41b2ccf2435c1c0a721fbda5d5bbbc7370eb709eb",
+      "parts": [
+        "أحقا؟ أنا واثقة بأن الأمر سيتضح لك قريبا."
+      ]
+    }
+  },
+  "1_LED_c09.msbt.zst": {
+    "MID_EV14_048_m01_021": {
+      "source_sha256": "229416a9994efa953fdad5f41b2ccf2435c1c0a721fbda5d5bbbc7370eb709eb",
+      "parts": [
+        "أحقا؟ أنا واثقة بأن الأمر سيتضح لك قريبا."
+      ]
+    }
+  },
+  "Scout.msbt.zst": {
+    "MID_LGV_Scout_Esm_m02_001": {
+      "source_sha256": "f412d01dd8b9e4a2dc73ff96afbfca54d9af1a0faa338894f43b2d0d91fbbf6c",
+      "parts": [
+        "حقا؟ شكرا! أنا مستعدة للعمل، كما قلت لك!"
+      ]
+    },
+    "MID_LGV_Scout_Ini_m02_001": {
+      "source_sha256": "9efedca1020935128302ebf9ebb26e5ca880f2fa7878bb8fe6c18fa132464924",
+      "parts": [
+        "شكرا لك... يسعدني أنني استجمعت شجاعتي وحدثتك."
+      ]
+    },
+    "MID_LGV_Scout_Ini_m06_001": {
+      "source_sha256": "2b86551d417a536f4de0b0589da5ec2864625b914c41ac645cc3ffa53b7fbae0",
+      "parts": [
+        "أهذا لي؟ شكرا... ما أسعدني أنني من أفراد فريقك..."
+      ]
+    },
+    "MID_LGV_Scout_Ini_m02_002": {
+      "source_sha256": "c0a1830341160c4607bf105c65b54af71ab6c4c1b9bff90646198f866b8e4f7b",
+      "parts": [
+        "شكرا... يسعدني أنني تشجعت أخيرا وتحدثت إليك."
+      ]
+    },
+    "MID_LGV_Scout_Jas_m08_002": {
+      "source_sha256": "ee771aa87a999ee4a0a6d22504918c603503a5b83cab4b826b52130c8a67710f",
+      "parts": [
+        "يؤسفني قول ذلك، لكن المطلوب ليس بحوزتك. ويسعدني أن\nتخبرني متى توفر لديك."
+      ]
+    },
+    "MID_LGV_Scout_Lou_m04_004": {
+      "source_sha256": "7b1ccef7613b02a2109314c22521665672c89fe4287f21d6cec711d1eb0e9a3e",
+      "parts": [
+        "هذا شرف عظيم لي، لكن علي واجبات لم أفرغ منها في شركة\nفاندال التجارية... أنا آسفة."
+      ]
+    },
+    "MID_LGV_Scout_Negotiation_SP_NoMoney_Tia_m01_001": {
+      "source_sha256": "8e1cd6220739059b658a7df279ebd17196dcac823d09bf3439b538d7e59512d1",
+      "parts": [
+        "آه... هذا لا يكفي تماما. آسفة على الإزعاج. سأطلب العون من\nشخص آخر."
+      ]
+    },
+    "MID_LGV_Scout_Ned_m04_003": {
+      "source_sha256": "53a0f7bbe97616e971cd8ecf297edcd2e0c2c65b1cec66cf6ef2aa95ebc68a70",
+      "parts": [
+        "لكنني أختار بعناية من أعمل لحسابه، ولم أتيقن بعد إن كنت أهلا\nللثقة."
+      ]
+    },
+    "MID_LGV_Scout_Sop_m04_004": {
+      "source_sha256": "64ac2d4be46680212b64ab09e1ebef4348afc83b86bd31bf83148528d10bff91",
+      "parts": [
+        "لكنني لست واثقة بأنني سأكون عند حسن ظنك. وأستميح جلالتك\nعذرا على صراحتي، فلهيبتك وقع في نفسي!"
+      ]
+    },
+    "MID_LGV_Scout_Cat_m02_003": {
+      "source_sha256": "feaf4741b7eb03413636486e8bac8ee06727c8d93077c0548b61d860c2bda9bc",
+      "parts": [
+        "من اليوم سنقاتل معا. يسرني أن أخدمك، لكنك حليفتي لا سيدتي!"
+      ]
+    },
+    "MID_LGV_Scout_Nin_m05_002": {
+      "source_sha256": "9f5df67da31db2497f1e1b6b6f4599b318f02e72964b00a4194e3a62f0bcae0d",
+      "parts": [
+        "أخدم معبد كريدنا حارسة من الفولكان، ومهمتي الآن حماية\nكبيرة الكهنة أورشل."
+      ]
+    }
+  },
+  "1_SEO_c11.msbt.zst": {
+    "MID_EV13_055_m01_021": {
+      "source_sha256": "5ea453997ceb85c46548744b366276f5e846f6405fdc11d667af0573782a0c1a",
+      "parts": [
+        "فهمت. ما كان لي علم بهذا. أنا... أنا آسفة."
+      ]
+    }
+  },
+  "1_SEO_c03.msbt.zst": {
+    "MID_EV13_010_m01_027": {
+      "source_sha256": "2472e68f4eb1f647af7fb6920cbbe525b4c89e6a8438cce01b0430827bc387a7",
+      "parts": [
+        "لطالما رغبت في أن أختبر معدنه بنفسي."
+      ]
+    },
+    "MID_EV13_012_m01_008": {
+      "source_sha256": "459c4efa20a642b5c6e01795c54742386c74a445f1278331608d6841d751af70",
+      "parts": [
+        "أشكرك على لطف كلامك. يسرني أن أراك بخير يا أيها الحاكم الإلهي."
+      ]
+    },
+    "MID_EV13_018_m01_015": {
+      "source_sha256": "4232b5adc331ed99b1926daf2844d985de7b1c63bafbd071665c673fd351f43b",
+      "parts": [
+        "كلا، أنا من أهل المعبد. ها هي علامتي، هنا. إنها علامة كبيرة\nالكهنة."
+      ]
+    }
+  },
+  "SE_Hur_Gol_CBA.msbt.zst": {
+    "MID_SE_Hur_Gol_B_008": {
+      "source_sha256": "b56d2a81f3fedec7e20dbbff7e59316601cb53697b23a725823339034f5e1140",
+      "parts": [
+        "آه، أنا... مسرورة بهذه الهدية، لكنها نوعا ما..."
+      ]
+    },
+    "MID_SE_Hur_Gol_B_023": {
+      "source_sha256": "e7c5bdd3936f6ff6ecf4cf8eceb4ce839bfbd2a86f8d95d5d2b98105051b6c05",
+      "parts": [
+        "ما أسهلها! هاهاها!"
+      ]
+    }
+  },
+  "SE_Tia_Hur_CBA.msbt.zst": {
+    "MID_SE_Tia_Hur_B_028": {
+      "source_sha256": "9304e95f9528be5ffb80f24ced94c1c51c8dba58abdda71d7b8defac482fd575",
+      "parts": [
+        "لذلك أنا مصممة على مساعدة كاي في الفوز وإنقاذ كاستور!"
+      ]
+    },
+    "MID_SE_Tia_Hur_A_019": {
+      "source_sha256": "5e8b373ae861fa3e627a458df86e5faff4d9dc97bbd4bf8180688607cdb927c7",
+      "parts": [
+        "أنا آسفة. لا بد أن يثير عجبك سماعي فجأة أهذي بكل هذا الكلام."
+      ]
+    },
+    "MID_SE_Tia_Hur_A_024": {
+      "source_sha256": "300882e52c79b92845f97dfcb330b184dee0202b219b98a6c4018a63e6cca160",
+      "parts": [
+        "لكن رأينا واحد، وهذا يحل الأمر."
+      ]
+    }
+  },
+  "Arena_Train.msbt.zst": {
+    "MID_SV_ArenaTrain_Buc_m03_01": {
+      "source_sha256": "c1301fc152c940e4890f913b965d8f30bddd3bd4b5763bd926f7e487d2df16e8",
+      "parts": [
+        "أنا مستعد. إمالة الجسد في الوقت المناسب كفيلة بتفادي ضرباتي."
+      ]
+    },
+    "MID_SV_ArenaTrain_Fia_m01_01": {
+      "source_sha256": "13b039a762e3327e17a5855db1f2cb573a9c3374708fdd0df5688629961728b5",
+      "parts": [
+        "لا أدري إن كان التدريب معي يستحق ما ستنفقه من\nوقت..."
+      ]
+    },
+    "MID_SV_ArenaTrain_Led_Die_m01_01": {
+      "source_sha256": "43ba55ab3c775fa8b406b6a3373ffa22da7dff248092a2ae0936ca7ca90684b0",
+      "parts": [
+        "يسعدني أن تتاح لنا هذه الفرصة للتدرب. أريد أن أرى حركاتك عن\nقرب."
+      ]
+    }
+  },
+  "SE_Ism_Lil_AS.msbt.zst": {
+    "MID_SE_Ism_Lil_S_011": {
+      "source_sha256": "f64a97f2a14236930eb1f17d6fa9f285a3a92b9a46c1f1f1b2fc70efbbfbea6b",
+      "parts": [
+        "لكنني سعيدة. صار لدي الآن كل ما يعز علي."
+      ]
+    },
+    "MID_SE_Ism_Lil_A_009": {
+      "source_sha256": "0fae321498abcddb1cebc75ccee1ce92180136fc57b376d4f42236cb3e91eafe",
+      "parts": [
+        "ولم لا؟ من ينقذ العالم بأسره لن يعجز عن توصيل طرد صغير."
+      ]
+    }
+  },
+  "LG_1KAI_c11.msbt.zst": {
+    "MID_LGV_1KAI_c11_Aur_m02_001": {
+      "source_sha256": "b58775cdd47c8181da53eeee8f44354160066b6b8ffe922b6cddd0fa599202c8",
+      "parts": [
+        "يسعدني أنك تذكرت! أظنني مستعدة للانطلاق."
+      ]
+    },
+    "MID_LGA_1KAI_c11_Aur_m02": {
+      "source_sha256": "c603386a5393a6b2658169fc1cc8d0ad10627364efe3b4c6929025fb045d2834",
+      "parts": [
+        "يسرني أنك تذكرت!"
+      ]
+    }
+  },
+  "1_DIT_Battle.msbt.zst": {
+    "MID_SC12_15_m04_003": {
+      "source_sha256": "670e255a4724d1a07d2de624ec25b1a7b5bcbd5fcc197454d0b6482a4d3cb66e",
+      "parts": [
+        "معلمي لونغ... زينون... أنا آسفة لكم جميعا، آسفة من كل قلبي..."
+      ]
+    },
+    "MID_SC12_09_m02_001": {
+      "source_sha256": "02766d761dbd7b6573cffcc2d8bb34cbfc23be7bdb67fe264f3cef0eaf40f557",
+      "parts": [
+        "أصحيح هذا؟ حتى وهي على ظهر تلك المطية الطائرة السخيفة،\nلا تكاد السهام تؤثر فيها؟ لا أصدق!"
+      ]
+    }
+  },
+  "Watching.msbt.zst": {
+    "MID_WD12_15_m03_002": {
+      "source_sha256": "670e255a4724d1a07d2de624ec25b1a7b5bcbd5fcc197454d0b6482a4d3cb66e",
+      "parts": [
+        "معلمي لونغ... زينون... أنا آسفة لكم جميعا، آسفة من كل قلبي..."
+      ]
+    }
+  },
+  "SE_Urs_Fia_CBA.msbt.zst": {
+    "MID_SE_Urs_Fia_B_027": {
+      "source_sha256": "7460c5def5985a247b25889d7fb32624e3dfc1b9725a5473548921892afa0d19",
+      "parts": [
+        "آه... آسفة لأنني شققت عليك إلى هذا الحد."
+      ]
+    }
+  },
+  "SideStory_Orhel.msbt.zst": {
+    "MID_SCXX_06_02_m02_001": {
+      "source_sha256": "0ace265c8d86c795f3cf12bd115d0e915e5caa42d31211218e89772b265c2d0f",
+      "parts": [
+        "آسفة لأنني ورطتك في أمر بهذه الخطورة."
+      ]
+    },
+    "MID_SCXX_06_02_m03_001": {
+      "source_sha256": "8917df523d6b03e473914a2ea8d0081f35676cf050af258e5b2cc1f82c635857",
+      "parts": [
+        "آسفة يا ديتريش لأنني ورطتك هنا في موقف بهذه الخطورة."
+      ]
+    },
+    "MID_SCXX_06_02_m05_001": {
+      "source_sha256": "4c79102a1555f99c46245569d7cf9777cf0059630b890b44e5d1f9a7d950c541",
+      "parts": [
+        "آسفة يا ليدا. ما أردت جرك إلى كل هذه المتاعب والأخطار."
+      ]
+    },
+    "MID_SCXX_06_02_m06_001": {
+      "source_sha256": "b5ff11d72b92d8721b45be54c68ab638a18107c5358f9717ea9e83a0168f1635",
+      "parts": [
+        "آسفة يا برتران. لقد ورطتك في موقف شديد الخطورة."
+      ]
+    },
+    "MID_SCXX_06_02_m04_001": {
+      "source_sha256": "6c9c03badc5ee0b31e0ea04be99d061855f25eb3afa8af9fd17e2d189fd84273",
+      "parts": [
+        "آسفة يا ثيودورا. لقد أقحمتك في أمر شديد الخطورة."
+      ]
+    },
+    "MID_SCXX_06_03_m01_037": {
+      "source_sha256": "f7845f85f664ac61b936ac773808bda344839d9829b6fa3f2fafab61dcd91419",
+      "parts": [
+        "يجدر بك أن تحاول التفاهم مع الآخرين أكثر قليلا. ثم... إنني واثقة\nبأن ذلك الشخص أهل لثقتنا."
+      ]
+    },
+    "MID_SCXX_06_02_m05_002": {
+      "source_sha256": "fd1ca65ef7471d63a1e15912853558365fa23dc768a0bab20c296067d1538be1",
+      "parts": [
+        "لا داعي للاعتذار. خسرت أمام برتران كما طلبت منك، فلك\nعندي جميل على أي حال."
+      ]
+    }
+  },
+  "SE_Led_Asw_C.msbt.zst": {
+    "MID_SE_Led_Asw_C_010": {
+      "source_sha256": "2aeddc0fc76b443a865d0315ae1e9e9a502fd27a141794a3366b063202b7df0e",
+      "parts": [
+        "أظن برتران قد وطن نفسه على تلقي السهم."
+      ]
+    }
+  },
+  "SE_Buc_Oly_CBA.msbt.zst": {
+    "MID_SE_Buc_Oly_A_017": {
+      "source_sha256": "f64ec2cc921d229acf6136eb827bc52ec2231897c3a8b3874ee14b5510af3dc8",
+      "parts": [
+        "أنا واثقة بأنك ستحسن الانتفاع به أكثر مني."
+      ]
+    }
+  },
+  "3_ISM_c01.msbt.zst": {
+    "MID_EV30_039_m01_036": {
+      "source_sha256": "b92564539161bdc642d77e4bbbcb69af94565d965c3bb2a4ac4f6f5aead771dd",
+      "parts": [
+        "أنا مستعدة للانطلاق. فلنشرع في إنقاذ العالم."
+      ]
+    },
+    "MID_EV30_000_m01_033": {
+      "source_sha256": "6679791658357494d8580b40f6c6dda7afd554918277d9509675ff9fe4b858ac",
+      "parts": [
+        "أنا واثقة بأنهم سيهبون لنجدتنا ما إن يعلموا أن بوابة داغسيون\nزالت."
+      ]
+    },
+    "MID_EV30_001_m01_019": {
+      "source_sha256": "b92d1cc275f0f42ce68113b04bf984f3f50bfd01833c010092d480ad5c9b04e6",
+      "parts": [
+        "حذار يا أملنا الموعود! أيا يكن هذا الرجل، فهو أقوى مما يوحي\nبه مظهره."
+      ]
+    }
+  },
+  "LG_1KAI_c12.msbt.zst": {
+    "MID_LGV_1KAI_c12_Cas_m01_003": {
+      "source_sha256": "09bd68d25ba2e1b94fdc1f3f0a1da98b7bd086e872ab6333d0dd76308fdc7c27",
+      "parts": [
+        "إنما أمزح! أنت ابني، وكم أنا فخور بك!"
+      ]
+    },
+    "MID_LGA_1KAI_c12_Cas_m01": {
+      "source_sha256": "f21935ca63aca31acf383ca02bd258e1fc841d5b9f6bc52b4443f647218b9740",
+      "parts": [
+        "ما أشد فخري!"
+      ]
+    }
+  },
+  "1_DIT_c05.msbt.zst": {
+    "MID_EV12_022_m01_020": {
+      "source_sha256": "da1ae2fec72c2cf3514361a6733f53cf8091de02d2bada32ea305bfd2b32554f",
+      "parts": [
+        "أنا واثقة بأنني طبعته بقبلة العالم السفلي!"
+      ]
+    }
+  },
+  "Gmap_Wait.msbt.zst": {
+    "MID_Gmap_Fix_Normal_Orh_m03_001": {
+      "source_sha256": "2926670727cae0335115cb23cd699ebecefedadc5f3bf9ced71d9e83b602d9d1",
+      "parts": [
+        "أنا لا أتعب، لذلك يسعدني أن أمضي بالجميع وأرشدهم!"
+      ]
+    },
+    "MID_Gmap_Fix_Normal_Lou_m05_001": {
+      "source_sha256": "c27df58c95fed378509da4e02fdf9ae1efa26f7326eb1c181480fa25839f2010",
+      "parts": [
+        "أحب أهلي. وبصرف النظر عن التعاليم العسكرية، أنا فخورة بأنني\nابنة أبي."
+      ]
+    },
+    "MID_Gmap_Fix_Normal_Dai_m05_001": {
+      "source_sha256": "fdfabb098a3d89e889631660429d74f245410e659a3d3b01119e5c3602bc6ff7",
+      "parts": [
+        "أنا جائع."
+      ]
+    },
+    "MID_Gmap_Fix_Normal_Pet_m01_001": {
+      "source_sha256": "8360897ab8770d7682e525419dc16961e9916a11452b32a2bdbcd1e7891c1772",
+      "parts": [
+        "يا لشدة جوعي..."
+      ]
+    },
+    "MID_Gmap_Fix_Normal_Iio_m01_001": {
+      "source_sha256": "447573bed6d0d4e989022895f6e31bc75212b702c27389324d070e8fd0ef26c7",
+      "parts": [
+        "لا تغفل أبدا ولو خيم الهدوء. ذلك ما كان أبي يوصيني به."
+      ]
+    },
+    "MID_Gmap_Banquet_Hri_m01_001": {
+      "source_sha256": "b73eb77f42fecd28f9b2e677427be105d3e2f15a26a8eca2399553169e4ff4be",
+      "parts": [
+        "يا للعجب! إذن الموعود موجود حقا! أود أن أعرف سر الأمر."
+      ]
+    }
+  },
+  "SE_Esm_Mic_CBA.msbt.zst": {
+    "MID_SE_Esm_Mic_A_002": {
+      "source_sha256": "a82be030a111e9eebc483477fc357278c94edf67171bae6fb187976e0a850e5e",
+      "parts": [
+        "أما زالت تراسلك؟ يسعدني أنكما تصالحتما."
+      ]
+    }
+  },
+  "SE_Ism_Tia_AS.msbt.zst": {
+    "MID_SE_Ism_Tia_S_009": {
+      "source_sha256": "b029ea14dd05499e18b24c20ad05556cea59e1e0980cd41c6c87ccf614a7a720",
+      "parts": [
+        "حقا، فرحتي لا توصف. العالم بأمان، وأنت على قيد الحياة."
+      ]
+    },
+    "MID_SE_Ism_Tia_S_015": {
+      "source_sha256": "b1135db65ec14bda29881536bf4ae58b133eef0d9ef36b1058e051d15dfd23c6",
+      "parts": [
+        "يسعدني سماع ذلك. وما رأيك في زيارة بيتي؟"
+      ]
+    }
+  },
+  "1_DIT_c06.msbt.zst": {
+    "MID_EV12_032_m01_029": {
+      "source_sha256": "5f29422d728d8aebf17ab7001629378d47a331e4168d9a07c2f846fc54a50085",
+      "parts": [
+        "يسعدني أن الأمر تيسر... لكن هذا الشعور لا يفارقني."
+      ]
+    },
+    "MID_EV12_028_m01_033": {
+      "source_sha256": "e51119d8b3e3c0cb1ff266ebc6e8d832f981b77b4d64cbaa3d70e3315f371ee3",
+      "parts": [
+        "هيا، قل ما عندك بصراحة!"
+      ]
+    }
+  },
+  "LG_1LED_c08.msbt.zst": {
+    "MID_LGV_1LED_c08_Car_m02_005": {
+      "source_sha256": "8de5bec10371a63e1164b708614127a6ce734905fffdfc76a97eb45149171b17",
+      "parts": [
+        "أنا واثقة بأن لها أسبابها التي تدفعها إلى هذا التصرف."
+      ]
+    }
+  },
+  "1_KAI_c07.msbt.zst": {
+    "MID_EV11_039_m01_019": {
+      "source_sha256": "67a5ca923d03fb9f8d4a94c9513595f643a909b47d3fdab2c098b403cffaabdd",
+      "parts": [
+        "أظن أن وقت الرحيل قد حان. لكنني واثقة بأننا سنلتقي قريبا."
+      ]
+    }
+  },
+  "SE_Bon_Hal_CB.msbt.zst": {
+    "MID_SE_Bon_Hal_C_020": {
+      "source_sha256": "6a90cf00d9820b98a5f46529c5041d3849246b4a6d842ffba96edda3a1921708",
+      "parts": [
+        "آه، آسفة، آسفة... وقد أكرمتني حتى بالقهوة والحلوى..."
+      ]
+    }
+  },
+  "SE_Ism_Dit_AS.msbt.zst": {
+    "MID_SE_Ism_Dit_S_013": {
+      "source_sha256": "ab241ecc41ce2573ef4c2a60ca6e3205fd1ddbdb778ffc45aac452ac1a5359db",
+      "parts": [
+        "ومع ذلك يسرني أنني مضيت في الأمر حتى نهايته. غريب...\nمثلك."
+      ]
+    }
+  },
+  "SE_Ism_Hur_AS.msbt.zst": {
+    "MID_SE_Ism_Hur_S_018": {
+      "source_sha256": "6212c08e1a9b39df4859c8db28f9fc46848917105f953164446269cd2505240e",
+      "parts": [
+        "على كل حال، يسعدني أن الجميع بخير. أنت وأنا وأهلي أيضا."
+      ]
+    }
+  },
+  "SE_Dit_Cat_CB.msbt.zst": {
+    "MID_SE_Dit_Cat_C_016": {
+      "source_sha256": "f0ff24f84558d1137dd47f1c6bc72d8469d7da53e59957e97e194f5a40f59cae",
+      "parts": [
+        "مبارزة؟ لحظة. لا أفهم كيف انتهيت إلى هذه الفكرة..."
+      ]
+    }
+  },
+  "SE_Hur_Lor_CB.msbt.zst": {
+    "MID_SE_Hur_Lor_B_029": {
+      "source_sha256": "c7592b919d2061a5835e10b7be2e472632b503574ea9fb457160deadf344dc1a",
+      "parts": [
+        "وأنا سعيدة حقا يا لوريتا بأنك وجدت في أوزين صديقا طيبا."
+      ]
+    },
+    "MID_SE_Hur_Lor_C_023": {
+      "source_sha256": "bf3228f3bb6b2978738719fdd5cc845dcf42cfb36473ba627ef27480ec913d73",
+      "parts": [
+        "أمسكت بك! لعلك تتعلم الآن عاقبة الغفلة."
+      ]
+    }
+  },
+  "SE_Led_Sci_CBA.msbt.zst": {
+    "MID_SE_Led_Sci_B_017": {
+      "source_sha256": "9c54a5efd43b3d7a4f50b59c764f45e6bbafb38ec7b34864168ae0a1dc171f33",
+      "parts": [
+        "فهمت. لقد تماديت، وأنا آسفة على ما قلت..."
+      ]
+    },
+    "MID_SE_Led_Sci_A_022": {
+      "source_sha256": "df56ef7fcafffd6b187f143cf23815bec0586c42d24961602caa8c27cecc41dc",
+      "parts": [
+        "إن جاء يوم أرضى فيه بأن تطوقني بذراعيك وتناديني ليليدانا..."
+      ]
+    }
+  },
+  "1_DIT_c08.msbt.zst": {
+    "MID_EV12_043_m01_023": {
+      "source_sha256": "f266b69019f3bdaf34b564df487fc5ecdfcb3a2e78dbec6d044d8ffa693fa96e",
+      "parts": [
+        "يسعدني أننا أطلقنا سراح سيتوس، سواء أكانت بيننا قرابة أم لم\nتكن."
+      ]
+    }
+  },
+  "SE_Gol_Oly_CBA.msbt.zst": {
+    "MID_SE_Gol_Oly_B_027": {
+      "source_sha256": "120acdc66eb48c7c1e0be61e27fb5bcd22f6f240dd700a10342405350f9b5d56",
+      "parts": [
+        "لا، إنه... لا أهمية لذلك. يكفيني أنني استطعت أن أعبر عن\nامتناني."
+      ]
+    }
+  },
+  "LG_3_M02.msbt.zst": {
+    "MID_LGV_3_M02_Ale_m01_003": {
+      "source_sha256": "9e589abe95e0fa42271930d76a47cb7312f8d6b77660456a8ebfeda89bc54414",
+      "parts": [
+        "بدا سعيدا جدا، وها أنا طبعا سعيدة بقدر سعادته!"
+      ]
+    },
+    "MID_LGV_3_M02_Lor_m01_003": {
+      "source_sha256": "39880b50748d341bddbc85c4801b5487eacea6a71d9769e70748e365a8115934",
+      "parts": [
+        "أصبحت محاربة ماهرة. أنا مستعدة الآن لتنفيذ أي أمر!"
+      ]
+    },
+    "MID_LGA_3_M02_Tob_m01": {
+      "source_sha256": "b41920830be7fba8eb1cdda034e937561d9d2e2f2847f482079de31f00e160a9",
+      "parts": [
+        "ما أشد حماسي!"
+      ]
+    },
+    "MID_LGA_3_M02_Cat_m01": {
+      "source_sha256": "8a6399c648b29993ae5ea3562bf0cba4d03295e0e93031df1928b6eed5009ef9",
+      "parts": [
+        "سأكون ممتنة جدا..."
+      ]
+    },
+    "MID_LGA_3_M02_Moo_m01": {
+      "source_sha256": "3b5cf9a62683cb673a2e12388c8749f509ca04b11e95c8ed63771b69eecbbfaf",
+      "parts": [
+        "يسرني لقاؤك من جديد."
+      ]
+    },
+    "MID_LGA_3_M02_Anh_m01": {
+      "source_sha256": "b3111b12f200c252248bc1d2b2d84b2dc0d582c35e443e7297a12ea0ed4ba0ea",
+      "parts": [
+        "يا أملنا الموعود!"
+      ]
+    },
+    "MID_LGV_3_M02_Max_m01_001": {
+      "source_sha256": "666512ec4dab3b67b28fdb1b38b50dc8bbdb0d6913295fe345b2e45660556486",
+      "parts": [
+        "أهلا بك يا أملنا الموعود! اسمي مكسيم بيرمان. ما أسعدنا\nباستقبالك بعد طول انتظار!"
+      ]
+    },
+    "MID_LGV_3_M02_Max_m01_004": {
+      "source_sha256": "44889810c015492761f5cca863981250c84aac7608d5e7c1bd9614d54b53daa1",
+      "parts": [
+        "علي أن أكتم عن الموعود هويتي السابقة... إنني أنا المهرج."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_3_M02_Gat_m01_001": {
+      "source_sha256": "d10e26cce1dd18db17988053974b57605494b32e934251866ad34ff1017a9b7d",
+      "parts": [
+        "ما أروع زيك، يا أملنا الموعود! إنه يليق بك."
+      ]
+    },
+    "MID_LGV_3_M02_Fab_m01_001": {
+      "source_sha256": "f3e176c990a6fd0db188138d1a45f3b54c5c6bb25e399c3f285bef43addfc707",
+      "parts": [
+        "يبدو أن عودتك أعادت الأمور إلى نصابها في هذه البلاد، يا أملنا\nالموعود."
+      ]
+    },
+    "MID_LGV_3_M02_Sim_m01_001": {
+      "source_sha256": "efa247128554056a3fd14ed70d330c677d9c8143e5d812f5ec5f6c878075b5f9",
+      "parts": [
+        "فيك شيء يميزك حقا، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M02_Lou_m01_001": {
+      "source_sha256": "a06b7f2fe5a90b66e77748a378b83c828e8b95c9d5e001d8b318d1a4768d27a4",
+      "parts": [
+        "بذلت غاية جهدي في غيابك، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M02_Fia_m01_001": {
+      "source_sha256": "e01dcdda49307db9baff028655af0671c684ac72c997fc26bdc36eb83c3b7c77",
+      "parts": [
+        "مات كثيرون في غيابك، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M02_Lor_m01_001": {
+      "source_sha256": "07e7c0cf138335e1d20db85923f0e1ff9693b97811a13a7643d904d75b2b0843",
+      "parts": [
+        "أنا موضع ثقتك في كل معركة، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M02_Bon_m01_001": {
+      "source_sha256": "17a9df739a648d10a8209c87643e70d5175506d52a066eb12209cf02973215fd",
+      "parts": [
+        "آه، يا أملنا الموعود! مرت سنوات طويلة لم يلمحك فيها أحد."
+      ]
+    },
+    "MID_LGV_3_M02_Lys_m01_001": {
+      "source_sha256": "fd55116d328e59c3fb2d392f0da68c7d599f2d1e6d2cede0f20ff5834a5c7f38",
+      "parts": [
+        "الموعود، إذن؟ يشرفني أن أقاتل إلى جانبك."
+      ]
+    },
+    "MID_LGV_3_M02_Hal_m01_001": {
+      "source_sha256": "db99ce0399449dd66962c2f3872ee10d475020f849851f54ecfbd3627404fa28",
+      "parts": [
+        "يا أملنا الموعود! ما أسعدني بوجودك هنا في داغدا!"
+      ]
+    },
+    "MID_LGV_3_M02_Jas_m01_002": {
+      "source_sha256": "81e0cebd75cc9857cd8bf633fd285ab494768932c2e8f3ea212cbda20f9eea2b",
+      "parts": [
+        "إلى أن جئت، يا أملنا الموعود. حين رأيتك أدركت ما كان ينقصنا."
+      ]
+    },
+    "MID_LGV_3_M02_Cen_m01_002": {
+      "source_sha256": "dd9ed6f9812eec76940fd2c906f8ee1133abd4d39799d556db5b6f379f3f5253",
+      "parts": [
+        "يا أملنا الموعود، رجائي أن يجد هؤلاء فيك ما يجدونه في أورورا\nمن إلهام."
+      ]
+    },
+    "MID_LGV_3_M02_Kir_m01_001": {
+      "source_sha256": "f7ec41238708c23afad21cae7ff4289a61e9ca36af61082051024f537f4fba22",
+      "parts": [
+        "أول ما رأيتك، يا أملنا الموعود، خيل إلي أنني أمام شبح."
+      ]
+    },
+    "MID_LGV_3_M02_Aur_m01_003": {
+      "source_sha256": "8560efa5a1e705ed5cecb8d723b77396750e948f5151331d702ef3cc77c92f10",
+      "parts": [
+        "علينا أن نتعاون كي نقدم للجميع كل ما يحتاجون إليه من عون.\nولك أيضا، يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3_M02_B03_m01_001": {
+      "source_sha256": "509868e9251df77523b3e24bf50f7c69ed86e369b1c59b082e5ec97ec1744854",
+      "parts": [
+        "آه، يا أملنا الموعود. قدمت من لافيرنا على أمل أن أراك."
+      ]
+    },
+    "MID_LGA_3_M02_B03_m01": {
+      "source_sha256": "f54c84e69ca70d8d05d82c75fd7806723acfced8f15fc1873fca6464b8eb6c5a",
+      "parts": [
+        "يا أملنا الموعود..."
+      ]
+    }
+  },
+  "2_XXX_c02.msbt.zst": {
+    "MID_EV20_012_m01_054": {
+      "source_sha256": "4fee0528af9825538034b31faf267d71f99b37f2a19bbd9c53ae7d7858520b48",
+      "parts": [
+        "يسعدني أنني أصبت الهدف هذه المرة. رمية موفقة، وإن كنت أنا\nمن يقول ذلك!"
+      ]
+    }
+  },
+  "SE_Sci_Sar_CBA.msbt.zst": {
+    "MID_SE_Sci_Sar_A_003": {
+      "source_sha256": "3543fe07e7164c6df96368a75c2f94a90d050d33248993b65c13e0fe7cd44ccf",
+      "parts": [
+        "آنسة شا لان، أكنت تبحثين عني؟ شرفتني بذلك، وأخجلت\nتواضعي حقا."
+      ]
+    },
+    "MID_SE_Sci_Sar_C_021": {
+      "source_sha256": "4611b289d538076a9d62751b25ed10083856cf55eccd37c75f77353e985a4254",
+      "parts": [
+        "آه، أكان لك موعد مع أحد؟ أنا آسفة لأنني أخذت من وقتك كل\nهذا القدر."
+      ]
+    }
+  },
+  "SE_Ism_Sim_AS.msbt.zst": {
+    "MID_SE_Ism_Sim_S_004": {
+      "source_sha256": "ba2265b0afe3fb80d837fa069b606e08539bb97b45ce0e2fc4f1cbe16e9c28bf",
+      "parts": [
+        "ما الذي... يا أملنا الموعود! كيف وصلت إلى هنا بحق السماء؟\nكنت على يقين..."
+      ]
+    }
+  },
+  "SE_Esm_Lou_CB.msbt.zst": {
+    "MID_SE_Esm_Lou_B_021": {
+      "source_sha256": "bdbc5e3a0737a5d38df3a26281ef762da55faa2d24d38915b03c0a86b64aad83",
+      "parts": [
+        "هيهي. يسعدني أنك استمتعت بذلك مثلي. كان ممتعا، أليس\nكذلك؟"
+      ]
+    }
+  },
+  "2_XXX_Battle.msbt.zst": {
+    "MID_SC30_03_m14_001": {
+      "source_sha256": "7b6b2040e8955c5ab9c4dc43af1048bc1a1ca88606c7620f552a61be9dff57b0",
+      "parts": [
+        "أنا آسفة يا غيلكريس. لن أقف مكتوفة اليدين وأنت تدمر مملكتي."
+      ]
+    }
+  },
+  "1_LED_c05.msbt.zst": {
+    "MID_EV14_029_m01_002": {
+      "source_sha256": "60fd91cd7d11ae82e0f5a3fe72a7527a5b7fbf69b2628f7d5d8514c97c3011a5",
+      "parts": [
+        "أنا آسفة. ما أردت أن أحطم أحلامك على ذلك النحو."
+      ]
+    },
+    "MID_EV14_029_m01_003": {
+      "source_sha256": "913ed5f7f34749a2a2c4e6c7445d7d60233c5d0148f92c62be3f682467a54be6",
+      "parts": [
+        "لا أنكر أنني محبطة، لكن الخسارة جزء من اللعبة."
+      ]
+    }
+  },
+  "LG_1KAI_c09.msbt.zst": {
+    "MID_LGV_1KAI_c09_Aur_m04_001": {
+      "source_sha256": "e52769c4b4881c0d2207e62b51240dbd6554836e178a83022e0322e39f7b836c",
+      "parts": [
+        "كاي، ما أسعدني برؤيتك. لقد عرفت الكثير عن زينزيلي."
+      ]
+    },
+    "MID_LGV_1KAI_c09_Hur_m01_002": {
+      "source_sha256": "70d10e7dfcb66af41bea1dbc635939947fff065e16439c597d4ec0d9126e6715",
+      "parts": [
+        "في بعض الأحيان، كنت على يقين بأنني لست وحدي، مع أن\nوجود أحد هناك كان مستحيلا."
+      ]
+    },
+    "MID_LGA_1KAI_c09_Aur_m03": {
+      "source_sha256": "1c7d83024615caebac20439dd812735ccdc071d228e410a7a6c10dac97078d67",
+      "parts": [
+        "يساورني القلق على أولتاند..."
+      ]
+    }
+  },
+  "SE_Pet_Hur_CBA.msbt.zst": {
+    "MID_SE_Pet_Hur_B_010": {
+      "source_sha256": "39d660788c466ecc3b96be570bc9ee86ed36eebed1414eaadd5c6496ca0102e6",
+      "parts": [
+        "أنا واثقة بأن الأمر سيكون بخير. أعلم أنكما قادران على إصلاح ما\nبينكما."
+      ]
+    },
+    "MID_SE_Pet_Hur_A_025": {
+      "source_sha256": "2f468421a5b43460441c9d4a0aa7eec7e9d67e10644586565077046e7b02b6e0",
+      "parts": [
+        "هيهي. تعجبني هذه الثقة الجديدة يا بيتر، وأنا واثقة بأنك ستغدو رجلا\nصالحا."
+      ]
+    }
+  },
+  "1_DIT_c10.msbt.zst": {
+    "MID_EV12_053_m01_015": {
+      "source_sha256": "6ccde5aa5ebb6aaa300dc34c82ea7f85e0d76504f7b86bceaf8386a06ee953ba",
+      "parts": [
+        "أنا واثقة بأن في وسعهم التفاهم بالحوار. أليس ذلك أسهل؟"
+      ]
+    },
+    "MID_EV12_051_m01_006": {
+      "source_sha256": "b6055c0e1b22690d5a6ad5494aca590ae6bee8160088eeacaf6470e5a65dc306",
+      "parts": [
+        "ها قد عدنا سالمين. وأنا... سعيدة بما آلت إليه الأمور."
+      ]
+    }
+  },
+  "LG_Common.msbt.zst": {
+    "MID_LGV_3ISM_CrownKey_FirstGet_m02_002": {
+      "source_sha256": "fea07da43324b83817f8c1735f4014c048520c8762b3ae6cefd7b524f81391e1",
+      "parts": [
+        "أنا على يقين أننا إن بلغنا ذلك المكان وفتحناه نلنا الجزاء الذي\nنستحق!"
+      ]
+    }
+  },
+  "SE_Led_Buc_CBA.msbt.zst": {
+    "MID_SE_Led_Buc_A_017": {
+      "source_sha256": "348913c5859fd658f590fb7ae4187ef2a94ceace18e030353fe000accbfef7b0",
+      "parts": [
+        "لطالما أردت أن أخبرك بمدى أسفي لتلك الندوب التي خلفتها\nالحروق في جسدك."
+      ]
+    }
+  },
+  "1_LED_c12.msbt.zst": {
+    "MID_EV14_065_m01_022": {
+      "source_sha256": "8b70ba5a7aabd8bd76d714b07e5aba8849355e41052b3f017914de1a5afd5d85",
+      "parts": [
+        "لست مستعدة بعد لخلافة أبي في زعامة الأسرة."
+      ]
+    },
+    "MID_EV14_060_m01_015": {
+      "source_sha256": "091fedf0ead75611be93a284705fc781a686e03f46161e7c53145df7bfd1cb9e",
+      "parts": [
+        "لا شك عندي في ذلك، لكن... ليس من طبعك أن تقعد وتنتظر ما\nسيحدث."
+      ]
+    },
+    "MID_EV14_062_m01_019": {
+      "source_sha256": "f94a0e39982740a194225c3323258bbb4ef60797e1f4fcc5447211f0c10b2834",
+      "parts": [
+        "في هذه الحال... يؤسفني أن أقول إنني سأدعو ألا توفقي. سأدعو\nلبرتران بالنصر!"
+      ]
+    }
+  },
+  "LG_3_M03.msbt.zst": {
+    "MID_LGV_3_M03_Aur_m01_001": {
+      "source_sha256": "a4b009dae7ba408da5a8ffbfd464bc00019c65845862aa6414919deb9071193e",
+      "parts": [
+        "آه، يا أملنا الموعود! يسرني أن أراك بمثل هذه البشاشة اليوم!"
+      ]
+    },
+    "MID_LGV_3_M03_Tro_m01_003": {
+      "source_sha256": "e2065dfbb7eefc647d78f0b905d3f3251a99cd211a171de0dd807d451053201c",
+      "parts": [
+        "لكنني على يقين بأن كل من اجتمع هنا قد أعد نفسه لهذا."
+      ]
+    },
+    "MID_LGA_3_M03_Lor_m01": {
+      "source_sha256": "95c5887102774186cbc24ff6a440bf8f41699624d09335f4a628cd1fd139f406",
+      "parts": [
+        "كنت أخاف فيما مضى..."
+      ]
+    },
+    "MID_LGV_3_M03_Hri_m01_003": {
+      "source_sha256": "b6b19612a1baba6d08ee501333421ffa70ea5f77e5d37cc3b9d0790f93f92d26",
+      "parts": [
+        "ومع ذلك... ربما علي أن أراقبهم كيلا يندفعوا إلى القتال بتهور."
+      ]
+    },
+    "MID_LGA_3_M03_B16_m01": {
+      "source_sha256": "931978a4384c7abddda56db80e4cc8fc16f1a7f5e6bb763a59fd881fbc24d986",
+      "parts": [
+        "هذا الميناء..."
+      ]
+    },
+    "MID_LGV_3_M03_Kai_m01_002": {
+      "source_sha256": "ef5bcbd4e8c407eed9060b980e1eab62e2528034a391664fd81aeb0b6e482f31",
+      "parts": [
+        "يا أملنا الموعود، أي أمر منك مطاع! سأبذل كل ما في وسعي\nلإنجازه."
+      ]
+    },
+    "MID_LGV_3_M03_Dit_m01_002": {
+      "source_sha256": "cc92323f95ab9418ddfab54b62dd8dd2b7830b48f1cf2dc8ad0ea70731ac19ae",
+      "parts": [
+        "لا أقصدك أنت، يا أملنا الموعود. أقصد سيفي «المجيب». إنه يتوق\nإلى القتال."
+      ]
+    },
+    "MID_LGV_3_M03_Lys_m01_002": {
+      "source_sha256": "9203e7d056a98f7da458830ea74a41612f925b4d82e01d48142f45e589ee715d",
+      "parts": [
+        "ما رأيك في الانضمام إلينا، يا أملنا الموعود؟ لا داعي للقلق، فلن\nأدع الأمر يتحول إلى خصومة."
+      ]
+    },
+    "MID_LGA_3_M03_Cen_m01": {
+      "source_sha256": "ec75342aaefc70fa0718c445910adb54d3e053c6751d62a7a339ab01534fbe02",
+      "parts": [
+        "شكرا لك، يا أملنا الموعود..."
+      ]
+    },
+    "MID_LGA_3_M03_Aur_m01": {
+      "source_sha256": "b3111b12f200c252248bc1d2b2d84b2dc0d582c35e443e7297a12ea0ed4ba0ea",
+      "parts": [
+        "يا أملنا الموعود!"
+      ]
+    },
+    "MID_LGV_3_M03_B02_m01_001": {
+      "source_sha256": "380f0d24b597443e3713d582936a89d89ff23533283079c842d950839f3dd8f5",
+      "parts": [
+        "يا أملنا الموعود، جمعتنا شجاعتك نحن المعجبين بك، وها نحن\nنشكل فرقة دفاع من أهل المدينة."
+      ]
+    },
+    "MID_LGV_3_M03_B05_m01_001": {
+      "source_sha256": "1e1def74726813c13fe7bba7b25a9b1297493cbe430dac49442c0769c6d6c9f1",
+      "parts": [
+        "يا أملنا الموعود... ليتني أحظى منك بزيارة في أحلامي، ولو من\nحين إلى حين."
+      ]
+    },
+    "MID_LGA_3_M03_B05_m01": {
+      "source_sha256": "56a1cb2fd16e1c0ae5629f5863e0dd90ddc5aa9d8ce742cf6ca074b20f8aaf4b",
+      "parts": [
+        "عذرا، يا أملنا الموعود..."
+      ]
+    }
+  },
+  "SE_Kai_Bel_BA.msbt.zst": {
+    "MID_SE_Kai_Bel_A_026": {
+      "source_sha256": "ba2d3aa0fea8024097b49371c406af6de6ddcc50967caf26d011b1d4e0e753e1",
+      "parts": [
+        "أنا فخور لأنني عرفته... ولأنني أعرف ابنه. مـ... مجرد خاطر، هذا\nكل شيء."
+      ]
+    }
+  },
+  "SE_Ism_Moo_AS.msbt.zst": {
+    "MID_SE_Ism_Moo_A_008": {
+      "source_sha256": "05281dc043923739dc1ba0144fc21ebf901010baa953358967e8dd040dee6984",
+      "parts": [
+        "شكرا. ما يسعدني حقا هو أنني أستطيع أن أنفعك وأنفع\nالمحتاجين."
+      ]
+    }
+  },
+  "SE_Led_Dan_CB.msbt.zst": {
+    "MID_SE_Led_Dan_B_025": {
+      "source_sha256": "88581923bccd2a733dd17e06fd0b71e5face27521a98c15e102648056036fabc",
+      "parts": [
+        "لم يكن ثأري عملا فنيا بالضبط. وأنا واثقة بأن منظره كان لا يطاق."
+      ]
+    }
+  },
+  "SubQuest.msbt.zst": {
+    "MID_LGV_SQID_LED_Dancer_m05_005": {
+      "source_sha256": "4f4341b400d8dbe60a9447d679b99ed1de4d049660ec70a2f31a3e0ed3617b47",
+      "parts": [
+        "هاها. وأنا سعيدة أيضا. لعلني أذهب قريبا لأجتاز اختبار التأهيل."
+      ]
+    },
+    "MID_LGV_SQID_BarkeeperTroubles_B01_m02_001": {
+      "source_sha256": "7718756f247a91c7ee4127082b0757df6ccba3297daeb42aba6e1cce5682bb78",
+      "parts": [
+        "آه يا غاستون، هذا إذن ما انشغلت به! على كل حال، يسرني أنه\nبخير."
+      ]
+    },
+    "MID_LGV_SQID_HungryElefant_B01_m01_002": {
+      "source_sha256": "8bf7ffcf4bf8ea811719a750492676cc26d337f6885ab908b883abfc37ce357e",
+      "parts": [
+        "أنا أدين لهم بحياتي، لكنني أصبت أخيرا، ولم يعد في وسعي أن أجمع\nكل ما يلزمهم من الطعام."
+      ]
+    },
+    "MID_LGV_SQID_HungryElefant_B01_m02_004": {
+      "source_sha256": "e4bb6dcef0f399c7f89306b5e230f3a4f838d8ee0f2c8950850f96949b17cef0",
+      "parts": [
+        "لا شك عندي أنك ستجد لهم نفعا!"
+      ]
+    },
+    "MID_LGV_SQID_KAI_Courage_B01_m02_001": {
+      "source_sha256": "179751d5f36ca51efdcf359926339457444cc09ff51f7d968280f8ebda82e276",
+      "parts": [
+        "لقد أوصلت قصيدتي! وما أسعدني أن ديتريش سر بتلقيها."
+      ]
+    },
+    "MID_LGV_SQID_ReconstructionDining2_B01_m01_003": {
+      "source_sha256": "705c86ca1a649d7b0d9e4b8279c8bd57b6e8dfe142d1900fa68644edbc58b5aa",
+      "parts": [
+        "أعرف أن الجميع بحاجة إلى العون في هذه الأيام، ولكن إن فاض\nلديك شيء من المؤن، فأرجو أن تخبرني."
+      ]
+    },
+    "MID_LGV_SQID_SearchingMegrez_B01_m02_003": {
+      "source_sha256": "d96469f0e4ee5abfc2572de5dcf68bc54bb5c64ecf5d7120ddf7fe14f31acbb8",
+      "parts": [
+        "لم أذكر هذا من قبل، لكن ميغريز مسقط رأسي. وبفضلك سأتمكن\nقريبا من العودة إلى دياري."
+      ]
+    },
+    "MID_LGV_SQID_KAI_FirstSubjugation_B01_m02_002": {
+      "source_sha256": "78585217689ab565072b33ad5209e9cff823a40842b5b7ffce1811918639b640",
+      "parts": [
+        "يا له من معروف! وأسحب كلامي أيضا... أخطأت حين ظننتك ضعيفا."
+      ]
+    },
+    "MID_LGV_SQID_ClairRequest_Cla_m01_011": {
+      "source_sha256": "db9429b131c167a8f8055531aa94e565b7a4295a04df8ccdb877d3cf96cc6232",
+      "parts": [
+        "هل تأتي لي به؟ إن فعلت، أذنت لك مكافأة لك بخوض اختبار لفئة\nرفيعة."
+      ]
+    },
+    "MID_LGV_SQID_AuroraRequest_Aur_m01_011": {
+      "source_sha256": "868cbe53ffe24e9a55a628b2120fceb9068ccde2b3c7a92250b778ce98b7a1c9",
+      "parts": [
+        "ما رأيك في خوض اختبار فئة من رتبة الإتقان؟ لنتحدث بعد العثور\nعلى المكونات."
+      ]
+    },
+    "MID_LGV_SQID_AuroraRequest_Aur_m02_004": {
+      "source_sha256": "11a84cd6a959af8c3ec4bd15e53b5cb9827da7f6c578ff654c31a1204325ab3a",
+      "parts": [
+        "كما وعدتك، بات بوسعك الآن خوض اختبار التأهيل لفئة ",
+        "الراهب المحارب",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_SQID_KAI_LikePegasus_B01_m01_003": {
+      "source_sha256": "e20ef44491def71ff6d1f68c81cb764cf6da299d3bdca38ef2e924f9434f09c7",
+      "parts": [
+        "مهلا... رأيتك في ",
+        "الإسطبل، أليس كذلك؟ إذن أنت من الخدم أو ما شابه؟ ممتاز!"
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_SQID_BattleUranus_B01_m01_004": {
+      "source_sha256": "a29a5fd94f405116237da244820bf1817e1b9d2f1a784ec06e306e0bcec78b6f",
+      "parts": [
+        "سنحسم خصومتنا إلى الأبد على جبل أورانوس. إن كانت لديك\nالشجاعة فالقنا هناك!"
+      ]
+    },
+    "MID_LGV_SQID_RarePearl3_B01_m02_002": {
+      "source_sha256": "d7ed4b2948512a8b68e6da2f3fde1744f401c678839a6cf4532c89b32e21b296",
+      "parts": [
+        "سنستعيد ثقة الزبون بشركتنا! أنا مدين لك... بل الشركة كلها\nمدينة لك."
+      ]
+    }
+  },
+  "SE_Gat_Zac_C.msbt.zst": {
+    "MID_SE_Gat_Zac_C_003": {
+      "source_sha256": "52149b77a1cd7b8d70fee037f1f4f1763dd46fd0a88f3138d10b1a3f8539747d",
+      "parts": [
+        "لا تتغاب! أنا جريح، وأنت السبب. عليك أن تعوضني! هات بضع\nقطع نقدية."
+      ]
+    }
+  },
+  "SE_Pet_Moo_CBA.msbt.zst": {
+    "MID_SE_Pet_Moo_A_010": {
+      "source_sha256": "fe08f5d099e05a7d1c5ada446fe69b9784d98ede532984335a69fe6ed5dccbb5",
+      "parts": [
+        "أنا آسفة حقا لأنني كذبت عليك. أردت أن أبوح لك بالحقيقة،\nوالله لقد أردت..."
+      ]
+    },
+    "MID_SE_Pet_Moo_B_007": {
+      "source_sha256": "a9aeefba4b116548885549a497a2556459b035c8acd9bb41bc164cc0b4cde00f",
+      "parts": [
+        "هاها، أجل، يمكنك الاعتماد علي. هكذا يكون الرفاق! قد لا أملك\nالكثير، لكن بصري حاد."
+      ]
+    }
+  },
+  "SE_Seo_Sim_CB.msbt.zst": {
+    "MID_SE_Seo_Sim_C_023": {
+      "source_sha256": "c59e22f64f7a176ab55e61e361c67c39f157061408a4d0d3532ce6a6e2404d29",
+      "parts": [
+        "هذا مثير للاهتمام. يا سيمون، لك شجاعة نادرة، وأنا فخورة بأنك\nمن أهلي."
+      ]
+    }
+  },
+  "3_ISM_c06.msbt.zst": {
+    "MID_EV30_037_m01_008": {
+      "source_sha256": "529108eea119164d4274056c058bf8a1274258b9ce3c8941c9c69f52bf566814",
+      "parts": [
+        "وأنا... وإن كان لا مناص من ذلك، فيؤسفني أنك اضطررت إلى\nمرافقتي."
+      ]
+    },
+    "MID_EV30_033_m01_042": {
+      "source_sha256": "2b3454a85067fcef02743c683703f7beb4e1b36b3aa36c7e49f8a109f333b595",
+      "parts": [
+        "لا مخبأ لنا إذن. لقد أنقذت حياتي يا أملنا الموعود. أليس الأجدر بي\nأن أضعها في خدمة قضية تستحقها؟"
+      ]
+    },
+    "MID_EV30_035_m01_042": {
+      "source_sha256": "ae02bb82078512ef539d6256dbec2c5cfb661f4eef68f4ad813206a7cd1627ab",
+      "parts": [
+        "مهلا، يا أملنا الموعود، أرجوك البقاء معنا! لقد هزم بالور، فما من داع\nلبقائكما هناك."
+      ]
+    },
+    "MID_EV30_037_m01_036": {
+      "source_sha256": "ffef14870ff377d5fab5f526d1f53bc6f87383744273044866625c2aa41deceb",
+      "parts": [
+        "أديت رسالتك يا أملنا الموعود. ومن اليوم فالحياة حياتك، ولك وحدك\nالخيار في أمرها."
+      ]
+    }
+  },
+  "SE_Sar_Hal_CBA.msbt.zst": {
+    "MID_SE_Sar_Hal_B_010": {
+      "source_sha256": "b559afec353a441f0fa74392696054824327d8473e1d360e17178d503f73c971",
+      "parts": [
+        "آه، ما أجمل حلمك! أنا واثقة بأنه سيدخل السرور على أهلك."
+      ]
+    },
+    "MID_SE_Sar_Hal_A_025": {
+      "source_sha256": "93d5e328ede82006b9051fc550e4fc27793848eb44686d6eb4a91a6ec9ab4fc5",
+      "parts": [
+        "يسعدني أننا ما زلنا هنا، وأننا ما زلنا أحياء. ينتظرنا معا مستقبل\nرائع!"
+      ]
+    }
+  },
+  "SE_Ism_Kai_AS.msbt.zst": {
+    "MID_SE_Ism_Kai_A_016": {
+      "source_sha256": "d53df173240dc5ad0a041fabda6a204fa2b5e24feac94558c4f8980ac405f54d",
+      "parts": [
+        "هه. يبدو أنني استرسلت في الحديث. تأخر الوقت، وقد نال\nمني التعب."
+      ]
+    }
+  },
+  "SE_Seo_Ale_C.msbt.zst": {
+    "MID_SE_Seo_Ale_C_018": {
+      "source_sha256": "3e867728d4020bcb189ba464811b58d3a01df145c0ae70764cb0f92f4c3fb64a",
+      "parts": [
+        "لم يسمح لي منصبي بأن أعتذر في حينه، لكنني آسفة يا\nألكسندرا."
+      ]
+    }
+  },
+  "LG_1LED_cAssist.msbt.zst": {
+    "MID_LGV_1LED_TG14_106_Oly_m01_001": {
+      "source_sha256": "f768a50b9058d60c8b8ca6f6878edb3a1822a29b63c3b29c0e945aeb87175d67",
+      "parts": [
+        "كل هذه البضائع النفيسة لقاء شيء من المواد! ما\nأسعدني أننا جئنا!"
+      ]
+    },
+    "MID_LGV_1LED_TG14_108_m05_002": {
+      "source_sha256": "ed2da78896d78dc5cbb895bfd549bdf13a06743b5cb17d51e3a5d2bae66fd3ea",
+      "parts": [
+        "أحقا؟ شكرا. لك عندي جميل."
+      ]
+    },
+    "MID_LGV_1LED_TG14_108_m01_006": {
+      "source_sha256": "18692c41f489f0b4d6dfd230cc869b1cc0f4b90d01efbc902d46c02f89e138dd",
+      "parts": [
+        "نعم... لكن ",
+        "اجتياز الاختبار",
+        " يتطلب ",
+        "إتقان المهارات ",
+        "المرتبطة بالفئة."
+      ],
+      "flow": "auto"
+    }
+  },
+  "SE_Led_Oly_CBA.msbt.zst": {
+    "MID_SE_Led_Oly_B_023": {
+      "source_sha256": "bafac4d5ac5b71787aaee7ad114cbb17c37374e2af0cd48d91a8045c2e6b1c09",
+      "parts": [
+        "قلت إنني آسفة. كل ما في الأمر أن كلامك هون علي، لا أكثر."
+      ]
+    },
+    "MID_SE_Led_Oly_C_014": {
+      "source_sha256": "6d5d943671718d7f6e70a22de1b5be388180944c6cfdfdd892334cc073aa2e4f",
+      "parts": [
+        "إن هزمتني في مسابقة للطهو، فأنا واثقة بأن مكانتك ستعلو كثيرا."
+      ]
+    }
+  },
+  "SE_Ism_Esm_AS.msbt.zst": {
+    "MID_SE_Ism_Esm_A_003": {
+      "source_sha256": "134b727a25cab189891560be3c0d2fd077a2a6c5f64f88b527859d68c23b52c4",
+      "parts": [
+        "هكذا يكتمل ما أحتاجه. شكرا. أنا مستعدة الآن للصيد منذ صباح\nالغد."
+      ]
+    },
+    "MID_SE_Ism_Esm_A_026": {
+      "source_sha256": "e2e4f4181c9ab81432d33e21efa92781f426293351b7a205ede194a2d26387c0",
+      "parts": [
+        "ما هذا الكلام؟ كف عن ممازحتي. مع أنني... قد أختار أن أصدقك."
+      ]
+    }
+  },
+  "SE_Orh_Hur_CB.msbt.zst": {
+    "MID_SE_Orh_Hur_C_024": {
+      "source_sha256": "30dea015f8f80810b212ee2e20af1d71a5bd4b9c4623d324717795091dccbe06",
+      "parts": [
+        "صديقتان؟ أيجوز ذلك حقا؟ أنا واثقة بأن رتبتك في الكهنوت\nأعلى من رتبتي يا أورشل."
+      ]
+    }
+  },
+  "SE_Ism_Urs_AS.msbt.zst": {
+    "MID_SE_Ism_Urs_A_015": {
+      "source_sha256": "f9a271d1a82eaa81885a661c9f0c2e99397dce27ac3cf39204140ecf204f8d3a",
+      "parts": [
+        "لا أدري متى، لكنني على يقين بأن ذلك المصير سيدركني أنا أيضا\nذات يوم..."
+      ]
+    },
+    "MID_SE_Ism_Urs_S_008": {
+      "source_sha256": "799da89ff689743c56d5d8f94fd6cca6a7f551891fef98acb138926ccf2b85a2",
+      "parts": [
+        "كيف نغفر لإلهة تتخلى عن أبطالها؟ كم أنا ممتنة لأنني كنت\nمخطئة."
+      ]
+    },
+    "MID_SE_Ism_Urs_S_006": {
+      "source_sha256": "694585daada1d5b62025a93011362674e4dc89612b5528704eae5eb59b73eedc",
+      "parts": [
+        "أردت أن أحتفظ بغضبي، لكنك لا تسهل الأمر علي... الحقيقة أنني\nسعيدة بلقائك من جديد."
+      ]
+    },
+    "MID_SE_Ism_Urs_S_007": {
+      "source_sha256": "74f44e61dc70be46235008bb7fde9e7940120321f4d0a85b89611d2fb1617934",
+      "parts": [
+        "حين طال غيابك كدت أنصرف عن الصلاة، بل عن الإيمان كله."
+      ]
+    }
+  },
+  "SE_Ism_Ini_AS.msbt.zst": {
+    "MID_SE_Ism_Ini_A_004": {
+      "source_sha256": "92234bc7c3cb1323579a9cefa5a093b238c49b5dfd05ea84ada67d5900d4b540",
+      "parts": [
+        "يا أملنا الموعود... أنا آسفة. قوسي... أضعتها في المعركة. لا\nعذر لي."
+      ]
+    }
+  },
+  "LG_1_M03.msbt.zst": {
+    "MID_LGV_1_M03_Cat_m01_005": {
+      "source_sha256": "69736876b16762b9148aace6cf842c65c149cb60c00801f9d918de0a849a7401",
+      "parts": [
+        "أنا على يقين يا جلالة الملكة ثيودورا بأن الأيام ستثبت صحة\nحكمي الأول عليك."
+      ]
+    },
+    "MID_LGV_1_M03_Ned_m01_002": {
+      "source_sha256": "59c167ed0b3faf8353191e313e8ad1654af0a713bb1fee3c7a5cd12d186bef2f",
+      "parts": [
+        "المعذرة، كنت سارحة في ذكريات حياتي قبل أن أنضم إلى\nالمرتزقة. الأيام الخالية، والرفاق القدامى..."
+      ]
+    },
+    "MID_LGA_1_M03_B12_m01": {
+      "source_sha256": "b0f25e37aa7a66a2c8f34a1d202a86de0f494ab15009a023701f7e21c3e794b2",
+      "parts": [
+        "يسعدني أنه مسرور، لكن..."
+      ]
+    }
+  },
+  "SE_Dan_Sci_CB.msbt.zst": {
+    "MID_SE_Dan_Sci_C_008": {
+      "source_sha256": "e2e9f57dbb218bfafd3879defece5daeef06f95fd9f92a7ce213301edfdf1b48",
+      "parts": [
+        "أجل، لا شك أن قلبك مفطور. وكأنك لا تجد بين الناس من ترتبط به!"
+      ]
+    }
+  },
+  "1_KAI_c12.msbt.zst": {
+    "MID_EV11_063_m01_033": {
+      "source_sha256": "c385f34971a4af1c67d923659fe07e024d78388fe25a7263046c815d56c80cd6",
+      "parts": [
+        "كنت مقتنعة بأن أمي ماتت لأنه عجز عن حمايتها... أو أبى أن\nيحميها."
+      ]
+    }
+  },
+  "SE_Sim_Fia_CBA.msbt.zst": {
+    "MID_SE_Sim_Fia_A_024": {
+      "source_sha256": "6ecd1074014b43bd151d3254ec56141a79c1c0c007698ed2bc65dbe58b75f202",
+      "parts": [
+        "يسعدني أنك استمتعت بذلك. هيهي. يبدو أن بيننا شيئا مشتركا\nفي نهاية المطاف."
+      ]
+    },
+    "MID_SE_Sim_Fia_B_015": {
+      "source_sha256": "7db3da1604da9d943463271637cfe37f3677a0b5968662801e2ecb08c28dfc26",
+      "parts": [
+        "آ... آه! أنا آسفة! كل ما في الأمر... أنك اشتريت لي الحلوى...\nإن لم تكن تكرهني، فلم فعلت ذلك؟"
+      ]
+    }
+  },
+  "SE_Lil_Ned_CB.msbt.zst": {
+    "MID_SE_Lil_Ned_C_017": {
+      "source_sha256": "a77f6d422daeef3976a811156a52b2be072c6e992c5cf2956e2e346cb9d5ba33",
+      "parts": [
+        "على أي حال، لا يهم. يسعدني أن الالتحاق بالمرتزقة لم يغيرك."
+      ]
+    }
+  },
+  "SideStory_Anhatolyah.msbt.zst": {
+    "MID_SCXX_07_02_m13_002": {
+      "source_sha256": "d942c5a7eaada61288516300447018f7f636dc9e75de9ed96274ec9164d99fbd",
+      "parts": [
+        "لا شيء يدعوك إلى الاعتذار يا تولي! يسعدني أن أقاتل إلى\nجانبك."
+      ]
+    }
+  },
+  "1_SEO_c06.msbt.zst": {
+    "MID_EV13_030_m01_010": {
+      "source_sha256": "0cac9b1e5ed724172ae93b29a426c2d2b9372084da4f24f45736e953497dd5a0",
+      "parts": [
+        "أقائد من أراغو هو؟ كنت على يقين بأنه من مملكة بريزارانت."
+      ]
+    },
+    "MID_EV13_033_m01_001": {
+      "source_sha256": "2dfce6892eb6a3d207db3ed5148ddad5a163b0673d8b7ffe88b106d8068cdef3",
+      "parts": [
+        "أنا آسفة على تأخري."
+      ]
+    }
+  },
+  "LG_2_M02.msbt.zst": {
+    "MID_LGV_2_M02_Lou_m01_003": {
+      "source_sha256": "f92118fb24f7e5f0597a4180460c84ba35c29f6ebe55fdeaf3d09fc71531cc79",
+      "parts": [
+        "يسعدني أن شركة التجارة لا ترى في الاتجار بالموت سبيلا إلى\nالثراء."
+      ]
+    },
+    "MID_LGA_2_M02_Noc_m01": {
+      "source_sha256": "ba72a76c0696802af4a8802bc585a99c8aeeb2a20acbe7c931c1b9c1e749c413",
+      "parts": [
+        "أسعدني سماع ذلك..."
+      ]
+    }
+  },
+  "SE_Mic_Sop_CB.msbt.zst": {
+    "MID_SE_Mic_Sop_C_011": {
+      "source_sha256": "1b0186e893849c2a0c961f02f72505892b898fbb621bb127e0e9c989c43d79fd",
+      "parts": [
+        "لا داعي إلى الاعتذار. أنا واثقة بأن الفرصة ستسنح قريبا لتمد لي يد\nالعون."
+      ]
+    },
+    "MID_SE_Mic_Sop_C_015": {
+      "source_sha256": "7001add1220dc97513ba02d8113fd0a71e6239888381ba474151663cd5783e0d",
+      "parts": [
+        "لطف منك أن تقول هذا. لكن الفضل لك حقا. شكرا من القلب."
+      ]
+    }
+  },
+  "SE_Ism_Lor_AS.msbt.zst": {
+    "MID_SE_Ism_Lor_S_011": {
+      "source_sha256": "ec938a7881ed77db77c9dc3bc80e1e4b795f64ce95e959a51a05bcc43140f153",
+      "parts": [
+        "أفكر في ما يمكنني تكريس نفسي له إن شئت. وأظن... أنني\nمستعدة لذلك الآن."
+      ]
+    },
+    "MID_SE_Ism_Lor_S_006": {
+      "source_sha256": "1bc2c07a6922f5c2695616981c0cdf93f391a0404de4b4c6240e62c0af70ff3f",
+      "parts": [
+        "كنت شبه واثقة بأنك لن تعود من العالم السفلي. لكن إن\nعدت فهنا سيكون اللقاء!"
+      ]
+    }
+  },
+  "SE_Ism_Max_AS.msbt.zst": {
+    "MID_SE_Ism_Max_S_008": {
+      "source_sha256": "4cb5e0a4643a091cebf44eb7c7052b5229e3aa20e5fb080bfa497f171d7c5688",
+      "parts": [
+        "عندي شيء لك. ما أسعدني أنني أستطيع تسليمه لك عوض أن\nأتركه عند قبرك."
+      ]
+    }
+  },
+  "LG_1_M07.msbt.zst": {
+    "MID_LGV_1_M07_Anh_m01_006": {
+      "source_sha256": "2f66da75f6e25fef5ec7bc44c6274a06074d38548714781421edfd2c5a7af283",
+      "parts": [
+        "لست واثقة من ذلك. فأنا وسيطة، ولا يفترض أن تبدو حاجات\nجسدي للعيان."
+      ]
+    },
+    "MID_LGA_1_M07_Sar_m01": {
+      "source_sha256": "4ebc6e5c9cf14920928c0067e814c80e83b7830d5bfd9130d7e7f002b67e1077",
+      "parts": [
+        "يساورني القلق على الجميع."
+      ]
+    },
+    "MID_LGV_1_M07_B08_m01_001": {
+      "source_sha256": "bf15631f18a3e8df189207701b3d5b0b8cba009fcdaa526cc93a63fe93ad5287",
+      "parts": [
+        "يتزايد عدد المتعبدين الذين يقصدون معبد كريدنا. لا بد أن\nالسبب جمال كبيرة الكهنة."
+      ]
+    }
+  },
+  "1_KAI_c04.msbt.zst": {
+    "MID_EV11_020_m01_015": {
+      "source_sha256": "32305dbac1663250529f7ba51d40904112b79199fa497caf3cba17f141ec11c7",
+      "parts": [
+        "لا شك عندي أنه سيمتعنا قريبا بنزال رائع. أليس كذلك يا بابو؟"
+      ]
+    },
+    "MID_EV11_070_m01_008": {
+      "source_sha256": "d21d541d09597007cb3c85d36322cbabcb7f868cb5404ffd519061912cea96f2",
+      "parts": [
+        "إليك الرتب بالترتيب: رئيس الكهنة، فالكاهن الأعلى، فكبير\nالكهنة، فكاهن الطقوس، فالكاهن المرافق، فالمساعد،\nفالمتدرب."
+      ]
+    }
+  },
+  "SE_Buc_Moo_CBA.msbt.zst": {
+    "MID_SE_Buc_Moo_A_021": {
+      "source_sha256": "12543f3654935d4d05ec8cea41727a97dd3984e878e3a773337531c7ff806013",
+      "parts": [
+        "لم تثر هذا الموضوع؟ طبعا يسعدني اهتمامك بأمري، لكنني\nأعني..."
+      ]
+    }
+  },
+  "LG_SideStory_Kai.msbt.zst": {
+    "MID_LGV_SCXX_00_m01_004": {
+      "source_sha256": "96a3f2e002da0c0661590d643ed126672c30ed5aa4bc0d66a32017d3d47f0c4b",
+      "parts": [
+        "أنا واثقة بأنك على حق يا كاي. فلا تدع الخوف يغلبك الآن."
+      ]
+    }
+  },
+  "SE_Hur_Naz_CB.msbt.zst": {
+    "MID_SE_Hur_Naz_B_009": {
+      "source_sha256": "1cba4155ca145c4a815a4cd82809ded2c3d70aa9f8bee1c058719a5fc2149b3b",
+      "parts": [
+        "يسعدني أن أهلي أفلتوا، لكنني لا أعلم ما الذي ينتظرهم... أو ينتظر\nأورورا."
+      ]
+    }
+  },
+  "1_LED_c03.msbt.zst": {
+    "MID_EV14_015_m01_015": {
+      "source_sha256": "223030ef38bc5340a16b14c0badcd0298853ae942ce6f1c5d196ebb13d9eafa4",
+      "parts": [
+        "لقد نجوت، وها أنت ذا أمامي. وما أسعدني أنك اهتديت إلي مرة\nأخرى!"
+      ]
+    },
+    "MID_EV14_014_m01_009": {
+      "source_sha256": "d49056d2c798215b4e73ef61db85414bac171b351911edc1bd774a6b1fbe7f12",
+      "parts": [
+        "حسنا، يسرني أنك بخير."
+      ]
+    }
+  },
+  "SE_Ism_Sop_AS.msbt.zst": {
+    "MID_SE_Ism_Sop_S_017": {
+      "source_sha256": "be9514c77d9576bb5777ffd23c4942611eaf9d6ff6109ab08d67a84fa2d897d1",
+      "parts": [
+        "ما هذا الوجه الحزين؟ اترك عنك العبوس. أنا واثقة بأن السيد\nسوليل كان سيقول الشيء نفسه."
+      ]
+    },
+    "MID_SE_Ism_Sop_S_003": {
+      "source_sha256": "901f43d07b9166c2183e925b617524e39431382df7810ebc051ab5dc5e51613f",
+      "parts": [
+        "إذن... شكرا! أعني على إنقاذ العالم. وأنا واثقة بأن السيد سوليل\nكان سيشكرك أيضا."
+      ]
+    }
+  },
+  "SE_Lou_Ven_CB.msbt.zst": {
+    "MID_SE_Lou_Ven_B_028": {
+      "source_sha256": "60dcf72ef7fe10292840346168317592e3939d4ece885aafed66670e8ccce947",
+      "parts": [
+        "لم أكن أتوقع أن أجد فيك كل هذا الخير يا بنديتس. ويسعدني أنني\nكنت مخطئة."
+      ]
+    }
+  },
+  "1_SEO_Battle.msbt.zst": {
+    "MID_SC13_09_m02_002": {
+      "source_sha256": "f28f0cc54c36aba524eafb92c59e88ba9c7de1a0b5117f502ea0ebecc0a55e99",
+      "parts": [
+        "أقدر اهتمامك، لكن لا داعي للقلق. فأنا مسؤولة عن سلامتي."
+      ]
+    },
+    "MID_SC13_02_m02_004": {
+      "source_sha256": "573a62184e1c22154f6d3f9f1f498f93c7f8e421cfc591abc934bc7e3defbd27",
+      "parts": [
+        "ها! انظر إليك، بدأت تثبت على موقفك."
+      ]
+    }
+  },
+  "1_SEO_c08.msbt.zst": {
+    "MID_EV13_042_m01_035": {
+      "source_sha256": "9befd8a3c3253fd8ba198771c621b6d3c196f185b43245238a61e614c27ceb8c",
+      "parts": [
+        "قد يبدو كلامي غريبا، لكنني سعيدة بهذه الصلة التي تربطني\nبإلهتنا، وإن بعدت."
+      ]
+    }
+  },
+  "SE_Mic_Lor_CB.msbt.zst": {
+    "MID_SE_Mic_Lor_C_018": {
+      "source_sha256": "ef0ca5b652deaa4c202318aad6811b3e826a1147894332a20e24bd3cbfa3795f",
+      "parts": [
+        "فيك من الجرأة ما يكفي. لا شك عندي أنك ستنالين لقبا عاجلا أو\nآجلا."
+      ]
+    }
+  },
+  "SE_Tal_Dan_CB.msbt.zst": {
+    "MID_SE_Tal_Dan_C_003": {
+      "source_sha256": "0a77faf885e2c750f1e06d2f3572b5b5395e27a400dbac916bac96372ba77e14",
+      "parts": [
+        "هيهي. طبعا، فما العرض المقنع إلا حكاية من نوع آخر. يسعدني\nأنه أفادك!"
+      ]
+    }
+  },
+  "LG_3_M05.msbt.zst": {
+    "MID_LGV_3_M05_Aur_m01_003": {
+      "source_sha256": "5084f72eaf3f67602044eb98250af96652d6b630c8634588b39f968a074d9047",
+      "parts": [
+        "ولا شك عندي، يا أملنا الموعود، أن للأمل الذي يغمر نفوسهم\nبفضلك فضلا كبيرا في ذلك."
+      ]
+    },
+    "MID_LGV_3_M05_B05_m01_001": {
+      "source_sha256": "fe2bfbe2fa07dc5d2677f85fd3da698fa88219292def3101741411ea2dc8f9bc",
+      "parts": [
+        "حين وصلت إلى هنا أول مرة أنهكني التعب ولم تكن لي همة\nلشيء. أما في الآونة الأخيرة فصرت أساعد في الحقول."
+      ]
+    },
+    "MID_LGV_3_M05_Tia_m01_002": {
+      "source_sha256": "7b5113f8d4cab56d9321963f1f2adb7f77a1f3be3255b3a3c28ca7a6e4f776ea",
+      "parts": [
+        "لكن تلك خطة لا أتبعها إلا على رقعة اللعب، أبدا لا في معركة حقيقية\nتعرض أرواح الناس للخطر."
+      ]
+    },
+    "MID_LGA_3_M05_Orh_m01": {
+      "source_sha256": "f54c84e69ca70d8d05d82c75fd7806723acfced8f15fc1873fca6464b8eb6c5a",
+      "parts": [
+        "يا أملنا الموعود..."
+      ]
+    },
+    "MID_LGV_3_M05_Moo_m01_001": {
+      "source_sha256": "37d8283f728beff4576d1cd803d5bb5e3b21883ec6f9cc59a8cc63644febc7ca",
+      "parts": [
+        "يا أملنا الموعود، أتعبت؟ ما رأيك في فنجان قهوة؟ سأعد لك\nفنجانا مميزا!"
+      ]
+    },
+    "MID_LGV_3_M05_Oly_m01_001": {
+      "source_sha256": "afc15fc6237ae61f8f4202986b387efba2c139af62eacdce13e65062d4f32689",
+      "parts": [
+        "يا أملنا الموعود، أرجو أن يكون نومك كافيا."
+      ]
+    },
+    "MID_LGV_3_M05_B16_m01_001": {
+      "source_sha256": "ad198d17573105e033e128042b544d574497c0d561e3252a61b9e60521ac9dd8",
+      "parts": [
+        "ما أجمل الأمل في قلوب الناس بعد كل ما فعلته لأجلنا، يا أملنا\nالموعود."
+      ]
+    }
+  },
+  "1_DIT_c11.msbt.zst": {
+    "MID_EV12_055_m01_030": {
+      "source_sha256": "9205bf2510fcc3684db4bfa00fd6f3b2f2b6a14c1e80434257528dfc922e5f8a",
+      "parts": [
+        "لست مقتنعة بأن هذا الكتاب يناسبني، لكن... ما رأيك يا حبي؟\nأآخذه؟"
+      ]
+    }
+  },
+  "3_ISM_c03.msbt.zst": {
+    "MID_EV30_010_m01_068": {
+      "source_sha256": "831d65032dbda1eb4509e20476b243331bd2f391cbd74a70dfe98b4ef615542d",
+      "parts": [
+        "كان الأولى أن يبقى هذا الأمر بين أبنائها. ويؤسفني أنكم، يا معشر\nالبشر، تورطتم فيه."
+      ]
+    }
+  },
+  "LG_1SEO_cAssist.msbt.zst": {
+    "MID_LGV_1SEO_c12_LG13_020_m01_002": {
+      "source_sha256": "f7762d8f4cc73854818cca4af24356408bd0cc9c3ed8ad5979fa08332b1b9a45",
+      "parts": [
+        "لا أجد هذا مستغربا جدا. ومع ذلك يسعدني أنه يربطني بإلهتنا\nبرباط جديد."
+      ]
+    },
+    "MID_LGV_1SEO_TG13_108_m01_005": {
+      "source_sha256": "b603e6a18f9267e3651b01bfacf9706b6837c374447406d891274f083bd3db0a",
+      "parts": [
+        "فكرة سديدة. ما رأيك في تجربة ",
+        "اختبار التأهيل",
+        "؟"
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1SEO_TG13_108_m01_008": {
+      "source_sha256": "ed27d320149e136bbdec6d84d44970d0bcf0e4b87d779d05c11c0558e98ba4f5",
+      "parts": [
+        "اجتز",
+        " هذه الاختبارات كي يتاح لك ",
+        "تجريب فئات شتى",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1SEO_TG13_109_m01_001": {
+      "source_sha256": "f39fde822969bb5afee775b389d7aec1b80cbbf9ce9afec6cd721162bb7adc83",
+      "parts": [
+        "الآن وقد صقلت مهاراتك، حان الوقت لخوض ",
+        "اختبار التأهيل",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1SEO_TG13_109_m02_001": {
+      "source_sha256": "1760813c88c3785af59a8fd9e5b16363c8a96684be8fe9464ed8fd1e5dd1eeba",
+      "parts": [
+        "ما الحكاية؟ أنحتاج الآن إلى ",
+        "رخصة",
+        " لنخوض اختبار التأهيل؟"
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1SEO_LG13_009_m05_002": {
+      "source_sha256": "f36bc6e1f5e0419410738b3cfb8a016e0e755d7ba5ce04c2e18796ff2290d9da",
+      "parts": [
+        "أظن أن هذه كل الفئات المتاحة لنا. فلنحسن الاستفادة منها."
+      ]
+    },
+    "MID_LGV_1SEO_c06_LG13_011_m01_003": {
+      "source_sha256": "352a653ac58d6541dce6a57c5ff0c0b435045c90ddb06f4b3c7bb023be349401",
+      "parts": [
+        "لكنك تعرف ما يقال عن الوحش الجريح. فإياك والغفلة ولو لحظة."
+      ]
+    }
+  },
+  "LG_1SEO_c12.msbt.zst": {
+    "MID_LGV_1SEO_c12_Lil_m01_002": {
+      "source_sha256": "767835b4715f60fee3c5b68bcaf73c6a64a67d3fbc22db7714509125eb2338b1",
+      "parts": [
+        "يؤسفني أننا لم نستطع البقاء حتى نهاية ألعاب الأبطال. فما كان\nأقربك من الفوز!"
+      ]
+    }
+  },
+  "SE_Esm_Die_CBA.msbt.zst": {
+    "MID_SE_Esm_Die_B_018": {
+      "source_sha256": "03cd5c151aaf95d8fdc7d28755a6d73b8cd011fcd19e7bcc833cbfbdc44d06ae",
+      "parts": [
+        "هيهي. آسفة على ذلك، مرة أخرى. أردت الاعتذار، فكدت\nأكسر هذه أيضا!"
+      ]
+    }
+  },
+  "SE_Ism_Hal_AS.msbt.zst": {
+    "MID_SE_Ism_Hal_S_018": {
+      "source_sha256": "9b2603f8a78a5495b1903f632d293a40906c8e685bf25dc0a441255311b10c5a",
+      "parts": [
+        "أنا... لن أتبعك. آسفة، لكنني إنسانة عادية. لا... أنا..."
+      ]
+    }
+  },
+  "SideStory_Soleil.msbt.zst": {
+    "MID_SCXX_08_02_m04_003": {
+      "source_sha256": "551d95187db66d16c4d48598860a2b8a971fe8b4aedfb084f71715601ba92773",
+      "parts": [
+        "أبي هو من علمني القتال. الأمر معقد قليلا، لكنه أبي، وأنا فخور\nبه."
+      ]
+    }
+  },
+  "1_DIT_c09.msbt.zst": {
+    "MID_EV12_050_m01_026": {
+      "source_sha256": "4f0380e3f497459e00b46d76794206d4bfedec96c9e0100e1a8b48feb1c3d738",
+      "parts": [
+        "كذلك يكون شأن الوالدين. وأنا واثقة بأن تشانغ آه أم رائعة لهؤلاء\nالناس."
+      ]
+    }
+  },
+  "1_LED_c10.msbt.zst": {
+    "MID_EV14_052_m01_017": {
+      "source_sha256": "c5af7000e67cad29fb9b0fa5217f4ab90570a1d3159e591fd8976edae81e31b4",
+      "parts": [
+        "يدهشني ما أسمع عن ماضيك معه. أما ما تتمناه فيضعني في\nموقف عسير."
+      ]
+    }
+  },
+  "LG_1KAI_c05.msbt.zst": {
+    "MID_LGV_1KAI_c05_Hur_m01_003": {
+      "source_sha256": "3542c325e08c509348e182d6bdc40ce8366dca42c4aadb770d9c5c957733c271",
+      "parts": [
+        "آه، آسفة يا كاي. لم أفكر في... يؤسفني حقا ما ألم بكاستور."
+      ]
+    },
+    "MID_LGV_1KAI_c05_Aur_m01_003": {
+      "source_sha256": "8a71d6b650c9220e2264a854c8f9dcf837f8e899cc11618f0a45a931950350ce",
+      "parts": [
+        "لا أدري كيف أفهم هذا. يسرني حماسك يا كاي، لكن الأمر يدعو\nحقا إلى القلق."
+      ]
+    }
+  },
+  "LG_1DIT_cAssist.msbt.zst": {
+    "MID_LGV_1DIT_c08_LG12_008_m02_001": {
+      "source_sha256": "f85d07589aec627ee4fc2efcff15e5ca35e9079f07d751a4dc1f1c90e698e8cd",
+      "parts": [
+        "أنا شبه واثقة بأن هذه هي المياه التي كان صيادو قريتي يسمونها\n«مصيد طاغية البحر»."
+      ]
+    },
+    "MID_LGV_1DIT_TG12_108_m01_005": {
+      "source_sha256": "f803bd21e31bd3d49ca4a8392d90565a038a97b8aeb7cf6589af268a0ee74251",
+      "parts": [
+        "وهذا يذكرني... هل خاض أحدكم ",
+        "اختبار التأهيل",
+        " من قبل؟"
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1DIT_TG12_109_m01_001": {
+      "source_sha256": "61db8f31a2b5999d35f7d4cfe56aec8c74aaa1113fb5c4bbc0a977e5fb91b174",
+      "parts": [
+        "الآن وقد صقلنا مهاراتنا، أما آن لنا أن نجرب ",
+        "اختبار التأهيل",
+        "؟"
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1DIT_TG12_109_m02_001": {
+      "source_sha256": "cc3f71f2a780918273c2d71fbd1e323573c7c1a6c4ce9076bc1b9f144dfe3527",
+      "parts": [
+        "بقي أمر آخر. لدخول اختبار التأهيل تحتاج إلى ",
+        "رخصة ",
+        "من رتبة ",
+        "توافق مستوى الفئة",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1DIT_TG12_109_m04_002": {
+      "source_sha256": "3586e51d68bbb7b357e65f3d3b81e5be9f27f5e06fad27d92db3d5272d9fdef5",
+      "parts": [
+        "لا يزال أمامنا وقت كاف. ",
+        "فلنجتز اختبار التأهيل جميعا ونغير فئاتنا."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_Skill_Strengthen_Reward_m03_003": {
+      "source_sha256": "2eed3952baddd8aabe62c78d1bce6e2a2adb2cb1419e965d6b95c131819dea6a",
+      "parts": [
+        "سأتوسط لك كي تتاح لك فرصة خوض اختبار التأهيل الخاص\nبهذه الفئة."
+      ]
+    },
+    "MID_LGV_1DIT_LG12_004_m04_002": {
+      "source_sha256": "e9c48a2dc9b578808b0350ef7bf7654af3029c02c357afb8b4f235a84be90bb2",
+      "parts": [
+        "وتفقد ",
+        "لوحة الإعلانات",
+        " من حين إلى آخر لترى ما استجد. فلنستعد جيدا للقتال!"
+      ],
+      "flow": "auto"
+    }
+  },
+  "SE_Gat_Ale_CBA.msbt.zst": {
+    "MID_SE_Gat_Ale_C_020": {
+      "source_sha256": "a2d7c051f1e9f8118298302a5e50d237ddd20f695e67e4dfd942d99bd331cea4",
+      "parts": [
+        "يؤسفني أنك اضطررت إلى التدخل في هذا كله. ولك أن تصرف\nالنظر عن اقتراحي الغريب."
+      ]
+    },
+    "MID_SE_Gat_Ale_C_004": {
+      "source_sha256": "cd2a9977519f06c6a58e8b01ed581ec4923f63e4c70ad1ed3f7234305e7397c5",
+      "parts": [
+        "أف، عدنا إلى هذا من جديد. آسفة لأنني لزمت الصمت. لقد\nوعدني بأن يدع الأمر وشأنه!"
+      ]
+    }
+  },
+  "SE_Kai_Tia_CBA.msbt.zst": {
+    "MID_SE_Kai_Tia_A_017": {
+      "source_sha256": "a0c1ee3534371f500e53781b07ecd8a832fbfff4040b6ff91fff5b373abd4032",
+      "parts": [
+        "أنا واثق بأن الأمر يضايقها، لكنها قالت لي إن العبرة ليست بطول\nأمد العلاقة."
+      ]
+    }
+  },
+  "SE_Tal_Sim_CBA.msbt.zst": {
+    "MID_SE_Tal_Sim_B_008": {
+      "source_sha256": "f4a8a3f3a6f7260e120e0af896e64ce3054e35b4ccc768c0a018ae2ec65d6b92",
+      "parts": [
+        "أجل، ربما. لكنني أحببت كل لحظة منها. صحيح أنني لم أعرف\nسوى القتال، لكنني كنت سعيدا."
+      ]
+    },
+    "MID_SE_Tal_Sim_C_001": {
+      "source_sha256": "c5c6f205bd37cb491e59dced85e0164ec5f23686d8b2781b2b8505f09e7d18df",
+      "parts": [
+        "آآه... أنهكني التعب."
+      ]
+    }
+  },
+  "SE_Gat_Urs_CBA.msbt.zst": {
+    "MID_SE_Gat_Urs_A_010": {
+      "source_sha256": "27958448d5a61bcdbf4921b8ebc67af37f6606879a768a84bddb0157bb29a317",
+      "parts": [
+        "أعترف بأنني خشيت أن تكون قد وقعت في ذلك الفخ. وما أشد\nامتناني لأن مخاوفي لم تصدق."
+      ]
+    }
+  },
+  "SE_Ism_Lou_AS.msbt.zst": {
+    "MID_SE_Ism_Lou_A_013": {
+      "source_sha256": "b40c52bb2c70ea5415bca02793ceaf08c7b14ea6a2fc6466dc0040232644634d",
+      "parts": [
+        "لكن شأني يهون علي. يكفيني أن أضمن للآخرين أن يعيشوا ليروا\nالمستقبل، وبذلك أسعد."
+      ]
+    },
+    "MID_SE_Ism_Lou_S_021": {
+      "source_sha256": "5f2a418084f5114c21aad2932b750e793b8fcf00ff54693647b22e183ee6e3b0",
+      "parts": [
+        "آه، كم أنا متحمسة!"
+      ]
+    }
+  },
+  "LG_1_M04.msbt.zst": {
+    "MID_LGV_1_M04_Hal_m01_002": {
+      "source_sha256": "251fed73dfd3bc65304f9125a5e8d8157a3bb1aa87e9d05b4356bde0e39dff58",
+      "parts": [
+        "ويبدو أن الاسم أعجب المتفرجين. والحق أنني فخورة بعض\nالشيء بأنني اهتديت إلى اسم بهذه الروعة!"
+      ]
+    }
+  },
+  "SE_Sci_Oly_CBA.msbt.zst": {
+    "MID_SE_Sci_Oly_B_010": {
+      "source_sha256": "bdbbd2f8453a16f593e80d6be8dc2e2f8feb21004246d44b89bfd7c635a85213",
+      "parts": [
+        "لم تذكر لي أسرتي شيئا من ذلك. ومع هذا، أنا فخورة بأنني كسبت\nلها تلك الميزة."
+      ]
+    }
+  },
+  "SE_Dit_Led_BA.msbt.zst": {
+    "MID_SE_Dit_Led_B_009": {
+      "source_sha256": "07a8fe590dc9a451498209708c58156139841253e65f3b2aadd406cbf01f5f74",
+      "parts": [
+        "أنت لا تفهم... ما يسرني هو أن اهتمامك منصب على وحوشي\nالشيطانية فحسب، لا علي أنا."
+      ]
+    }
+  },
+  "SE_Urs_Sci_CB.msbt.zst": {
+    "MID_SE_Urs_Sci_B_015": {
+      "source_sha256": "7e7884a4aaaa984830ed363f7240c97d2e3fa8119e89dfbefe91b67feeacf9d0",
+      "parts": [
+        "كان علي أن أفهم ما عنته. لكنني كنت واثقا بأن جمال فني هو\nالذي عقد لسانها."
+      ]
+    }
+  },
+  "SE_Mic_Sim_CBA.msbt.zst": {
+    "MID_SE_Mic_Sim_B_013": {
+      "source_sha256": "2e54a5d462f38b37e1bcbab59c4a47a4b387090922a88781774d289233f16f34",
+      "parts": [
+        "قلت لك إن سمعتك سبقتك. فما حاجتنا إلى المواربة؟ لكن ما أراه\nفيك من قوة يملؤني فخرا."
+      ]
+    }
+  },
+  "1_KAI_c11.msbt.zst": {
+    "MID_EV11_059_m01_013": {
+      "source_sha256": "66391026d9faba8eec0c0627e8216eaf699c8bfbce8b05cd9398454eb3e2d55c",
+      "parts": [
+        "مهما يكن، أنا واثقة بأننا سنشهد نزالا عجيبا يخلده تاريخ الحلبة."
+      ]
+    }
+  },
+  "LG_1_M11.msbt.zst": {
+    "MID_LGV_1_M11_Dai_m01_002": {
+      "source_sha256": "6e23e5e30fd97ed3c7393fb60ee5f71697d03c7a013081f0f0c877c15b5091e8",
+      "parts": [
+        "يخيل إلي هذه الأيام أنها غاضبة مني على الدوام. أما أول مرة\nنظرت فيها إلي، فما أشد ما فرحت!"
+      ]
+    },
+    "MID_LGV_1_M11_Tia_m02_003": {
+      "source_sha256": "e2b14e64a460b43c920723fae1df48c39c12c901a4f47693507cf4b6fe127e6c",
+      "parts": [
+        "ومع ذلك، أنا واثقة بأنه سرعان ما سيسترد عافيته إن هون على\nنفسه وأخذ قسطا من الراحة."
+      ]
+    },
+    "MID_LGA_1_M11_Noc_m01": {
+      "source_sha256": "86f3458ecfda6c200eb15e41706dda007565775a691119ccb11f6c2d4e8d1f59",
+      "parts": [
+        "كم أتحمس لذلك!"
+      ]
+    },
+    "MID_LGA_1_M11_Esm_m01": {
+      "source_sha256": "2f28424082658b099ec1ab6698648dd5d44695ecb87c37a1dc4b8e86f8b3c4bc",
+      "parts": [
+        "لقد اعتدت هذا الآن."
+      ]
+    },
+    "MID_LGA_1_M11_Tia_m02": {
+      "source_sha256": "a62870fcae0f84202585a97db39ce5334edc4e4a76d88d2b27ba336ad017b56f",
+      "parts": [
+        "يسعدني أن الأمر تيسر!"
+      ]
+    },
+    "MID_LGV_1_M11_Orh_m01_001": {
+      "source_sha256": "d880d56ef434ed9b7efe2990dd8b40d2cd28c81148159625017f5a371369b5a6",
+      "parts": [
+        "أنا كبيرة الكهنة في معبد كريدنا، وأقدر ما يلقاه منصبي من\nاحترام."
+      ]
+    }
+  },
+  "LG_1_M10.msbt.zst": {
+    "MID_LGV_1_M10_Seo_m01_003": {
+      "source_sha256": "6f1ef22dc2295e5a114a79f8e807409620633237a9aa4ffff552b5916d24482d",
+      "parts": [
+        "أعتز بالسير على خطاهم الكريمة، لكن علي أن أترك بينهم أثرا أمتاز\nبه أنا."
+      ]
+    },
+    "MID_LGA_1_M10_Pet_m01": {
+      "source_sha256": "16661f152994f5f8e301b516a13da942327347c80d1aaaaaaab5a7faba8e3e16",
+      "parts": [
+        "أنا قلق حقا..."
+      ]
+    }
+  },
+  "LG_1_M09.msbt.zst": {
+    "MID_LGV_1_M09_Anh_m01_001": {
+      "source_sha256": "b213895ce7cd4b1b33c14db839ce3e50361988984b3aa3886370ee0be91e5da0",
+      "parts": [
+        "سألني أحد الزبائن ما الباغوا. حاولت أن أشرح له، ولا أدري أكان\nكلامي مفهوما."
+      ]
+    }
+  },
+  "1_LED_c06.msbt.zst": {
+    "MID_EV14_103_m01_028": {
+      "source_sha256": "4d6813d4876f4ca307408ff2db7a80f7c7a3e7f5e894395931e6eae779731e6c",
+      "parts": [
+        "هيا، قولي فحسب: «شكرا لك يا ليليدانا!» فزهرة باهرة مثلك قادرة\nعلى أن تقول ما تعني."
+      ]
+    }
+  },
+  "LG_1LED_c10.msbt.zst": {
+    "MID_LGV_1LED_c10_Car_m01_008": {
+      "source_sha256": "ff8bc798e318ea65d57912d189c8848941c0e9f9c0d999b19889239737cb1af8",
+      "parts": [
+        "أيهما كان أبرع؟ يصعب الجزم، لكنني على يقين بأن مؤرخي\nالمستقبل سيقولون كلمتهم."
+      ]
+    }
+  },
+  "MV13_06.msbt.zst": {
+    "MID_MV13_06_m022": {
+      "source_sha256": "48d49fcb636b06a6cad380b24a9116c58b859931a428c364e9c7ff577cf85d2a",
+      "parts": [
+        "لك علي جميل."
+      ]
+    }
+  },
+  "LG_1LED_c09.msbt.zst": {
+    "MID_LGA_1LED_c09_Moo_m01": {
+      "source_sha256": "8d6d5d8e7f8bfe7dcea1ff9495c4d76dfbd20ea9969ec0499918ec0b4ceb5e2f",
+      "parts": [
+        "أنا قلقة."
+      ]
+    }
+  },
+  "SE_Seo_Lil_CBA.msbt.zst": {
+    "MID_SE_Seo_Lil_A_018": {
+      "source_sha256": "0e8f650720007e7e4a941e81b3c0e50bb68a43a82e653121d1b0da02e11c16f7",
+      "parts": [
+        "عفوا، ماذا قلت؟"
+      ]
+    }
+  },
+  "SE_Kai_Hur_CBA.msbt.zst": {
+    "MID_SE_Kai_Hur_C_028": {
+      "source_sha256": "ae6f2846baa1d7e97da2a8be0bf6e7efe1d35618339e2246ebd02c38436f2878",
+      "parts": [
+        "آي! آه، أنا آسفة جدا!"
+      ]
+    },
+    "MID_SE_Kai_Hur_C_032": {
+      "source_sha256": "76057aaa410e85aa1ce875aeb178c92084bbacabb9dc2a19959109c532e09329",
+      "parts": [
+        "كيف عجزت عن إصابتها ولو مرة؟"
+      ]
+    }
+  },
+  "LG_1_M08.msbt.zst": {
+    "MID_LGA_1_M08_Sar_m01": {
+      "source_sha256": "2d6efaf33c3bc708611bd223fb9b07ce68b83765b4a259e2157b5d188c08c03b",
+      "parts": [
+        "من أقلق عليه."
+      ]
+    }
+  },
+  "Guide.msbt.zst": {
+    "MID_Guide069_m01": {
+      "source_sha256": "9492418b508ad01041e3e104756043415fbc52092084abe0c16319848fb67f08",
+      "parts": [
+        "عند بلوغ مستوى الشهرة ",
+        "، يمكنك أن تتدرب مع أورورا. ومهما طلبت منك، فلا شك\nعندي أن المكافأة تستحق العناء."
+      ],
+      "flow": "auto"
+    },
+    "MID_Guide025_m01": {
+      "source_sha256": "f106112b1d6a1f6d0b4fbd2f0d3ab64dc5edd81cff0e0a2c1fd905437c679af7",
+      "parts": [
+        "أحب الحيوانات، ما ألطفها! يمكنك إيواء ما تصطاده منها في ",
+        "الإسطبل. وكلما ارتفع مستوى رابطتك بها تعلمت قدرات خاصة!"
+      ],
+      "flow": "auto"
+    },
+    "MID_Guide026_m01": {
+      "source_sha256": "671c4ea28194c086b89723be89724b8730fb85124bd534b88ea23a36e8daf1c7",
+      "parts": [
+        "سمعت أن أحدهم يبحث عن ",
+        "طيور الأورنيوس. أتستطيع مساعدته؟ لعلك تجده قرب ",
+        "الإسطبل."
+      ],
+      "flow": "auto"
+    }
+  },
+  "LG_1SEO_c01.msbt.zst": {
+    "MID_LGV_1SEO_c01_B06_m01_001": {
+      "source_sha256": "319bbe7715674ef6d7ff7b28df1dfa0559d497a8b9d799e23add2008ed258fdf",
+      "parts": [
+        "ما أسعدني بعودتك إلى الديار يا ثيودورا!"
+      ]
+    }
+  },
+  "LG_1_M02.msbt.zst": {
+    "MID_LGV_1_M02_B02_m01_002": {
+      "source_sha256": "1f8c19e462e893df68b55135f5ebf3a0d5862261c107d9d3e7299c811f44d4fd",
+      "parts": [
+        "أشكر جميع فرسان فولكان الذين جاؤوا ليساعدوا في إقامة\nالألعاب."
+      ]
+    }
+  },
+  "LG_2_M03.msbt.zst": {
+    "MID_LGV_2_M03_B01_m01_003": {
+      "source_sha256": "ce7b244d91eacd568c1f30087a74e39b540afd062becf45f979bd2920af50c26",
+      "parts": [
+        "أعتز بأن لي أما مثلها. وسأبذل وسعي لتفخر بي هي أيضا!"
+      ]
+    }
+  },
+  "LG_3_M04.msbt.zst": {
+    "MID_LGV_3_M04_B08_m01_002": {
+      "source_sha256": "1f75031cc18f91f06b90baadd0e1fb7c0d2eb22fa6d1006ce519d74c2fd67f78",
+      "parts": [
+        "يوم هاجم الموتى الناهضون قريتنا... لا يساورني شك بأنني رأيت\nحفيدتي بينهم."
+      ]
+    },
+    "MID_LGV_3_M04_Tal_m01_002": {
+      "source_sha256": "fe39044d5e2dff411c8268f0e049b879e4f215df848ece50c17e5db1aa7cf70e",
+      "parts": [
+        "نويت بيع ما بقي لدى الشركة من بضائع، لكن بالور أفسد علينا الأمر\nمن جديد."
+      ]
+    },
+    "MID_LGA_3_M04_Seo_m01": {
+      "source_sha256": "fbded09fa85cadc9103f37c8d7267a85712cea8cd8602bac31987e3ada876065",
+      "parts": [
+        "«الموعود» لقب يبعث الأمل في النفوس."
+      ]
+    },
+    "MID_LGV_3_M04_Naz_m01_002": {
+      "source_sha256": "a7b784c3d26fc3eec40189f011a4405ab0fae647c2b18c4df758655bc951ce3a",
+      "parts": [
+        "ومع ذلك لا يعترض علينا أحد، فالجيش واحد ورايتك تجمعنا يا أملنا\nالموعود."
+      ]
+    },
+    "MID_LGV_3_M04_Hri_m01_003": {
+      "source_sha256": "8c3af07c3532383c7796f06db84f62780df0d6f6d1df6e5eb5faf398f7b97795",
+      "parts": [
+        "وأنت أيضا، أيتها الموعودة، فيك جمال إلهي."
+      ]
+    },
+    "MID_LGV_3_M04_B11_m01_002": {
+      "source_sha256": "a47ed796b6dababf11541d4a244602e8a7e3c484b79bab03ef148dee84fafc2e",
+      "parts": [
+        "لكني أكاد أموت من الملل هنا! يا أملنا الموعود، أريد أن أسمع\nمنك قصة جميلة!"
+      ]
+    },
+    "MID_LGV_3_M04_B17_m01_003": {
+      "source_sha256": "59770ee7dd89ecc7dbbd2c4044cfb72bc7c06ef544708075ea9d4d4f4956cad6",
+      "parts": [
+        "تورطت إلى حد لا أستطيع معه التراجع... أما مقارعة الأعداء حقا،\nفسأتركها لك يا أملنا الموعود."
+      ]
+    }
+  },
+  "SubLobby.msbt.zst": {
+    "MID_LG_Sub_XXX_PandoraPort_B06_m01_001": {
+      "source_sha256": "4f62fad6fefae5e77621c23653ef7aaf9854cf1d0489742df6fe151d21081af5",
+      "parts": [
+        "يسرني أن الميناء آمن، لكنني لا أظن أن بوسعي الخروج بقاربي.\nالبحر شديد الهيجان."
+      ]
+    },
+    "MID_LG_Sub_XXX_Breston_B02_m01_001": {
+      "source_sha256": "9388bbba2206fdd212b7a4630064117d26cbd8518c1dde7306aba406b049a47b",
+      "parts": [
+        "يقع معبد مارس شمال غربي هذا المكان، وراء جبل أورغوس."
+      ]
+    }
+  },
+  "SE_Tob_Lil_CBA.msbt.zst": {
+    "MID_SE_Tob_Lil_C_010": {
+      "source_sha256": "a6c204282b659ff8617f180f6abe7a065d2782406d7cdd0568aa5e77a0c4d264",
+      "parts": [
+        "أيها القائد توبياس! أ... أنا آسفة جدا!"
+      ]
+    },
+    "MID_SE_Tob_Lil_C_017": {
+      "source_sha256": "1d7ec7745c74be19a1ffe5a47d56c62379393d78a5dae0e2e2b9147a8f9ee1e7",
+      "parts": [
+        "لا بأس بهذا على ما أظن، لكني سئمت لومهم المتواصل. لك\nعندي جميل."
+      ]
+    }
+  },
+  "Quest.msbt.zst": {
+    "MSQID_Comp_HungryElefant": {
+      "source_sha256": "a281b49b5095e7399e1e87acfe0fb8b3ad504aedcf4a0fa4282aa88183eb981e",
+      "parts": [
+        "شكرا لك! ما رأيك في ضم ",
+        "فيلة الحرب",
+        " التي أرعاها إلى جيشك؟ لا شك عندي أنك ستجد لها نفعا!"
+      ],
+      "flow": "auto"
+    },
+    "MSQID_Comp_KAI_Courage": {
+      "source_sha256": "e8455242b1ba7bd06bae50fc934ee2c7511b5da9a081fa0abf9015237a172a30",
+      "parts": [
+        "لقد أوصلت قصيدتي! وما أسعدني أن ديتريش سر بتلقيها. منحتني\nالشجاعة! ومن الآن فصاعدا سأقدم هداياي بنفسي. شكرا لك."
+      ]
+    },
+    "MSQID_Comp_SearchingMegrez": {
+      "source_sha256": "f182e322f2482b0f0bf18bee10736ee2f72d8b3e6ee1b09686b35e3c1ad86cc4",
+      "parts": [
+        "شكرا لمساعدتك. سأرسل العينة للفحص، لكنني أكاد أجزم من\nمظهرها ورائحتها بأن التلوث قد زال. ميغريز مسقط رأسي،\nوبفضلك سأعود قريبا إلى دياري."
+      ]
+    },
+    "MSQID_Detail_KAI_Practice2": {
+      "source_sha256": "90d7d0fe388ecaf0d6610645b0b245b4a32b20b9cee6b632e0f7b5a46d16f4af",
+      "parts": [
+        "إذا دخلت القاعة الكبرى في معبد فورتونا وهزمت ",
+        "جنود المعبد",
+        " هناك، فسيحق لك خوض ",
+        "اختبار التأهيل",
+        " لفئة جديدة. أعلم أنك ستنجح يا كاي! بالتوفيق!"
+      ],
+      "flow": "auto"
+    },
+    "MSQID_Comp_Relief1": {
+      "source_sha256": "1f6ffc75222fb88eb62196f7208719102bf637a53e5137ef14e125fd92216234",
+      "parts": [
+        "شكرا لك، يا أملنا الموعود. من في عهدتنا بخير، ويمكننا التوجه\nإلى داغسيون بلا تأخير. رافقتك السلامة في عودتك إلى المدينة."
+      ]
+    },
+    "MSQID_Detail_ReconstructionArena1": {
+      "source_sha256": "3ed43c9ea175a92e203264fd29e5af834ba2542b645382007f2000b9f8f37611",
+      "parts": [
+        "يا أملنا الموعود... لو أعدنا بناء حلبة داغدا لأحيينا الأمل في قلوب\nأهلها. لكننا نفتقر إلى المؤن. فهل بوسعك جمع ",
+        "مواد البناء",
+        "؟"
+      ],
+      "flow": "auto"
+    },
+    "MSQID_Comp_ReconstructionArena1": {
+      "source_sha256": "8ea3003b88036145b569e8a2fd54e7b6072974f013555727fbda2dec9f3f7458",
+      "parts": [
+        "أحضرت ",
+        "مواد البناء",
+        "! لا بد أن ذلك كلفك عناء، يا أملنا الموعود. شكرا لك! بها سنعيد بناء\nالحلبة ونري أهل داغدا أن في وقوفهم معا أملا لم يضع."
+      ],
+      "flow": "auto"
+    },
+    "MSQID_Detail_ReconstructionArena2": {
+      "source_sha256": "87f7914e4f6b088845b60c9e3543bd4b0c95c192c3a73a854bde7ff598db39ce",
+      "parts": [
+        "ها هو بناء الحلبة يتقدم على خير ما يرام! لكننا نحتاج إلى\nإمدادات لتحسين ساحات التدريب. يا أملنا الموعود، هل بوسعك\nجمع المزيد من ",
+        "مواد البناء",
+        "؟"
+      ],
+      "flow": "auto"
+    },
+    "MSQID_Comp_ReconstructionArena2": {
+      "source_sha256": "8837e2ffe61bf493c890e3898edfd7add5c1b2f759ef1e495214ede246d74a4a",
+      "parts": [
+        "رائع... شكرا لك، يا أملنا الموعود. هذا عين ما احتجنا إليه. حين يكتمل\nبناء الحلبة ستغدو منارة أمل لأهل داغدا. والفضل كله لك!"
+      ]
+    },
+    "MSQID_Comp_ReconstructionDining2": {
+      "source_sha256": "5b464864543699eb1dce93ee5eac8224b8677a7bf98c50f6bba913d5240df5b3",
+      "parts": [
+        "أحقا جئت بالمزيد من المؤن؟ شكرا لك، يا أملنا الموعود!\nنستطيع الآن إتمام إصلاحات أخرى في المطبخ وتقديم طعام\nأشهى. كم سيفرح زبائننا!"
+      ]
+    },
+    "MSQID_Comp_AuroraRequest": {
+      "source_sha256": "8714533dd8a36fa0cd3f09a705a9dfef287aa3e95cf98150ef040a8bb6647d92",
+      "parts": [
+        "يا أملنا الموعود! لقد وجدت كل ما احتجت إليه! سنعين بهذا أناسا\nكثيرين. شكرا من القلب."
+      ]
+    }
+  },
+  "LG_1KAI_cAssist.msbt.zst": {
+    "MID_LGV_1KAI_TG11_004_m01_009": {
+      "source_sha256": "5b69ad7262bfeb466fad01a2b11b0f28f6e3e65c2ccf608195a80be111ae0178",
+      "parts": [
+        "سأسبقك لأبحث عنه. وأنا واثقة بأنه في ",
+        "البلدة السفلى",
+        "، على مسافة قصيرة بعد ",
+        "الدرج المؤدي إليها",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1KAI_TG11_004_m03_004": {
+      "source_sha256": "3675d33f0c799d9ad3faa61d8b089c1acecf75e1b47c3af24c5aadfa356ebd8f",
+      "parts": [
+        "إذا ",
+        "اجتزت اختبار التأهيل للفرسان",
+        "، فستتولى المعابد ",
+        "تزويدك بمطية",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1KAI_TG11_108_m01_001": {
+      "source_sha256": "63e5431d87819d795411c32b38ad3be30435a2689f503a597f5b75b40e7cb8a8",
+      "parts": [
+        "لم يبق الآن سوى خوض اختبار التأهيل للفرسان!"
+      ]
+    },
+    "MID_LGV_1KAI_TG11_109_m01_001": {
+      "source_sha256": "5f1c0f6f6cbe4841cce2987e71f7f4e0769c0746c0b802a82aaf13b4e67a3dc9",
+      "parts": [
+        "حسنا! أظنني مستعدا لخوض ",
+        "اختبار التأهيل",
+        "!"
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1KAI_TG11_109_m03_002": {
+      "source_sha256": "af9f44c691216329182bb0767b52daee9f6ff3805b0560a51d3c84aa8eb9b189",
+      "parts": [
+        "تفضل. حان الآن وقت اختبار التأهيل الفعلي!"
+      ]
+    },
+    "MID_Lesson_Practice01_During_e01_001": {
+      "source_sha256": "2a0d1a467d1f213395278c6c046bcc1783ef2c65bc0d55b0f68a9ac3fb65004e",
+      "parts": [
+        "سيعرفك هذا التمرين بمواطن القوة والضعف في مختلف\nالفئات."
+      ]
+    },
+    "MID_LGV_1KAI_TG11_004_m01_007": {
+      "source_sha256": "a724cb473c763aa45e199215654c211e433537268eee2850d4fce085e8e64859",
+      "parts": [
+        "هنا في داغسيون ",
+        "إسطبل",
+        ". ما رأيك أن نلقي نظرة؟"
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1KAI_TG11_004_m02_001": {
+      "source_sha256": "5005ff20e9dbbd68682ffd1bd4f7721ae7a99a64c82d006db52d3810f44634b5",
+      "parts": [
+        "أهذه زيارتك الأولى إلى ",
+        "الإسطبل",
+        "؟ هنا يمكنك إيواء حيواناتك و",
+        "تقديم الطعام ",
+        "لها."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1KAI_TG11_101_m01_008": {
+      "source_sha256": "69bb5b78d5b7f2467b6950d2423120634f951ce891c8d8def69b05bf858632f8",
+      "parts": [
+        "حسنا! فلنبدأ بإلقاء نظرة على لوحة الإعلانات التي حدثنا عنها أبي."
+      ]
+    }
+  },
+  "SE_Gat_Lil_CB.msbt.zst": {
+    "MID_SE_Gat_Lil_B_018": {
+      "source_sha256": "b4a568bb1c6d7793bae00ae70e24d7edefbc999ba52aa274dd3921a56db4b9e3",
+      "parts": [
+        "آه، كما توقعت. كانوا يمازحونك وحسب."
+      ]
+    }
+  },
+  "1_KAI_Battle.msbt.zst": {
+    "MID_BD11_12_m02_002": {
+      "source_sha256": "2d86b0f66d84ec716093de1280afc79b069e4da9ec76ffbea0d1a7d19c0c5761",
+      "parts": [
+        "لك عندي جميل يا فتى! قل لي ماذا تحتاج لنوقف الزعيم."
+      ]
+    },
+    "MID_BD11_10_m02_001": {
+      "source_sha256": "29fe82990a9ec379c18658048d6bb489062cb6ec7a74cb64af790d345084fd64",
+      "parts": [
+        "سأحميك! يا كاي، تول أمر ذلك الشيء!"
+      ]
+    },
+    "MID_SC11_07_m01_002": {
+      "source_sha256": "ec62bc34be4e7de9436e25fff02a7bb2013798d76e1132fc9f36e48f5fa52b29",
+      "parts": [
+        "أنا وأولتاند هنا لحمايتك، لكن لا تغفل لحظة يا كاي!"
+      ]
+    }
+  },
+  "MV11_13.msbt.zst": {
+    "MID_MV11_13_m032": {
+      "source_sha256": "fe7eb4fa8eb4615409d355c8384d87e289c07983cccc42fea24809ad44a6c165",
+      "parts": [
+        "لك في أعناقنا جميل يا كاي."
+      ]
+    }
+  },
+  "MV12_05.msbt.zst": {
+    "MID_MV12_05_m008": {
+      "source_sha256": "1d3e0b3e00d373ae629ab3d26d493a0fa93cacf40545764ea7bdb0467c1cfd43",
+      "parts": [
+        "لك عندي جميل!"
+      ]
+    }
+  },
+  "SE_Tob_Lys_CBA.msbt.zst": {
+    "MID_SE_Tov_Lys_B_006": {
+      "source_sha256": "1404d2e5554f8887498ede94d88e3d9fdef7fa0a39a9f7be13a3d261f6feb1f0",
+      "parts": [
+        "أخيرا! لن أنسى جميلك. خذ برميلين لقاء عنائك."
+      ]
+    }
+  },
+  "Skill.msbt.zst": {
+    "MSID_StrategyMaster": {
+      "source_sha256": "f2b489a9cf070654a8548cbabc02d15fa21489e1a59ed6d54b1885ca918ccf6e",
+      "parts": [
+        "إتقان المناورات"
+      ]
+    },
+    "MSID_H_Diversion": {
+      "source_sha256": "c5bec286a9172b59d9c0548680fb71265569409402a75403a64533914f4ea7cf",
+      "parts": [
+        "يفرض تعديلا على دقة الأعداء\nالمجاورين مقداره ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MSID_H_CharmJewel": {
+      "source_sha256": "f74d9c73de2870665628be6a2e7f5d83854938e8dac9189d89fb49e03224b9fa",
+      "parts": [
+        "يفرض تعديلا على دقة العدو\nمقداره ",
+        " أثناء القتال. احتمال التفعيل\nبالمئة يساوي نصف الهيبة."
+      ],
+      "flow": "auto"
+    },
+    "MSID_H_DaintyJewel": {
+      "source_sha256": "025940e3f8ae27573d7d71da620e01d6ef680627f8266e44a452c1a39d10a59d",
+      "parts": [
+        "إذا بلغت هيبة الوحدة هيبة\nالعدو مضافا إليها ",
+        " أو أكثر، يفرض تعديلا على\nدقته مقداره ",
+        " أثناء القتال."
+      ],
+      "flow": "auto"
+    }
+  },
+  "Tutorial.msbt.zst": {
+    "MID_TUT_Bmap_Flame_m01_002": {
+      "source_sha256": "d4b4ede65fa1e5106d48d51c4266a5470b4f09625fea0c2c3c53589a8e53e535",
+      "parts": [
+        "يمكنك ",
+        "إخماد",
+        " ",
+        "نيران",
+        " الأرض باستخدام ",
+        "مناورة",
+        " أو ",
+        "فنون اللهب في حالة التوهج المفرط",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_Legionnaire_m01_001": {
+      "source_sha256": "959362f8f5a73fad34413de24296e2e9b7dd766979d0dc70135b0cc6583873a3",
+      "parts": [
+        "يكفي ",
+        "إسناد ",
+        "كتيبة",
+        " إلى الوحدة ",
+        "لرفع قدراتها ",
+        "وتمكينها من تنفيذ ",
+        "مناورة",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_Initiation_m01_002": {
+      "source_sha256": "9d3bf05274c77ca28a9654e25abdb2e6256e4b7e599acd356b92f46ca2b35b78",
+      "parts": [
+        "ما دامت لديك ",
+        "شظايا الصدى السحري",
+        "، فيمكنك تعليم الفنون السرية مرارا. أما ",
+        "تعزيزات الفنون القتالية فلا تنتقل",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Hub_ClassChange_m01_001": {
+      "source_sha256": "1277b098fd105b18bd9ce8dbf46456e36ec1e6bbb9ba6a783afad3c96b7fc10d",
+      "parts": [
+        "تستطيع الوحدة التي اجتازت اختبار التأهيل الانتقال إلى تلك\nالفئة متى شاءت باختيار ",
+        "تغيير الفئة",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Bmap_BowBattery_m01_002": {
+      "source_sha256": "187f31697bf28c27c5c46349f349bb23cddd196328501fa76415f0f9a6d85c14",
+      "parts": [
+        "القاذفات السهمية",
+        " لا تستخدمها إلا ",
+        "فئات الرماة",
+        ". ",
+        "كرات النار",
+        " لا تستخدمها إلا ",
+        "الفئات التي تجيد السحر",
+        ". أما ",
+        "المجانيق",
+        " فلجميع ",
+        "الفئات",
+        " استخدامها."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Bmap_StomachAcid_m01_002": {
+      "source_sha256": "b276a2cf55631b4c2adbec7baf0e9492a8feced3291f0ee65a910d8149cb8098",
+      "parts": [
+        "يسري هذا الأثر على وحدات العدو والحلفاء معا،\nوتستثنى منه الفئات الطائرة وحدها."
+      ]
+    },
+    "MID_TUT_Hub_IndividualAction_m01_002": {
+      "source_sha256": "e8a65acc885928e8da394d609b7b19b2f420f63dd1dc489e38359990ba337a41",
+      "parts": [
+        "البحث ",
+        "يمنحك ",
+        "الذهب والمواد",
+        "، أما ",
+        "القتال ",
+        "و",
+        "التدريب",
+        " فيمنحانك ",
+        "أنواعا مختلفة من الخبرة",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Hub_Training_m01_002": {
+      "source_sha256": "2cd246ffaff2173364bd034c2e6265c1d118c1470d34f458bc38c1e1aa5e5fc0",
+      "parts": [
+        "أنواع ",
+        "التدريب",
+        " المتاحة ",
+        "تتغير كل أسبوع",
+        ". ويختلف مقدار ",
+        "خبرة المهارة",
+        " المكتسبة بحسب نوع ",
+        "التدريب الذي تختاره."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Bmap_ExperienceValue_m01_001": {
+      "source_sha256": "782bfa852fdafca8dbac66f41b43c6238befdf53ef9d38ca20e609c1bd260c38",
+      "parts": [
+        "تكسب الوحدات ",
+        "نقاط الخبرة ",
+        "بخوض ",
+        "المعارك ",
+        "ضد الأعداء، أو ",
+        "الانتصار ",
+        "عليهم، أو بوسائل أخرى."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Gmap_EncounterBattle_m01_001": {
+      "source_sha256": "4b4aa4eeb061e4e478b942ec7ad6299a1d96065521a220f450171bddb4b7920a",
+      "parts": [
+        "عندما ",
+        "تواجه عدوا",
+        " على ",
+        "خريطة العالم",
+        "، تبدأ ",
+        "مناوشة",
+        ". وتكسب فيها خبرة ونقاط دعم وأغراضا وخبرة\nمهارة."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Gmap_DungeonSpot_m01_002": {
+      "source_sha256": "8d4a0cd6b5a4f405700c657f8a42cd149c34ab80e876c494efa40727f3dc95f7",
+      "parts": [
+        "يجوب الأعداء المكان، وتكسب ",
+        "خبرة ",
+        "إذا هزمتهم. ويمكنك أيضا العثور على ",
+        "مواد",
+        " بتحطيم الصناديق ومكامن الخام."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_ShortBattle_MVP_m01_002": {
+      "source_sha256": "cc3e7b0aa46f9aef85d730fff35cf7536bc1e39a2ee59e71f04a75283326b90a",
+      "parts": [
+        "سيحصل أبرز المقاتلين على ",
+        "خبرة إضافية",
+        "، فاختر أفعالك واضعا في الحسبان من تريد أن ينال هذا\nاللقب."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_Capture_m01_001": {
+      "source_sha256": "1fb243d7304153239ba1962cff7888e89426f9d43c42535dcf1f4c02e02f1f81",
+      "parts": [
+        "استخدم أمر ",
+        "الاستدراج",
+        " في ",
+        "موقع للحيوانات ",
+        "لوضع ",
+        "الطعم ",
+        "و",
+        "استدراج مطية",
+        " إلى الموقع."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_Capture_m01_003": {
+      "source_sha256": "3ec058231ca53cc0035ea70382deb6970ab6a86586ce583f19cc9d7a9b8003e6",
+      "parts": [
+        "إذا ",
+        "نجحت",
+        "، فستتمكن من ",
+        "ضم المطية إليك",
+        ". أما إن ",
+        "فشلت",
+        "، فستفر وقد تضطر إلى ",
+        "قتال مخلوقات أخرى",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_Capture_m01_004": {
+      "source_sha256": "db9a09ebce3df033f6719e9256c3bd9143ad117f5ef91635a610d009299543c3",
+      "parts": [
+        "يسهل ",
+        "الإمساك بالمطية ",
+        "إذا استعملت ",
+        "الطعم الذي تفضله",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_Stable_m01_001": {
+      "source_sha256": "4630f7d0c00b37fb6e0e88c041b8bcb44f66950bb08088d89d8d8212e9f60c40",
+      "parts": [
+        "في ",
+        "الإسطبل، يمكنك ",
+        "العناية ",
+        "بمطاياك عن طريق ",
+        "إطعامها",
+        "، فتصير ",
+        "أكثر ألفة",
+        " معك."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_Stable2_m01_001": {
+      "source_sha256": "5cdf32f72bae67b98ae76e67e1df0f07a2cf8bed67fb0a6316f23729ce85a298",
+      "parts": [
+        "في ",
+        "الإسطبل، يمكنك ",
+        "تسمية المطية",
+        " أو ",
+        "العناية ",
+        "بها من أجل ",
+        "توثيق رابطتكما",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_Stable2_m01_002": {
+      "source_sha256": "bfef6e47a6f5e640913f27c03c598268a830498af48dc7515b8e7946c33c2b71",
+      "parts": [
+        "يمكنك أيضا ",
+        "إطلاق سراح",
+        " مطاياك. وستنال بذلك ",
+        "غرضا ",
+        "يتحدد بحسب مستوى رابطتك بالمطية."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_AnimalDeployment_m01_001": {
+      "source_sha256": "0891e0a1ae332f21d09245635fe539b5457c301f6c61cc32e41bc8e783369a94",
+      "parts": [
+        "استخدم ",
+        "خيار «تعيين» لإسناد ",
+        "مطية",
+        " من مطاياك لوحدة عبر\nقائمة المتاع، وبذلك يمكنك ",
+        "رفع قدرات الوحدة",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Root_AnimalDeployment_m01_002": {
+      "source_sha256": "2b9e8e1940bd8f2797a6b57b4bfda86233ce85ca36eb9ad8148b5c3616708431",
+      "parts": [
+        "القتال بصحبة مطية مسندة إلى الوحدة",
+        " يرفع ",
+        "مستوى الرابطة",
+        " بينهما، وقد يتيح للوحدة ",
+        "تعلم قدرة",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Bmap_Onslaught_m01_002": {
+      "source_sha256": "c0eb595323b97826b1e045e1dce17c1d435613cde1dde0eb61e30013aa8e71e6",
+      "parts": [
+        "حين يتأهب العدو لضربة صاعقة، ",
+        "يرسم إطار أرجواني حول المنطقة\nالمستهدفة",
+        "، ثم ",
+        "تنزل الضربة في الدور التالي",
+        "."
+      ],
+      "flow": "auto"
+    }
+  },
+  "Obelisk.msbt.zst": {
+    "MID_Obelisk_HowToPlay_Dit": {
+      "source_sha256": "9f05f50e005fa8a3ad4ec5938512b20ab1dbfc64f9e1f1d623dff5f4fa8b8efc",
+      "parts": [
+        "ديتريش مبارز مرهوب الجانب يقاتل للمتعة. يستدل بشفرته المشؤومة على أمهر المحاربين\nالجوالين ليتحداهم، وقد يأتيه أيضا من يتحداه من مختلف البلاد. وكلما انتصر على أحدهم تعلم\nفنونه القتالية. ويمكنه في المعبد أن يطور ما تعلمه في القتال أو يعلمه رفاقه، فتقوى عشيرته."
+      ]
+    }
+  },
+  "ScoutInfo.msbt.zst": {
+    "MID_ScoutInfo_Characteristic_Pet0": {
+      "source_sha256": "1f458baf3b8748ff0dfb332ccb90949eb42e638d2b32badd3f52ff99132a2d97",
+      "parts": [
+        "رام لا يخطئ، يصيب الأعداء من بعيد بفنونه القتالية."
+      ]
+    },
+    "MID_ScoutInfo_Characteristic_Pet1": {
+      "source_sha256": "1f458baf3b8748ff0dfb332ccb90949eb42e638d2b32badd3f52ff99132a2d97",
+      "parts": [
+        "رام لا يخطئ، يصيب الأعداء من بعيد بفنونه القتالية."
+      ]
+    },
+    "MID_ScoutInfo_Characteristic_Orh": {
+      "source_sha256": "95e55bcd3301a41a4df54614035f9d3761a1cfb9b63c6e1c5a38cd8ffad8b627",
+      "parts": [
+        "فتاة تخفي هيئتها المهيبة أسرارا كثيرة. تتمتع بقوة هائلة، لكن بعض\nفئات المقاتلين محظورة عليها."
+      ]
+    }
+  },
+  "Advice.msbt.zst": {
+    "MID_ADVICE_SC12_08": {
+      "source_sha256": "b7cdb397aa1a66814deb26440cbad9446212855dd82606e19d034b1e23ad9e00",
+      "parts": [
+        "ستسد ",
+        "فيلة الحرب",
+        " العملاقة طريقك. تذكر أن الرماح فعالة ضد كل الوحدات الراكبة، وأن الأسلحة\nبعيدة المدى والفئات السريعة الحركة ستفيدك هنا."
+      ],
+      "flow": "auto"
+    },
+    "MID_ADVICE_SC30_07": {
+      "source_sha256": "6e33bec2fb561820b805c6e888db57da7359094295b774af83defdec2af865e5",
+      "parts": [
+        "لا شك أنك ستواجه جيوش العالم السفلي. خذ أسلحة تستغل نقاط ضعفها\nوواصل التقدم. راجع عتاد قواتك كله، من فئاتها وأسلحتها إلى أغراضها!"
+      ]
+    },
+    "MID_ADVICE_SC00_12": {
+      "source_sha256": "347efe6ec2fd8038e435e01414c9938bbe60cb0c399f2994b1563c929fdc503c",
+      "parts": [
+        "يضعف ضباب هذه البوابة دقة التصويب والقدرة على التفادي. استعد جيدا قبل\nالخروج. تحتاج إلى فئات الإتقان، وقد يحسن بك الآن أن تضم بعض الفئات الإلهية."
+      ]
+    },
+    "MID_ADVICE_SC00_09": {
+      "source_sha256": "ff35d1f3d502ebf0babbe3bfeb1d89e1b6a2eb9c822c7efaac8eb755c32f3ad4",
+      "parts": [
+        "يضعف ضباب هذه البوابة دقة التصويب والقدرة على التفادي، لكن حسن\nالتدبير يبطل أثره. تحتاج إلى فئات الإتقان وإلى أكبر عدد تستطيع حشده من\nالفئات الإلهية."
+      ]
+    },
+    "MID_ADVICE_SC00_10": {
+      "source_sha256": "61a5622aa56428ce1224faa25b654272b7378acab07177a4897848145e26ca41",
+      "parts": [
+        "يمنح ضباب البوابة القوة ويسلبها، من حلفائك وأعدائك على السواء. لا غنى عن\nفئات الإتقان، وكلما زاد ما تحشده من الفئات الإلهية كان أفضل."
+      ]
+    },
+    "MID_ADVICE_SCXX_05": {
+      "source_sha256": "4b6f7a7464737fd1149a6e7988cab25f21ed320a22d5e58037d4708cfd4cfafe",
+      "parts": [
+        "كل ما لديك لصد الأعداء الكبار الطائرين سينفعك كثيرا هنا. وستحتاج إلى فئات\nسريعة الحركة لملاحقة من يصعب التصدي لهم."
+      ]
+    }
+  },
+  "Job.msbt.zst": {
+    "MJID_H_Brigand": {
+      "source_sha256": "83ee8c031f4de17fcda0168fd6870044435925897cf504a6ba7ce1d939e80c00",
+      "parts": [
+        "فئة شرسة تطرح الأعداء أرضا بضربات\nفأسها القوية."
+      ]
+    },
+    "MJID_H_ShadowSeeker": {
+      "source_sha256": "90d8fdcde95638dcf29ecacaa69a5bb0a5bbd0a84b746b1a86732648488764cb",
+      "parts": [
+        "يعيش هذا القاتل في الظل، ويبرع في فتح\nالأقفال والاستطلاع. وتتحرك هذه الفئة\nبرشاقة بين الأشجار."
+      ]
+    },
+    "MJID_H_Godhand": {
+      "source_sha256": "7dfe7dd00c14ff54dfed02ff4c79e97bee17702c05aab9ffec437277aa846ef5",
+      "parts": [
+        "تدافع هذه الفئة عن الضعفاء بقبضة إلهية\nتصرع الأعداء وتشفي الحلفاء."
+      ]
+    }
+  },
+  "LG_1_M06.msbt.zst": {
+    "MID_LGV_1_M06_B27_m01_004": {
+      "source_sha256": "800cf5259ca23b188143d321b2a018a672c1fbd4af2bf593a3e6415e736c6af0",
+      "parts": [
+        "يظهر هذا الأثر بوضوح أكبر لدى الفئات المتقدمة."
+      ]
+    },
+    "MID_LGA_1_M06_B27_m01": {
+      "source_sha256": "fbf235d3d7539ca6eb66f3a2e1924f8551c555acc138ce6d52f07322ec814e9e",
+      "parts": [
+        "قد يصنع اختيار الفئة العجائب."
+      ]
+    },
+    "MID_LGV_1_M06_B35_m01_003": {
+      "source_sha256": "35db341705692f2c58bb09db8a63c89474fa8017717985432cd1285dc1d65d7c",
+      "parts": [
+        "من هناك تنكشف داغسيون كلها للناظر."
+      ]
+    },
+    "MID_LGV_1_M06_Bon_m01_003": {
+      "source_sha256": "c80bb2ecd5cfee12e137c628274cd18aba962bab1af98ab7e3588822dad09b88",
+      "parts": [
+        "أخشى أن تستدرجني نظراتي إلى ما لا يليق. فلن ترضى جلالتها\nعني إن حدث ذلك..."
+      ]
+    }
+  },
+  "SUP_11_Kai.msbt.zst": {
+    "MID_SUP_1KAI_c05_LG11_029_m04": {
+      "source_sha256": "7ff3205e470401cf2ff326edcd9f1271d26d71093047149c8443cb7b176a5551",
+      "parts": [
+        "خض اختبار التأهيل."
+      ]
+    },
+    "MID_SUP_1KAI_c02_LG11_002_m02": {
+      "source_sha256": "caa6a63ce5fd01b3ef0358074be2836cadaaec3b44bcf11d8aa35da0b0117a21",
+      "parts": [
+        "أنجز مهاما جانبية من لوحة الإعلانات."
+      ]
+    }
+  },
+  "SUP_12_Ditlih.msbt.zst": {
+    "MID_SUP_1DIT_c05_LG12_021_m02": {
+      "source_sha256": "7ff3205e470401cf2ff326edcd9f1271d26d71093047149c8443cb7b176a5551",
+      "parts": [
+        "خض اختبار التأهيل."
+      ]
+    }
+  },
+  "SUP_13_Seodola.msbt.zst": {
+    "MID_SUP_1SEO_c04_TG13_109_m01": {
+      "source_sha256": "7ff3205e470401cf2ff326edcd9f1271d26d71093047149c8443cb7b176a5551",
+      "parts": [
+        "خض اختبار التأهيل."
+      ]
+    }
+  },
+  "SUP_14_Leda.msbt.zst": {
+    "MID_SUP_1LED_c04_TG14_109_m01": {
+      "source_sha256": "7ff3205e470401cf2ff326edcd9f1271d26d71093047149c8443cb7b176a5551",
+      "parts": [
+        "خض اختبار التأهيل."
+      ]
+    }
+  },
+  "System.msbt.zst": {
+    "MID_Sys_Result_Msg_JobMaster": {
+      "source_sha256": "1607a55561f5b0608ebdd473445c684085566bc7d1be3be4f548cd2c677336b0",
+      "parts": [
+        " – تم إتقان الفئة."
+      ],
+      "flow": "auto"
+    },
+    "MID_ProfileMenu_JobList": {
+      "source_sha256": "ac74c8f1920ef9134c66477143860015dbc661ef19838f797b5e9df6161170f3",
+      "parts": [
+        "قائمة الفئات"
+      ]
+    },
+    "MID_H_Sys_Lv": {
+      "source_sha256": "71d8985dbe37240d9a2311b9a7c6f2d26b426a6b9874498de191b2eeb28c994c",
+      "parts": [
+        "مقدار الخبرة التي اكتسبتها الوحدة في\nالمعارك. ترتفع قدراتها مع ارتفاع\nمستواها. (المطلوب للمستوى التالي: ",
+        " نقطة خبرة)"
+      ],
+      "flow": "auto"
+    },
+    "MID_Restart_Battle_Yes": {
+      "source_sha256": "1624ef2a4eb1b9e612ff1cd8241961ba21a15f52c73bc69fc87f0e7266216b53",
+      "parts": [
+        "نعم (التخلي عن الخبرة)"
+      ]
+    }
+  },
+  "System_Facility.msbt.zst": {
+    "MID_Lesson_Detail_Practice1": {
+      "source_sha256": "7261f94c7d41ce81d9053dddfedc9ccc251ba5fb94c110b3ee4fb97bac3c05b0",
+      "parts": [
+        "في هذا العالم الواسع أعداء من شتى الفئات، ولكل أسلوبه في\nالقتال. عليك أن تتعلم كيف تهزمهم جميعا. طلبت من بعض\nالأصدقاء أن ينازلوك لتقف على ذلك بنفسك."
+      ]
+    },
+    "MID_Lesson_Detail_Subjugation2": {
+      "source_sha256": "2a2a471dbf48c0932a5425ffaf318767e0bfe20b7cae53a9e25e800253d5916c",
+      "parts": [
+        "إذا لبيت طلبي، فستتيح لك المعابد فرصة خوض اختبار التأهيل\nلفئة جديدة."
+      ]
+    },
+    "MID_Map_Facility_Subquest_Hotel": {
+      "source_sha256": "8584bb7be8236db05379e64aa50f37baf97abe309dc9ba975ba21b20a3c139ec",
+      "parts": [
+        "لوحة إعلانات شوارع المدينة"
+      ]
+    },
+    "MID_Map_Facility_Subquest_Temple": {
+      "source_sha256": "ab5fc6ccd516e714d13da60d197c786c5cf9eb46798d516b20a77fb030d7ac64",
+      "parts": [
+        "لوحة إعلانات حي المعابد"
+      ]
+    },
+    "MID_Map_Facility_Subquest_Affluent": {
+      "source_sha256": "74aee4f40d940e7ac8af8fd84d9b9ba52b3ec0b687bd52a892cfb0a3d6f7fbb0",
+      "parts": [
+        "لوحة إعلانات الحي الأعلى"
+      ]
+    },
+    "MID_Map_Facility_Subquest_Port": {
+      "source_sha256": "a3d6239ae73853e959cdf4d0b7dcf06560d321e741fadc957f4ff2e4115f00af",
+      "parts": [
+        "لوحة إعلانات الميناء"
+      ]
+    },
+    "MID_Map_Facility_Subquest_Help": {
+      "source_sha256": "04e279b8b3ce2f016b5f86ada010b4ba57d78d67935cbc654667bb6b1b492a86",
+      "parts": [
+        "لوحة تنشر عليها المتاجر والنقابات طلباتها. لب طلباتهم\nترتفع شهرتك وتنل مكافآت قيمة."
+      ]
+    }
+  },
+  "System_Hub.msbt.zst": {
+    "MID_ClassChangeMenu_UnitSelect_Help": {
+      "source_sha256": "8d04962f0df10aa2b7580d8dc4fac42630bc0f82bf96237c09647be640c5474b",
+      "parts": [
+        "اختر الوحدة التي تريد تغيير فئتها."
+      ]
+    },
+    "MID_HotelMenu_Individual_Help": {
+      "source_sha256": "965114a54655520185beab26455a17d1a9369737a9e998a4aeed0fe5368f1b50",
+      "parts": [
+        "وجه الحلفاء لجمع المواد والذهب أو اكتساب الخبرة خلال عدد محدد من\nالأدوار."
+      ]
+    },
+    "MID_HotelMenu_Individual_Part3_Help": {
+      "source_sha256": "e8f8683b959836947a650fde8a8de5c3b7dcadb64dcd06b749d7e6c3c648a4c5",
+      "parts": [
+        "وجه الحلفاء لجمع المواد والذهب أو اكتساب الخبرة خلال عدد محدد من\nالأدوار. (ستمر بذلك كل الأدوار الباقية حتى الموعد المحدد.)"
+      ]
+    },
+    "MID_ClassTrialMenu_SkillEXP_Bonus": {
+      "source_sha256": "0eb79349391618dd365253df659c5c8b4fa8a5e097003624012f554dcafa683b",
+      "parts": [
+        "مكافأة خبرة المهارة"
+      ]
+    },
+    "MID_UnitMergeMenu_JobExpUp": {
+      "source_sha256": "bc951d0fa7250afeb86e889a023816669cbe4e0b2b02a850a4c87c57e0ce9654",
+      "parts": [
+        "زيادة خبرة الفئة"
+      ]
+    }
+  },
+  "Tips.msbt.zst": {
+    "MID_Tips_Rogue_m01": {
+      "source_sha256": "2bd2a3f433b5f3fe8b28cbd416ae4033fe800ba22999e8b8cf7e1ba8ea441746",
+      "parts": [
+        "تبصر بعض الفئات، مثل اللص، لمسافة أبعد قليلا في الضباب والعواصف الرملية."
+      ]
+    },
+    "MID_Tips_Hub_LegendPass_m01": {
+      "source_sha256": "e63f61fa9bb952f248e9ca023f8da96877f515f4afb74eb1bc9ce7bab3a42e93",
+      "parts": [
+        "اختر «إعادة الشهادة» لفئة من الرتبة ",
+        "الإلهية",
+        " أو لفئة ",
+        "الراقص، ليتاح لوحدة أخرى خوض الاختبار."
+      ],
+      "flow": "auto"
+    },
+    "MID_Tips_Skill_m01": {
+      "source_sha256": "c16dbebc2231664ba650384a3c21dae58f94922932df94d1126bbdd3361dd270",
+      "parts": [
+        "تظهر رموز المهارات التي تبرع فيها الوحدة باللون الأصفر، والتي تضعف فيها بالأزرق. وتكتسب الوحدة خبرة مهارة أكبر فيما تبرع فيه."
+      ]
+    },
+    "MID_Tips_Mummy_m01": {
+      "source_sha256": "c33d15f956c002b47a32ba72bade85501cf5dbb6317a80d5290b7978c6484c15",
+      "parts": [
+        "يمكنك الحصول على ",
+        "سبائك من المومياوات الذهبية، وعلى خبرة إضافية من المومياوات الفضية."
+      ],
+      "flow": "auto"
+    }
+  },
+  "Achievement.msbt.zst": {
+    "MATID_Reward_ExpUp": {
+      "source_sha256": "36dad9783655dba28b5a29515baaaa2f23e985ddf169511a5b92d1de999b3052",
+      "parts": [
+        "زيادة الخبرة"
+      ]
+    },
+    "MATID_Reward_JobExpUp": {
+      "source_sha256": "3830de9bb4303b1e40e67037e898ac455277e0804cf7dc703fb7cb1072d5e759",
+      "parts": [
+        "زيادة خبرة الفئة"
+      ]
+    },
+    "MATID_Reward_SwordSkillUp": {
+      "source_sha256": "b597f1d10ed86708a0dd83f11ec8c4fb077dec7ea714addd712ad5a57afa88a7",
+      "parts": [
+        "زيادة خبرة السيف"
+      ]
+    },
+    "MATID_Reward_LanceSkillUp": {
+      "source_sha256": "0fc5f142e65a17f615a307954f1921ef3090d3f5ef60bdd377e6c8c91b7a4a9e",
+      "parts": [
+        "زيادة خبرة الرمح"
+      ]
+    },
+    "MATID_Reward_AxeSkillUp": {
+      "source_sha256": "40417fe0ba1e7a79e625b78e9c0d37de0d4fc2ea20d08d449a62e99c5be3c5e9",
+      "parts": [
+        "زيادة خبرة الفأس"
+      ]
+    },
+    "MATID_Reward_BowSkillUp": {
+      "source_sha256": "d77e8350740fd6034c6b961df12b79f08a9a4f2ebd18ac71f379a0ed92c4d845",
+      "parts": [
+        "زيادة خبرة القوس"
+      ]
+    },
+    "MATID_Reward_GauntletSkillUp": {
+      "source_sha256": "ed167da8afe8727bdf4ea46151547c6c396943e8eac0ab562d9a890ad27c1882",
+      "parts": [
+        "زيادة خبرة القتال بالأيدي"
+      ]
+    },
+    "MATID_Reward_BlackSkillUp": {
+      "source_sha256": "2bb7784c738ef9316c46b8b328fe2921876d880c5c1509d7122aba90d6b5c9de",
+      "parts": [
+        "زيادة خبرة السحر الأسود"
+      ]
+    },
+    "MATID_Reward_WhiteSkillUp": {
+      "source_sha256": "08cce6715b86fceff974bf60dfeaf25cd89dbfe5edd6392548b36a1a21dd3ec4",
+      "parts": [
+        "زيادة خبرة السحر الأبيض"
+      ]
+    },
+    "MATID_Reward_FootSkillUp": {
+      "source_sha256": "040c4d567f15ba01f4c5997bcd6bab5539b6f864ed3e1b870346176c5b6cb655",
+      "parts": [
+        "زيادة خبرة المشاة"
+      ]
+    },
+    "MATID_Reward_CavalrySkillUp": {
+      "source_sha256": "4f9dee9563686c684394abfb4448c37babf75925c322235929d63d36107f8d64",
+      "parts": [
+        "زيادة خبرة الفرسان"
+      ]
+    },
+    "MATID_Reward_HeavySkillUp": {
+      "source_sha256": "46f2178a80500dfc28b4e2a48ce62b1ba07a574ab1f4ffe8b4e590dbe1b757e9",
+      "parts": [
+        "زيادة خبرة الدروع الثقيلة"
+      ]
+    },
+    "MATID_Reward_FlySkillUp": {
+      "source_sha256": "c6b1888f455f9a38b6a1f1c54055967b5a034df05afe175640e794c0714678cb",
+      "parts": [
+        "زيادة خبرة الطيران"
+      ]
+    },
+    "MATID_Reward_TacticsSkillUp": {
+      "source_sha256": "54c86016f80ed66b37fd1cdb415b310b57ad1085cd04c9671eb7456c23564fb4",
+      "parts": [
+        "زيادة خبرة القيادة"
+      ]
+    }
+  },
+  "Ride.msbt.zst": {
+    "MRID_H_BloodHorse": {
+      "source_sha256": "16be39c7f28310b718ed860357ce94f30181bc51aa64739bcccf1f788692efc4",
+      "parts": [
+        "حصان قرمزي مفتول العضلات، اتخذه القادة\nمطية لهم منذ القدم."
+      ]
+    },
+    "MRID_H_BlackMaginius": {
+      "source_sha256": "19c125044bb64bae72d330a6e97c7324e6f67865443b07709dca898a019cd2a4",
+      "parts": [
+        "أورنيوس نادر يسري فيه السحر، وإن كان\nنصيبه منه دون نصيب النوع المعتاد. وخفته\nتجعله مطية مرغوبة."
+      ]
+    },
+    "MRID_H_Falcon": {
+      "source_sha256": "b23e79df809ee54246c5ee2ebedd450cb56ae36e1b2782b209f118a494887462",
+      "parts": [
+        "مطية يحلم بها كل فارس خيل مجنحة، لقوتها\nالفائقة وسرعتها."
+      ]
+    }
+  },
+  "Shop.msbt.zst": {
+    "MID_LGA_1_Dagsion_Stable01_m01": {
+      "source_sha256": "37e3f77308269a2e31b28bb90a7b54124707c380908a833a0aa8d83826ec71e8",
+      "parts": [
+        "سأعتني بمطاياك."
+      ]
+    },
+    "MID_LGA_3_Dagsion_Stable01_m01": {
+      "source_sha256": "37e3f77308269a2e31b28bb90a7b54124707c380908a833a0aa8d83826ec71e8",
+      "parts": [
+        "سأعتني بمطاياك."
+      ]
+    }
+  },
+  "Spot.msbt.zst": {
+    "MID_Spot_AugusMountain": {
+      "source_sha256": "1632ab0dad928ffd8381c2c683156dec8271b0b4349a133fdb131a9642a5411a",
+      "parts": [
+        "درب جبل أورغوس"
+      ]
+    }
+  },
+  "Ending.msbt.zst": {
+    "MID_END_Solo_1Lost_Sim_001": {
+      "source_sha256": "cfd08a41466cac9fb7f8d9f923465c6546ae00ffab446d295488ecdafd301425",
+      "parts": [
+        "ترك شركة فاندال للتجارة طلبا لحياة أكثر حرية بين\nالمرتزقة. لكن أحد رجال فرقته خانه في ساحة القتال،\nفلقي حتفه."
+      ]
+    },
+    "MID_END_Pair_Orh_Nin_001": {
+      "source_sha256": "ec277a1c2e4576f93c85949a9ce822573f21a309dd8be612d63bd48a49b60a3d",
+      "parts": [
+        "حين عادت أورشل إلى معبد كريدنا الرئيسي، استأنفت\nحياتها السابقة. ووافق رئيس الكهنة غيفما على طلب\nنيناي، فنقلت من المعبد الفرعي في داغسيون وصارت\nرسميا حارسة أورشل من الفولكان. أحبت نيناي الكاهنة\nكما تحب أمها، وردت أورشل مودتها قدر استطاعتها. ولم\nيجر العرف بأن تخدم حارسة من الفولكان كاهنة لم\nتتجاوز رتبة كبيرة الكهنة، غير أن التفاهم بينهما جعل الأمر\nيبدو طبيعيا."
+      ]
+    },
+    "MID_END_Pair_Die_Lor_001": {
+      "source_sha256": "ddad95365f26be486179ea656375e60420295f7dd5928f20e59f82efae3abaee",
+      "parts": [
+        "واظبت لوريتا على تدريبات الكهنوت كل يوم في معبد\nكريدنا. راودها الشك أحيانا في قدرتها على أن تصبح،\nمثل أورشل، كبيرة كهنة يحبها الناس، لكنها ثبتت على\nعزمها. ورأى دييغو اجتهادها فساندها، وقويت الثقة\nبينهما. ومع الأيام اقترنا تحت رعاية رئيس الكهنة غيفما.\nوكبر مقامهما معا في معبد كريدنا، ووهبا حياتهما لخدمة\nالناس."
+      ]
+    },
+    "MID_END_Solo_Living_Oly_001": {
+      "source_sha256": "d125a0e7f847dc89220d574f1ba69b592907ebbfa55f60775aaa2fe02d14b5fd",
+      "parts": [
+        "تقديرا لسعيها الدؤوب، عينت أولمبيا كبيرة للكهنة في\nمعبد كالا، وواصلت فيه رعاية الفنون. ثم ارتقت إلى رتبة\nالكاهنة العليا، فنالت احترام كل من عرفها في كايلوس.\nوآمنت بأن الإلهة كالا التي فارقت المعابد بمحض إرادتها\nستعود، فعاهدت نفسها على حماية المعبد حتى يأتي ذلك\nاليوم. لكن الأجل لم يمهلها لترى عودة إلهتها."
+      ]
+    },
+    "MID_END_Solo_Living_Jas_001": {
+      "source_sha256": "5c9aac3f053813aaffbb5c0af262899c047f6118dae186c572de40538dc38dcf",
+      "parts": [
+        "ذاع صيت ياسمين بطلة قاتلت إلى جانب الموعود،\nوحققت أخيرا حلمها بجمع فرقة المرتزقة من جديد.\nجابت الفرقة البلاد تحمي من يحتاج إلى الحماية في\nزمن الفوضى. وبعد عشر سنوات، شعرت ياسمين أن\nعهد شبابها ولى، فحلت الفرقة واعتزلت. ورغم اعتراض\nرفاقها عادت إلى وطنها بريجيد. وشق فراقها على\nبعضهم حتى إنهم عبروا البحر وراءها."
+      ]
+    }
+  },
+  "SE_Fab_Tob_CBA.msbt.zst": {
+    "MID_SE_Fab_Tob_A_027": {
+      "source_sha256": "543833f022f610998c34b77b210095283376aca4ff35882ee1ee9a1849c79429",
+      "parts": [
+        "توبياس، أتبقى في صحبتي برهة أخرى؟ أود أن نتقاسم كأسا أو\nاثنتين، اليوم على الأقل."
+      ]
+    }
+  },
+  "LG_3ISM_cAssist.msbt.zst": {
+    "MID_LGV_3ISM_GM30_002_m02_002": {
+      "source_sha256": "d5d54286ec01f296a399083ca05ca64a9d9c6bdf1c3d02117d5ddee90fb5f896",
+      "parts": [
+        "علينا أن نراقب البوابات التي توشك أن تظهر في عالمنا."
+      ]
+    },
+    "MID_LGV_3ISM_CenJoin_m01_001": {
+      "source_sha256": "02a251f7eb5c2c79c4c10e7c1c28525d82f25c2204dc2c1ab84f553af7197db1",
+      "parts": [
+        "يا أملنا الموعود، بفضلك أوصلت أورورا سالمة إلى داغسيون."
+      ]
+    },
+    "MID_LGA_3ISM_CenJoin_m01": {
+      "source_sha256": "0c50e9d0a93c7670232e509c7cc40602c742e46c693cec407a64f6db82b15239",
+      "parts": [
+        "يا أملنا الموعود."
+      ]
+    },
+    "MID_LGV_3ISM_ReconstructionTempleAurora_m01_001": {
+      "source_sha256": "fa26cc4dd5ad23fdb57aa25926ce53431f94a70d55b3a0e41b0c27050a617b95",
+      "parts": [
+        "يا أملنا الموعود، هناك أمر أود أن أبحثه معك، إن أذنت."
+      ]
+    },
+    "MID_LGA_3ISM_ReconstructionTempleAurora_m01": {
+      "source_sha256": "67a0700d4dfc9eee8f711c2dd88a9c3912e7ba7d5c3ee3db9c073a3a534d80cb",
+      "parts": [
+        "يا أملنا الموعود، لي عندك طلب..."
+      ]
+    }
+  },
+  "SE_Ism_Maj_AS.msbt.zst": {
+    "MID_SE_Ism_Maj_S_018": {
+      "source_sha256": "37346047bdb9738eac3a3e09448d19175ff25da4d68ee1174cfc80f73fca8871",
+      "parts": [
+        "قال لي بعضهم إن أهل المعابد لم يؤووني إلا ليراقبوني. لكن... هذا\nغير صحيح، أليس كذلك؟"
+      ]
+    }
+  },
+  "Item.msbt.zst": {
+    "MIID_H_CharmJewel": {
+      "source_sha256": "f74d9c73de2870665628be6a2e7f5d83854938e8dac9189d89fb49e03224b9fa",
+      "parts": [
+        "يفرض تعديلا على دقة العدو مقداره ",
+        " أثناء القتال. احتمال التفعيل بالمئة يساوي نصف\nالهيبة."
+      ],
+      "flow": "auto"
+    },
+    "MIID_H_DaintyJewel": {
+      "source_sha256": "025940e3f8ae27573d7d71da620e01d6ef680627f8266e44a452c1a39d10a59d",
+      "parts": [
+        "إذا بلغت هيبة الوحدة هيبة العدو مضافا إليها ",
+        " أو أكثر، يفرض تعديلا على دقته مقداره ",
+        " أثناء القتال."
+      ],
+      "flow": "auto"
+    },
+    "MIID_EastGame": {
+      "source_sha256": "c6ff140050bcd591c2f27f034d7b7d1c5fe5399d41bfc47d11c12a246d459527",
+      "parts": [
+        "لعبة رقعة شرقية"
+      ]
+    },
+    "MIID_H_GamesCollection": {
+      "source_sha256": "77631e2e11c3a99ea656972b56a1f6796519d267ffd35d9331bc31d173f9a5a6",
+      "parts": [
+        "كتاب يعرض أساليب ابتكرها أمهر اللاعبين لألعاب\nالرقعة على اختلافها. يحبه هواة تلك الألعاب خاصة."
+      ]
+    }
+  },
+  "SE_Urs_Jas_CB.msbt.zst": {
+    "MID_SE_Urs_Jas_C_008": {
+      "source_sha256": "162ace205420c29797edcc5559fa4b52f1be61e074a0fcf4ec3f52c9a3c347f2",
+      "parts": [
+        "يبدو أننا متفقون على الأمر."
+      ]
+    }
+  },
+  "Roster.msbt.zst": {
+    "MID_Roster_Career_Oly_001": {
+      "source_sha256": "46f8ec28cd95826ac5165964a116313fa9154399aef9516f15c85668b62da8a2",
+      "parts": [
+        "من أسرة نبيلة في كايلوس."
+      ]
+    },
+    "MID_Roster_Position_Orh_001": {
+      "source_sha256": "477814c659e8262c2112fd1fbb4693774602277acf77a955c430e954e0146af0",
+      "parts": [
+        "كبيرة الكهنة في معبد كريدنا"
+      ],
+      "flow": "auto"
+    },
+    "MID_Roster_Position_Orh_004": {
+      "source_sha256": "477814c659e8262c2112fd1fbb4693774602277acf77a955c430e954e0146af0",
+      "parts": [
+        "كبيرة الكهنة في معبد كريدنا"
+      ],
+      "flow": "auto"
+    },
+    "MID_Roster_Position_Orh_005": {
+      "source_sha256": "477814c659e8262c2112fd1fbb4693774602277acf77a955c430e954e0146af0",
+      "parts": [
+        "كبيرة الكهنة في معبد كريدنا"
+      ],
+      "flow": "auto"
+    },
+    "MID_Roster_Career_Ism_009": {
+      "source_sha256": "e638085c092e3b9095f1b6d1a7bc247c4f9e739f2ce2e2189adb8e8d60ef898b",
+      "parts": [
+        "في مقدمة الصفوف، قيادة الناجين هي مهمة الموعود."
+      ]
+    },
+    "MID_Roster_Career_Kai_011": {
+      "source_sha256": "30c027193c2ec80654c542ba057e3c1b25cc1324e7999402a00066c239028250",
+      "parts": [
+        "يسرع إلى داغسيون بعدما تبلغه أنباء عن ظهور الموعود فيها."
+      ]
+    },
+    "MID_Roster_Career_Seo_008": {
+      "source_sha256": "1d81bf29341efa66d2c3fb57f6110e02761e345c36d557b0382dfadf6052bb1b",
+      "parts": [
+        "تقصد داغسيون لتقاتل إلى جانب الموعود."
+      ]
+    },
+    "MID_Roster_Career_Led_008": {
+      "source_sha256": "c67f07627f7a43f4ff337acbe5fbe66e9dc2a7adff878a3c32aa454722ea7696",
+      "parts": [
+        "تستأذن كالا وتتوجه إلى داغسيون بعدما تسمع بعودة الموعود."
+      ]
+    },
+    "MID_Roster_Career_Bel_008": {
+      "source_sha256": "866e5adbcbbae2f483195d4bdf3c360858e409aafc4b50dd4a0658da296e9b27",
+      "parts": [
+        "يقصد داغسيون حين تبلغه أنباء عن عودة الموعود."
+      ]
+    },
+    "MID_Roster_Career_Orh_006": {
+      "source_sha256": "327b08fe5e5f1f71a00027f1e4418115f05000aa3602c8b19f2807a35cfd6051",
+      "parts": [
+        "تستشعر وصول الموعود فتتوجه إلى داغسيون لتنضم إلى القتال."
+      ]
+    },
+    "MID_Roster_Career_Anh_011": {
+      "source_sha256": "213ee149c6cfb14ed214b4a570ecffc254b82a5618efc64497f22f368d5fb7d0",
+      "parts": [
+        "الوجهة داغسيون للانضمام إلى الموعود حال استعادته القدرة على العمل."
+      ]
+    },
+    "MID_Roster_Career_Tia_008": {
+      "source_sha256": "30c027193c2ec80654c542ba057e3c1b25cc1324e7999402a00066c239028250",
+      "parts": [
+        "تسرع إلى داغسيون بعدما تبلغها أنباء عن ظهور الموعود فيها."
+      ]
+    },
+    "MID_Roster_Career_Pet_008": {
+      "source_sha256": "30c027193c2ec80654c542ba057e3c1b25cc1324e7999402a00066c239028250",
+      "parts": [
+        "يسرع إلى داغسيون بعدما تبلغه أنباء عن ظهور الموعود فيها."
+      ]
+    },
+    "MID_Roster_Career_Lil_008": {
+      "source_sha256": "eee66cf68c5a7f2c99aae4e92115bdc11558ecf3baaf189bd57a4de4beec23be",
+      "parts": [
+        "ما إن تسمع بخبر الموعود حتى تقصد داغسيون."
+      ]
+    },
+    "MID_Roster_Career_Lys_008": {
+      "source_sha256": "ed4fb0da94ceb1389eae78607fbe7b681f7a680bbf6b4e53689d147bde9a704b",
+      "parts": [
+        "ينضم إلى الصفوف حين يبلغه خبر وصول الموعود."
+      ]
+    },
+    "MID_Roster_Career_Buc_008": {
+      "source_sha256": "7d64c05494dc0d5ab23859184fa8fbfb166fccc6274611d5950f5ca546cf220d",
+      "parts": [
+        "ينضم إلى قوات الموعود ليرد له الجميل."
+      ]
+    },
+    "MID_Roster_Career_Moo_008": {
+      "source_sha256": "77bb487abb6f7189ce98a2f718fdec74f3c9258d14e133ab319af9b3e5e6d955",
+      "parts": [
+        "ما إن يصل خبر عودة الموعود حتى تبدأ الرحلة إلى داغسيون."
+      ]
+    },
+    "MID_Roster_Career_Oly_008": {
+      "source_sha256": "395e1f0ccebd38af3a45cb46416c7015a7dd8585d20e6de67bb6d2d96cb4304f",
+      "parts": [
+        "تستأذن كالا في الرحيل بعدما يبلغها خبر عودة الموعود."
+      ]
+    },
+    "MID_Roster_Career_Max_008": {
+      "source_sha256": "aa968718456c4711b29ba744c9a52d47e36e10d2011b545f68efd82e000a2459",
+      "parts": [
+        "يقصد العاصمة ليلتحق بالموعود."
+      ]
+    },
+    "MID_Roster_Career_Gol_008": {
+      "source_sha256": "7df6aa52cf2263619f5c8c785247d9610c88689ccc5acd680076fc6de5617af0",
+      "parts": [
+        "يسرع فرحا للقاء الموعود ما إن يبلغه خبر عودته."
+      ]
+    },
+    "MID_Roster_Career_Gat_011": {
+      "source_sha256": "bc47e0098c605e99975ef6f73a27de0c6945c024cfad7c4549f0a582f5a0621b",
+      "parts": [
+        "يمضي للوقوف بنفسه على قدرة الموعود بعدما يسمع بعودته."
+      ]
+    },
+    "MID_Roster_Career_Dan_008": {
+      "source_sha256": "f047d138bb42b56bf4d06eca55465fb3fd3314f8a75c8cba40351ccea37778ce",
+      "parts": [
+        "يترك كل ما في يده ليلتحق بالموعود حين يسمع بعودته."
+      ]
+    },
+    "MID_Roster_Career_Urs_008": {
+      "source_sha256": "664e588b6b382230f1a8a4750b68eac8f82a93fea8da8070923f1067f6e57481",
+      "parts": [
+        "تغادر الشركة لتنضم إلى الموعود في داغسيون."
+      ]
+    },
+    "MID_Roster_Career_Sim_008": {
+      "source_sha256": "653d6e9f6d79c5309c0e3483379c558fcff1e299eb8d2e63781caccc041481f9",
+      "parts": [
+        "يسافر إلى داغسيون ليقاتل تحت إمرة الموعود."
+      ]
+    },
+    "MID_Roster_Career_Naz_008": {
+      "source_sha256": "aad0f2df2159251b7c6a4bc79866ee4bd6f5f8ca5e80b0f45ff4e20fbfeac042",
+      "parts": [
+        "الوجهة داغسيون للالتحاق بقوات الموعود."
+      ]
+    },
+    "MID_Roster_Career_Noc_008": {
+      "source_sha256": "eab24f4837abc5f9d7779d9b64813f580a48ff902a9369f76bfdb14f5fd77c61",
+      "parts": [
+        "تقصد داغسيون لتقاتل إلى جانب الموعود."
+      ]
+    },
+    "MID_Roster_Career_Ini_008": {
+      "source_sha256": "2ed9e4d2b53aca4cfd651b266d2b0c3b20c0d972266f318e78ae46b5488a404b",
+      "parts": [
+        "تقصد داغسيون وقد علقت آمالها على الموعود."
+      ]
+    },
+    "MID_Roster_Career_Ale_008": {
+      "source_sha256": "43284f527cf3e59eab1ed0e38f7904ed88f0c1b47e80bf2b203ad5acf0cfb814",
+      "parts": [
+        "تستشعر وجود الموعود، فتستأذن جورا في الذهاب إلى داغسيون."
+      ]
+    },
+    "MID_Roster_Career_Hri_008": {
+      "source_sha256": "cb0768616d8e16bb408bf244fe8d3f3922e71a848e61063f033fef1db312214c",
+      "parts": [
+        "يقصد داغسيون ليضع قوته في خدمة الموعود."
+      ]
+    },
+    "MID_Roster_Career_Kra_008": {
+      "source_sha256": "eabb5a57d3b51123facf555e08f75befe19f42a0c6a85262ba71171ffd83c1f7",
+      "parts": [
+        "ينضم إلى جيش الموعود بأمر من ملك موسا."
+      ]
+    },
+    "MID_Roster_Career_Kou_006": {
+      "source_sha256": "7ff6597793c49dfcd0d096fd098c2a2e62e097401755edca45e62a5af0f74034",
+      "parts": [
+        "تبدأ الرحلة إلى داغسيون بصحبة الموعود."
+      ]
+    }
+  },
+  "SE_Dit_Tal_BA.msbt.zst": {
+    "MID_SE_Dit_Tal_B_007": {
+      "source_sha256": "6c25e6c8ee582877ff4e136fc39243ec71fd147f86769b18aaeca4a410dd120a",
+      "parts": [
+        "أحقا؟ لطالما سمعت حكايات عن غرائب آل لامين..."
+      ]
+    },
+    "MID_SE_Dit_Tal_A_027": {
+      "source_sha256": "672a42b78b7d092230e059e5070f00cd1369424d5440862d038981c0f67d36f2",
+      "parts": [
+        "إذن، فلتحملك سفينة زاراتان إلى فودلان يا صديقي."
+      ]
+    }
+  },
+  "1_KAI_c01.msbt.zst": {
+    "MID_EV11_002_m01_012": {
+      "source_sha256": "185b9d5a40a1cd1e6a757c1e5f79780cba4ddf7bce66a04b1ba4cf99a299fef3",
+      "parts": [
+        "لا مجال للغفلة، حتى وأنت نائم. ما إن ينفتح الباب حتى تستجمع\nانتباهك."
+      ]
+    }
+  },
+  "1_KAI_c05.msbt.zst": {
+    "MID_EV11_030_m01_017": {
+      "source_sha256": "39c03f7b2027fd5b8fb48d79aa2f278b2f9e8318a8793e06fd93b60bfb425bcf",
+      "parts": [
+        "لعلنا نجلس يوما متقابلين إلى رقعة لعب ونتناقش في فنون\nالتدبير."
+      ]
+    }
+  },
+  "SE_Dit_Fab_CBA.msbt.zst": {
+    "MID_SE_Dit_Fab_B_014": {
+      "source_sha256": "6efd8dbac13cc26868adeba939b666d14f24fafa9cd57e87049941204b6eaac6",
+      "parts": [
+        "هذا الجسد مجرد وعاء. استعرت هذه الهيئة واسمها من شخص\nآخر."
+      ]
+    }
+  },
+  "Legion.msbt.zst": {
+    "MLID_H_CommonB04": {
+      "source_sha256": "c1d0b523e4a42be89ba6361debe233c7d0ffff108960ce383b829fd88333c883",
+      "parts": [
+        "كهنة بلغوا جميعا رتبة كبير الكهنة."
+      ]
+    }
+  },
+  "SE_Orh_Nin_CBA.msbt.zst": {
+    "MID_SE_Orh_Nin_C_005": {
+      "source_sha256": "fa5509887edd1e2b177182bd768449d8b7a7a2960374d543d208bfff6a74431e",
+      "parts": [
+        "يا لك من مسكينة، يا كبيرة الكهنة أورشل! ما أشد بؤسك."
+      ]
+    },
+    "MID_SE_Orh_Nin_C_007": {
+      "source_sha256": "827331fe2dd4eb65f6931481abd1111a7a9e8af202fb18ff49a84add6ed7aa85",
+      "parts": [
+        "متى غاب عني مكان كبيرة الكهنة، تقصيت أثرها حتى أجدها."
+      ]
+    },
+    "MID_SE_Orh_Nin_C_011": {
+      "source_sha256": "fecb2e5a81ad0824d2dada1d980f3624d51681b537aaea338535a36436bfc4c9",
+      "parts": [
+        "فوقك يا كبيرة الكهنة! ثمة مزهرية ستسقط حين تمرين."
+      ]
+    }
+  },
+  "1_LED_c04.msbt.zst": {
+    "MID_EV14_068_m01_025": {
+      "source_sha256": "bfd0a6134bf0f6b7a54b85126057f75fd95ebea0e49e179ed327fd2a7cf9b634",
+      "parts": [
+        "أنهك السفر جلالته. أيها الجنود، هل ترافقون الملك والملكة إلى\nجناحهما؟"
+      ]
+    }
+  },
+  "1_SEO_c05.msbt.zst": {
+    "MID_EV13_024_m01_012": {
+      "source_sha256": "3cabfdecee50101e83f2fed8d4acaf6c2bc0a6f7b9ef0d11b4ff8dc1cd39427d",
+      "parts": [
+        "أجل، جنبا إلى جنب مع جلالة الملك الراحل. ما أشد ما كانت تلك\nالأيام تبعث الحماسة!"
+      ]
+    }
+  },
+  "SE_Bon_Lil_CBA.msbt.zst": {
+    "MID_SE_Bon_Lil_A_014": {
+      "source_sha256": "e052ad1c50d3812acadd589401fcb25f09e72818f45c21b84e2e528e9c67a204",
+      "parts": [
+        "حين تحدثت إلى الملكة ثيودورا، أدركت أن جلالتها جديرة حقا\nبما يقال عنها."
+      ]
+    }
+  },
+  "SE_Esm_Lys_CBA.msbt.zst": {
+    "MID_SE_Esm_Lys_C_006": {
+      "source_sha256": "883da3d7e5bcf6832a6f773fd8ef0779a763b2c73db5b176c520491bc6dd22b9",
+      "parts": [
+        "كم وبختك! وما زلت تذكرين جلالتها ويو فاس دون أن تحفظي\nلهما قدرهما."
+      ]
+    }
+  },
+  "SE_Lil_Lys_CBA.msbt.zst": {
+    "MID_SE_Lil_Lys_C_024": {
+      "source_sha256": "be36d74baee623cdee5747e55febe5eae1be6042a2f0e777c788f8cdd0f046d0",
+      "parts": [
+        "ما دمنا نخدم جلالتها معا، فلنشد أزر بعضنا ونعمل يدا بيد!"
+      ]
+    },
+    "MID_SE_Lil_Lys_A_001": {
+      "source_sha256": "838ee3b6b8213ee712d08e784b685f69988c9de21c5c742493172a9e279a0829",
+      "parts": [
+        "ليليان! سمعت أن مشاعرك تجاه جلالتها بدأت تلين أخيرا."
+      ]
+    }
+  },
+  "3_ISM_Battle.msbt.zst": {
+    "MID_SC00_13_m05_001": {
+      "source_sha256": "03ef7ef45321856e3f12022b60fd785183c25812a44c85e9b13f96fc52f1aa1b",
+      "parts": [
+        "الموعود؟ تف! ما أكرمهم بالألقاب! أعماك الوهم حتى انحزت\nإلى الوحوش."
+      ]
+    },
+    "MID_SC00_10_m05_001": {
+      "source_sha256": "c2372bc042afb84b35fb7f81d80b1579ddfeb30798462f44f7bc17a4cb399b17",
+      "parts": [
+        "«الموعود»، أليس هذا لقبك؟ لقد فقت ظني بك."
+      ]
+    },
+    "MID_SC00_14_m04_001": {
+      "source_sha256": "35b725d8ce868a2f97cb49d5003eecccc20fc04b291b3291f12253bdbff9ae34",
+      "parts": [
+        "ما زلت لا أفهم حقيقتك، يا أملنا الموعود..."
+      ]
+    },
+    "MID_SC00_15_m01_002": {
+      "source_sha256": "a1686ef41448acaadedf70d1f910fe1191f071c6a48af582c0219a4259011c03",
+      "parts": [
+        "يا أملهم الموعود المزعوم، ها هي قوتي أمامك!"
+      ]
+    },
+    "MID_SC00_15_m59_001": {
+      "source_sha256": "05fa252f18229aca6f50bc45b838efc0dc971d02b5bc0b06a7406fd55e292334",
+      "parts": [
+        "حانت الساعة، يا أملنا الموعود. المهمة بين يديك الآن، من أجلنا\nومن أجل معلمنا زينون."
+      ]
+    }
+  },
+  "3_ISM_c04.msbt.zst": {
+    "MID_EV30_121_m01_001": {
+      "source_sha256": "759ace8aae08305c00ac4291fa1282e146a2e5e7f39e9e56e2511e1b34945a93",
+      "parts": [
+        "يا أملنا الموعود! توقعت أن ألقاك هنا."
+      ]
+    },
+    "MID_EV30_121_m01_008": {
+      "source_sha256": "22c5ec1dcac151384c43fea5f3423b964f98c1b44e840333f03b4976bb0ab610",
+      "parts": [
+        "والآن، يا أملنا الموعود، لي عندك طلب. أود الانضمام إلى صفوفك."
+      ]
+    }
+  },
+  "3_ISM_c05.msbt.zst": {
+    "MID_EV30_022_m01_005": {
+      "source_sha256": "9685340c4a2b8f2766e731e17980ea4b4889293b66607fccd20b6d8b1bd7f6e7",
+      "parts": [
+        "فورتونا، وأنت يا أملنا الموعود، أرجو أن تتوخيا الحذر."
+      ]
+    },
+    "MID_EV30_024_m01_060": {
+      "source_sha256": "c2bc8d24b517259460e4238bd6469791274edf37e9897a307976582f1eefe3dd",
+      "parts": [
+        "أمامك الموعود. هنا سيلحق بك الهزيمة ويهدي الأحياء إلى الخلاص."
+      ]
+    },
+    "MID_EV30_019_m01_016": {
+      "source_sha256": "022be5c74fdb8ce720b9bc3abfd2740f0f76578115e0cecd2cf7696a9555244a",
+      "parts": [
+        "يا أملنا الموعود، أظن أن هذا يدخل في مجال خبرتي."
+      ]
+    }
+  },
+  "LG_3ISM_c02.msbt.zst": {
+    "MID_LGV_3ISM_c02_Cla_m01_010": {
+      "source_sha256": "fd95d8ec47283dcb1c4df8fe16f30f4e0ee62edd1c5f043fefd1ed4e38f26f14",
+      "parts": [
+        "لي اقتراح، يا أملنا الموعود. أود أن أصلح هذا على الوجه\nالصحيح."
+      ]
+    }
+  },
+  "SE_Ism_Ale_AS.msbt.zst": {
+    "MID_SE_Ism_Ale_A_005": {
+      "source_sha256": "8f23a8ff28c3839dfdc7337ae97ee415c8026d7b90b1b2c0fa8129fb79bd22cb",
+      "parts": [
+        "يا أملنا الموعود، أخجل مما بدر مني في ساحة القتال. لا عذر لي."
+      ]
+    },
+    "MID_SE_Ism_Ale_A_030": {
+      "source_sha256": "5b9090e1e62ca1fee7a08f598c3caa77cf08ad8f8beff6e22bbad3a4f27cedf7",
+      "parts": [
+        "يا أملنا الموعود، ما الذي أحزنك هكذا؟"
+      ]
+    },
+    "MID_SE_Ism_Ale_S_001": {
+      "source_sha256": "b2ad97d609cf5ffa79f0e152fa16d9fa2e8d494148c5ddc834fe71f1681df3d3",
+      "parts": [
+        "آه، يا أملنا الموعود... لا أصدق أنك فارقت الحياة."
+      ]
+    }
+  },
+  "SE_Ism_Bon_AS.msbt.zst": {
+    "MID_SE_Ism_Bon_A_017": {
+      "source_sha256": "ac023b9020be133e90b008a8c29d1d2f4b61d829a2d56d4ed63e36ee612ffa59",
+      "parts": [
+        "والعجيب، يا أملنا الموعود، أن تلك المخاوف لا تساورني حين\nيتعلق الأمر بك."
+      ]
+    },
+    "MID_SE_Ism_Bon_S_001": {
+      "source_sha256": "381a2c32dd38a62b9edb385c722a2c78d340ceaf3e0ff00e514cb47ade9f72b9",
+      "parts": [
+        "آه! أهذا أنت، يا أملنا الموعود؟"
+      ]
+    },
+    "MID_SE_Ism_Bon_S_020": {
+      "source_sha256": "3c7c81801abea373d297c275c6718ad954802a1bf744a3690eb52c27539c8989",
+      "parts": [
+        "أشكرك على قولك هذا، يا أملنا الموعود."
+      ]
+    },
+    "MID_SE_Ism_Bon_S_021": {
+      "source_sha256": "e18547a5e970e1ebd75b4da874904f344450c5eab8c84af3e049e870ca2bd40a",
+      "parts": [
+        "أحقا؟ هذا فوق ما كنت أجرؤ على تمنيه، يا أملنا الموعود."
+      ]
+    }
+  },
+  "SE_Ism_Buc_AS.msbt.zst": {
+    "MID_SE_Ism_Buc_A_027": {
+      "source_sha256": "6e1b03c863d9cfd06d30cad9824305fd495de40158df0bd14aa9e88bd57bfd46",
+      "parts": [
+        "أجل... وأنا أيضا سأضع ثقتي فيك، يا أملنا الموعود."
+      ]
+    },
+    "MID_SE_Ism_Buc_S_021": {
+      "source_sha256": "33b6010baecf687c856874cc3b66fe617b20a821353ab3ec50ddf760e8d458e5",
+      "parts": [
+        "لكن نفسي انشرحت الآن. والحق أني كلما كنت معك انزاح عن\nقلبي ثقل، يا أملنا الموعود."
+      ]
+    }
+  },
+  "SE_Ism_Cat_AS.msbt.zst": {
+    "MID_SE_Ism_Cat_A_007": {
+      "source_sha256": "21df0d0470fee5c5a6828bfbe5baaff4925e5a7f8ff75b6794fcfd4cbc5f1c5b",
+      "parts": [
+        "الفضل كله لذلك الدخول الباهر الذي دخلت به المعركة، يا\nأملنا الموعود!"
+      ]
+    },
+    "MID_SE_Ism_Cat_A_014": {
+      "source_sha256": "7da718620945bdcbebaa74e11d18ad915610625bd66f64731bc00712cd6e1ac6",
+      "parts": [
+        "على أي حال، كان أداؤك في الميدان اليوم رائعا حقا، يا أملنا\nالموعود. بل مبهرا!"
+      ]
+    }
+  }
+}
