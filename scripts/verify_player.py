@@ -97,7 +97,7 @@ def verify(path):
                 raise ValueError("The player archive has duplicate or case-colliding paths.")
             marker = json.loads(archive.read("player-package.json"))
             files = marker["files"]
-            if (marker["schema"] != 1 or marker["product"] != "FagriShot" or marker["version"] != "0.2.0"
+            if (marker["schema"] != 1 or marker["product"] != "FagriShot" or marker["version"] not in {"0.2.0", "0.3.0"}
                     or set(files) != set(names) - {"player-package.json"}):
                 raise ValueError("The player manifest does not cover the exact archive payload.")
             archive.extractall(install)
@@ -129,6 +129,16 @@ def verify(path):
         cfg = json.loads(run("launcher status", [launcher, "status", "--json"]))
         if not Path(cfg["saves"]).resolve().is_relative_to(area):
             raise ValueError("The clean-install player's save location escaped its test profile.")
+        if marker["version"] == "0.3.0":
+            graphics = json.loads(run("preview graphics settings", [launcher, "graphics", "--output", "2160p", "--fps", "60"]))
+            if graphics["output"] != "2160p" or graphics["fps"] != "60":
+                raise ValueError("The player could not save graphics settings.")
+            language = json.loads(run("Arabic preview availability", [launcher, "arabic-status", "--json"]))
+            if not language["available"] or language["enabled"]:
+                raise ValueError("The Arabic preview is missing or enabled in a new profile.")
+            if not json.loads(run("enable Arabic preview", [launcher, "arabic-set", "--enabled", "on"]))["enabled"]:
+                raise ValueError("The Arabic preview preference was not saved.")
+            run("disable Arabic preview", [launcher, "arabic-set", "--enabled", "off"])
         run("embedded Python libraries", [exe, "-I", "-c",
             "import capstone,elftools,lz4.block,unicorn,zbic,zstandard"])
         run("persistent folder selection", [launcher, "configure", "--exefs", area / "dump/exefs", "--romfs", area / "dump/romfs"])

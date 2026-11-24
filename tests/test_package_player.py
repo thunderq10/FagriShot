@@ -19,7 +19,8 @@ class PlayerDistribution(unittest.TestCase):
         with ExitStack() as stack:
             payload = player.Payload(stack)
             for path in ("../outside", "C:/state", "tools\\file", "a//b", "work/private/game.exe",
-                         "bin/FagriShot.exe", "data/romfs/file", "tools/game.spv", "saves/system"):
+                         "bin/FagriShot.exe", "data/romfs/file", "tools/game.spv", "saves/system",
+                         "fonts/copy.bffnt.zst", "data/message.msbt.zst", "assets/tutorial.bntx.zst"):
                 with self.subTest(path=path), self.assertRaises(ValueError):
                     payload.add(path, b"x")
             payload.add("tools/Tool.exe", b"fixture")

@@ -73,7 +73,7 @@ async function session(binary,args,profile,data,check) {
 
 // Read first-open state directly from the supplied installation with an empty player profile.
 await session(exe,[],path.join(run,'first-webview'),local,async({evaluate,wait,cdp})=>{
-  await wait("!document.querySelector('[data-pick=ExeFS]').disabled && document.querySelector('aside small').textContent.endsWith("+JSON.stringify(version)+")",'first launch');
+  await wait("!document.querySelector('[data-pick=ExeFS]').disabled && document.querySelector('aside [data-version]').textContent==="+JSON.stringify(version),'first launch');
   assert.equal(await evaluate("document.querySelector('#title').textContent"),'Game setup');
   assert.equal(await evaluate("document.querySelector('#romfs').value+document.querySelector('#exefs').value"),'');
   assert.equal(await evaluate("!document.querySelector('[data-pick=RomFS]').disabled && document.querySelector('#build-code').disabled && document.querySelector('#play').disabled"),true);
@@ -92,6 +92,8 @@ await fs.cp(path.join(installed,'fagrishot'),path.join(isolated,'fagrishot'),{re
 for (const file of ['compatibility/supported.json','scripts/fagrishot.py',packaged?'player-package.json':'recomp/games/fefw/config.py'])
   await fs.copyFile(path.join(installed,file),path.join(isolated,file));
 if (packaged) await fs.symlink(path.join(installed,'tools/python'),path.join(isolated,'tools/python'),'junction');
+await fs.mkdir(path.join(isolated,'fonts'),{recursive:true});
+await fs.copyFile(path.join(installed,packaged?'fonts/DejaVuSans.ttf':'runtime/assets/fonts/DejaVuSans.ttf'),path.join(isolated,'fonts/DejaVuSans.ttf'));
 
 await fs.mkdir(path.dirname(settingsFile),{recursive:true});
 await fs.writeFile(settingsFile,JSON.stringify({schema:42}));
@@ -105,14 +107,50 @@ await session(isolatedExe,direct?['--play-game']:[],path.join(run,'webview'),loc
   await fs.writeFile(settingsFile,'{');
   await click('#retry');
   await wait("!document.querySelector('#settings-warning').hidden && !document.querySelector('[data-pick=ExeFS]').disabled",'repairable settings');
-  await wait("document.querySelector('aside small').textContent.endsWith("+JSON.stringify(version)+")",'release version');
+  await wait("!document.querySelector('#arabic-text').disabled && document.querySelector('#arabic-coverage').textContent.includes('selected')",'Arabic preview availability and coverage');
+  const arabicPreference=path.join(path.dirname(settingsFile),'arabic.json');
+  await click('#arabic-text');
+  await wait("document.querySelector('#arabic-text').checked && !document.querySelector('#arabic-text').disabled",'Arabic preview enabled');
+  assert.equal(JSON.parse(await fs.readFile(arabicPreference,'utf8')).enabled,true);
+  await click('#arabic-text');
+  await wait("!document.querySelector('#arabic-text').checked && !document.querySelector('#arabic-text').disabled",'Arabic preview disabled');
+  assert.equal(JSON.parse(await fs.readFile(arabicPreference,'utf8')).enabled,false);
+  passed.push('Arabic preview checkbox reports actual catalog coverage and persists enabling and disabling');
+  await wait("document.querySelector('aside [data-version]').textContent==="+JSON.stringify(version),'release version');
   assert.equal(await evaluate('document.title'),'FagriShot');
   assert.equal(await evaluate("document.querySelector('#setup h2').innerText"),'Fire Emblem: Fortune\u2019s Weave');
-  assert.equal(await evaluate("document.querySelector('aside small').innerText"),'Windows x64 \u00b7 '+version);
+  assert.equal(await evaluate("document.querySelector('aside small').innerText"),'Windows x64 \u00b7 '+version+' preview');
   assert.equal(await evaluate("Array.from(document.querySelectorAll('#setup [data-action]'),b=>b.textContent).join('|')"),'Build game code|Play');
   assert.equal(await evaluate("Array.from(document.querySelectorAll('#setup [data-pick]'),b=>b.dataset.pick).join('|')"),'ExeFS|RomFS');
   await fs.writeFile(path.join(run,'setup.png'),Buffer.from((await cdp('Page.captureScreenshot')).data,'base64'));
   passed.push('setup and retry', 'UTF-8 title and version', 'two folder pickers, one build button and Play');
+  const existingIni=path.join(path.dirname(settingsFile),'fefw.ini');
+  await fs.writeFile(existingIni,'; keep this comment\n[fefw]\nrender = 800x600\n[other]\nvalue = untouched\n');
+  const receipt=path.join(isolated,'work/private/play-ready.json');
+  await fs.mkdir(path.dirname(receipt),{recursive:true});
+  await fs.writeFile(receipt,'{"test":"unchanged"}');
+  await click('#graphics-open');
+  await wait("!document.querySelector('#graphics-output').disabled && document.querySelector('#graphics-scale').value==='fixed'",'graphics settings');
+  assert.equal(await evaluate("document.querySelector('#graphics-upscaler option[value=dlss]').disabled"),true);
+  assert.equal(await evaluate("document.querySelector('#graphics-ray_reflections').value"),'off');
+  for (const [key,value] of Object.entries({output:'2160p',scale:'1.0',fps:'60',reflections:'reduced',upscaler:'auto',ray_reflections:'on'})) {
+    await evaluate(`var option=document.querySelector('#graphics-${key}'); option.value=${JSON.stringify(value)}; option.dispatchEvent(new Event('change'))`);
+  }
+  await click('#graphics-save');
+  await wait("document.querySelector('#graphics-message').textContent.includes('saved for the next game') && !document.querySelector('#graphics-close').disabled",'graphics saved');
+  const savedIni=await fs.readFile(existingIni,'utf8');
+  for (const setting of ['; keep this comment','value = untouched','output = 2160p','render_ratio = 1.0','fps60 = 1','upscaler = auto','reflections = reduced','[experimental]','rt_visible_reflections = true']) assert.ok(savedIni.includes(setting),setting);
+  assert.equal(await fs.readFile(receipt,'utf8'),'{"test":"unchanged"}');
+  await click('#graphics-close');
+  await click('#graphics-open');
+  await wait("!document.querySelector('#graphics-output').disabled && document.querySelector('#graphics-fps').value==='60'",'stored graphics on reopen');
+  assert.equal(await evaluate("document.querySelector('#graphics-scale').value"),'1.0');
+  assert.equal(await evaluate("document.querySelector('#graphics-ray_reflections').value"),'on');
+  assert.equal(await evaluate("document.querySelector('#play').disabled"),true);
+  await evaluate("document.querySelector('#graphics-panel').scrollIntoView({block:'center'})");
+  await fs.writeFile(path.join(run,'graphics.png'),Buffer.from((await cdp('Page.captureScreenshot')).data,'base64'));
+  await click('#graphics-close');
+  passed.push('native graphics editor saves and reloads 4K native, 60 FPS, upscaler and screen-space reflections', 'experimental hardware-ray setting defaults off and persists separately from screen-space reflections', 'graphics changes preserve other INI values and private build readiness', 'missing Streamline files disable the DLSS choice');
   const exampleInputs=path.join(os.tmpdir(),path.basename(run),'日本語 – اختبار é');
   const invalid=path.join(exampleInputs,'missing-exefs');
   await input('exefs',' ');

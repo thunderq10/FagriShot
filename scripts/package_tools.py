@@ -139,8 +139,11 @@ def contents(revision, draft):
         payload[dest or name] = (ROOT / name).read_bytes() if draft else git("show", revision + ":" + name, binary=True)
 
     # Every working-tree input to a draft has an explicit name or is a tracked license path.
-    for file in ("__init__", "__main__", "build", "inputs", "saves", "shaders", "storage"):
+    for file in ("__init__", "__main__", "arabic", "arabic_font", "build", "graphics", "inputs", "localization",
+                 "localization_art", "player_build", "saves", "shaders", "storage"):
         source(f"fagrishot/{file}.py")
+    for name in git("ls-files", "--", "fagrishot/arabic_data/*.json").splitlines():
+        source(name)
     for file in ("scripts/fagrishot.py", "compatibility/supported.json", "docs/package.md", "docs/inputs.md", "docs/storage.md", "docs/status.md",
                  "docs/foundation.md", "docs/longshot.md", "docs/cpu-verification.md", "docs/runtime-verification.md",
                  "docs/shader-verification.md", "LICENSE"):

@@ -2,6 +2,7 @@ import {invoke} from '@tauri-apps/api/core';
 import {getVersion} from '@tauri-apps/api/app';
 import {listen} from '@tauri-apps/api/event';
 import './fagrishot.css';
+import {bindPreferences, blockPreferences, loadArabic, preferencesBusy} from './player-preferences.js';
 
 const q = id => document.getElementById(id);
 const headings = {setup:'Game setup', data:'Local files', about:'About FagriShot'};
@@ -19,7 +20,9 @@ function navigate(page) {
 }
 
 function controls() {
-  const blocked = !status || Boolean(active) || picking;
+  const externalBusy = !status || Boolean(active) || picking;
+  blockPreferences(externalBusy);
+  const blocked = externalBusy || preferencesBusy();
   const exefs = q('exefs').value;
   const romfs = q('romfs').value;
   const bothEntered = Boolean(exefs.trim() && romfs.trim());
@@ -155,6 +158,8 @@ async function loadStatus() {
   finally { q('retry').disabled = false; }
 }
 q('retry').onclick = loadStatus;
+bindPreferences(controls);
+loadArabic();
 navigate('setup');
 controls();
 getVersion().then(version => {

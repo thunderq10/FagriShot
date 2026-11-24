@@ -23,6 +23,7 @@ import package_tools
 WORK = ROOT / "work"
 DEPS = WORK / "player-deps"
 REPOSITORY = "https://github.com/thunderq10/FagriShot"
+PUBLIC_BASE = "fagrishot-v0.2.0"
 ZIG = "zig-x86_64-windows-0.17.0"
 DOWNLOADS = {
     "zig-0.17.0.zip": ("https://ziglang.org/download/0.17.0/" + ZIG + ".zip",
@@ -72,6 +73,7 @@ def member_name(name):
     forbidden = {"work", "exefs", "romfs", "saves", "backups", "shader_cache", "__pycache__", ".git"}
     if (not name or "\\" in name or ":" in name or any(p in ("", ".", "..") for p in parts)
             or forbidden.intersection(p.lower() for p in parts)
+            or parts[-1].lower().endswith((".msbt", ".bffnt", ".bntx", ".msbt.zst", ".bffnt.zst", ".bntx.zst"))
             or parts[-1].lower() in {"fefw.exe", "fagrishot.exe", "fefw.ini", "controls.ini", "local-trial.json"}
             or PurePosixPath(name).suffix.lower() in {".nso", ".nro", ".nca", ".nsp", ".xci", ".nup", ".nsz", ".xcz", ".spv", ".sav", ".keys", ".pdb"}):
         raise ValueError(f"Forbidden or ambiguous player package member: {name}")
@@ -254,7 +256,7 @@ def notices(payload, runtime, cargo):
         payload.add(rel, data)
 
 
-def guides(payload, revision):
+def guides(payload):
     names = {"README.md", "README.ar.md", "docs/inputs.md", "docs/storage.md", "docs/status.md",
              "docs/foundation.md", "docs/BUILDING.md", "docs/package.md", "docs/longshot.md",
              "docs/cpu-verification.md", "docs/runtime-verification.md", "docs/shader-verification.md"}
@@ -269,7 +271,7 @@ def guides(payload, revision):
                 return match.group(0)
             if not (ROOT / rel).exists():
                 raise ValueError(f"Documentation points to missing source: {name} -> {rel}")
-            return f"]({REPOSITORY}/blob/{revision}/{rel}{separator}{anchor})"
+            return f"]({REPOSITORY}/blob/{PUBLIC_BASE}/{rel}{separator}{anchor})"
         body = (ROOT / name).read_text(encoding="utf-8")
         payload.add(name, re.sub(r"\]\(([^)]+)\)", link, body).encode("utf-8"))
     guide = """FagriShot for Windows x64
@@ -279,6 +281,9 @@ def guides(payload, revision):
 3. Click Build game code. Keep the window open while the launcher builds the game and prepares its shaders.
 4. Click Play. Confirm the opening Autosave prompt with Enter or Space.
 
+In preview 0.3.0, Graphics settings is beside Play. Arabic text preview translates selected opening dialogue and menus.
+Its private game-text and font overlays are generated from your verified RomFS the next time you play.
+
 See README.md for controls, backup and troubleshooting. Windows 11 x64, WebView2 and a Vulkan 1.3 driver are required.
 
 دليل التشغيل السريع
@@ -287,6 +292,9 @@ See README.md for controls, backup and troubleshooting. Windows 11 x64, WebView2
 2. في Game setup، اختر مجلد ExeFS ومجلد RomFS المدمج من نسختك من التحديث 131072.
 3. اضغط Build game code واترك النافذة مفتوحة حتى يكتمل بناء اللعبة وتجهيز برامج التظليل.
 4. اضغط Play. عندما تظهر رسالة Autosave، اضغط Enter أو Space للمتابعة.
+
+في النسخة التجريبية 0.3.0 ستجد Graphics settings بجانب Play. يترجم خيار Arabic text preview بعض حوارات البداية والقوائم.
+ينشئ المشغّل ملفات النصوص والخطوط محليًا عند التشغيل التالي باستخدام ملفات RomFS التي تحقّق منها.
 
 تجد شرح التحكم والنسخ الاحتياطي وحل المشكلات في README.ar.md.
 """
@@ -318,7 +326,7 @@ def write_archive(payload, path, revision, draft):
                     block = src.read(1024 * 1024)
             files[name] = h.hexdigest()
         out.writestr(zip_info("player-package.json"), package_tools.encoded(
-            {"schema": 1, "product": "FagriShot", "version": "0.2.0", "revision": revision,
+            {"schema": 1, "product": "FagriShot", "version": package_tools.VERSION, "revision": revision,
              "draft": draft, "files": files}))
     if path.stat().st_size >= 2 * 1024 ** 3:
         raise ValueError("The player ZIP exceeds the GitHub release asset limit.")
@@ -343,19 +351,23 @@ def main():
     DEPS.mkdir(parents=True, exist_ok=True)
     out = WORK / "packages"
     out.mkdir(exist_ok=True)
-    name = "FagriShot-Windows-x64" + ("-draft" if args.draft else "") + ".zip"
+    name = f"FagriShot-{package_tools.VERSION}-preview-Windows-x64" + ("-draft" if args.draft else "") + ".zip"
     with tempfile.TemporaryDirectory(dir=out) as temp, ExitStack() as stack:
         payload = Payload(stack)
         for f in ("scripts/fagrishot.py", "scripts/requirements-win64-py313.txt", "compatibility/supported.json",
                   "LICENSE", "LEGAL.md"):
             payload.tracked(f, f)
         payload.tracked("fagrishot", "fagrishot")
-        for p in ("__init__", "__main__", "build", "inputs", "player_build", "saves", "shaders", "storage"):
+        for p in ("__init__", "__main__", "arabic", "arabic_font", "build", "graphics", "inputs",
+                  "localization", "localization_art", "player_build", "saves", "shaders", "storage"):
             if "fagrishot/" + p + ".py" not in payload.members:
                 raise ValueError(f"Missing package application module {p}. Stage the source in Git.")
-        guides(payload, revision)
-        payload.add("SOURCE.txt", (f"FagriShot 0.2.0\nSource and build scripts: {REPOSITORY}/tree/{revision}\n"
-            f"Dependency archive sources and pinned hashes: {REPOSITORY}/blob/{revision}/scripts/package_player.py\n"
+        if not any(name.startswith("fagrishot/arabic_data/") and name.endswith(".json") for name in payload.members):
+            raise ValueError("The Arabic preview translation catalog is missing.")
+        guides(payload)
+        payload.add("SOURCE.txt", (f"FagriShot {package_tools.VERSION} local preview\nSource revision: {revision}\n"
+            "The accompanying local Git checkout contains the source and build scripts for this preview.\n"
+            f"Public dependency archive sources and pins: {REPOSITORY}/blob/{PUBLIC_BASE}/scripts/package_player.py\n"
             "Unicorn and zbic corresponding source tarballs are in sources/. Dependency notices are in licenses/.\n").encode())
         add_python(payload)
         native(payload, args.runtime.resolve())

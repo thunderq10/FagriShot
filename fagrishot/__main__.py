@@ -50,6 +50,12 @@ def parser():
     commands.add_parser("backups")
     commands.add_parser("backup")
     commands.add_parser("restore").add_argument("backup_id")
+    from .graphics import OPTIONS
+    graphics = commands.add_parser("graphics", help="Read or update player graphics settings")
+    for name, choices in OPTIONS.items():
+        graphics.add_argument("--" + name, choices=choices)
+    commands.add_parser("arabic-status").add_argument("--json", action="store_true")
+    commands.add_parser("arabic-set").add_argument("--enabled", choices=("on", "off"), required=True)
     for cmd in ("configure", "inspect", "build-code", "enroll-local", "prepare", "play", "build-and-prepare"):
         sub = commands.add_parser(cmd)
         sub.add_argument("--exefs", type=Path)
@@ -171,13 +177,14 @@ def read_trial():
 
 
 def launch(paths, cache, dirs):
+    from . import arabic
+    from .graphics import Ini
     ini_file = dirs["settings"] / "fefw.ini"
-    ini = configparser.RawConfigParser(strict=False)
-    if ini_file.exists():
-        with ini_file.open(encoding="utf-8-sig") as stream:
-            ini.read_file(stream)
-    else:
-        ini.read_dict({"fefw": {"fps60": "0", "output": "console"}, "boot": {"gfx": "window"}})
+    ini = Ini(ini_file)
+    if not ini_file.exists():
+        ini.set("fefw", "fps60", "0")
+        ini.set("fefw", "output", "console")
+        ini.set("boot", "gfx", "window")
     prepared = PRIVATE / "prepared-exefs"
     managed = {"fs": {"exefs": prepared, "main": prepared / "main", "romfs": paths["romfs"],
                       "save_dir": dirs["saves"], "dll_mods": "false", "mods": ""},
@@ -185,18 +192,18 @@ def launch(paths, cache, dirs):
                        "pipeline_cache": cache / "pipeline_cache.bin"},
                "log": {"path": dirs["logs"] / "FagriShot.log"}}
     for section, values in managed.items():
-        if not ini.has_section(section):
-            ini.add_section(section)
         for key, value in values.items():
             # The runtime treats whitespace followed by # or ; as an inline comment outside quotes.
             ini.set(section, key, f'"{value.as_posix()}"' if isinstance(value, Path) else value)
-    tmp = ini_file.with_suffix(".new")
-    with tmp.open("w", encoding="utf-8") as stream:
-        ini.write(stream)
-    tmp.replace(ini_file)
+    ini.save()
     from .saves import snapshot
     snapshot(dirs)
     env = {k: v for k, v in os.environ.items() if not k.upper().startswith(("NXRT_", "FEFW_"))}
+    env["NXRT_LAUNCHER_DIR"] = str(ROOT)
+    if arabic.enabled(dirs["settings"]):
+        mods = arabic.prepare(paths["romfs"], PRIVATE, cache.name, ROOT)
+        env["NXRT_FS_MODS"] = str(mods)
+        env["NXRT_SYSTEM_LANGUAGE"] = "AmericanEnglish"
     print("Starting FagriShot.", flush=True)
     subprocess.run([EXE, "--ini", ini_file], cwd=dirs["settings"], env=env, check=True)
 
@@ -228,6 +235,17 @@ def supported_inventory(opts, paths, dirs, source_checkout):
 def execute(opts):
     dirs = locations()
     cmd = opts.command
+    if cmd in ("arabic-status", "arabic-set"):
+        from . import arabic
+        result = (arabic.status(dirs["settings"], ROOT) if cmd == "arabic-status"
+                  else arabic.set_enabled(dirs["settings"], ROOT, opts.enabled == "on"))
+        print(json.dumps(result, ensure_ascii=False))
+        return
+    if cmd == "graphics":
+        from .graphics import OPTIONS, preferences
+        changes = {k: getattr(opts, k) for k in OPTIONS if getattr(opts, k) is not None}
+        print(json.dumps(preferences(dirs["settings"], EXE.parent, ROOT, changes), ensure_ascii=False))
+        return
     if cmd in ("backup", "backups", "restore"):
         from .saves import list_backups, recover, restore, snapshot
         with build_lock(dirs["settings"] / "save.lock"):

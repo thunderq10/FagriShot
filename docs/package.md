@@ -1,5 +1,7 @@
 # FagriShot Windows packages
 
+The local 0.3.0 preview writes **FagriShot-0.3.0-preview-Windows-x64.zip**. Its Graphics settings and Arabic text preview controls appear in Game setup. The package includes the translation catalog and DejaVu Sans. The player's verified inputs supply the game text and fonts used to generate the private overlay at first launch with Arabic enabled. Settings and backups are accessible under **Local files**.
+
 For the Windows player, download **FagriShot-Windows-x64.zip**, extract it into a writable folder and open **FagriShotLauncher.exe**. Choose your supported ExeFS and RomFS folders, click **Build game code**, then **Play**. The ZIP includes the compiler, Python, shader translator and validator. Windows 11 x64 supplies the desktop environment. The launcher uses Microsoft Edge WebView2 and the game needs a Vulkan 1.3-capable graphics driver. [Player guide](../README.md) · [دليل التشغيل](../README.ar.md)
 
 ## Developer tooling preview

@@ -17,6 +17,16 @@ The build tools come in the ZIP. The game files stay on your PC. Use Windows x64
 
 If setup stops, the launcher shows which step needs attention. For a folder mismatch, check that both folders come from the supported update. **Local files** shows your logs, saves and backup options. [Input details](docs/inputs.md) · [Save recovery](docs/storage.md)
 
+## Local 0.3.0 preview
+
+**Experimental ray-traced reflections** is an optional graphics setting, off by default. It traces surfaces visible to the game camera on compatible Vulkan GPUs. Objects outside the current view are absent from the reflection geometry. **Screen-space reflections** controls the game's original effect independently.
+
+The public download above is version 0.2.0. In the local 0.3.0 preview, open **Graphics settings** beside **Play** to change output resolution, 3D render scale, gameplay frame rate, upscaler and screen-space reflections. For native 4K, select **3840 × 2160 (4K)** and **100% (native)**. Use **Save graphics settings**, then start the game. In-game **F1 → Graphics → Live render state** shows the actual render and output sizes.
+
+**Arabic text preview** translates selected opening dialogue and menus. On the next launch, FagriShot generates private text and font files from your verified RomFS. Other text appears in US English. Turn the preview off before a later launch to return to your usual language.
+
+For **NVIDIA DLSS**, download the official Streamline 2.14.16 SDK. From its `bin/x64` folder, copy `sl.interposer.dll`, `sl.common.dll`, `sl.dlss.dll` and `nvngx_dlss.dll` into `upscalers/streamline` next to `FagriShotLauncher.exe`. Reopen **Graphics settings**, choose **NVIDIA DLSS** and save. A compatible RTX GPU and driver are required. [NVIDIA Streamline 2.14.16 SDK download](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip)
+
 ## About the project
 
 FagriShot is maintained by **thunderq10** and builds on Goldoire and contributors’ Fortune’s Weave port and drakolordx7’s nxrecomp. Local testing reached the opening chapter, mode selection and character creation. Tactical battles and campaign save/load still need verification. [Test results](docs/status.md) · [Build from source](docs/BUILDING.md) · [Upstream and credits](docs/foundation.md) · [License](LICENSE) · [Legal](LEGAL.md)

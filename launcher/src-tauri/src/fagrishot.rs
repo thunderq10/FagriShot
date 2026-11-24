@@ -4,6 +4,7 @@ mod cpu;
 mod direct_play;
 
 use std::io::{BufRead, BufReader, Write};
+use std::collections::BTreeMap;
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 use std::sync::Mutex;
@@ -59,13 +60,38 @@ async fn pick(app: tauri::AppHandle, kind: String) -> Option<String> {
         .and_then(|p| p.into_path().ok()).map(|p| p.to_string_lossy().into_owned())
 }
 
+async fn json_command(args: Vec<String>) -> Result<serde_json::Value, String> {
+    tauri::async_runtime::spawn_blocking(move || {
+        let output = command(&args)?.output().map_err(|e| format!("Could not start FagriShot's local tools: {e}"))?;
+        if !output.status.success() { return Err(String::from_utf8_lossy(&output.stderr).into_owned()); }
+        serde_json::from_slice(&output.stdout).map_err(|e| format!("Could not read the response from FagriShot: {e}"))
+    }).await.map_err(|e| e.to_string())?
+}
+
 #[tauri::command]
 async fn overview() -> Result<serde_json::Value, String> {
-    tauri::async_runtime::spawn_blocking(|| {
-        let output = command(&["status".into(), "--json".into()])?.output().map_err(|e| format!("Could not start FagriShot's local tools: {e}"))?;
-        if !output.status.success() { return Err(String::from_utf8_lossy(&output.stderr).into_owned()); }
-        serde_json::from_slice(&output.stdout).map_err(|e| format!("Could not read setup status: {e}"))
-    }).await.map_err(|e| e.to_string())?
+    json_command(vec!["status".into(), "--json".into()]).await
+}
+
+#[tauri::command]
+async fn graphics(changes: BTreeMap<String, String>) -> Result<serde_json::Value, String> {
+    let mut args = vec!["graphics".into()];
+    for (name, value) in changes {
+        if !["output", "scale", "fps", "upscaler", "reflections", "ray_reflections"].contains(&name.as_str()) {
+            return Err("Unknown graphics setting.".into());
+        }
+        args.push(format!("--{name}={value}"));
+    }
+    json_command(args).await
+}
+
+#[tauri::command]
+async fn arabic_text(enabled: Option<bool>) -> Result<serde_json::Value, String> {
+    let args = match enabled {
+        Some(value) => vec!["arabic-set".into(), "--enabled".into(), if value { "on" } else { "off" }.into()],
+        None => vec!["arabic-status".into(), "--json".into()],
+    };
+    json_command(args).await
 }
 
 #[tauri::command]
@@ -154,7 +180,7 @@ fn main() {
         .on_window_event(|win, ev| {
             if matches!(ev, tauri::WindowEvent::Destroyed) { let _ = stop(&win.state::<Task>()); }
         })
-        .invoke_handler(tauri::generate_handler![overview, pick, action, cancel, startup_play_error])
+        .invoke_handler(tauri::generate_handler![overview, graphics, arabic_text, pick, action, cancel, startup_play_error])
         .run(tauri::generate_context!());
     if let Err(error) = startup {
         let detail = format!("{}Could not open Game setup. Check that Microsoft Edge WebView2 Runtime is installed.\n{error}",
