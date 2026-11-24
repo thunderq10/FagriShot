@@ -23,7 +23,6 @@ import package_tools
 WORK = ROOT / "work"
 DEPS = WORK / "player-deps"
 REPOSITORY = "https://github.com/thunderq10/FagriShot"
-PUBLIC_BASE = "fagrishot-v0.2.0"
 ZIG = "zig-x86_64-windows-0.17.0"
 DOWNLOADS = {
     "zig-0.17.0.zip": ("https://ziglang.org/download/0.17.0/" + ZIG + ".zip",
@@ -278,7 +277,7 @@ def add_arabic_campaign(payload, directory):
         payload.add(prefix + name, path)
 
 
-def guides(payload):
+def guides(payload, revision):
     names = {"README.md", "README.ar.md", "docs/inputs.md", "docs/storage.md", "docs/status.md",
              "docs/foundation.md", "docs/BUILDING.md", "docs/package.md", "docs/longshot.md",
              "docs/cpu-verification.md", "docs/runtime-verification.md", "docs/shader-verification.md"}
@@ -293,7 +292,7 @@ def guides(payload):
                 return match.group(0)
             if not (ROOT / rel).exists():
                 raise ValueError(f"Documentation points to missing source: {name} -> {rel}")
-            return f"]({REPOSITORY}/blob/{PUBLIC_BASE}/{rel}{separator}{anchor})"
+            return f"]({REPOSITORY}/blob/{revision}/{rel}{separator}{anchor})"
         body = (ROOT / name).read_text(encoding="utf-8")
         payload.add(name, re.sub(r"\]\(([^)]+)\)", link, body).encode("utf-8"))
     guide = """FagriShot for Windows x64
@@ -375,7 +374,7 @@ def main():
     DEPS.mkdir(parents=True, exist_ok=True)
     out = WORK / "packages"
     out.mkdir(exist_ok=True)
-    name = f"FagriShot-{package_tools.VERSION}-preview-Windows-x64" + ("-draft" if args.draft else "") + ".zip"
+    name = "FagriShot-Windows-x64" + ("-draft" if args.draft else "") + ".zip"
     with tempfile.TemporaryDirectory(dir=out) as temp, ExitStack() as stack:
         payload = Payload(stack)
         for f in ("scripts/fagrishot.py", "scripts/requirements-win64-py313.txt", "compatibility/supported.json",
@@ -391,10 +390,10 @@ def main():
                 raise ValueError(f"Missing package application module {p}. Stage the source in Git.")
         if not any(name.startswith("fagrishot/arabic_data/") and name.endswith(".json") for name in payload.members):
             raise ValueError("The Arabic preview translation catalog is missing.")
-        guides(payload)
-        payload.add("SOURCE.txt", (f"FagriShot {package_tools.VERSION} local preview\nSource revision: {revision}\n"
-            "The accompanying local Git checkout contains the source and build scripts for this preview.\n"
-            f"Public dependency archive sources and pins: {REPOSITORY}/blob/{PUBLIC_BASE}/scripts/package_player.py\n"
+        guides(payload, revision)
+        payload.add("SOURCE.txt", (f"FagriShot {package_tools.VERSION} for Windows x64\nSource revision: {revision}\n"
+            f"Player source and build scripts: {REPOSITORY}/tree/{revision}\n"
+            f"Dependency sources and pins: {REPOSITORY}/blob/{revision}/scripts/package_player.py\n"
             "Unicorn and zbic corresponding source tarballs are in sources/. Dependency notices are in licenses/.\n").encode())
         add_python(payload)
         native(payload, args.runtime.resolve())

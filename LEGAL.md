@@ -3,10 +3,13 @@
 Fire Emblem, Fire Emblem: Fortune's Weave, Nintendo and Nintendo Switch 2 are trademarks of Nintendo. They are used here only to say
 which game this software works with. This project is not affiliated with, sponsored by or endorsed by Nintendo or Intelligent Systems.
 
-This repository contains only original code and third-party code under free licences (see the Credits in README.md). It contains no
-game code, game data, decryption keys or firmware, and nothing derived from them. To use it you must supply your own game files, dumped
-from a copy of the game you own, with your own console. The setup reads those files on your PC; nothing made from them should be
-shared, uploaded or attached to issues.
+FagriShot includes the port, third-party tools and an unofficial Arabic localization. The Windows release includes
+translations, Arabic lettering and instructions for applying them to the supported version. The game's original dialogue,
+artwork and characters belong to their respective rights holders.
+
+Players supply the executable and content files from a copy they own and have dumped with their own console.
+The launcher reads those files on the player's PC to build the game and apply the localization. Keep game dumps,
+firmware, keys, compiled game executables and patched game assets private, including when reporting issues.
 
 ## Upscaler files
 

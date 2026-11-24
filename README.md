@@ -4,7 +4,7 @@
 
 Play *Fire Emblem: Fortune’s Weave* on Windows using files extracted from your own legally owned copy of the game. FagriShot supports the tested Nintendo Switch 2 update **131072** and its matching merged RomFS.
 
-**[Download FagriShot for Windows x64](https://github.com/thunderq10/FagriShot/releases/latest/download/FagriShot-Windows-x64.zip)**
+**[Download FagriShot 0.3.0 for Windows x64](https://github.com/thunderq10/FagriShot/releases/latest/download/FagriShot-Windows-x64.zip)**
 
 ## Start playing
 
@@ -13,19 +13,21 @@ Play *Fire Emblem: Fortune’s Weave* on Windows using files extracted from your
 3. Click **Build game code** and wait for it to finish. The launcher checks your files, builds the game on your PC and prepares the shaders.
 4. Click **Play**. On later visits, open the same launcher and click **Play** again. At the first Autosave notice, press **Enter** or **Space**.
 
-The build tools come in the ZIP. The game files stay on your PC. Use Windows x64 with a Vulkan 1.3-capable graphics driver. Checking the game files can take several minutes.
+The build tools come in the ZIP. The game files stay on your PC. The player was tested on Windows 11 x64. It requires Microsoft Edge WebView2 and a Vulkan 1.3-capable graphics driver. Checking the game files can take several minutes.
 
 If setup stops, the launcher shows which step needs attention. For a folder mismatch, check that both folders come from the supported update. **Local files** shows your logs, saves and backup options. [Input details](docs/inputs.md) · [Save recovery](docs/storage.md)
 
-## Local 0.3.0 preview
+## Arabic text
 
-**Experimental ray-traced reflections** is an optional graphics setting, off by default. It traces surfaces visible to the game camera on compatible Vulkan GPUs. Objects outside the current view are absent from the reflection geometry. **Screen-space reflections** controls the game's original effect independently.
+In **Game setup**, select **Arabic text preview** before clicking **Play**. On the first Arabic launch, FagriShot generates the translated resources from your verified RomFS. Clear the checkbox before launching to return to your usual text language. Voices use the audio language you selected.
 
-The public download above is version 0.2.0. In the local 0.3.0 preview, open **Graphics settings** beside **Play** to change output resolution, 3D render scale, gameplay frame rate, upscaler and screen-space reflections. For native 4K, select **3840 × 2160 (4K)** and **100% (native)**. Use **Save graphics settings**, then start the game. In-game **F1 → Graphics → Live render state** shows the actual render and output sizes.
+Version 0.3.0 translates all **64,503 visible message entries** in update 131072. Of these, **2,633 have received editorial review** and **61,870 are machine-translated drafts**. The reviewed entries include opening dialogue, campaign narration, chapter titles and selected menus. Dialogue appears from right to left. The release also translates the title logo, lettering in all 316 US-English tutorial illustrations, and place names in five map films. Small lettering inside some tutorial screenshots can still appear in English.
 
-Enable **Arabic text preview** beside **Play** for Arabic text. The full local catalog covers all 64,503 visible message entries in update 131072. The launcher shows how many have received editorial review and how many are machine drafts. Reviewed passages include the opening conversations, campaign narration and chapter titles.
+## Graphics settings
 
-Spoken dialogue reveals from right to left. The pack also includes an Arabic title logo, lettering for all 316 US-English tutorial illustrations and Arabic place names in five map films. Small text inside tutorial screenshots may still appear in English. On first launch, FagriShot prepares the Arabic resources from your verified RomFS. Voices use your selected audio language. Turn the option off to return to your usual text language.
+Open **Graphics settings** beside **Play** to choose output resolution, 3D render scale, gameplay frame-rate target and upscaler. For native 4K, select **3840 × 2160 (4K)** and **100% (native)**. Click **Save graphics settings**, then start the game. In-game, **F1 → Graphics → Live render state** shows the actual render and output sizes. The 60 and 120 FPS settings are targets. Performance varies by scene and hardware.
+
+**Experimental ray-traced reflections** is off by default. It requires a Vulkan GPU with hardware ray-query support and traces surfaces visible to the current camera. **Screen-space reflections** controls the game's original reflection effect separately.
 
 For **NVIDIA DLSS**, download the official Streamline 2.14.16 SDK. From its `bin/x64` folder, copy `sl.interposer.dll`, `sl.common.dll`, `sl.dlss.dll` and `nvngx_dlss.dll` into `upscalers/streamline` next to `FagriShotLauncher.exe`. Reopen **Graphics settings**, choose **NVIDIA DLSS** and save. A compatible RTX GPU and driver are required. [NVIDIA Streamline 2.14.16 SDK download](https://github.com/NVIDIA-RTX/Streamline/releases/download/v2.14.16/streamline-sdk-v2.14.16.zip)
 
