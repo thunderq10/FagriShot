@@ -9,6 +9,11 @@
 
 namespace {
 uint64_t div_up(uint64_t a, uint64_t b) { return (a + b - 1) / b; }
+bool valid_astc_block_size(uint32_t w, uint32_t h) {
+    return (w == 4 && h == 4) || (w == 5 && (h == 4 || h == 5)) || (w == 6 && (h == 5 || h == 6)) ||
+           (w == 8 && (h == 5 || h == 6 || h == 8)) || (w == 10 && (h == 5 || h == 6 || h == 8 || h == 10)) ||
+           (w == 12 && (h == 10 || h == 12));
+}
 }  // namespace
 
 extern "C" {
@@ -48,7 +53,7 @@ uint32_t a2b_bcn_block_bytes(a2b_format f) {
 }
 
 uint64_t a2b_astc_size(uint32_t w, uint32_t h, uint32_t bw, uint32_t bh) {
-    if (!w || !h || bw < 4 || bw > 12 || bh < 4 || bh > 12) return 0;
+    if (!w || !h || !valid_astc_block_size(bw, bh)) return 0;
     return div_up(w, bw) * div_up(h, bh) * 16;
 }
 

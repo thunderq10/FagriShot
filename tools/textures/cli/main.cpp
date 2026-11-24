@@ -13,6 +13,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <new>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -52,7 +54,71 @@ static void usage() {
             "                [--dll-dir DIR] [--dump-rgba FILE] [--bench N] [--raw WxH:BWxBH] [--raw-out]\n");
 }
 
-int main(int argc, char** argv) {
+namespace {
+
+// NVN's maximum texture side; the byte ceilings admit its largest BC7 image and RGBA working buffer.
+constexpr uint32_t kMaxTextureDimension = 16384;
+constexpr uint64_t kMaxPixelCount = (uint64_t)kMaxTextureDimension * kMaxTextureDimension;
+constexpr uint64_t kMaxOutputBytes = 256ull << 20;
+constexpr uint64_t kMaxDecodedBytes = 1ull << 30;
+
+struct ValidatedSizes {
+    size_t output = 0;
+    size_t rgba = 0;
+};
+
+bool checked_mul(uint64_t a, uint64_t b, uint64_t& result) {
+    if (a && b > UINT64_MAX / a) return false;
+    result = a * b;
+    return true;
+}
+
+bool validate_input(const a2b_input& in, size_t data_size, ValidatedSizes& sizes, std::string& err) {
+    if (!in.width || !in.height || in.width > kMaxTextureDimension || in.height > kMaxTextureDimension) {
+        err = "texture dimensions must be between 1 and 16384";
+        return false;
+    }
+
+    uint64_t pixels;
+    if (!checked_mul(in.width, in.height, pixels) || pixels > kMaxPixelCount) {
+        err = "texture pixel count is too large";
+        return false;
+    }
+
+    if (a2b_is_astc(in.format)) {
+        const uint64_t expected_size = a2b_astc_size(in.width, in.height, in.block_w, in.block_h);
+        if (!expected_size) {
+            err = "unsupported ASTC block dimensions";
+            return false;
+        }
+        const uint64_t blocks_x = ((uint64_t)in.width + in.block_w - 1) / in.block_w;
+        const uint64_t blocks_y = ((uint64_t)in.height + in.block_h - 1) / in.block_h;
+        uint64_t block_count, compressed_size;
+        if (!checked_mul(blocks_x, blocks_y, block_count) || !checked_mul(block_count, 16, compressed_size) ||
+            compressed_size != expected_size || compressed_size != data_size) {
+            err = "ASTC data size does not match dimensions";
+            return false;
+        }
+        uint64_t rgba_size;
+        if (!checked_mul(pixels, 4, rgba_size) || rgba_size > kMaxDecodedBytes || rgba_size > SIZE_MAX) {
+            err = "decoded texture is too large";
+            return false;
+        }
+        sizes.rgba = (size_t)rgba_size;
+    }
+
+    const uint64_t output_size = a2b_output_size(&in);
+    if (!output_size || output_size > kMaxOutputBytes || output_size > SIZE_MAX) {
+        err = "output texture is too large";
+        return false;
+    }
+    sizes.output = (size_t)output_size;
+    return true;
+}
+
+}  // namespace
+
+static int run(int argc, char** argv) {
     std::string in_path, out_path, dll_dir, dump_path, raw_spec;
     bool srgb = false, raw_out = false;
     int bench = 0;
@@ -110,14 +176,21 @@ int main(int argc, char** argv) {
         return 2;
     }
 
+    ValidatedSizes sizes;
+    std::string validation_err;
+    if (!validate_input(in, data_size, sizes, validation_err)) {
+        fprintf(stderr, "%s\n", validation_err.c_str());
+        return 1;
+    }
+
     a2b_status st = a2b_init(dll_dir.empty() ? nullptr : dll_dir.c_str());
     if (st != A2B_OK && a2b_is_astc(in.format)) { fprintf(stderr, "init: %s\n", a2b_status_string(st)); return 1; }
 
-    std::vector<uint8_t> out((size_t)a2b_output_size(&in));
+    std::vector<uint8_t> out(sizes.output);
     a2b_format out_format = in.format;
     a2b_stats stats{};
     if (!dump_path.empty() && a2b_is_astc(in.format)) {
-        std::vector<uint8_t> rgba((size_t)in.width * in.height * 4);
+        std::vector<uint8_t> rgba(sizes.rgba);
         st = a2b_decode_astc_rgba8(&in, data, data_size, opt.threads, rgba.data(), nullptr);
         if (st != A2B_OK) { fprintf(stderr, "decode: %s\n", a2b_status_string(st)); return 1; }
         uint32_t hdr[3] = {in.width, in.height, a2b_is_srgb(in.format) ? 1u : 0u};
@@ -148,4 +221,16 @@ int main(int argc, char** argv) {
     }
     if (!ok) { fprintf(stderr, "cannot write %s\n", out_path.c_str()); return 1; }
     return 0;
+}
+
+int main(int argc, char** argv) {
+    try {
+        return run(argc, argv);
+    } catch (const std::bad_alloc&) {
+        fprintf(stderr, "out of memory\n");
+        return 1;
+    } catch (const std::length_error&) {
+        fprintf(stderr, "requested buffer is too large\n");
+        return 1;
+    }
 }
