@@ -81,7 +81,7 @@ public:
 
     // Applies a decided-but-unfinished commit of `root` and discards work folders / journals of processes that no longer run.
     // Called by the constructor of a journalled volume; exposed for tests (a simulated crash between the phases).
-    static void recover(const std::string& root);
+    static bool recover(const std::string& root);       // false keeps the pending transaction for a later retry
     // Test hook: when set to 1 commit() stops after phase 1 (the marker is written, nothing applied); 2 stops inside phase 2 after the
     // first applied change. The volume object is left as a crashed process would leave the folders.
     static void set_crash_point_for_tests(int point);

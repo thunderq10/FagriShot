@@ -40,10 +40,15 @@ std::string parent_of(const std::string& path) {
     return i == 0 || i == std::string::npos ? std::string("/") : path.substr(0, i);
 }
 
+struct JournalWrites {
+    std::mutex mu;
+    bool decided = false;
+};
+
 // Positioned I/O on a Win32 handle (several threads may call it at once).
 class HostFile final : public VFile {
 public:
-    HostFile(HANDLE h, uint32_t mode) : h_(h), mode_(mode) {}
+    HostFile(HANDLE h, uint32_t mode, std::shared_ptr<JournalWrites> journal) : h_(h), mode_(mode), journal_(std::move(journal)) {}
     ~HostFile() override {
         if (h_ != INVALID_HANDLE_VALUE) CloseHandle(h_);
     }
@@ -75,6 +80,8 @@ public:
     uint32_t write(int64_t offset, const void* src, uint64_t size) override {
         if (offset < 0) return rc::kOutOfRange;
         if (!(mode_ & kModeWrite)) return rc::kWriteNotPermitted;
+        auto lock = lock_journal();
+        if (journal_ && journal_->decided) return rc::kTargetLocked;
         int64_t cur = 0;
         get_size(&cur);
         if (static_cast<uint64_t>(offset) + size > static_cast<uint64_t>(cur) && !(mode_ & kModeAppend)) return rc::kNoAppend;
@@ -97,6 +104,8 @@ public:
     uint32_t set_size(int64_t size) override {
         if (!(mode_ & kModeWrite)) return rc::kWriteNotPermitted;
         if (size < 0) return rc::kOutOfRange;
+        auto lock = lock_journal();
+        if (journal_ && journal_->decided) return rc::kTargetLocked;
         std::lock_guard<std::mutex> lk(size_mu_);
         LARGE_INTEGER li;
         li.QuadPart = size;
@@ -111,14 +120,28 @@ public:
     }
 
 private:
+    std::unique_lock<std::mutex> lock_journal() const {
+        if (journal_) return std::unique_lock<std::mutex>(journal_->mu);
+        return {};
+    }
     HANDLE h_;
     uint32_t mode_;
+    std::shared_ptr<JournalWrites> journal_;
     std::mutex size_mu_;
 };
 
 HANDLE open_host(const stdfs::path& p, bool write, DWORD disposition) {
     return CreateFileW(p.c_str(), write ? (GENERIC_READ | GENERIC_WRITE) : GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
                        nullptr, disposition, FILE_ATTRIBUTE_NORMAL, nullptr);
+}
+
+bool flush_path(const stdfs::path& path) {
+    HANDLE h = CreateFileW(path.c_str(), GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, nullptr,
+                           OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+    if (h == INVALID_HANDLE_VALUE) return false;
+    const bool flushed = FlushFileBuffers(h) != FALSE;
+    CloseHandle(h);
+    return flushed;
 }
 
 bool pid_alive(DWORD pid) {
@@ -203,36 +226,36 @@ bool marker_relative(const std::string& arg, stdfs::path* out) {
     return out->is_relative() && !out->has_root_name() && !out->has_root_directory();
 }
 
-enum class HostPathState { kSafe, kMissing, kUnsafe };
+enum class HostPathState { kSafe, kMissing, kReparse, kUnavailable };
 
 HostPathState host_path_state(const stdfs::path& path) {
     HANDLE h = CreateFileW(path.c_str(), FILE_READ_ATTRIBUTES, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, nullptr,
                            OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT, nullptr);
     if (h == INVALID_HANDLE_VALUE) {
         const DWORD e = GetLastError();
-        return e == ERROR_FILE_NOT_FOUND || e == ERROR_PATH_NOT_FOUND ? HostPathState::kMissing : HostPathState::kUnsafe;
+        return e == ERROR_FILE_NOT_FOUND || e == ERROR_PATH_NOT_FOUND ? HostPathState::kMissing : HostPathState::kUnavailable;
     }
     BY_HANDLE_FILE_INFORMATION info{};
     const bool ok = GetFileInformationByHandle(h, &info) != FALSE;
     CloseHandle(h);
-    if (!ok || (info.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT)) return HostPathState::kUnsafe;
+    if (!ok) return HostPathState::kUnavailable;
+    if (info.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) return HostPathState::kReparse;
     return HostPathState::kSafe;
 }
 
 // Check each existing component without following that component when it is opened. A missing tail is safe for create/idempotent
 // operations; an inaccessible path fails closed. Callers repeat this immediately before every filesystem mutation.
-bool no_reparse_path(const stdfs::path& base, const stdfs::path& relative, bool base_must_exist) {
+int check_marker_path(const stdfs::path& base, const stdfs::path& relative, bool base_must_exist) {
     HostPathState state = host_path_state(base);
-    if (state == HostPathState::kUnsafe || (base_must_exist && state == HostPathState::kMissing)) return false;
-    if (state == HostPathState::kMissing) return true;
+    if (base_must_exist && state == HostPathState::kMissing) return -1;
     stdfs::path current = base;
     for (const stdfs::path& part : relative) {
+        if (state != HostPathState::kSafe) break;
         current /= part;
         state = host_path_state(current);
-        if (state == HostPathState::kUnsafe) return false;
-        if (state == HostPathState::kMissing) return true;
     }
-    return true;
+    if (state == HostPathState::kReparse) return kInvalidMarker;
+    return state == HostPathState::kUnavailable ? -1 : 0;
 }
 
 bool legacy_work(const std::string& raw, const stdfs::path& root, stdfs::path* work) {
@@ -300,47 +323,56 @@ bool parse_marker(std::istream& in, const stdfs::path& root, const stdfs::path* 
 // number of steps, -1 on an I/O error and kInvalidMarker when untrusted marker state fails validation.
 int apply_marker(const stdfs::path& marker, const stdfs::path& root, const stdfs::path* expected_work = nullptr, int stop_after = 0) {
     const HostPathState marker_state = host_path_state(marker);
-    if (marker_state == HostPathState::kMissing) return -1;
-    if (marker_state == HostPathState::kUnsafe) return kInvalidMarker;
+    if (marker_state == HostPathState::kReparse) return kInvalidMarker;
+    if (marker_state != HostPathState::kSafe) return -1;
     std::ifstream in(marker, std::ios::binary);
     if (!in) return -1;
     MarkerPlan plan;
-    if (!parse_marker(in, root, expected_work, &plan)) return kInvalidMarker;
+    if (!parse_marker(in, root, expected_work, &plan)) return in.bad() ? -1 : kInvalidMarker;
     in.close();
 
     // Validate the complete plan before changing anything, then repeat the relevant check at each mutation boundary.
-    if (!no_reparse_path(root, {}, true)) return kInvalidMarker;
-    for (const MarkerOp& op : plan.ops) {
-        if (!no_reparse_path(root, op.relative, true)) return kInvalidMarker;
-        if (op.kind == 'F' && !no_reparse_path(plan.work, op.relative, false)) return kInvalidMarker;
+    if (int error = check_marker_path(root, {}, true)) return error;
+    size_t resume = 0;
+    bool awaiting_move = false;
+    std::error_code ec;
+    for (size_t i = 0; i < plan.ops.size(); ++i) {
+        const MarkerOp& op = plan.ops[i];
+        if (int error = check_marker_path(root, op.relative, true)) return error;
+        if (op.kind == 'F') {
+            if (int error = check_marker_path(plan.work, op.relative, false)) return error;
+            // rename consumes the staged file. Earlier deletes and directory creates have already run when it is gone.
+            if (stdfs::exists(plan.work / op.relative, ec)) {
+                awaiting_move = true;
+            } else if (ec || awaiting_move || !stdfs::is_regular_file(root / op.relative, ec)) {
+                return -1;
+            } else {
+                resume = i + 1;
+            }
+        }
     }
 
-    int n = 0;
-    std::error_code ec;
-    for (const MarkerOp& op : plan.ops) {
+    int n = static_cast<int>(resume);
+    for (size_t i = resume; i < plan.ops.size(); ++i) {
+        const MarkerOp& op = plan.ops[i];
         const stdfs::path target = root / op.relative;
+        if (int error = check_marker_path(root, op.relative, true)) return error;
         if (op.kind == 'D') {
-            if (!no_reparse_path(root, op.relative, true)) return kInvalidMarker;
             stdfs::remove_all(target, ec);
             if (ec) return -1;
         } else if (op.kind == 'M') {
-            if (!no_reparse_path(root, op.relative, true)) return kInvalidMarker;
             stdfs::create_directories(target, ec);
             if (ec) return -1;
         } else {
             const stdfs::path source = plan.work / op.relative;
-            if (!no_reparse_path(plan.work, op.relative, false) || !no_reparse_path(root, op.relative, true)) return kInvalidMarker;
-            const bool exists = stdfs::exists(source, ec);
+            stdfs::create_directories(target.parent_path(), ec);
             if (ec) return -1;
-            if (exists) {
-                stdfs::create_directories(target.parent_path(), ec);
-                if (ec) return -1;
-                if (!no_reparse_path(plan.work, op.relative, true) || !no_reparse_path(root, op.relative, true)) return kInvalidMarker;
-                stdfs::rename(source, target, ec);
-                if (ec) {
-                    NXLOG_E("fs", "commit: moving %s failed: %s", op.name.c_str(), ec.message().c_str());
-                    return -1;
-                }
+            if (int error = check_marker_path(plan.work, op.relative, true)) return error;
+            if (int error = check_marker_path(root, op.relative, true)) return error;
+            stdfs::rename(source, target, ec);
+            if (ec) {
+                NXLOG_E("fs", "commit: moving %s failed: %s", op.name.c_str(), ec.message().c_str());
+                return -1;
             }
         }
         n++;
@@ -353,6 +385,23 @@ int apply_marker(const stdfs::path& marker, const stdfs::path& root, const stdfs
 bool quarantine_marker(const stdfs::path& marker) {
     const stdfs::path rejected(marker.string() + ".invalid");
     return MoveFileExW(marker.c_str(), rejected.c_str(), MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH) != FALSE;
+}
+
+// The caller holds RootLock. Leave every staged file in place until a pending decision can finish.
+bool finish_pending_commit(const stdfs::path& root, const stdfs::path& marker) {
+    if (host_path_state(marker) == HostPathState::kMissing) return true;
+    const int n = apply_marker(marker, root);
+    if (n == kInvalidMarker) {
+        const bool quarantined = quarantine_marker(marker);
+        NXLOG_E("fs", "rejected an invalid commit marker for %s%s", to_u8(root).c_str(), quarantined ? "" : " (quarantine failed)");
+        return quarantined;
+    }
+    if (n < 0) {
+        NXLOG_E("fs", "could not finish an interrupted commit of %s", to_u8(root).c_str());
+        return false;
+    }
+    NXLOG_W("fs", "finished an interrupted commit of %s (%d changes)", to_u8(root).c_str(), n);
+    return true;
 }
 
 }  // namespace
@@ -410,10 +459,21 @@ bool normalize_path(const char* raw, size_t max_len, std::string* out, uint32_t*
 struct Volume::Impl {
     stdfs::path root, work, marker, journal_file;
     std::mutex mu;
+    std::shared_ptr<JournalWrites> writes;
     std::set<std::string> tomb;   // committed paths deleted since the last commit (journalled volumes)
     bool journal = false, ro = false, ok = false;
 
     bool direct() const { return !journal; }
+    bool decision_pending() const { return writes && writes->decided; }   // protected by mu on the volume methods
+    bool reset_work() {
+        std::error_code ec;
+        stdfs::remove_all(work, ec);
+        if (!ec) stdfs::create_directories(work, ec);
+        if (ec) return false;
+        tomb.clear();
+        writes->decided = false;
+        return true;
+    }
     stdfs::path cpath(const std::string& path) const { return root / u8(rel_of(path)); }
     stdfs::path wpath(const std::string& path) const { return (journal ? work : root) / u8(rel_of(path)); }
 
@@ -539,13 +599,18 @@ Volume::Volume(const std::string& root, bool journal, bool read_only, uint64_t c
     std::error_code ec;
     if (journal) {
         stdfs::create_directories(s.root, ec);
-        recover(root);
+        if (ec || !recover(root)) return;
+        if (read_only) {
+            // A read-only mount sees the committed files and never owns a writer's per-process work directory.
+            s.journal = false;
+            s.ok = true;
+            return;
+        }
+        s.writes = std::make_shared<JournalWrites>();
         s.marker = stdfs::path(s.root.string() + ".commit");
         s.work = work_for(s.root, GetCurrentProcessId());
         s.journal_file = stdfs::path(s.root.string() + ".journal." + std::to_string(GetCurrentProcessId()));
-        stdfs::remove_all(s.work, ec);   // a second open in this process starts from the committed state
-        stdfs::create_directories(s.work, ec);
-        s.ok = stdfs::is_directory(s.root, ec) && stdfs::is_directory(s.work, ec);
+        s.ok = s.reset_work();
     } else {
         s.ok = stdfs::is_directory(s.root, ec);
         if (!s.ok && !read_only) {
@@ -556,33 +621,24 @@ Volume::Volume(const std::string& root, bool journal, bool read_only, uint64_t c
 }
 
 Volume::~Volume() {
-    if (!p_ || !p_->journal) return;
+    if (!p_ || !p_->journal || !p_->ok) return;
+    RootLock lock(to_u8(p_->root));
     std::error_code ec;
     // A decided commit that was not finished keeps its work folder: the next open rolls it forward. Otherwise the uncommitted
     // changes are dropped, as they are when a save is unmounted on the console without Commit.
-    if (!stdfs::exists(p_->marker, ec)) stdfs::remove_all(p_->work, ec);
+    if (host_path_state(p_->marker) == HostPathState::kMissing) stdfs::remove_all(p_->work, ec);
 }
 
 bool Volume::ok() const { return p_->ok; }
 
 void Volume::set_crash_point_for_tests(int point) { g_crash_point = point; }
 
-void Volume::recover(const std::string& root_s) {
+bool Volume::recover(const std::string& root_s) {
     const stdfs::path root = u8(root_s);
     RootLock lock(root_s);
     std::error_code ec;
     const stdfs::path marker(root.string() + ".commit");
-    if (stdfs::exists(marker, ec)) {
-        const int n = apply_marker(marker, root);
-        if (n == kInvalidMarker) {
-            const bool quarantined = quarantine_marker(marker);
-            NXLOG_E("fs", "rejected an invalid commit marker for %s%s", root_s.c_str(), quarantined ? "" : " (quarantine failed)");
-        } else if (n < 0) {
-            NXLOG_E("fs", "could not finish an interrupted commit of %s", root_s.c_str());
-        } else {
-            NXLOG_W("fs", "a commit of %s was interrupted after it was decided: finished now (%d changes)", root_s.c_str(), n);
-        }
-    }
+    if (!finish_pending_commit(root, marker)) return false;
     // Work folders and journals of processes that no longer run.
     const stdfs::path dir = root.parent_path();
     const std::string stem = root.filename().string();
@@ -598,12 +654,14 @@ void Volume::recover(const std::string& root_s) {
         stdfs::remove_all(it->path(), e2);
         NXLOG_I("fs", "uncommitted %s of process %lu discarded (%s)", is_work ? "work folder" : "journal", static_cast<unsigned long>(pid), name.c_str());
     }
+    return true;
 }
 
 uint32_t Volume::create_file(const std::string& path, int64_t size) {
     if (read_only_) return rc::kReadOnlyFileSystem;
     if (size < 0) return rc::kOutOfRange;
     std::lock_guard<std::mutex> lk(p_->mu);
+    if (p_->decision_pending()) return rc::kTargetLocked;
     if (path == "/") return rc::kPathAlreadyExists;
     if (p_->lookup(path).exists) return rc::kPathAlreadyExists;
     if (const uint32_t r = p_->ensure_parents(path)) return r;
@@ -623,6 +681,7 @@ uint32_t Volume::create_file(const std::string& path, int64_t size) {
 uint32_t Volume::delete_file(const std::string& path) {
     if (read_only_) return rc::kReadOnlyFileSystem;
     std::lock_guard<std::mutex> lk(p_->mu);
+    if (p_->decision_pending()) return rc::kTargetLocked;
     const Impl::Found f = p_->lookup(path);
     if (!f.exists || f.is_dir) return rc::kPathNotFound;
     std::error_code ec;
@@ -634,6 +693,7 @@ uint32_t Volume::delete_file(const std::string& path) {
 uint32_t Volume::create_dir(const std::string& path) {
     if (read_only_) return rc::kReadOnlyFileSystem;
     std::lock_guard<std::mutex> lk(p_->mu);
+    if (p_->decision_pending()) return rc::kTargetLocked;
     if (path == "/" || p_->lookup(path).exists) return rc::kPathAlreadyExists;
     if (const uint32_t r = p_->ensure_parents(path)) return r;
     std::error_code ec;
@@ -644,6 +704,7 @@ uint32_t Volume::create_dir(const std::string& path) {
 uint32_t Volume::delete_dir(const std::string& path) {
     if (read_only_) return rc::kReadOnlyFileSystem;
     std::lock_guard<std::mutex> lk(p_->mu);
+    if (p_->decision_pending()) return rc::kTargetLocked;
     const Impl::Found f = p_->lookup(path);
     if (path == "/" || !f.exists || !f.is_dir) return rc::kPathNotFound;
     std::vector<DirItem> items;
@@ -658,6 +719,7 @@ uint32_t Volume::delete_dir(const std::string& path) {
 uint32_t Volume::delete_dir_recursive(const std::string& path) {
     if (read_only_) return rc::kReadOnlyFileSystem;
     std::lock_guard<std::mutex> lk(p_->mu);
+    if (p_->decision_pending()) return rc::kTargetLocked;
     const Impl::Found f = p_->lookup(path);
     if (path == "/" || !f.exists || !f.is_dir) return rc::kPathNotFound;
     std::error_code ec;
@@ -674,6 +736,7 @@ uint32_t Volume::clean_dir_recursive(const std::string& path) {
     std::vector<DirItem> items;
     {
         std::lock_guard<std::mutex> lk(p_->mu);
+        if (p_->decision_pending()) return rc::kTargetLocked;
         if (const uint32_t r = p_->list(path, &items)) return r;
     }
     for (const DirItem& it : items) {
@@ -687,6 +750,7 @@ uint32_t Volume::clean_dir_recursive(const std::string& path) {
 uint32_t Volume::rename_file(const std::string& from, const std::string& to) {
     if (read_only_) return rc::kReadOnlyFileSystem;
     std::lock_guard<std::mutex> lk(p_->mu);
+    if (p_->decision_pending()) return rc::kTargetLocked;
     const Impl::Found a = p_->lookup(from);
     if (!a.exists || a.is_dir) return rc::kPathNotFound;
     if (from == to) return 0;
@@ -703,6 +767,7 @@ uint32_t Volume::rename_file(const std::string& from, const std::string& to) {
 uint32_t Volume::rename_dir(const std::string& from, const std::string& to) {
     if (read_only_) return rc::kReadOnlyFileSystem;
     std::lock_guard<std::mutex> lk(p_->mu);
+    if (p_->decision_pending()) return rc::kTargetLocked;
     const Impl::Found a = p_->lookup(from);
     if (from == "/" || !a.exists || !a.is_dir) return rc::kPathNotFound;
     if (from == to) return 0;
@@ -727,9 +792,10 @@ uint32_t Volume::entry_type(const std::string& path, uint32_t* type) {
 
 uint32_t Volume::open_file(const std::string& path, uint32_t mode, std::shared_ptr<VFile>* out) {
     std::lock_guard<std::mutex> lk(p_->mu);
+    const bool write = (mode & (kModeWrite | kModeAppend)) != 0;
+    if (write && p_->decision_pending()) return rc::kTargetLocked;
     const Impl::Found f = p_->lookup(path);
     if (!f.exists || f.is_dir) return rc::kPathNotFound;
-    const bool write = (mode & (kModeWrite | kModeAppend)) != 0;
     if (write && read_only_) return rc::kReadOnlyFileSystem;
     stdfs::path host = f.host;
     if (write) {
@@ -738,7 +804,7 @@ uint32_t Volume::open_file(const std::string& path, uint32_t mode, std::shared_p
     }
     HANDLE h = open_host(host, write, OPEN_EXISTING);
     if (h == INVALID_HANDLE_VALUE) return rc::kPathNotFound;
-    *out = std::make_shared<HostFile>(h, mode);
+    *out = std::make_shared<HostFile>(h, mode, write ? p_->writes : nullptr);
     return 0;
 }
 
@@ -772,11 +838,18 @@ uint64_t Volume::used_bytes() {
 uint32_t Volume::commit() {
     if (!p_->journal) return 0;
     if (read_only_) return 0;
+    if (!ok()) return rc::kGenericFailure;
     Impl& s = *p_;
     std::lock_guard<std::mutex> lk(s.mu);
     RootLock lock(to_u8(s.root));
     std::error_code ec;
-    if (s.tomb.empty() && !stdfs::exists(s.work, ec)) return 0;
+    std::lock_guard<std::mutex> hold_writes(s.writes->mu);
+    if (!finish_pending_commit(s.root, s.marker)) return rc::kGenericFailure;
+    if (s.writes->decided) {
+        // This mount is retrying its own decision, which recovery here or in another process has finished.
+        return s.reset_work() ? 0 : rc::kGenericFailure;
+    }
+    if (s.tomb.empty() && !stdfs::exists(s.work, ec)) return ec ? rc::kGenericFailure : 0;
 
     // Phase 1: flush the changed files, write the change list, make it the decided marker with one rename.
     std::string body = "V 2\nP " + std::to_string(GetCurrentProcessId()) + "\n";
@@ -784,46 +857,38 @@ uint32_t Volume::commit() {
     int changes = static_cast<int>(s.tomb.size());
     std::vector<std::string> files, dirs;
     for (stdfs::recursive_directory_iterator it(s.work, ec), end; !ec && it != end; it.increment(ec)) {
-        const std::string rel = to_u8(stdfs::relative(it->path(), s.work, ec));
-        std::string g = rel;
+        std::string g = to_u8(stdfs::relative(it->path(), s.work, ec));
+        if (ec) return rc::kGenericFailure;
         std::replace(g.begin(), g.end(), '\\', '/');
-        if (it->is_directory(ec)) {
+        const bool directory = it->is_directory(ec);
+        if (ec) return rc::kGenericFailure;
+        if (directory) {
             dirs.push_back(g);
         } else {
+            if (!flush_path(it->path())) return rc::kGenericFailure;
             files.push_back(g);
-            HANDLE h = CreateFileW(it->path().c_str(), GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, nullptr, OPEN_EXISTING, 0, nullptr);
-            if (h != INVALID_HANDLE_VALUE) {
-                FlushFileBuffers(h);
-                CloseHandle(h);
-            }
         }
     }
+    if (ec) return rc::kGenericFailure;
     for (const std::string& d : dirs) body += "M " + d + "\n";
     for (const std::string& f : files) body += "F " + f + "\n";
     changes += static_cast<int>(dirs.size() + files.size());
     {
         std::ofstream j(s.journal_file, std::ios::binary | std::ios::trunc);
         j << body;
-        j.flush();
+        j.close();
         if (!j) return rc::kGenericFailure;
     }
-    {
-        HANDLE h = CreateFileW(s.journal_file.c_str(), GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, nullptr, OPEN_EXISTING, 0, nullptr);
-        if (h != INVALID_HANDLE_VALUE) {
-            FlushFileBuffers(h);
-            CloseHandle(h);
-        }
-    }
-    if (!MoveFileExW(s.journal_file.c_str(), s.marker.c_str(), MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) return rc::kGenericFailure;
+    if (!flush_path(s.journal_file)) return rc::kGenericFailure;
+    if (!MoveFileExW(s.journal_file.c_str(), s.marker.c_str(), MOVEFILE_WRITE_THROUGH)) return rc::kGenericFailure;
+    s.writes->decided = true;
     if (g_crash_point == 1) return rc::kGenericFailure;   // decided, nothing applied
 
     // Phase 2: apply. A crash in here is repaired by the next recover().
     const int applied = apply_marker(s.marker, s.root, &s.work, g_crash_point == 2 ? 1 : 0);
     if (g_crash_point == 2) return rc::kGenericFailure;
     if (applied < 0) return rc::kGenericFailure;
-    s.tomb.clear();
-    stdfs::remove_all(s.work, ec);
-    stdfs::create_directories(s.work, ec);
+    if (!s.reset_work()) return rc::kGenericFailure;
     NXLOG_D("fs", "commit %s: %d changes", to_u8(s.root).c_str(), changes);
     return 0;
 }

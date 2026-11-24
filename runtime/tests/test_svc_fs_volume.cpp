@@ -357,6 +357,68 @@ NXTEST(journal_valid_legacy_marker_rolls_forward) {
     CHECK(!stdfs::exists(marker));
 }
 
+NXTEST(journal_locked_destination_preserves_pending_commit) {
+    TempDir t("locked_commit");
+    const auto root = t.p / "save";
+    Volume writer(root.string(), true, false, 0);
+    REQUIRE(put(writer, "/slot", "old"));
+    REQUIRE(writer.commit() == 0);
+    REQUIRE(put(writer, "/slot", "new", false));
+    std::shared_ptr<VFile> file;
+    REQUIRE(writer.open_file("/slot", kModeWrite, &file) == 0);
+    HANDLE reader = CreateFileW((root / "slot").c_str(), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr,
+                                OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+    REQUIRE(reader != INVALID_HANDLE_VALUE);
+    CHECK(writer.commit() != 0);
+    CHECK(writer.commit() != 0);
+    CHECK_EQ(writer.delete_file("/slot"), rc::kTargetLocked);
+    CHECK_EQ(file->write(0, "bad", 3), rc::kTargetLocked);
+    {
+        Volume reopen(root.string(), true, false, 0);
+        CHECK(!reopen.ok());
+    }
+    CloseHandle(reader);
+    REQUIRE(writer.commit() == 0);
+    file.reset();
+    CHECK_EQ(read_all(writer, "/slot"), std::string("new"));
+    CHECK(!stdfs::exists(t.p / "save.commit"));
+    CHECK(put(writer, "/slot", "next", false));
+    {
+        Volume reader_view(root.string(), true, true, 0);
+        REQUIRE(reader_view.ok());
+        CHECK_EQ(read_all(reader_view, "/slot"), std::string("new"));
+    }
+    CHECK_EQ(writer.commit(), 0u);
+    CHECK_EQ(read_all(writer, "/slot"), std::string("next"));
+}
+
+NXTEST(journal_retries_partially_applied_commit_of_exited_writer) {
+    TempDir t("locked_replay");
+    const auto root = t.p / "save", work = t.p / "save.work.4000000000", marker = t.p / "save.commit";
+    Volume next_writer(root.string(), true, false, 0);
+    REQUIRE(next_writer.ok());
+    REQUIRE(put(next_writer, "/later", "independent"));
+    // The previous writer recreated a directory and moved its first file before it exited.
+    stdfs::create_directories(root / "dir");
+    stdfs::create_directories(work);
+    std::ofstream(root / "dir" / "restored") << "kept";
+    std::ofstream(root / "slot") << "old";
+    std::ofstream(work / "slot") << "new";
+    std::ofstream(marker) << "V 2\nP 4000000000\nD dir\nM dir\nF dir/restored\nF slot\n";
+    HANDLE reader = CreateFileW((root / "slot").c_str(), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr,
+                                OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+    REQUIRE(reader != INVALID_HANDLE_VALUE);
+    CHECK(!Volume::recover(root.string()));
+    CHECK(next_writer.commit() != 0);
+    CHECK(stdfs::exists(marker));
+    CHECK(stdfs::exists(work / "slot"));
+    CloseHandle(reader);
+    CHECK_EQ(next_writer.commit(), 0u);
+    CHECK_EQ(read_all(next_writer, "/dir/restored"), std::string("kept"));
+    CHECK_EQ(read_all(next_writer, "/slot"), std::string("new"));
+    CHECK_EQ(read_all(next_writer, "/later"), std::string("independent"));
+}
+
 NXTEST(journal_crash_before_decision_changes_nothing) {
     TempDir t("crash0");
     {
