@@ -1,0 +1,198 @@
+{
+  "System.msbt.zst": {
+    "MID_Difficulty_Message": {
+      "source_sha256": "097e1fc5f3a153ecfa226b2fd64b2ab271fc941cf788ae39c6b003b11b39c0e4",
+      "parts": [
+        "اختر مستوى الصعوبة."
+      ]
+    },
+    "MID_Difficulty_Normal": {
+      "source_sha256": "a49681e12ac3bd32f0ed66784c396ef2900a39e18e04b8f7371d5847076a5562",
+      "parts": [
+        "عادي"
+      ]
+    },
+    "MID_Difficulty_Normal_Help": {
+      "source_sha256": "d53183facf1e93a337ec4bca0dc1436bbf977df2864e2c2a549d559660b8ddb7",
+      "parts": [
+        "للمبتدئين ومن لديهم بعض الخبرة."
+      ]
+    },
+    "MID_Difficulty_Hard": {
+      "source_sha256": "44a29f4a0682c8d1215198046f656751233f1302c03eb0aa9b39e67bf743e7aa",
+      "parts": [
+        "صعب"
+      ]
+    },
+    "MID_Difficulty_Hard_Help": {
+      "source_sha256": "d98ef119b0b45cc61b8aea5863d1e50b9c87c624bfafbf5981323fecc5eda7e0",
+      "parts": [
+        "للاعبين المتمرسين."
+      ]
+    },
+    "MID_Mode_Message": {
+      "source_sha256": "8b0d79109b84c35da04b5a344070ef65cb21c7cd5a2cd593ee0fac2250ec2aff",
+      "parts": [
+        "اختر نمط اللعب."
+      ]
+    },
+    "MID_Mode_Casual": {
+      "source_sha256": "4643f2976a5e59e315ff83c49cd3aaba38fbeebeecdc1dd6a8fa5b9bff66c676",
+      "parts": [
+        "مرن"
+      ]
+    },
+    "MID_Mode_Casual_Help": {
+      "source_sha256": "7718f796ec20168b164e559bc0bc7362b987637cce5c8895d4f485f043ff9c82",
+      "parts": [
+        "تعود الوحدات المهزومة في المعركة التالية."
+      ]
+    },
+    "MID_Mode_Classic": {
+      "source_sha256": "65c505386fc4c9a8e212bd3290cd0a072c432b169c66ab3bbbd1b4aba1b8c534",
+      "parts": [
+        "كلاسيكي"
+      ]
+    },
+    "MID_Mode_Classic_Help": {
+      "source_sha256": "1d75e3dda28d62988105d68464d333c4baceaeedbd9cd3408bf6d88ebd8440bf",
+      "parts": [
+        "إذا سقطت وحدة، فلن تعود.\nلكل قرار عواقبه."
+      ]
+    }
+  },
+  "System_Hub.msbt.zst": {
+    "MID_CharaMaking_Page_Body": {
+      "source_sha256": "b40b687ce544daae16d92f56f36064e5ade98de0ed351a74f344acc98fca9171",
+      "parts": [
+        "البنية"
+      ]
+    },
+    "MID_CharaMaking_Page_Skin": {
+      "source_sha256": "e2909c4ca21ebef4be24e080fe220ae5af1d6d0cac02077aaf686f6402ad2ffa",
+      "parts": [
+        "لون البشرة"
+      ]
+    },
+    "MID_CharaMaking_Page_Head": {
+      "source_sha256": "8ca6c4ca4cc80e07f6854e87f62be4ad6109932bb223d6893fc999b0106d6a5a",
+      "parts": [
+        "تسريحة الشعر"
+      ]
+    },
+    "MID_CharaMaking_Page_Hair": {
+      "source_sha256": "e7371b53392c6aebc9b9edcd63c2caa68ea0ceaa2e875e7f7bffd8e0eab05e7d",
+      "parts": [
+        "لون الشعر"
+      ]
+    },
+    "MID_CharaMaking_Page_Clothes": {
+      "source_sha256": "9d8878a0160068f4b851c0fa46d169b883c6c9e9e23271c92be83b07398b78a2",
+      "parts": [
+        "الزي"
+      ]
+    },
+    "MID_CharaMaking_Page_Name": {
+      "source_sha256": "5458f37977e6129640e9a702b17242e615bf4672eff3161fe49121846d47a085",
+      "parts": [
+        "الاسم"
+      ]
+    },
+    "MID_CharaMaking_Page_Confirm": {
+      "source_sha256": "297ab8f4af0eac78870d6cbe0d820394c31bfeb035430af60fca39bff25857db",
+      "parts": [
+        "تأكيد"
+      ]
+    },
+    "MID_CharaMaking_BodyType": {
+      "source_sha256": "58055ee2fb499028581ea7d00c83cb4336330869314f99e4842f93b44db7f182",
+      "parts": [
+        "اختر بنية الجسم"
+      ]
+    },
+    "MID_CharaMaking_SkinColor": {
+      "source_sha256": "c03332edc2eaeee03976e7b38cf668787be78da53403cb595a297764f203b616",
+      "parts": [
+        "اختر لون البشرة"
+      ]
+    },
+    "MID_CharaMaking_HeadType": {
+      "source_sha256": "5f08fad6a4664d5232a89fc9412c861d89b39a90be64e2880364cf13094bfa3c",
+      "parts": [
+        "اختر تسريحة الشعر"
+      ]
+    },
+    "MID_CharaMaking_HairColor": {
+      "source_sha256": "61179f83d45a155fd05ba32e82ad4945d65d9d6234f56af5175a1b2382c464cc",
+      "parts": [
+        "اختر لون الشعر"
+      ]
+    },
+    "MID_CharaMaking_Clothes": {
+      "source_sha256": "ec4d5f0397626d04bc54ea5dad90ae6e220661f4336d3d970ff445343ac48c12",
+      "parts": [
+        "اختر الزي"
+      ]
+    },
+    "MID_CharaMaking_Check": {
+      "source_sha256": "297ab8f4af0eac78870d6cbe0d820394c31bfeb035430af60fca39bff25857db",
+      "parts": [
+        "تأكيد"
+      ]
+    },
+    "MID_CharaMaking_Type_A": {
+      "source_sha256": "e7dc20553d43fee7ee052a2d2cdced7107b7a24f2c18381421bc6527f23b3d8c",
+      "parts": [
+        "النوع أ"
+      ]
+    },
+    "MID_CharaMaking_Type_B": {
+      "source_sha256": "1ae3b4fae57a243647db035076abf52b85c91096a9ff2dd60d863fdba143dcd7",
+      "parts": [
+        "النوع ب"
+      ]
+    },
+    "MID_CharaMaking_Type_C": {
+      "source_sha256": "bc848700dc464cc0950bb65a768f271b4bc1cd29191a3d871e4c8bea435328a0",
+      "parts": [
+        "النوع ج"
+      ]
+    },
+    "MID_CharaMaking_Type_D": {
+      "source_sha256": "d94218fd67c26f70e12a99d6a15d1a4247f980479370360bc3914831bc5e6f72",
+      "parts": [
+        "النوع د"
+      ]
+    },
+    "MID_CharaMaking_Type_E": {
+      "source_sha256": "1fe8e373d6ec7f2ade3570e72b41f11a2ec5c66e6f93fe7239dc53d407e597f1",
+      "parts": [
+        "النوع هـ"
+      ]
+    },
+    "MID_CharaMaking_Swkbd_Header": {
+      "source_sha256": "ea7a14b24a678d90ef82ce102d54afd3ca7e69c2dc0e264e6cdb3af7216193cc",
+      "parts": [
+        "أدخل اسما. تظهر علامة ■ مكان أي حرف غير متاح."
+      ]
+    },
+    "MID_CharaMaking_Confirm_Yes": {
+      "source_sha256": "70eb24fb108b03fd7fd900aa81be73330c22489f9c8df0829baa80966fff69d5",
+      "parts": [
+        "موافق"
+      ]
+    },
+    "MID_CharaMaking_Confirm_RemakeAppearance": {
+      "source_sha256": "91d139405374b869509ea43d376dc02e062399a2c2bb567c4358230d6ee241b1",
+      "parts": [
+        "تعديل المظهر"
+      ]
+    },
+    "MID_CharaMaking_Confirm_Rename": {
+      "source_sha256": "fda8f64ff34b77cf3592d2bfc7667c58b9dd2dfe9f8e3e25eff403d777790a31",
+      "parts": [
+        "تغيير الاسم"
+      ]
+    }
+  }
+}
