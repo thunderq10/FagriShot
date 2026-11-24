@@ -24,6 +24,8 @@ Use the format in [setup.json](../../fagrishot/arabic_data/setup.json) and [open
 
 Some controls encode pairs of visible alternatives inside their binary arguments. The private catalog exposes these as `choices`, indexed by the control's zero-based position in the complete source parts array. An optional translation can provide the same two choices in the same order. The patcher recalculates their UTF-8 byte lengths and preserves the command type. Help text, alternative forms, images and voiced dialogue need separate coverage checks.
 
+The chapter card inserts three separately rendered labels. Its fingerprinted format uses `argument_order` to arrange them for Arabic reading order. The patcher accepts only a complete permutation of bare indexed argument references separated by punctuation or spaces. Each reference keeps its original bytes.
+
 ## دليل الصياغة العربية
 
 في الحوار القصصي، اختر فصحى تناسب المتكلم والمقام. حين تصف فورتونا خراب معقل للبشر، يحسن أن توحي عبارتها بالحسرة. وحين يشرح زينون عمل الحوض ونواة القلب، يحتاج القارئ إلى وصف دقيق يستطيع تتبعه. وفي القوائم، استعمل فعلا قصيرا يدل على ما سيحدث عند الضغط، مثل «اختر مستوى الصعوبة».
