@@ -75,11 +75,7 @@ def status(settings, root):
             "covered": total, "reviewed": count, "machine_draft": drafted, "remaining": ELIGIBLE_LABELS - total,
             "reviewed_dynamic_formats": format_only,
             "tutorial_images": illustrations, "title_logo": bool(logo_outputs(root)),
-            "coverage": (f"Arabic text covers {total:,} of {ELIGIBLE_LABELS:,} visible message entries. "
-                         f"{count:,} are editorially reviewed and {drafted:,} are machine drafts. "
-                         + (f"{ELIGIBLE_LABELS - total:,} use US English. " if total < ELIGIBLE_LABELS else "")
-                         + f"The pack changes lettering in {illustrations} of 316 US-English tutorial images. "
-                         + "Voices use the game's audio language."),
+            "coverage": "Play with Arabic text throughout the game (Experimental feature)",
             "message": warning if available else "This installation is missing the Arabic preview catalog, font or font builder."}
 
 

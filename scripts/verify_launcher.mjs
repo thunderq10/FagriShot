@@ -111,7 +111,7 @@ await session(isolatedExe,direct?['--play-game']:[],path.join(run,'webview'),loc
   await fs.writeFile(settingsFile,'{');
   await click('#retry');
   await wait("!document.querySelector('#settings-warning').hidden && !document.querySelector('[data-pick=ExeFS]').disabled",'repairable settings');
-  await wait("!document.querySelector('#arabic-text').disabled && /editorially reviewed.*machine drafts/.test(document.querySelector('#arabic-coverage').textContent)",'Arabic preview availability and coverage');
+  await wait("!document.querySelector('#arabic-text').disabled && document.querySelector('#arabic-coverage').textContent === 'Play with Arabic text throughout the game (Experimental feature)'",'Arabic preview description');
   const arabicPreference=path.join(path.dirname(settingsFile),'arabic.json');
   await click('#arabic-text');
   await wait("document.querySelector('#arabic-text').checked && !document.querySelector('#arabic-text').disabled",'Arabic preview enabled');
@@ -119,7 +119,7 @@ await session(isolatedExe,direct?['--play-game']:[],path.join(run,'webview'),loc
   await click('#arabic-text');
   await wait("!document.querySelector('#arabic-text').checked && !document.querySelector('#arabic-text').disabled",'Arabic preview disabled');
   assert.equal(JSON.parse(await fs.readFile(arabicPreference,'utf8')).enabled,false);
-  passed.push('Arabic preview checkbox reports actual catalog coverage and persists enabling and disabling');
+  passed.push('Arabic preview checkbox shows the experimental feature description and persists enabling and disabling');
   await wait("document.querySelector('aside [data-version]').textContent==="+JSON.stringify(version),'release version');
   assert.equal(await evaluate('document.title'),'FagriShot');
   assert.equal(await evaluate("document.querySelector('#setup h2').innerText"),'Fire Emblem: Fortune\u2019s Weave');
