@@ -1,0 +1,926 @@
+{
+  "1_DIT_Battle.msbt.zst": {
+    "MID_SC12_17_m09_002": {
+      "source_sha256": "bfce483a14f6537cd0ebecb2afef1d4eb48e15fffae1215c101d43b12f5bf2d0",
+      "parts": [
+        "يذكرني ذلك بالنخبة العشرة في فودلان. كانوا مثلهم تماما."
+      ]
+    }
+  },
+  "1_DIT_c02.msbt.zst": {
+    "MID_EV12_003_m01_016": {
+      "source_sha256": "bac145bb4bb92c1bc23e88e3828061fd337f1cd9039e8e2a2734c86a64b76449",
+      "parts": [
+        "تلك كانت معتقدات النخبة العشرة في فودلان."
+      ]
+    }
+  },
+  "1_DIT_c07.msbt.zst": {
+    "MID_EV12_035_m01_002": {
+      "source_sha256": "67b32fe33f1c3d848c894751fbfce7a5cfb86695f972a227cd8386382df67d65",
+      "parts": [
+        "نعم. أطلب إرسال فريق للتحقيق في أمر EX-477 وتيامات."
+      ]
+    },
+    "MID_EV12_037_m01_021": {
+      "source_sha256": "7da8aee2cb84c68f73e021d58bec1fcde849495035b789d9e7d6e8baf43a1b45",
+      "parts": [
+        "هذا... هذا أحد آثار أبطال فودلان! أيكون هذا الرجل سليلا لأحد\nأفراد النخبة العشرة؟!"
+      ]
+    }
+  },
+  "1_KAI_c02.msbt.zst": {
+    "MID_EV11_100_m01_002": {
+      "source_sha256": "912e60b3783ce678de4815eed52147e7fed5bab69d0a0bfc6e3785b3da38c478",
+      "parts": [
+        "يوم تتم الخامسة عشرة من عمرك تنقضي مهلتي."
+      ]
+    }
+  },
+  "1_LED_Battle.msbt.zst": {
+    "MID_SC14_03_m03_002": {
+      "source_sha256": "1d16f5698632b8f0e41e45b8407647d931fe97da79e24a2ac85ac02ae78017d1",
+      "parts": [
+        "والآن سأريك ما بلغته بجهدي، وسأضحك... هاها! حين تغص بمرارة\nالهزيمة!"
+      ]
+    },
+    "MID_SC14_06_m01_005": {
+      "source_sha256": "7540a1c30d7d2e2562d8da79826dac669d674c409c9a1304b7efd3139f68d939",
+      "parts": [
+        "معكم جميعا ذاك الشيء، أليس كذلك؟ تعرفون ما أعني؟\nفلنترقب اللحظة المناسبة تماما لاستخدامه."
+      ]
+    }
+  },
+  "1_LED_c03.msbt.zst": {
+    "MID_EV14_015_m01_019": {
+      "source_sha256": "3ae39664f63f615ad75516366c1a6e674490448006ea96acad374d14c199741a",
+      "parts": [
+        "في الثالثة عشرة من عمرها أصبحت أصغر من فاز بلقب «وردة\nكايلوس»."
+      ]
+    }
+  },
+  "1_LED_c05.msbt.zst": {
+    "MID_EV14_026_m01_014": {
+      "source_sha256": "cf50ed6424556fb1e2ba000bec0c9877478b52b1e227b094cf581a41b6a79665",
+      "parts": [
+        "أحيانا، حين أعزف على أوبسيديان، يتردد صوت في رأسي... وأعرف\nأنه ليس صوتي."
+      ]
+    }
+  },
+  "1_LED_c09.msbt.zst": {
+    "MID_EV14_044_m01_010": {
+      "source_sha256": "f1da74bd333548f18541206590a1a6f872014b2d52dd014c078d0a67adc049ad",
+      "parts": [
+        "لم أكن حتى أعزف على أوبسيديان... ومع ذلك سمعته."
+      ]
+    }
+  },
+  "1_SEO_c01.msbt.zst": {
+    "MID_EV13_004_m01_013": {
+      "source_sha256": "ff9ca99ecc5f53c1117af84adc8afaadb278c1e71c72ac7cb7c291784e862b42",
+      "parts": [
+        "آآخ!"
+      ]
+    }
+  },
+  "1_SEO_c02.msbt.zst": {
+    "MID_EV13_007_m01_009": {
+      "source_sha256": "4a55db64a1741e66ede2a758c968055e7b638884b6a5b883a9bfc59413d22199",
+      "parts": [
+        "لست وحدي. ففي مملكتنا لا يعتلي العرش إلا من بلغ سن الرشد،\nوهي عشرون سنة."
+      ]
+    }
+  },
+  "1_SEO_c07.msbt.zst": {
+    "MID_EV13_038_m01_038": {
+      "source_sha256": "43430fd05e692cfdcb8d7ae41cb2882e7338df1c792bd828fd934d130146ccb7",
+      "parts": [
+        "أرأيت يا رئيس؟ لا أعدك بشيء، لكنني أضمن لك أن\nالأمور ستكون على خير ما يرام!"
+      ]
+    }
+  },
+  "1_SEO_c09.msbt.zst": {
+    "MID_EV13_045_m01_007": {
+      "source_sha256": "0a4b57c772b3fc0ca7836207ab43f550e190c2858fb105b0cdd611081b0db8d3",
+      "parts": [
+        "كانت في أعماق هذه الصحراء منشأة هائلة تسمى\nEX-061."
+      ]
+    }
+  },
+  "2_XXX_c06.msbt.zst": {
+    "MID_EV24_031_m01_012": {
+      "source_sha256": "dedb77f90e125fd506509aa2d53f7a76e667efac74157975fa77a707d0a72fc4",
+      "parts": [
+        "إن كانت تشبه الوحوش الشيطانية، فلعلها تستجيب للحن\nأعزفه على أوبسيديان..."
+      ]
+    }
+  },
+  "Article.msbt.zst": {
+    "MID_Articles_EU_fr_001": {
+      "source_sha256": "14bd1ce917805d179ac66ae39a463ce57b0bea82b2feabd41588ae47c6b8a839",
+      "parts": [
+        "صيغة فرنسية 【des 】"
+      ]
+    },
+    "MID_Articles_EU_fr_002": {
+      "source_sha256": "bcedda58f7c476a39d814e85b350b5081af9d0c5bca11174cb2f7ab2d97d7cd3",
+      "parts": [
+        "صيغة فرنسية 【une 】"
+      ]
+    },
+    "MID_Articles_EU_fr_004": {
+      "source_sha256": "bc9902ab031b5f2f41976b6d17ccf45c8da27f422524a9fef5f21d4da59e37f7",
+      "parts": [
+        "صيغة فرنسية 【du 】"
+      ]
+    },
+    "MID_Articles_EU_fr_005": {
+      "source_sha256": "9ea62af4bcfffddae034e8394de891b208b72b1504364ea35b55ed4a7e6fc770",
+      "parts": [
+        "صيغة فرنسية 【la 】"
+      ]
+    },
+    "MID_Articles_EU_fr_006": {
+      "source_sha256": "b732edd15d448640b5ffed3bc84e9e4f87e1ddc149c8a5678f75acdfc1df3b3b",
+      "parts": [
+        "صيغة فرنسية 【aux 】"
+      ]
+    },
+    "MID_Articles_EU_fr_007": {
+      "source_sha256": "c7a5ca460a9145399e0c3f237c5a30732d37d824292748796ce7a690a19f8876",
+      "parts": [
+        "صيغة فرنسية 【au 】"
+      ]
+    },
+    "MID_Articles_EU_fr_008": {
+      "source_sha256": "ac765235d897db89fad11970d88ee4809fd73681fbe61b718420bd8f0d1a410d",
+      "parts": [
+        "صيغة فرنسية 【l'】"
+      ]
+    },
+    "MID_Articles_EU_fr_009": {
+      "source_sha256": "8c87ae6482973acaa2f73a937eb07d0e1565ee28cf40fcb2c1553a7192374226",
+      "parts": [
+        "صيغة فرنسية 【en 】"
+      ]
+    },
+    "MID_Articles_EU_fr_010": {
+      "source_sha256": "6da586acb9cf1e907f26d190515e51f2d41bf48929ba6041690b6d5501ad04d3",
+      "parts": [
+        "صيغة فرنسية 【à la 】"
+      ]
+    },
+    "MID_Articles_EU_fr_011": {
+      "source_sha256": "662625eb04a5382955bcd9d5623ba694f7ae963d3bb4bc48dbdc6ba56ebd4a16",
+      "parts": [
+        "صيغة فرنسية 【de la 】"
+      ]
+    },
+    "MID_Articles_EU_fr_012": {
+      "source_sha256": "b68e1afbcc9d29f8667b3a47869744a4572b8c1b6ef8487fd7737f2be1eca8e4",
+      "parts": [
+        "صيغة فرنسية 【de 】"
+      ]
+    },
+    "MID_Articles_EU_fr_014": {
+      "source_sha256": "aa6bea3a214a62df6c3572caa192a9f51dbdea048d88466318f9d9acd5480ccb",
+      "parts": [
+        "صيغة فرنسية 【 du 】"
+      ]
+    },
+    "MID_Articles_EU_fr_015": {
+      "source_sha256": "818425cb0b8c055d59010568a6bc498d772159c752edbd1141afb027847d2eb5",
+      "parts": [
+        "صيغة فرنسية 【de l'】"
+      ]
+    },
+    "MID_Articles_EU_fr_016": {
+      "source_sha256": "e8f192165f1242ea076e3efd3f555fb4483e30c7f6da252725b2be66b713bcd5",
+      "parts": [
+        "صيغة فرنسية 【à l'】"
+      ]
+    },
+    "MID_Articles_EU_fr_018": {
+      "source_sha256": "0217297e2fbf863593e57ec84b8ca98b76775a5a922611f5af641c47ad8b8044",
+      "parts": [
+        "صيغة فرنسية 【de bons 】"
+      ]
+    },
+    "MID_Articles_EU_fr_019": {
+      "source_sha256": "fd213549c030c59403657c9f37b548c3a31f2cf3328826157ac6a424a76b5a8d",
+      "parts": [
+        "صيغة فرنسية 【un 】"
+      ]
+    },
+    "MID_Articles_EU_fr_020": {
+      "source_sha256": "90e85054799622ac575f804fcd76894516205b0d1a68c2ab8117dd71be3ca76d",
+      "parts": [
+        "صيغة فرنسية 【À la】"
+      ]
+    },
+    "MID_Articles_EU_fr_021": {
+      "source_sha256": "15a191fdf4f35b952c102805e60e45e3fbd2e9f4e2736133c57e6253df0ef53c",
+      "parts": [
+        "صيغة فرنسية 【Au】"
+      ]
+    },
+    "MID_Articles_EU_fr_022": {
+      "source_sha256": "043dc7ea0f9949cc9abd004f89b34c884cf1f60bf983cf4147ba05f10fcf8aeb",
+      "parts": [
+        "صيغة فرنسية 【le 】"
+      ]
+    },
+    "MID_Articles_EU_fr_023": {
+      "source_sha256": "3812f7d155bf9ad2c5f5400a773ddc50a22a77d1ea64b1eef001ecace74fa775",
+      "parts": [
+        "صيغة فرنسية 【les 】"
+      ]
+    },
+    "MID_Articles_EU_it_001": {
+      "source_sha256": "0d072971c671d380e427327d1d7c66d3cb8d478dbc37ac616b93a8b7bac886ca",
+      "parts": [
+        "صيغة إيطالية 【alle 】"
+      ]
+    },
+    "MID_Articles_EU_it_002": {
+      "source_sha256": "d6ef5eb53a3d8061ae4016adc1666a229946028d8b257b7df38917c6b369eaa9",
+      "parts": [
+        "صيغة إيطالية 【a 】"
+      ]
+    },
+    "MID_Articles_EU_it_003": {
+      "source_sha256": "07a6cd6c985bcb404959450518237b0fb3d2a647eb1935d8b7bc10339ff93a6d",
+      "parts": [
+        "صيغة إيطالية 【al 】"
+      ]
+    },
+    "MID_Articles_EU_it_004": {
+      "source_sha256": "36a1be1a2e7af5655ffc9d4b034b56c476d70bdfcbf397718000d88e01303b88",
+      "parts": [
+        "صيغة إيطالية 【ad 】"
+      ]
+    },
+    "MID_Articles_EU_it_005": {
+      "source_sha256": "f202284596b4aacb7023adf29dad00aec3729879eca116d149812a849f47c658",
+      "parts": [
+        "صيغة إيطالية 【una 】"
+      ]
+    },
+    "MID_Articles_EU_it_006": {
+      "source_sha256": "5eaff7df7ae3fb878f1b5f2dd1124ba583453468ebffff1e6d1d7449ab021995",
+      "parts": [
+        "صيغة إيطالية 【la 】"
+      ]
+    },
+    "MID_Articles_EU_it_007": {
+      "source_sha256": "b47e21450c96046e798310b78a11c406ef825e503dbe6f1a420c065630fa8ec2",
+      "parts": [
+        "صيغة إيطالية 【il 】"
+      ]
+    },
+    "MID_Articles_EU_it_008": {
+      "source_sha256": "d4aadcfabc01ef06fffefc580040a2533edda82726a61d3b75526cfe2469fe65",
+      "parts": [
+        "صيغة إيطالية 【all'】"
+      ]
+    },
+    "MID_Articles_EU_it_009": {
+      "source_sha256": "3498c256e0e2565262d2f79433afea56a5d696ba1fefac6f27f10b7da0bb8505",
+      "parts": [
+        "صيغة إيطالية 【alla 】"
+      ]
+    },
+    "MID_Articles_EU_it_010": {
+      "source_sha256": "01613bdad4b3b8f63dadf694625a0c167e2383286f82cbb8ab9e130ce057b37f",
+      "parts": [
+        "صيغة إيطالية 【di 】"
+      ]
+    },
+    "MID_Articles_EU_it_011": {
+      "source_sha256": "8da59a22ab407bc90a6eae5adc95db480513a636860f1ae92e1c381a9ec14fd8",
+      "parts": [
+        "صيغة إيطالية 【del 】"
+      ]
+    },
+    "MID_Articles_EU_it_012": {
+      "source_sha256": "2f05f35f7b5b887b4a47aac5ca8d2c427f6a4e0f25515f8787ffe791d6d580f0",
+      "parts": [
+        "صيغة إيطالية 【un 】"
+      ]
+    },
+    "MID_Articles_EU_it_013": {
+      "source_sha256": "031416ab031a9978916f9545c51d99bdf88fe640cfde51ddbcac6b30bcd8fc4c",
+      "parts": [
+        "صيغة إيطالية 【l'】"
+      ]
+    },
+    "MID_Articles_EU_it_015": {
+      "source_sha256": "a9f8072d439418c3f7b000e6737c5acf5701e576200b65e19b2dbb973e4de65e",
+      "parts": [
+        "صيغة إيطالية 【le 】"
+      ]
+    },
+    "MID_Articles_EU_it_016": {
+      "source_sha256": "e4ab53bcbf516bb92b54adbcfd8b0c380dcd10a30251a43165c3db2f573b1f11",
+      "parts": [
+        "صيغة إيطالية 【nella 】"
+      ]
+    },
+    "MID_Articles_EU_it_017": {
+      "source_sha256": "4a5eb605b2369036a5448e94756eea84af0e579d862c89a0befb71725635bb18",
+      "parts": [
+        "صيغة إيطالية 【ai 】"
+      ]
+    },
+    "MID_Articles_EU_de_001": {
+      "source_sha256": "2f81583a3440d1adb6582dd603d4ba8ac373ea897b7af1acfd94f3afd925a30b",
+      "parts": [
+        "صيغة ألمانية 【der 】"
+      ]
+    },
+    "MID_Articles_EU_de_002": {
+      "source_sha256": "061af4e1cb23a8d7d69974fce12271cb2e74d6214af2be671908bfd8adce19d5",
+      "parts": [
+        "صيغة ألمانية 【dem 】"
+      ]
+    },
+    "MID_Articles_EU_de_003": {
+      "source_sha256": "1760763404934354beb9f759dd5061c3e78e0049cd5259d3feaa0a0ae086746a",
+      "parts": [
+        "صيغة ألمانية 【eine 】"
+      ]
+    },
+    "MID_Articles_EU_de_004": {
+      "source_sha256": "885ce7549d7e7f40818488bfad28263ba82f645ab55ee85e00e348c5d43cc0db",
+      "parts": [
+        "صيغة ألمانية 【einen 】"
+      ]
+    },
+    "MID_Articles_EU_es_001": {
+      "source_sha256": "94206e4bc5ae6109212c3208c832ac5dedce7c678d6fa44822c348cf7599be10",
+      "parts": [
+        "صيغة إسبانية 【de las 】"
+      ]
+    },
+    "MID_Articles_EU_es_003": {
+      "source_sha256": "a005e7eed8b9f134b320e35f9e8602ad30faab5353e4b0fbffccf0d9271c9f05",
+      "parts": [
+        "صيغة إسبانية 【del 】"
+      ]
+    },
+    "MID_Articles_EU_es_004": {
+      "source_sha256": "1f711ca5d094069dd12faac0fcda2e024248f61af11199ab74a764c5709b6caa",
+      "parts": [
+        "صيغة إسبانية 【las 】"
+      ]
+    },
+    "MID_Articles_EU_es_005": {
+      "source_sha256": "2e3731c9343fd125bc0bb04704cf387397526b3180013bec00afa4ff91a74f40",
+      "parts": [
+        "صيغة إسبانية 【el 】"
+      ]
+    },
+    "MID_Articles_EU_es_006": {
+      "source_sha256": "652f367f1d10ea5c6fefce667e608cd1bc181c6a3d86058a803f1d964b930424",
+      "parts": [
+        "صيغة إسبانية 【a 】"
+      ]
+    },
+    "MID_Articles_EU_es_007": {
+      "source_sha256": "7892507932812e6a19f21c105f17e6941e2c7dbc927539a9ded786e27397e3b0",
+      "parts": [
+        "صيغة إسبانية 【la 】"
+      ]
+    },
+    "MID_Articles_EU_es_008": {
+      "source_sha256": "cb45fec28e1ad264311fd65a03c8af6b134c4d295e672977626da1e43cf21496",
+      "parts": [
+        "صيغة إسبانية 【de la 】"
+      ]
+    },
+    "MID_Articles_EU_es_009": {
+      "source_sha256": "90a8e70714f799f1e0156cf58ce0b3712edff0c71e656b242f0e7d329eb941c2",
+      "parts": [
+        "صيغة إسبانية 【al 】"
+      ]
+    },
+    "MID_Articles_EU_es_010": {
+      "source_sha256": "788eb283ba75bf4468cf3a2600680509a0c75b98a81bf0859edc3251c6d8e6ad",
+      "parts": [
+        "صيغة إسبانية 【a la 】"
+      ]
+    },
+    "MID_Articles_EU_es_011": {
+      "source_sha256": "79269e3fe4d422c047a3b1e580431bd5a65752e55e1c329bb5e2d3628a42464a",
+      "parts": [
+        "صيغة إسبانية 【de 】"
+      ]
+    },
+    "MID_Articles_EU_es_012": {
+      "source_sha256": "3e4113606826a5a9c5c1cc3de6cc80a2697fd4109a66b87f9e449ac652a12943",
+      "parts": [
+        "صيغة إسبانية 【un 】"
+      ]
+    },
+    "MID_Articles_EU_es_013": {
+      "source_sha256": "82b02f046510065cec36a0b64161224ba63aaf3623ebc920a814e24618c8e477",
+      "parts": [
+        "صيغة إسبانية 【algún 】"
+      ]
+    },
+    "MID_Articles_EU_es_015": {
+      "source_sha256": "ea834b877741bc3dee4e7197784589ebfb75b4d01813b75965e9b7ef82858b15",
+      "parts": [
+        "صيغة إسبانية 【de una 】"
+      ]
+    },
+    "MID_Articles_EU_es_016": {
+      "source_sha256": "79d6e803a708304bfb450d00a667e20442c6785585005896c02367e50e792ac9",
+      "parts": [
+        "صيغة إسبانية 【de un 】"
+      ]
+    },
+    "MID_Articles_EU_es_017": {
+      "source_sha256": "3142b48d2042b1266257f10f9f73344634a702c81b9e5f3e0fc72ff017771c25",
+      "parts": [
+        "صيغة إسبانية 【a las 】"
+      ]
+    }
+  },
+  "Item.msbt.zst": {
+    "MIID_H_AnswererRevised1": {
+      "source_sha256": "6d3fc5e03f7b7ee7dd28db3eb607fa48b1cfedeab3b3217f8499d1df0262f5d2",
+      "parts": [
+        "أثر من آثار الأبطال. يتيح لديتريش استخدام الفن\nالقتالي «إراقة الدماء +»."
+      ]
+    },
+    "MIID_H_Geki1": {
+      "source_sha256": "c444db34541996f97bcd5ed9e4af92baf80af965878cb73ba059149373833e70",
+      "parts": [
+        "سلاح شبيه بالرمح يلائم أساليب قتال شتى. يتيح استخدام\nالفن القتالي «نسج الرياح»."
+      ]
+    },
+    "MIID_H_SorelLance2": {
+      "source_sha256": "3894ee81eb5c0fed9209a071b54234a78f9978fcf4886b0cb4ec6393103befb0",
+      "parts": [
+        "قوس سام تسكنه قوة الشمس. يتيح استخدام الفن\nالقتالي «سول» في صورته المطورة، فيسترد من الصحة\nما يعادل كامل الضرر الذي يلحقه."
+      ]
+    },
+    "MIID_H_Verelheit1": {
+      "source_sha256": "3602ce2044502431b1b9a2f213d667770676818582f1ec2f608a3bba2eb78af0",
+      "parts": [
+        "فأس ذات حدين مشبعة بقوة مظلمة. تتيح\nاستخدام الفن القتالي «خطوة العاصفة»."
+      ]
+    },
+    "MIID_H_Gundogya1": {
+      "source_sha256": "426a266cc4c500b830129ac150787111e76346e30fffc565a517eeeb9f883587",
+      "parts": [
+        "فأس ذات حد واحد مشبعة بقوة مظلمة. تتيح\nاستخدام الفن القتالي «فالق السحرة»."
+      ]
+    },
+    "MIID_DarkSpikes": {
+      "source_sha256": "3d36838dd7b0d1a160937b28ecb69fef1e4477ef3d325b3172fdbc72c94b2acc",
+      "parts": [
+        "أشواك الظلام T"
+      ]
+    },
+    "MIID_H_BeautyWater": {
+      "source_sha256": "a8ca6a91be54012b96148e62b8131e856dc9d7a1d87f4ed7c2e5281095050d20",
+      "parts": [
+        "يقال إن الإلهات يستعملن هذا المستحضر الفاخر من\nكايلوس. وهو محبب خاصة إلى عشاق الأزياء."
+      ]
+    },
+    "MIID_H_SpiritGame": {
+      "source_sha256": "105d1db7975272fe5dbe81bcbb7aa83a3735a31a1753b6c19b24ad1def1c9785",
+      "parts": [
+        "لعبة لوحية من بريغيد، قطعها على هيئة أرواح. يستمتع\nبها عشاق الألعاب اللوحية خاصة."
+      ]
+    },
+    "MIID_H_ArchiveWarm": {
+      "source_sha256": "5cd0a393f7554e1ceef7ef2f0261ddcf63094dd4c3e1ca9e3de6f12fe4e6172c",
+      "parts": [
+        "استخدمه لتعلم «السرب Ζ»، وهو سحر مظلم\nيسلب العدو من سرعته عند إصابته."
+      ]
+    },
+    "MIID_H_ArchiveDarkSpikes": {
+      "source_sha256": "f2938a54e37ab7467305d5cbd1d419a5f20337b3c1af18910b02e91a266998a4",
+      "parts": [
+        "استخدمه لتعلم «أشواك الظلام T»، وهو سحر مظلم بالغ\nالفاعلية ضد الفرسان."
+      ]
+    },
+    "MIID_NomvedBreath": {
+      "source_sha256": "aa26449fb3c542171ab22bd25c77af447dbcee7c249db5fe716668d0d3a5d18a",
+      "parts": [
+        "أنفاس الصانع"
+      ]
+    },
+    "MIID_LyrahBreath": {
+      "source_sha256": "8a11570920aef89cb6d76ec8b4b500d4211aad02eb7ecc3cc9e22251a2ddc2c2",
+      "parts": [
+        "أنفاس الأرض"
+      ]
+    }
+  },
+  "Library.msbt.zst": {
+    "MID_LIB_Hub_Memory005_m01_003": {
+      "source_sha256": "40836ea262812ba2104f2a1e149be602954734a8a5f4359c4f781455393be124",
+      "parts": [
+        "الجيل 1\nصغرت هذه الطرز كثيرا قياسا بأسلافها، واستقر إنتاجها على نطاق\nواسع. ثم جاءت طرز الجيل 1.5 المحسنة أصغر حجما، فأمكن أخيرا\nزرعها في البشر. ومن هنا بدأت مرحلة جديدة من البحث فيها."
+      ]
+    },
+    "MID_LIB_Hub_Memory005_m01_004": {
+      "source_sha256": "76a0828cc3e5c1bfa0c65ff390b9759915bad7c0b733b93a4513b8f37ecbbda5",
+      "parts": [
+        "الجيل 2\nتحسن أداء هذا الطراز تحسنا كبيرا. فارتفعت قدرته القصوى كثيرا،\nوتضاعفت قدرته على إطالة العمر بمقادير هائلة. وزرع هذا الطراز\nلدى كثيرين من أفراد أطقم سفن سلسلة الأفعى."
+      ]
+    },
+    "MID_LIB_Hub_Memory005_m01_005": {
+      "source_sha256": "49b467875a34c9ce40ff1909a223c6bdbd6df8c7cc1eb090eeaaa90abf41077a",
+      "parts": [
+        "الجيل 3\nأتاحت مادة الإبيمينيوم، التي صنعت من عنصر جديد مثل اكتشافه\nنقلة علمية، درجة أعلى من التزامن الذهني في هذا الطراز. وكانت\nالنسخ الأولى عرضة لبعض الأخطاء، ثم أفضت التحسينات اللاحقة إلى\nأداء عال ومستقر."
+      ]
+    },
+    "MID_LIB_Hub_Memory008_m01_002": {
+      "source_sha256": "d2b6abd921bff541132b82858f6a2f00f456e305fc3851525db557ebf60161d6",
+      "parts": [
+        "EX-017\nملجأ شيد في شرقي المنطقة 1 السابقة للوقاية من الأسلحة\nالاستراتيجية. وهو من السعة بحيث يصح وصفه بمدينة تحت الأرض.\nوتتولى إدارته الصخرة العظمى «فيرمي». وانقطع اتصال كونلون\nبالشبكة فجأة، فبات مصير الملجأ مجهولا."
+      ]
+    },
+    "MID_LIB_Hub_Memory008_m01_003": {
+      "source_sha256": "848f0b36af884f9a7722dfc985c1ab6720d6063457efd6efbf7ba4c5fa0ec6fb",
+      "parts": [
+        "EX-053\nمنشأة تجارب وملجأ للطوارئ في آن واحد. نجت من أضرار جسيمة\nإبان الانهيار العظيم. وفيها خزان هائل مخصص لتجارب الرصد،\nوتتولى إدارتها الصخرة العظمى «بطليموس»."
+      ]
+    },
+    "MID_LIB_Hub_Memory008_m01_005": {
+      "source_sha256": "97200afdc7608ac63ad1dc27b9f23d0e6c601c8c4ae63d61dbe5c973b662a070",
+      "parts": [
+        "EX-089\nمنشأة تجارب مزودة بمسرع جسيمات هائل، تديرها الصخرة\nالعظمى «حنبعل». وفي داخلها المنشأة المغلقة EX-189، التي\nخصصت قديما لاختبار الأسلحة ثم أغلقت بعد فقدان السيطرة على\nأنظمتها."
+      ]
+    },
+    "MID_LIB_Hub_Memory008_m01_006": {
+      "source_sha256": "56855d0ff731204f4be22e91382b65e52ac08209fe10fcc866e68c0e1bc47ac6",
+      "parts": [
+        "EX-502\nتضم هذه المنطقة الجوفية قاعدة مصعد مداري ينقل المؤن إلى مدار\nالأقمار الاصطناعية. وتتولى إدارتها الصخرة العظمى «لانسيلوت».\nومنذ انقطاع اتصال كونلون بالشبكة فجأة، ظل مصير المنطقة\nمجهولا."
+      ]
+    },
+    "MID_LIB_Hub_Memory009_m01_001": {
+      "source_sha256": "c4e1e8ed01727ee2c218c0264c98d956a1f4ec21e9b0b4b9989c9cfb6dd9eb4e",
+      "parts": [
+        "كونلون اسم شبكة مستقلة تضم الصخور العظمى التي كانت تتبع\nالمنطقة 7 ونجت من الانهيار العظيم وما زالت تعمل. وتشمل أيضا\nتشانغ آه، العقل المدبر للمركبة 18 «نوا» من سلسلة الأفعى.\nويطلق اسم كونلون كذلك على القائمين على تشغيل هذه الشبكة."
+      ]
+    },
+    "MID_LIB_Hub_Memory015_m01_001": {
+      "source_sha256": "1f419fbfa9097f7c3a625235791d955cf9b0e2cd4b787efcbb1fab11fedd509a",
+      "parts": [
+        "«السمندل» اسم أسلحة نارية محمولة صنعت قديما لطاقم\n«نوا» وسلمت إلى أفراده. وتعرف رسميا باسم المدفع\nالكهربائي 96C. وهي تطلق حزما من الجسيمات المشحونة\nباستمداد الطاقة من المكثف المركب عند فوهتها، مما يجعلها\nفعالة على مسافات بعيدة."
+      ]
+    },
+    "MID_LIB_Hub_Memory016_m01_001": {
+      "source_sha256": "f7f87073024f1016615e2a3840d55a253d59bea6d35484278d264907cc54dcbd",
+      "parts": [
+        "المدفع الكهربائي 96C Mk. II، المعروف باسم «زيربيروس»، طراز\nمطور من «السمندل» صنع خصيصا للوسيط تروي. وعلى الرغم من\nقوته الهائلة، فإن سوء اتزانه يجعل التحكم فيه عسيرا على من لا\nيملك عضلات الوسيط المعززة."
+      ]
+    },
+    "MID_LIB_Hub_Memory019_m01_002": {
+      "source_sha256": "04ec1033d9eb5bd551974c96615488bafea504a0b965156cca535826de217022",
+      "parts": [
+        "لم يكن بلوغ هذا الحجم مقصودا عند بدء المشروع. فقد تبدلت\nأهداف التصميم أثناء العمل، فجاءت المركبة مجرد نسخة مكبرة\nمن «أومونونوشي»، المركبة 0 والنموذج الأولي لسلسلة الأفعى.\nوطالما تعرض هذا التصميم الفج للنقد، إذ لم يصمم كل جزء على\nالوجه الأمثل."
+      ]
+    },
+    "MID_LIB_Hub_Memory026_m01_006": {
+      "source_sha256": "7b8bc04c96572f6bdd7c3ea3f6270b0d5ca8250851dc94e2303e04bc79da5a82",
+      "parts": [
+        "أكتب هذا التقرير في ركن من EX-017، المنطقة الجوفية التي\nاحتميت بها مع زملائي، ولا يسعني إلا أن أتساءل. كيف انتهى بنا الأمر\nإلى هذا؟ ما ذلك الشيء؟ ومن أين أتى؟ ولماذا بادر فريترا إلى\nمهاجمته بهذا الحزم؟"
+      ]
+    }
+  },
+  "MV12_10.msbt.zst": {
+    "MID_MV12_10_m029": {
+      "source_sha256": "9f2fe6e048402cc9fd625a1eee69bd5011d42fed79c63a30961c70d121a07353",
+      "parts": [
+        "(صيحة جهد مع ضربتين بالسيف)"
+      ]
+    }
+  },
+  "MV13_05.msbt.zst": {
+    "MID_MV13_05_m002": {
+      "source_sha256": "a626faaa3e833705032be6ee5a1afb82f8e2498543be70976720ac82b5ba639c",
+      "parts": [
+        "(صيحتا هجوم)"
+      ]
+    }
+  },
+  "MV14_00.msbt.zst": {
+    "MID_MV14_00_m003": {
+      "source_sha256": "e6c77d134983e77f6875339e2f81e9ee8ee7fb9c6b7058a2062cc19d214c51f0",
+      "parts": [
+        "(شهيق وزفير مرتين)"
+      ]
+    },
+    "MID_MV14_00_m016": {
+      "source_sha256": "7db9a29811776d1b2a54e85d84db4f726c16d8812d2a75fdc0ce2bd5b4dc64d6",
+      "parts": [
+        "(صيحتا هجوم)"
+      ]
+    }
+  },
+  "MV14_01.msbt.zst": {
+    "MID_MV14_01_m015": {
+      "source_sha256": "e012525059af3d32e8b6c479a5c08eb957db259630117a4a780cd0ff0f6bdf26",
+      "parts": [
+        "(صيحتان من الصدمة والألم)"
+      ]
+    },
+    "MID_MV14_01_m030": {
+      "source_sha256": "615ac884fc902ce64f6623157bc00293cbc6634b8bd360aedcb2c73afa4bb61b",
+      "parts": [
+        "(شهقتا دهشة)"
+      ]
+    }
+  },
+  "MV14_05.msbt.zst": {
+    "MID_MV14_05_m011": {
+      "source_sha256": "c19d3a03593344ea4914596cf40593199a14db50007b60fa8bbfe4abf4d841b0",
+      "parts": [
+        "(صيحتان عند المراوغة)"
+      ]
+    }
+  },
+  "MV14_06.msbt.zst": {
+    "MID_MV14_06_m005": {
+      "source_sha256": "7db9a29811776d1b2a54e85d84db4f726c16d8812d2a75fdc0ce2bd5b4dc64d6",
+      "parts": [
+        "(صيحتا هجوم)"
+      ]
+    },
+    "MID_MV14_06_m006": {
+      "source_sha256": "65f1946e79d655cb30271a6dfff9802053bfb5acbac49bc13cbb81c9db9bb033",
+      "parts": [
+        "(هجومان قويان)"
+      ]
+    },
+    "MID_MV14_06_m016": {
+      "source_sha256": "7db9a29811776d1b2a54e85d84db4f726c16d8812d2a75fdc0ce2bd5b4dc64d6",
+      "parts": [
+        "(صيحتا هجوم)"
+      ]
+    }
+  },
+  "Quest.msbt.zst": {
+    "MSQID_Detail_KAI_LostCat": {
+      "source_sha256": "2bf1e585420ece2cdea2454d3b072da3cc1eae4a9848d595734e0f2fa2cd3cc1",
+      "parts": [
+        "فقدنا إحدى القطط التي نرعاها في معبدنا. لا بد أنها سلكت\nشارع المعبد، وهي الآن تجوب محيط الحلبة. أرجوك أن تجدها!"
+      ]
+    }
+  },
+  "SE_Mic_Guj_CB.msbt.zst": {
+    "MID_SE_Mic_Guj_C_014": {
+      "source_sha256": "98719257d6c904db1898e0b2eda3a7b581d16b6b9bd648a4e7f2a14bf6b64c61",
+      "parts": [
+        "ما زلت أذكر تلك الأيام... كم كان عمرك حين ساقتك المصادفة\nإلى فرقة المرتزقة التي أقودها؟ أربع عشرة سنة؟"
+      ]
+    }
+  },
+  "SE_Nin_Sci_CB.msbt.zst": {
+    "MID_SE_Nin_Sci_C_012": {
+      "source_sha256": "378101102e2c521f89565065bd505d3b7ed8560406a9a48b670ea5b3e996ff98",
+      "parts": [
+        "أتعلم؟ لم أكن قد تجاوزت الخامسة عشرة يوم التقيتك في\nساحة القتال."
+      ]
+    }
+  },
+  "SE_Seo_Lys_CBA.msbt.zst": {
+    "MID_SE_Seo_Lys_A_022": {
+      "source_sha256": "90feaec38e00d7344959a0a2b526c3b849b30e8e83197a699417c3e6d96e74aa",
+      "parts": [
+        "رأيت في عينيك الشعلة نفسها يوم التحقت بالخدمة وأنت فتى في\nالخامسة عشرة."
+      ]
+    }
+  },
+  "SE_Tia_Iio_CB.msbt.zst": {
+    "MID_SE_Tia_Iio_B_011": {
+      "source_sha256": "6a27b562446ce1d1875f66e03f78fbca50916a5fc51f8a3bb87b6221cf0b61d3",
+      "parts": [
+        "لا بد أنني كنت في السادسة حين التقينا صغيرين، أي إنك\nكنت في نحو العاشرة."
+      ]
+    }
+  },
+  "SideStory_Ditlih.msbt.zst": {
+    "MID_SCXX_01_01_m01_001": {
+      "source_sha256": "b12b939774e5d263fd99da4043d99ae8819716c8475cdab756f41c633477b32c",
+      "parts": [
+        "كان هذا المكان يعرف باسم EX-189. يقع في أعماق الأرض، ولا\nسبيل إليه إلا من داخل منشأة أخرى."
+      ]
+    }
+  },
+  "Skill.msbt.zst": {
+    "MSID_H_AdLib": {
+      "source_sha256": "10ccef4683c97a4e548a3b5d6a42d1ac898d19c79c88d6d753666f0a290c272d",
+      "parts": [
+        "تستطيع الوحدة أن تهاجم بعد استخدام فنون اللهب\nأثناء التوهج المفرط."
+      ]
+    },
+    "MSID_H_BeautifulLight": {
+      "source_sha256": "a6d337f8e2a3dd689835e1457510ebe79d7888a73309414ae639ce17e0463a57",
+      "parts": [
+        "عند مداواة حليف بالسحر، تصبح كلفة السحر 0. نسبة\nالتفعيل = الحظ."
+      ]
+    },
+    "MSID_H_MagicTwinAxe": {
+      "source_sha256": "276a1bc6707c665ef02428394dee4fd0789603d2eb6099df794a71e093864751",
+      "parts": [
+        "تنفذ الوحدة هجوما متتابعا بصرف النظر عن سرعة\nالهجوم في المعركة. نسبة التفعيل = السحر ÷\n2."
+      ]
+    },
+    "MSID_H_ClearMind": {
+      "source_sha256": "7f6d3f6da1580949558f01443ff6fdb1e68656f83aa6d28fb421071c3da92132",
+      "parts": [
+        "يبدل الدفاع والمقاومة لمدة مواجهة واحدة أو دور واحد،\nفيأخذ كل منهما قيمة الآخر."
+      ]
+    },
+    "MSID_GreatSniperConfusion": {
+      "source_sha256": "43fce954fa0ee9400b348d37fcdd29df7de6d3b04e5e74280fd93dcf92f07a07",
+      "parts": [
+        "رمية القناص المربكة +"
+      ]
+    },
+    "MSID_GreatFormationIronclad": {
+      "source_sha256": "8649dcd57fb38ec5fa5fc14bc7de620837c350d54847e5c369c158b97346d7d7",
+      "parts": [
+        "تشكيل الحصن +"
+      ]
+    },
+    "MSID_H_Mars2": {
+      "source_sha256": "5833d27c4df52ed6aac065e888a066094f7d0f69f047ddd76048945b871d70e3",
+      "parts": [
+        "لمدة دور واحد، تستعيد الوحدة بعض صحتها كلما هزمت عدوا."
+      ]
+    },
+    "MSID_H_MiasmaPride": {
+      "source_sha256": "766bd0ad4e5a0d63270cfb78cd934b3110e4b5ff7b420b4e94abbc877200c1f2",
+      "parts": [
+        "إذا تجاوز مستوى الوحدة مستوى\nالعدو، تنخفض دقة إصابتها إلى النصف\nأثناء القتال."
+      ]
+    },
+    "MSID_H_SpiritualUnity": {
+      "source_sha256": "43a4dec4367d734a8818d81c234b59a2f317dc92851eb95d24c5484038a55a9e",
+      "parts": [
+        "يعيد مقياس اللهب إلى 0."
+      ]
+    },
+    "MSID_H_Assal+3": {
+      "source_sha256": "b33651c2b0c8a2bf38767ff4cb37dd257c734a9c41776f17089752714736e898",
+      "parts": [
+        "يزيد مقدار الصحة التي تعيدها الضربة المقدسة."
+      ]
+    }
+  },
+  "Spot.msbt.zst": {
+    "MID_H_Spot_Ptolemaeus": {
+      "source_sha256": "ab5c31195f920fb091a444ec5c13fa7de893738158863c12eb98dc2ffd7a4aa8",
+      "parts": [
+        "صخرة عظمى نصبت في منشأة هائلة لتخزين\nالمياه تسمى EX-053."
+      ]
+    },
+    "MID_H_Spot_Magellan": {
+      "source_sha256": "8669e1bd01f5a6f7d8789a45146c391589cc01706497053222327b106893c56e",
+      "parts": [
+        "صخرة عظمى نصبت في منشأة عسكرية هائلة\nتسمى EX-061."
+      ]
+    },
+    "MID_H_Spot_Hannibal": {
+      "source_sha256": "97d9b1ca70224bc69307923cc8dbefbdf755fd091d45ed4cb83de6b306c153de",
+      "parts": [
+        "صخرة عظمى نصبت في مختبر هائل يسمى\nEX-089."
+      ]
+    },
+    "MID_H_Spot_Catalina": {
+      "source_sha256": "4a3e0cf8c4f7c180f74190bab792fa6656e59ebea7561b64cb2dc00b241354d6",
+      "parts": [
+        "صخرة عظمى نصبت في منشأة رصد هائلة تسمى\nEX-091."
+      ]
+    },
+    "MID_H_Spot_Cassiopeia": {
+      "source_sha256": "d1ce73d32626e35b4855c1e705cc05daa60472cdad07171b776c591f644622ab",
+      "parts": [
+        "صخرة عظمى نصبت في منشأة رصد هائلة تسمى\nEX-118."
+      ]
+    },
+    "MID_H_Spot_Hypatia": {
+      "source_sha256": "4f93d457af0bba232b73054e6ec6387d788fc178d77eae6a364914753f7db17b",
+      "parts": [
+        "صخرة عظمى نصبت في شبكة نقل هائلة تسمى\nEX-207."
+      ]
+    }
+  },
+  "System.msbt.zst": {
+    "MID_H_Sys_HPStock": {
+      "source_sha256": "6ba33af6309b8007cce3cbb4b117aa87a230e3aaf9103066c719944e84884a63",
+      "parts": [
+        "عندما تبلغ صحة الوحدة 0، تستهلك رتبة\nواحدة لتستعيد كامل صحتها."
+      ]
+    },
+    "MID_Config_Anim_Special_Help": {
+      "source_sha256": "c308a3a87fbcd30436bc2891bfe61d06d8a6191ac9f7eb37842cc8d82ac5a42b",
+      "parts": [
+        "اختر ما إذا كنت تريد عرض حركات القتال أثناء التوهج المفرط."
+      ]
+    },
+    "MID_Config_Graphics_Brightness_UI_Help": {
+      "source_sha256": "96ec925e92ed2d50f672990f775ee37e95bcf59fae4b8cff9776c776bb2c1743",
+      "parts": [
+        "اضبط سطوع واجهة الاستخدام في اللعبة كلها. يسري هذا الإعداد عند تفعيل\nالمدى الديناميكي العالي (HDR)."
+      ]
+    },
+    "MID_Title_eShop_Restart_Message": {
+      "source_sha256": "1ce430cda8f963cb0839441e1a84537fcdc250ce6d41885417a8e12d1987af59",
+      "parts": [
+        "بعد اكتمال التنزيل، أغلق لعبة «فاير إمبلم: نسيج الأقدار» ثم أعد تشغيلها\nللوصول إلى المحتوى الإضافي الذي اشتريته."
+      ]
+    },
+    "MID_MouseCalibration_Check": {
+      "source_sha256": "d650acb9332f7f7c5f279a7af03303b50757074dc47b7d59dbb2878d5e2b4f81",
+      "parts": [
+        "أمسك وحدة جوي كون 2 اليمنى (R) بزاوية تريح يدك، ثم حركها إلى الأمام\nوالخلف حتى يمتلئ المقياس."
+      ]
+    },
+    "MID_MouseCalibration_Failure": {
+      "source_sha256": "2bfe31c7a37b5b5c7327be9963c3974dba175ad3ee530531b8d51a8e87c850ac",
+      "parts": [
+        "تعذرت المعايرة. استعن بالرسم وأمسك وحدة جوي كون 2\nاليمنى (R) بحيث يكون الزر R في المقدمة."
+      ]
+    }
+  },
+  "System_Bmap.msbt.zst": {
+    "MID_H_BtlMenu_Terrain_Default_SC14_13": {
+      "source_sha256": "1512ec6423e930042db9be34ebb4dc49f6318ac17dc4e9adc535c130478df2a3",
+      "parts": [
+        "يفعل الجهاز ليقوي الحواجز بالسحر\nفي وجه قذائف التراب لمدة دور\nواحد."
+      ]
+    },
+    "MID_H_BtlMenu_Terrain_Default_SC18_10": {
+      "source_sha256": "3f0b10fcf31d6d96317a941f5aef06d90d73e28f5170a1238d4532e7b27d7207",
+      "parts": [
+        "يفعل الجهاز ليبدل تعزيزات الأعداء بين\nالوقاية والصمود."
+      ]
+    },
+    "MID_Battle_StormAwakening": {
+      "source_sha256": "b458e1672d4b133a26d86a409bcb3a2f4d4976056e3cd24ab45de912df55ada8",
+      "parts": [
+        "استخدم برتران «صحوة العاصفة». يزداد تفاديه حتى نهاية طور اللاعب المقبل."
+      ]
+    }
+  },
+  "System_Dungeon.msbt.zst": {
+    "MID_CmdMenu_Link_Cause_NotLp": {
+      "source_sha256": "3ade44b77f81f2c2e97e9e49926e425f458ed5021581bc780ae6624f13f3f8c9",
+      "parts": [
+        "لا تملك ما يكفي من نقاط الترابط."
+      ]
+    },
+    "MID_CmdBtl_RestartBattle_GmapCasual_Annotation": {
+      "source_sha256": "2a8699dbff26fd767a2ea847b53b7360bc5c9331cf7b1ec0f72b428d4da5260b",
+      "parts": [
+        "إذا اخترت «لا»، فستعود إلى داغسيون وفي رصيد كل وحدة نقطة صحة واحدة."
+      ]
+    }
+  },
+  "Terrain.msbt.zst": {
+    "MTID_MagicDefenseTileStop": {
+      "source_sha256": "c4195c16e2d2475c7f23be29d3fa1ca985e916663338c7f6557d996083fc689f",
+      "parts": [
+        "موضع الصمود (خامل)"
+      ]
+    }
+  },
+  "Thermae.msbt.zst": {
+    "MID_SV_Thermae_Buc_m02_01": {
+      "source_sha256": "d4cb80b485944bd1a1225e6b925d97e79eb084c9aadc8338de406353d4039488",
+      "parts": [
+        "أشعر كأنني أصغر بعشر سنوات."
+      ]
+    }
+  },
+  "Tips.msbt.zst": {
+    "MID_Tips_Special_Type_Seize_m01": {
+      "source_sha256": "0edba115a52fd6c985d8b20e8e7e5a01d7a80c572a7cc52de9ca981669eb0a50",
+      "parts": [
+        "يتيح استخدام «إدارة اللهب» (سكينة العالم السفلي) لإعادة مقياس اللهب إلى 0."
+      ]
+    },
+    "MID_Tips_Special_Type_Resistance_m01": {
+      "source_sha256": "a75273ffa1a050abfe12ed624ff0886b9a0c9004b004fd9e0a7fb570e5d472e2",
+      "parts": [
+        "يمنع الانفجار من خفض الحد الأقصى للصحة أثناء التوهج المفرط."
+      ]
+    },
+    "MID_Tips_Mouse3_m01": {
+      "source_sha256": "0f91c6e4626205cd419d17dad189a60f2bd6196080e11d00bce6441b63a0b0bc",
+      "parts": [
+        "كلما أسرعت في تحريك وحدة جوي كون 2 في وضع الفأرة، قطع المؤشر مسافة أكبر على الخريطة."
+      ]
+    }
+  }
+}

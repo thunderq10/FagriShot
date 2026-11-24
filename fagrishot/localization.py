@@ -220,9 +220,15 @@ class MessageTable:
             if expected is not None and expected.get(label) != entry.source_sha256:
                 raise LocalizationError(f"MSBT source fingerprint differs for {label}.")
             if isinstance(change, dict):
-                if "parts" not in change or set(change) - {"parts", "choices", "argument_order"}:
+                if "parts" not in change or set(change) - {"parts", "choices", "argument_order", "flow"}:
                     raise LocalizationError("Unexpected MSBT translation fields.")
-                new = entry.replaced(change["parts"], change.get("choices"), change.get("argument_order"))
+                if "flow" in change:
+                    if change["flow"] != "auto" or "argument_order" in change:
+                        raise LocalizationError("Invalid automatic MSBT layout.")
+                    from .localization_flow import render
+                    new = render(entry, change["parts"], change.get("choices"))
+                else:
+                    new = entry.replaced(change["parts"], change.get("choices"), change.get("argument_order"))
             else:
                 new = entry.replaced(change)
             index = self.labels[label]
@@ -283,6 +289,14 @@ def write_overrides(romfs, output_romfs, translations, *, source_hashes=None):
     Optional source_hashes has the same file and label keys, with entry SHA-256 values.
     Returns the number of changed resources. The caller may add unrelated font assets.
     """
+    return write_override_tables(romfs, output_romfs, (
+        (name, changes, None if source_hashes is None else source_hashes.get(name, {}))
+        for name, changes in translations.items()
+    ))
+
+
+def write_override_tables(romfs, output_romfs, tables, *, prepare_entries=None, include_unchanged=False):
+    """Publish an iterable of (basename, changes, source hashes) as one atomic locale."""
     import zstandard
 
     source = _us_english(romfs)
@@ -298,13 +312,14 @@ def write_overrides(romfs, output_romfs, translations, *, source_hashes=None):
     try:
         changed = 0
         compressor = zstandard.ZstdCompressor(level=9)
-        for name, changes in translations.items():
+        for name, changes, expected in tables:
             if not _RESOURCE_NAME.fullmatch(name):
                 raise LocalizationError("Invalid MSBT resource basename.")
             table = read_resource(source / name)
-            expected = None if source_hashes is None else source_hashes.get(name, {})
+            if prepare_entries is not None:
+                changes = prepare_entries(name, table, changes)
             patched = table.patch(changes, expected)
-            if patched != table.raw:
+            if include_unchanged or patched != table.raw:
                 (stage / name).write_bytes(compressor.compress(patched))
                 changed += 1
         stage.rename(destination)

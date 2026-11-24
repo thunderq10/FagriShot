@@ -68,7 +68,7 @@ function showGraphics(data) {
 function showArabic(data) {
   arabic = data;
   id('arabic-text').checked = data.enabled;
-  const coverage = data.coverage || 'Translates selected dialogue and menus. Other text uses the game language.';
+  const coverage = data.coverage || 'Coverage is unavailable for this catalog.';
   id('arabic-coverage').textContent = data.available ? [data.message, coverage].filter(Boolean).join(' ') :
     (data.message || 'Arabic preview files are unavailable.');
   controls();

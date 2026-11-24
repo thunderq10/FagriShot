@@ -6,6 +6,8 @@ For the Windows player, download **FagriShot-Windows-x64.zip**, extract it into 
 
 ## Developer tooling preview
 
+For a private offline Arabic campaign, add `--arabic-campaign <folder>` to `scripts/package_player.py`. The folder contains `manifest.json` and one Zstandard-compressed translation JSON per declared message table. The packager checks each table digest. The extracted-player verification reads every table with the bundled Python and compares its entry count with the launcher's coverage. Reviewed entries in `fagrishot/arabic_data/*.json` take precedence when their source fingerprint matches.
+
 Extract the entire archive into its own directory. Use Windows 11 x64, Python 3.13 x64 on PATH as `python`, and the Microsoft Edge WebView2 Runtime for the graphical launcher. Run `FagriShotLauncher.exe` for the desktop interface. The same executable forwards command-line arguments to the adjacent Python tools.
 
 ```powershell

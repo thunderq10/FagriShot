@@ -144,4 +144,9 @@ const game::Info& full_info() {
 
 }  // namespace nxrt::games::fefw
 
-void nxrt_register_game_fefw() { nxrt::game::set_current(&nxrt::games::fefw::full_info()); }
+namespace nxrt::games::fefw { void install_movie_labels(); }
+
+void nxrt_register_game_fefw() {
+    nxrt::game::set_current(&nxrt::games::fefw::full_info());
+    nxrt::games::fefw::install_movie_labels();
+}

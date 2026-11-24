@@ -1,4 +1,5 @@
 import json
+import hashlib
 from pathlib import Path
 import tempfile
 import unittest
@@ -39,7 +40,8 @@ class ArabicPreviewTests(unittest.TestCase):
         self.catalogs.mkdir(parents=True)
         (self.root / "fonts").mkdir()
         (self.root / "fonts/DejaVuSans.ttf").write_bytes(b"font fixture")
-        for name in ("arabic.py", "arabic_font.py", "localization.py", "localization_art.py"):
+        for name in ("arabic.py", "arabic_campaign.py", "arabic_font.py", "localization.py", "localization_flow.py",
+                     "localization_art.py", "localization_logo.py"):
             (self.root / "fagrishot" / name).touch()
         self.entry = {"source_sha256": "1"*64, "parts": ["اختبار"]}
         (self.catalogs / "first.json").write_text(json.dumps({"System.msbt.zst": {"one": self.entry}}))
@@ -51,7 +53,7 @@ class ArabicPreviewTests(unittest.TestCase):
         state = arabic.status(self.settings, self.root)
         self.assertTrue(state["available"])
         self.assertFalse(state["enabled"])
-        self.assertIn("2 selected", state["coverage"])
+        self.assertEqual((state["covered"], state["reviewed"], state["machine_draft"]), (2, 2, 0))
         self.assertTrue(arabic.set_enabled(self.settings, self.root, True)["enabled"])
         self.assertFalse(arabic.set_enabled(self.settings, self.root, False)["enabled"])
         (self.catalogs / "duplicate.json").write_text(json.dumps({"System.msbt.zst": {"one": self.entry}}))
@@ -60,9 +62,10 @@ class ArabicPreviewTests(unittest.TestCase):
 
     def test_immutable_overlay_reuse_and_recovery_when_file_changes(self):
         romfs, private = self.root / "input", self.root / "private"
-        def messages(source, output, changes, *, source_hashes):
-            self.assertEqual(set(changes["System.msbt.zst"]), {"one", "two"})
-            self.assertEqual(source_hashes["System.msbt.zst"]["one"], "1"*64)
+        def messages(source, output, tables, *, prepare_entries, include_unchanged):
+            [(name, rows, hashes)] = list(tables)
+            self.assertEqual(set(prepare_entries(name, None, rows)), {"one", "two"})
+            self.assertEqual(hashes["one"], "1"*64)
             folder = output / "Msg/USen"
             folder.mkdir(parents=True)
             (folder / "System.msbt.zst").write_bytes(b"synthetic message")
@@ -77,10 +80,10 @@ class ArabicPreviewTests(unittest.TestCase):
             target = output / "Layout/Textures/Tutorial/USen/TUT_Hub_AutoSave_001.bntx.zst"
             target.parent.mkdir(parents=True)
             target.write_bytes(b"synthetic autosave graphic")
-        with (patch.object(arabic, "write_overrides", side_effect=messages) as generate,
+        with (patch.object(arabic, "write_override_tables", side_effect=messages) as generate,
               patch("fagrishot.arabic_font.visual_text", side_effect=lambda s: s),
               patch("fagrishot.arabic_font.patch_fonts", side_effect=fonts),
-              patch("fagrishot.localization_art.patch_autosave_art", side_effect=artwork)):
+              patch("fagrishot.localization_art.patch_tutorials", side_effect=artwork)):
             first = arabic.prepare(romfs, private, "verified", self.root)
             self.assertEqual(first, arabic.prepare(romfs, private, "verified", self.root))
             self.assertEqual(generate.call_count, 1)
@@ -88,6 +91,39 @@ class ArabicPreviewTests(unittest.TestCase):
             second = arabic.prepare(romfs, private, "verified", self.root)
             self.assertNotEqual(first, second)
             self.assertEqual(generate.call_count, 2)
+
+    def test_offline_draft_integrity_and_reviewed_precedence(self):
+        import zstandard
+        from fagrishot.arabic_campaign import Campaign, ELIGIBLE_LABELS, SOURCE_LABELS
+
+        pkg = self.catalogs / "campaign"
+        pkg.mkdir()
+        name = "System.msbt.zst"
+        older = {**self.entry, "parts": ["نص آلي"]}
+        compressed = zstandard.ZstdCompressor().compress(json.dumps({"one": older, "three": older}).encode())
+        file = pkg / (name + ".json.zst")
+        file.write_bytes(compressed)
+        (pkg / "manifest.json").write_text(json.dumps({
+            "schema": 1, "source_update": 131072, "source_labels": SOURCE_LABELS, "eligible_labels": ELIGIBLE_LABELS,
+            "files": {name: {"entries": 2, "sha256": hashlib.sha256(compressed).hexdigest()}}}))
+        state = arabic.status(self.settings, self.root)
+        self.assertEqual((state["covered"], state["reviewed"], state["machine_draft"]), (3, 2, 1))
+        campaign = Campaign(pkg)
+        self.assertEqual(campaign.merged(name, {"one": self.entry})["one"], self.entry)
+        with self.assertRaisesRegex(ValueError, "sources disagree"):
+            campaign.merged(name, {"one": {**self.entry, "source_sha256": "2"*64}})
+        file.write_bytes(compressed + b"damaged")
+        with self.assertRaisesRegex(ValueError, "SHA-256"):
+            campaign.entries(name)
+
+    def test_source_widths_precede_shaping_and_preserve_paragraphs(self):
+        def wrap(text, original):
+            return arabic.wrap_draft(text, original, {"?": 1, "و": 2}, lambda value: value)
+        self.assertEqual(wrap("  اا وو اا\n\nج د  ", "aaaaa\nbbb\n\nx y"), "  اا\nوو\nاا\n\nج د  ")
+        self.assertEqual(wrap("اسم اللاعب", "Name"), "اسم اللاعب")
+        self.assertEqual(wrap("كلمةطويلةجدا", "aa\nbbb"), "كلمةطويلةجدا")
+        with self.assertRaisesRegex(ValueError, "paragraph breaks"):
+            wrap("الجملة الأولى ثم الثانية", "One\n\nTwo")
 
     def test_player_switch_changes_only_the_runtime_environment(self):
         dirs = {key: self.root / key for key in ("settings", "saves", "logs")}

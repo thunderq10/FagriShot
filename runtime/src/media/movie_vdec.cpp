@@ -81,6 +81,9 @@ bool serial_done(uint64_t serial);
 
 namespace nxrt::media {
 
+static const MovieOverlay* g_movie_overlay = nullptr;
+void set_movie_overlay(const MovieOverlay* overlay) { g_movie_overlay = overlay; }
+
 // I420 to NV12, rows packed at the picture's width, chroma interleaved (SSE2 on x86-64).
 void i420_to_nv12(uint8_t* o, uint32_t w, uint32_t h, const uint8_t* py, ptrdiff_t sy, const uint8_t* pu, const uint8_t* pv, ptrdiff_t suv) {
     if (sy == static_cast<ptrdiff_t>(w)) {
@@ -255,6 +258,7 @@ struct Decoder {
     std::condition_variable cv;              // the worker waits here for packets, free frames, and room in `decoded`
     std::condition_variable deliver_cv;      // serialises off-lock frame delivery and synchronises flush/register/retire
     std::thread worker;
+    int64_t movie_overlay_token = 0;        // worker-owned, reset when the compressed stream changes
     bool stop = false;
     bool delivering = false;                 // a thread is copying a picture into a guest VideoFrame without `mu` held
     bool eos_queued = false;                 // end-of-stream packet queued; stop asking for input until Flush
@@ -413,6 +417,8 @@ void deliver_locked(Decoder& d, std::unique_lock<std::mutex>& lk, bool wait_if_b
             if (buf && y + uv <= cap) {
                 i420_to_nv12(reinterpret_cast<uint8_t*>(buf), p.w, p.h, static_cast<const uint8_t*>(p.pic.data[0]), p.pic.stride[0],
                              static_cast<const uint8_t*>(p.pic.data[1]), static_cast<const uint8_t*>(p.pic.data[2]), p.pic.stride[1]);
+                if (g_movie_overlay && p.pic.m.offset > 0)
+                    g_movie_overlay->draw(p.pic.m.offset, reinterpret_cast<uint8_t*>(buf), p.w, p.h);
             } else {
                 size_err = true;
                 y = uv = 0;
@@ -472,6 +478,10 @@ void decode_packet(Decoder& d, Dav1dContext* av1, const Packet& k, std::vector<P
     }
     std::memcpy(b, k.data.data(), k.data.size());
     in.m.timestamp = k.time;
+    if (g_movie_overlay) {
+        d.movie_overlay_token = g_movie_overlay->identify(k.data.data(), k.data.size(), d.movie_overlay_token);
+        in.m.offset = d.movie_overlay_token;
+    }
     for (int guard = 0; in.sz && guard < 64; ++guard) {
         const int r = dav1d_send_data(av1, &in);
         if (r < 0 && r != DAV1D_ERR(EAGAIN)) {
@@ -544,6 +554,7 @@ void worker_main(Decoder* d) {
         if (d->stop) break;
         if (gen != d->generation) {
             gen = d->generation;
+            d->movie_overlay_token = 0;
             if (av1) {
                 lk.unlock();
                 dav1d_close(&av1);
@@ -571,6 +582,7 @@ void worker_main(Decoder* d) {
         if (reopen) av1 = open_av1(*d, config);
         if (k.eos) {
             drain_av1(*d, av1, out);
+            d->movie_overlay_token = 0;
             out.emplace_back();
             out.back().eos = true;
         } else if (av1) {

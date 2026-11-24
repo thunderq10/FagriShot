@@ -92,6 +92,10 @@ await fs.cp(path.join(installed,'fagrishot'),path.join(isolated,'fagrishot'),{re
 for (const file of ['compatibility/supported.json','scripts/fagrishot.py',packaged?'player-package.json':'recomp/games/fefw/config.py'])
   await fs.copyFile(path.join(installed,file),path.join(isolated,file));
 if (packaged) await fs.symlink(path.join(installed,'tools/python'),path.join(isolated,'tools/python'),'junction');
+else if (await exists(path.join(installed,'tools/.venv/Scripts/python.exe'))) {
+  await fs.mkdir(path.join(isolated,'tools'),{recursive:true});
+  await fs.symlink(path.join(installed,'tools/.venv'),path.join(isolated,'tools/.venv'),'junction');
+}
 await fs.mkdir(path.join(isolated,'fonts'),{recursive:true});
 await fs.copyFile(path.join(installed,packaged?'fonts/DejaVuSans.ttf':'runtime/assets/fonts/DejaVuSans.ttf'),path.join(isolated,'fonts/DejaVuSans.ttf'));
 
@@ -107,7 +111,7 @@ await session(isolatedExe,direct?['--play-game']:[],path.join(run,'webview'),loc
   await fs.writeFile(settingsFile,'{');
   await click('#retry');
   await wait("!document.querySelector('#settings-warning').hidden && !document.querySelector('[data-pick=ExeFS]').disabled",'repairable settings');
-  await wait("!document.querySelector('#arabic-text').disabled && document.querySelector('#arabic-coverage').textContent.includes('selected')",'Arabic preview availability and coverage');
+  await wait("!document.querySelector('#arabic-text').disabled && /editorially reviewed.*machine drafts/.test(document.querySelector('#arabic-coverage').textContent)",'Arabic preview availability and coverage');
   const arabicPreference=path.join(path.dirname(settingsFile),'arabic.json');
   await click('#arabic-text');
   await wait("document.querySelector('#arabic-text').checked && !document.querySelector('#arabic-text').disabled",'Arabic preview enabled');

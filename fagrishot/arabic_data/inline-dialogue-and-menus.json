@@ -1,0 +1,1026 @@
+{
+  "0_ISM_Battle.msbt.zst": {
+    "MID_SC00_02_e05_001": {
+      "source_sha256": "bdaacd433f82b6d35888449b0902b4282709b72bf2dc5d2bafc233f44188f16f",
+      "parts": [
+        "هذا عدو ",
+        "طائر",
+        ". والأعداء من هذا النوع\n",
+        "ضعفاء أمام السهام",
+        "."
+      ],
+      "flow": "auto"
+    }
+  },
+  "2_XXX_Battle.msbt.zst": {
+    "MID_SC30_06_e03_001": {
+      "source_sha256": "46d407fd898c931964089370d8783252b7c0fb0523cc921d191830e35549853f",
+      "parts": [
+        "... لم يبق هنا أي أثر."
+      ],
+      "flow": "auto"
+    }
+  },
+  "LG_1LED_cAssist.msbt.zst": {
+    "MID_LGV_1LED_LG14_009_m01_003": {
+      "source_sha256": "0a3f10bc06763477f178ee2347bdee1aab613676ab192109a4f27198d393cb67",
+      "parts": [
+        "في داغسيون ",
+        "حداد ",
+        "يتولى ",
+        "صقل ",
+        "الأسلحة\nو",
+        "إصلاحها",
+        " لنا."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1LED_TG14_002_GM_m01_001": {
+      "source_sha256": "464583f250e09ccb07e86988d6f46dd837a912afc46676d5c1ed9cfda71d0a54",
+      "parts": [
+        "صاحب الطلب هو ",
+        "يامان",
+        "، ",
+        "أليس كذلك؟\nهيا بنا يا ليدا!"
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1LED_TG14_109_m01_001": {
+      "source_sha256": "8a20fe889beeaee1f8e99eded40d95f0043194727d401a48eb6fe368a61f0cb4",
+      "parts": [
+        "هيه هيه... صقلت مهاراتي، وأحسبني الآن\nمستعدا لخوض ",
+        "اختبار التأهل",
+        "."
+      ],
+      "flow": "auto"
+    }
+  },
+  "LG_1SEO_cAssist.msbt.zst": {
+    "MID_LGV_1SEO_LG13_009_m03_003": {
+      "source_sha256": "c464b5d6b1d85350a741a316fc37cbafefd74404f5b1e65fba43f0886ecda225",
+      "parts": [
+        "وأول أهدافنا ",
+        ". فلنرسل المؤن إلى ديارنا\nحتى نبلغ غايتنا."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_1SEO_LG13_009_m04_002": {
+      "source_sha256": "65eeb5d145d7c5265ca3b09d0b56ebb90c5053b14f0c786a23734e8aa12c27b6",
+      "parts": [
+        "وهدفنا التالي ",
+        ". فلنرسل المؤن إلى ديارنا\nحتى نبلغ غايتنا."
+      ],
+      "flow": "auto"
+    }
+  },
+  "LG_SideStory_Kai.msbt.zst": {
+    "MID_LGV_SCXX_00_m03_003": {
+      "source_sha256": "45a263fb3f43fe4eef3c30ae84907c1b74d946edc8a22edd31acea60c640c44c",
+      "parts": [
+        "حددنا موعد الاضطراب الكبير في الحلبة في شهر ",
+        "، يوم ",
+        ".\nقابلني في موعد أقصاه ٢٢ أوكسوم."
+      ],
+      "flow": "auto"
+    }
+  },
+  "LG_SideStory_Leda.msbt.zst": {
+    "MID_LGV_SCXX_03_m03_002": {
+      "source_sha256": "11eb409d73efdb8b3d344e0b539c12fc2457684ff74b9f49bd438ce3928b20e5",
+      "parts": [
+        "سأنفذ الخطة في شهر ",
+        "، يوم ",
+        ". إن أردت المساعدة،\nفالقني في موعد أقصاه ٨ سيفتيم."
+      ],
+      "flow": "auto"
+    },
+    "MID_LGV_SCXX_03_m03_003": {
+      "source_sha256": "11eb409d73efdb8b3d344e0b539c12fc2457684ff74b9f49bd438ce3928b20e5",
+      "parts": [
+        "سأنفذ الخطة في شهر ",
+        "، يوم ",
+        ". إن أردت المساعدة،\nفالقني في موعد أقصاه ٨ سيفتيم."
+      ],
+      "flow": "auto"
+    }
+  },
+  "Obelisk.msbt.zst": {
+    "MID_Obelisk_3ISM_c01_Digest": {
+      "source_sha256": "1ff89b68152984f392e689cfc05280120cc36a98e1babfb59356a5fe52eadfa8",
+      "parts": [
+        ": بعد عناء طويل في قاعة المسلة التي أعدتها فورتونا إلهة القدر،\nها هي داغسيون قد صارت مدينة من العالم السفلي لا يعيش فيها أحد.\nوالمهمة الآن تحطيم بوابات العالم السفلي وتخليص العالم من جند بالور، الإله الشيطان."
+      ],
+      "flow": "auto"
+    },
+    "MID_Obelisk_3ISM_c03_Digest": {
+      "source_sha256": "823bda8b3353a0c4de8c6341882534340f3424b5b4a1a8922098121ad00e4e5a",
+      "parts": [
+        ": بعد هزيمة بريزا، سيد الكبريت المولع بالقوة، تشتد الحرب ضراوة.\nوفي خضم الصراع بين الأحياء والموتى العائدين الذين لا يردعهم عن القتل\nعهد ولا قرابة، تكشف فورتونا حقيقة تمرد بالور على الإله الأول."
+      ],
+      "flow": "auto"
+    }
+  },
+  "Rule.msbt.zst": {
+    "MID_LOSERULE_Destroy": {
+      "source_sha256": "bb9a6d6ae270b6cbe0b5d6c749ea1319571822604971a37d6efa30d7c0097259",
+      "parts": [
+        ": سقوط هذه الوحدة في المعركة."
+      ],
+      "flow": "auto"
+    },
+    "MID_LOSERULE_Destroy2": {
+      "source_sha256": "ab77833c0e14f3f0d7a4c11da071d8cc8935bda472db65b9db481688c7b39463",
+      "parts": [
+        " أو ",
+        ": سقوط إحدى الوحدتين في المعركة."
+      ],
+      "flow": "auto"
+    },
+    "MID_LOSERULE_Destroy3": {
+      "source_sha256": "5289f9357305891bf95c2ee6c4db9cdb05fd6be8ceeabf425a450f10af7815f3",
+      "parts": [
+        "، ",
+        "،\nأو ",
+        ": سقوط إحدى هذه الوحدات في المعركة."
+      ],
+      "flow": "auto"
+    }
+  },
+  "System.msbt.zst": {
+    "MID_Config_BGM_CmdBattle_Help": {
+      "source_sha256": "a769488915e3efbf53cf1a7a52abdf71c2c169e4425feac25c3bee5ef26e1daa",
+      "parts": [
+        "اختر الموسيقى المصاحبة ",
+        "للصدامات."
+      ],
+      "flow": "auto"
+    },
+    "MID_DeployMenu_NotRide_Message": {
+      "source_sha256": "16ac54cbbaf966a8156262403b25e686dd1b24d90e30b836a5f9795c1c2a4d50",
+      "parts": [
+        "لا يمكن إسناد سوى ",
+        " إلى ",
+        "\nضمن فئة ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_Menu_Cause_NotScout": {
+      "source_sha256": "3da798e5abf7b46634ec197170451c3d07ab967ada5bee6a897548ef985876d7",
+      "parts": [
+        "يتعذر ",
+        "تجنيد هذه الوحدة الآن."
+      ],
+      "flow": "auto"
+    },
+    "MID_Menu_Cause_UsedLesson": {
+      "source_sha256": "d1903354244ec2763b72a46b98685b7a78898dd3f8a9382afe1762499a0e0345",
+      "parts": [
+        "لا توجد دروس ",
+        "إرشاد متاحة."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_InfoTelop_CmdBtl_Support": {
+      "source_sha256": "85a6f7ec79fdc2da25d79a302cb51de3d8e38d26ee2608e49e5f0f02a2788db8",
+      "parts": [
+        ": وصلت المساندة."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_InfoTelop_Transport_Full": {
+      "source_sha256": "e7c457122a9b10b63c61c09654f9593280065f084a7292590463f45d0c085ec0",
+      "parts": [
+        ": تم التخلص من هذا العنصر."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_ItemBroken_Message": {
+      "source_sha256": "55996781318597473005b0acf747f57307183faacbb221e688a6ae0a2cbfeecd",
+      "parts": [
+        ": انكسر السلاح (",
+        ").\nانخفضت قوته ودقة إصابته."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Reliance_Notification_LvUp_Unlock": {
+      "source_sha256": "c9270899bb48a5797beff56344ce16981e44b0a8e65d0134d622b2e3896a83d7",
+      "parts": [
+        "أصبحت محادثة دعم جديدة متاحة."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_Acquired": {
+      "source_sha256": "11a715d5b3a465b0958d24f6bf19e1735b179c1f8bb960aa76087b10bb225029",
+      "parts": [
+        "تم تعلم ",
+        ": "
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_Acquired_Title": {
+      "source_sha256": "525aa8d9e7534efab7346ca04310fc00c089dbedf211709d35c5d1ea5292c564",
+      "parts": [
+        ": تم تعلم ",
+        " التالية:"
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_GetGold": {
+      "source_sha256": "4cf15480a75d5876c6a2647c61e20cc272dcd59f0d663c842fa32168d6543588",
+      "parts": [
+        "قيمة المكافأة ",
+        " قطعة ذهبية."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_GetReward": {
+      "source_sha256": "cfc58695bf519eb3e5076780d0e6682d5e1ceadf9532c4b026e64b546d87bce2",
+      "parts": [
+        "المكافأة التي حصلت عليها: ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_Get_Animal": {
+      "source_sha256": "2cbef33517857bdd9f9ce25bf46eb1e5fae3d94444088a3a47381242eb3c655e",
+      "parts": [
+        "نجحت في الإمساك بـ ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_Get_Animal_Failed": {
+      "source_sha256": "5000cad77b9fec8e62009293fdb3a34df43a387c7441379efdf6542e43caa134",
+      "parts": [
+        "تعذر الإمساك بـ ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_LevelUp": {
+      "source_sha256": "559f7c098be11d77d17e0fde1377bc18416e7828db5d4638ecaf410a3c212461",
+      "parts": [
+        ": ارتفع المستوى إلى ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_SendTransport": {
+      "source_sha256": "9d2c0c0acebf96e0cdf264fe74b24da3ca8dfffffc1e4b249d5fce516af4b42d",
+      "parts": [
+        "أرسل إلى المخزن: ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_Skill_EXP_Up": {
+      "source_sha256": "470c0c6134ae22686f7607e9fa45664e7b1c39f67c65e4dde7ce313babc186e0",
+      "parts": [
+        ": ازدادت خبرة المهارة."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_Stable_GetSkill1": {
+      "source_sha256": "dd08bcb522142c3979ee53011f61f789bb4561139f62d0014b269137c2349b3c",
+      "parts": [
+        " و",
+        ": توثقت الصلة بينهما بما يكفي\nلاستخدام قدرة ركوب جديدة."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_Status_Up": {
+      "source_sha256": "075d89c1051323df5f2c9a67e7ce23eb909e1a2c99563c6799855f0e81f48b7e",
+      "parts": [
+        ": ارتفعت خصائص الوحدة."
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_Result_Msg_Thermae_Acquired": {
+      "source_sha256": "680afbc8cee5aa1770aa39d558df253ac31307f2e9c87fe66cffcf6376eaaec4",
+      "parts": [
+        ": اكتسبت الوحدة قدرة مؤقتة:"
+      ],
+      "flow": "auto"
+    },
+    "MID_Sys_UnusableCommand_Help": {
+      "source_sha256": "1bccbfa90a3cbaee1928de73e66c5d657df3af30a752cfe7e11f86f03612a8ee",
+      "parts": [
+        "لا يسري هذا على ",
+        "الصدامات."
+      ],
+      "flow": "auto"
+    }
+  },
+  "System_Bmap.msbt.zst": {
+    "MID_RewindMsg_Assist_Arts": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Assist_Magic": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Attack": {
+      "source_sha256": "89579a8bb323f08abd3f95246b4391539c24fe5f3080ab966bc10386116b4757",
+      "parts": [
+        ": إلحاق ",
+        " من الضرر بالهدف ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Defeat": {
+      "source_sha256": "211628ee93462eff0e8cfe7cb7e0acdb62974dcecc4d2d34e51f76382de3da4b",
+      "parts": [
+        ": الانتصار على ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Defeat2": {
+      "source_sha256": "ef5b83a9808cbc7993867b7f99b5cbb7e18574487381a96c2fa8547cdf8c3b73",
+      "parts": [
+        ": الانتصار على ",
+        " وآخرين."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Destroy": {
+      "source_sha256": "de7b686b558dafb2f4ec4bd8ac0db9c610f821e24dc6e49ed0e425d447b4d388",
+      "parts": [
+        ": تدمير ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Fixed": {
+      "source_sha256": "529b0b3c5053b82fe63d84743cb4c6293ea8deefea4eec0a887e306e11769175",
+      "parts": [
+        ": نفذت الوحدة إجراء."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Gambit": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Get_Item": {
+      "source_sha256": "35ba60055cf1b22608fbace707d0d948bca52f4147ced47d98638e4d52ffba8b",
+      "parts": [
+        ": العثور على ",
+        " في الصندوق."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_HPRecovery_Magic": {
+      "source_sha256": "f1387a0e03ea4bb6a5ab24e8e2845994f2939e8685ba61175fcbd429d3e72232",
+      "parts": [
+        ": استعادة ",
+        " نقطة صحة لصالح ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Mov": {
+      "source_sha256": "f3ff392df87471ef66e7d881a47143b18050bdd90fef92aad87ab07760d152f7",
+      "parts": [
+        ": تحركت الوحدة."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Open_Treasurebox": {
+      "source_sha256": "9499471fcd71956517c0b09c4b7efc5feb093b0ca1df503d94374febbd2660ac",
+      "parts": [
+        ": فتحت الوحدة الصندوق."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Person_Attack": {
+      "source_sha256": "89579a8bb323f08abd3f95246b4391539c24fe5f3080ab966bc10386116b4757",
+      "parts": [
+        ": إلحاق ",
+        " من الضرر بالهدف ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Rage": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Recovery_Magic": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Secede": {
+      "source_sha256": "7c34547c515c2d127042da43e0831ffd5a5d1e97cf8b8efeb01f6b877f95b35a",
+      "parts": [
+        ": انسحبت الوحدة من أرض المعركة."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Skill": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Special": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_UnitSkill": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Used_Item": {
+      "source_sha256": "505e48367d66bc338cef81afe430bf3003b14aab5f9866ba15d01cb22c971a13",
+      "parts": [
+        ": استخدام ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_RewindMsg_Wait": {
+      "source_sha256": "11eef2e5cd1c7340db5210a23d94b27b393639be1740a2d8aebeb802389b4902",
+      "parts": [
+        ": انتظرت الوحدة."
+      ],
+      "flow": "auto"
+    }
+  },
+  "System_Dungeon.msbt.zst": {
+    "MID_CmdBtl_RestartBattle_GmapClassic_Annotation": {
+      "source_sha256": "df3824e4c63da9cefe0243cf5794bce2fb9e30d35e439ecc2e1d301dd1492e76",
+      "parts": [
+        "إذا اخترت «لا»، فستهزم كل وحدات الفرقة وتفقدها، حتى الوحدات التي لم تشارك في الصدام.\n(",
+        ": ستتبقى نقطة صحة واحدة، وستعود إلى داغسيون.)"
+      ],
+      "flow": "auto"
+    }
+  },
+  "System_Facility.msbt.zst": {
+    "MID_Map_Facility_Temple_Help": {
+      "source_sha256": "b8e522c3e7a56224716955ec7e8572f19725fd79fb43e0c240d5daad449dcc9e",
+      "parts": [
+        "معبد تمثل فيه بين يدي الآلهة وتؤدى فيه ",
+        "الخدمة. شارك غيرك في ",
+        "الخدمة\nلتوثيق الصلة بينكم ونيل البركات."
+      ],
+      "flow": "auto"
+    },
+    "MID_Map_Facility_Temple_Main_Help": {
+      "source_sha256": "cae4b38b4fb91fc2492591a9a1d56b929a63b1533cf9d9cde3f3369fdd86f06d",
+      "parts": [
+        "يمكن أداء أعمال ",
+        "الخدمة هنا. ومن يشترك في ",
+        "الخدمة مع غيره\nتتوثق صلته به وينال بركات أعظم."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD11_06_Help": {
+      "source_sha256": "c7fde926a7f4266b9b3570ec818cc52bfaa6740c9d4833982d9bfd241c28bcfd",
+      "parts": [
+        "يلتقي فرسان سحابة الرعد اليوم بالعشائر الأخرى.\nشاهد المباراة في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD11_09_Help": {
+      "source_sha256": "507f4077086acdc750222c95a81283fe0ecb836e9fa1508fcc279c2adde3425e",
+      "parts": [
+        "تلتقي أخوية براغانسا اليوم بالعشائر الأخرى.\nشاهد المباراة في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD11_10_Help": {
+      "source_sha256": "2079f2ed03ef1dca4f3cc709798c4eea25ef7ece78281ad353522b0c4ecada82",
+      "parts": [
+        "تجري اليوم مباراة بين رياح ريبيرا وعاصفة الورد.\nشاهدها في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD12_10_Help": {
+      "source_sha256": "acd3c77c003684071b9840ce61ff993486c8f99701c3b278c5129f3517a96c95",
+      "parts": [
+        "يلتقي جيش أراغو اليوم بالعشائر الأخرى.\nشاهد المباراة في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD12_15_Help": {
+      "source_sha256": "902c1d1690dd15cd0c6c3ef353c516005f3bfed83d70c6839256c30f042d01d9",
+      "parts": [
+        "تجري اليوم مباراة بين آل لامين وموكب عرس الغراب الشاحب.\nشاهدها في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD12_16_Help": {
+      "source_sha256": "23cd22bf3c75813c560554a398379ac716de74f983eb5c9399e6ee53a369d29c",
+      "parts": [
+        "تجري اليوم مباراة بين آل لامين والعرف الملتهب.\nشاهدها في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD13_04_Help": {
+      "source_sha256": "b5b042ac541f1b9e83a43a81e88c66a34fda3259aaf71da8d216736044583aad",
+      "parts": [
+        "يلتقي ألكور المنسي اليوم بالعشائر الأخرى.\nشاهد المباراة في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD13_11_Help": {
+      "source_sha256": "8a7b1cbba8930f146dc7968a0d64ac2aaf5ce00a23fc1cf39eb7590e46c740c5",
+      "parts": [
+        "تجري اليوم مباراة بين منارة ميغايرا وحكاية القمر.\nشاهدها في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD13_12_Help": {
+      "source_sha256": "dfa24072c1553297dfe3c7c808b1fdeb65d97d0692ff29aea205233470b1fe3f",
+      "parts": [
+        "تجري اليوم مباراة بين رياح ريبيرا ومنارة ميغايرا.\nشاهدها في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD14_06_Help": {
+      "source_sha256": "d6d7e9d595cbfb64409594b5f6eb81a46bba028ce1173764e40611c746296e9e",
+      "parts": [
+        "تلتقي أمطار بالما اليوم بالعشائر الأخرى.\nشاهد المباراة في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD15_11_Help": {
+      "source_sha256": "c3100bb02c75edf809752ded0e6ca46895f73ec3abcae5cfc7c5cc40b2c9a4c0",
+      "parts": [
+        "تجري اليوم مباراة استعراضية بين شيطان العرف الأبيض والحاصد.\nشاهدها في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    },
+    "MID_WatchMenu_WD15_13_Help": {
+      "source_sha256": "18f1d0e8f98463d72343f992f08eec0b4908999be50e7fcaad4b467ec2616756",
+      "parts": [
+        "تجري اليوم مباراة بين العرف الملتهب وقطرات ندى ليناريا.\nشاهدها في ",
+        "الحلبة."
+      ],
+      "flow": "auto"
+    }
+  },
+  "System_Hub.msbt.zst": {
+    "MID_ClassChangeMenu_CostumeInvalid_Message": {
+      "source_sha256": "0ca3d0665ebb59193c45079a22b0785ebd19603da2bb50ff9a0c3f3e34b618ba",
+      "parts": [
+        ": هذه الفئة لا تتيح تبديل الزي."
+      ],
+      "flow": "auto"
+    },
+    "MID_CrownJobInfo_Message": {
+      "source_sha256": "c51810241b551a13bf29183141ad63a9087ee1a829ce472ff092f92dab3cc569",
+      "parts": [
+        "يرقد في ",
+        "..."
+      ],
+      "flow": "auto"
+    },
+    "MID_Crown_OpenDoor_Confirm": {
+      "source_sha256": "3ffd743ec1af6a0801b7cd3416efd9cd7e518f79ad797b9fba6b68c309855a2e",
+      "parts": [
+        "هل تستخدم مفتاح التاج لفتح ",
+        "؟\n(عدد المفاتيح: ",
+        ")"
+      ],
+      "flow": "auto"
+    },
+    "MID_HeroMenu_RestartChapter_Continue_Confirm": {
+      "source_sha256": "79065d59fc0f863459d3292ffdd31571daea5728022040e4dec01531b8b065c2",
+      "parts": [
+        "تعود هذه البيانات إلى ما قبل الهبوط مجددا.\n",
+        ": ستتغير الفئة إلى ",
+        "حارس.\nهل تعيد اللعب من هنا؟"
+      ],
+      "flow": "auto"
+    },
+    "MID_HotelMenu_Stay_Part3Ism_Annotation": {
+      "source_sha256": "597495c508c8a5d88a0b8293db3751bda1937541f01a0b2c94cb2b364ae5585e",
+      "parts": [
+        ": سينتهي الدور وستعود إلى خريطة العالم.\nسيظل أمر تشكيل الفرقة متاحا."
+      ],
+      "flow": "auto"
+    },
+    "MID_HubMenu_SideStory_Help": {
+      "source_sha256": "26623a35dfa48fe29fc0a6eb47fd58b76651f5791257238843eefe15f17ad9c6",
+      "parts": [
+        "ابدأ ",
+        "الفصل الجانبي.\n(لن ينتهي بذلك وقت الفراغ.)"
+      ],
+      "flow": "auto"
+    },
+    "MID_ReleaseMenu_GetItem_Result": {
+      "source_sha256": "9ad550b62111233ad76ef80304729645d90068ecdb1b23b271f8abeb951c2b4e",
+      "parts": [
+        ": تركت الوحدة عنصرا وراءها."
+      ],
+      "flow": "auto"
+    },
+    "MID_TheaterAct_Recovery_Message": {
+      "source_sha256": "24102e81ad2697e21cc5ba123073ef6a088addec11a8c71eba68905573b96301",
+      "parts": [
+        ": أبهر هذا الأداء الحماسي الجمهور!"
+      ],
+      "flow": "auto"
+    },
+    "MID_TrialMenu_Help": {
+      "source_sha256": "f7e8b55079d5654b956bffcc3fb7738baa6c219297058f54645652544934595e",
+      "parts": [
+        "اختر الوحدات التي ستنشرها في ",
+        "الصدام."
+      ],
+      "flow": "auto"
+    }
+  },
+  "System_Notice.msbt.zst": {
+    "MID_Calendar_SpecialDining_Help": {
+      "source_sha256": "6ed2249a53d84a57695abf461fbcd3b1342fb2d98ca226cc4a105a0055afbf1c",
+      "parts": [
+        "الوجبات في ",
+        "النزل بنصف الثمن المعتاد."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Act": {
+      "source_sha256": "6d6a5d682059be10b3cfa8d5639cb8dbb0d05774fc8063f3882ea161509337ee",
+      "parts": [
+        "يتيح خيار التمثيل في ",
+        "المسرح."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Banquet": {
+      "source_sha256": "843cdb08422fb9c0d4253b79871002b839dfd89bc9ea8de0938d0cd5faf48163",
+      "parts": [
+        "يتيح إقامة ",
+        "الولائم على ",
+        "خريطة العالم",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_ClassChangeLv2": {
+      "source_sha256": "43f70a261360144cda3b22d260d1f67ba971375e2052efe271b700d7b8d4a50e",
+      "parts": [
+        "يتيح للوحدات خوض اختبارات ",
+        "فئات التخصص."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_ClassChangeLv3": {
+      "source_sha256": "f6fb079606e96d76f00b093eafe057a9f34b1d26002c78543a45a11bcab8c036",
+      "parts": [
+        "يتيح للوحدات خوض اختبارات ",
+        "الفئات المتقدمة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Dining": {
+      "source_sha256": "658c922e0ad8f48d6ed9164095340f017cb4684e97cab21c761d4a97843b0a23",
+      "parts": [
+        "يوسع قائمة ",
+        "الوجبات في ",
+        "النزل."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_DiningLv2": {
+      "source_sha256": "5252bc57d70820cbd82bcaf0176e261803d6e43751f287ba94b3a99386e4db72",
+      "parts": [
+        "يزيد أثر ",
+        "الوجبات في ",
+        "النزل."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_DiningLv3": {
+      "source_sha256": "5252bc57d70820cbd82bcaf0176e261803d6e43751f287ba94b3a99386e4db72",
+      "parts": [
+        "يزيد أثر ",
+        "الوجبات في ",
+        "النزل."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Dispatch": {
+      "source_sha256": "236887b1df18fc14e7eb607aa76d63485b159bb871e4476023af9f4e257eca86",
+      "parts": [
+        "يتيح ",
+        "نشر كتائب أكثر دفعة واحدة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Farm": {
+      "source_sha256": "c13e18f8d021ed39c42e0301a8e06aa72864a603845e8dafe96556cef2ed3a7c",
+      "parts": [
+        "يتيح ",
+        "زراعة قطع أرض أكثر دفعة واحدة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Lesson": {
+      "source_sha256": "e346220e7d3bbc9395bdfae683e9dc8d3d40962ccaea4779a4c6c409b8671816",
+      "parts": [
+        "يتيح دروسا جديدة في ",
+        "الإرشاد."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Theater": {
+      "source_sha256": "642d1f53e7a8b01221a8cee5c25c5acf254c3080ab251013a92a942ed9aca0da",
+      "parts": [
+        "يتيح خيار المشاهدة في ",
+        "المسرح."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Thermae": {
+      "source_sha256": "5214199289957e39f5a3c5d8d9d07f41f78b2c638afc6b58fb5fedf2821b414b",
+      "parts": [
+        "يفتح ",
+        "الحمامات."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_Thermae2": {
+      "source_sha256": "8c3fbb08a69986ee47ab6164321354c2440dc9eb0a42332244ea761e2d777657",
+      "parts": [
+        "يزيد تنوع ",
+        "الحمامات المتاحة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_TrainingLv2": {
+      "source_sha256": "cf5652289d9e5255477e4ead26a20358464fadaa5715f495eea7dda833d9a664",
+      "parts": [
+        "يزيد أثر ",
+        "التدريب في ميدان التدريب."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_TrainingLv3": {
+      "source_sha256": "cf5652289d9e5255477e4ead26a20358464fadaa5715f495eea7dda833d9a664",
+      "parts": [
+        "يزيد أثر ",
+        "التدريب في ميدان التدريب."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_VolunteerLv2": {
+      "source_sha256": "c7d1a0fc7b255d6562d8c28668a60abc3a5c43a38543d4807d2b22741f325cc6",
+      "parts": [
+        "يزيد ما تتلقاه من عطايا لقاء ",
+        "الخدمة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_VolunteerLv3": {
+      "source_sha256": "c7d1a0fc7b255d6562d8c28668a60abc3a5c43a38543d4807d2b22741f325cc6",
+      "parts": [
+        "يزيد ما تتلقاه من عطايا لقاء ",
+        "الخدمة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_WeaponShop": {
+      "source_sha256": "8447d389d4e8db480f56795148f7672ed371aa9665d1dd90dd1c41e1c4d1f50f",
+      "parts": [
+        "يضيف إلى ",
+        "مستودع الأسلحة أسلحة مصقولة بدرجة +1."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvMenu_WeaponShop2": {
+      "source_sha256": "d5de96bbcfb8e639c408c1f779c202d4b3b9b5dee6915fc9f6b600d5ca4eb644",
+      "parts": [
+        "يضيف إلى ",
+        "مستودع الأسلحة أسلحة مصقولة بدرجة +2."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_Act": {
+      "source_sha256": "9e8651d30e7454b932e6a5ff19a5fa7f4986e5fe9cd62a1b67c7bf56fa982717",
+      "parts": [
+        "أصبح خيار التمثيل متاحا في ",
+        "المسرح."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_ClassChangeLv2": {
+      "source_sha256": "3062bb7c1ce2facb6eae014fc1770a8f83571a12c078343cab92d32c5f416794",
+      "parts": [
+        "أصبح بإمكان الوحدات خوض اختبارات ",
+        "فئات التخصص."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_ClassChangeLv3": {
+      "source_sha256": "95f6fe69f67c58f1e3f4a3b18f82632f6fa5a1c4d83b128b3f180b2b26fe31e4",
+      "parts": [
+        "أصبح بإمكان الوحدات خوض اختبارات ",
+        "الفئات المتقدمة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_Dining": {
+      "source_sha256": "e9db55f0dd8aa0538281cc8ed4a927d2f516eac26c70eee6c272f8d04cab1e9f",
+      "parts": [
+        "اتسعت قائمة ",
+        "الوجبات في ",
+        "النزل."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_DiningLv2": {
+      "source_sha256": "83222aaf46844172b6a2a5fa0507760b5445429c57c2a85afb7835a1d8521bfb",
+      "parts": [
+        "ازداد أثر ",
+        "الوجبات في ",
+        "النزل."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_DiningLv3": {
+      "source_sha256": "83222aaf46844172b6a2a5fa0507760b5445429c57c2a85afb7835a1d8521bfb",
+      "parts": [
+        "ازداد أثر ",
+        "الوجبات في ",
+        "النزل."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_Dispatch": {
+      "source_sha256": "ca064da5b1bb836fabee71e14c7506d44f598ac3695cc1af8739724f993b525d",
+      "parts": [
+        "أصبح بإمكانك ",
+        "نشر كتائب أكثر دفعة واحدة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_Farm": {
+      "source_sha256": "23c62fc59e683fe796f8ed1c01d22920fdf4600fe509fc884f8077d082a01faf",
+      "parts": [
+        "أصبح بإمكانك ",
+        "زراعة قطع أرض أكثر دفعة واحدة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_Lesson": {
+      "source_sha256": "a5ce09fb884a479511e5049535ca38dae66b427c45bf586960d35390a9d79513",
+      "parts": [
+        "توفرت دروس جديدة في ",
+        "الإرشاد."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_Theater": {
+      "source_sha256": "f4d5f143dad716a774da2ec9c8d3fd035b39114fe0b8735981c5e4c71c86649e",
+      "parts": [
+        "أصبح خيار المشاهدة متاحا في ",
+        "المسرح."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_Thermae": {
+      "source_sha256": "1cdfc70389c0dcbc05ddaf5166ae095f3bf00c24017628342d3b70fa02c88729",
+      "parts": [
+        "افتتحت ",
+        "الحمامات."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_Thermae2": {
+      "source_sha256": "cd16bf323c6993a751c75fb341fb7000a6cf885155feb76a70eff4d6445d59ae",
+      "parts": [
+        "توفرت أنواع إضافية من ",
+        "الحمامات."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_VolunteerLv2": {
+      "source_sha256": "91af8579664d5a653820a155d586aa5498f41fdb2ef34443558968abdab50930",
+      "parts": [
+        "ازدادت العطايا التي تتلقاها لقاء ",
+        "الخدمة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_VolunteerLv3": {
+      "source_sha256": "91af8579664d5a653820a155d586aa5498f41fdb2ef34443558968abdab50930",
+      "parts": [
+        "ازدادت العطايا التي تتلقاها لقاء ",
+        "الخدمة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_WeaponShop": {
+      "source_sha256": "63f843eb432f60fe43fc0eb3e6fe43c685722e308f47d8e1298ff7a7888891a7",
+      "parts": [
+        "توفرت أسلحة مصقولة بدرجة +1 في ",
+        "مستودع الأسلحة."
+      ],
+      "flow": "auto"
+    },
+    "MID_HonorLvNotice_WeaponShop2": {
+      "source_sha256": "8c77ffdc1fca510d8b2539a0279ed1973ae94a4788dd1c955b2cedbf29553604",
+      "parts": [
+        "توفرت أسلحة مصقولة بدرجة +2 في ",
+        "مستودع الأسلحة."
+      ],
+      "flow": "auto"
+    },
+    "MID_NewAction_Available_Icon": {
+      "source_sha256": "a86edbcf41e6848f5812587aba860429cbe72bc63693a44f83b353308ea87d5a",
+      "parts": [
+        ": أصبح هذا الخيار متاحا."
+      ],
+      "flow": "auto"
+    },
+    "MID_NewAction_ClassChangeLv3": {
+      "source_sha256": "b7d780dd2dae5ab79fadf6de5505552736b552dae239765893ad40d48f013903",
+      "parts": [
+        "أصبح بإمكان الوحدات خوض ",
+        "الاختبارات المتقدمة."
+      ],
+      "flow": "auto"
+    },
+    "MID_NewAction_ClassChangeLv4": {
+      "source_sha256": "17db9e1d493f3ec7b5b9419c2bfc10c112dd23eb214a126614838ff36e610859",
+      "parts": [
+        "أصبح بإمكان الوحدات خوض ",
+        "اختبارات فئات الإتقان."
+      ],
+      "flow": "auto"
+    },
+    "MID_NewAction_Refine": {
+      "source_sha256": "3805c9732b8debba7576b6ef118b906434724171ffa6d0d17c8bee90b0be75a4",
+      "parts": [
+        "يمكنك الآن صقل الأسلحة لتزيد من قوتها."
+      ],
+      "flow": "auto"
+    },
+    "MID_NewAction_Usable2_Icon": {
+      "source_sha256": "7471d01fd5dfcca4cf2b983ef9e01f46a1c89b29c8b66be35772629c52d6b259",
+      "parts": [
+        "أصبح ",
+        " متاحا في ",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_NewAction_Usable_Icon": {
+      "source_sha256": "636691ab12726a87e1a25a3013e9316354df0e52d1f45596464d7e1e4f79638a",
+      "parts": [
+        "أصبحت وظيفة ",
+        " متاحة."
+      ],
+      "flow": "auto"
+    }
+  }
+}

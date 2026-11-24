@@ -4,6 +4,7 @@
 // the same paths a person would use: SDL window calls and real SDL events pushed into SDL's queue (so they come back out of the pump).
 //
 //   wait:N                 wait N frames
+//   capture                save the next presented frame as selftest_frame_<step>.png in the test folder
 //   size:WxH               SDL_SetWindowSize; the next steps see the resize event
 //   mode:windowed|borderless|exclusive    platform::set_fullscreen
 //   altenter               Alt+Enter as four SDL key events (the fullscreen toggle of play mode)

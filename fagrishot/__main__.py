@@ -203,6 +203,10 @@ def launch(paths, cache, dirs):
     if arabic.enabled(dirs["settings"]):
         mods = arabic.prepare(paths["romfs"], PRIVATE, cache.name, ROOT)
         env["NXRT_FS_MODS"] = str(mods)
+        env["NXRT_FEFW_ARABIC_REVEAL"] = "1"
+        movie_map = ROOT / "fagrishot/arabic_art/map-films.bin"
+        if movie_map.is_file():
+            env["NXRT_FEFW_ARABIC_MOVIE_MAP"] = str(movie_map.resolve())
         env["NXRT_SYSTEM_LANGUAGE"] = "AmericanEnglish"
     print("Starting FagriShot.", flush=True)
     subprocess.run([EXE, "--ini", ini_file], cwd=dirs["settings"], env=env, check=True)

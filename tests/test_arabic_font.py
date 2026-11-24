@@ -7,6 +7,12 @@ from fagrishot import arabic_font as arabic
 
 @unittest.skipUnless(os.name == "nt", "Windows ICU and font APIs")
 class ArabicGlyphTests(unittest.TestCase):
+    def test_dialogue_aliases_match_the_native_typewriter_ranges(self):
+        self.assertIsNone(arabic.hidden_glyph(ord(" ")))
+        pairs = {0x21: 0xf121, 0xfeef: 0xf0ef, 0x061f: 0xf21f, 0x2026: 0xf326,
+                 0xfb50: 0xf450, 0x00e9: 0xf7e9, 0xe100: 0xf100}
+        self.assertEqual({c: arabic.hidden_glyph(c) for c in pairs}, pairs)
+
     def test_lines_numbers_punctuation_and_lam_alef(self):
         self.assertEqual(arabic.visual_text("لا!\n123\n"), "!\ufefb\n123\n")
         self.assertIn("E34", arabic.visual_text("الدائرة E34"))

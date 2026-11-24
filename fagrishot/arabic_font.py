@@ -151,6 +151,69 @@ def _put(buf, off, n):
     struct.pack_into("<I", buf, off, n)
 
 
+def font_advances(path):
+    """Read the actual character advances from our generated Switch bitmap font."""
+    import zstandard
+
+    raw = zstandard.ZstdDecompressor().decompress(Path(path).read_bytes(), max_output_size=32 << 20)
+    return _advances(raw)
+
+
+def _advances(raw):
+    finf = struct.unpack_from("<H", raw, 6)[0]
+    widths, mapping = struct.unpack_from("<II", raw, finf + 24)
+    slots = {}
+    while widths:
+        first, last, nxt = struct.unpack_from("<HHI", raw, widths)
+        for slot in range(first, last + 1):
+            slots[slot] = raw[widths + 10 + 3 * (slot - first)]
+        widths = nxt
+    advances = {}
+    while mapping:
+        first, last, kind, _, nxt = struct.unpack_from("<IIHHI", raw, mapping)
+        offset = mapping + 16
+        if kind == 0:
+            first_slot = struct.unpack_from("<H", raw, offset)[0]
+            pairs = ((code, first_slot + code - first) for code in range(first, last + 1))
+        elif kind == 1:
+            indices = struct.unpack_from(f"<{last - first + 1}H", raw, offset)
+            pairs = zip(range(first, last + 1), indices)
+        elif kind == 2:
+            count = _u32(raw, offset)
+            pairs = (struct.unpack_from("<II", raw, offset + 4 + i * 8) for i in range(count))
+        else:
+            raise ValueError("Unrecognized character map in the generated Arabic font.")
+        for code, slot in pairs:
+            if slot in slots:
+                # Our appended Unicode mappings precede any embedded duplicates.
+                advances.setdefault(chr(code), slots[slot])
+        mapping = nxt
+    return advances
+
+
+def hidden_glyph(code):
+    """Deterministic blank, equal-advance glyphs used by the Arabic dialogue reveal."""
+    if 0xfe70 <= code <= 0xfeff:
+        return 0xf070 + code - 0xfe70
+    if 0x21 <= code <= 0x7e:
+        return 0xf121 + code - 0x21
+    if 0x0600 <= code <= 0x06ff:
+        return 0xf200 + code - 0x0600
+    if 0x2000 <= code <= 0x206f:
+        return 0xf300 + code - 0x2000
+    if 0x00a1 <= code <= 0x00ff:
+        return 0xf7a1 + code - 0x00a1
+    if 0xfb50 <= code <= 0xfdff:
+        return 0xf450 + code - 0xfb50
+    if 0xe000 <= code <= 0xe0ff:
+        return 0xf800 + code - 0xe000
+    if 0xe100 <= code <= 0xe11f:
+        return 0xf100 + code - 0xe100
+    if code == 0xe200:
+        return 0xf700
+    return None
+
+
 def _bc4(block):
     # Fixed endpoints match the eight possible gray levels encoded by this font.
     bits = 0
@@ -176,6 +239,18 @@ def _patch(raw, codes, g):
     t, w, m = struct.unpack_from("<III", data, finf + 20)
     cw, ch, layers = data[t:t + 3]
     baseline, _, cols, rows, width, height = struct.unpack_from("<6H", data, t + 8)
+    original = _advances(raw)
+    glyphs = _raster(g, codes, cw, ch, baseline)
+    advances = {ord(c): v for c, v in original.items()}
+    advances.update({code: glyph[2] for code, glyph in glyphs.items()})
+    for code, advance in advances.items():
+        hidden = hidden_glyph(code)
+        if hidden is not None:
+            if chr(hidden) in original or hidden in glyphs:
+                raise ValueError("The Arabic reveal glyph range collides with an existing game glyph.")
+            # Width and height are zero. No ink is sampled, while the cursor advances by the original metric.
+            glyphs[hidden] = (0, 0, advance, 0, 0, b"")
+    codes = sorted(glyphs)
     bntx = _u32(data, t + 20)
     image = data.index(b"BRTI", bntx)
     brtd = data.index(b"BRTD", image)
@@ -209,7 +284,6 @@ def _patch(raw, codes, g):
 
     metrics = bytearray()
     blocks = {}
-    glyphs = _raster(g, codes, cw, ch, baseline)
     data[t + 3] = max(data[t + 3], max(glyph[1] for glyph in glyphs.values()))
     for slot, code in enumerate(codes, first):
         left, gw, advance, top, gh, pixels = glyphs[code]

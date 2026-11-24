@@ -67,7 +67,7 @@ bool SelfTest::parse(const std::string& script, std::string* err) {
         s.verb = p[0];
         if (p.size() > 1) s.a = p[1];
         if (p.size() > 2) s.b = p[2];
-        static const char* kVerbs[] = {"wait", "size", "mode", "altenter", "key", "close", "cap", "measure", "expect_mode", "expect_size", "expect_fps", "expect_late", "set", "expect_present", "expect_cap", "expect_ini", "pass", "gate", "report"};
+        static const char* kVerbs[] = {"wait", "size", "mode", "altenter", "key", "close", "cap", "measure", "expect_mode", "expect_size", "expect_fps", "expect_late", "set", "expect_present", "expect_cap", "expect_ini", "pass", "gate", "report", "capture"};
         bool known = false;
         for (const char* v : kVerbs) known |= s.verb == v;
         if (!known) {
@@ -110,6 +110,9 @@ void SelfTest::tick(gfx::Renderer* renderer, FrameLimiter* limiter, SelfTestHost
     ++next_;
     if (s.verb == "wait") {
         wait_ = std::atoi(s.a.c_str());
+    } else if (s.verb == "capture") {
+        if (!renderer) fail("cannot capture a frame without a renderer");
+        renderer->request_screenshot("selftest_frame_" + std::to_string(next_ - 1) + ".png");
     } else if (s.verb == "size") {
         int w, h;
         if (!parse_wh(s.a, &w, &h)) fail("bad size '" + s.a + "'");

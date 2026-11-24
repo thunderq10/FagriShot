@@ -256,6 +256,28 @@ def notices(payload, runtime, cargo):
         payload.add(rel, data)
 
 
+def add_arabic_campaign(payload, directory):
+    # The external pack is local build input. Only declared translation JSON frames go into the ZIP.
+    sys.path.insert(0, str(ROOT))
+    from fagrishot.arabic_campaign import Campaign
+
+    pack = Campaign(directory.resolve(strict=True))
+    if not pack.files:
+        raise ValueError("The selected Arabic campaign contains no translation tables.")
+    prefix = "fagrishot/arabic_data/campaign/"
+    for name in list(payload.members):
+        if name.startswith(prefix):
+            del payload.members[name]
+            payload.windows_names.remove(name.lower())
+    payload.add(prefix + "manifest.json", pack.manifest)
+    for table, entry in pack.files.items():
+        name = table + ".json.zst"
+        path = pack.folder / name
+        if digest(path) != entry["sha256"]:
+            raise ValueError(f"Incorrect Arabic campaign table SHA-256: {table}")
+        payload.add(prefix + name, path)
+
+
 def guides(payload):
     names = {"README.md", "README.ar.md", "docs/inputs.md", "docs/storage.md", "docs/status.md",
              "docs/foundation.md", "docs/BUILDING.md", "docs/package.md", "docs/longshot.md",
@@ -281,8 +303,8 @@ def guides(payload):
 3. Click Build game code. Keep the window open while the launcher builds the game and prepares its shaders.
 4. Click Play. Confirm the opening Autosave prompt with Enter or Space.
 
-In preview 0.3.0, Graphics settings is beside Play. Arabic text preview translates selected opening dialogue and menus.
-Its private game-text and font overlays are generated from your verified RomFS the next time you play.
+Graphics settings is beside Play. The Arabic text option shows how many entries are reviewed or machine translated
+in your installed offline catalog. Its private game-text and font overlays are built from your verified RomFS on the next launch.
 
 See README.md for controls, backup and troubleshooting. Windows 11 x64, WebView2 and a Vulkan 1.3 driver are required.
 
@@ -293,7 +315,7 @@ See README.md for controls, backup and troubleshooting. Windows 11 x64, WebView2
 3. اضغط Build game code واترك النافذة مفتوحة حتى يكتمل بناء اللعبة وتجهيز برامج التظليل.
 4. اضغط Play. عندما تظهر رسالة Autosave، اضغط Enter أو Space للمتابعة.
 
-في النسخة التجريبية 0.3.0 ستجد Graphics settings بجانب Play. يترجم خيار Arabic text preview بعض حوارات البداية والقوائم.
+ستجد Graphics settings بجانب Play. يعرض خيار النص العربي عدد النصوص المراجعة والنصوص المترجمة آليا في الحزمة المثبتة.
 ينشئ المشغّل ملفات النصوص والخطوط محليًا عند التشغيل التالي باستخدام ملفات RomFS التي تحقّق منها.
 
 تجد شرح التحكم والنسخ الاحتياطي وحل المشكلات في README.ar.md.
@@ -337,6 +359,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--runtime", type=Path, default=WORK / "runtime-release-player")
     ap.add_argument("--launcher-cache", type=Path, default=WORK / "launcher")
+    ap.add_argument("--arabic-campaign", type=Path, metavar="FOLDER",
+                    help="bundle a local offline Arabic campaign (manifest.json and its declared translation shards)")
     ap.add_argument("--reuse-compiled-shader-tools", action="store_true", help="use the verified release builder outputs")
     ap.add_argument("--draft", action="store_true", help="preview tracked edits in a clearly marked, non-release ZIP")
     ap.add_argument("--verify-only", type=Path, metavar="ZIP", help="independently verify an existing archive")
@@ -358,8 +382,11 @@ def main():
                   "LICENSE", "LEGAL.md"):
             payload.tracked(f, f)
         payload.tracked("fagrishot", "fagrishot")
-        for p in ("__init__", "__main__", "arabic", "arabic_font", "build", "graphics", "inputs",
-                  "localization", "localization_art", "player_build", "saves", "shaders", "storage"):
+        if args.arabic_campaign:
+            add_arabic_campaign(payload, args.arabic_campaign)
+        for p in ("__init__", "__main__", "arabic", "arabic_campaign", "arabic_font", "build", "graphics", "inputs",
+                  "localization", "localization_flow", "localization_art", "localization_logo",
+                  "player_build", "saves", "shaders", "storage"):
             if "fagrishot/" + p + ".py" not in payload.members:
                 raise ValueError(f"Missing package application module {p}. Stage the source in Git.")
         if not any(name.startswith("fagrishot/arabic_data/") and name.endswith(".json") for name in payload.members):

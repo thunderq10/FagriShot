@@ -1,0 +1,1106 @@
+{
+  "Chapter.msbt.zst": {
+    "MCID_0_ISM_title02": {
+      "source_sha256": "6f2f63e8ddc8c8e58cb7592dfc4cb0157f6015bdf52b05e2e2b452d840f470ef",
+      "parts": [
+        "الأرض الخراب"
+      ]
+    },
+    "MCID_0_ISM_title03": {
+      "source_sha256": "5e35e7b19998815eb3f1e02eae28fb76d90ee8ae219835b9d92bcc6c1a92e0fc",
+      "parts": [
+        "قاعة المسلة"
+      ]
+    },
+    "MCID_1_KAI_title01": {
+      "source_sha256": "1d6bf38f637bcd35b92bd83e4aa791fb3a00cfe0af372a3fda67a49937b95c13",
+      "parts": [
+        "اضطراب في ريبيرا"
+      ]
+    },
+    "MCID_1_KAI_title02": {
+      "source_sha256": "e974cd1141b8fa0576845ba06d58f92ccd7ea76e44ef489bdb8c62c6b9429acc",
+      "parts": [
+        "الطريق إلى العاصمة"
+      ]
+    },
+    "MCID_1_KAI_title03": {
+      "source_sha256": "c5a708641481ed61d41b393edb442eca64982a99abe82b84ed0c169476bd4fb7",
+      "parts": [
+        "فراق وآمال"
+      ]
+    },
+    "MCID_1_KAI_title04": {
+      "source_sha256": "a8e8f1d88d029f097b938d1b14505e2f0a53019bbc9255b632576fc0535a4682",
+      "parts": [
+        "مهرجان الأقوياء"
+      ]
+    },
+    "MCID_1_KAI_title05": {
+      "source_sha256": "f7956a2f87d50b1887f2797cb9a60fe8131b5fdb3eccffd9cde251f1692b8e55",
+      "parts": [
+        "معركة كاي"
+      ]
+    },
+    "MCID_1_KAI_title06": {
+      "source_sha256": "30db633b1408633268407ba77a23c1295961c3c0553c3e61e5dd0066619b15d0",
+      "parts": [
+        "إلى أرض سيبيل"
+      ]
+    },
+    "MCID_1_KAI_title07": {
+      "source_sha256": "65ea00e96a5d0459eaef78f9ee496928a776148a26a51cf65fa7dd50b24cb93c",
+      "parts": [
+        "غايات متعارضة"
+      ]
+    },
+    "MCID_1_KAI_title08": {
+      "source_sha256": "d8dffb6cd335c253488350d45eb6998b297129c54e4f73386b0d21a3d9b9cbc7",
+      "parts": [
+        "مشاعر لا تلين"
+      ]
+    },
+    "MCID_1_KAI_title09": {
+      "source_sha256": "52787ac94769688aacda002a6db0c6458ddecb58bbaf94dbfa1e9c97c4a4de5c",
+      "parts": [
+        "لغز في معبد أورورا"
+      ]
+    },
+    "MCID_1_KAI_title10": {
+      "source_sha256": "10569127df48d8d460e81832bf0725599a129656dbde54b2b1c86cbb5351d794",
+      "parts": [
+        "وقت ثمين"
+      ]
+    },
+    "MCID_1_KAI_title11": {
+      "source_sha256": "5d6a751656b4073d2b4451e3cded43f518beeb09247faf21fe0e4545bed6546d",
+      "parts": [
+        "مرجل داغدا"
+      ]
+    },
+    "MCID_1_KAI_title12": {
+      "source_sha256": "f25fee3f7a0c46eab676398a1d846b3c729fb2537c73193e2bdc670f4b5a9a3f",
+      "parts": [
+        "أمنية واحدة"
+      ]
+    },
+    "MCID_1_DIT_title01": {
+      "source_sha256": "0c4fd6164e6cf8f8bb7373c58ba8962718fe2a61bd4af9d3a68eee0e50b13c53",
+      "parts": [
+        "غريب يحل بداغدا"
+      ]
+    },
+    "MCID_1_DIT_title02": {
+      "source_sha256": "58b850f359bbaee205d9d191e7f9f2ea710aa4c985d045283cdcec4d1bda7b2e",
+      "parts": [
+        "تضحية وصراع"
+      ]
+    },
+    "MCID_1_DIT_title03": {
+      "source_sha256": "8f544bde32221167cbf8779fec55425ea01f1ff2a06d475b1dabcab8aefe7cbf",
+      "parts": [
+        "الصخرة العظمى"
+      ]
+    },
+    "MCID_1_DIT_title04": {
+      "source_sha256": "8da621ef4a8e62946b4a9d6b9a52162a01e71f0c84d03270cf732dd1488ec866",
+      "parts": [
+        "قوة غاشمة"
+      ]
+    },
+    "MCID_1_DIT_title05": {
+      "source_sha256": "4a9be4b020899761107fd722f16a3eb910796652ec0a7a0798ed698adb4744e4",
+      "parts": [
+        "جوهر المحارب"
+      ]
+    },
+    "MCID_1_DIT_title06": {
+      "source_sha256": "e9638de9138eb3cd9bb989bcb731b3f8e65b4a4636edb8931092dc23389b647b",
+      "parts": [
+        "الغريزة والعقل"
+      ]
+    },
+    "MCID_1_DIT_title07": {
+      "source_sha256": "9d00d9c77ac20f2caf4db625774e377405da5a64b92f73bcb403d68f82fb47c3",
+      "parts": [
+        "تحت ضياء القمر الوردي"
+      ]
+    },
+    "MCID_1_DIT_title08": {
+      "source_sha256": "e041c5567cf796aed578689c54805e9ad22d7057ed0c7b3ed280343a0cb4a287",
+      "parts": [
+        "سيتوس، طاغية البحار"
+      ]
+    },
+    "MCID_1_DIT_title09": {
+      "source_sha256": "952a3f3882da40ad9854b7ffea03e56850ed0bea181f824f7bc3b1c08116fd59",
+      "parts": [
+        "أسطورة البيضة البيضاء"
+      ]
+    },
+    "MCID_1_DIT_title10": {
+      "source_sha256": "344f960e4419aed0752d1aa97be526808dc0ff136bb379e1eea3c014e145d576",
+      "parts": [
+        "وسيط نوا"
+      ]
+    },
+    "MCID_1_DIT_title11": {
+      "source_sha256": "be3d9358aa8f043020df1956622962a6b7707762be93bc5eec341ec29405b600",
+      "parts": [
+        "حب معوج"
+      ]
+    },
+    "MCID_1_DIT_title12": {
+      "source_sha256": "a46a6b871e5f75a3985aedbc12a00c7e04a381db7c0f4865265e014168baa5f7",
+      "parts": [
+        "مارس، نذير الحرب"
+      ]
+    },
+    "MCID_1_SEO_title01": {
+      "source_sha256": "91f791d3c595960ae96069801d94743d50e94c56955f6d66b88418673ab81cb7",
+      "parts": [
+        "ثيودورا، الحصن الحديدي"
+      ]
+    },
+    "MCID_1_SEO_title02": {
+      "source_sha256": "14c0b1cef52d5e9505e288aadd13a5413449ea77f3d646b3c73abb2725691131",
+      "parts": [
+        "انتفاضة دايان"
+      ]
+    },
+    "MCID_1_SEO_title03": {
+      "source_sha256": "756f535ada1276cc245bf3b8c466a71cd18e413385f6eecc14452db5323c6942",
+      "parts": [
+        "اضطراب في العاصمة الإمبراطورية"
+      ]
+    },
+    "MCID_1_SEO_title04": {
+      "source_sha256": "3120ed307dae6cec07025b8d51a85516fa25f6592ee06296bdde33f83575ec7a",
+      "parts": [
+        "أحلاف غير متوقعة"
+      ]
+    },
+    "MCID_1_SEO_title05": {
+      "source_sha256": "4e6d8837a3c89d9976a0618327b02d35b601dc05096b4a0cb8db86f52e4d6e1c",
+      "parts": [
+        "صدام ينذر بالسوء"
+      ]
+    },
+    "MCID_1_SEO_title06": {
+      "source_sha256": "5619822a74d730e328424b4cd42aca01e074f0a5e961294799518ad93378d9ab",
+      "parts": [
+        "صائد الكنوز"
+      ]
+    },
+    "MCID_1_SEO_title07": {
+      "source_sha256": "a341b011868b30b3a510f1e3375cc125939cb70f04052177e51234d1678c0a01",
+      "parts": [
+        "صوت من الظلمات"
+      ]
+    },
+    "MCID_1_SEO_title08": {
+      "source_sha256": "4eeef5377a5ed392596661a19ab7a92afd79b39aaf1feef01319683ac2d11208",
+      "parts": [
+        "موعد مع تروي"
+      ]
+    },
+    "MCID_1_SEO_title09": {
+      "source_sha256": "293f840b5d806c10c102613ab57d8af5fcf143ef49f12bc26447b786cafbdb47",
+      "parts": [
+        "إلى الأرض المحرمة"
+      ]
+    },
+    "MCID_1_SEO_title10": {
+      "source_sha256": "12cda9871762c8d75c609a90ccbc3063dc5540bc833acd8cbd0ddc93a283a929",
+      "parts": [
+        "الملكة والتاجر"
+      ]
+    },
+    "MCID_1_SEO_title11": {
+      "source_sha256": "8980a1e33d48057fb3556d79a681f65e60501c0beee98a4079c603e0bb70269a",
+      "parts": [
+        "منعطف مباغت"
+      ]
+    },
+    "MCID_1_SEO_title12": {
+      "source_sha256": "ad2e54ac3be49174e28536abcb4ffadba23fc5ed65fe05148745262094c17a65",
+      "parts": [
+        "حرب زانبار"
+      ]
+    },
+    "MCID_1_LED_title01": {
+      "source_sha256": "a4381b545dffb851fc414d5b35942d921014dc378aa463ae33cde4ec91d9a06e",
+      "parts": [
+        "الراقصة المنتقمة"
+      ]
+    },
+    "MCID_1_LED_title02": {
+      "source_sha256": "3d2362e2d3b605f10462c4ace2cb379da28489f881c640ac3d9d7f8661273e0e",
+      "parts": [
+        "معركة منجم كوريس"
+      ]
+    },
+    "MCID_1_LED_title03": {
+      "source_sha256": "d966048a58d45109f6b25edae0c65f8fc75b5d457a929d71f296697bd3490280",
+      "parts": [
+        "وردة كايلوس"
+      ]
+    },
+    "MCID_1_LED_title04": {
+      "source_sha256": "6446b2835d0230c5561c5f1858d09a30b740fc09b221bc4f902d94febd6789b2",
+      "parts": [
+        "ماض لا يمحى"
+      ]
+    },
+    "MCID_1_LED_title05": {
+      "source_sha256": "858c8fccbb04c8345665025857d80dc1386af99b3792f1d404aa30611a6137d5",
+      "parts": [
+        "نساء في ساحة الوغى"
+      ]
+    },
+    "MCID_1_LED_title06": {
+      "source_sha256": "d7b2f8ea3207bf7720741e430e3398bac707183ae49bfd87d583d8d1e0ec2c34",
+      "parts": [
+        "الفتاة المحلقة"
+      ]
+    },
+    "MCID_1_LED_title07": {
+      "source_sha256": "16bb94cd5df9e15ad612c230c85055b5a0b4e454ff80029a2bf0186d7391e381",
+      "parts": [
+        "وردة القصاص"
+      ]
+    },
+    "MCID_1_LED_title08": {
+      "source_sha256": "356a689a08ffb7c5b4ea35e96cfa6737ba4b749a155a45858c68a93591fe9449",
+      "parts": [
+        "ملامح المؤامرة"
+      ]
+    },
+    "MCID_1_LED_title09": {
+      "source_sha256": "e5bbfb26fdafa2b60084c32d58d5bc2da279d29179f3be0996e323c04712522f",
+      "parts": [
+        "شقاق"
+      ]
+    },
+    "MCID_1_LED_title10": {
+      "source_sha256": "28ace9e479c02eb80e8d9e69031f867fd8d80065745cd6aa150d4ee3d0c5ec6b",
+      "parts": [
+        "طلب أب وأمنية ابنة"
+      ]
+    },
+    "MCID_1_LED_title11": {
+      "source_sha256": "a32f0bb2e75ae45976221f75e2d237452c95a3915e72e2ccac4607cdf35815e1",
+      "parts": [
+        "وليمة الموتى العائدين"
+      ]
+    },
+    "MCID_1_LED_title12": {
+      "source_sha256": "312b9d58f1bdada962af1630bf2185787a1fb8a54b1f3907ac1de7fb6c4a0ffc",
+      "parts": [
+        "نهاية الثأر"
+      ]
+    },
+    "MCID_2_title01": {
+      "source_sha256": "629647d90ebbac0f35de87dfa4c8504e20fb485aa388df29a9ac0259f677e61c",
+      "parts": [
+        "معركة سهول كليتيوس"
+      ]
+    },
+    "MCID_2_title02": {
+      "source_sha256": "7efed332b048b82111c58be0d14b4b4105fc2d235d4b50e9b776fef26c3af45d",
+      "parts": [
+        "المواجهة في حصن أغريس"
+      ]
+    },
+    "MCID_2_title03": {
+      "source_sha256": "9dcae7e7eff5a2cf3006a517b9a583f6e14fcf8d39e55b11066aaf1bae50f7fe",
+      "parts": [
+        "ما وراء درب الملح"
+      ]
+    },
+    "MCID_2_title04": {
+      "source_sha256": "d1508a8ec0eb944d85b64c45e4bd241f9ab04bcaa12d1d86859a6f7e3f60a677",
+      "parts": [
+        "اقتحام داغسيون"
+      ]
+    },
+    "MCID_2_title05": {
+      "source_sha256": "68419608e88369ff0e27ae7a21636f6ae61a46d615a1755c132c7cacf0babae5",
+      "parts": [
+        "داغدا، الإمبراطور الإلهي"
+      ]
+    },
+    "MCID_2_title06": {
+      "source_sha256": "ac5c1551a827121b3d74f7060f4523f91093a6fa49d8601917c4b15c4db71862",
+      "parts": [
+        "العالم السفلي يتجسد"
+      ]
+    },
+    "MCID_3_ISM_title01": {
+      "source_sha256": "6186c488cbe8b6918a30145b74b889ef9eb525399677283cc2bcf306f860a96f",
+      "parts": [
+        "تحرير داغسيون"
+      ]
+    },
+    "MCID_3_ISM_title02": {
+      "source_sha256": "6ba5b0a51f4472a4269670da2ccce0b54f9c340f77585d6e980eeeaf42a90167",
+      "parts": [
+        "القوة الحقة"
+      ]
+    },
+    "MCID_3_ISM_title03": {
+      "source_sha256": "43d878d20c185dbca3e4e51251bd1afea12d3efd829ba62bc0c536aced01fad5",
+      "parts": [
+        "الورثة"
+      ]
+    },
+    "MCID_3_ISM_title04": {
+      "source_sha256": "e48dc53b9ce21162c44f7bb74f4fb9e5a22178dfd4c491440ad925bd4775ae9e",
+      "parts": [
+        "آمال الملوك والشعوب"
+      ]
+    },
+    "MCID_3_ISM_title05": {
+      "source_sha256": "203d2f1e07756cb1307e1200be33a6458e356ddab859974eb1a72786a9135c29",
+      "parts": [
+        "أنشودة الأحياء"
+      ]
+    },
+    "MCID_3_ISM_title06": {
+      "source_sha256": "e60e4bf2f1c42250def01bce5ff7e172ac244b7273bf2327a01dd679c4a46f1c",
+      "parts": [
+        "إلى تخوم الشفق"
+      ]
+    }
+  },
+  "BattleTitle.msbt.zst": {
+    "MID_BattleTitle_Encount": {
+      "source_sha256": "ec5738dcc022c3a3fa3cf6e442d5ceea4e80d17f6ee0395d4dd3efc005235c16",
+      "parts": [
+        "مناوشة"
+      ]
+    },
+    "MID_BattleTitle_SC00_00": {
+      "source_sha256": "312cb8091e10e5a80ed05b2c8487b05bdc2739c09328deb09d51a6a3c7e1d2b7",
+      "parts": [
+        "تدريب قتالي"
+      ]
+    },
+    "MID_BattleTitle_SC00_04": {
+      "source_sha256": "02b022766e5ed6549c4760c8f78a034458444e40434c7befee82eec2871997a7",
+      "parts": [
+        "الهبوط"
+      ]
+    },
+    "MID_BattleTitle_SC00_05": {
+      "source_sha256": "8d55e71f468038643c7a202ce1e7cb2c5a20fb625f2749c275af0c597b4d75d1",
+      "parts": [
+        "مواجهة ليند"
+      ]
+    },
+    "MID_BattleTitle_SC11_01": {
+      "source_sha256": "120764b657d525b3ff3ed8e67f277d00b9ddabc3e9b443e1026efc72036e3f21",
+      "parts": [
+        "مواجهة قطاع الطرق"
+      ]
+    },
+    "MID_BattleTitle_SC11_03": {
+      "source_sha256": "e24047faa85583909c37e2979680eafd3b39d4d889dd64ef9a1ed51451bc3926",
+      "parts": [
+        "الدفاع عن العربة"
+      ]
+    },
+    "MID_BattleTitle_SC11_04": {
+      "source_sha256": "eda692f5427a09fe43bdb07d9330bbb3f4247a6954d64232853343b863cb6b81",
+      "parts": [
+        "مواجهة جالوت"
+      ]
+    },
+    "MID_BattleTitle_SC11_05": {
+      "source_sha256": "c3ab5e48c1a66b328512ef189962ddc197a20f6ab451de7543b9f7bc572df17d",
+      "parts": [
+        "التصفيات — لواء غايا"
+      ]
+    },
+    "MID_BattleTitle_SC11_06": {
+      "source_sha256": "18fcdf720874524689d112c6214c0beb3ce7bf381ce5b6a88a75da8411db8b41",
+      "parts": [
+        "التصفيات — فرسان سحابة الرعد"
+      ]
+    },
+    "MID_BattleTitle_SC11_07": {
+      "source_sha256": "07be4d5889dff1ab6fc3bec4c28e0ac714545810a64a373825cfdb2caa095b15",
+      "parts": [
+        "مواجهة الهار هالي"
+      ]
+    },
+    "MID_BattleTitle_SC11_09": {
+      "source_sha256": "9885b6cca6432f92d29daad3cfcc71d489af895b11a8ec87c3c28c2b8d89385d",
+      "parts": [
+        "التصفيات — أخوية براغانسا"
+      ]
+    },
+    "MID_BattleTitle_SC11_10": {
+      "source_sha256": "2e51ef2d322ac9d5178a605abe84bd14b5547e4058f7d352c5efa5db420dc732",
+      "parts": [
+        "الدور الرئيسي — مواجهة ليدا"
+      ]
+    },
+    "MID_BattleTitle_SC11_11": {
+      "source_sha256": "26e0820ae5dce079502f4566a8ed009411b06295e8f0294f2b9b0d2a33438497",
+      "parts": [
+        "معركة في يوتوبيا"
+      ]
+    },
+    "MID_BattleTitle_SC11_12": {
+      "source_sha256": "d228517733ed722df28edf4fe79295dda85f424e6eabedf1080279dac63807e3",
+      "parts": [
+        "نصف النهائي — مواجهة ثيودورا"
+      ]
+    },
+    "MID_BattleTitle_SC11_13": {
+      "source_sha256": "696b423faa44385b86474804b71e219c0957b32cc1a3c180470f5cf536ad1e01",
+      "parts": [
+        "تحت حلبة المصارعة"
+      ]
+    },
+    "MID_BattleTitle_SC11_14": {
+      "source_sha256": "05c3fa2af6f4d53c63b2a81e3ab03670b06b9f645171f91e02ecf0eb1fa7562c",
+      "parts": [
+        "النهائي — مواجهة برتران"
+      ]
+    },
+    "MID_BattleTitle_SC12_00": {
+      "source_sha256": "120764b657d525b3ff3ed8e67f277d00b9ddabc3e9b443e1026efc72036e3f21",
+      "parts": [
+        "مواجهة قطاع الطرق"
+      ]
+    },
+    "MID_BattleTitle_SC12_01": {
+      "source_sha256": "08800ab17e28be31d57abf55e1d045f11485e56c42206132f8ad372288f4d048",
+      "parts": [
+        "مواجهة وحوش البحر"
+      ]
+    },
+    "MID_BattleTitle_SC12_03": {
+      "source_sha256": "d785341d0817d4ed5631c1f7e18cc962da3b183c34494bb859ea29130ad4b444",
+      "parts": [
+        "مواجهة القديسة كاتارينا"
+      ]
+    },
+    "MID_BattleTitle_SC12_06": {
+      "source_sha256": "18fcdf720874524689d112c6214c0beb3ce7bf381ce5b6a88a75da8411db8b41",
+      "parts": [
+        "التصفيات — فرسان سحابة الرعد"
+      ]
+    },
+    "MID_BattleTitle_SC12_08": {
+      "source_sha256": "c5afc04fa0a4ad30fde5c31b1281956e2b17ad1baa863b1815eeaed174059c94",
+      "parts": [
+        "اختبار حنبعل"
+      ]
+    },
+    "MID_BattleTitle_SC12_09": {
+      "source_sha256": "20da28ce576066afb006fa22cd1244e3ce5db9420272a1ecfbb148bd5071f417",
+      "parts": [
+        "التصفيات — فرسان تيلوس الفضيون"
+      ]
+    },
+    "MID_BattleTitle_SC12_10": {
+      "source_sha256": "c5bb45cc606c239a4ecd343eeb50a56062f658cba3df00fb150965456eaaed0d",
+      "parts": [
+        "التصفيات — جوهرتا أراغو"
+      ]
+    },
+    "MID_BattleTitle_SC12_12": {
+      "source_sha256": "394f0e650aa34293ddd3e26babc759f151e08d08804dcc3834504e04f5b12dab",
+      "parts": [
+        "مواجهة طاغية البحار"
+      ]
+    },
+    "MID_BattleTitle_SC12_14": {
+      "source_sha256": "6ed5d13a9c5e33f8373d9b8d374334710edf960d292d022ca3a9554f24b8d39d",
+      "parts": [
+        "معركة كونلون"
+      ]
+    },
+    "MID_BattleTitle_SC12_15": {
+      "source_sha256": "ea6bb6380290cf243c302e3f803f1b52906692bf5c13f923f65c2fee0fc719ad",
+      "parts": [
+        "الدور الرئيسي — مواجهة أناتوليا"
+      ]
+    },
+    "MID_BattleTitle_SC12_16": {
+      "source_sha256": "9eaf066532586719933027e1f98772030bc80fccc361b321b55db96eed3ea687",
+      "parts": [
+        "الدور الرئيسي — مواجهة برتران"
+      ]
+    },
+    "MID_BattleTitle_SC12_17": {
+      "source_sha256": "2fe725b8d914677df23a9406003a720a74f208aeed4e5fc1d703f87cbc804720",
+      "parts": [
+        "نزال استعراضي — مواجهة مارس"
+      ]
+    },
+    "MID_BattleTitle_SC13_00": {
+      "source_sha256": "8757223cbf0a0e417a89d2aa2519e2ef65df79d2cd1e7a35e7df08efa217ded0",
+      "parts": [
+        "معركة مزار ماهادو"
+      ]
+    },
+    "MID_BattleTitle_SC13_01": {
+      "source_sha256": "c74ce761a08feed5a3658cee5541040b5059355482dce7ca73d2eb715d7f635a",
+      "parts": [
+        "الصراع على العرش"
+      ]
+    },
+    "MID_BattleTitle_SC13_02": {
+      "source_sha256": "120764b657d525b3ff3ed8e67f277d00b9ddabc3e9b443e1026efc72036e3f21",
+      "parts": [
+        "مواجهة قطاع الطرق"
+      ]
+    },
+    "MID_BattleTitle_SC13_03": {
+      "source_sha256": "c3ab5e48c1a66b328512ef189962ddc197a20f6ab451de7543b9f7bc572df17d",
+      "parts": [
+        "التصفيات — لواء غايا"
+      ]
+    },
+    "MID_BattleTitle_SC13_04": {
+      "source_sha256": "acbd0f2718cdcbbacfbf94563a5e004251e6f63ea500b90f7558f90cc2317a2f",
+      "parts": [
+        "التصفيات — ألكور المنسي"
+      ]
+    },
+    "MID_BattleTitle_SC13_06": {
+      "source_sha256": "019b26d5c65cf87218e41e823edff2a2af6671089a1bf97d268b0b6d10aaa4e9",
+      "parts": [
+        "نزال استعراضي — مواجهة برتران"
+      ]
+    },
+    "MID_BattleTitle_SC13_07": {
+      "source_sha256": "460bc32d3eb1754f4da74325e45ac0ec9dc1ccea1068d19f355ce3959f24cef5",
+      "parts": [
+        "المواجهة في باهر فان"
+      ]
+    },
+    "MID_BattleTitle_SC13_08": {
+      "source_sha256": "20da28ce576066afb006fa22cd1244e3ce5db9420272a1ecfbb148bd5071f417",
+      "parts": [
+        "التصفيات — فرسان تيلوس الفضيون"
+      ]
+    },
+    "MID_BattleTitle_SC13_09": {
+      "source_sha256": "07be4d5889dff1ab6fc3bec4c28e0ac714545810a64a373825cfdb2caa095b15",
+      "parts": [
+        "مواجهة الهار هالي"
+      ]
+    },
+    "MID_BattleTitle_SC13_10": {
+      "source_sha256": "aaba8c5004b021e9dbba60a7dc79eeb0369dcda5a8426de87af550c0856208ca",
+      "parts": [
+        "مواجهة الديغاما"
+      ]
+    },
+    "MID_BattleTitle_SC13_11": {
+      "source_sha256": "171575d1fda63b4d41ca70ce7c9e4a3a5b2a5f3c6ed66a756be984fc8f020256",
+      "parts": [
+        "الدور الرئيسي — مواجهة تاليمون"
+      ]
+    },
+    "MID_BattleTitle_SC13_12": {
+      "source_sha256": "7802dd5cb3419ea0ea3b73ce0cfe0675527f2e81cea3e1423a176c8afd59689c",
+      "parts": [
+        "نصف النهائي — مواجهة كاي"
+      ]
+    },
+    "MID_BattleTitle_SC13_13": {
+      "source_sha256": "52438952681f754ada7932915cd13cc42e3d4b074611f483d02686cb2c81fc93",
+      "parts": [
+        "معركة حصن زانبار"
+      ]
+    },
+    "MID_BattleTitle_SC14_00": {
+      "source_sha256": "e0b6f61d99dcef84aab6c3ec42ce7ea3f42fa198f89af2b7fb1b90411fdaec4b",
+      "parts": [
+        "مواجهة بيور"
+      ]
+    },
+    "MID_BattleTitle_SC14_01": {
+      "source_sha256": "f57754a64dcdd911c7a33a35689f7b85cd055acafb790890b4cd8666f18a387e",
+      "parts": [
+        "مواجهة بالبوا"
+      ]
+    },
+    "MID_BattleTitle_SC14_03": {
+      "source_sha256": "b54969404a5dccf9cdecff929aa90b9c0fd449bf63ff7a1eb3d1aafc71ace111",
+      "parts": [
+        "مواجهة أولمبيا"
+      ]
+    },
+    "MID_BattleTitle_SC14_05": {
+      "source_sha256": "02389fbda2eb3f919506ddf056a833b256b7ce73e650717ca7a63084451693fe",
+      "parts": [
+        "مواجهة ليخنر"
+      ]
+    },
+    "MID_BattleTitle_SC14_06": {
+      "source_sha256": "044ff54c7bbe6725977ed9afbc2483bc72f571dca717b825f90823db42407232",
+      "parts": [
+        "التصفيات — أمطار بالما"
+      ]
+    },
+    "MID_BattleTitle_SC14_08": {
+      "source_sha256": "20da28ce576066afb006fa22cd1244e3ce5db9420272a1ecfbb148bd5071f417",
+      "parts": [
+        "التصفيات — فرسان تيلوس الفضيون"
+      ]
+    },
+    "MID_BattleTitle_SC14_09": {
+      "source_sha256": "981b83a786824fb7ad697bdc84dd44e2c67f24f417a1b2f1828b842a1efe99de",
+      "parts": [
+        "الاستيلاء على العربة"
+      ]
+    },
+    "MID_BattleTitle_SC14_11": {
+      "source_sha256": "9885b6cca6432f92d29daad3cfcc71d489af895b11a8ec87c3c28c2b8d89385d",
+      "parts": [
+        "التصفيات — أخوية براغانسا"
+      ]
+    },
+    "MID_BattleTitle_SC14_12": {
+      "source_sha256": "6ad78a7fc916702a24e2aee2c365b87c5bf8e52fc5e4b5af38664561054b08ad",
+      "parts": [
+        "الدور الرئيسي — مواجهة كاي"
+      ]
+    },
+    "MID_BattleTitle_SC14_13": {
+      "source_sha256": "d228517733ed722df28edf4fe79295dda85f424e6eabedf1080279dac63807e3",
+      "parts": [
+        "نصف النهائي — مواجهة ثيودورا"
+      ]
+    },
+    "MID_BattleTitle_BD14_17": {
+      "source_sha256": "ab696c793e9688bf41b6873221298ac0bb1397bd94a2844739237d97e099e02f",
+      "parts": [
+        "اختبار قوس كالا"
+      ]
+    },
+    "MID_BattleTitle_SC14_14": {
+      "source_sha256": "5176ef2a4a74f67d48eb2b7bcc023f62c121e5e963efc7d51c3c138cf591bbbd",
+      "parts": [
+        "المواجهة مع مارتيلا"
+      ]
+    },
+    "MID_BattleTitle_SC14_15": {
+      "source_sha256": "05c3fa2af6f4d53c63b2a81e3ab03670b06b9f645171f91e02ecf0eb1fa7562c",
+      "parts": [
+        "النهائي — مواجهة برتران"
+      ]
+    },
+    "MID_BattleTitle_SC30_00": {
+      "source_sha256": "abde11c2ce893b9f699643df2cb432e40e39d2d858a64cbfc78ea2abcca3578f",
+      "parts": [
+        "صراع في كليتيوس"
+      ]
+    },
+    "MID_BattleTitle_SC30_01": {
+      "source_sha256": "93abf45a4bed4c27417d8b6007ca57e4d2b7d187c66eb15c9aaca514a58f3565",
+      "parts": [
+        "الاستيلاء على حصن أغريس"
+      ]
+    },
+    "MID_BattleTitle_SC30_03": {
+      "source_sha256": "16d7abae7b587b6e2ae9c63741a3eb63d2cd376261527b649d1ff1b12ee33042",
+      "parts": [
+        "غزو أراغون الكبرى"
+      ]
+    },
+    "MID_BattleTitle_SC30_05": {
+      "source_sha256": "4bc7fe8822d1fe91280bc0d17fdfe268a13e9b455e5c079aaa3b43207e5edab5",
+      "parts": [
+        "معركة جسر ألسينيوس"
+      ]
+    },
+    "MID_BattleTitle_SC30_06": {
+      "source_sha256": "5e02d05d45d8e804f0fa88afc88c59c32df3f22c5ee138a235f2a0d89207aae4",
+      "parts": [
+        "مواجهة داغدا العظيم"
+      ]
+    },
+    "MID_BattleTitle_SC30_07": {
+      "source_sha256": "855e629467817560d2b02ac588b6a4eda6e79a673872195a7dae073f2599ebd9",
+      "parts": [
+        "مواجهة ليرا"
+      ]
+    },
+    "MID_BattleTitle_SC30_08": {
+      "source_sha256": "6a62120f72303ab810b69cdaf5f9d92488a4f888d90b9b73ac100e9bb516f51d",
+      "parts": [
+        "الفرار من داغسيون"
+      ]
+    },
+    "MID_BattleTitle_SC00_06": {
+      "source_sha256": "3c7768f537c8ef77a4c34089dea2b91f2a9f520dc1a3df1bb40df0f13710eb20",
+      "parts": [
+        "مواجهة داغدا"
+      ]
+    },
+    "MID_BattleTitle_SC00_07": {
+      "source_sha256": "e9a0f25846973df1de9933c8acdce95b8214c3c494a939c4e862cf3262906f7d",
+      "parts": [
+        "مواجهة بريزا"
+      ]
+    },
+    "MID_BattleTitle_SC00_11": {
+      "source_sha256": "31881970af577a6e11b15d57cf854a73a9cdc3588f15150673634fa2976b742d",
+      "parts": [
+        "مواجهة باوزي"
+      ]
+    },
+    "MID_BattleTitle_SC00_08": {
+      "source_sha256": "5ff823fe442b864fa82290f97ec6ba7e985afca32bd945afc29897a070066849",
+      "parts": [
+        "مواجهة هانو"
+      ]
+    },
+    "MID_BattleTitle_SC00_12": {
+      "source_sha256": "78cd2df9aeb1a753717a9ee2555cf492dcc022baf80ecb4510cca41e86b9b7a9",
+      "parts": [
+        "مواجهة كوهين"
+      ]
+    },
+    "MID_BattleTitle_SC00_09": {
+      "source_sha256": "2d73461a898743206110e4d3ad193df42fa5b1e5253654ba850803e00fe415fc",
+      "parts": [
+        "مواجهة دريك"
+      ]
+    },
+    "MID_BattleTitle_SC00_10": {
+      "source_sha256": "7e221b092ac1f9dd4155bdf485285233a384e6fdc0b71e80ad5c02d1bcf82966",
+      "parts": [
+        "مواجهة ماهادو"
+      ]
+    },
+    "MID_BattleTitle_SC00_13": {
+      "source_sha256": "963b15710656fcd11151a8ea0e5ca3e99ad35eeab34c140dfea86ce310c914ed",
+      "parts": [
+        "مواجهة شينلو"
+      ]
+    },
+    "MID_BattleTitle_SC00_14": {
+      "source_sha256": "2b8fbeff66e6aeb5117abd696558b7f4f2bb0824accb297317aa36e8ae5c9a33",
+      "parts": [
+        "المواجهة مع ليرا"
+      ]
+    },
+    "MID_BattleTitle_SC00_15": {
+      "source_sha256": "3a19ab9db07d580c8f350b5d922ba7544d0cfed96329d938b9db78c2d894c4c3",
+      "parts": [
+        "صمود بالور الأخير"
+      ]
+    },
+    "MID_BattleTitle_SC00_16": {
+      "source_sha256": "2c6030ee9571beb5a8c1150a4d2336071de92b973edc5cfa4f1099a11a25f6eb",
+      "parts": [
+        "نهاية الضغينة"
+      ]
+    },
+    "MID_BattleTitle_DefenseBattle": {
+      "source_sha256": "2b9344f35506b0ff90520cd0d7ba703b92ac7a865f03f2691ca0ecfc01005c8f",
+      "parts": [
+        "الدفاع عن داغسيون"
+      ]
+    },
+    "MID_BattleTitle_BD30_01": {
+      "source_sha256": "9e398f71807115413902336da44ad18884f885575d4f9d1c598705480f2aa5d2",
+      "parts": [
+        "اختبار أورورا"
+      ]
+    },
+    "MID_BattleTitle_BD30_02": {
+      "source_sha256": "2b2584b96b537712993a640e6ea266d5c170f06010f6105b3eaa8cea1e645bec",
+      "parts": [
+        "اختبار مارس"
+      ]
+    },
+    "MID_BattleTitle_BD30_03": {
+      "source_sha256": "71eb36622c1609e867d0f84c815d4497119be8161bf7b19ecfc98d95051d4534",
+      "parts": [
+        "اختبار سميرنوس"
+      ]
+    },
+    "MID_BattleTitle_BD30_04": {
+      "source_sha256": "7b723239b87cb5e159700287f06bc6fec8e7905625773af710d153aa51cd0b44",
+      "parts": [
+        "اختبار جورا"
+      ]
+    },
+    "MID_BattleTitle_BD30_05": {
+      "source_sha256": "46fc33b92759abb5d2f254aad1fcf4f23dee824091bb27436315e34c9a87aea0",
+      "parts": [
+        "اختبار كالا"
+      ]
+    },
+    "MID_BattleTitle_BD30_06": {
+      "source_sha256": "87742b5bdf178f759707feaaac47c4ce15ff045449174ba35d67697021b33bfe",
+      "parts": [
+        "اختبار كريدنا"
+      ]
+    },
+    "MID_BattleTitle_SCXX_00": {
+      "source_sha256": "997ccfa3a36f68332d7db9c8c092995b6b33ad84b74531619a7cec69604b3e88",
+      "parts": [
+        "الفرار الكبير"
+      ]
+    },
+    "MID_BattleTitle_SCXX_01": {
+      "source_sha256": "8a4148c6fb5c270a0cf8581e2573448458113489943e542ac3c999fa081bb980",
+      "parts": [
+        "الماضي المختوم"
+      ]
+    },
+    "MID_BattleTitle_SCXX_02": {
+      "source_sha256": "1184109a53a78f67075cfc12d47f9c53d13b69a1f68a00b05615b60fc6cbd5d9",
+      "parts": [
+        "تمثال المحارب الشجاع المفقود"
+      ]
+    },
+    "MID_BattleTitle_SCXX_03": {
+      "source_sha256": "e0d4e4a3a5fc85c72b4f2bdb29713440e0ed5e90c159b7664fd50783d62668fb",
+      "parts": [
+        "مناورات التمويه"
+      ]
+    },
+    "MID_BattleTitle_SCXX_04": {
+      "source_sha256": "5b77497dcb70ac21060f38babea52c691d20579d7d39be163712f5b94e4d2627",
+      "parts": [
+        "نزال ودي مع ملك بريغيد"
+      ]
+    },
+    "MID_BattleTitle_SCXX_05": {
+      "source_sha256": "d99c12ae58809ac91531ddc79ae7d8792048094d6f93ace18dfd1f50455673e6",
+      "parts": [
+        "سر العربة المختفية"
+      ]
+    },
+    "MID_BattleTitle_SCXX_06": {
+      "source_sha256": "742baa13993ebf129bd1f902ab87fc14d2d562b21c36ec7739cf11866814c4c2",
+      "parts": [
+        "ندم أورشل"
+      ]
+    },
+    "MID_BattleTitle_SCXX_07": {
+      "source_sha256": "e1064f29096a27f3e822b69c02192ea7aec812e8c82a30f6b10166a52b93773d",
+      "parts": [
+        "ملكة المنسيين من الوجود"
+      ]
+    },
+    "MID_BattleTitle_SCXX_08": {
+      "source_sha256": "8867a4db96543630949dba4ee2690036bedcd6c87f69f2bf4f4c8431f2cc3c22",
+      "parts": [
+        "سر من ذهب"
+      ]
+    },
+    "MID_BattleTitle_KL_01": {
+      "source_sha256": "72b9eb66f24a06a15ce30a2114087db428f721c5d6658b4305de7ce924310fd9",
+      "parts": [
+        "تدريب برتران القتالي"
+      ]
+    },
+    "MID_BattleTitle_KL_02": {
+      "source_sha256": "7026f6031eebd25a405850fee31dcc0e0a06c75f4a8a33dd742d41323799e710",
+      "parts": [
+        "تدريب سنتوريو القتالي"
+      ]
+    },
+    "MID_BattleTitle_DB_01": {
+      "source_sha256": "1f7493cf2b6494c08358a741b5565100355882a53a91ee25f3f8a9bdf598fd85",
+      "parts": [
+        "مواجهة بورغس مصاص الدماء"
+      ]
+    },
+    "MID_BattleTitle_DB_02": {
+      "source_sha256": "b5b956800b2495fa0090c9de6650d5fffe378166a87784e47de80cca108881e6",
+      "parts": [
+        "مواجهة أغيري قاهر الصقور"
+      ]
+    },
+    "MID_BattleTitle_DB_03": {
+      "source_sha256": "9af3761854efb7877f3c24b9855a0dc71907b56887c37f79cc38beb9523f0fe3",
+      "parts": [
+        "مواجهة سيبينتي، الحية ذات الرأسين"
+      ]
+    },
+    "MID_BattleTitle_DB_04": {
+      "source_sha256": "f4a09845d6c544e24223d2b383a6c96794905e38127778a7b6fb7e346ffddd74",
+      "parts": [
+        "مواجهة كاميلو صائد العمالقة"
+      ]
+    },
+    "MID_BattleTitle_DB_05": {
+      "source_sha256": "daea20eea84dcf1936bbd8bf2980a9a5cae8b0aab391476153e9938c2a9bbe86",
+      "parts": [
+        "مواجهة إيل لارا، صاحب الطعنة النافذة"
+      ]
+    },
+    "MID_BattleTitle_DB_06": {
+      "source_sha256": "c6f15f2b5de270e08c3bd784e45a9c25806bea4045ffb79952b87be98d96e4fc",
+      "parts": [
+        "مواجهة كاباي خاطف الضربات"
+      ]
+    },
+    "MID_BattleTitle_DB_07": {
+      "source_sha256": "8d6e9bcb5528d8c6e179d4fb409271a020fedfb0ccfdc2916bbe99cc8af97942",
+      "parts": [
+        "مواجهة داميان قناص السماء"
+      ]
+    },
+    "MID_BattleTitle_DB_08": {
+      "source_sha256": "b63d18875d03b317fbabd1c436a41dcd9dfd69fff3e70e1e21d786f5b054544b",
+      "parts": [
+        "مواجهة بيرينغيلا، القبضة المقدسة"
+      ]
+    },
+    "MID_BattleTitle_DB_09": {
+      "source_sha256": "4f1809ab11ccbe477fdd814f8c56eda8c27ae0c1ad2aa9063f5160e6e33d245d",
+      "parts": [
+        "مواجهة أوكو المدمر"
+      ]
+    },
+    "MID_BattleTitle_SL_01": {
+      "source_sha256": "86e66199a0db47ee34d103046032754a3bbb410b031bb2aaf38d526b389012d1",
+      "parts": [
+        "تدريب الكتيبة"
+      ]
+    }
+  },
+  "1_DIT_c04.msbt.zst": {
+    "MID_EV12_016_m01_021": {
+      "source_sha256": "8254fd163eb8cb95e190bdfcd1c723afa2475442ff7a088a710f062354b34f32",
+      "parts": [
+        "أم تراك قد تشجعت؟\nأتطلب قتالا؟ أتريد أن تستعدي الرهبنة؟"
+      ]
+    }
+  },
+  "1_KAI_c04.msbt.zst": {
+    "MID_EV11_025_m01_032": {
+      "source_sha256": "cb325f93da6aeb1b039e604d05394d5237611af612907e21086d6ceb63c8fbe8",
+      "parts": [
+        "أتعلمين يا أورشل؟ إن فيك شيئا يذكرني بأمي."
+      ]
+    }
+  },
+  "1_LED_c09.msbt.zst": {
+    "MID_EV14_045_m01_014": {
+      "source_sha256": "179d8bbeda9a3e2144c53ff0f25ce1bb17d3a5222645c9a32b9c177a60815698",
+      "parts": [
+        "مهلا، ما سمعت بهذه العشيرة من قبل.\nفهل تخبرنا عنها؟"
+      ]
+    }
+  },
+  "1_SEO_c05.msbt.zst": {
+    "MID_EV13_024_m01_021": {
+      "source_sha256": "4b8278a277528d4dada6489d943dd122c54876ceba4bcc8b3592cc117f79ad9c",
+      "parts": [
+        "ترى ما الذي أثار فيه هذه الاستجابة؟\nأنكون على موعد مع عدو بالغ البأس؟"
+      ]
+    }
+  },
+  "2_XXX_c02.msbt.zst": {
+    "MID_EV20_009_m01_045": {
+      "source_sha256": "1320a4888bc6bca86038c8193dd20dccb46851082cce4fbccd3c0065af5a506a",
+      "parts": [
+        "على أنه... ما زالت في يدي ورقة أستطيع أن ألعبها."
+      ]
+    }
+  },
+  "3_ISM_c02.msbt.zst": {
+    "MID_EV30_113_m01_030": {
+      "source_sha256": "ebb501fc3029338a8ea588f86a12e83dbf2706027549d5a6e640c9e4685ab296",
+      "parts": [
+        "لكننا لم نتعارف إلا الآن. فمن تكون بالضبط؟"
+      ]
+    }
+  },
+  "Gmap_Wait.msbt.zst": {
+    "MID_Gmap_Fix_Normal_Dan_m03_001": {
+      "source_sha256": "00baf45920de167558e500342a9919da0c7032bc0204967559ab96984f732399",
+      "parts": [
+        "ما أمقت الجدران الملطخة!\nفكلما أطلت النظر في بقعها، بدت لي أشبه بالوجوه!"
+      ]
+    }
+  },
+  "Item.msbt.zst": {
+    "MIID_H_BoardGame": {
+      "source_sha256": "0ea12e01bf061035fb115a65376565663883e3747925bb9297dd4e59940c2cd8",
+      "parts": [
+        "لعبة ألواح من خشب نفيس شائعة في داغدا،\nويقبل عليها هواة ألعاب الألواح خاصة."
+      ]
+    }
+  },
+  "LG_1LED_c09.msbt.zst": {
+    "MID_LGV_1LED_c09_Oly_m01_002": {
+      "source_sha256": "733ebc604a0eafee7b8ece0e27f1ef4fc46b536566e8d05c27d70c5355951791",
+      "parts": [
+        "لو فاتني الموعد، لأسأت إلى سمعة معبد كالا."
+      ]
+    }
+  },
+  "Scout.msbt.zst": {
+    "MID_LGV_Scout_Lys_m02_001": {
+      "source_sha256": "6abd3c49bc321efe8ae069f4c2f5976178a118940304780bba65f571f27f825f",
+      "parts": [
+        "أتقبلونني معكم حقا؟ شكرا لكم!"
+      ]
+    }
+  },
+  "SE_Buc_Sci_CBA.msbt.zst": {
+    "MID_SE_Buc_Sci_B_021": {
+      "source_sha256": "c813acd7e2d0385e6f1889020caec0470856a66fee99feced028e5b3d0b13223",
+      "parts": [
+        "لا، تمهل. لم تجب عن سؤالي الأول."
+      ]
+    }
+  },
+  "Skill.msbt.zst": {
+    "MSID_StormAwakening": {
+      "source_sha256": "c1f4dba5e6e51839f91764643fdda40065f36d81d5aec80f008af4e3e1675c6a",
+      "parts": [
+        "صحوة العاصفة"
+      ]
+    }
+  },
+  "SubQuest.msbt.zst": {
+    "MID_LGV_SQID_Assassination_B01_m02_003": {
+      "source_sha256": "7f62910e8ea02f0af4ed40356afa7f204a6cee6cde990941154687ed16d5ddd6",
+      "parts": [
+        "الملك غيلكريس هو من يحكم أراغو اليوم،\nوالعرش حقه."
+      ]
+    }
+  },
+  "System.msbt.zst": {
+    "MID_Restart_ReturnObelisk_Hellgate_Confirm": {
+      "source_sha256": "69b79b2fce5a4e949ce409c26e699ca889e99a683986ff3e38f37605e1910244",
+      "parts": [
+        "أتود العودة إلى قاعة المسلة؟"
+      ]
+    }
+  },
+  "Title.msbt.zst": {
+    "MID_Title_EV12_001": {
+      "source_sha256": "b5ad1579c61e34de2e8fc6f0218e66ceae3478e87a3f537d3a4bb3d73fdd9960",
+      "parts": [
+        "فابيو المبشر"
+      ]
+    }
+  },
+  "Tutorial.msbt.zst": {
+    "MID_TUT_Bmap_Carriage_t": {
+      "source_sha256": "e24047faa85583909c37e2979680eafd3b39d4d889dd64ef9a1ed51451bc3926",
+      "parts": [
+        "الدفاع عن العربة"
+      ]
+    }
+  }
+}

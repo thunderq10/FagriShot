@@ -24,12 +24,14 @@
 // [fefw] frame_fixes = 1 (default; the menu changes it live) and [fefw] frame_fixes_skip = a comma list of groups to leave alone: dt, shader,
 // physics, cloth, quake, anim, map, ui, text. At 30 fps every hook leaves the game's values as they are.
 #include "fefw_game.h"
+#include "fefw_arabic_reveal.h"
 
 #include <algorithm>
 #include <atomic>
 #include <cmath>
 #include <cstdint>
 #include <cstring>
+#include <unordered_map>
 #include <string>
 
 #include "nxrt/config.h"
@@ -257,10 +259,96 @@ int hook_quake(::Ctx* c, uint64_t, void*) {
 }
 
 // ---- spoken text: 3 letters a frame, on 30 Hz ticks only -------------------------------------------------------------------------------
-int hook_text_step(::Ctx* c, uint64_t, void*) {
-    if (static_cast<uint32_t>(c->x[1]) != 3 || full(scale(kText)) || st().tick.load(std::memory_order_relaxed)) return 0;
-    c->x[0] = 0;              // not finished: the line goes on typing at the next tick
-    count(kText);
+struct PaneBuffer {
+    uint64_t pane;
+    char* data;
+    uint16_t capacity;
+    uint16_t* length;
+};
+
+PaneBuffer talk_pane(::Ctx* c) {
+    // The same pane lookup as the stock talk step (main+0x115d344..0x115d370).
+    // Its name is a libc++ string at talk+0x18. The byte TextBox setter
+    // main+0x59d140 independently confirms data/capacity/current length.
+    ::Ctx call = *c;
+    const auto talk = reinterpret_cast<const uint8_t*>(c->x[0]);
+    if (!talk) return {};
+    auto lookup = fn_lookup(st().base + 0x1594f20);
+    if (!lookup) return {};
+    call.x[1] = (talk[0x18] & 1) ? *reinterpret_cast<const uint64_t*>(talk + 0x28) : reinterpret_cast<uint64_t>(talk + 0x19);
+    call.x[0] = st().base + 0x2276a20;
+    lookup(&call);
+    if (!call.x[0]) return {};
+    const auto pane = call.x[0];
+    return {pane, *reinterpret_cast<char**>(pane + 0xd8), *reinterpret_cast<uint16_t*>(pane + 0x110),
+            reinterpret_cast<uint16_t*>(pane + 0x112)};
+}
+
+void set_pane_text(const PaneBuffer& b, const std::string& text) {
+    // Same byte count and dirty bit as the game's byte TextBox setter.
+    std::memcpy(b.data, text.c_str(), text.size() + 1);
+    *b.length = static_cast<uint16_t>(text.size());
+    *reinterpret_cast<uint16_t*>(b.pane + 0x114) |= 4;
+}
+
+int hook_text_step(::Ctx* c, uint64_t site, void*) {
+    static thread_local bool inside = false;
+    if (inside) return 0;
+    if (static_cast<uint32_t>(c->x[1]) == 3 && !full(scale(kText)) && !st().tick.load(std::memory_order_relaxed)) {
+        c->x[0] = 0;
+        count(kText);
+        return 1;
+    }
+    static const bool enabled = config_get_bool("fefw", "arabic_reveal", false);
+    if (!enabled) return 0;
+    auto original = fn_lookup(site);
+    if (!original) return 0;
+    const auto b = talk_pane(c);
+    if (!b.data || !b.capacity || *b.length >= b.capacity) return 0;
+    struct Page {
+        char* buffer = nullptr;
+        std::string original, shown;
+    };
+    static thread_local std::unordered_map<uint64_t, Page> pages;
+    auto slot = pages.find(b.pane);
+    if (slot != pages.end()) {
+        const auto& prev = slot->second;
+        // The game can recycle a pane or change its text between steps.
+        // Only restore when the buffer identity, bytes and byte count still match.
+        if (prev.buffer == b.data && prev.shown.size() == *b.length && prev.original.size() < b.capacity &&
+            !std::memcmp(b.data, prev.shown.c_str(), prev.shown.size() + 1))
+            set_pane_text(b, prev.original);
+        pages.erase(slot);
+    }
+    struct Guard {
+        bool& flag;
+        ~Guard() { flag = false; }
+    } guard{inside};
+    inside = true;
+    original(c); // the guest's cursor, timing and completion/skip result
+    const auto n = *b.length;
+    if (n >= b.capacity || b.data[n] != 0 || pages.size() >= 16) return 1;
+    static const bool trace = config_get_bool("fefw", "arabic_trace", false);
+    if (trace) {
+        static std::atomic<unsigned> samples{0};
+        if (samples.fetch_add(1, std::memory_order_relaxed) < 24) {
+            uint32_t mask = 0;
+            for (size_t i = 0; i < n; ++i)
+                if (uint8_t(b.data[i]) < 32) mask |= 1u << uint8_t(b.data[i]);
+            NXLOG_I(kTag, "Arabic talk pane: %u/%u bytes, first %02x, control mask %08x, has shaped Arabic %d", unsigned(n),
+                    unsigned(b.capacity), unsigned(uint8_t(b.data[0])), mask, int(std::memchr(b.data, 0xef, n) != nullptr));
+        }
+    }
+    std::string projected;
+    if (!arabic::project_reveal(reinterpret_cast<uint8_t*>(b.data), n + 1, projected) || projected.size() >= b.capacity) return 1;
+    auto& page = pages[b.pane];
+    page.buffer = b.data;
+    page.original.assign(b.data, n);
+    page.shown = std::move(projected);
+    set_pane_text(b, page.shown);
+    static std::atomic<bool> seen{false};
+    if (!seen.exchange(true, std::memory_order_relaxed))
+        NXLOG_I(kTag, "Arabic typewriter: projecting the visible suffix of each dialogue line");
     return 1;
 }
 

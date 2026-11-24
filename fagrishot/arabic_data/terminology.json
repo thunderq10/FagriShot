@@ -1,0 +1,2954 @@
+{
+  "Person.msbt.zst": {
+    "MPID_Ishmal": {
+      "source_sha256": "e605418eb316285a5f764eb96dd71dc3c0dd848b3dc0d1b34ccbc51afa77fc0d",
+      "parts": [
+        "إشميل"
+      ]
+    },
+    "MPID_Kai": {
+      "source_sha256": "0c58bed664c9d206d051a5e55f32540c72ac52e7344ef8175d73d49be982f891",
+      "parts": [
+        "كاي"
+      ]
+    },
+    "MPID_Ditlih": {
+      "source_sha256": "5f49ac8a0ec7eba27082655399e372b4f6a421b313a28ed7d84b77233dbad9bc",
+      "parts": [
+        "ديتريش"
+      ]
+    },
+    "MPID_Seodola": {
+      "source_sha256": "eaa82e83613c9511db44fb5cf3f5ef66baab0b1b83be9ad4fd78eeaeb2e0f654",
+      "parts": [
+        "ثيودورا"
+      ]
+    },
+    "MPID_Leda": {
+      "source_sha256": "46ad4ff666100992384cc81e2117ea6cfbc454a95aeb951835595e0715be60e5",
+      "parts": [
+        "ليدا"
+      ]
+    },
+    "MPID_Layridana": {
+      "source_sha256": "0c9faf6bb7e1bd915a98998de0ff425c37fc8723cdb5a1ede947f22f30e7ab3f",
+      "parts": [
+        "ليليدانا"
+      ]
+    },
+    "MPID_Beltran": {
+      "source_sha256": "67058cadbefb247a1bd81692e806a6b48156cb56503374ebc82dfe83cdca8d0c",
+      "parts": [
+        "برتران"
+      ]
+    },
+    "MPID_Talimun": {
+      "source_sha256": "680ece1d972f6867ebc541cde2d0f1b604d96d7ffdcbf0b2dd2b0f7c20c5d5eb",
+      "parts": [
+        "تاليمون"
+      ]
+    },
+    "MPID_Orhel": {
+      "source_sha256": "0a82484dfb7fdc0f73e23deda902f5dfe48529f0d08c169308f06e4f35aba580",
+      "parts": [
+        "أورشل"
+      ]
+    },
+    "MPID_Anhatolyah": {
+      "source_sha256": "c1afe0756bbe2704998035b521e669265deee3ab396dcec38691eab12ee27bc4",
+      "parts": [
+        "أناتوليا"
+      ]
+    },
+    "MPID_Tiara": {
+      "source_sha256": "df37f175df923b49921938fe1fc4bcb753b6bca6d8d9965cf0e009de5a2c697b",
+      "parts": [
+        "تيالا"
+      ]
+    },
+    "MPID_Peter": {
+      "source_sha256": "7208b3dfa78927c991d8c8fbacb3853f3609127f4f162a499e51ac1973b0b0ea",
+      "parts": [
+        "بيتر"
+      ]
+    },
+    "MPID_Hurtando": {
+      "source_sha256": "358a7595b63abc203e29765486a68f9f4792e75b378dc59c4765407a5824cf9e",
+      "parts": [
+        "أولتاند"
+      ]
+    },
+    "MPID_Fabio": {
+      "source_sha256": "1d307535a997447f780d4e93d31ce6875b1b6be2041de8e8bc843bd070a88a4a",
+      "parts": [
+        "فابيو"
+      ]
+    },
+    "MPID_Anacharsis": {
+      "source_sha256": "fcf955e3b1db34e5eec269fa1fabe3d3c4d2600e2e14d3332fe84239adae5acc",
+      "parts": [
+        "أناخارسيس"
+      ]
+    },
+    "MPID_Esmeralda": {
+      "source_sha256": "557217df0fc32f679e42f312169635c355dcdfe642cc568c6691655137abe840",
+      "parts": [
+        "إزميرالدا"
+      ]
+    },
+    "MPID_Michaela": {
+      "source_sha256": "f5d7c4853ea9631bab31c0ce23b3a9fd3644e3cc80d1b1c628b0d0ef2c126401",
+      "parts": [
+        "ميكايلا"
+      ]
+    },
+    "MPID_Bonaparte": {
+      "source_sha256": "903a9db774d03e349b0c4e3b871b895af42774e819eb9601e2572b0bc36988b3",
+      "parts": [
+        "بونافنتورا"
+      ]
+    },
+    "MPID_Tobias": {
+      "source_sha256": "fc3ee6f82246f5567476feb8c3c679c7796a6a45c4df19a6086909464f8f065f",
+      "parts": [
+        "توبياس"
+      ]
+    },
+    "MPID_Lillian": {
+      "source_sha256": "f598503e1558515c887f11c2f7ce2eba7e41beb3d052680367129a5a6f3bd709",
+      "parts": [
+        "ليليان"
+      ]
+    },
+    "MPID_Lysander": {
+      "source_sha256": "3877f2a29f9610e2d539be120d06467872a21f974dbc723eb2b2f45f52f7e55c",
+      "parts": [
+        "ليساندر"
+      ]
+    },
+    "MPID_Buccaneer": {
+      "source_sha256": "8cacd466652bd7f924bc39c54b76d93da992d8ff95ce4a33f267931de51dbaf8",
+      "parts": [
+        "بوكار"
+      ]
+    },
+    "MPID_Scirocco": {
+      "source_sha256": "359871dd22ed2e2c599fd1425e5608fd2bcbf92f26934386c9088b7a0baf7515",
+      "parts": [
+        "سيروكو"
+      ]
+    },
+    "MPID_Moo": {
+      "source_sha256": "54708d6c065f1e273948c5b1c996cc145cac6bcb1b179a9a70660fa37303e63f",
+      "parts": [
+        "مو"
+      ]
+    },
+    "MPID_Olympia": {
+      "source_sha256": "6c63312c20d5284ebadaef63a8c22ae6b57170eb20f124adc21add422d6f3b04",
+      "parts": [
+        "أولمبيا"
+      ]
+    },
+    "MPID_Maxim": {
+      "source_sha256": "7d5c2111824c9150890ff7d43ae015ab207eb6fdbc5b1eae009808f1684d26db",
+      "parts": [
+        "ماكسيم"
+      ]
+    },
+    "MPID_Jester": {
+      "source_sha256": "5025f03c86e8b6f87274e61454329fe2f7e3c88e0d402793608f1c689f3aee4a",
+      "parts": [
+        "المهرج"
+      ]
+    },
+    "MPID_Goliath": {
+      "source_sha256": "e502f7b37f993870e532dd051cda5262aef6ce68f338b4bdf24bfca29eb4e961",
+      "parts": [
+        "جالوت"
+      ]
+    },
+    "MPID_Gates": {
+      "source_sha256": "6393aeafdcc3a9ea7991d8a506e1251d654375d6abc755d1f0bef89e456c319f",
+      "parts": [
+        "غايتس"
+      ]
+    },
+    "MPID_Dante": {
+      "source_sha256": "5f2e628ebed623c81b24a2aa68e054e565b66396a6f0cac9e5e9003953b05cc8",
+      "parts": [
+        "دانتي"
+      ]
+    },
+    "MPID_Ursula": {
+      "source_sha256": "b5c7aa3b6cb01a987ee33ddda2d539a9b98779b587db8c4fa40734302e14a036",
+      "parts": [
+        "أورسولا"
+      ]
+    },
+    "MPID_Simon": {
+      "source_sha256": "7ddb370036083c0639ebb4881a574794388a9293bf9079ee52d8082ce1a856ce",
+      "parts": [
+        "سيمون"
+      ]
+    },
+    "MPID_Lourdija": {
+      "source_sha256": "c937e1e702b5695aef342e36ba8e9ccc595ffdf3f509a199f2fcbc3d2c4cdeb9",
+      "parts": [
+        "لوديا"
+      ]
+    },
+    "MPID_Lulu": {
+      "source_sha256": "9e5fca9c5664fa7e8d02e925d6611f196698cb8690268d6aee4e615ff17f061a",
+      "parts": [
+        "لولو"
+      ]
+    },
+    "MPID_Fianna": {
+      "source_sha256": "7e64eda2f19db7526a09baa075a00fe6b0c12e4cb5a927f3c920b84a092bfe25",
+      "parts": [
+        "فيانا"
+      ]
+    },
+    "MPID_Fatima": {
+      "source_sha256": "2d9b6a0b443f6ce51e3f5da2fd0cedca3d6fb4e0f0523bebd7cbedeff2900b32",
+      "parts": [
+        "فاطمة"
+      ]
+    },
+    "MPID_Diego": {
+      "source_sha256": "4d0e999f85eb9ff2ee5f96f0c23cf56a0821972d94dc0627fb6a641514c47c4d",
+      "parts": [
+        "دييغو"
+      ]
+    },
+    "MPID_Loretta": {
+      "source_sha256": "132185047ca80b545144e0379d31e18938cee8db04ad966374e47313789bfdd5",
+      "parts": [
+        "لوريتا"
+      ]
+    },
+    "MPID_Seteth": {
+      "source_sha256": "3f243d2ea45092f8761ed95aa437b4b26a7227b84d9de0c76b7d51ac0c130671",
+      "parts": [
+        "سيتيث"
+      ]
+    },
+    "MPID_Niney": {
+      "source_sha256": "b3357d3ae065728c4709bef38e8c8288d32b450c4080b6004dcb2c8787189fa2",
+      "parts": [
+        "نيناي"
+      ]
+    },
+    "MPID_Nazha": {
+      "source_sha256": "844d0a38210bc03c7bc20bd533c7569a34cb16adbfcbb2804c0ab1cbde5e33fc",
+      "parts": [
+        "نيجا"
+      ]
+    },
+    "MPID_Sarang": {
+      "source_sha256": "9a6be90a4e8bb82da298487cd366aba8073ee59a7fc490c2d60fc96e31aeb339",
+      "parts": [
+        "شا لان"
+      ]
+    },
+    "MPID_Daitoh": {
+      "source_sha256": "559d67095a8e0a13cdd1fed71edbe335d34eca7bbdf96d8ebb7ad77e442ed74d",
+      "parts": [
+        "داداو"
+      ]
+    },
+    "MPID_Halvin": {
+      "source_sha256": "68fd9d00071ba261e8fd23a246f16167ccdb7662fe75ac943b13212044ccd9c3",
+      "parts": [
+        "هالفين"
+      ]
+    },
+    "MPID_Gujaran": {
+      "source_sha256": "64ab9be43a5364b14b8b36bf147de09bad686656da3931ad07ff5bdb3f319ed2",
+      "parts": [
+        "غوزران"
+      ]
+    },
+    "MPID_Yanghai": {
+      "source_sha256": "12ca76e36c06ba5544d14f2f312c97057b23a9cfef615ad8fb7b0ba76e997882",
+      "parts": [
+        "يانغ جيه"
+      ]
+    },
+    "MPID_Io": {
+      "source_sha256": "d7a57b2141242737cf7d12c2741cceaf44127b71a669078c03e01f533edcc6de",
+      "parts": [
+        "إيو"
+      ]
+    },
+    "MPID_Pepe": {
+      "source_sha256": "232b2c3b6a3f5fc398123632a1b1b7f90f8715e191bfdc9ab1e5363a042f2c1a",
+      "parts": [
+        "بيبي"
+      ]
+    },
+    "MPID_Noctura": {
+      "source_sha256": "8fb51354d2246ae5a39cb0fd7e095f6152e5374487b6f4f07813ae37328fd911",
+      "parts": [
+        "نوكتولا"
+      ]
+    },
+    "MPID_Sophia": {
+      "source_sha256": "f2a7fc0f89d8c26219a38f30e4fcd86fe890e30bd29e8c9e4ae86a7e3e2fe2c0",
+      "parts": [
+        "صوفيا"
+      ]
+    },
+    "MPID_Catania": {
+      "source_sha256": "089e49b0dc7f4a3f8d06db180046b9b813b97c247044843d3e4dcdcd58ab949c",
+      "parts": [
+        "كاتانيا"
+      ]
+    },
+    "MPID_Nedine": {
+      "source_sha256": "3f25dd038e12a5fd7e2dcf771935ab3d9928738e39fa26bba7f176ab2ee6d3de",
+      "parts": [
+        "نايدين"
+      ]
+    },
+    "MPID_Zaccone": {
+      "source_sha256": "f1b4e3a1c2a84293707dd7ff3122ff0f3f46fb92cbbc6763915f0b507eab5684",
+      "parts": [
+        "زاركوني"
+      ]
+    },
+    "MPID_Majiide": {
+      "source_sha256": "71490e53ad91731bcbc10f13e9e6943ee9c3bae67baca16705653a6b9010d00d",
+      "parts": [
+        "ماجيدي"
+      ]
+    },
+    "MPID_Venditz": {
+      "source_sha256": "f6275b8ceb5cc0a9345f242f4c5ce3a5f419384f5bde37cce7e6328fa646da08",
+      "parts": [
+        "بنديتس"
+      ]
+    },
+    "MPID_Inioni": {
+      "source_sha256": "37dff5cb6ebbc200cd6221505a0b4ac0295421c87d4ccbd5e0ccfca2a7567d63",
+      "parts": [
+        "إنيوني"
+      ]
+    },
+    "MPID_Jasmine": {
+      "source_sha256": "b71870bffe1328447bcc0572dc646a87aa3f3da8edfa7978c44a3d3139cc41ba",
+      "parts": [
+        "ياسمين"
+      ]
+    },
+    "MPID_Alexandra": {
+      "source_sha256": "9a49ff86979320681c29de939d8d53d54632710026ff937d6f206530aa7ece34",
+      "parts": [
+        "ألكسندرا"
+      ]
+    },
+    "MPID_Nathan": {
+      "source_sha256": "ebbebcffe58b20e11707a622841a3d53ee9fec0337386aac6c1261e938bdc5fd",
+      "parts": [
+        "ناثان"
+      ]
+    },
+    "MPID_Hrih": {
+      "source_sha256": "da7589725fe64e1f174057a198b73c8cf8bd6877194f1f2a68f83e6e398830ca",
+      "parts": [
+        "كريك"
+      ]
+    },
+    "MPID_Aswan": {
+      "source_sha256": "2341bf4ef58b3be468b28f3f9c74f8a33e28ee00e7268a4ad714a075728246ba",
+      "parts": [
+        "أسوان"
+      ]
+    },
+    "MPID_Aurora": {
+      "source_sha256": "2f9dcfdc18fe056f49f42aaa896505661d482a859ef50d6b1c795f7097708ea5",
+      "parts": [
+        "أورورا"
+      ]
+    },
+    "MPID_Rora": {
+      "source_sha256": "65b8594df227c4d4d4c45200e6fb68e1fbb312329c22b0a5296898d3d8772b25",
+      "parts": [
+        "لورا"
+      ]
+    },
+    "MPID_Gradius": {
+      "source_sha256": "6175f52a2d178ea9e7fb93f854a03502b1fa9161737e2cf1eee4a7fcdc748194",
+      "parts": [
+        "غلاديوس"
+      ]
+    },
+    "MPID_Gruadin": {
+      "source_sha256": "5b76238aff204cee3247bd8b3ae83d52ab722f89aa9db04f37020d41bb21b65a",
+      "parts": [
+        "كروادين"
+      ]
+    },
+    "MPID_Cleobulus": {
+      "source_sha256": "3de1bd44db05f31cdccc3669eb03056b3bb0b2b3f403b4b836052b3b8e4873d7",
+      "parts": [
+        "كليوبولوس"
+      ]
+    },
+    "MPID_Myson": {
+      "source_sha256": "bea78e343672e4da069d50e8f558f2d950748b8157eed62d230224bb7a821154",
+      "parts": [
+        "ميسون"
+      ]
+    },
+    "MPID_Krapka": {
+      "source_sha256": "0348cd35c145a72be4704ba9e441c77892b0ca23542f59bd3c5b4b36f6818651",
+      "parts": [
+        "كلابكا"
+      ]
+    },
+    "MPID_Troja": {
+      "source_sha256": "4ebd6a6db07be35c6c76c7d7212c245d123c4fc212d1552e8ad85917a9a11429",
+      "parts": [
+        "تروي"
+      ]
+    },
+    "MPID_Juno": {
+      "source_sha256": "e1787ff3f0d25cdb3189db73ae369abb2bea96083b925a6c34b29399fcaa098a",
+      "parts": [
+        "جورا"
+      ]
+    },
+    "MPID_Soleil": {
+      "source_sha256": "9a06d7fa789b1ae4fc14cf76fef71ac5fd56518a83659483ee31c0bbc245defd",
+      "parts": [
+        "سوليل"
+      ]
+    },
+    "MPID_Mars": {
+      "source_sha256": "5b561b4fd2015d7d99645ada569137b5e1e3c1ea82f8a1d7f81000ba659ed4d2",
+      "parts": [
+        "مارس"
+      ]
+    },
+    "MPID_Smirnoth": {
+      "source_sha256": "eeda46367410f5cacd01d3e2f3d5baf76e4ab1fb215ff5f777f3d34993a7bf12",
+      "parts": [
+        "سميرنوس"
+      ]
+    },
+    "MPID_Clair": {
+      "source_sha256": "cd0d28a1fa56db46bcfa31b212a70b19ad8e73d8a61ecb0f2219c568665a7722",
+      "parts": [
+        "كريدنا"
+      ]
+    },
+    "MPID_Cara": {
+      "source_sha256": "a3d8761224568192f9a9bf19d5816a56ef7f0a120f3ec7f5675fd6c21078e98e",
+      "parts": [
+        "كالا"
+      ]
+    },
+    "MPID_JuFas": {
+      "source_sha256": "6355728fa692284eaf22f09fa09ad96c73cc17339a72f52e243fc5efa7a822b9",
+      "parts": [
+        "يو فاس"
+      ]
+    },
+    "MPID_Castor": {
+      "source_sha256": "122b71922f10f19c4ec6e3dbc22152edf0ebfac8f4243872693c7b8e0d4827d5",
+      "parts": [
+        "كاستور"
+      ]
+    },
+    "MPID_Centlion": {
+      "source_sha256": "2c976b13ccaf9390a77b0b91847394b612cf9887338a6073e761718fd663c82e",
+      "parts": [
+        "سنتوريو"
+      ]
+    },
+    "MPID_Tahuonia": {
+      "source_sha256": "f172f5cf62a863c4ca4feba5df7b7a650d5f7ff3e0471d6b5dc1ffaf99dcb6ea",
+      "parts": [
+        "تاهونيا"
+      ]
+    },
+    "MPID_Nomvethe": {
+      "source_sha256": "081e321a57deca5569e06db39879679c85020ee06b20d52985271875ae6d0702",
+      "parts": [
+        "نومفيد"
+      ]
+    },
+    "MPID_Long": {
+      "source_sha256": "c7135d78827efa15b41bf953d1ddaae1a3106b93f411387f9fbab7beec617c84",
+      "parts": [
+        "لونغ"
+      ]
+    },
+    "MPID_Miwai": {
+      "source_sha256": "a2affc25cf89266a3dac76022ac02351cf36a08a07a26f7d27a0de28b2d7c0b3",
+      "parts": [
+        "مورو"
+      ]
+    },
+    "MPID_Verafi": {
+      "source_sha256": "44dc5378e4dcc6c8fc7008d16a892c0c90b3c3ff0842e1eff73890460c6693cf",
+      "parts": [
+        "بولوني"
+      ]
+    },
+    "MPID_Gabriel": {
+      "source_sha256": "c5fc00629e51c577ab4f25430b79658622647fb8778b5c6dd1e61356df69f55e",
+      "parts": [
+        "غابرييل"
+      ]
+    },
+    "MPID_Hasdrubal": {
+      "source_sha256": "3b273d75d0231c17ae6363a6468ccc5a5ed1cafb786f12a8de7792d7402bf21e",
+      "parts": [
+        "حسدربعل"
+      ]
+    },
+    "MPID_Carina": {
+      "source_sha256": "967f7b7d1e1fb08029420cc38a2e7316090cebbe5976e55a0326a4cbb56452a5",
+      "parts": [
+        "كارينا"
+      ]
+    },
+    "MPID_Tsiskaridze": {
+      "source_sha256": "b1775104d270c452aa410efabe541504701ca2b23fa5399ceab352f1bcdf498e",
+      "parts": [
+        "تسيسكاريدزه"
+      ]
+    },
+    "MPID_Zoni": {
+      "source_sha256": "ff49e3dde4ae5cb545d54006d0a2535244720643c95c465d282ead33e400c26c",
+      "parts": [
+        "أوزين"
+      ]
+    },
+    "MPID_KonMoe": {
+      "source_sha256": "224c988527e4e6e8011a19cb5d2ff4019b2a39c57b2e73e476de89d1ac75090e",
+      "parts": [
+        "كوموس"
+      ]
+    },
+    "MPID_Esprit": {
+      "source_sha256": "2c4c78bd3c5004be08e32f51261f090fc5dad016518c8c1ef4bf4e0bbaea4c09",
+      "parts": [
+        "إسبرين"
+      ]
+    },
+    "MPID_Mandalan": {
+      "source_sha256": "ee32e5c9fbc0f45e1935574688d12ae2e098fa211fa541a8f59e7ba69e63b118",
+      "parts": [
+        "ماندالان"
+      ]
+    },
+    "MPID_Madl": {
+      "source_sha256": "e50d59cafcbb48c5911735ec56d8a7ad69e4a7ec3266baf526cd6f43fa83b678",
+      "parts": [
+        "ماهدل"
+      ]
+    },
+    "MPID_Nassim": {
+      "source_sha256": "beb8c81c53a1ffb37b20ef7b59257277f5ea1e7b4a0133d3718a62418e512a4d",
+      "parts": [
+        "ناشيم"
+      ]
+    },
+    "MPID_Roxana": {
+      "source_sha256": "a5b802a0b4ebe9524d2695d2868a164be4e7c3527a3cd2c3708a7c17ea39e597",
+      "parts": [
+        "روكسانا"
+      ]
+    },
+    "MPID_Orpheus": {
+      "source_sha256": "23e8751288631ef7a4116b8541eb279ca61f7fc1dc4653686e37df09005af415",
+      "parts": [
+        "أورفيوس"
+      ]
+    },
+    "MPID_Anna": {
+      "source_sha256": "62552f39d9e80115a05d0d627d5a57ed662effed776545186035ec77c348f346",
+      "parts": [
+        "آنا"
+      ]
+    },
+    "MPID_Quijermo": {
+      "source_sha256": "2b3d6f7b5a36873b8619bf23c6075607d0c07db5e97216915a8e324f4a7738a7",
+      "parts": [
+        "غييرمو"
+      ]
+    },
+    "MPID_Breza": {
+      "source_sha256": "f452538da74b043b632c6a6309f00ea5beb41b4d7e73aff634bf1ee722f93566",
+      "parts": [
+        "بريزا"
+      ]
+    },
+    "MPID_Getomeja": {
+      "source_sha256": "4f780fa61c37fc708018a13bd5e20b2b6dc49fb5be46adf710b925551dcd780e",
+      "parts": [
+        "غيفما"
+      ]
+    },
+    "MPID_Januarius": {
+      "source_sha256": "363bbea8f8f93b7f18f3dfd227dcb47945f72e6da47bde30be5c7f2c7de7af1e",
+      "parts": [
+        "يانوريوس"
+      ]
+    },
+    "MPID_Kyo": {
+      "source_sha256": "17b0eca504c61d53485a5e0e47ea4e9c49a80234f1f42b2c8db1a272b136d13f",
+      "parts": [
+        "جيانغ"
+      ]
+    },
+    "MPID_Dagda": {
+      "source_sha256": "fb809c932bd77b49c9a6ad447cfc9470dd697971747b2887edeaa1b0c2895b29",
+      "parts": [
+        "داغدا"
+      ]
+    },
+    "MPID_Balor": {
+      "source_sha256": "249670b34ea2001c0dea806fa1a04b552e5f6af4d5e4c33b012756462ff0f520",
+      "parts": [
+        "بالور"
+      ]
+    },
+    "MPID_Lyra": {
+      "source_sha256": "a4b5608020b0694be219256e569a79d71ebecde29ac49cef567ec43d42500b62",
+      "parts": [
+        "ليرا"
+      ]
+    },
+    "MPID_Laksa": {
+      "source_sha256": "4fe991db5fbdd75275e393ec87df930be08c83b00480ccd879136f995e60776a",
+      "parts": [
+        "راكشا"
+      ]
+    },
+    "MPID_Isheth": {
+      "source_sha256": "b8754fe4a2035fe9846c24e031f4004a81f3e73bcf94afc8b6ae15b8dfd5f93b",
+      "parts": [
+        "إيشيت"
+      ]
+    },
+    "MPID_Ileana": {
+      "source_sha256": "c7f9bb32245f80a9a78d705332e577ec98a2ba6c28d737703914ade07ebbf8c4",
+      "parts": [
+        "إليانا"
+      ]
+    },
+    "MPID_Marna": {
+      "source_sha256": "fea058783335ab3f4ea80c0f0aa4ea55b3155da6bec487975f34e510a928c45c",
+      "parts": [
+        "ماهنا"
+      ]
+    },
+    "MPID_Maria": {
+      "source_sha256": "7c2b813d25ccbaa949ce69a2ac17bfb91b7f0ef47c359d6d399bcbc94efdb6cd",
+      "parts": [
+        "ماريا"
+      ]
+    },
+    "MPID_Martira": {
+      "source_sha256": "cbe4eed415513bd40e9649bf43cb89b3bcbffc380ae730d291ca3d5094a9c470",
+      "parts": [
+        "مارتيلا"
+      ]
+    },
+    "MPID_Shinra": {
+      "source_sha256": "860c8e9fc6e53e81cbaa8e7bc1be297255ddd75033c92fb4639c5967f3b1e40c",
+      "parts": [
+        "شينلو"
+      ]
+    },
+    "MPID_Hyoushi": {
+      "source_sha256": "0f9b8f6510d48a024a43cbd28b596edd5c890267e6f978c3dba946cc5567ffae",
+      "parts": [
+        "باوزي"
+      ]
+    },
+    "MPID_Ganshin": {
+      "source_sha256": "f343e2fec1cb97bca354f925e367e3e4fc4673873e2be068ba0bf779a6259888",
+      "parts": [
+        "يانجين"
+      ]
+    },
+    "MPID_Gillquils": {
+      "source_sha256": "fa7c7ec54553e6e1e5c4991068823b286ad2177d01adfd463ef3e60f7fbf0f96",
+      "parts": [
+        "غيلكريس"
+      ]
+    },
+    "MPID_Kiroica": {
+      "source_sha256": "13a07c781185fd9f544727885a0cd2f492f6f2ffb4a76cd028cdbc93171639ca",
+      "parts": [
+        "كيروك"
+      ]
+    },
+    "MPID_Langa": {
+      "source_sha256": "7cbdc06f3a133b0fcf126e4a944f46bfd3ec41625a7c12247bb0e3fa04cef1ea",
+      "parts": [
+        "راندا"
+      ]
+    },
+    "MPID_Tulls": {
+      "source_sha256": "d027fac953d159e060136e2adbd2dc12ead6eb17c582aa4c7a4a7fac3fe39e2b",
+      "parts": [
+        "تسوزه"
+      ]
+    },
+    "MPID_Suarez": {
+      "source_sha256": "203809938a5b4821e235ed0359a2d89920b4fe1670f23bef3eb0eba154347ea2",
+      "parts": [
+        "سواريز"
+      ]
+    },
+    "MPID_Cirnesh": {
+      "source_sha256": "806508f56cccc88ef1ec0df2eaf7a75efb73d95788cfa26e3be165a3df95777e",
+      "parts": [
+        "تشيرنس"
+      ]
+    },
+    "MPID_Cheyen": {
+      "source_sha256": "7473d2d256742b41df0e611b96e2efd066c79dde6cda71bcfcb9295fc54c55af",
+      "parts": [
+        "كيارا"
+      ]
+    },
+    "MPID_Zenzel": {
+      "source_sha256": "494bba162531224f18af024c93cb2a3fb5f260fd32532986a3ecfa03b81177c0",
+      "parts": [
+        "زينزيلي"
+      ]
+    },
+    "MPID_Harrison": {
+      "source_sha256": "7fee624e2426c85ce6df000cea4e04869e7135a9064f28d7cca81f8314d029b0",
+      "parts": [
+        "هاريسون"
+      ]
+    },
+    "MPID_Gervasio": {
+      "source_sha256": "dcc939275f130a6cba9dfae0a7d208c54d5f8d69b7dcc4ceb08d42aa9dce5000",
+      "parts": [
+        "جيرفاسيو"
+      ]
+    },
+    "MPID_Karl": {
+      "source_sha256": "5aacfacae83913fa00e39d8da13fdc0b7c858cfcdd377a9df98816c528e9e657",
+      "parts": [
+        "كارل"
+      ]
+    },
+    "MPID_Boussoufa": {
+      "source_sha256": "67ed7ff5e817eb4ae8262c9ba11433b02d0d118d11d16d42ffbd5864e2c8af0d",
+      "parts": [
+        "بوسفا"
+      ]
+    },
+    "MPID_Dayan": {
+      "source_sha256": "5cb6d71784540fb02cc2d2366b94c7a3ef46488d5ba361d3665cf03966f9836a",
+      "parts": [
+        "دايان"
+      ]
+    },
+    "MPID_Hoover": {
+      "source_sha256": "c6b95b505733f76a9ebea34afd850c67085b0362688718d62d5a8cdc6a4c82a4",
+      "parts": [
+        "هوفر"
+      ]
+    },
+    "MPID_Baanbahn": {
+      "source_sha256": "c18428c7681bb765acd6673f8c60e49925a02fb4c05b4d1738c3aaccfe0f48b8",
+      "parts": [
+        "باهر فان"
+      ]
+    },
+    "MPID_Nuzzo": {
+      "source_sha256": "5297e26c05b614021e37100f9b66ff7a901147b5effea7fcda8e413d03ddcbfa",
+      "parts": [
+        "نوتزو"
+      ]
+    },
+    "MPID_Octal": {
+      "source_sha256": "0093d93dd7e2a0c9a47254b2bd461b7fdb0e69eca9657724bc1641281d0e0139",
+      "parts": [
+        "أوكتار"
+      ]
+    },
+    "MPID_Lechner": {
+      "source_sha256": "df33fe3be1d08ce515762a4643c3cef869ec9731906c7135c2939fed57cb62d9",
+      "parts": [
+        "ليخنر"
+      ]
+    },
+    "MPID_Lindo": {
+      "source_sha256": "9f314ae234158dc26596710bcad298280fbab323f994ed0bc851638af2207ef4",
+      "parts": [
+        "ليند"
+      ]
+    },
+    "MPID_Bjor": {
+      "source_sha256": "ab2a5254e25341f954471a997ddef49128cc0097300811200472b69a66850658",
+      "parts": [
+        "بيور"
+      ]
+    },
+    "MPID_Bolboa": {
+      "source_sha256": "494f210b64e15e4e70f53c88fffa57fa69cea7d7611ad923eee87cfccff8b8c9",
+      "parts": [
+        "بالبوا"
+      ]
+    }
+  },
+  "Spot.msbt.zst": {
+    "MID_Spot_Dagsion": {
+      "source_sha256": "2779de8387c1d84ea4822ab6efd42632e1a2026d4d4b5059d8f6612f41d3b1bd",
+      "parts": [
+        "داغسيون"
+      ]
+    },
+    "MID_Spot_KunlunVillage": {
+      "source_sha256": "b4b6dcbdee97693090192ee7ac1f194506764a723b134b4b7f8c78a738c06ea0",
+      "parts": [
+        "كونلون"
+      ]
+    }
+  },
+  "System.msbt.zst": {
+    "MID_Sys_Singular_Magic": {
+      "source_sha256": "301b0c95d03d10fe8836f712a8749d21b4cd2ca3725514271020e696ed27a2b1",
+      "parts": [
+        "سحر"
+      ]
+    },
+    "MID_Sys_Singular_Skill": {
+      "source_sha256": "8dd1f9dc3df5996ef19d3f0d970e9a3507e60b468e488d4d02054dadcc3e4ac3",
+      "parts": [
+        "قدرة"
+      ]
+    },
+    "MID_Sys_Singular_Arts": {
+      "source_sha256": "e4cf93123f8de9042ea64a13a6f993ba22644484b17ea8a3b00657492b182b76",
+      "parts": [
+        "فن قتالي"
+      ]
+    },
+    "MID_Sys_Singular_Special": {
+      "source_sha256": "e7440306a99b3adc9aac5911c1a439d8bb4b494523102b1d75d4ba360b63f1d9",
+      "parts": [
+        "فن اللهب"
+      ]
+    },
+    "MID_Sys_Singular_BlazeSkill": {
+      "source_sha256": "cee86f11b0ae20c3217733317381b76ad8499d0684f4c35fdaf0f3b9c57d6c5a",
+      "parts": [
+        "قدرة اللهب"
+      ]
+    },
+    "MID_Sys_Plural_Class": {
+      "source_sha256": "adc34608c46bad88d9529725937814c27f6a301ea123e9555a7be2f3ce03807f",
+      "parts": [
+        "فئة"
+      ]
+    },
+    "MID_Sys_MAX": {
+      "source_sha256": "7044a0f0646b7f95177ef394ddccbd5b2dfb507a714ba6ff7dc8c82d589019db",
+      "parts": [
+        "الحد الأقصى"
+      ]
+    },
+    "MID_Sys_Total": {
+      "source_sha256": "9c3dfe808ede9dbba8331f221a0ff9e1101c092a54e271c23f9582958e9663b9",
+      "parts": [
+        "المجموع"
+      ]
+    },
+    "MID_Sys_Empty": {
+      "source_sha256": "a51ad9ee4c1a460069eb1e05d3a1ed269248ccad439b710ccc2095ab03bd169f",
+      "parts": [
+        "لا شيء"
+      ]
+    },
+    "MID_Sys_NoEquipment": {
+      "source_sha256": "c456b8049a8af3ec4c7ef3ce1ec4430766727aaed722cddb8dddef98f273c0c5",
+      "parts": [
+        "لا شيء مجهز"
+      ]
+    },
+    "MID_Sys_Equipped": {
+      "source_sha256": "4cd650b2a52aaeb37c2463ac89e1d4e3f0d7b55519e047cd6f4f241fd43b7f7b",
+      "parts": [
+        "مجهز"
+      ]
+    },
+    "MID_Sys_Deployed": {
+      "source_sha256": "f0b32a15e42ea0ee8d3252d9ef2eda192a48c6976cce1b9e977fe308f1eac6ed",
+      "parts": [
+        "معين"
+      ]
+    },
+    "MID_Sys_WeaponEndure": {
+      "source_sha256": "d2fb7ed5c7c7b3eb22beeab5d6ab8a8e19298e2c1872cc6b6f02e7dba00c2800",
+      "parts": [
+        "المتانة"
+      ]
+    },
+    "MID_Sys_MagicEndure": {
+      "source_sha256": "301b0c95d03d10fe8836f712a8749d21b4cd2ca3725514271020e696ed27a2b1",
+      "parts": [
+        "سحر"
+      ]
+    },
+    "MID_Sys_Remaining": {
+      "source_sha256": "1708a3615cfd04ae80fa688a85ea100f502b55d5b3224d417663671e3aaae76c",
+      "parts": [
+        "المتبقي:"
+      ]
+    },
+    "MID_Sys_Turn": {
+      "source_sha256": "863c9c2ba9b7be04fe8337a1483a4b6381e65ea5c8157c38646c69dbb082a6bf",
+      "parts": [
+        "دور"
+      ]
+    },
+    "MID_Sys_FastForward": {
+      "source_sha256": "1f6913027dd969e4d87d9e2c37ff65a80593fe8df91f86b9a6f3fd3044cc20d0",
+      "parts": [
+        "تسريع العرض"
+      ]
+    },
+    "MID_Sys_RequiredCondition": {
+      "source_sha256": "2bd3050fe3b1c14cf2995e608c45baf1e339ca9bc0b7666467984350da95fa7e",
+      "parts": [
+        "الشروط"
+      ]
+    },
+    "MID_Sys_EnemySilhouette": {
+      "source_sha256": "8bbf54b65607b25fd26785956653ddf97f89bc1f27f4cc16bc52fe743ba6dd53",
+      "parts": [
+        "العين الثالثة"
+      ]
+    },
+    "MID_Sys_Gold": {
+      "source_sha256": "bdd6553fd15214d5cad67f73f56ae6978bc1a25e4590c50ebfa24ce279406c99",
+      "parts": [
+        "ذهب"
+      ]
+    },
+    "MID_Sys_HonorLv": {
+      "source_sha256": "ba90f4d32dfd1f9558f8c5ba0feb9541752c5540e789a58a47f571c2b12f71cc",
+      "parts": [
+        "مستوى الصيت"
+      ]
+    },
+    "MID_Sys_HonorLV_Part3": {
+      "source_sha256": "9a80cb1975f03199230f68d60c219be6aca6ba17feee1473811e1db092cfba15",
+      "parts": [
+        "مستوى الإغاثة"
+      ]
+    },
+    "MID_Sys_Rewind": {
+      "source_sha256": "d163ce52f635c4091db375d3f7df0ec53a8bd9cbae4d4d6576814b1f8e898010",
+      "parts": [
+        "الرمل الإلهي"
+      ]
+    },
+    "MID_Sys_Fragment": {
+      "source_sha256": "683cdefd5c198f8d34021e7f06a5d1248f88d4e94a7d3912c762395e45324078",
+      "parts": [
+        "شظايا الكارما"
+      ]
+    },
+    "MID_Sys_Award": {
+      "source_sha256": "c772016d561ae00dd956c7bf97e173a78789f2964df11adeec5850fc97bd8ee7",
+      "parts": [
+        "نقاط القوات"
+      ]
+    },
+    "MID_Sys_Motivation": {
+      "source_sha256": "4ad2a2f5f752e914a80263d359cc797f0d358b985cf11f715f15524266cc6974",
+      "parts": [
+        "الحافز"
+      ]
+    },
+    "MID_Sys_Item": {
+      "source_sha256": "66166391faefe92860f6f53629810d4de0a8893d590f5c45c249365149e86b46",
+      "parts": [
+        "أداة"
+      ]
+    },
+    "MID_Sys_ItemEtc": {
+      "source_sha256": "970285457c8967d1ac7fbd9e311258a53a2181a91949a41c4b2715e645d6ba6e",
+      "parts": [
+        "الأدوات والعتاد"
+      ]
+    },
+    "MID_Sys_ReliancePt": {
+      "source_sha256": "35573eb816a95a6f0634c03701855429ed259cae746176540f45c627aafc8fc0",
+      "parts": [
+        "نقاط الدعم"
+      ]
+    },
+    "MID_Sys_Contribution": {
+      "source_sha256": "03670aa784fbbc04c16c324b8a87c9cc29a929351341a077ddba03e9502e3ba4",
+      "parts": [
+        "جزية"
+      ]
+    },
+    "MID_Sys_ForcePower": {
+      "source_sha256": "0266ec59d012b9dda70d858ba3a602e49812a8e5ba7406ff42bb604ef63c7e45",
+      "parts": [
+        "القوة القتالية"
+      ]
+    },
+    "MID_Sys_Material": {
+      "source_sha256": "ffd4e379bd364e7e86565ea8b564566666ed51a819219cb855ec8e29066206a0",
+      "parts": [
+        "المواد"
+      ]
+    },
+    "MID_Sys_Exp": {
+      "source_sha256": "7382abb680c65298d22c2746f8c6d582bf8cbec002ff4a2955f2b08f9a5a7322",
+      "parts": [
+        "خبرة"
+      ]
+    },
+    "MID_Sys_ClassEXP": {
+      "source_sha256": "edba0b26a629ec6d23582fa48fd15dcba9134130e4f75623b58549421e97e3e8",
+      "parts": [
+        "خبرة الفئة"
+      ]
+    },
+    "MID_Sys_SkillEXP": {
+      "source_sha256": "c73b56dece668bbe411ed03990a023460eb579e6280696d529944aaf41b6e815",
+      "parts": [
+        "خبرة المهارة"
+      ]
+    },
+    "MID_Sys_HonorExp": {
+      "source_sha256": "da9d97390b04bf9c971b95458eda2510a311eea8d61e20fd43cbd1ed3d147405",
+      "parts": [
+        "الصيت"
+      ]
+    },
+    "MID_Sys_HonorExp_Part3": {
+      "source_sha256": "2f69aa13b42bc2a76c840e296f5b24cb5fefe84262785d0bc0d91d87fdf5d4af",
+      "parts": [
+        "نقاط الإغاثة"
+      ]
+    },
+    "MID_Sys_Hp": {
+      "source_sha256": "b320746fafa5cf87aec787a455e3e408774d01f7c63d8759b9b297b0bb5200a1",
+      "parts": [
+        "صحة"
+      ]
+    },
+    "MID_Sys_Str": {
+      "source_sha256": "ac8886bfad5f581f674adcab148d2be58d6e9c69e8170dc3b694d60d335c6737",
+      "parts": [
+        "قوة"
+      ]
+    },
+    "MID_Sys_Mag": {
+      "source_sha256": "b2a76cff0a72982be784d5ede076e749247a0a68e4729dde0fa9c1e264937300",
+      "parts": [
+        "سحر"
+      ]
+    },
+    "MID_Sys_Tec": {
+      "source_sha256": "094bda2216e95ae4b3b29a83c46a558b46962bfb46a83d3cc8e2f99b5662d67c",
+      "parts": [
+        "براعة"
+      ]
+    },
+    "MID_Sys_Spd": {
+      "source_sha256": "fec8522d2e6307c2d26cd783b8f2893da52ae5901cf05ad23853a6781356c7fd",
+      "parts": [
+        "سرعة"
+      ]
+    },
+    "MID_Sys_Lck": {
+      "source_sha256": "dcfdc4e4f9728c324c34b52fdb0144715a7d2a060cad34939166220d663dacc0",
+      "parts": [
+        "حظ"
+      ]
+    },
+    "MID_Sys_Def": {
+      "source_sha256": "4347578c0ec010171ec14542ff4113874c012730362af0c0ea0d7d20701ec0dd",
+      "parts": [
+        "دفاع"
+      ]
+    },
+    "MID_Sys_Res": {
+      "source_sha256": "d0cab65e5a56343618696553ae2d62ce1bc0030e1dc0d469760b933732a69633",
+      "parts": [
+        "مقاومة"
+      ]
+    },
+    "MID_Sys_Cha": {
+      "source_sha256": "87e7b939286e15df846c1287a4b7aa2da339ab8fb5a4f845155e30e917f47658",
+      "parts": [
+        "هيبة"
+      ]
+    },
+    "MID_Sys_Mov": {
+      "source_sha256": "62a72c7aa27b3d86cd189ee5bb4e5261cfd2ffb4360e783944cdf1ba31e30906",
+      "parts": [
+        "حركة"
+      ]
+    },
+    "MID_Sys_Attack": {
+      "source_sha256": "98e318fb815a01a54b2457dab416eacc286dc196d85ae0b775efed466cc4efc7",
+      "parts": [
+        "هجوم"
+      ]
+    },
+    "MID_Sys_Physicalattack": {
+      "source_sha256": "5ab9dc84189b552abc1cc9086d9f39e9ab9e81b12b6970062291960045b127c4",
+      "parts": [
+        "بدني"
+      ]
+    },
+    "MID_Sys_Magicattack": {
+      "source_sha256": "9f87fec0dba1fa1edca887beaf6ab205fa97a17cadf476557c904cd5e805198b",
+      "parts": [
+        "سحري"
+      ]
+    },
+    "MID_Sys_Otherattack": {
+      "source_sha256": "40fd2d497d628b9ad6175e77829192f1c2b8ac5d016936437ad57627ec1f2cb8",
+      "parts": [
+        "خاص"
+      ]
+    },
+    "MID_Sys_Power": {
+      "source_sha256": "856f506c060e39edffbfe5d2d9ff503fc7fa134dbd5f05a2ab60f4f69161c3bd",
+      "parts": [
+        "قوة"
+      ]
+    },
+    "MID_Sys_Recovery": {
+      "source_sha256": "fecc1fb8afb67b85113c6bd6d7fc8045474a3587bd7903ddf52073c1708f85aa",
+      "parts": [
+        "علاج"
+      ]
+    },
+    "MID_Sys_HealPower": {
+      "source_sha256": "bbe59d60134cb57ab254875303c6ac6e3160df0407618172fc92afb820115c8f",
+      "parts": [
+        "قوة"
+      ]
+    },
+    "MID_Sys_Hit": {
+      "source_sha256": "e0d5bed4552ed457ede3581a7dbba863a8e10084b27646f176ea66019e5177b6",
+      "parts": [
+        "دقة"
+      ]
+    },
+    "MID_Sys_Attackspeed": {
+      "source_sha256": "b92c3d187ad3a071c18a8b144050ec7210f210690dc7c1adb4b5e48fa7764e14",
+      "parts": [
+        "سرعة الهجوم"
+      ]
+    },
+    "MID_Sys_Avoid": {
+      "source_sha256": "08411aae44f8798c1c1c0970cc5dc5880c9e8a61baa7e511bb0767565a0aa5d5",
+      "parts": [
+        "تفاد"
+      ]
+    },
+    "MID_Sys_Secure": {
+      "source_sha256": "8694a0d95bfade1da6da2f021212dd9b835d0db5c8884dd5d50e1b24764d1882",
+      "parts": [
+        "تفادي الحرج"
+      ]
+    },
+    "MID_Sys_Critical": {
+      "source_sha256": "c3367b5dcb0253b3ae1b8c4fca107f2624ee0c2e6d3f7d470c026985a08514ca",
+      "parts": [
+        "حرج"
+      ]
+    },
+    "MID_Sys_Protection": {
+      "source_sha256": "22b59b54072684c839fafd0e10ac2815fe8dfaa28328dfe0d15ccb71f7f6f669",
+      "parts": [
+        "وقاية"
+      ]
+    },
+    "MID_Sys_Enduremagic": {
+      "source_sha256": "298f554d0a9ec27fb54be3ffb869d39c0f05cc6ee070f38698f13f4ef09cb88a",
+      "parts": [
+        "صمود"
+      ]
+    },
+    "MID_Sys_Rng": {
+      "source_sha256": "492a6f16059d39466ae59c230c7c8694edf9479567e30c90da98fe09a6c96ed0",
+      "parts": [
+        "مدى"
+      ]
+    },
+    "MID_Sys_Phy": {
+      "source_sha256": "a5b2bb9664f964a422c2769354568fb53ec2f34796c3a6faefff967c1a1a45aa",
+      "parts": [
+        "بنية"
+      ]
+    },
+    "MID_Sys_Target": {
+      "source_sha256": "492a6f16059d39466ae59c230c7c8694edf9479567e30c90da98fe09a6c96ed0",
+      "parts": [
+        "مدى"
+      ]
+    },
+    "MID_Sys_Self": {
+      "source_sha256": "c9a5e3a289dbd47e886c260af8927d11be443ee961455e849a2094201e0e6355",
+      "parts": [
+        "الذات"
+      ]
+    },
+    "MID_Sys_Range": {
+      "source_sha256": "492a6f16059d39466ae59c230c7c8694edf9479567e30c90da98fe09a6c96ed0",
+      "parts": [
+        "مدى"
+      ]
+    },
+    "MID_Sys_RangeOther": {
+      "source_sha256": "cc37f75854dc05e6e05d42c33d188a3dabce678e86da39a56ce5f0e0e93ee3a2",
+      "parts": [
+        "خاص"
+      ]
+    },
+    "MID_Sys_Status": {
+      "source_sha256": "96927e89e33fc100cd6fe36acce72006bf4f5706d8a821c3c023baf8ba644a70",
+      "parts": [
+        "إحصاءات القتال"
+      ]
+    },
+    "MID_Sys_Capability": {
+      "source_sha256": "c424457f1bdf974f9d23100c0f6d75b7537ea36ba946ac309472c9d937f6d102",
+      "parts": [
+        "الإحصاءات الأساسية"
+      ]
+    },
+    "MID_Sys_StatusTotal": {
+      "source_sha256": "0e5cf68dd6b456d38f2448845381328c767faec0819e04e50137ff0f9975ebd5",
+      "parts": [
+        "التقييم"
+      ]
+    },
+    "MID_Sys_GrowthRate": {
+      "source_sha256": "4aebf8776de06cb4d81173983a91bea1ae67795655f710d71d38f1d55dd95c24",
+      "parts": [
+        "معدل النمو"
+      ]
+    },
+    "MID_Sys_Skill": {
+      "source_sha256": "d1a5157450e5a20bb151d944c1788d78fdff89561b3ffcedce72105987a1c877",
+      "parts": [
+        "القدرات"
+      ]
+    },
+    "MID_Sys_Arts": {
+      "source_sha256": "40d9c75a4104a2ed79d547deefabc166fca057d74567bdb72961e2baa1a62b2f",
+      "parts": [
+        "فن قتالي"
+      ]
+    },
+    "MID_Sys_FollowUp": {
+      "source_sha256": "855fc2b2a03c3aefaf2fe5df730cdcd189ba9e25eeb05384e1513686ff532ffd",
+      "parts": [
+        "الثاني"
+      ]
+    },
+    "MID_Sys_ExpNext": {
+      "source_sha256": "c2a8b3d54908e15a1f9d9eb4abacdf8153e63ef6b6a704370a7e727016cbb031",
+      "parts": [
+        "التالي:"
+      ]
+    },
+    "MID_Sys_Lv": {
+      "source_sha256": "e15cf60da4280a0a4c503607d735ffa758a83ecc2e8502ec4a016a7a2a539901",
+      "parts": [
+        "مستوى"
+      ]
+    },
+    "MID_Sys_SkillLv": {
+      "source_sha256": "97c7a4a556d0e784a1675ff2bcd3ded90f42a6797d5c2503f643e75a9b4cd053",
+      "parts": [
+        "مستوى المهارة"
+      ]
+    },
+    "MID_Sys_RelianceLv": {
+      "source_sha256": "87ffc73f5c76a4c32601f827fbb7f3734ef4327f2c05cacb7b6183fa781d4045",
+      "parts": [
+        "مستوى الدعم"
+      ]
+    },
+    "MID_Sys_RideLv": {
+      "source_sha256": "a517a8baab0b271d35d20c280cbb582901facabbd344717b878c14ed6862c159",
+      "parts": [
+        "مستوى الرابطة"
+      ]
+    },
+    "MID_Sys_MiracleLv": {
+      "source_sha256": "890ed62db42c33464f4d7f8b00eebd81a6a756f07162403cf4b714b4de2e0a1c",
+      "parts": [
+        "مستوى البركة"
+      ]
+    },
+    "MID_Sys_NowLv": {
+      "source_sha256": "eec3193951f9658e5a72935db5693a81d62f5452807e70e9a520f53b7fa8975d",
+      "parts": [
+        "المستوى الحالي"
+      ]
+    },
+    "MID_Sys_ItemStatus_Weight": {
+      "source_sha256": "5b42a60755735a098d3bc22c37f7c8d1b447ca98b20846689a8ab1a6be5b30a6",
+      "parts": [
+        "وزن"
+      ]
+    },
+    "MID_Sys_ItemStatus_Skill": {
+      "source_sha256": "310a13cb51c0ba189a8e3069eec1eebf3848688e7549081c593547e530937934",
+      "parts": [
+        "مهارة"
+      ]
+    },
+    "MID_Sys_Blaze": {
+      "source_sha256": "f812518deaddf7ad1e30b33b32e5e8a70e8732fa68a5d1e8741da4ed27d10e36",
+      "parts": [
+        "نوع اللهب"
+      ]
+    },
+    "MID_Sys_Blaze_Hell": {
+      "source_sha256": "58145435e69cc774ab10849249a9e2b79dbb0c99ac36109ef9ba1495632ffdcc",
+      "parts": [
+        "العالم السفلي"
+      ]
+    },
+    "MID_Sys_Blaze_Heaven": {
+      "source_sha256": "a2a8a87b8f282d3ae0f21949cdbb4c919828f93f86ba97dae4b2c62dd6039ab1",
+      "parts": [
+        "الآبار السماوية"
+      ]
+    },
+    "MID_Sys_Blaze_Machine": {
+      "source_sha256": "a0ca554bc9ed525d1176451ff83d8734cc597c0cbab7a978c5c2c0f39cd9f8eb",
+      "parts": [
+        "إنسان آلي"
+      ]
+    },
+    "MID_Sys_BlazeSkill": {
+      "source_sha256": "cee86f11b0ae20c3217733317381b76ad8499d0684f4c35fdaf0f3b9c57d6c5a",
+      "parts": [
+        "قدرة اللهب"
+      ]
+    },
+    "MID_Sys_BlazeOrigin": {
+      "source_sha256": "f63dd3d7aad4687d1a34d658573a15a88b07020ff30bf8fd8a3e6456922f5d1a",
+      "parts": [
+        "المصدر"
+      ]
+    },
+    "MID_Sys_Blaze_UnlockPollution": {
+      "source_sha256": "23d08dffa8d04401b9b6bc60e348f701655c14cd7403e9ac8fd5111e7c12885b",
+      "parts": [
+        "المطلوب"
+      ]
+    },
+    "MID_Sys_Blaze_ChangePollution": {
+      "source_sha256": "675a107abc26eb9c6a288f9e1987e1b89745d52c39ce10d3bb3f8ca5b3c4d7c6",
+      "parts": [
+        "اللهب"
+      ]
+    },
+    "MID_Sys_Blaze_Curse": {
+      "source_sha256": "007404c6c18838f33770b6af8a415c27e59d9ff3dd38bc64925facaa9f5e2da2",
+      "parts": [
+        "لعنة"
+      ]
+    },
+    "MID_Sys_Person": {
+      "source_sha256": "0f144ada55861fb9c75a314db2805dea8c7eec2e0442f3e0c142b641d3b0bafa",
+      "parts": [
+        "شخصي"
+      ]
+    },
+    "MID_Sys_Ride": {
+      "source_sha256": "6fd6b79751072c9f215b3b020e1fc21d8afcffe2e1b1c641e8c261dc82a3a0b6",
+      "parts": [
+        "عند الركوب"
+      ]
+    },
+    "MID_Sys_Class": {
+      "source_sha256": "adc34608c46bad88d9529725937814c27f6a301ea123e9555a7be2f3ce03807f",
+      "parts": [
+        "فئة"
+      ]
+    },
+    "MID_Sys_Proper": {
+      "source_sha256": "f735e11a3e11c20eea845939c094a73db4756c4eb1daf32a8f3d50716cb5b013",
+      "parts": [
+        "فريد"
+      ]
+    },
+    "MID_Sys_SkillPerson": {
+      "source_sha256": "494e222998682bd033f75448644e3dae3efbb66e12b300d277d05e694380a696",
+      "parts": [
+        "قدرة شخصية"
+      ]
+    },
+    "MID_Sys_SkillRide": {
+      "source_sha256": "13ef794924967f71a1cb108ab8a110e637878e3b568fc8475b24996f7890bc85",
+      "parts": [
+        "قدرة الركوب"
+      ]
+    },
+    "MID_Sys_SkillClass": {
+      "source_sha256": "d2c9abc156bf7b57998aefef190648077c01a0223d0a0b949799b7c65d673270",
+      "parts": [
+        "قدرات الفئة"
+      ]
+    },
+    "MID_Sys_SkillEquipped": {
+      "source_sha256": "2a292e7d039acf3abd1bf48c219be496c3ec2e227f268eb1e3fb397493c54ca8",
+      "parts": [
+        "القدرات المجهزة"
+      ]
+    },
+    "MID_Sys_Acquired": {
+      "source_sha256": "d280215c4e277469530905ed8ba52ae34f2691e48b90c7ed4baa89b31d8d7874",
+      "parts": [
+        "تم التعلم"
+      ]
+    },
+    "MID_Sys_UnopendRide_Help": {
+      "source_sha256": "7ff755947c24c6df194840afb53bd7f0f9632b88b8485a5f3db2a9f0fabd1b0a",
+      "parts": [
+        "يكتسب عند بلوغ المستوى الثالث للرابطة."
+      ]
+    },
+    "MID_Sys_Skill_Foot": {
+      "source_sha256": "ccc7bdee302944cf52bd34435e218460d6a8f3a63da3a54c048e9e76dd53e41b",
+      "parts": [
+        "المشاة"
+      ]
+    },
+    "MID_Sys_Skill_Cavalry": {
+      "source_sha256": "a19d90882537c6a685601bfcde3f63f2c7d815ecafe0384aa04b93cb7f8880dc",
+      "parts": [
+        "الفروسية"
+      ]
+    },
+    "MID_Sys_Skill_Heavy": {
+      "source_sha256": "ebf59d8223593a770cbcac66329a3488fc37e32a313899a80cb6fe08b523dbd1",
+      "parts": [
+        "الدروع الثقيلة"
+      ]
+    },
+    "MID_Sys_Skill_Fly": {
+      "source_sha256": "52909102640038f99add8d08a44130a14de3b5c2c7bad1095e02245ad9aad532",
+      "parts": [
+        "الطيران"
+      ]
+    },
+    "MID_Sys_Skill_Tactics": {
+      "source_sha256": "d35e9845acf7b522c635adca97bb3578d47f2a2ca30bd7ae23fc4e84776a4b80",
+      "parts": [
+        "القيادة"
+      ]
+    },
+    "MID_Sys_Effect_Foot": {
+      "source_sha256": "ccc7bdee302944cf52bd34435e218460d6a8f3a63da3a54c048e9e76dd53e41b",
+      "parts": [
+        "المشاة"
+      ]
+    },
+    "MID_Sys_Effect_Fly": {
+      "source_sha256": "52909102640038f99add8d08a44130a14de3b5c2c7bad1095e02245ad9aad532",
+      "parts": [
+        "الطيران"
+      ]
+    },
+    "MID_Sys_Effect_Cavalry": {
+      "source_sha256": "ebc6f8bbfa7e8993f2c9aaf6ed791289389f3139c115c66be314919248daaee8",
+      "parts": [
+        "الفرسان"
+      ]
+    },
+    "MID_Sys_Effect_Heavy": {
+      "source_sha256": "f719554c86c300699550de0367ef6a92f65c6f987102a44eec44bd812a75cfb0",
+      "parts": [
+        "مدرع"
+      ]
+    },
+    "MID_Sys_Effect_Dragon": {
+      "source_sha256": "9c0aeeee3309858b89184e9faaa2b437d3f7f2b80cda55a6b8314631f0dca5ec",
+      "parts": [
+        "تنين"
+      ]
+    },
+    "MID_Sys_Effect_Beast": {
+      "source_sha256": "18a92c4b7165b2fd97574b100a83274dd92472a7d357fecc962184bcf539f192",
+      "parts": [
+        "وحش"
+      ]
+    },
+    "MID_Sys_Effect_Hell": {
+      "source_sha256": "8328a13410f4462c5ff9d7adbb9252c8df89b74803fa256e674fa0d04070999e",
+      "parts": [
+        "الموتى العائدون"
+      ]
+    },
+    "MID_Sys_Legion_Physic": {
+      "source_sha256": "5ab9dc84189b552abc1cc9086d9f39e9ab9e81b12b6970062291960045b127c4",
+      "parts": [
+        "بدني"
+      ]
+    },
+    "MID_Sys_Legion_Magic": {
+      "source_sha256": "9f87fec0dba1fa1edca887beaf6ab205fa97a17cadf476557c904cd5e805198b",
+      "parts": [
+        "سحري"
+      ]
+    },
+    "MID_Sys_Legion_HealRatio": {
+      "source_sha256": "63a70a989509990e675521f15c75cba2298d9bae00a9b92aa8233cd6d845ff3a",
+      "parts": [
+        "تعاف"
+      ]
+    },
+    "MID_Sys_Ride_Horse": {
+      "source_sha256": "a75f3186c1e532b6b95e9719d4c84e403f3bcd2149a5502084b1c0a4e7bcf63e",
+      "parts": [
+        "حصان"
+      ]
+    },
+    "MID_Sys_Ride_Ostrich": {
+      "source_sha256": "2117426c064fc2da64a45fb2853af085e74601c89792b1f91b411dc97a4030bc",
+      "parts": [
+        "أورنيوس"
+      ]
+    },
+    "MID_Sys_Ride_Pegasus": {
+      "source_sha256": "c8a651dc2987e4c27d34047666a2e90aa4befbefa0735fef82f00fcaf98a56d4",
+      "parts": [
+        "حصان مجنح"
+      ]
+    },
+    "MID_Sys_Ride_Dragon": {
+      "source_sha256": "29eeb4b3950c402b7d42732681545e4955ef937b13aa90a6a5f8857c8e5aa042",
+      "parts": [
+        "باو"
+      ]
+    },
+    "MID_Sys_Ride_Elephant": {
+      "source_sha256": "6899f354de164af0edf8b5b25b95805676a5002bd55f0932d5afe90540159b99",
+      "parts": [
+        "فيل"
+      ]
+    },
+    "MID_Sys_Food_Meet": {
+      "source_sha256": "8ba6dd89e2f72ee8d037f4afbf67d9b8243d4ab634c73d451ff136a77d5a2291",
+      "parts": [
+        "لحم"
+      ]
+    },
+    "MID_Sys_Food_Fish": {
+      "source_sha256": "99e6ee3ae9c1a002d71ee1aac51cf92e98530b97f30f6ff24a3f2949911090df",
+      "parts": [
+        "سمك"
+      ]
+    },
+    "MID_Sys_Food_Vegee": {
+      "source_sha256": "3f4a6dc63e7d7feee0969f3c4d6fde63f5de4bd465c809b8e83ab911ef7fa1e1",
+      "parts": [
+        "خضار"
+      ]
+    },
+    "MID_Sys_Taste_Sweet": {
+      "source_sha256": "7747dfd99e95948804c9f6a7d7a334a32e5012180935ccfb1de3bef228848c0b",
+      "parts": [
+        "حلو"
+      ]
+    },
+    "MID_Sys_Taste_Spicy": {
+      "source_sha256": "a6d083d7eb35c021832179324ceebde915e5bcc89e47744404ff5bb8e1ab5f12",
+      "parts": [
+        "حار"
+      ]
+    },
+    "MID_Sys_Taste_Bitter": {
+      "source_sha256": "6c7ee9a7122a8c4d2736d83750c5d81aeead367dd03c1c94641469d442c8d36a",
+      "parts": [
+        "مر"
+      ]
+    },
+    "MID_Sys_TasteCate": {
+      "source_sha256": "ad7ff42770d3791f140774a19554d3e3c8b260b68e2fa7e3f4d94c1b3a63f51a",
+      "parts": [
+        "طعام فاخر"
+      ]
+    },
+    "MID_Sys_DateTime_Mon": {
+      "source_sha256": "b95cdc88053d51c75fa8d8ae602946524c8c23a8812f0c4db7ec3140535f13ca",
+      "parts": [
+        "الاثنين"
+      ]
+    },
+    "MID_Sys_DateTime_Tue": {
+      "source_sha256": "e2895df457edf6da8bbc4c5a8db655079680a87985d397964bb9d0c0f7867b2a",
+      "parts": [
+        "الثلاثاء"
+      ]
+    },
+    "MID_Sys_DateTime_Wed": {
+      "source_sha256": "570b210ce961f516f4250c68c42219f0639d69197660b124533102e092ee94f6",
+      "parts": [
+        "الأربعاء"
+      ]
+    },
+    "MID_Sys_DateTime_Thu": {
+      "source_sha256": "8eb3fa51a4216438a416f9e3556b08746b837c19186c63c117d406ae9f0cf868",
+      "parts": [
+        "الخميس"
+      ]
+    },
+    "MID_Sys_DateTime_Fri": {
+      "source_sha256": "985a65183312c445623f0a2803024c22ebea5b67ae45fad13907fcec356618aa",
+      "parts": [
+        "الجمعة"
+      ]
+    },
+    "MID_Sys_DateTime_Sat": {
+      "source_sha256": "74b63311d98e6e8f46d4e26e70dceb63ba1c139d9a4810ff094b77e4d889110e",
+      "parts": [
+        "السبت"
+      ]
+    },
+    "MID_Sys_DateTime_Sun": {
+      "source_sha256": "cdd080fa8eac61cafb342969c7a962839e42c3396a38d16cce480139d5b62b34",
+      "parts": [
+        "الأحد"
+      ]
+    },
+    "MID_Sys_DateTime_Timeframe_EarlyMorning": {
+      "source_sha256": "2c13833355770ff6cc25dcc2eb27bee032358c0ebeed976cb3dde03d2ee6fd2c",
+      "parts": [
+        "الفجر"
+      ]
+    },
+    "MID_Sys_DateTime_Timeframe_Morning": {
+      "source_sha256": "bbdc67560c6446c3c7d842864eaffd1a143883dfc09b0526c1073ff0f0bea1ad",
+      "parts": [
+        "الصباح"
+      ]
+    },
+    "MID_Sys_DateTime_Timeframe_Evening": {
+      "source_sha256": "d56f1fbc9081ba6539a49fd2a040cdfab46cd5b8aae5d5c64efbe3fb01bbe0b9",
+      "parts": [
+        "المساء"
+      ]
+    },
+    "MID_Sys_DateTime_Timeframe_Night": {
+      "source_sha256": "2b7557af91330018383a0294f381c84067494f012c3eeccfe54a717caafff980",
+      "parts": [
+        "الليل"
+      ]
+    },
+    "MID_Sys_DateTime_Timeframe_Midnight": {
+      "source_sha256": "1f003ebc7e0e31c036eac0e664d226637f5e43680f1b05abc976cbca89353263",
+      "parts": [
+        "منتصف الليل"
+      ]
+    },
+    "MID_Sys_FreeAction_Start": {
+      "source_sha256": "a24af6b802fa8ae26dc0b7a2877f2cf20beae5811e4d428ecb2fc485699a3e3a",
+      "parts": [
+        "بدء الوقت الحر"
+      ]
+    },
+    "MID_Sys_SearchAction_Start": {
+      "source_sha256": "ab5deef9545f0480581a8770efcd8d228d48f398da67a6120dd0bdf4dd3293c0",
+      "parts": [
+        "بدء الصيد"
+      ]
+    },
+    "MID_Sys_FreeAction_BattlePrepare_Start": {
+      "source_sha256": "dc13d6933d841374d3a5e2b8fec47362693b4f66d6142cd849401809bf7b7e90",
+      "parts": [
+        "بدء الاستعداد"
+      ]
+    },
+    "MID_Sys_HellGatePeriod_Start": {
+      "source_sha256": "ca7ad5e8393c6a861b2ab7c38d659779103e6af1caf748a8a5992b4e7686e940",
+      "parts": [
+        "بدء المهمة"
+      ]
+    },
+    "MID_Sys_FinishPeriod_Start": {
+      "source_sha256": "aefc29bf4c667fa21df1e2dc0679c7e38f28eb5effd22b1558dec2fb54b3c6bd",
+      "parts": [
+        "بدء الختام"
+      ]
+    },
+    "MID_Sys_FreeAction_Purpose": {
+      "source_sha256": "89ad8eb64a54dac83f7e9baac7f2435fe6b9d697fa93c5e9c8775ff3b6f3c8e5",
+      "parts": [
+        "الهدف"
+      ]
+    },
+    "MID_Sys_FreeAction_Limit": {
+      "source_sha256": "8ae8aba7292e8352c94fb5b8034c955ab79d92e4cd9f1f8351088f39239616c5",
+      "parts": [
+        "النهاية:"
+      ]
+    },
+    "MID_Sys_Area_Title_FacilityOpen": {
+      "source_sha256": "2a3480b468448bd25c8a72a259b3be68cb64baa63b59fe672998f55365f1c5d2",
+      "parts": [
+        "أتيح مرفق جديد"
+      ]
+    },
+    "MID_Sys_Area_NewOpen": {
+      "source_sha256": "2d90f5c5c34261acc4940b92e1a0319a6be34af728e4091bde3ea36eaddfa7a3",
+      "parts": [
+        "مفتوح الآن"
+      ]
+    },
+    "MID_Sys_Area_Title_AreaOpen": {
+      "source_sha256": "d0a0781cd4eb83933944840a6f8a10da6e7d840a8ba60164bc9e42ec326e8e7a",
+      "parts": [
+        "أتيح موقع جديد"
+      ]
+    },
+    "MID_Sys_Known_NewBond": {
+      "source_sha256": "66d4244365c981f23cef6842b9e9a810a8a3f83ddcbf3be171d5361a4c6fd68a",
+      "parts": [
+        "رابطة جديدة"
+      ]
+    },
+    "MID_Sys_InfoTelop_ReliancePt_Up": {
+      "source_sha256": "622b18e0dbeb6fa8d40d8a1ed9b37c4c3f7459e52e85a866711aff9720a2dd78",
+      "parts": [
+        "ارتفع الدعم"
+      ]
+    },
+    "MID_Sys_InfoTelop_ReliancePt_Down": {
+      "source_sha256": "5ae21deca52906a5d6522935461c2601729b6570be4aca281712e6c793191575",
+      "parts": [
+        "انخفض الدعم"
+      ]
+    },
+    "MID_Sys_InfoTelop_Get": {
+      "source_sha256": "31acbfa3fefb9cf51550be8cbad6f9e5fbc3301e0fc7ea63d0ad7ff2f16cde9b",
+      "parts": [
+        "تم الاستلام"
+      ]
+    },
+    "MID_Sys_InfoTelop_Reportable": {
+      "source_sha256": "8882688380a5a2bcee52823e0e456a3038c19e518272a9b4fb61b7a323f9127d",
+      "parts": [
+        "تم"
+      ]
+    },
+    "MID_Sys_InfoTelop_Achieve_Unlock": {
+      "source_sha256": "0ab019d3fa60dc3103c32544f55abeb774ac7e0ecaca4616af12b4a3048d8293",
+      "parts": [
+        "محطة مهمة"
+      ]
+    },
+    "MID_Sys_InfoTelop_Tutorial_Add": {
+      "source_sha256": "364b24d00d2192ab75b8f6eff5b24e6b33e78039df614033e43cea26bc730a6a",
+      "parts": [
+        "إرشاد:"
+      ]
+    },
+    "MID_Sys_InfoTelop_Tutorial": {
+      "source_sha256": "ce3b9ba3807dafaac60171f3328a425b33182f25ddb46c0d384afd668f56e621",
+      "parts": [
+        "إرشادات:"
+      ]
+    },
+    "MID_Sys_InfoTelop_GainExp": {
+      "source_sha256": "4a47d2f0a2ef6d6427692d743588b5658eda0360eadb53a6919c37096dfa0e0e",
+      "parts": [
+        "اكتسبت خبرة."
+      ]
+    },
+    "MID_Sys_Result_Headline_Result": {
+      "source_sha256": "fc996ea3d2ce249377e7931ab05297539cb7a9a05be116177b394b52797240d3",
+      "parts": [
+        "النتائج"
+      ]
+    },
+    "MID_Sys_Result_Headline_Bad": {
+      "source_sha256": "34053d5f17458d461e9965b3732e688ae02708cec9c30e6d28a7c81cecab7ef0",
+      "parts": [
+        "ضعيف"
+      ]
+    },
+    "MID_Sys_Result_Headline_Good": {
+      "source_sha256": "b4d57e976bb4c3d84c5f065149aea913cc2b03406fdb12be7ff641fe1607488b",
+      "parts": [
+        "جيد"
+      ]
+    },
+    "MID_Sys_Result_Headline_Great": {
+      "source_sha256": "14e28fa8ed03c6b1cb5a6dc1ec2d41cc0559c8e84cd443678ec8b69c68ef39f0",
+      "parts": [
+        "ممتاز"
+      ]
+    },
+    "MID_Sys_Result_Headline_Perfect": {
+      "source_sha256": "3bb495c58f684a539b87c52f9a0b2cf4f670b262a515dee0f12bfa061a84a334",
+      "parts": [
+        "متقن"
+      ]
+    },
+    "MID_Sys_Result_QuestClear": {
+      "source_sha256": "36ef7b16c76737c8e5ac9f03196bd0164a8c6e95466dcec3ce114ea510f6a7bf",
+      "parts": [
+        "تمت المهمة"
+      ]
+    },
+    "MID_Sys_Result_Headline_EXP_Get": {
+      "source_sha256": "7382abb680c65298d22c2746f8c6d582bf8cbec002ff4a2955f2b08f9a5a7322",
+      "parts": [
+        "خبرة"
+      ]
+    },
+    "MID_Sys_Result_Headline_EXP_Bonus": {
+      "source_sha256": "fa6e4d94b65989fff1ca4eda81d0dddfd15fafa6a298b5705a30e2a2e21d6968",
+      "parts": [
+        "خبرة إضافية"
+      ]
+    },
+    "MID_Sys_Result_Headline_Join": {
+      "source_sha256": "56ac3b3cdbd295163e9c4e0c17012434b9283aff05c0a077f1c2fbce430e594c",
+      "parts": [
+        "انضم رفيق"
+      ]
+    },
+    "MID_Sys_Result_Headline_Show": {
+      "source_sha256": "a482f75bfc6087ccee1c4b5fa9a01d938f6d5d28cc649b4db0a9ef64cb27d344",
+      "parts": [
+        "اكتمل العرض"
+      ]
+    },
+    "MID_Sys_Result_Headline_Reconstruction": {
+      "source_sha256": "e303b69a3996f96be91a7f372598c85113c400dded9cb570f3573702b813d0cb",
+      "parts": [
+        "اكتملت إعادة البناء"
+      ]
+    },
+    "MID_Sys_Result_Headline_Destroyed_Miasma": {
+      "source_sha256": "db65eb9f49a0ff0eb65e3cd069d3f0ac31b5c01095fd3990a140eaa6481468bc",
+      "parts": [
+        "تبدد الوباء"
+      ]
+    },
+    "MID_Sys_Result_Headline_Destroyed_Hell": {
+      "source_sha256": "1377745bf07bca60ca64c27bac1007d535ea1c5a6887f5e11a44f663a6c3fa8d",
+      "parts": [
+        "تحطمت البوابة"
+      ]
+    },
+    "MID_Sys_LevelUp": {
+      "source_sha256": "f5bb0a1ff4cfd3e926bfa89d900ef60d2afa785a6c0bdeab77e49c273026b4ed",
+      "parts": [
+        "ارتفع المستوى"
+      ]
+    },
+    "MID_Sys_Result_StageClear": {
+      "source_sha256": "cd3e57b908ae243aa32d15d4562f3d1e56e8a98200849cc0cca744b4f730faa7",
+      "parts": [
+        "اجتزت المرحلة"
+      ]
+    },
+    "MID_Sys_Result_Win": {
+      "source_sha256": "957f4f70063ca0c9097b196fc3c578c3586adfdfda2f306191959efeabd56b22",
+      "parts": [
+        "النصر"
+      ]
+    },
+    "MID_Sys_Result_MVP": {
+      "source_sha256": "4b5f0fb0d23977622f84c451d93371f2755221a81846a5a83909ab5091e41c69",
+      "parts": [
+        "نجم المعركة"
+      ]
+    },
+    "MID_Menu_ItemGet_Message": {
+      "source_sha256": "cf83cf365299336e29ac4c249cc16481b6b788f8de3383a673f6cd1860637bd0",
+      "parts": [
+        "حصلت على ما يلي:"
+      ]
+    },
+    "MID_Menu_ItemAdd_Message": {
+      "source_sha256": "ba0affec2637ccf92db86910a5a0032daa9a88f9df6e3361fd57deb862720dca",
+      "parts": [
+        "وحصلت أيضا على:"
+      ]
+    },
+    "MID_Menu_FundGet_Message": {
+      "source_sha256": "234ac046ed75e8bf587e808b4d604bdc5371ec7d40e4703e7c1ed301f9b602a3",
+      "parts": [
+        "حصلت على المال"
+      ]
+    },
+    "MID_Menu_ImportantGet_Message": {
+      "source_sha256": "70b659a22dcd7ca984215d6f2f44ecffc6ebdbc255390542e8d46a71e24065b4",
+      "parts": [
+        "حصلت على أداة أساسية"
+      ]
+    },
+    "MID_Sys_Result_Msg_GetQuestItem": {
+      "source_sha256": "6b670cf7d3a6e523f9d69a0fc1fc114314b04843c78065b38135c116cbbf3798",
+      "parts": [
+        "المكافأة المكتسبة:"
+      ]
+    },
+    "MID_Sys_Result_Headline_Acquisition": {
+      "source_sha256": "cf39caf5cc50b96c56f617be8dfabc16229d30096f924085d4258cbf3a628189",
+      "parts": [
+        "التعلم"
+      ]
+    },
+    "MID_Sys_Result_Success": {
+      "source_sha256": "96e0a5e26370c991a39f41446cf0749a7a881036cd889c070a8eba0750bd80f2",
+      "parts": [
+        "نجاح"
+      ]
+    },
+    "MID_Sys_Result_Failure": {
+      "source_sha256": "5b3de45a0bf18efd1631b7af7f8424d0277157b565e3db7b611e33f859b745ad",
+      "parts": [
+        "إخفاق"
+      ]
+    },
+    "MID_SysMenu_Lobby_Title": {
+      "source_sha256": "69ba0af54d2c49ecfff7b07b4a823fbf1a2c70706ce2e223dc8d688ee0a7fafb",
+      "parts": [
+        "قائمة القاعدة"
+      ]
+    },
+    "MID_SysMenu_Gmap_Title": {
+      "source_sha256": "adda39fca0b4aed244381ee3832bcc9c45d80ef8db25d80a209d156f2e77c074",
+      "parts": [
+        "قائمة خريطة العالم"
+      ]
+    },
+    "MID_SysMenu_Sortie_Title": {
+      "source_sha256": "30520e0edef4ab0d61a7fe9718767afe38f23313de7f5e80f3388e7d00b3dca5",
+      "parts": [
+        "قائمة الاستعداد للمعركة"
+      ]
+    },
+    "MID_SysMenu_Bmap_Title": {
+      "source_sha256": "5312d350d4dc4fea87fea595f5d1a1714bb6f2a6f85b96b2de6e7f975d7de80d",
+      "parts": [
+        "قائمة المعركة"
+      ]
+    },
+    "MID_SysMenu_Dungeon_Title": {
+      "source_sha256": "6b4ddbfa3654c5dec31e70fa9347d33498b37035de776171b227820f8170682d",
+      "parts": [
+        "قائمة الدهليز"
+      ]
+    },
+    "MID_SysMenu_Inventory": {
+      "source_sha256": "fc42ee5b5be7480094c27e783a32991ce8794ebe7cecd1c487d5c5aba6409008",
+      "parts": [
+        "المتاع"
+      ]
+    },
+    "MID_SysMenu_Item": {
+      "source_sha256": "8e128cc2e9619033925c3101bc0acff91e7496c9afed42e9f0c327925f3de07c",
+      "parts": [
+        "الأدوات"
+      ]
+    },
+    "MID_SysMenu_Trade": {
+      "source_sha256": "b2d9fd0df767a266940cdd79838dceb3833b5a27f9feb1f62e0b1439233f58d2",
+      "parts": [
+        "تبادل"
+      ]
+    },
+    "MID_SysMenu_Skill": {
+      "source_sha256": "d1a5157450e5a20bb151d944c1788d78fdff89561b3ffcedce72105987a1c877",
+      "parts": [
+        "القدرات"
+      ]
+    },
+    "MID_SysMenu_Arts": {
+      "source_sha256": "e36fa1d77a4a0a3d9a5ecc91d64445f59f893d0703497e53c252eda76684bf6a",
+      "parts": [
+        "فنون القتال"
+      ]
+    },
+    "MID_SysMenu_Deploy": {
+      "source_sha256": "0dabb6f227ae40308335c285dff6d4129dbe9e61761e273a1fec4999508de785",
+      "parts": [
+        "تعيين"
+      ]
+    },
+    "MID_SysMenu_ClassChange": {
+      "source_sha256": "5a63cb46a5a2442f4f8f4d7f15b27cf6c70bca88e6ff99ad85432e412e8f817d",
+      "parts": [
+        "تغيير الفئة"
+      ]
+    },
+    "MID_SysMenu_ClassChange_Help": {
+      "source_sha256": "78bd855bb58572980dad17f36f7a4fb3c242b499c2b7a91b2410d291a0a63a3c",
+      "parts": [
+        "انتقل إلى فئة تحمل رخصتها."
+      ]
+    },
+    "MID_SysMenu_Guide": {
+      "source_sha256": "d7906903acbdc221225b73ecb0ff2719efc67476b57820f718703e0bfa8863b6",
+      "parts": [
+        "دليل المغامرة"
+      ]
+    },
+    "MID_SysMenu_Quest": {
+      "source_sha256": "4b08e0a610380a99a2a3f7cbf6295fc9eeba1e651aca9c90ffe6887f5a9c12c5",
+      "parts": [
+        "قائمة المهام"
+      ]
+    },
+    "MID_SysMenu_Calendar": {
+      "source_sha256": "14ceaabe231286729bfdd15a82e0f9d34277572a0aacfafa585e786b021bb502",
+      "parts": [
+        "التقويم"
+      ]
+    },
+    "MID_SysMenu_Info": {
+      "source_sha256": "44f5d1649faf35c5fd607d92abef72e566d787634ccaad07071a0b5fe07133e2",
+      "parts": [
+        "معلومات"
+      ]
+    },
+    "MID_SysMenu_TroopList": {
+      "source_sha256": "6c147d37aa6c50f7e6e036db8b35b321c26630e611a726349c460ec8ac80280d",
+      "parts": [
+        "قائمة الوحدات"
+      ]
+    },
+    "MID_SysMenu_Roster": {
+      "source_sha256": "68bdd9957c66763ac565d02338c344db3cae4418df878cce8897bcfe8739e388",
+      "parts": [
+        "سجل الرفاق"
+      ]
+    },
+    "MID_SysMenu_Reliance": {
+      "source_sha256": "610d152f30ffe5e382d8433d4bc23b86014f8dba87008515cfefc1b27b02df59",
+      "parts": [
+        "معلومات الدعم"
+      ]
+    },
+    "MID_SysMenu_Material": {
+      "source_sha256": "be17a326a76ae9da3b33b95c103b221319601ef38d06b3a3e9301d5c299db0e4",
+      "parts": [
+        "حقيبة المواد"
+      ]
+    },
+    "MID_SysMenu_GuideTop": {
+      "source_sha256": "5582c293a9f7a3ee916cc518265f51614ce99712ca3ea6edbd148c7c1db23734",
+      "parts": [
+        "يوميات الرحلة"
+      ]
+    },
+    "MID_SysMenu_LegionComback": {
+      "source_sha256": "b208e05c95cb7a92ffe37b6dd295858697ab7723f492fdbfc31ce5f78efdcb93",
+      "parts": [
+        "تفاصيل الانتشار"
+      ]
+    },
+    "MID_SysMenu_Facility": {
+      "source_sha256": "063f54183ccd6528c2081554dcd01d3e1bafa209e62c8be1c21d70f34dbea549",
+      "parts": [
+        "المرافق"
+      ]
+    },
+    "MID_SysMenu_Temple": {
+      "source_sha256": "949c28b185cb4d8f777cd8b2d85e3c427ea904de763d7d57fb3d493690686a7b",
+      "parts": [
+        "المعبد"
+      ]
+    },
+    "MID_SysMenu_Map": {
+      "source_sha256": "bcd9eb15484b9fb5c47ec312cd9ab45fc99ba38ea0a144a19c2ea469f9e0e8ab",
+      "parts": [
+        "الخريطة"
+      ]
+    },
+    "MID_SysMenu_GmapMap": {
+      "source_sha256": "0fa8cbbe01a0eed78f9c7580c0fdde32213f53c8defa486186f4b97298625f5d",
+      "parts": [
+        "خريطة العالم"
+      ]
+    },
+    "MID_SysMenu_Assist": {
+      "source_sha256": "846303217793d6098f2fa7f169bfa6ad403b4c5cd703c05ca222db6e1f507581",
+      "parts": [
+        "تنقل"
+      ]
+    },
+    "MID_SysMenu_Gmap": {
+      "source_sha256": "b0f62283f3d5e82795c6ece842244a4801bf6522d3004b7fd0ff796c1460b79d",
+      "parts": [
+        "إلى خريطة العالم"
+      ]
+    },
+    "MID_SysMenu_Escape": {
+      "source_sha256": "9319df0509e53f8910cf204f5d77d3e35c413f6cb8ca9abe1bee77f2c8fbf57d",
+      "parts": [
+        "إلى نقطة البداية"
+      ]
+    },
+    "MID_SysMenu_NextTimeline": {
+      "source_sha256": "d6e564f0ca7e948fe845278ab863d3b24db20e21844334c0494a82a5ea979e05",
+      "parts": [
+        "إلى المهمة الرئيسية"
+      ]
+    },
+    "MID_SysMenu_HellGatePeriod": {
+      "source_sha256": "b068be82bd9b6054507d506f5ead13b24ff8416389f9b261ef75f9f3f0a4a614",
+      "parts": [
+        "إلى مهمة البوابة"
+      ]
+    },
+    "MID_SysMenu_Save_Help": {
+      "source_sha256": "babae734dad1378c803ac267060b2d9e928af51dcbd4dc8d8f42bde2d5e6e0bd",
+      "parts": [
+        "احفظ تقدمك حتى الآن."
+      ]
+    },
+    "MID_SysMenu_System": {
+      "source_sha256": "46c7e6f003dd87c710150ed5f1c362844d5cdc631883d88e68761981d27ee951",
+      "parts": [
+        "النظام"
+      ]
+    },
+    "MID_SysMenu_System_Help": {
+      "source_sha256": "40bdd5fd94905dd1bfeba548c663900b6e104e0fbd74e22743ea10c2d2120a8e",
+      "parts": [
+        "اضبط إعدادات اللعبة."
+      ]
+    },
+    "MID_SysMenu_Tutorial": {
+      "source_sha256": "b00de957b1dddfa7f4b7db0d678d9fef1a109ea7d6955e5fdc8431e9eded0016",
+      "parts": [
+        "الإرشادات"
+      ]
+    },
+    "MID_SysMenu_Config": {
+      "source_sha256": "277e0df0547c4a4f83c591e02e236200c7483e9458bc5e96a2c7f20164b78860",
+      "parts": [
+        "الإعدادات"
+      ]
+    },
+    "MID_SysMenu_MouseGuide": {
+      "source_sha256": "5f4bee5b621795284315ac4dfcab7dc728fdb39e480c7dfe8f275675475f9133",
+      "parts": [
+        "التحكم بالفأرة"
+      ]
+    },
+    "MID_SysMenu_StartBattle": {
+      "source_sha256": "fd7c61ba470afc0b1816777a21ffb6efb2dea422c9b80f3002ed0a8bcbeb8fff",
+      "parts": [
+        "إلى القتال!"
+      ]
+    },
+    "MID_SysMenu_StartExplore": {
+      "source_sha256": "bb2bddb45e2933136b10929b4a162afef0953d5293d3faaa94fa17eea5bb2837",
+      "parts": [
+        "استكشاف"
+      ]
+    },
+    "MID_SysMenu_UnitSelect": {
+      "source_sha256": "69faa4f100de733244ec4d6fccc7868ba51bc28f53eb50d2b85caccb19b57f2c",
+      "parts": [
+        "اختيار الوحدات"
+      ]
+    },
+    "MID_SysMenu_UnitSelect_Help": {
+      "source_sha256": "6f794df285ab9a26240a81b4ae382042f8f75c335b20b966b549009f560592b4",
+      "parts": [
+        "اختر الوحدات التي ستخوض المعركة."
+      ]
+    },
+    "MID_SysMenu_Change_Position": {
+      "source_sha256": "c27453b30cf6f24a154428beb53f5f69e9efc6ca704640e50c4fbdf21350fdbb",
+      "parts": [
+        "تبديل المواقع"
+      ]
+    },
+    "MID_SysMenu_Miracle": {
+      "source_sha256": "aa3a339fcd7a9181c251a1c562435b8390c4edf40109e0d8cb25481342bfba9f",
+      "parts": [
+        "طلب البركة"
+      ]
+    },
+    "MID_Menu_Trade": {
+      "source_sha256": "b2d9fd0df767a266940cdd79838dceb3833b5a27f9feb1f62e0b1439233f58d2",
+      "parts": [
+        "تبادل"
+      ]
+    },
+    "MID_Transporter_Stock": {
+      "source_sha256": "9c3dfe808ede9dbba8331f221a0ff9e1101c092a54e271c23f9582958e9663b9",
+      "parts": [
+        "المجموع"
+      ]
+    },
+    "MID_ProfileMenu_Page3": {
+      "source_sha256": "adc34608c46bad88d9529725937814c27f6a301ea123e9555a7be2f3ce03807f",
+      "parts": [
+        "فئة"
+      ]
+    },
+    "MID_TroopList_Page3": {
+      "source_sha256": "96927e89e33fc100cd6fe36acce72006bf4f5706d8a821c3c023baf8ba644a70",
+      "parts": [
+        "إحصاءات القتال"
+      ]
+    },
+    "MID_TroopList_Page4": {
+      "source_sha256": "c424457f1bdf974f9d23100c0f6d75b7537ea36ba946ac309472c9d937f6d102",
+      "parts": [
+        "الإحصاءات الأساسية"
+      ]
+    },
+    "MID_TransportMenu_Tool": {
+      "source_sha256": "8e128cc2e9619033925c3101bc0acff91e7496c9afed42e9f0c327925f3de07c",
+      "parts": [
+        "الأدوات"
+      ]
+    },
+    "MID_Menu_Magic": {
+      "source_sha256": "301b0c95d03d10fe8836f712a8749d21b4cd2ca3725514271020e696ed27a2b1",
+      "parts": [
+        "سحر"
+      ]
+    },
+    "MID_DeployMenu_Ride": {
+      "source_sha256": "e761e5b1be2a214d62351ba8a89dbe24645be488f2570216899dcf40b3ac7487",
+      "parts": [
+        "امتطاء"
+      ]
+    },
+    "MID_DeployMenu_Dispatch": {
+      "source_sha256": "21517c4a4c6d6df1932066d42f4a87fb1782f507165d629f6c9eb53fabc59d00",
+      "parts": [
+        "في الميدان"
+      ]
+    },
+    "MID_Config_Speed_Normal": {
+      "source_sha256": "a49681e12ac3bd32f0ed66784c396ef2900a39e18e04b8f7371d5847076a5562",
+      "parts": [
+        "عادي"
+      ]
+    },
+    "MID_Config_Sound": {
+      "source_sha256": "abb857ba0cd8c422b994be65e2e33e0ae080e86dabd13b7fbff3072ed6ae5af7",
+      "parts": [
+        "مستوى الصوت"
+      ]
+    },
+    "MID_XHelp_Blaze": {
+      "source_sha256": "675a107abc26eb9c6a288f9e1987e1b89745d52c39ce10d3bb3f8ca5b3c4d7c6",
+      "parts": [
+        "اللهب"
+      ]
+    },
+    "MID_XHelp_Class": {
+      "source_sha256": "adc34608c46bad88d9529725937814c27f6a301ea123e9555a7be2f3ce03807f",
+      "parts": [
+        "فئة"
+      ]
+    },
+    "MID_KeyHelp_Tutorial": {
+      "source_sha256": "b00de957b1dddfa7f4b7db0d678d9fef1a109ea7d6955e5fdc8431e9eded0016",
+      "parts": [
+        "الإرشادات"
+      ]
+    },
+    "MID_KeyHelp_Map": {
+      "source_sha256": "bcd9eb15484b9fb5c47ec312cd9ab45fc99ba38ea0a144a19c2ea469f9e0e8ab",
+      "parts": [
+        "الخريطة"
+      ]
+    },
+    "MID_KeyHelp_GmapMap": {
+      "source_sha256": "0fa8cbbe01a0eed78f9c7580c0fdde32213f53c8defa486186f4b97298625f5d",
+      "parts": [
+        "خريطة العالم"
+      ]
+    },
+    "MID_KeyHelp_Attack": {
+      "source_sha256": "f6dea0cff1ff0fced804970998e07cd640f48b3f5e419eb060abe67ccf9bfc73",
+      "parts": [
+        "هجوم"
+      ]
+    },
+    "MID_KeyHelp_Config": {
+      "source_sha256": "277e0df0547c4a4f83c591e02e236200c7483e9458bc5e96a2c7f20164b78860",
+      "parts": [
+        "الإعدادات"
+      ]
+    },
+    "MID_KeyHelp_ShowSubtitle": {
+      "source_sha256": "040d5e95e92b31267829b404a079322b9b9914c831f7c7d9635631042ad2ef09",
+      "parts": [
+        "الترجمة النصية"
+      ]
+    },
+    "MID_Save_State_Gmap": {
+      "source_sha256": "0fa8cbbe01a0eed78f9c7580c0fdde32213f53c8defa486186f4b97298625f5d",
+      "parts": [
+        "خريطة العالم"
+      ]
+    },
+    "MID_Mouse_Notice": {
+      "source_sha256": "5f4bee5b621795284315ac4dfcab7dc728fdb39e480c7dfe8f275675475f9133",
+      "parts": [
+        "التحكم بالفأرة"
+      ]
+    },
+    "MID_MouseGuide_Guide": {
+      "source_sha256": "5582c293a9f7a3ee916cc518265f51614ce99712ca3ea6edbd148c7c1db23734",
+      "parts": [
+        "يوميات الرحلة"
+      ]
+    },
+    "MID_MouseGuide_Map": {
+      "source_sha256": "bcd9eb15484b9fb5c47ec312cd9ab45fc99ba38ea0a144a19c2ea469f9e0e8ab",
+      "parts": [
+        "الخريطة"
+      ]
+    },
+    "MID_MouseGuide_Attack": {
+      "source_sha256": "f6dea0cff1ff0fced804970998e07cd640f48b3f5e419eb060abe67ccf9bfc73",
+      "parts": [
+        "هجوم"
+      ]
+    }
+  },
+  "System_Bmap.msbt.zst": {
+    "MID_Sys_PlayerPhase": {
+      "source_sha256": "cf5ea0d60817a1a91753bcfdb496f96d2218f3ad88b94d7af257f22975d62a76",
+      "parts": [
+        "دور اللاعب"
+      ]
+    },
+    "MID_Sys_EnemyPhase": {
+      "source_sha256": "f1b7fdf707951625c81a84bf57a46d6f8ef493526754476d8218cecae9e1682b",
+      "parts": [
+        "دور العدو"
+      ]
+    },
+    "MID_Sys_AllyPhase": {
+      "source_sha256": "b9e497e79a5b5e7afef21ae4d08f10d56cc58d01c013f2e0eb189c34a535c35e",
+      "parts": [
+        "دور الحلفاء"
+      ]
+    },
+    "MID_Battle_Damage_NoDamage": {
+      "source_sha256": "a9ce1187ca89e818f5ed2b4484ce342ae002ceda1ccf1dbb9b07804511f222db",
+      "parts": [
+        "بلا ضرر!"
+      ]
+    },
+    "MID_Battle_Damage_Miss": {
+      "source_sha256": "916cdf69b4b5fe210ce9a1d0b79099e69f74e3b26615b13c5f28e19b612b55cb",
+      "parts": [
+        "أخطأ!"
+      ]
+    },
+    "MID_Battle_Damage_Critical": {
+      "source_sha256": "5f1a582ed092de77cb3a893da2d4d8fd19902a4f615357307fe0ab364a73ad26",
+      "parts": [
+        "ضربة حرجة!"
+      ]
+    },
+    "MID_Battle_Damage_Guard": {
+      "source_sha256": "67d445470f8100bd69f44851606dde2c68de9a8bdbed73f6c54a26490ed027d3",
+      "parts": [
+        "صد!"
+      ]
+    },
+    "MID_Battle_Damage_ChainAttack": {
+      "source_sha256": "2da22cee5d6ce757c81f3bb8722fcb170764fc3b2c2497f07a24ebb179b5b68d",
+      "parts": [
+        "هجوم مشترك!"
+      ]
+    },
+    "MID_Battle_Damage_OverBlaze": {
+      "source_sha256": "dd1be65eb87c7841d3a71e870803e98fc72c1779773a8205e5261cec9510b89b",
+      "parts": [
+        "توهج مفرط!"
+      ]
+    },
+    "MID_Battle_Damage_Burst": {
+      "source_sha256": "c2c98a7673d28b88f52925f55335b152b84ffda3ceb0176505e1fb55fa150670",
+      "parts": [
+        "انفجار!"
+      ]
+    },
+    "MID_Battle_StatusUp": {
+      "source_sha256": "ddd280a6b4cd66d71c0c9777ba1a91654834bf87321e279bf749f3b1a195de52",
+      "parts": [
+        "تعززت القدرات"
+      ]
+    },
+    "MID_Battle_StatusDown": {
+      "source_sha256": "468c06a33a1af4ac406e3ba15b23754b23e6d8a7177277a9fcd57518e7c6810b",
+      "parts": [
+        "ضعفت القدرات"
+      ]
+    },
+    "MID_Battle_BadCondition": {
+      "source_sha256": "be8567b337420667f0f16b0e3d4bd1133195bb1310a883049669fe1f7888594d",
+      "parts": [
+        "تأثير الحالة"
+      ]
+    },
+    "MID_Battle_CureCondition": {
+      "source_sha256": "3d30b97b1a61b763932e25c46880d173228ea1c1f13f29bba814aaedfc1be180",
+      "parts": [
+        "تم الشفاء"
+      ]
+    },
+    "MID_Sys_EndureHp": {
+      "source_sha256": "536c2592cc6bc4036bf41f4f3aee2aac317f12d362bf875a95fb535dda85e19d",
+      "parts": [
+        "الدرع"
+      ]
+    },
+    "MID_Sys_Damage": {
+      "source_sha256": "625a480a3cc8eccbae93ac0b33f5d8c3494c7c4a39ff0079e9fb980ba3463e04",
+      "parts": [
+        "الضرر"
+      ]
+    },
+    "MID_Sys_CannonCount": {
+      "source_sha256": "f6eabc83a8ef7d8d781aad9dd00ae42d530249dd9f80aa8f657c68ea37449016",
+      "parts": [
+        "الطلقات"
+      ]
+    },
+    "MID_Sys_NoEntry": {
+      "source_sha256": "081ea958a025eec773a238ac6dea80ee9c3f5c6e6a68e1fc578c7e851c13975f",
+      "parts": [
+        "يتعذر عبوره"
+      ]
+    },
+    "MID_Sys_NoWalkingEntry": {
+      "source_sha256": "a1379ad25a6abb04b96eb1f82b485a229433e52c7341b4900a975c24ef281670",
+      "parts": [
+        "يتعذر بلوغه"
+      ]
+    },
+    "MID_Sys_NoWalkingAndDestroy": {
+      "source_sha256": "8ee29ca6be76e88c3a3aae753a0d5a83dbeb88c873a75e32751417d6cd3e7c16",
+      "parts": [
+        "لا يمكن بلوغه أو تحطيمه"
+      ]
+    },
+    "MID_Btl_FirstAttack": {
+      "source_sha256": "92f5aa04002a497956b16360c75c9b1f7919eb5e1ae5219292858b94162bf78d",
+      "parts": [
+        "يضرب أولا"
+      ]
+    },
+    "MID_Btl_LastAttack": {
+      "source_sha256": "8976545e5859e9066bfd37eaeb6eb12bdbeda8b9fec35b988d116b35ec011d3e",
+      "parts": [
+        "يضرب أخيرا"
+      ]
+    },
+    "MID_Btl_Buff": {
+      "source_sha256": "fc8d6b52638d455f3f83af2919b972def4de2a1b9aceef8424e98e143d901239",
+      "parts": [
+        "تعزيز:"
+      ]
+    },
+    "MID_Btl_Debuff": {
+      "source_sha256": "2f93387eee0db24d3c34185f13fc84aab1d36e6dcdeb0f976075ef1fea2bdb09",
+      "parts": [
+        "إضعاف:"
+      ]
+    },
+    "MID_Btl_EnemyDetail_Barrier": {
+      "source_sha256": "c5fb858f821a8eb564381f1bcb18321dc6b9fd7cb0c9e19f2f17e57fc4ca9382",
+      "parts": [
+        "حاجز"
+      ]
+    },
+    "MID_Btl_EnemyDetail_BarrierItem": {
+      "source_sha256": "da267f4e68f1eb6b7d386703fcc641b439d91cd8a2d861401dacb34bae0fdafc",
+      "parts": [
+        "تحطيم كامل"
+      ]
+    },
+    "MID_Btl_EnemyDetail_StockSkill": {
+      "source_sha256": "bcf60c29626eeb7ff4fa0c2a79783b33efa25f6c9755c54c9eff1ca626a6046a",
+      "parts": [
+        "القدرات الكامنة"
+      ]
+    },
+    "MID_Btl_EnemyDetail_ActivationStock": {
+      "source_sha256": "998b0364c51d0cec5d3d387aa7fde99cb63c2d379f3380453e7e4ee8c53ecc1d",
+      "parts": [
+        "جاهز عند"
+      ]
+    },
+    "MID_SortieMenu_UnitSelect_Help": {
+      "source_sha256": "80a5e5093d57e2834344e49a4e6424a53335139c0bfa4f218048e82dca6029bd",
+      "parts": [
+        "اختر الوحدات التي ستخوض المعركة."
+      ]
+    },
+    "MID_BtlMenu_SortieUnit": {
+      "source_sha256": "21517c4a4c6d6df1932066d42f4a87fb1782f507165d629f6c9eb53fabc59d00",
+      "parts": [
+        "في الميدان"
+      ]
+    },
+    "MID_BtlMenu_UnitGuest": {
+      "source_sha256": "950dc40e43d62b22d6ed51e317c2bfc15193aa2e5dd89227fac6dae4652c28bc",
+      "parts": [
+        "ضيف"
+      ]
+    },
+    "MID_BtlMenu_TurnCount": {
+      "source_sha256": "dc48b268ada8ecb66080beb92a43e26d3403da310209c14c31e14ecbc15fdc98",
+      "parts": [
+        "الأدوار"
+      ]
+    },
+    "MID_BtlMenu_WaitUnitCount": {
+      "source_sha256": "8ce7acd368ffc69981a9702a4827baefa77e26950133eb0ca7058234f4c936ee",
+      "parts": [
+        "الوحدات الجاهزة"
+      ]
+    },
+    "MID_BtlMenu_DefeatCount_GuestUnit": {
+      "source_sha256": "2eb314a902111ab3b1dcd8fffb7ac6073f13aae832639a85339c66c7d31453bd",
+      "parts": [
+        "هزمهم الضيوف"
+      ]
+    },
+    "MID_BtlMenu_WeaponCost": {
+      "source_sha256": "7d147e2184c9d7648e2efbe7b0762d821bb6f9f49121e4415c4431ca51f59ca2",
+      "parts": [
+        "الكلفة"
+      ]
+    },
+    "MID_BtlMenu_ConsumeHp": {
+      "source_sha256": "8b6c344277aa3d15061c9f5fd7e957403928cc34fea67a2c3a38fa3bad15bbf2",
+      "parts": [
+        "كلفة الصحة"
+      ]
+    },
+    "MID_MiracleMenu_Help": {
+      "source_sha256": "899c8e114422a5fdfd0a07d1e0aae7b25088adab1598b4c4443e3f445e4bdc58",
+      "parts": [
+        "اختر بركة."
+      ]
+    },
+    "MID_MiracleMenu_Used": {
+      "source_sha256": "b9616c8843842bb71bac93b956afde7a5056be5c97a8d73e4c62274c37b14673",
+      "parts": [
+        "مفعل"
+      ]
+    },
+    "MID_BtlMenu_Attack": {
+      "source_sha256": "f6dea0cff1ff0fced804970998e07cd640f48b3f5e419eb060abe67ccf9bfc73",
+      "parts": [
+        "هجوم"
+      ]
+    },
+    "MID_BtlMenu_Arts": {
+      "source_sha256": "e36fa1d77a4a0a3d9a5ecc91d64445f59f893d0703497e53c252eda76684bf6a",
+      "parts": [
+        "فنون القتال"
+      ]
+    },
+    "MID_BtlMenu_Special": {
+      "source_sha256": "81374767713d4e9a05ae7096fceabf286a9361d1b0557f5fa7c420fa04bd16ff",
+      "parts": [
+        "فنون اللهب"
+      ]
+    },
+    "MID_BtlMenu_SpecialGauge": {
+      "source_sha256": "1eb93fdb19cbb3519ba4bc5fe8ed434fe8cf565007242e14c25f3c3cff673c43",
+      "parts": [
+        "إدارة اللهب"
+      ]
+    },
+    "MID_BtlMenu_Gambit": {
+      "source_sha256": "6b7c42b4542319172f5286064271cc9690081e3266313c59a3507133c7afc654",
+      "parts": [
+        "مناورة"
+      ]
+    },
+    "MID_BtlMenu_Rage": {
+      "source_sha256": "59a87ec14939861231247ecf0f58b4065f0e0c71443d74ba1da44aaf7a9217f8",
+      "parts": [
+        "ضربة مزعزعة"
+      ]
+    },
+    "MID_BtlMenu_Morph": {
+      "source_sha256": "d3032a6f90f3e8059bded47290f53f378559c9b48fd16711496f479ea9b4d7f0",
+      "parts": [
+        "تحول"
+      ]
+    },
+    "MID_BtlMenu_Assist": {
+      "source_sha256": "ae1804cceb25257641201e14ccab5024760630d09117be84a93be865a14ab9b7",
+      "parts": [
+        "مساندة"
+      ]
+    },
+    "MID_BtlMenu_RideOn": {
+      "source_sha256": "e761e5b1be2a214d62351ba8a89dbe24645be488f2570216899dcf40b3ac7487",
+      "parts": [
+        "امتطاء"
+      ]
+    },
+    "MID_BtlMenu_RideOff": {
+      "source_sha256": "f256a818a8141d9c63a74dd50ab3b171ebfb4ab06b59a6564a0108120253504f",
+      "parts": [
+        "ترجل"
+      ]
+    },
+    "MID_BtlMenu_Item": {
+      "source_sha256": "8e128cc2e9619033925c3101bc0acff91e7496c9afed42e9f0c327925f3de07c",
+      "parts": [
+        "الأدوات"
+      ]
+    },
+    "MID_BtlMenu_Transport": {
+      "source_sha256": "5d900d0360b23184f91961f89202753d8b2b8a1b65ad65934e6b725cc160e874",
+      "parts": [
+        "المخزن"
+      ]
+    },
+    "MID_BtlMenu_Trade": {
+      "source_sha256": "b2d9fd0df767a266940cdd79838dceb3833b5a27f9feb1f62e0b1439233f58d2",
+      "parts": [
+        "تبادل"
+      ]
+    },
+    "MID_BtlMenu_Fixed": {
+      "source_sha256": "9c54af5870a0ecd17b06ea5f34cf222adc116ea55a351bf65cbe28848e384b8e",
+      "parts": [
+        "انتظار"
+      ]
+    },
+    "MID_BtlMenu_Treasurebox": {
+      "source_sha256": "0751dea9148e79f4f3a46b8f04e5dcdaba3a458807c506dafbc0197d1b603950",
+      "parts": [
+        "صندوق"
+      ]
+    },
+    "MID_BtlMenu_Warp": {
+      "source_sha256": "abd0d048a8c3a4991a503fe4eec724c3dea51c5e036d8edaa3f65bbb63d29227",
+      "parts": [
+        "انتقال سحري"
+      ]
+    },
+    "MID_BtlMenu_Secede": {
+      "source_sha256": "3b838a4e035a1d29805bcfe8935b290338ea0bac285aa5bb48484a17ded867f6",
+      "parts": [
+        "انسحاب"
+      ]
+    },
+    "MID_BtlMenu_Talk": {
+      "source_sha256": "3f512076ac9673dfe8218651f14b9703b989bfd27df26fce2a6c1e7bcb033e76",
+      "parts": [
+        "حديث"
+      ]
+    },
+    "MID_BtlMenu_Cannon": {
+      "source_sha256": "64883a6b61bc3fad4ee2260406de306de71040a6a9fd90293bb9d2e6489f8602",
+      "parts": [
+        "مدفعية"
+      ]
+    },
+    "MID_BtlMenu_Terrain_Default": {
+      "source_sha256": "b6721492445103c2cb11b7f8720b0d7a28322f72dd4c0d08576091e265d0b5f4",
+      "parts": [
+        "تفعيل"
+      ]
+    },
+    "MID_BtlMenu_Terrain_Lightflame": {
+      "source_sha256": "ec391355f1a3e3f20e1fc9e82b8c290631f0c53d644c89f3e2855dc3d79e1b11",
+      "parts": [
+        "مجمرة"
+      ]
+    },
+    "MID_BtlMenu_Terrain_Bonfire": {
+      "source_sha256": "021ebe439e82a584b3079716a8f839570128d74c40f9ff41bd1ad405b0f0a48a",
+      "parts": [
+        "نار مخيم"
+      ]
+    },
+    "MID_BtlMenu_Terrain_Candle": {
+      "source_sha256": "ec391355f1a3e3f20e1fc9e82b8c290631f0c53d644c89f3e2855dc3d79e1b11",
+      "parts": [
+        "مجمرة"
+      ]
+    },
+    "MID_BtlMenu_Terrain_Fallpillar": {
+      "source_sha256": "1b19148ba9913389455fd5abd8ba7230b6a45f5e66a4cab730e7a97c375c1eef",
+      "parts": [
+        "عمود هش"
+      ]
+    },
+    "MID_BtlMenu_Terrain_Attendpower": {
+      "source_sha256": "f68511e15a1af305c3076d7265d7196a59180b6aa30a0484e51239e5c1440d8e",
+      "parts": [
+        "زهور مضاءة بالقمر"
+      ]
+    },
+    "MID_BtlMenu_Skill_Invincible": {
+      "source_sha256": "02c8121f2e273b4c3e07c34e86cfb44809d08e7565d0d64273a151b0b4c28e59",
+      "parts": [
+        "حماية الجهاز"
+      ]
+    },
+    "MID_BtlMenu_Skill_Clearsandstorm": {
+      "source_sha256": "8a6173c009a0a05db746572724e0b413aaebc83fd89b403047a70bd7b73847a7",
+      "parts": [
+        "تهدئة العاصفة الرملية"
+      ]
+    },
+    "MID_BtlMenu_Skill_Throwfeed": {
+      "source_sha256": "c505aa96b4587b9fc4c6218d62108366d854d06b7ba5c5c936f2fab4776a991f",
+      "parts": [
+        "طعم"
+      ]
+    },
+    "MID_BtlMenu_Skill_Calmdown": {
+      "source_sha256": "c997e609a7c1624a025a5e5034fae06a3d28381144d0c6d5127be294d74a334c",
+      "parts": [
+        "تهدئة"
+      ]
+    },
+    "MID_BtlMenu_Skill_Thunder": {
+      "source_sha256": "3e8d8718108f901e1905ed970ff1a2f9858a37d120f932cc8915ec478201b085",
+      "parts": [
+        "رمح البرق"
+      ]
+    },
+    "MID_BtlMenu_Warning_Invalid_Fallpillar": {
+      "source_sha256": "e0e2fdfd28320c3677bdb4de69e6345cd1eaeda64f1b52250e484c4b1b3c9cd1",
+      "parts": [
+        "سيسقط العمود على إحدى الوحدات."
+      ]
+    },
+    "MID_BtlMenu_Warning_Invalid_Warp": {
+      "source_sha256": "7493096960fd3e6a7a6fba85875a651af8a446b74fac5331395bdd4c47597707",
+      "parts": [
+        "تقف وحدة في الطريق."
+      ]
+    },
+    "MID_BtlMenu_Warning_TurnEnd": {
+      "source_sha256": "b72495c934c4336ef961019c3abed04d6d33344437ad902e42086bf039ab0eee",
+      "parts": [
+        "لا يمكن استخدامه مجددا في هذا الدور."
+      ]
+    },
+    "MID_RewindMenu_Help": {
+      "source_sha256": "de43a2210f3d22c4d7fc62db7f347b4c0d8774a7e89fbbda42b8c9f00dca6edf",
+      "parts": [
+        "اختر اللحظة التي تريد العودة إليها."
+      ]
+    },
+    "MID_RewindMsg_BattleStart": {
+      "source_sha256": "fd7c61ba470afc0b1816777a21ffb6efb2dea422c9b80f3002ed0a8bcbeb8fff",
+      "parts": [
+        "إلى القتال!"
+      ]
+    },
+    "MID_RewindMsg_PlayerPhase": {
+      "source_sha256": "5b7523939b840e01de37a9cd4efe6e1d7bc562afea78fdbbe006c8c23aab13a8",
+      "parts": [
+        "بدأ دور اللاعب."
+      ]
+    },
+    "MID_RewindMsg_EnemyPhase": {
+      "source_sha256": "38f5cfa8e7339a2af10a39678a8b77057883aaed1f01ad9be6c0a87bd737787b",
+      "parts": [
+        "بدأ دور العدو."
+      ]
+    },
+    "MID_RewindMsg_ThirdPhase": {
+      "source_sha256": "5dfcdf24ba6a7d53ff9012eb6d94134d53b054ed62d520101403ff3ec5b9b348",
+      "parts": [
+        "بدأ دور الجيش الثالث."
+      ]
+    },
+    "MID_RewindMsg_AllyPhase": {
+      "source_sha256": "fbfe082a92b0b8e4a60173699df10d0b44aad2b98c6523e3f8f4a6e0da4d9b86",
+      "parts": [
+        "بدأ دور الحلفاء."
+      ]
+    },
+    "MWID_Rain": {
+      "source_sha256": "2b47cf799fcab4fce6cb95a1d20a11a37604a9123e9cfb31ed1118813a08005b",
+      "parts": [
+        "طقس ممطر"
+      ]
+    },
+    "MWID_Sandstorm": {
+      "source_sha256": "e393c2f3befcdbb40be4b8635f7954471f40cd970e2fa3de95454458b86c0e45",
+      "parts": [
+        "عاصفة رملية"
+      ]
+    },
+    "MWID_H_Sandstorm": {
+      "source_sha256": "80c8e551479f1df60029c54e5046ead5be163095cdafc7b67842caf2cdf81361",
+      "parts": [
+        "مدى الرؤية محدود."
+      ]
+    },
+    "MWID_Fog": {
+      "source_sha256": "78206b8f6a97441565f7fd1305967dee3455c038db0f10412f2be178df9278d9",
+      "parts": [
+        "ضباب"
+      ]
+    },
+    "MWID_H_Fog": {
+      "source_sha256": "80c8e551479f1df60029c54e5046ead5be163095cdafc7b67842caf2cdf81361",
+      "parts": [
+        "مدى الرؤية محدود."
+      ]
+    },
+    "MWID_SC18_10_DefUp": {
+      "source_sha256": "8aa3bb47f3201533bda82cee213f5de55ab39fbbabf359e1713b9459a57aeb26",
+      "parts": [
+        "حقل دفاع"
+      ]
+    },
+    "MWID_SC18_10_MdefUp": {
+      "source_sha256": "974eef39c90c0559c44ebb1417cbb5ff62e0c522ed536883d90e55bd7e7808c7",
+      "parts": [
+        "حقل مقاومة"
+      ]
+    }
+  },
+  "System_Gmap.msbt.zst": {
+    "MID_Gmap_SpotKind_Temple": {
+      "source_sha256": "949c28b185cb4d8f777cd8b2d85e3c427ea904de763d7d57fb3d493690686a7b",
+      "parts": [
+        "المعبد"
+      ]
+    },
+    "MID_Gmap_SpotKind_HellGate": {
+      "source_sha256": "58145435e69cc774ab10849249a9e2b79dbb0c99ac36109ef9ba1495632ffdcc",
+      "parts": [
+        "العالم السفلي"
+      ]
+    },
+    "MID_GmapMenu_Talk": {
+      "source_sha256": "3f512076ac9673dfe8218651f14b9703b989bfd27df26fce2a6c1e7bcb033e76",
+      "parts": [
+        "حديث"
+      ]
+    },
+    "MID_GmapMenu_Fix": {
+      "source_sha256": "9c54af5870a0ecd17b06ea5f34cf222adc116ea55a351bf65cbe28848e384b8e",
+      "parts": [
+        "انتظار"
+      ]
+    },
+    "MID_BanquetMenu_Magic": {
+      "source_sha256": "301b0c95d03d10fe8836f712a8749d21b4cd2ca3725514271020e696ed27a2b1",
+      "parts": [
+        "سحر"
+      ]
+    },
+    "MID_BanquetMenu_Recovery_HP": {
+      "source_sha256": "b320746fafa5cf87aec787a455e3e408774d01f7c63d8759b9b297b0bb5200a1",
+      "parts": [
+        "صحة"
+      ]
+    },
+    "MID_LegionDispatchMenu_Deployed": {
+      "source_sha256": "f0b32a15e42ea0ee8d3252d9ef2eda192a48c6976cce1b9e977fe308f1eac6ed",
+      "parts": [
+        "معين"
+      ]
+    }
+  },
+  "System_Hub.msbt.zst": {
+    "MID_FastTravelMenu_Facility": {
+      "source_sha256": "063f54183ccd6528c2081554dcd01d3e1bafa209e62c8be1c21d70f34dbea549",
+      "parts": [
+        "المرافق"
+      ]
+    },
+    "MID_FastTravelMenu_ScoutCondition": {
+      "source_sha256": "2bd3050fe3b1c14cf2995e608c45baf1e339ca9bc0b7666467984350da95fa7e",
+      "parts": [
+        "الشروط"
+      ]
+    },
+    "MID_Shop_Price": {
+      "source_sha256": "7d147e2184c9d7648e2efbe7b0762d821bb6f9f49121e4415c4431ca51f59ca2",
+      "parts": [
+        "الكلفة"
+      ]
+    },
+    "MID_Shop_Consumption": {
+      "source_sha256": "7d147e2184c9d7648e2efbe7b0762d821bb6f9f49121e4415c4431ca51f59ca2",
+      "parts": [
+        "الكلفة"
+      ]
+    },
+    "MID_TheaterMenu_DramaGenre_Special": {
+      "source_sha256": "cc37f75854dc05e6e05d42c33d188a3dabce678e86da39a56ce5f0e0e93ee3a2",
+      "parts": [
+        "خاص"
+      ]
+    },
+    "MID_TempleMenu_HelpDetail": {
+      "source_sha256": "949c28b185cb4d8f777cd8b2d85e3c427ea904de763d7d57fb3d493690686a7b",
+      "parts": [
+        "المعبد"
+      ]
+    },
+    "MID_TempleMenu_ClassChange": {
+      "source_sha256": "5a63cb46a5a2442f4f8f4d7f15b27cf6c70bca88e6ff99ad85432e412e8f817d",
+      "parts": [
+        "تغيير الفئة"
+      ]
+    },
+    "MID_AchieveMenu_Item": {
+      "source_sha256": "66166391faefe92860f6f53629810d4de0a8893d590f5c45c249365149e86b46",
+      "parts": [
+        "أداة"
+      ]
+    },
+    "MID_CausationMenu_Opened": {
+      "source_sha256": "31acbfa3fefb9cf51550be8cbad6f9e5fbc3301e0fc7ea63d0ad7ff2f16cde9b",
+      "parts": [
+        "تم الاستلام"
+      ]
+    },
+    "MID_DepositoryMenu_TotalNum": {
+      "source_sha256": "9c3dfe808ede9dbba8331f221a0ff9e1101c092a54e271c23f9582958e9663b9",
+      "parts": [
+        "المجموع"
+      ]
+    }
+  }
+}

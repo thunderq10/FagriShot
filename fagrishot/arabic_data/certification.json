@@ -1,0 +1,198 @@
+{
+  "Item.msbt.zst": {
+    "MIID_H_JuniorLicense": {
+      "source_sha256": "ca1149347c3d010a11399d85de716fca154cf3ef35955b2f27268093b1da7e3d",
+      "parts": [
+        "رخصة يصدرها المعبد، تلزم لخوض\nاختبار التأهيل لفئات المبتدئين."
+      ]
+    },
+    "MIID_InterLicense": {
+      "source_sha256": "aa346a0ac537d15fc937575d30fa3181b04ed8c56bc77addcadfc1f91f9c6a82",
+      "parts": [
+        "رخصة التخصص"
+      ]
+    },
+    "MIID_H_InterLicense": {
+      "source_sha256": "8693b5e3d5a5451be3db41f423948c359982c122783f08aaae1575f582a3d803",
+      "parts": [
+        "رخصة يصدرها المعبد، تلزم لخوض\nاختبار التأهيل لفئات التخصص، وهي فئات متوسطة\nالرتبة."
+      ]
+    },
+    "MIID_HighLicense": {
+      "source_sha256": "688b66b0eb8f4fb34c626c7ae7cf41256fb067f7813b45275242c4a7617c8797",
+      "parts": [
+        "الرخصة المتقدمة"
+      ]
+    },
+    "MIID_H_HighLicense": {
+      "source_sha256": "1cb01960c919dc97658385aa47dbc340e83e253e78ec52e92783c3a65f41635a",
+      "parts": [
+        "رخصة يصدرها المعبد، تلزم لخوض\nاختبار التأهيل للفئات المتقدمة، وهي رفيعة الرتبة."
+      ]
+    },
+    "MIID_HighestLicense": {
+      "source_sha256": "fc06b48c4dc0479bd5f8a51c9e3cd8695c49409df68b380681659cec522a97a5",
+      "parts": [
+        "رخصة الإتقان"
+      ]
+    },
+    "MIID_H_HighestLicense": {
+      "source_sha256": "5493f41bf4597fe266d7574991121adbd54ce64cc3571117cf7c16cf592d9d9a",
+      "parts": [
+        "رخصة يصدرها المعبد، تلزم لخوض\nاختبار التأهيل لفئات الإتقان، أعلى مراتب الفئات."
+      ]
+    }
+  },
+  "Advice.msbt.zst": {
+    "MID_ADVICE_TypeRank_000": {
+      "source_sha256": "f197077a764793570052d5617ead70c5d7283fecf88306c3111b37096b362faa",
+      "parts": [
+        "الأساسي"
+      ]
+    },
+    "MID_ADVICE_TypeRank_003": {
+      "source_sha256": "df87b30d71d932106a5a95e7a6456814455e127185204fae0ff440633b615586",
+      "parts": [
+        "المتقدم"
+      ]
+    },
+    "MID_ADVICE_TypeRank_004": {
+      "source_sha256": "5294eada06137242f6e2ae3a3ca092a3bc021c26eb956d71ea63e9f463cb6fb9",
+      "parts": [
+        "الإتقان"
+      ]
+    },
+    "MID_ADVICE_TypeRank_005": {
+      "source_sha256": "42230fd3266432b15d2857fb3cb60f5b204336916b2270d08ab1cca165b1c874",
+      "parts": [
+        "الإلهي"
+      ]
+    }
+  },
+  "System_Hub.msbt.zst": {
+    "MID_ClassTrialMenu_JobRank_None": {
+      "source_sha256": "f197077a764793570052d5617ead70c5d7283fecf88306c3111b37096b362faa",
+      "parts": [
+        "الأساسي"
+      ]
+    },
+    "MID_ClassTrialMenu_JobRank_Higher": {
+      "source_sha256": "df87b30d71d932106a5a95e7a6456814455e127185204fae0ff440633b615586",
+      "parts": [
+        "المتقدم"
+      ]
+    },
+    "MID_ClassTrialMenu_JobRank_Super": {
+      "source_sha256": "5294eada06137242f6e2ae3a3ca092a3bc021c26eb956d71ea63e9f463cb6fb9",
+      "parts": [
+        "الإتقان"
+      ]
+    },
+    "MID_ClassTrialMenu_JobRank_Legend": {
+      "source_sha256": "42230fd3266432b15d2857fb3cb60f5b204336916b2270d08ab1cca165b1c874",
+      "parts": [
+        "الإلهي"
+      ]
+    },
+    "MID_TempleMenu_ClassTrial_Help": {
+      "source_sha256": "85216ef23b5f71be67837fe32b847379c3ed03a41ed7333a3f8c41b37c4c30a2",
+      "parts": [
+        "خض اختبار التأهيل. اجتيازه يتيح لك فئة جديدة."
+      ]
+    }
+  },
+  "Tutorial.msbt.zst": {
+    "MID_TUT_Hub_ClassTrial_t": {
+      "source_sha256": "7889843d1600a3c8e857f678817dc7a671a27b6119ade17f4d06666906afeade",
+      "parts": [
+        "اختبارات التأهيل"
+      ]
+    },
+    "MID_TUT_Hub_ClassTrial_m01_001": {
+      "source_sha256": "fe03920d83be0dd7337ce864c19488e14e06e0994598ae464c5fad8c59ee7be0",
+      "parts": [
+        "اجتز ",
+        "اختبار التأهيل",
+        " ",
+        "الخاص بفئة معينة\nلتتمكن من ",
+        "الانتقال إلى تلك الفئة",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Hub_ClassTrial_m01_002": {
+      "source_sha256": "9631c54397b435214d43928b4def5a13c3c15d4294eb23097600cee771e31412",
+      "parts": [
+        "لخوض الاختبار تحتاج إلى ",
+        "رخصة تطابق رتبة الفئة التي تود الانتقال إليها",
+        ".\nوتباع هذه الرخص لدى بائع الرخص."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Hub_ClassTrial_m01_003": {
+      "source_sha256": "55c519a0a3a69929c50a5b0c668952b2a5d9a6fc31fed4bdba8fb462ae8b6363",
+      "parts": [
+        "إذا كان ",
+        "مستوى الوحدة",
+        " أو ",
+        "مستوى المهارة",
+        " أدنى مما تتطلبه الفئة،\n",
+        "قلت فرصة اجتياز الاختبار",
+        "."
+      ],
+      "flow": "auto"
+    }
+  },
+  "System.msbt.zst": {
+    "MID_Sys_Result_Msg_ClassTrial_Unlock": {
+      "source_sha256": "a597e867756fcc1736a992a7ec16763dfd677564cb3cd2facec57bbb817452cf",
+      "parts": [
+        "تتوفر اختبارات تأهيل جديدة:"
+      ]
+    }
+  },
+  "System_Facility.msbt.zst": {
+    "MID_Map_Facility_Shop_Bill_Help": {
+      "source_sha256": "6af9796d3eb8d3e056256001dc539dca3b7303116f16edcd3477edd59ffc4bcc",
+      "parts": [
+        "هنا تباع الرخص اللازمة لخوض ",
+        "اختبار التأهيل",
+        "."
+      ],
+      "flow": "auto"
+    },
+    "MID_Map_Facility_ClassExaminer_Help": {
+      "source_sha256": "d240bce025a3563e553e78a16b92b050afb0625e60f1eb8806db1a5f36158233",
+      "parts": [
+        "هنا يمكنك خوض ",
+        "اختبارات التأهيل",
+        ".\nتحتاج إلى رخصة تطابق رتبة الفئة التي تريد اختبارها."
+      ],
+      "flow": "auto"
+    }
+  },
+  "Tips.msbt.zst": {
+    "MID_Tips_Hub_Bill_m01": {
+      "source_sha256": "bf773b3a6e2ed915f1940d1fa7ede5318d6cbb95929d5c2836532812cc3a68d0",
+      "parts": [
+        "تحتاج إلى رخصة لخوض ",
+        "اختبارات التأهيل",
+        ". يبيعها ",
+        "بائع الرخص",
+        " بكميات محدودة."
+      ],
+      "flow": "auto"
+    }
+  },
+  "Guide.msbt.zst": {
+    "MID_Guide023_t": {
+      "source_sha256": "a17996d62f27a1d5f111bea9530fb7f8f13f3394d0ebdd5b06f44aa71f84a328",
+      "parts": [
+        "هل أنت مستعد لخوض ",
+        "اختبار التأهيل",
+        "؟"
+      ],
+      "flow": "auto"
+    }
+  }
+}

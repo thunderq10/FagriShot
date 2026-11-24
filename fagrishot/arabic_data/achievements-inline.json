@@ -1,0 +1,335 @@
+{
+  "Achievement.msbt.zst": {
+    "MATID_Record_RelianceCCleared": {
+      "source_sha256": "c73a8d6e5c85b1239938a6870807930add8cbf6304fb01045f2060db245ac5fa",
+      "parts": [
+        "شاهدت ",
+        " من ",
+        "محادثات الدعم ",
+        "."
+      ],
+      "choices": {
+        "5": [
+          "من الرتبة C",
+          "من الرتبة C"
+        ]
+      },
+      "flow": "auto"
+    },
+    "MATID_Record_RelianceBCleared": {
+      "source_sha256": "ba13bc1bf4373728da489175820813718b3deb7c99c95d73251c7c08578026d7",
+      "parts": [
+        "شاهدت ",
+        " من ",
+        "محادثات الدعم ",
+        "."
+      ],
+      "choices": {
+        "5": [
+          "من الرتبة B",
+          "من الرتبة B"
+        ]
+      },
+      "flow": "auto"
+    },
+    "MATID_Record_RelianceACleared": {
+      "source_sha256": "aa79d66c7a88393bae60f76c065c81907c8119e6d9aa78ff03782626e5909c89",
+      "parts": [
+        "شاهدت ",
+        " من ",
+        "محادثات الدعم ",
+        "."
+      ],
+      "choices": {
+        "5": [
+          "من الرتبة A",
+          "من الرتبة A"
+        ]
+      },
+      "flow": "auto"
+    },
+    "MATID_Record_ServeCount": {
+      "source_sha256": "047601817d0d56cd22310be2e04b9bcb5c7fffa44e742a997501bf3a2110f347",
+      "parts": [
+        "عدد مرات ",
+        "الخدمة في المعابد: ",
+        " ",
+        "."
+      ],
+      "choices": {
+        "5": [
+          "إجمالا",
+          "إجمالا"
+        ]
+      },
+      "flow": "auto"
+    },
+    "MATID_Record_GambitCount": {
+      "source_sha256": "bed9deb3aec1f5fde150c996220bb6c0cefaa86ea69eb4768b649900ebe2aba1",
+      "parts": [
+        "عدد مرات ",
+        "استخدام المناورة: ",
+        " ",
+        "."
+      ],
+      "choices": {
+        "5": [
+          "إجمالا",
+          "إجمالا"
+        ]
+      },
+      "flow": "auto"
+    },
+    "MATID_Record_LivestockDefeat": {
+      "source_sha256": "0d624faed895598ae2a0fc0de263de7bc22f16b9dedd55f8831084a4c9fabdf2",
+      "parts": [
+        "هزمت ",
+        " من ",
+        " في المعركة."
+      ],
+      "choices": {
+        "4": [
+          "الماشية",
+          "الماشية"
+        ]
+      },
+      "flow": "auto"
+    },
+    "MATID_Record_CompanyGoldUsed": {
+      "source_sha256": "8a9433a14bad238a0d2e5b37a190d61d722461a8f9bb34ffd1bbb0ee58b458c3",
+      "parts": [
+        "دفعت ما مجموعه ",
+        " من الذهب إلى ",
+        "التجار المتجولين."
+      ],
+      "flow": "auto"
+    },
+    "MATID_Record_TempleCrown_OpenCount": {
+      "source_sha256": "ba53d2c87b918ccb4fca7794252f852d160de671400d4a28c060ad5fe90e1684",
+      "parts": [
+        "فتحت ",
+        " من ",
+        " ",
+        "معبد الإكليل."
+      ],
+      "choices": {
+        "3": [
+          "أبواب",
+          "أبواب"
+        ]
+      },
+      "flow": "auto"
+    },
+    "MATID_H_Reward_JobExpUp": {
+      "source_sha256": "adb709da70cc2e520310ceaed663506da64044211f24d9861057625245db412d",
+      "parts": [
+        "تزداد خبرة الفئة المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_SwordSkillUp": {
+      "source_sha256": "c2b2d43f0b4f6b145847a4e5d34db12f5de54bcf4b3e61f90305fdd88c879b53",
+      "parts": [
+        "تزداد خبرة مهارة السيف المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_LanceSkillUp": {
+      "source_sha256": "7bd2d2a8a95f02839b979c5afafe24be877f765adb569fc2b524b88b2dcf8a9f",
+      "parts": [
+        "تزداد خبرة مهارة الرمح المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_AxeSkillUp": {
+      "source_sha256": "cb1978225119bb3ffa40a97324189ea826f11a3f8895c4703df0f851f5f78ef7",
+      "parts": [
+        "تزداد خبرة مهارة الفأس المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_BowSkillUp": {
+      "source_sha256": "45d427315c6e637bf5a9453be731e50f12f4adbf527dcc7a2609a6e1b97141bc",
+      "parts": [
+        "تزداد خبرة مهارة القوس المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_GauntletSkillUp": {
+      "source_sha256": "ba50cf84ab1b6ccb61a19dd02180ef54c92120db350b994f29170d540a0eb81c",
+      "parts": [
+        "تزداد خبرة مهارة القتال بالأيدي المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_BlackSkillUp": {
+      "source_sha256": "96e66820f670d622e2f79424e7e941444ecf2ab86c091aac7fc3b98a9366ec70",
+      "parts": [
+        "تزداد خبرة مهارة السحر الأسود المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_WhiteSkillUp": {
+      "source_sha256": "aa6836f6035f0e641eb05cced21b4d5e2e72396e481f0102ed25c63bb15341b6",
+      "parts": [
+        "تزداد خبرة مهارة السحر الأبيض المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_HeavySkillUp": {
+      "source_sha256": "25856176cc882c9a154ba63f01ba372ad9effa9ae6af3ede3e5b840f8e4b6e64",
+      "parts": [
+        "تزداد خبرة مهارة الدروع الثقيلة المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_FootSkillUp": {
+      "source_sha256": "b09a5d6a16e90d5f1276eae1f42370a7519af86ad1dfd622894f45931e39745e",
+      "parts": [
+        "تزداد خبرة مهارة ",
+        "المشاة المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_CavalrySkillUp": {
+      "source_sha256": "fa5cfe91e4cc7c67b7d59c91730c1e6fbecbec63caad98290c0f4b22d659c1e7",
+      "parts": [
+        "تزداد خبرة مهارة ",
+        "الفروسية المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_FlySkillUp": {
+      "source_sha256": "767cd144cd4034512be6a02865f54ea76e3d3ceea7c59d35d710f4a9cd142ca5",
+      "parts": [
+        "تزداد خبرة مهارة ",
+        "الطيران المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_TacticsSkillUp": {
+      "source_sha256": "e05f2ff55256a5dc44823515136c5dc12c3b63c9af71b46a0bb6f930f5f54c83",
+      "parts": [
+        "تزداد خبرة مهارة ",
+        "القيادة المكتسبة في المعارك.\n(لا يشمل ذلك ",
+        "التدريب.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_CarriageDiscount": {
+      "source_sha256": "5c9879119c4905f3136a894bb6c78502502fcee85557c6588d7830ce23ccb73b",
+      "parts": [
+        "تنخفض أجرة ",
+        "ركوب العربات."
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_BlacksmithDiscount": {
+      "source_sha256": "b21cd03c139b04f86dede943387e01725ef27d69baaf23a37265e4f958887f79",
+      "parts": [
+        "تنخفض تكلفة ",
+        "خدمات الحداد."
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_MealDiscount": {
+      "source_sha256": "729f82a4ce2b3c7a3d6ca0d76f3a82d90bd705aedd3ca5c14b32717f529cf968",
+      "parts": [
+        "تنخفض أسعار ",
+        "الوجبات في ",
+        "النزل.\n(لا يسري ذلك في أيام الخصم.)"
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_ThermaeDiscount": {
+      "source_sha256": "66ba851737585ee2a524658e43c2e39846469bb10c51d33b077a21f4a675074b",
+      "parts": [
+        "تنخفض تكلفة ",
+        "الاستحمام في ",
+        "الحمامات."
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_DungeonChasePlus": {
+      "source_sha256": "f354ba9b060577c7b7175d12bf21c11bbb95d445e4a85427f709d8a1a1fc5b1c",
+      "parts": [
+        "تقل مدة مطاردة الأعداء لك في ",
+        "الدهاليز."
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_DungeonDropUp": {
+      "source_sha256": "66fc5cb36a47de6e80ce05240512d6b221737843d967006f33a1d5508e742edb",
+      "parts": [
+        "يزداد احتمال العثور على مواد عند تحطيم الأشياء\nالقابلة للكسر في ",
+        "الدهاليز."
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_HotelStayDiscount": {
+      "source_sha256": "139b932e794ff6dda6da783245d943bbdbd08cf7c237c6f75341fec499c0a561",
+      "parts": [
+        "تنخفض تكلفة ",
+        "استئجار غرفة في النزل."
+      ],
+      "flow": "auto"
+    },
+    "MATID_H_Reward_TheaterWatchDiscount": {
+      "source_sha256": "2a870025d1f71a9c3a05b27113ea08b93843ab75c57ba8a31254e96419ba905b",
+      "parts": [
+        "تنخفض تكلفة ",
+        "مشاهدة عروض ",
+        "المسرح."
+      ],
+      "flow": "auto"
+    }
+  },
+  "System.msbt.zst": {
+    "MID_Sys_Reliance_Rank_C": {
+      "source_sha256": "7e46dde720f00e74467c313a1142b572a18a5f03561bc08d6633de9a09d9eaa6",
+      "parts": [
+        "C"
+      ]
+    },
+    "MID_Sys_Reliance_Rank_B": {
+      "source_sha256": "f6c6e57cc3dac1d6a2349701056ff5a3e48134efe4496a8c0f5cb9fc9e6dfc12",
+      "parts": [
+        "B"
+      ]
+    },
+    "MID_Sys_Reliance_Rank_A": {
+      "source_sha256": "e61c21ca716b3b1aefb7d1198f83679c4ca4d596e5792275dd6203b49216237d",
+      "parts": [
+        "A"
+      ]
+    }
+  },
+  "Spot.msbt.zst": {
+    "MID_Spot_TempleCrown": {
+      "source_sha256": "6533729e242cf7aaee83a879e427695fba1e94395395a5dcdcf0a2986a67ad05",
+      "parts": [
+        "معبد الإكليل"
+      ]
+    }
+  },
+  "Title.msbt.zst": {
+    "MID_Title_EV30_016": {
+      "source_sha256": "6533729e242cf7aaee83a879e427695fba1e94395395a5dcdcf0a2986a67ad05",
+      "parts": [
+        "معبد الإكليل"
+      ]
+    }
+  }
+}

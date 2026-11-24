@@ -15,6 +15,24 @@ import verify_player
 
 
 class PlayerDistribution(unittest.TestCase):
+    def test_external_arabic_campaign_bundles_only_declared_tables(self):
+        from fagrishot.arabic_campaign import ELIGIBLE_LABELS, SOURCE_LABELS
+
+        with tempfile.TemporaryDirectory() as area, ExitStack() as stack:
+            directory = Path(area)
+            name = "System.msbt.zst"
+            frame = b"synthetic frame for package include-list"
+            index = {"schema": 1, "source_update": 131072, "source_labels": SOURCE_LABELS, "eligible_labels": ELIGIBLE_LABELS,
+                     "files": {name: {"sha256": hashlib.sha256(frame).hexdigest(), "entries": 2}}}
+            (directory / "manifest.json").write_text(json.dumps(index))
+            (directory / (name + ".json.zst")).write_bytes(frame)
+            (directory / "private-source.jsonl").write_bytes(b"Do not package this file")
+            payload = player.Payload(stack)
+            prefix = "fagrishot/arabic_data/campaign/"
+            payload.add(prefix + "manifest.json", b"previous manifest")
+            player.add_arabic_campaign(payload, directory)
+            self.assertEqual(set(payload.members), {prefix + "manifest.json", prefix + name + ".json.zst"})
+
     def test_names_reject_private_inputs_traversal_and_case_collisions(self):
         with ExitStack() as stack:
             payload = player.Payload(stack)

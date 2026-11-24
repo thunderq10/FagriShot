@@ -136,6 +136,16 @@ def verify(path):
             language = json.loads(run("Arabic preview availability", [launcher, "arabic-status", "--json"]))
             if not language["available"] or language["enabled"]:
                 raise ValueError("The Arabic preview is missing or enabled in a new profile.")
+            if (install / "fagrishot/arabic_data/campaign/manifest.json").is_file():
+                check = ("import sys; from pathlib import Path; root = Path(sys.argv[1]); sys.path.insert(0, str(root)); "
+                         "from fagrishot.arabic_campaign import Campaign; from fagrishot.arabic import assets, catalog_data; "
+                         "pack = Campaign(root / 'fagrishot/arabic_data/campaign'); "
+                         "reviewed = catalog_data(assets(root)[0]); "
+                         "print(sum(len(pack.merged(n, reviewed.get(n, {}))) for n in set(pack.files) | set(reviewed)))")
+                total = int(run("all offline Arabic table digests and reviewed overrides", [exe, "-I", "-c", check, install]))
+                if (total != language["covered"] + language["reviewed_dynamic_formats"]
+                        or language["covered"] != language["reviewed"] + language["machine_draft"]):
+                    raise ValueError("The Arabic coverage shown by the player differs from its offline catalog.")
             if not json.loads(run("enable Arabic preview", [launcher, "arabic-set", "--enabled", "on"]))["enabled"]:
                 raise ValueError("The Arabic preview preference was not saved.")
             run("disable Arabic preview", [launcher, "arabic-set", "--enabled", "off"])

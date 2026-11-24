@@ -1,7 +1,11 @@
-"""Relabel the owned update's Autosave tutorial illustration in a private overlay."""
+"""Apply Arabic lettering to the player's fingerprinted tutorial illustrations."""
 
+import base64
 import hashlib
+import json
 from pathlib import Path
+import re
+import struct
 
 from .arabic_font import _private_font, _raster, visual_text
 from .localization import LocalizationError, _ordinary, _separate
@@ -40,10 +44,10 @@ def _mode6_color(block):
                  for c in range(0, 8, 2))
 
 
-def _encode_ink(background, coverage):
+def _encode_ink(background, coverage, foreground=_GOLD):
     """Encode a 4x4, one-subset BC7 mode-6 block with 4-bit ink coverage."""
-    indices = [min(range(16), key=lambda i: abs(_WEIGHTS[i] - value)) for value in coverage]
-    ends = (background, _GOLD)
+    indices = [_INK_INDEX[value] for value in coverage]
+    ends = (background, foreground)
     if indices[0] >= 8:  # The anchor index has only three bits.
         ends = tuple(reversed(ends))
         indices = [15 - i for i in indices]
@@ -60,6 +64,138 @@ def _encode_ink(background, coverage):
         bits |= value << shift
         shift += 3 if i == 0 else 4
     return bits.to_bytes(16, "little")
+
+
+def _palette_color(block):
+    """Representative background for feathering a nameplate into the player's BC7 texture."""
+    bits = int.from_bytes(block, "little")
+    mode = (bits & -bits).bit_length() - 1
+    if not 0 <= mode < 8:
+        return (0, 0, 0, 0)
+    if mode == 6:
+        return _mode6_color(block)
+    subsets = (3, 2, 3, 2, 1, 1, 1, 2)[mode]
+    component_bits = (4, 6, 5, 7, 5, 7, 7, 5)[mode]
+    skip = (4, 6, 6, 6, 3, 2, 0, 6)[mode]
+    if mode in (4, 5):
+        rotation = (bits >> (mode + 1)) & 3
+    else:
+        rotation = 0
+    bits >>= mode + 1 + skip
+    channels = []
+    for channel in range(4):
+        precision = component_bits if channel < 3 else (6 if mode == 4 else 8 if mode == 5 else 5 if mode == 7 else 0)
+        if not precision:
+            channels.append(255)
+            continue
+        maximum = (1 << precision) - 1
+        value = 0
+        for _ in range(2*subsets):
+            value += bits & maximum
+            bits >>= precision
+        channels.append(round(value * 255 / (2*subsets*maximum)))
+    if rotation:
+        channels[rotation-1], channels[3] = channels[3], channels[rotation-1]
+    return tuple(channels)
+
+
+_INK_INDEX = tuple(min(range(16), key=lambda i: abs(_WEIGHTS[i] - value)) for value in range(65))
+TUTORIAL_RECIPE = Path("fagrishot/arabic_art/tutorials.json.zst")
+
+
+def _lettering(root):
+    import zstandard
+
+    path = Path(root) / TUTORIAL_RECIPE
+    if not path.exists():
+        return {}
+    payload = zstandard.ZstdDecompressor().decompress(_ordinary(path).read_bytes(), max_output_size=48 << 20)
+    entries = json.loads(payload)
+    for name, entry in entries.items():
+        if (not re.fullmatch(r"TUT_[A-Za-z0-9_]+", name)
+                or name + ".bntx.zst" == ASSET.name
+                or not re.fullmatch(r"[0-9a-f]{64}", entry["sha256"])
+                or not entry["captions"]):
+            raise LocalizationError("Invalid Arabic tutorial lettering recipe.")
+    return entries
+
+
+def tutorial_art_outputs(root):
+    return (ASSET.as_posix(), *((ASSET.parent / (name + ".bntx.zst")).as_posix()
+                                for name in sorted(_lettering(root))))
+
+
+def _paint_captions(raw, captions):
+    result = bytearray(raw)
+    for caption in captions:
+        x, y, width, height, bg, fg, encoded, *underlay = caption
+        if (min(x, y) < 0 or min(width, height) < 1 or x + width > 200 or y + height > 112
+                or max(bg, fg) > 0xffffff or min(bg, fg) < 0):
+            raise LocalizationError("Arabic tutorial lettering is outside the image bounds.")
+        coverage = base64.b64decode(encoded, validate=True)
+        if len(coverage) != width * height * 16 or max(coverage) > 64:
+            raise LocalizationError("Invalid Arabic tutorial lettering mask.")
+        background = (*bg.to_bytes(3, "big"), 255)
+        foreground = (*fg.to_bytes(3, "big"), 255)
+        samples = ()
+        plate = underlay == ["plate"]
+        if underlay and not plate:
+            if len(underlay) != 1:
+                raise LocalizationError("Invalid tutorial lettering underlay.")
+            packed = base64.b64decode(underlay[0], validate=True)
+            if len(packed) != width * height * 2:
+                raise LocalizationError("Invalid tutorial lettering sample count.")
+            samples = struct.unpack(f"<{width*height}H", packed)
+            if any(slot >= 200*112 for slot in samples):
+                raise LocalizationError("Invalid tutorial lettering sample location.")
+        for by in range(height):
+            for bx in range(width):
+                i = (by * width + bx) * 16
+                offset = _offset(x + bx, y + by)
+                if offset + 16 > len(raw):
+                    raise LocalizationError("The tutorial texture is truncated.")
+                ink = coverage[i:i+16]
+                fill = background
+                if plate:
+                    feather = min(1.0, (bx + .5) / 2, (width - bx - .5) / 2,
+                                  (by + .5) / 1.5, (height - by - .5) / 1.5)
+                    if feather < 1:
+                        original = _palette_color(raw[offset:offset+16])
+                        fill = tuple(round(a*(1-feather) + b*feather) for a,b in zip(original, background))
+                if samples:
+                    sy, sx = divmod(samples[by*width+bx], 200)
+                    src = _offset(sx, sy)
+                    block = raw[src:src+16]
+                    if not any(ink):
+                        result[offset:offset+16] = block
+                        continue
+                    if block[0] & 127 == 64:
+                        fill = _mode6_color(block)
+                result[offset:offset + 16] = _encode_ink(fill, ink, foreground)
+    return bytes(result)
+
+
+def patch_tutorials(romfs, destination, root):
+    import zstandard
+    from .arabic import assets
+
+    patch_autosave_art(romfs, destination, assets(Path(root))[1])
+    src, dst = Path(romfs), Path(destination)
+    # patch_autosave_art has already verified and created these same directories.
+    for part in ASSET.parts[:-1]:
+        src = _ordinary(src / part, True)
+        dst = _ordinary(dst / part, True)
+    decoder = zstandard.ZstdDecompressor()
+    encoder = zstandard.ZstdCompressor(level=8)
+    for name, entry in _lettering(root).items():
+        filename = name + ".bntx.zst"
+        data = _ordinary(src / filename).read_bytes()
+        if hashlib.sha256(data).hexdigest() != entry["sha256"]:
+            raise LocalizationError(f"Unsupported tutorial illustration fingerprint for {name}.")
+        raw = decoder.decompress(data, max_output_size=4 << 20)
+        result = _paint_captions(raw, entry["captions"])
+        with (dst / filename).open("xb") as stream:
+            stream.write(encoder.compress(result))
 
 
 def _caption(face):

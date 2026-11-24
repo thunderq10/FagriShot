@@ -14,6 +14,14 @@ bool install_movie_decoder_hle();
 // True once install_movie_decoder_hle() routed the decoder to the host: the game module then puts its player on the CPU-frame path.
 bool movie_decoder_enabled();
 
+// Install before media worker threads start. A positive sample token follows its
+// compressed packet through dav1d frame reordering to the finished NV12 frame.
+struct MovieOverlay {
+    int64_t (*identify)(const uint8_t* sample, size_t size, int64_t prior_token);
+    void (*draw)(int64_t token, uint8_t* nv12, uint32_t width, uint32_t height);
+};
+void set_movie_overlay(const MovieOverlay* overlay);
+
 // Packs an 8-bit 4:2:0 planar picture (I420) into tightly packed NV12 at the picture's width (SSE2 on x86-64). Exposed for unit tests.
 void i420_to_nv12(uint8_t* dst, uint32_t w, uint32_t h, const uint8_t* py, ptrdiff_t sy, const uint8_t* pu, const uint8_t* pv, ptrdiff_t suv);
 
