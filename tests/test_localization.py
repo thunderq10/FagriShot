@@ -64,6 +64,19 @@ class MessageTests(unittest.TestCase):
             with self.subTest(choices=choices), self.assertRaises(LocalizationError):
                 original.replaced(["new", "."], choices)
 
+    def test_rtl_heading_reorders_unmodified_argument_references(self):
+        refs = [start_tag(1, n, b"") for n in range(3)]
+        source = resource([("heading", refs[0] + b": " + refs[1] + b" " + refs[2] + b"\0")])
+        table = MessageTable(source)
+        change = {"parts": [" ،", " :"], "argument_order": [2, 1, 0]}
+        result = MessageTable(table.patch({"heading": change})).entry("heading")
+        self.assertEqual(result.parts, (refs[2], " ،", refs[1], " :", refs[0]))
+        for order in ([2, 1, 2], [1, 0], [True, 0, 2]):
+            with self.subTest(order=order), self.assertRaises(LocalizationError):
+                table.patch({"heading": {**change, "argument_order": order}})
+        with self.assertRaises(LocalizationError):
+            MessageTable(SAMPLE).patch({"line": {"parts": ["a", "b"], "argument_order": [1, 0]}})
+
     def test_rejects_invalid_offset_control_count_and_source(self):
         broken = bytearray(SAMPLE)
         start = broken.index(b"TXT2")

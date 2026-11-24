@@ -913,6 +913,174 @@
       "parts": [
         "الطائر الأبيض"
       ]
+    },
+    "MCID_part_1": {
+      "source_sha256": "ea977f966c83c09a167f50f1d7a321598453c9747eb10d2e6a227cbc2834f9a1",
+      "parts": [
+        "الجزء الأول"
+      ]
+    },
+    "MCID_part_2": {
+      "source_sha256": "ffebcd892ae5e60624d0fcbce304936a5c765fb2d51e479445e3a35c230e6713",
+      "parts": [
+        "الجزء الثاني"
+      ]
+    },
+    "MCID_part_3": {
+      "source_sha256": "850ccf05ec55c761734344da5c2bd5637096d4a5fb55dec2acee8d0879d735ea",
+      "parts": [
+        "الجزء الثالث"
+      ]
+    },
+    "MCID_episode_KAI": {
+      "source_sha256": "9fec55da6b85b318d9da20b9dff79debac919840174faaa42b870892a74be476",
+      "parts": [
+        "مسار كاي"
+      ]
+    },
+    "MCID_episode_DIT": {
+      "source_sha256": "62c81367e139d95d2d0bcaa6ab02b667f7e29e4aaddbdf21cf71caf6618f49a4",
+      "parts": [
+        "مسار ديتريش"
+      ]
+    },
+    "MCID_episode_SEO": {
+      "source_sha256": "18ea6afbdbe7d1c0b2b752ba1dbb352c6ab307a9bcd09ec0a5723d1bdf3dc254",
+      "parts": [
+        "مسار ثيودورا"
+      ]
+    },
+    "MCID_episode_LED": {
+      "source_sha256": "d0ebe3c2e53615c486bf7068ac7606c1d14a8b2b8a7d30dda3493ff6791a2c9a",
+      "parts": [
+        "مسار ليدا"
+      ]
+    },
+    "MCID_chapter_02": {
+      "source_sha256": "6d5ea7b7c1682759c66c0a288d4539b84c6a49425b3c6c592fe034f240688a45",
+      "parts": [
+        "الفصل الثاني"
+      ]
+    },
+    "MCID_chapter_03": {
+      "source_sha256": "66fe46cdb0e9d25771e646d9f8d81b2a37dcf47204557784a91579fd5cbf0727",
+      "parts": [
+        "الفصل الثالث"
+      ]
+    },
+    "MCID_chapter_04": {
+      "source_sha256": "e0575c158930a4eae59652b60011e9aaec37be1873227fc345d0de881358c8ff",
+      "parts": [
+        "الفصل الرابع"
+      ]
+    },
+    "MCID_chapter_05": {
+      "source_sha256": "ddcb61ea5f4496f67124b15c77aca1af77bc55c191ce2672ddc702e3e71e7180",
+      "parts": [
+        "الفصل الخامس"
+      ]
+    },
+    "MCID_chapter_06": {
+      "source_sha256": "726566fccbafa25a9fb4a75f1d1f2dfa1773805435b748d51b8ee0147f50fc69",
+      "parts": [
+        "الفصل السادس"
+      ]
+    },
+    "MCID_chapter_07": {
+      "source_sha256": "eadd53c438ea2115db8f5bc9bf6db5e2fc49dd533eab25911d56417565b864cd",
+      "parts": [
+        "الفصل السابع"
+      ]
+    },
+    "MCID_chapter_08": {
+      "source_sha256": "d1d01050f1c8176cc6f763d39111fcb2231252794de5fccc05c82241b8e33a0f",
+      "parts": [
+        "الفصل الثامن"
+      ]
+    },
+    "MCID_chapter_09": {
+      "source_sha256": "dcbeeda4c05cbe553ed580948d06c7b74f8ea4de4f69983808ef8870a1774d01",
+      "parts": [
+        "الفصل التاسع"
+      ]
+    },
+    "MCID_chapter_10": {
+      "source_sha256": "ac87ca77938b4db56e9461de21316535e128395eb8f54126e707ac36f7fcbcef",
+      "parts": [
+        "الفصل العاشر"
+      ]
+    },
+    "MCID_chapter_11": {
+      "source_sha256": "490ccf8e75a013158b9b7c91d7a83d56fce860759aea7b5674e80bb7bf71e2c8",
+      "parts": [
+        "الفصل الحادي عشر"
+      ]
+    },
+    "MCID_chapter_12": {
+      "source_sha256": "f29344231018cdba8853d2d4e557fbb8f40e929138b6a7d15a130f5bc3a69942",
+      "parts": [
+        "الفصل الثاني عشر"
+      ]
+    },
+    "MCID_chapter_28": {
+      "source_sha256": "02b022766e5ed6549c4760c8f78a034458444e40434c7befee82eec2871997a7",
+      "parts": [
+        "الهبوط"
+      ]
+    },
+    "MCID_chapter_29": {
+      "source_sha256": "6196ae36766d951d202ed9cd9e4526a6e1d179152096e0b4669d5d4006f85476",
+      "parts": [
+        "الحرب"
+      ]
+    },
+    "MCID_chapter_30": {
+      "source_sha256": "1f9521cd7da32d5ce18b670cde6949c2a1034e88ee458097c04c53d6608ed57f",
+      "parts": [
+        "الخلاص"
+      ]
+    },
+    "MCID_chapter_Ex01": {
+      "source_sha256": "7cdeb34b8657d6c129ce5956d89747d42e47631d74374b17269465321f35bd92",
+      "parts": [
+        "فصل انتقالي"
+      ]
+    },
+    "MCID_chapter_Sect01": {
+      "source_sha256": "0bbab757e36fabfe32ebd5914f2aa97de5f9ebed8dc08f83b73c55f139c1b3de",
+      "parts": [
+        "القسم الأول"
+      ]
+    },
+    "MCID_chapter_Sect02": {
+      "source_sha256": "d49c558cdff919fe79c3c7cbbb20dcc1df7e4f514acec9b7d3595400b7e1abe5",
+      "parts": [
+        "القسم الثاني"
+      ]
+    },
+    "MCID_chapter_Sect03": {
+      "source_sha256": "44168b3972247dc3136e48074cd2a4fc173a5810e1ede22d83fca605a972788c",
+      "parts": [
+        "القسم الثالث"
+      ]
+    },
+    "MCID_chapter_Sect04": {
+      "source_sha256": "e7b5ed77719ec9df293ceb4a82f61867cdb7f859585dc6f5133160e4e7fc8d56",
+      "parts": [
+        "القسم الرابع"
+      ]
+    },
+    "MCID_chapter_Sect05": {
+      "source_sha256": "10ac7b4cddb2e7b96cd6155dea44a6fe892d8e59d5890fdb685bd8b2a9889539",
+      "parts": [
+        "القسم الخامس"
+      ]
+    },
+    "MCID_chapter_Sect06": {
+      "source_sha256": "08ab38fe8f5242d7d7a1b3baf3431be31c14917208dc4102d81c33ed49dbffbe",
+      "parts": [
+        "القسم السادس"
+      ]
     }
   },
   "Person.msbt.zst": {
@@ -1043,6 +1211,30 @@
       "parts": [
         "اضغط أي زر"
       ]
+    },
+    "MID_Sys_DateTime_Timeframe_Noon": {
+      "source_sha256": "e7e564c7e655321d4ea444ca35ee0f407fc0848b90162045b11b48146fd7306d",
+      "parts": [
+        "النهار"
+      ]
+    },
+    "MID_Chapter_PartStoryChapter": {
+      "source_sha256": "18fe3cb8f026888fc7f8deeb6652da5b1e6a6392fcce588549dbefa79d5d5099",
+      "parts": [
+        "، ",
+        ": "
+      ],
+      "argument_order": [
+        2,
+        1,
+        0
+      ]
+    },
+    "MID_KeyHelp_WindowHide": {
+      "source_sha256": "59493209bb81bb0ee5549e6e368962b37091c44f3c8ae2cf08779f0394766bdb",
+      "parts": [
+        "إخفاء الواجهة"
+      ]
     }
   },
   "Title.msbt.zst": {
@@ -1100,6 +1292,14 @@
         "\n",
         "لا تطفئ الجهاز ما دامت الأيقونة ظاهرة.",
         ""
+      ]
+    }
+  },
+  "Spot.msbt.zst": {
+    "MID_Spot_DeimosPlateau": {
+      "source_sha256": "f661a88c6b915f797c765fa3777402deb600963f48a8cf71cc629a1efe6253b2",
+      "parts": [
+        "هضبة دايموس"
       ]
     }
   }

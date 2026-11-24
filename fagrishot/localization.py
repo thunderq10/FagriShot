@@ -115,11 +115,23 @@ class Message:
                     found[index] = choices
         return found
 
-    def replaced(self, texts, choices=None):
+    def replaced(self, texts, choices=None, argument_order=None):
         if not isinstance(texts, (list, tuple)) or len(texts) != sum(isinstance(p, str) for p in self.parts):
             raise LocalizationError("Provide one replacement for each editable text part.")
         replacements = iter(texts)
         parts = [_replacement(next(replacements)) if isinstance(part, str) else part for part in self.parts]
+        if argument_order is not None:
+            # Only bare, indexed string substitutions in a punctuation-only
+            # format. Formatting commands, inline styles and icons stay fixed.
+            args = self.parts[::2]
+            if (not isinstance(argument_order, list) or not 2 <= len(args) <= 3
+                    or len(self.parts) != 2 * len(args) - 1
+                    or any(type(index) is not int for index in argument_order)
+                    or sorted(argument_order) != list(range(len(args)))
+                    or any(arg != b"\x0e" + struct.pack("<HHH", 1, i, 0) for i, arg in enumerate(args))
+                    or any(separator not in (" ", ": ") for separator in self.parts[1::2])):
+                raise LocalizationError("MSBT argument order requires a complete indexed heading format.")
+            parts[::2] = [args[index] for index in argument_order]
         if choices is not None:
             available = {str(index): options for index, options in self.choices.items()}
             for key, options in choices.items():
@@ -208,9 +220,9 @@ class MessageTable:
             if expected is not None and expected.get(label) != entry.source_sha256:
                 raise LocalizationError(f"MSBT source fingerprint differs for {label}.")
             if isinstance(change, dict):
-                if "parts" not in change or set(change) - {"parts", "choices"}:
-                    raise LocalizationError("Expected MSBT text parts and optional choice replacements.")
-                new = entry.replaced(change["parts"], change.get("choices"))
+                if "parts" not in change or set(change) - {"parts", "choices", "argument_order"}:
+                    raise LocalizationError("Unexpected MSBT translation fields.")
+                new = entry.replaced(change["parts"], change.get("choices"), change.get("argument_order"))
             else:
                 new = entry.replaced(change)
             index = self.labels[label]

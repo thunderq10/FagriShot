@@ -14,6 +14,8 @@ The verification host ran Windows 11 x64 with a GeForce RTX 4090 Laptop GPU. Fag
 
 ## Component and feature matrix
 
+In the local 0.3.0 preview, the opening 3D scene averaged 60 FPS in three consecutive ten-second samples with 4K DLSS output, experimental reflections and Arabic text enabled. The 1% lows in those samples ranged from 54.7 to 55.9 FPS. During the chapter transition the 1% low fell to 21.8 FPS. The window presented at 1280 × 720. Campaign battles and 120 FPS performance still need measurements.
+
 | Area | Status | Verification or dependency |
 | --- | --- | --- |
 | Input validation, isolated player settings and saves | Implemented and verified with fixtures | Module build IDs, full-file hashes, NPDM, optional base/update CNMT, tree hashing, wrong versions, directory separation and corruption tests. [Input profile](inputs.md) |

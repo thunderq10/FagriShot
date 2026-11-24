@@ -81,6 +81,8 @@ def translate(catalog, visual_text):
             change = {"parts": [shape(s) for s in entry["parts"]]}
             if "choices" in entry:
                 change["choices"] = {k: [shape(s) for s in choices] for k, choices in entry["choices"].items()}
+            if "argument_order" in entry:
+                change["argument_order"] = entry["argument_order"]
             changes[name][label] = change
     return changes, hashes, glyphs
 
