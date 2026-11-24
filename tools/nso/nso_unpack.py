@@ -17,6 +17,16 @@ import os
 import struct
 import sys
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+for _recomp in (os.path.join(HERE, 'recomp'), os.path.join(HERE, '..', '..', 'recomp')):
+    if os.path.isdir(os.path.join(_recomp, 'nxrecomp')):
+        sys.path.insert(0, os.path.abspath(_recomp))
+        break
+else:
+    raise ImportError('nso_unpack: cannot find the bundled nxrecomp package')
+
+from nxrecomp.nso import NSO_HEADER_SIZE, nso_layout  # noqa: E402
+
 SEG_HDR = (0x10, 0x20, 0x30)        # (file offset, memory offset, size) of text, ro, data
 SEG_FILE_SIZE = (0x60, 0x64, 0x68)  # stored size of each segment
 SEG_HASH = 0xA0                     # 3 x SHA-256
@@ -24,34 +34,45 @@ FLAG_ZBIC = 0x80
 
 
 def _decompress(blob, size, zbic_flag):
-    if zbic_flag:
-        try:
-            import zbic
-        except ImportError:
-            sys.exit('nso_unpack: this NSO is ZBIC-compressed; install the zbic package (pip install zbic)')
-        out = zbic.decompress(blob)
-    else:
-        try:
-            import lz4.block
-        except ImportError:
-            sys.exit('nso_unpack: this NSO is LZ4-compressed; install the lz4 package (pip install lz4)')
-        out = lz4.block.decompress(blob, uncompressed_size=size)
+    try:
+        if zbic_flag:
+            try:
+                import zbic
+                import zstandard
+            except ImportError:
+                sys.exit('nso_unpack: this NSO is ZBIC-compressed; install the zbic and zstandard packages')
+            try:
+                frame_size = zstandard.frame_content_size(blob)
+            except zstandard.ZstdError as exc:
+                raise ValueError('ZBIC segment has an invalid Zstandard frame header') from exc
+            if frame_size != size:
+                raise ValueError(f'ZBIC segment frame declares {frame_size} bytes, the NSO header says {size}')
+            out = zbic.decompress(blob)
+        else:
+            try:
+                import lz4.block
+            except ImportError:
+                sys.exit('nso_unpack: this NSO is LZ4-compressed; install the lz4 package (pip install lz4)')
+            out = lz4.block.decompress(blob, uncompressed_size=size)
+    except MemoryError as exc:
+        raise ValueError('segment could not be allocated within the NSO size limit') from exc
     if len(out) != size:
         raise ValueError(f'segment decompressed to {len(out)} bytes, the header says {size}')
     return out
 
 
 def unpack(data):
-    if data[:4] != b'NSO0':
-        raise ValueError('not an NSO (no NSO0 magic): is the dump decrypted?')
-    hdr = bytearray(data[:0x100])
-    flags = struct.unpack_from('<I', data, 0x0C)[0]
+    layout = nso_layout(data)
+    hdr = bytearray(data[:NSO_HEADER_SIZE])
+    flags = layout['flags']
     segs = []
-    for i in range(3):
-        foff, moff, size = struct.unpack_from('<III', data, SEG_HDR[i])
-        fsize = struct.unpack_from('<I', data, SEG_FILE_SIZE[i])[0]
-        blob = data[foff:foff + fsize]
-        seg = _decompress(blob, size, flags & FLAG_ZBIC) if flags & (1 << i) else bytes(blob)
+    for i, segment in enumerate(layout['segments']):
+        foff, size = segment['file_offset'], segment['size']
+        try:
+            blob = data[foff:foff + segment['stored_size']]
+            seg = _decompress(blob, size, flags & FLAG_ZBIC) if segment['compressed'] else bytes(blob)
+        except MemoryError as exc:
+            raise ValueError(f'segment {i} could not be allocated within the NSO size limit') from exc
         if len(seg) != size:
             raise ValueError(f'segment {i}: {len(seg)} bytes stored, {size} expected')
         if flags & (8 << i):
@@ -59,14 +80,17 @@ def unpack(data):
             if hashlib.sha256(seg).digest() != want:
                 raise ValueError(f'segment {i}: SHA-256 does not match the header (a damaged or different dump)')
         segs.append(seg)
-    off = 0x100
+    off = NSO_HEADER_SIZE
     for i, seg in enumerate(segs):
         _, moff, size = struct.unpack_from('<III', hdr, SEG_HDR[i])
         struct.pack_into('<III', hdr, SEG_HDR[i], off, moff, size)
         struct.pack_into('<I', hdr, SEG_FILE_SIZE[i], size)
         off += size
     struct.pack_into('<I', hdr, 0x0C, flags & 0x38)
-    return bytes(hdr) + b''.join(segs), flags
+    try:
+        return b''.join([bytes(hdr), *segs]), flags
+    except MemoryError as exc:
+        raise ValueError('uncompressed NSO could not be allocated within the size limit') from exc
 
 
 def main():

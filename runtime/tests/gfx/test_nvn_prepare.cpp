@@ -432,17 +432,39 @@ NXTEST(missing_shader_does_not_block_complete) {
     app.shutdown();
 }
 
-// A list with the wrong magic and a list that is not there both fail with a reason.
+// Malformed lists fail with a reason before their declared records are used, and a missing list does too.
 NXTEST(bad_program_files) {
     if (!real_data_available()) { nxtest::skip("work/shader_cache not found"); return; }
     TempDir td;
     PrepareConfig cfg(td.path);
     const fs::path bad = td.path / "bad_programs.bin";
+    const fs::path huge = td.path / "huge_programs.bin";
+    const fs::path truncated = td.path / "truncated_programs.bin";
+    const fs::path trailing = td.path / "trailing_programs.bin";
     {
         std::ofstream f(bad, std::ios::binary | std::ios::trunc);
         f.write("NOTAPRG!", 8);
         put_u32(f, 1);
         put_u32(f, 0);
+    }
+    {
+        std::ofstream f(huge, std::ios::binary | std::ios::trunc);
+        f.write("MPRPRG01", 8);
+        put_u32(f, 0xffffffffu);
+        put_u32(f, 0);
+    }
+    {
+        std::ofstream f(truncated, std::ios::binary | std::ios::trunc);
+        f.write("MPRPRG01", 8);
+        put_u32(f, 1);
+        put_u32(f, 0);
+    }
+    {
+        std::ofstream f(trailing, std::ios::binary | std::ios::trunc);
+        f.write("MPRPRG01", 8);
+        put_u32(f, 0);
+        put_u32(f, 0);
+        f.put('\0');
     }
     App app;
     REQUIRE(start(app));
@@ -452,6 +474,21 @@ NXTEST(bad_program_files) {
     CHECK(!nxrt::nvn::prepare_shaders(o, &r));
     std::printf("    wrong magic: %s\n", r.error.c_str());
     CHECK(!r.error.empty());
+
+    o.programs_file = huge.string();
+    nxrt::nvn::ShaderPrepareResult r_huge;
+    CHECK(!nxrt::nvn::prepare_shaders(o, &r_huge));
+    CHECK(!r_huge.error.empty());
+
+    o.programs_file = truncated.string();
+    nxrt::nvn::ShaderPrepareResult r_truncated;
+    CHECK(!nxrt::nvn::prepare_shaders(o, &r_truncated));
+    CHECK(!r_truncated.error.empty());
+
+    o.programs_file = trailing.string();
+    nxrt::nvn::ShaderPrepareResult r_trailing;
+    CHECK(!nxrt::nvn::prepare_shaders(o, &r_trailing));
+    CHECK(!r_trailing.error.empty());
 
     nxrt::nvn::ShaderPrepareOptions m;
     m.programs_file = (td.path / "missing_programs.bin").string();

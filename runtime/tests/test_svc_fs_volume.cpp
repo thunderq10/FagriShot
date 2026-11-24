@@ -292,6 +292,71 @@ NXTEST(journal_crash_inside_apply_rolls_forward) {
     CHECK_EQ(read_all(v, "/c"), std::string("3"));
 }
 
+NXTEST(journal_rejects_marker_selected_roots) {
+    TempDir t("marker_roots");
+    const stdfs::path root = t.p / "save";
+    const stdfs::path outside = t.p / "outside";
+    const stdfs::path outside_work = t.p / "outside_work";
+    std::error_code ec;
+    stdfs::create_directories(root, ec);
+    stdfs::create_directories(outside, ec);
+    stdfs::create_directories(outside_work, ec);
+    std::ofstream(outside / "victim") << "keep";
+    std::ofstream(outside_work / "placed") << "payload";
+    const stdfs::path marker(root.string() + ".commit");
+    std::ofstream(marker) << "W " << outside_work.string() << "\nR " << outside.string() << "\nD victim\nF placed\n";
+
+    Volume v(root.string(), true, false, 0);
+    REQUIRE(v.ok());
+    CHECK(stdfs::exists(outside / "victim"));
+    CHECK(!stdfs::exists(outside / "placed"));
+    CHECK(!stdfs::exists(marker));
+    CHECK(stdfs::exists(stdfs::path(marker.string() + ".invalid")));
+}
+
+NXTEST(journal_rejects_escaping_marker_operands) {
+    TempDir t("marker_operands");
+    const DWORD pid = GetCurrentProcessId();
+    for (int i = 0; i < 3; ++i) {
+        const stdfs::path root = t.p / ("save" + std::to_string(i));
+        const stdfs::path victim = t.p / ("victim" + std::to_string(i));
+        const stdfs::path work(root.string() + ".work." + std::to_string(pid));
+        const stdfs::path marker(root.string() + ".commit");
+        std::error_code ec;
+        stdfs::create_directories(root, ec);
+        stdfs::create_directories(work, ec);
+        std::ofstream(victim) << "keep";
+        std::string operand;
+        if (i == 0) operand = "../" + victim.filename().string();
+        else if (i == 1) operand = victim.generic_string();
+        else operand = "..\\" + victim.filename().string();
+        std::ofstream(marker) << "W " << work.string() << "\nR " << root.string() << "\nD " << operand << "\n";
+
+        Volume v(root.string(), true, false, 0);
+        REQUIRE(v.ok());
+        CHECK(stdfs::exists(victim));
+        CHECK(!stdfs::exists(marker));
+        CHECK(stdfs::exists(stdfs::path(marker.string() + ".invalid")));
+    }
+}
+
+NXTEST(journal_valid_legacy_marker_rolls_forward) {
+    TempDir t("marker_legacy");
+    const stdfs::path root = t.p / "save";
+    const stdfs::path work(root.string() + ".work." + std::to_string(GetCurrentProcessId()));
+    const stdfs::path marker(root.string() + ".commit");
+    std::error_code ec;
+    stdfs::create_directories(root, ec);
+    stdfs::create_directories(work, ec);
+    std::ofstream(work / "recovered") << "data";
+    std::ofstream(marker) << "W " << work.string() << "\nR " << root.string() << "\nF recovered\n";
+
+    Volume v(root.string(), true, false, 0);
+    REQUIRE(v.ok());
+    CHECK_EQ(read_all(v, "/recovered"), std::string("data"));
+    CHECK(!stdfs::exists(marker));
+}
+
 NXTEST(journal_crash_before_decision_changes_nothing) {
     TempDir t("crash0");
     {

@@ -14,6 +14,7 @@
 #include <fstream>
 #include <map>
 #include <sstream>
+#include <utility>
 
 #include "nxrt/log.h"
 #include "nxrt/write_watch.h"
@@ -128,6 +129,23 @@ bool pid_alive(DWORD pid) {
     return alive;
 }
 
+bool parse_pid(const std::string& s, DWORD* pid) {
+    if (s.empty() || (s.size() > 1 && s[0] == '0')) return false;
+    uint64_t value = 0;
+    for (const unsigned char c : s) {
+        if (c < '0' || c > '9') return false;
+        value = value * 10 + (c - '0');
+        if (value > MAXDWORD) return false;
+    }
+    if (!value) return false;
+    *pid = static_cast<DWORD>(value);
+    return true;
+}
+
+stdfs::path work_for(const stdfs::path& root, DWORD pid) {
+    return stdfs::path(root.string() + ".work." + std::to_string(pid));
+}
+
 // A mutex shared by every process that opens the same save folder: commit and recovery do not interleave.
 class RootLock {
 public:
@@ -149,48 +167,192 @@ private:
     HANDLE m_ = nullptr;
 };
 
-// Applies a decided commit. Marker lines: "W <work folder>", "R <committed folder>", then "D rel" (delete), "M rel" (make folder),
-// "F rel" (move file work -> committed). Every step can be repeated, so a commit interrupted here is finished by running it again.
-// Returns the number of steps, -1 when the marker cannot be read. `stop_after` (> 0) stops after that many steps (crash simulation).
-int apply_marker(const stdfs::path& marker, int stop_after = 0) {
+constexpr int kInvalidMarker = -2;
+
+struct MarkerOp {
+    char kind = 0;
+    std::string name;
+    stdfs::path relative;
+};
+
+struct MarkerPlan {
+    stdfs::path work;
+    std::vector<MarkerOp> ops;
+};
+
+// Marker paths use one portable spelling. In particular, rejecting backslashes, drive prefixes, empty/dot components and names that
+// Win32 aliases by trimming prevents a rooted or parent-relative operand from being reinterpreted after validation.
+bool marker_relative(const std::string& arg, stdfs::path* out) {
+    if (arg.empty() || arg.size() > 0x300 || arg.front() == '/' || arg.back() == '/') return false;
+    size_t first = 0;
+    for (size_t i = 0; i <= arg.size(); ++i) {
+        if (i < arg.size()) {
+            const unsigned char c = static_cast<unsigned char>(arg[i]);
+            if (c == '\\' || c < 0x20 || c == ':' || c == '*' || c == '?' || c == '"' || c == '<' || c == '>' || c == '|') return false;
+            if (c != '/') continue;
+        }
+        const std::string part = arg.substr(first, i - first);
+        if (part.empty() || part == "." || part == ".." || part.back() == '.' || part.back() == ' ') return false;
+        first = i + 1;
+    }
+    try {
+        *out = u8(arg);
+    } catch (...) {
+        return false;
+    }
+    return out->is_relative() && !out->has_root_name() && !out->has_root_directory();
+}
+
+enum class HostPathState { kSafe, kMissing, kUnsafe };
+
+HostPathState host_path_state(const stdfs::path& path) {
+    HANDLE h = CreateFileW(path.c_str(), FILE_READ_ATTRIBUTES, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, nullptr,
+                           OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT, nullptr);
+    if (h == INVALID_HANDLE_VALUE) {
+        const DWORD e = GetLastError();
+        return e == ERROR_FILE_NOT_FOUND || e == ERROR_PATH_NOT_FOUND ? HostPathState::kMissing : HostPathState::kUnsafe;
+    }
+    BY_HANDLE_FILE_INFORMATION info{};
+    const bool ok = GetFileInformationByHandle(h, &info) != FALSE;
+    CloseHandle(h);
+    if (!ok || (info.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT)) return HostPathState::kUnsafe;
+    return HostPathState::kSafe;
+}
+
+// Check each existing component without following that component when it is opened. A missing tail is safe for create/idempotent
+// operations; an inaccessible path fails closed. Callers repeat this immediately before every filesystem mutation.
+bool no_reparse_path(const stdfs::path& base, const stdfs::path& relative, bool base_must_exist) {
+    HostPathState state = host_path_state(base);
+    if (state == HostPathState::kUnsafe || (base_must_exist && state == HostPathState::kMissing)) return false;
+    if (state == HostPathState::kMissing) return true;
+    stdfs::path current = base;
+    for (const stdfs::path& part : relative) {
+        current /= part;
+        state = host_path_state(current);
+        if (state == HostPathState::kUnsafe) return false;
+        if (state == HostPathState::kMissing) return true;
+    }
+    return true;
+}
+
+bool legacy_work(const std::string& raw, const stdfs::path& root, stdfs::path* work) {
+    stdfs::path candidate;
+    try {
+        candidate = u8(raw);
+    } catch (...) {
+        return false;
+    }
+    if (candidate.parent_path() != root.parent_path()) return false;
+    const std::string prefix = to_u8(root.filename()) + ".work.";
+    const std::string name = to_u8(candidate.filename());
+    if (name.rfind(prefix, 0) != 0) return false;
+    DWORD pid = 0;
+    if (!parse_pid(name.substr(prefix.size()), &pid)) return false;
+    *work = work_for(root, pid);
+    return candidate == *work;
+}
+
+bool parse_marker(std::istream& in, const stdfs::path& root, const stdfs::path* expected_work, MarkerPlan* plan) {
+    std::vector<std::string> lines;
+    std::string line;
+    while (std::getline(in, line)) {
+        while (!line.empty() && line.back() == '\r') line.pop_back();
+        lines.push_back(line);
+    }
+    if (in.bad() || lines.empty()) return false;
+
+    size_t first_op = 0;
+    if (lines[0] == "V 2") {
+        if (lines.size() < 2 || lines[1].size() < 3 || lines[1].compare(0, 2, "P ") != 0) return false;
+        DWORD pid = 0;
+        if (!parse_pid(lines[1].substr(2), &pid)) return false;
+        plan->work = work_for(root, pid);
+        first_op = 2;
+    } else {
+        // Version-one markers are accepted for upgrade recovery, but their serialized paths are assertions, never authority.
+        if (lines.size() < 2 || lines[0].size() < 3 || lines[0].compare(0, 2, "W ") != 0 || lines[1].size() < 3 ||
+            lines[1].compare(0, 2, "R ") != 0)
+            return false;
+        stdfs::path marker_root;
+        try {
+            marker_root = u8(lines[1].substr(2));
+        } catch (...) {
+            return false;
+        }
+        if (marker_root != root || !legacy_work(lines[0].substr(2), root, &plan->work)) return false;
+        first_op = 2;
+    }
+    if (expected_work && plan->work != *expected_work) return false;
+
+    for (size_t i = first_op; i < lines.size(); ++i) {
+        if (lines[i].size() < 3 || lines[i][1] != ' ') return false;
+        MarkerOp op;
+        op.kind = lines[i][0];
+        op.name = lines[i].substr(2);
+        if ((op.kind != 'D' && op.kind != 'M' && op.kind != 'F') || !marker_relative(op.name, &op.relative)) return false;
+        plan->ops.push_back(std::move(op));
+    }
+    return true;
+}
+
+// Applies a decided commit. Version-two markers contain a process id plus root-relative D/M/F records; the expected committed root is
+// always supplied by the caller. Every step can be repeated, so a commit interrupted here is finished by running it again. Returns the
+// number of steps, -1 on an I/O error and kInvalidMarker when untrusted marker state fails validation.
+int apply_marker(const stdfs::path& marker, const stdfs::path& root, const stdfs::path* expected_work = nullptr, int stop_after = 0) {
+    const HostPathState marker_state = host_path_state(marker);
+    if (marker_state == HostPathState::kMissing) return -1;
+    if (marker_state == HostPathState::kUnsafe) return kInvalidMarker;
     std::ifstream in(marker, std::ios::binary);
     if (!in) return -1;
-    std::string line;
-    stdfs::path work, root;
+    MarkerPlan plan;
+    if (!parse_marker(in, root, expected_work, &plan)) return kInvalidMarker;
+    in.close();
+
+    // Validate the complete plan before changing anything, then repeat the relevant check at each mutation boundary.
+    if (!no_reparse_path(root, {}, true)) return kInvalidMarker;
+    for (const MarkerOp& op : plan.ops) {
+        if (!no_reparse_path(root, op.relative, true)) return kInvalidMarker;
+        if (op.kind == 'F' && !no_reparse_path(plan.work, op.relative, false)) return kInvalidMarker;
+    }
+
     int n = 0;
     std::error_code ec;
-    while (std::getline(in, line)) {
-        while (!line.empty() && (line.back() == '\r' || line.back() == '\n')) line.pop_back();
-        if (line.size() < 3) continue;
-        const std::string arg = line.substr(2);
-        if (line[0] == 'W') work = u8(arg);
-        else if (line[0] == 'R') root = u8(arg);
-        else if (work.empty() || root.empty()) continue;
-        else if (line[0] == 'D') {
-            stdfs::remove_all(root / u8(arg), ec);
-            n++;
-        } else if (line[0] == 'M') {
-            stdfs::create_directories(root / u8(arg), ec);
-            n++;
-        } else if (line[0] == 'F') {
-            const stdfs::path a = work / u8(arg), b = root / u8(arg);
-            if (stdfs::exists(a, ec)) {
-                stdfs::create_directories(b.parent_path(), ec);
-                stdfs::rename(a, b, ec);
+    for (const MarkerOp& op : plan.ops) {
+        const stdfs::path target = root / op.relative;
+        if (op.kind == 'D') {
+            if (!no_reparse_path(root, op.relative, true)) return kInvalidMarker;
+            stdfs::remove_all(target, ec);
+            if (ec) return -1;
+        } else if (op.kind == 'M') {
+            if (!no_reparse_path(root, op.relative, true)) return kInvalidMarker;
+            stdfs::create_directories(target, ec);
+            if (ec) return -1;
+        } else {
+            const stdfs::path source = plan.work / op.relative;
+            if (!no_reparse_path(plan.work, op.relative, false) || !no_reparse_path(root, op.relative, true)) return kInvalidMarker;
+            const bool exists = stdfs::exists(source, ec);
+            if (ec) return -1;
+            if (exists) {
+                stdfs::create_directories(target.parent_path(), ec);
+                if (ec) return -1;
+                if (!no_reparse_path(plan.work, op.relative, true) || !no_reparse_path(root, op.relative, true)) return kInvalidMarker;
+                stdfs::rename(source, target, ec);
                 if (ec) {
-                    NXLOG_E("fs", "commit: moving %s failed: %s", arg.c_str(), ec.message().c_str());
+                    NXLOG_E("fs", "commit: moving %s failed: %s", op.name.c_str(), ec.message().c_str());
                     return -1;
                 }
             }
-            n++;
-        } else {
-            continue;
         }
+        n++;
         if (stop_after > 0 && n >= stop_after) return n;
     }
-    in.close();
-    stdfs::remove(marker, ec);
+    if (!stdfs::remove(marker, ec) && ec) return -1;
     return n;
+}
+
+bool quarantine_marker(const stdfs::path& marker) {
+    const stdfs::path rejected(marker.string() + ".invalid");
+    return MoveFileExW(marker.c_str(), rejected.c_str(), MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH) != FALSE;
 }
 
 }  // namespace
@@ -379,7 +541,7 @@ Volume::Volume(const std::string& root, bool journal, bool read_only, uint64_t c
         stdfs::create_directories(s.root, ec);
         recover(root);
         s.marker = stdfs::path(s.root.string() + ".commit");
-        s.work = stdfs::path(s.root.string() + ".work." + std::to_string(GetCurrentProcessId()));
+        s.work = work_for(s.root, GetCurrentProcessId());
         s.journal_file = stdfs::path(s.root.string() + ".journal." + std::to_string(GetCurrentProcessId()));
         stdfs::remove_all(s.work, ec);   // a second open in this process starts from the committed state
         stdfs::create_directories(s.work, ec);
@@ -411,8 +573,15 @@ void Volume::recover(const std::string& root_s) {
     std::error_code ec;
     const stdfs::path marker(root.string() + ".commit");
     if (stdfs::exists(marker, ec)) {
-        const int n = apply_marker(marker);
-        NXLOG_W("fs", "a commit of %s was interrupted after it was decided: finished now (%d changes)", root_s.c_str(), n);
+        const int n = apply_marker(marker, root);
+        if (n == kInvalidMarker) {
+            const bool quarantined = quarantine_marker(marker);
+            NXLOG_E("fs", "rejected an invalid commit marker for %s%s", root_s.c_str(), quarantined ? "" : " (quarantine failed)");
+        } else if (n < 0) {
+            NXLOG_E("fs", "could not finish an interrupted commit of %s", root_s.c_str());
+        } else {
+            NXLOG_W("fs", "a commit of %s was interrupted after it was decided: finished now (%d changes)", root_s.c_str(), n);
+        }
     }
     // Work folders and journals of processes that no longer run.
     const stdfs::path dir = root.parent_path();
@@ -610,7 +779,7 @@ uint32_t Volume::commit() {
     if (s.tomb.empty() && !stdfs::exists(s.work, ec)) return 0;
 
     // Phase 1: flush the changed files, write the change list, make it the decided marker with one rename.
-    std::string body = "W " + to_u8(s.work) + "\nR " + to_u8(s.root) + "\n";
+    std::string body = "V 2\nP " + std::to_string(GetCurrentProcessId()) + "\n";
     for (const std::string& t : s.tomb) body += "D " + rel_of(t) + "\n";
     int changes = static_cast<int>(s.tomb.size());
     std::vector<std::string> files, dirs;
@@ -649,7 +818,7 @@ uint32_t Volume::commit() {
     if (g_crash_point == 1) return rc::kGenericFailure;   // decided, nothing applied
 
     // Phase 2: apply. A crash in here is repaired by the next recover().
-    const int applied = apply_marker(s.marker, g_crash_point == 2 ? 1 : 0);
+    const int applied = apply_marker(s.marker, s.root, &s.work, g_crash_point == 2 ? 1 : 0);
     if (g_crash_point == 2) return rc::kGenericFailure;
     if (applied < 0) return rc::kGenericFailure;
     s.tomb.clear();

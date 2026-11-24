@@ -467,3 +467,39 @@ NXTEST(malformed_images_are_rejected) {
     }
     reset();
 }
+
+NXTEST(well_formed_nso_segments_load) {
+    reset();
+    std::vector<uint8_t> nso = minimal_nso();
+    std::string err;
+    Module* m = module_load_nso_memory(nso.data(), nso.size(), {}, &err);
+    REQUIRE(m);
+    CHECK_EQ(m->size(), 0x1000u);
+    reset();
+    nso = minimal_nso(true);
+    m = module_load_nso_memory(nso.data(), nso.size(), {}, &err);
+    REQUIRE(m);
+    CHECK_EQ(m->size(), 0x1000u);
+    reset();
+}
+
+NXTEST(wrapped_nso_segment_span_is_rejected) {
+    reset();
+    std::vector<uint8_t> nso = minimal_nso(true);
+    put_u32(nso, 0x14, 0x1001);
+    put_u32(nso, 0x18, 0xFFFFFFFFu);   // the old 32-bit end calculation wrapped to 0x1000
+    put_u32(nso, 0x60, 2);
+    nso[0x100] = 0x10;                 // one literal byte, formerly copied beyond the undersized image
+    nso[0x101] = 0x41;
+    put_u32(nso, 0x20, 0x102);
+    put_u32(nso, 0x24, 0x1000);
+    put_u32(nso, 0x28, 0);
+    put_u32(nso, 0x30, 0x102);
+    put_u32(nso, 0x34, 0x1000);
+    put_u32(nso, 0x38, 0);
+    std::string err;
+    CHECK(module_load_nso_memory(nso.data(), nso.size(), {}, &err) == nullptr);
+    CHECK(err.find("overlap") != std::string::npos);
+    CHECK(modules().empty());
+    reset();
+}

@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <cstring>
 #include <fstream>
+#include <limits>
 
 #include "elf.h"
 #include "nxrt/log.h"
@@ -81,7 +82,7 @@ Module* module_load_nso_memory(const void* data, size_t size, const LoadOptions&
     const uint8_t* d = static_cast<const uint8_t*>(data);
     if (size < 0x100 || std::memcmp(d, "NSO0", 4) != 0) { fail(err, "not an NSO image (no NSO0 magic)"); return nullptr; }
     const uint32_t flags = rd<uint32_t>(d + 0x0C);
-    struct Seg { uint32_t file_off, mem_off, dsize, csize; };
+    struct Seg { uint32_t file_off, mem_off, dsize, csize; uint64_t mem_end; };
     Seg seg[3];
     for (int i = 0; i < 3; i++) {
         seg[i].file_off = rd<uint32_t>(d + 0x10 + 0x10 * i);
@@ -95,23 +96,32 @@ Module* module_load_nso_memory(const void* data, size_t size, const LoadOptions&
         const bool lz4 = (flags >> i) & 1;
         const uint64_t stored = lz4 ? seg[i].csize : seg[i].dsize;
         if (seg[i].file_off > size || stored > size - seg[i].file_off) { fail(err, "NSO segment %d is outside the file", i); return nullptr; }
-        if (i && seg[i].mem_off < seg[i - 1].mem_off + seg[i - 1].dsize) { fail(err, "NSO segments overlap in memory"); return nullptr; }
-        image_end = static_cast<uint64_t>(seg[i].mem_off) + seg[i].dsize;
+        seg[i].mem_end = static_cast<uint64_t>(seg[i].mem_off) + static_cast<uint64_t>(seg[i].dsize);
+        if (i && static_cast<uint64_t>(seg[i].mem_off) < seg[i - 1].mem_end) { fail(err, "NSO segments overlap in memory"); return nullptr; }
+        if (seg[i].mem_end > image_end) image_end = seg[i].mem_end;
     }
-    if (image_end + bss > opt.max_image_size) { fail(err, "NSO image span 0x%llx exceeds the limit", static_cast<unsigned long long>(image_end + bss)); return nullptr; }
+    const uint64_t mapped_end = image_end + static_cast<uint64_t>(bss);
+    if (mapped_end < image_end || mapped_end > opt.max_image_size) { fail(err, "NSO image span 0x%llx exceeds the limit", static_cast<unsigned long long>(mapped_end)); return nullptr; }
+    if (image_end > static_cast<uint64_t>(std::numeric_limits<size_t>::max()) - kHeaderPad) { fail(err, "NSO image is too large for this host"); return nullptr; }
 
     // The synthetic ELF: [headers: 0x1000][memory image 0 .. image_end)
     std::vector<uint8_t> elf(static_cast<size_t>(kHeaderPad + image_end), 0);
     uint8_t* img = elf.data() + kHeaderPad;
     for (int i = 0; i < 3; i++) {
+        const uint64_t dst_off = seg[i].mem_off;
+        if (dst_off > image_end || static_cast<uint64_t>(seg[i].dsize) > image_end - dst_off) {
+            fail(err, "NSO segment %d is outside the image", i);
+            return nullptr;
+        }
+        uint8_t* dst = img + static_cast<size_t>(dst_off);
         const bool lz4 = (flags >> i) & 1;
         if (lz4) {
-            if (!lz4_block_decode(d + seg[i].file_off, seg[i].csize, img + seg[i].mem_off, seg[i].dsize)) {
+            if (!lz4_block_decode(d + seg[i].file_off, seg[i].csize, dst, seg[i].dsize)) {
                 fail(err, "NSO segment %d: LZ4 stream is corrupt (compressed 0x%x, expected 0x%x bytes)", i, seg[i].csize, seg[i].dsize);
                 return nullptr;
             }
         } else {
-            std::memcpy(img + seg[i].mem_off, d + seg[i].file_off, seg[i].dsize);
+            std::memcpy(dst, d + seg[i].file_off, seg[i].dsize);
         }
     }
 
@@ -149,7 +159,7 @@ Module* module_load_nso_memory(const void* data, size_t size, const LoadOptions&
         ph[n].offset = kHeaderPad + seg[i].mem_off;
         ph[n].vaddr = ph[n].paddr = seg[i].mem_off;
         ph[n].filesz = seg[i].dsize;
-        ph[n].memsz = seg[i].dsize + (i == 2 ? bss : 0);
+        ph[n].memsz = static_cast<uint64_t>(seg[i].dsize) + (i == 2 ? static_cast<uint64_t>(bss) : 0);
         ph[n].align = 0x1000;
         n++;
     }

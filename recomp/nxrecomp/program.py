@@ -34,6 +34,13 @@ def mangle(name):
     return ''.join(ch if ch.isalnum() else '_' for ch in name)
 
 
+def cpp_byte_string(value):
+    """A C++ string literal that preserves a Latin-1 string's bytes without embedding source-significant characters."""
+    if any(ord(ch) > 0xff for ch in value):
+        raise ValueError('C++ byte string contains a non-Latin-1 character')
+    return '"' + ''.join('\\%03o' % ord(ch) for ch in value) + '"'
+
+
 # ---------------------------------------------------------------------------------------------------- patches
 def load_patches(path, img):
     """Instruction patches: one `<address> <original word> <new word>  # note` per line (hex). The original word is
@@ -698,7 +705,7 @@ def write_module_files(env, outdir, all_funcs, resume, catchers):
             value = 0
         elif typ != 6 and shndx != 0xfff1:            # not thread-local, not SHN_ABS
             value = img.base + img.sym_value(value)
-        m.append('  { "%s", 0x%xULL, %d },' % (sname.replace('\\', '\\\\').replace('"', '\\"'), value, 1 if shndx else 0))
+        m.append('  { %s, 0x%xULL, %d },' % (cpp_byte_string(sname), value, 1 if shndx else 0))
     if not nsym:
         m.append('  { "", 0, 0 },')
     m.append('};')
