@@ -31,6 +31,7 @@ SEG_HDR = (0x10, 0x20, 0x30)        # (file offset, memory offset, size) of text
 SEG_FILE_SIZE = (0x60, 0x64, 0x68)  # stored size of each segment
 SEG_HASH = 0xA0                     # 3 x SHA-256
 FLAG_ZBIC = 0x80
+ZSTD_FRAME_HEADER_SIZE_MAX = 18
 
 
 def _decompress(blob, size, zbic_flag):
@@ -41,10 +42,15 @@ def _decompress(blob, size, zbic_flag):
                 import zstandard
             except ImportError:
                 sys.exit('nso_unpack: this NSO is ZBIC-compressed; install the zbic and zstandard packages')
+            if blob[:4] != b'ZBIC':
+                raise ValueError('ZBIC segment has an invalid frame signature')
+            # zbic 1.0.1.post1 uses Zstandard's frame header with a different magic.
+            # Inspect only the header; the ZBIC decoder receives the original frame.
+            header = zstandard.FRAME_HEADER + blob[4:ZSTD_FRAME_HEADER_SIZE_MAX]
             try:
-                frame_size = zstandard.frame_content_size(blob)
+                frame_size = zstandard.frame_content_size(header)
             except zstandard.ZstdError as exc:
-                raise ValueError('ZBIC segment has an invalid Zstandard frame header') from exc
+                raise ValueError('ZBIC segment has an invalid frame header') from exc
             if frame_size != size:
                 raise ValueError(f'ZBIC segment frame declares {frame_size} bytes, the NSO header says {size}')
             out = zbic.decompress(blob)

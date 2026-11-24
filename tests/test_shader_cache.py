@@ -156,6 +156,9 @@ OpFunctionEnd
         main = bytearray(0x100) + blob
         main[:4] = b"NSO0"
         struct.pack_into("<III", main, 0x10, 0x100, 0, len(blob))
+        struct.pack_into("<I", main, 0x60, len(blob))
+        for segment_header in (0x20, 0x30):
+            struct.pack_into("<III", main, segment_header, len(main), len(blob), 0)
         (prepared / "main").write_bytes(main)
         romfs = self.root / "romfs"
         asset_dir = romfs / "motor_asset_re"

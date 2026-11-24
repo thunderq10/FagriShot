@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Static fixtures for the shared Python NSO resource boundary."""
 import hashlib
+import importlib.util
 from pathlib import Path
 import struct
 import sys
@@ -75,15 +76,20 @@ class NsoBoundsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'image and BSS span .* exceeds the limit'):
             nso.nso_layout(excessive_bss)
 
-    def test_zbic_frame_size_precedes_decoder(self):
-        fake_zbic = mock.Mock()
-        fake_zstandard = mock.Mock()
-        fake_zstandard.ZstdError = RuntimeError
-        fake_zstandard.frame_content_size.return_value = 5
-        with mock.patch.dict(sys.modules, {'zbic': fake_zbic, 'zstandard': fake_zstandard}):
-            with self.assertRaisesRegex(ValueError, 'frame declares 5 bytes'):
-                nso_unpack._decompress(b'frame', 4, True)
-        fake_zbic.decompress.assert_not_called()
+    @unittest.skipUnless(importlib.util.find_spec('zbic') and importlib.util.find_spec('zstandard'),
+                         'requires the ZBIC and Zstandard packages')
+    def test_zbic_frames_round_trip_and_check_size_before_decoding(self):
+        import zbic
+
+        for size in (15, 300, 70000):
+            with self.subTest(size=size):
+                payload = b'x' * size
+                frame = zbic.compress(payload)
+                self.assertEqual(nso_unpack._decompress(frame, size, True), payload)
+                with mock.patch.object(zbic, 'decompress') as decoder:
+                    with self.assertRaisesRegex(ValueError, f'frame declares {size} bytes'):
+                        nso_unpack._decompress(frame, size - 1, True)
+                    decoder.assert_not_called()
 
 
 if __name__ == '__main__':
