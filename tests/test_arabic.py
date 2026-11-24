@@ -9,6 +9,26 @@ from fagrishot import __main__ as cli
 from fagrishot.arabic_font import FONT_NAMES
 
 
+class OpeningCoverageTests(unittest.TestCase):
+    def test_first_dialogue_is_covered_in_each_presentation(self):
+        root = Path(__file__).resolve().parents[1]
+        catalogs, _ = arabic.assets(root)
+        data = arabic.catalog_data(catalogs)
+        # The same opening moves between a dialogue box, a world map and a movie.
+        expected = {
+            "0_ISM_c01.msbt.zst": ["MID_EV00_000_m01_001", "MID_EV00_001_m01_026"],
+            "LG_0_XXX_cAssist.msbt.zst": ["MID_LGV_0XXX_c01_GM00_003_m01_001",
+                                          "MID_LGV_0XXX_c01_GM00_003_m01_002"],
+            "MV00_05.msbt.zst": ["MID_MV00_05_m001", "MID_MV00_05_m002", "MID_MV00_05_m003"],
+        }
+        for filename, labels in expected.items():
+            for label in labels:
+                with self.subTest(file=filename, label=label):
+                    entry = data[filename][label]
+                    self.assertRegex("".join(entry["parts"]), r"[\u0621-\u064a]")
+                    self.assertRegex(entry["source_sha256"], r"^[0-9a-f]{64}$")
+
+
 class ArabicPreviewTests(unittest.TestCase):
     def setUp(self):
         self.area = tempfile.TemporaryDirectory()

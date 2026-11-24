@@ -1,0 +1,684 @@
+{
+  "MV00_00.msbt.zst": {
+    "MID_MV00_00_m001": {
+      "source_sha256": "ffa31979c29354aeab44691b8a4acaa4f90c61f3423761f52ce15a4b229a727e",
+      "parts": [
+        "(أنين)"
+      ]
+    },
+    "MID_MV00_00_m002": {
+      "source_sha256": "8828f654a607b7f9821a474531be74756b150098036c40ff5f281b32132d46cc",
+      "parts": [
+        "(تأوه من الألم)"
+      ]
+    },
+    "MID_MV00_00_m003": {
+      "source_sha256": "2f49dd4c15d100dc818dd360f5de6e98b3fea95be26492b0a2676a4d0cc2622e",
+      "parts": [
+        "(صيحة هجوم)"
+      ]
+    },
+    "MID_MV00_00_m004": {
+      "source_sha256": "4fe82fac9391717c3bedd8403ae1a1609f2493f1220141dbb4f730a9fb1b2f22",
+      "parts": [
+        "(صرخة)"
+      ]
+    },
+    "MID_MV00_00_m005": {
+      "source_sha256": "fb1eb3a0efd21213c037b519cc8df3b50f70e1dcb786a8821a5b2b2f51563eb0",
+      "parts": [
+        "(زمجرة يمازجها أنين)"
+      ]
+    },
+    "MID_MV00_00_m006": {
+      "source_sha256": "4fe82fac9391717c3bedd8403ae1a1609f2493f1220141dbb4f730a9fb1b2f22",
+      "parts": [
+        "(صرخة)"
+      ]
+    },
+    "MID_MV00_00_m007": {
+      "source_sha256": "5d9c4d892b17b460231424b974b2f92920aef6fc163f1ec581dc16323e734dc8",
+      "parts": [
+        "(تأوه من الألم)"
+      ]
+    },
+    "MID_MV00_00_m008": {
+      "source_sha256": "5d9c4d892b17b460231424b974b2f92920aef6fc163f1ec581dc16323e734dc8",
+      "parts": [
+        "(تأوه من الألم)"
+      ]
+    },
+    "MID_MV00_00_m009": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_00_m010": {
+      "source_sha256": "47ce850e49731e79b856eb74d37795db365651bf62480071b77e59c5bc6ff8f5",
+      "parts": [
+        "(صيحة فزع)"
+      ]
+    },
+    "MID_MV00_00_m011": {
+      "source_sha256": "b124c734d29181390e926809e8702ac4b6faef8c1ff8c6f0aa3faf55778d3e9a",
+      "parts": [
+        "(أنات متتابعة)"
+      ]
+    },
+    "MID_MV00_00_m012": {
+      "source_sha256": "19a81f1a06c797597b6022572950f53ab2db9511bc793c52b4f5d6ba42dc8d3e",
+      "parts": [
+        "(شهقة هلع)"
+      ]
+    },
+    "MID_MV00_00_m013": {
+      "source_sha256": "7e64f66d1eafdd293940d1e556469a31096d238ac9b99ff350c1aedd13b21a03",
+      "parts": [
+        "(زئير عند الهجوم)"
+      ]
+    },
+    "MID_MV00_00_m014": {
+      "source_sha256": "d5c667a2b1d300efaf8312afd8a145913cd5a1b77ee18e5af6563b8104b3cbb8",
+      "parts": [
+        "(صرخة رعب)"
+      ]
+    },
+    "MID_MV00_00_m015": {
+      "source_sha256": "734c22c8d96451a13cca8b0966b5930ccac22f70efa4b5bd214c516713dd5bff",
+      "parts": [
+        "(زئير)"
+      ]
+    },
+    "MID_MV00_00_m016": {
+      "source_sha256": "8cb6367213d4558db44fc4a328e863678deb1b77dbf9cd6a83f4cac235fe54e2",
+      "parts": [
+        "(صرخة ألم)"
+      ]
+    },
+    "MID_MV00_00_m017": {
+      "source_sha256": "ffa31979c29354aeab44691b8a4acaa4f90c61f3423761f52ce15a4b229a727e",
+      "parts": [
+        "(أنين)"
+      ]
+    },
+    "MID_MV00_00_m018": {
+      "source_sha256": "8d53ce03a8ce56883c4990beaf9e113bc53cd2bed381edde5ddf38553c977784",
+      "parts": [
+        "(صوت أنفاس)"
+      ]
+    }
+  },
+  "MV00_02.msbt.zst": {
+    "MID_MV00_02_m001": {
+      "source_sha256": "d9e62ce2cefcdb2ee4485e6dffdeaa7ce1a71483c82a1c4b8af03891f93e1f7a",
+      "parts": [
+        "(إطلاق تعويذة)"
+      ]
+    },
+    "MID_MV00_02_m002": {
+      "source_sha256": "7eefeff04b754d7ae0bd51540cf3eec9c5ab1e4a8c260785d7f484ef2cd2118d",
+      "parts": [
+        "(أنين ينذر بالشر)"
+      ]
+    },
+    "MID_MV00_02_m003": {
+      "source_sha256": "d7a22dfcb292c2444388f3cb8e0c2d4e98c941510681f504038e3542f36700b5",
+      "parts": [
+        "(تستحضر كرة من نار ثم تقذفها)"
+      ]
+    },
+    "MID_MV00_02_m004": {
+      "source_sha256": "6d0e1fbb77d77d12bb155fa4057560bb39dd81ad65f5c16731a20c3018dfeafd",
+      "parts": [
+        "(تأوه من الألم)"
+      ]
+    },
+    "MID_MV00_02_m005": {
+      "source_sha256": "df57d93728133850581ed664bba0613392c19f0660e7d8b908eee33d923065dc",
+      "parts": [
+        "(شهقة قصيرة)"
+      ]
+    },
+    "MID_MV00_02_m006": {
+      "source_sha256": "7eefeff04b754d7ae0bd51540cf3eec9c5ab1e4a8c260785d7f484ef2cd2118d",
+      "parts": [
+        "(أنين ينذر بالشر)"
+      ]
+    },
+    "MID_MV00_02_m007": {
+      "source_sha256": "e6df4c266de35e446282a2881e6fc23b801ebf64c7aa5144911b4390e2d42b58",
+      "parts": [
+        "(لهاث)"
+      ]
+    },
+    "MID_MV00_02_m008": {
+      "source_sha256": "eaac92154eacb1ddebc103e34b3412ca9cf7f1126ed88ff2c6feb75971d0910b",
+      "parts": [
+        "(صوت أنفاس)"
+      ]
+    },
+    "MID_MV00_02_m009": {
+      "source_sha256": "308cd87bef99750ca2422739da95179aa1e0a628af2cf46a075eca9149331151",
+      "parts": [
+        "(شهيق سريع)"
+      ]
+    },
+    "MID_MV00_02_m010": {
+      "source_sha256": "bf3252de524bd1e028a20bde513a41bc49c1f69d7559a80253629cc3cf040b09",
+      "parts": [
+        "(تخمد لهبها السحري وتقفز\nحتى تبلغ برج الدفاع)"
+      ]
+    },
+    "MID_MV00_02_m011": {
+      "source_sha256": "d1ca6fe828d1efbc078daadf2a20579ea6f6c45633c20c1368d225b3d922b78b",
+      "parts": [
+        "أطلقوا النار!"
+      ]
+    },
+    "MID_MV00_02_m012": {
+      "source_sha256": "3430b1c521fa25a7b5d28c3995a338b70608fc18ff8ee2537f7a324f2c787911",
+      "parts": [
+        "كثفوا النيران!"
+      ]
+    },
+    "MID_MV00_02_m013": {
+      "source_sha256": "9e4ef40378ade5d9d6ef1ee9177afe252f3359a8f301507b992e0211a9295982",
+      "parts": [
+        "(لهاث)"
+      ]
+    },
+    "MID_MV00_02_m014": {
+      "source_sha256": "440cf2f9585f6506c54fc3d5a8b501293a8c697cd5f4f55b6badab6141c2d482",
+      "parts": [
+        "(صيحة إثر ارتطام مفاجئ)"
+      ]
+    },
+    "MID_MV00_02_m015": {
+      "source_sha256": "e0601768893463fb01faddd5e23213f98f1c2e01974af461981a29a34b8c82cc",
+      "parts": [
+        "(شهقة حادة)"
+      ]
+    },
+    "MID_MV00_02_m016": {
+      "source_sha256": "753080b2f28ba61a3ec86021899ce4e86b684812cc8c308eee019144aa32f9cb",
+      "parts": [
+        "(تأوهات إثر الارتطام)"
+      ]
+    },
+    "MID_MV00_02_m017": {
+      "source_sha256": "7eefeff04b754d7ae0bd51540cf3eec9c5ab1e4a8c260785d7f484ef2cd2118d",
+      "parts": [
+        "(أنين ينذر بالشر)"
+      ]
+    },
+    "MID_MV00_02_m018": {
+      "source_sha256": "7ba062ace5544a9eb92f3ac3470a064d0247a829589c02319e9ad4d4a89248ae",
+      "parts": [
+        "(أنفاس متألمة)"
+      ]
+    },
+    "MID_MV00_02_m019": {
+      "source_sha256": "7eefeff04b754d7ae0bd51540cf3eec9c5ab1e4a8c260785d7f484ef2cd2118d",
+      "parts": [
+        "(أنين ينذر بالشر)"
+      ]
+    },
+    "MID_MV00_02_m020": {
+      "source_sha256": "843ea0c40a6809cb0e797cc04f3ac37f9faecd6fcc2ff6d7e6b2dc63070c0f67",
+      "parts": [
+        "لم أنته بعد."
+      ]
+    },
+    "MID_MV00_02_m021": {
+      "source_sha256": "803536259909a1241f8fa6c8243006ad1cb9fc4164c96caebd7a8158e3978544",
+      "parts": [
+        "هيا... سأجعلها آخر فعلة لك!"
+      ]
+    },
+    "MID_MV00_02_m022": {
+      "source_sha256": "e0601768893463fb01faddd5e23213f98f1c2e01974af461981a29a34b8c82cc",
+      "parts": [
+        "(شهقة حادة)"
+      ]
+    },
+    "MID_MV00_02_m023": {
+      "source_sha256": "3f4382c13a6214ab55c8de5365716b3957327e118fec3343f4d7ab7c1ccca898",
+      "parts": [
+        "(أنين)"
+      ]
+    },
+    "MID_MV00_02_m024": {
+      "source_sha256": "2a964f88f42b50aa10df9609e185021256881d1a215dc5a74f7a3ed21d78a99c",
+      "parts": [
+        "ما هذا...؟"
+      ]
+    },
+    "MID_MV00_02_m025": {
+      "source_sha256": "86bf4ee5706e24bf553941398580b23d91afba80301eaf7f60499a9efcb5a2ef",
+      "parts": [
+        "الغراب الشاحب؟"
+      ]
+    },
+    "MID_MV00_02_m026": {
+      "source_sha256": "1393a9cb7b7a6bc5a59f14bb3e4ae207a8a566b9e2137a1e5c1e7b429f3f57ee",
+      "parts": [
+        "(صيحات القتال)"
+      ]
+    },
+    "MID_MV00_02_m027": {
+      "source_sha256": "6dc3d1321acf3cb5cc9fe7319220b9bd78157c6e275f959cd67baf83f935d455",
+      "parts": [
+        "(همهمة قصيرة)"
+      ]
+    },
+    "MID_MV00_02_m028": {
+      "source_sha256": "1393a9cb7b7a6bc5a59f14bb3e4ae207a8a566b9e2137a1e5c1e7b429f3f57ee",
+      "parts": [
+        "(صيحات القتال)"
+      ]
+    },
+    "MID_MV00_02_m029": {
+      "source_sha256": "cb8919ef2decb8c982d2783c5d9d0b039dacfdc7da6419cb30b3713ea4ed35f3",
+      "parts": [
+        "ها أنت هنا."
+      ]
+    },
+    "MID_MV00_02_m030": {
+      "source_sha256": "57823e3a95f4af330ef53c95ec8e6b9c5d8ba84ca887a57897a3ee5c7f323e2e",
+      "parts": [
+        "(همهمة موافقة)"
+      ]
+    }
+  },
+  "MV00_03.msbt.zst": {
+    "MID_MV00_03_m001": {
+      "source_sha256": "52b7db90f729e6300a5570ec8a60517698d07368d44b4a4a7f8dcb2ca78e0953",
+      "parts": [
+        "(ضحكة ساخرة)"
+      ]
+    },
+    "MID_MV00_03_m002": {
+      "source_sha256": "b199c7ef5f81c11bf03c63c4406e1f6fbd1711ff993b1d9caa6cbbc3c4e13e65",
+      "parts": [
+        "في الموعد تماما!"
+      ]
+    },
+    "MID_MV00_03_m003": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m004": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m005": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m006": {
+      "source_sha256": "2f49dd4c15d100dc818dd360f5de6e98b3fea95be26492b0a2676a4d0cc2622e",
+      "parts": [
+        "(صيحة هجوم)"
+      ]
+    },
+    "MID_MV00_03_m007": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m008": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m009": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m010": {
+      "source_sha256": "74ffec87b16615615f7bc4f65639fe6c718feef38be9ad2c29f90132392a7f51",
+      "parts": [
+        "(ضحكة متعالية)"
+      ]
+    },
+    "MID_MV00_03_m011": {
+      "source_sha256": "49c0855f276804152627aefd800c00bb58d56960c2f6410df436c397fdc1fb68",
+      "parts": [
+        "(شهقة خوف)"
+      ]
+    },
+    "MID_MV00_03_m012": {
+      "source_sha256": "49c0855f276804152627aefd800c00bb58d56960c2f6410df436c397fdc1fb68",
+      "parts": [
+        "(شهقة خوف)"
+      ]
+    },
+    "MID_MV00_03_m013": {
+      "source_sha256": "49c0855f276804152627aefd800c00bb58d56960c2f6410df436c397fdc1fb68",
+      "parts": [
+        "(شهقة خوف)"
+      ]
+    },
+    "MID_MV00_03_m014": {
+      "source_sha256": "98931b6ae680b37399c58f06944b43ed6865febe9a61c894398c77af618a476e",
+      "parts": [
+        "(انتباه مفاجئ)"
+      ]
+    },
+    "MID_MV00_03_m015": {
+      "source_sha256": "a505fd635b1ef9b6c97e970530c64dc37f5c56f13e0c13e24d78c87d228100bf",
+      "parts": [
+        "(همهمة حيرة)"
+      ]
+    },
+    "MID_MV00_03_m016": {
+      "source_sha256": "a505fd635b1ef9b6c97e970530c64dc37f5c56f13e0c13e24d78c87d228100bf",
+      "parts": [
+        "(همهمة حيرة)"
+      ]
+    },
+    "MID_MV00_03_m017": {
+      "source_sha256": "a505fd635b1ef9b6c97e970530c64dc37f5c56f13e0c13e24d78c87d228100bf",
+      "parts": [
+        "(همهمة حيرة)"
+      ]
+    },
+    "MID_MV00_03_m018": {
+      "source_sha256": "2dc18b2eaa541b055826d05421a5674db860f005138d5bdc38cf5ff57af3648e",
+      "parts": [
+        "ما هذا؟"
+      ]
+    },
+    "MID_MV00_03_m019": {
+      "source_sha256": "4c2a6b862fb5cba62d0c435218491dcd5e1cf18dbe394892dbca060e6876fc8f",
+      "parts": [
+        "لا تخافوا. هذا أثر قوتي."
+      ]
+    },
+    "MID_MV00_03_m020": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m021": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m022": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m023": {
+      "source_sha256": "70473fe452792f598678fd7b7a2bc25bf0a47b57e724244d34f38aea31167ff6",
+      "parts": [
+        "تلك قوة إلهية، وهبتها لي الإلهة الأم.\nفاحفروا ما رأيتموه في ذاكرتكم."
+      ]
+    },
+    "MID_MV00_03_m024": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m025": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m026": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m027": {
+      "source_sha256": "b199c7ef5f81c11bf03c63c4406e1f6fbd1711ff993b1d9caa6cbbc3c4e13e65",
+      "parts": [
+        "في الموعد تماما!"
+      ]
+    },
+    "MID_MV00_03_m028": {
+      "source_sha256": "129ae62e44329fcaa6065eeec2086e8ddd66b6119d8c80bcd3f1bb5675e93181",
+      "parts": [
+        "اختفوا! أين ذهبوا؟!"
+      ]
+    },
+    "MID_MV00_03_m029": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_03_m030": {
+      "source_sha256": "043d91254f58be9323fd7b8e1d2ffad9fe15758fd46e51488b83638bd8c3fe6e",
+      "parts": [
+        "أما ما سأفعله الآن، فلا يدفعني إليه\nحقد أحمله لك."
+      ]
+    },
+    "MID_MV00_03_m031": {
+      "source_sha256": "16f01b7aaf342dd18f2bac9d088e6294939dd9ebe0a2d2db7b03478154e7d969",
+      "parts": [
+        "(همهمة استنكار)"
+      ]
+    }
+  },
+  "MV00_04.msbt.zst": {
+    "MID_MV00_04_m001": {
+      "source_sha256": "92f8d31b800ca0d78aa21dafb9841f3d2989f8f93c634b965e6a6764b5f796b6",
+      "parts": [
+        "أرى ثغرة تنفتح في السور الجنوبي."
+      ]
+    },
+    "MID_MV00_04_m002": {
+      "source_sha256": "d1e039ea5e623e0ec5982073964cdab80d45d2701b722c7eade98fd6502a4c46",
+      "parts": [
+        "قوات معادية تقتحم السور. أعدادها هائلة."
+      ]
+    },
+    "MID_MV00_04_m003": {
+      "source_sha256": "788fc491620ae3f0a40e70a660e703c910504da446c12d81c47216bee52a0b86",
+      "parts": [
+        "إنهم يتجهون رأسا إلى كونلون!"
+      ]
+    },
+    "MID_MV00_04_m004": {
+      "source_sha256": "9029e358a883b662bb1f6937a4cf8718c0003d858ac6a03569612d481acf41c2",
+      "parts": [
+        "يجب أن نمنعهم من بلوغ القرية."
+      ]
+    },
+    "MID_MV00_04_m005": {
+      "source_sha256": "f56ecf292a07f2d415552de2ee286fdef213739f31b1f3436768b6672d093b29",
+      "parts": [
+        "إذن سأتصدى لهم."
+      ]
+    },
+    "MID_MV00_04_m006": {
+      "source_sha256": "79724af791aa572ed5cecc19e1bf668cd5eb938aa31267c4f8495d51f6d190d8",
+      "parts": [
+        "(زئير)"
+      ]
+    },
+    "MID_MV00_04_m007": {
+      "source_sha256": "b57c3fad2394cda061f3349ef3fe4d308edc52a77e1b4af550d703fde4e96727",
+      "parts": [
+        "(صيحة)"
+      ]
+    },
+    "MID_MV00_04_m008": {
+      "source_sha256": "ddb5e8343e4ab71beff027f8a27ea60988b107668be5fc50f709b51fd579f25f",
+      "parts": [
+        "بدء تنفيذ التدابير الدفاعية."
+      ]
+    },
+    "MID_MV00_04_m009": {
+      "source_sha256": "19a81f1a06c797597b6022572950f53ab2db9511bc793c52b4f5d6ba42dc8d3e",
+      "parts": [
+        "(شهقة هلع)"
+      ]
+    },
+    "MID_MV00_04_m010": {
+      "source_sha256": "79724af791aa572ed5cecc19e1bf668cd5eb938aa31267c4f8495d51f6d190d8",
+      "parts": [
+        "(زئير)"
+      ]
+    },
+    "MID_MV00_04_m011": {
+      "source_sha256": "61ee480445ce5ebd1c6a323aa996f9e6e969242707ca7849ea9ae106973dfdb5",
+      "parts": [
+        "(شهقة دهشة)"
+      ]
+    },
+    "MID_MV00_04_m012": {
+      "source_sha256": "5964b127021d49e014ddb6ae4ad7f4adb182c527964c5913dc5ed8c8532b5a39",
+      "parts": [
+        "(تأفف)"
+      ]
+    },
+    "MID_MV00_04_m013": {
+      "source_sha256": "0c131ad42374dafe3c975d5614800380d50cfc956a28fff105acb8823a9b86c2",
+      "parts": [
+        "لم أتوقع أن يرسلوا قواتهم\nإلى مكان بعيد كهذا."
+      ]
+    },
+    "MID_MV00_04_m014": {
+      "source_sha256": "1610be9a7fbb70161873d6694a53c055bba11c2d877b6bf02f80f92366b643c6",
+      "parts": [
+        "ما الذي لفت أنظارهم إلينا؟"
+      ]
+    },
+    "MID_MV00_04_m015": {
+      "source_sha256": "9c56fc9072cb209de2b57597c8fbbb244cebf5567c422290fb72092bb9d8f335",
+      "parts": [
+        "كدنا نفرغ من عملنا..."
+      ]
+    },
+    "MID_MV00_04_m016": {
+      "source_sha256": "7720e5766647bf6517ccad9a4331f63df9e788f1f55b96ba3baaa921567584e4",
+      "parts": [
+        "(تفكير)"
+      ]
+    },
+    "MID_MV00_04_m017": {
+      "source_sha256": "98931b6ae680b37399c58f06944b43ed6865febe9a61c894398c77af618a476e",
+      "parts": [
+        "(انتباه مفاجئ)"
+      ]
+    },
+    "MID_MV00_04_m018": {
+      "source_sha256": "c569724b9f53330ef7eb7fa810525f663c231694a202a8c7bc481e20dd2f0054",
+      "parts": [
+        "اجتاح العدو خط دفاع كونلون بأكمله."
+      ]
+    },
+    "MID_MV00_04_m019": {
+      "source_sha256": "1c02d88533195e2f3dabd3860f2d38313237389c3d5b0b33126c58815298d5c2",
+      "parts": [
+        "نحن هدفهم التالي."
+      ]
+    },
+    "MID_MV00_04_m020": {
+      "source_sha256": "f1b4ce195b78dfe8b0cb4863747f7518a2273d9ed2603999027dd483ccc4d7c4",
+      "parts": [
+        "(شهقة تنبه)"
+      ]
+    },
+    "MID_MV00_04_m021": {
+      "source_sha256": "e1b953f816649912498a5f3e471746999e9ab95633e11a1dbf98eec7d96aa769",
+      "parts": [
+        "(شهقة دهشة وعثرة خفيفة)"
+      ]
+    },
+    "MID_MV00_04_m032": {
+      "source_sha256": "cd98e631ac0727aa85001cd145564213ff9c133a3ce10787fe80af4c9e19ffcd",
+      "parts": [
+        "(لحظة إدراك)"
+      ]
+    },
+    "MID_MV00_04_m033": {
+      "source_sha256": "eabe4861f2903ab625c34116586fd91dfda76dda204034e7f26dea4243d58bb5",
+      "parts": [
+        "هونغ هوا!"
+      ]
+    },
+    "MID_MV00_04_m034": {
+      "source_sha256": "40cc6536095bfef71dcbd59413fbafebb9163829dd55e3a1041108005ac7dee2",
+      "parts": [
+        "نعم؟"
+      ]
+    },
+    "MID_MV00_04_m035": {
+      "source_sha256": "aa61ec7e7339f62c82d94acb43b49ba3baac5083171f2b9ec3abe8b1c901f0e8",
+      "parts": [
+        "أتستطيعين الصمود هناك؟\nلا أحتاج إلا إلى بعض الوقت لأتم عملي."
+      ]
+    },
+    "MID_MV00_04_m036": {
+      "source_sha256": "d52d855ba2c6f7f1c25d873ad92915b98ad66a448f08973e6dbc2ebee2d6c170",
+      "parts": [
+        "سأكسب لك ما يلزم من وقت."
+      ]
+    },
+    "MID_MV00_04_m037": {
+      "source_sha256": "e390746fbf07c8c37350c8d8ad19f3f199a3fd4e5755e969667cf98f185b021e",
+      "parts": [
+        "هونغ هوا... لا تموتي هناك."
+      ]
+    },
+    "MID_MV00_04_m038": {
+      "source_sha256": "20cefe6d1866bfc122260b5f6396fb311c6e5eaa4006ca623d3940e303565cf8",
+      "parts": [
+        "لن أموت. لا داعي للقلق."
+      ]
+    },
+    "MID_MV00_04_m039": {
+      "source_sha256": "a702a7c38ef93cf67d8d6105d6988cf07e3f25aeecac1ec843cef81fd8517f9c",
+      "parts": [
+        "اكتفي بإلهائهم.\nسأتولى الباقي هنا."
+      ]
+    },
+    "MID_MV00_04_m040": {
+      "source_sha256": "00a9e8a63b5dd8eaea814bc7a459c89dde9f006204a46508a3326b4a54bb3273",
+      "parts": [
+        "(صوت نفس)"
+      ]
+    }
+  },
+  "MV00_05.msbt.zst": {
+    "MID_MV00_05_m001": {
+      "source_sha256": "00a9e8a63b5dd8eaea814bc7a459c89dde9f006204a46508a3326b4a54bb3273",
+      "parts": [
+        "(صوت نفس)"
+      ]
+    },
+    "MID_MV00_05_m002": {
+      "source_sha256": "c6924efea5d189042c4071ae2cc9a8af89aada935f407e66d1df9a38c05fbdab",
+      "parts": [
+        "♪في مجرى الزمان... ها هو سنا النيران،\nوهج لا يخبو... وعلى صفحة النهر الجارف\nتتهادى شظايا الذكريات...♪"
+      ]
+    },
+    "MID_MV00_05_m003": {
+      "source_sha256": "0a0e5d7045d0449d5c14f864dce3fa6b2abc4aa4527f9657d82cff547811e89d",
+      "parts": [
+        "ها قد بلغت أنشودتي مسامعك أخيرا.\nطالت تلك السنين... أليس كذلك؟"
+      ]
+    }
+  }
+}
