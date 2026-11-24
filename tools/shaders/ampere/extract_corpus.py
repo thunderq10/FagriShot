@@ -34,6 +34,16 @@ Usage: python -I extract_corpus.py --romfs <romfs> [--main <main>] [--exefs <dir
 import argparse, collections, hashlib, mmap, os, shutil, struct, subprocess, sys, zlib
 from concurrent.futures import ProcessPoolExecutor
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+for _recomp in (os.path.join(HERE, '..', 'build', 'recomp'), os.path.join(HERE, '..', '..', '..', 'recomp')):
+    if os.path.isdir(os.path.join(_recomp, 'nxrecomp')):
+        sys.path.insert(0, os.path.abspath(_recomp))
+        break
+else:
+    raise ImportError('extract_corpus: cannot find the bundled nxrecomp package')
+
+from nxrecomp.nso import nso_info, nso_memory_image  # noqa: E402
+
 IDRK = b'IDRK0000'
 GLSLC_MAGIC = b'\x91\x68\x86\x19'
 CTRL_MAGIC = 0x98761234
@@ -400,20 +410,7 @@ def nso_image(d):
     """A compressed NSO (the ExeFS 'main' as dumped) -> its memory image: .text, .rodata, .data at their memory offsets
     (header +0x10 three {file off, mem off, size, align}, +0x60 compressed sizes, flag bits 0..2 = segment LZ4-compressed,
     bit 7 = ZBIC instead of LZ4, which is not supported here)."""
-    flags, = struct.unpack_from('<I', d, 0xc)
-    if flags & 0x80 and flags & 7:
-        raise RuntimeError('ZBIC-compressed NSO: pass the decompressed NSO instead')
-    segs = [struct.unpack_from('<4I', d, 0x10 + 0x10 * i) for i in range(3)]
-    csz = struct.unpack_from('<3I', d, 0x60)
-    img = bytearray(max(m + s for _, m, s, _ in segs))
-    for i, (fo, mo, sz, _) in enumerate(segs):
-        if flags & (1 << i):
-            import lz4.block
-            seg = lz4.block.decompress(bytes(d[fo:fo + csz[i]]), uncompressed_size=sz)
-        else:
-            seg = bytes(d[fo:fo + sz])
-        img[mo:mo + len(seg)] = seg
-    return bytes(img)
+    return bytes(nso_memory_image(nso_info(d)))
 
 
 def scan_main(path, out):

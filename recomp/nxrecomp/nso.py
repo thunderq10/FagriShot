@@ -6,25 +6,96 @@ import re
 import struct
 
 OFF = 0x1000                                      # file offset of the image in the ELF files nso_to_elf writes
+NSO_HEADER_SIZE = 0x100
+MAX_NSO_SEGMENT_SIZE = 0x20000000                 # 512 MiB; individual decoder/output allocation ceiling
+MAX_NSO_SEGMENT_GAP = 0x04000000                  # 64 MiB; normal NSO segments are page-adjacent
+MAX_NSO_IMAGE_SIZE = 0x40000000                   # 1 GiB; matches runtime/include/nxrt/module.h
+
+
+def nso_layout(d):
+    """Validated NSO metadata, before any segment decoding or image allocation."""
+    if len(d) < NSO_HEADER_SIZE:
+        raise ValueError('NSO header is truncated')
+    if d[:4] != b'NSO0':
+        raise ValueError('not an NSO executable')
+    flags = struct.unpack_from('<I', d, 12)[0]
+    bss = struct.unpack_from('<I', d, 0x3c)[0]
+    segs, file_extents = [], []
+    decoded_size = 0
+    previous_end = 0
+    for i, (ho, cso) in enumerate(((0x10, 0x60), (0x20, 0x64), (0x30, 0x68))):
+        foff, moff, size = struct.unpack_from('<III', d, ho)
+        csz = struct.unpack_from('<I', d, cso)[0]
+        compressed = bool(flags & (1 << i))
+        stored_size = csz if compressed else size
+        if size > MAX_NSO_SEGMENT_SIZE:
+            raise ValueError(f'NSO segment {i} size 0x{size:x} exceeds the limit')
+        if stored_size > MAX_NSO_SEGMENT_SIZE:
+            raise ValueError(f'NSO segment {i} stored size 0x{stored_size:x} exceeds the limit')
+        if bool(size) != bool(stored_size):
+            raise ValueError(f'NSO segment {i} has inconsistent stored and memory sizes')
+        if stored_size and foff < NSO_HEADER_SIZE:
+            raise ValueError(f'NSO segment {i} starts inside the header')
+        if foff > len(d) or stored_size > len(d) - foff:
+            raise ValueError(f'NSO segment {i} is outside the file')
+        end = moff + size
+        if moff < previous_end:
+            raise ValueError('NSO segments overlap or are out of order in memory')
+        if moff - previous_end > MAX_NSO_SEGMENT_GAP:
+            raise ValueError(f'NSO segment {i} gap 0x{moff - previous_end:x} exceeds the limit')
+        if end > MAX_NSO_IMAGE_SIZE:
+            raise ValueError(f'NSO segment {i} end 0x{end:x} exceeds the image limit')
+        decoded_size += size
+        if decoded_size > MAX_NSO_IMAGE_SIZE:
+            raise ValueError('NSO decoded segments exceed the aggregate limit')
+        if stored_size:
+            file_extents.append((foff, foff + stored_size))
+        segs.append({'file_offset': foff, 'vaddr': moff, 'size': size, 'stored_size': stored_size,
+                     'compressed': compressed})
+        previous_end = end
+    file_extents.sort()
+    if any(left[1] > right[0] for left, right in zip(file_extents, file_extents[1:])):
+        raise ValueError('NSO segments overlap in the file')
+    image_size = segs[-1]['vaddr'] + segs[-1]['size']
+    if image_size + bss > MAX_NSO_IMAGE_SIZE:
+        raise ValueError(f'NSO image and BSS span 0x{image_size + bss:x} exceeds the limit')
+    return {'flags': flags, 'segments': segs, 'bss': bss, 'image_size': image_size,
+            'build_id': d[0x40:0x60].hex()}
 
 
 def nso_info(d):
     """Segments (decompressed), build id and integrity of an NSO."""
-    import lz4.block
-    if d[:4] != b'NSO0':
-        raise ValueError('not an NSO executable')
-    flags = struct.unpack_from('<I', d, 12)[0]
+    layout = nso_layout(d)
+    flags = layout['flags']
+    if flags & 0x80 and flags & 7:
+        raise RuntimeError('ZBIC-compressed NSO: pass the decompressed NSO instead')
     segs = []
-    for i, (ho, cso) in enumerate(((0x10, 0x60), (0x20, 0x64), (0x30, 0x68))):
-        foff, moff, size = struct.unpack_from('<III', d, ho)
-        csz = struct.unpack_from('<I', d, cso)[0]
-        raw = d[foff:foff + csz]
-        if flags & (1 << i):
-            raw = lz4.block.decompress(raw, uncompressed_size=size)
-        assert len(raw) == size
+    for i, segment in enumerate(layout['segments']):
+        foff, size = segment['file_offset'], segment['size']
+        try:
+            raw = d[foff:foff + segment['stored_size']]
+            if segment['compressed']:
+                import lz4.block
+                raw = lz4.block.decompress(raw, uncompressed_size=size)
+        except MemoryError as exc:
+            raise ValueError(f'NSO segment {i} could not be allocated within the size limit') from exc
+        if len(raw) != size:
+            raise ValueError(f'NSO segment {i} decoded to {len(raw)} bytes, expected {size}')
         ok = hashlib.sha256(raw).digest() == d[0xA0 + i * 0x20:0xC0 + i * 0x20]
-        segs.append({'vaddr': moff, 'size': size, 'data': raw, 'sha_ok': ok})
-    return {'segments': segs, 'bss': struct.unpack_from('<I', d, 0x3c)[0], 'build_id': d[0x40:0x60].hex()}
+        segs.append({'vaddr': segment['vaddr'], 'size': size, 'data': raw, 'sha_ok': ok})
+    return {**layout, 'segments': segs}
+
+
+def nso_memory_image(info):
+    """Map validated, decoded NSO segments into one bounded memory image."""
+    try:
+        mem = bytearray(info['image_size'])
+        for segment in info['segments']:
+            v, raw = segment['vaddr'], segment['data']
+            mem[v:v + len(raw)] = raw
+        return bytes(mem)
+    except MemoryError as exc:
+        raise ValueError('NSO memory image could not be allocated within the size limit') from exc
 
 
 def nso_to_elf(d):
@@ -32,9 +103,7 @@ def nso_to_elf(d):
     info = nso_info(d)
     (tv, text), (rv, ro), (dv, data) = [(s['vaddr'], s['data']) for s in info['segments']]
     bss = info['bss']
-    mem = bytearray(dv + len(data))
-    for v, r in ((tv, text), (rv, ro), (dv, data)):
-        mem[v:v + len(r)] = r
+    mem = nso_memory_image(info)
     mod = struct.unpack_from('<I', text, 4)[0]
     assert mem[mod:mod + 4] == b'MOD0'
     dyn_off, bss_s, bss_e = struct.unpack_from('<iii', mem, mod + 4)
@@ -82,17 +151,21 @@ def nso_to_elf(d):
           phdr(2, 6, dyn, dynsz, dynsz, 8))
     eh = b'\x7fELF\x02\x01\x01' + bytes(9) + struct.pack('<HHIQQQIHHHHHH', 3, 183, 1, 0, 0x40, shoff, 0, 0x40, 0x38, 4,
                                                           0x40, len(secs), shstr_i)
-    out = bytearray(eh + ph)
-    out += bytes(OFF - len(out))
-    out += mem
-    out += blob
-    out += bytes(shoff - len(out))
-    out += b''.join(secs)
+    try:
+        out = bytearray(eh + ph)
+        out += bytes(OFF - len(out))
+        out += mem
+        out += blob
+        out += bytes(shoff - len(out))
+        out += b''.join(secs)
+        out = bytes(out)
+    except MemoryError as exc:
+        raise ValueError('converted NSO could not be allocated within the size limit') from exc
     meta = {'text': [tv, len(text)], 'rodata': [rv, len(ro)], 'data': [dv, len(data)], 'bss': [bss_s, bss_e - bss_s],
             'dynamic': dyn, 'dynsym': symtab, 'nsym': nsym, 'dynstr': strtab, 'mod0': mod, 'build_id': info['build_id'],
             'segments_sha_ok': all(s['sha_ok'] for s in info['segments']),
             'dt': {str(k): v for k, v in tags.items()}}
-    return bytes(out), meta
+    return out, meta
 
 
 def sdk_version(module):
