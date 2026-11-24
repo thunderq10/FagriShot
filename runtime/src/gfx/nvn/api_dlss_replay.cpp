@@ -26,6 +26,7 @@
 #include "api_dlss.h"
 #include "extras/framegen.h"
 #include "nvn_framegen.h"
+#include "visible_surface_rt.h"
 #include "extras/taau.h"
 #include "extras/temporal.h"
 #include "nvn_format.h"
@@ -113,6 +114,8 @@ struct NetGpu {
     bool dead = false;   // the back end shut down: the images are gone
     History hist;
     Img sdk[4];          // the SDK upscalers' colour, depth, motion (input size) and output (output size)
+    VisibleSurfaceRt rays;
+    Img reflected;
     bool sdk_valid = false;   // the SDK upscaler's own history holds this network's last frame
     VkExtent2D sdk_in = {}, sdk_out = {};
     Img dump;            // [dlss] dump_every: the input region as rgba16f
@@ -126,6 +129,9 @@ std::mutex g_mu;
 std::set<NetGpu*> g_nets;
 
 void destroy_images(NetGpu& n) {
+    n.rays.destroy();
+    if (n.reflected.img) device().destroy_image(n.reflected.img);
+    n.reflected = Img();
     for (Img& i : n.hist.img)
         if (i.img) device().destroy_image(i.img);
     for (Img& i : n.sdk)
@@ -596,6 +602,20 @@ void dlss_replay(gpu::Frame& f, Obj* o) {
     }
     tf.depth_inverted = (net.flags & kDlssFlagDepthInverted) != 0;
     tf.max_weight = s.max_weight;
+    if (device().features().ray_query && e->depth && tf.depth && tf.depth != tf.color &&
+        ensure(n.reflected, in_img, VK_FORMAT_R16G16B16A16_SFLOAT, "visible-surface reflections")) {
+        to_general(f, n.reflected);
+        if (n.rays.record(f, tf, n.reflected.img)) {
+            const bool no_motion = tf.motion == tf.color;
+            tf.color = n.reflected.img.view;
+            tf.color_layout = VK_IMAGE_LAYOUT_GENERAL;
+            tf.in_base[0] = tf.in_base[1] = 0.0f;
+            if (no_motion) {
+                tf.motion = tf.color;
+                tf.motion_layout = tf.color_layout;
+            }
+        }
+    }
 
     const auto now = std::chrono::steady_clock::now();
     const float frame_ms = n.evals ? static_cast<float>(std::clamp(std::chrono::duration<double, std::milli>(now - n.last).count(), 1.0, 100.0)) : 16.7f;
@@ -630,6 +650,9 @@ void dlss_replay(gpu::Frame& f, Obj* o) {
         const char* why = nullptr;
         if (run_sdk(f, u, n, *e, prep, in_img, out_img, tf.jitter, sdk_reset, frame_ms, &why)) {
             blit_out(f, n.sdk[3].img, out, ro);
+            if (!n.sdk_valid)
+                NXLOG_I(kTag, "network %u: %s evaluated scene colour, depth and motion at %ux%u -> %ux%u", net.id,
+                        upscaler_name(u), in_img.width, in_img.height, out_img.width, out_img.height);
             n.sdk_valid = true;
             n.sdk_in = in_img;
             n.sdk_out = out_img;

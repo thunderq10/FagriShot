@@ -12,6 +12,7 @@
 #include "nvn_app.h"
 #include "nvn_cmd.h"
 #include "nvn_impl.h"
+#include "nxrt/config.h"
 NXTEST_GROUP(gfx_nvn_dlss)
 
 using namespace nvnapp;
@@ -183,10 +184,10 @@ struct Pass {
                   const std::function<void(NVNcommandBuffer*)>& before = nullptr) {
         NVNcommandBuffer* c = cb->obj.get();
         app.api.nvnCommandBufferBeginRecording(c);
-        if (before) before(c);
         clear(c, *motion, mvx, mvy, 0, 0);
         const float zero[4] = {0.5f, 0, 0, 0};
         app.api.nvnCommandBufferClearTexture(c, depth->obj.get(), nullptr, nullptr, zero, NVN_CLEAR_COLOR_MASK_RGBA);
+        if (before) before(c);
         d.p_defaults(params);
         d.p_color(params, color->obj.get(), nullptr);
         d.p_in_size(params, in_w, in_h);
@@ -496,6 +497,52 @@ NXTEST(evaluate_records_one_command) {
 }
 
 // ---- the evaluation on the GPU ---------------------------------------------------------------------------------------------------------
+NXTEST(ray_query_floor_reflects_a_red_wall) {
+    struct Restore {
+        std::string old = nxrt::config_get_str("experimental", "rt_visible_reflections", "false");
+        ~Restore() { nxrt::config_set("experimental", "rt_visible_reflections", old.c_str()); }
+    } restore;
+    nxrt::config_set("experimental", "rt_visible_reflections", "true");
+    App app;
+    REQUIRE(app.init());
+    if (!app.dev->features().ray_query) {
+        nxtest::skip("GPU does not support the experimental Vulkan ray-query pass");
+        return;
+    }
+    constexpr int w = 192, h = 108;
+    Pass ps(app, w, h, w, h);
+    REQUIRE(ps.ok());
+    REQUIRE(ps.init(0));
+    std::vector<float> depth(w * h), rgba(w * h * 4);
+    // Analytic view-space scene: wall at Z=4, floor at Y=1 (image Y points down). Their corner projects to v=0.625.
+    for (int y = 0; y < h; ++y) {
+        float floor_inv_z = 2.f * (y + 0.5f) / h - 1.f;
+        for (int x = 0; x < w; ++x) {
+            size_t i = y * w + x;
+            depth[i] = std::max(0.25f, floor_inv_z);
+            rgba[i * 4 + (floor_inv_z > 0.25f ? 2 : 0)] = 1.f;
+            rgba[i * 4 + 3] = 1.f;
+        }
+    }
+    ps.set_color(rgba);
+    NVNcopyRegion region{0, 0, 0, w, h, 1};
+    auto depth_upload = app.make_buffer(depth.size() * sizeof(float), depth.data());
+    ps.evaluate(0, 0, true, 0, 0, 0, 0, [&](NVNcommandBuffer* cb) {
+        app.api.nvnCommandBufferCopyBufferToTexture(cb, depth_upload.address, ps.depth->obj.get(), nullptr, &region, NVN_COPY_FLAGS_NONE);
+    });
+    float sample[4];
+    ps.at(w/2, 3*h/4, sample);
+    std::printf("    reflected floor RGB: %.4f %.4f %.4f\n", sample[0], sample[1], sample[2]);
+    CHECK(sample[0] > 0.03f);
+    CHECK(sample[2] > 0.65f);
+    ps.at(w/2, h/3, sample);
+    CHECK(sample[0] > 0.98f);
+    CHECK(sample[2] < 0.01f);
+    const auto validation = app.validation();
+    CHECK(validation.errors == 0);
+    ps.d.n_finalize(ps.net());
+}
+
 NXTEST(constant_picture_fills_the_output) {
     App app;
     App::Opts o;

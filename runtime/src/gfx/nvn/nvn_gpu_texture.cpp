@@ -3318,6 +3318,15 @@ void tex_shutdown() {
     texup::shutdown();                // the cache upgrade threads stop (their work is dropped, never half written)
     texprep::release_staging();       // upload buffers of finished background results belong to the device that is going away
     astc_gpu_shutdown();              // [gfx] astc_gpu: its pipelines, scratch buffer and queued textures
+    // The shared GPU untile pipeline and its scratch ring belong to this Vulkan device.
+    // Shutdown has already waited for the last submission that could reference them.
+    for (auto& entry : g_untile.ring)
+        if (entry.scratch) device().destroy_buffer(entry.scratch);
+    if (g_untile.pool) vkDestroyDescriptorPool(vkdev(), g_untile.pool, nullptr);
+    if (g_untile.pipe) vkDestroyPipeline(vkdev(), g_untile.pipe, nullptr);
+    if (g_untile.layout) vkDestroyPipelineLayout(vkdev(), g_untile.layout, nullptr);
+    if (g_untile.set_layout) vkDestroyDescriptorSetLayout(vkdev(), g_untile.set_layout, nullptr);
+    g_untile = Untiler{};
     std::vector<TexGpu*> left;
     {
         std::lock_guard<std::mutex> lk(g_live_mu);

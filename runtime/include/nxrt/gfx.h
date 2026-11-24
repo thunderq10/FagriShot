@@ -123,6 +123,7 @@ struct DeviceFeatures {
     bool extended_dynamic_state3 = false, vertex_input_dynamic_state = false;
     bool graphics_pipeline_library = false;   // VK_EXT_graphics_pipeline_library (pipelines linked from separately compiled parts, S24)
     bool external_memory_host = false, push_descriptor = false;
+    bool ray_query = false;  // enabled for the experimental visible-surface reflection pass
     bool full_screen_exclusive = false;       // VK_EXT_full_screen_exclusive (Windows): swapchains say exclusive mode is not allowed
     bool dynamic_rendering_unused_attachments = false;
     bool transform_feedback = false, transform_feedback_queries = false;   // VK_EXT_transform_feedback (the feedback queries: transformFeedbackQueries)

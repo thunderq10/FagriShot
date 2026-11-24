@@ -484,6 +484,30 @@ the seven keys is set by an environment variable, the F1 preset row is locked an
 | `crowd_detail` | reduced | full | full | full |
 | `scenery_detail` | reduced | full | full | full |
 
+## Fortune's Weave experimental ray-traced reflections
+
+In the launcher, enable **Graphics > Experimental ray-traced reflections** and start the game. The corresponding `fefw.ini` setting defaults to `false`. Changes take effect at the next start.
+
+```ini
+[experimental]
+rt_visible_reflections = true
+```
+
+This pass uses the colour and depth that the game supplies to its upscaler. It reconstructs the camera-visible surfaces on a 96 × 54 grid, rejects triangles that cross large depth discontinuities, and builds Vulkan acceleration structures each frame. Hardware ray queries reflect the view direction from floor-like surfaces into this geometry. A hit picks up the scene colour at the intersection before temporal upscaling. The pass approximates the camera projection and surface normals. It has no material roughness or geometry for hidden and off-screen objects. Flat menus and movies can have no usable scene depth. The game's existing `[fefw] reflections` setting independently controls its own reflection quality.
+
+The GPU must expose Vulkan acceleration structures, ray queries, deferred host operations, buffer device addresses and push descriptors. If these are unavailable, or the scene has no depth input, the upscaler uses the original scene colour. NVIDIA DLSS is a separate choice. To use it on an RTX GPU, install the four Streamline files listed under `[upscale] dlss_dll` above, then select NVIDIA DLSS in Graphics. A log entry containing `DLSS (Streamline) evaluated scene colour, depth and motion` confirms a successful evaluation and gives its input and output dimensions.
+
+On an RTX 4090 Laptop GPU with driver 621.24 and Vulkan 1.4.357, the first 3D chapter dialogue produced 5,101 sampled rays, 1,190 triangle hits and 1,173 changed colours in one frame. The log samples one pixel per 8 × 8 tile. That run used DLSS at 2560 × 1440 to 3840 × 2160 and presented to a 1280 × 720 SDR window.
+
+For a repeatable headless check, run these commands from the checkout on a ray-query-capable Vulkan GPU:
+
+```powershell
+pwsh -File scripts/build_runtime.ps1 -BuildName player -Test
+.\work\runtime-release-player\runtime\nxrt_gfx_tests.exe gfx_nvn_dlss
+```
+
+The `ray_query_floor_reflects_a_red_wall` fixture supplies a blue floor and red wall with analytic depth, then checks the rendered pixels. On the tested GPU all 72 sampled rays hit the wall and changed the floor colour, with Vulkan validation enabled.
+
 ## Fortune's Weave keyboard keys (`controls.ini`, `[bindings.*]`)
 
 The factory keys (`games/fefw/fefw_game.cpp`, `kFactoryKeys`). Each one drives a Switch button or stick through the `[switch]` table; the stick keys push it all the way (two at once give a full diagonal). All of them are in `[bindings.all]`: the fefw module has no menu or play detection, so play mode's context stays `menu` and `[bindings.all]` is what applies everywhere.

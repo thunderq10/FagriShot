@@ -801,6 +801,16 @@ bool Device::init(const DeviceDesc& desc, std::string* error) {
     const bool x_vids = add_ext(VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME, &avids);
     const bool x_drua = add_ext(VK_EXT_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_EXTENSION_NAME, &adrua);
     const bool x_tfb = add_ext(VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME, &atfb);
+    VkPhysicalDeviceAccelerationStructureFeaturesKHR accel = {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR};
+    VkPhysicalDeviceRayQueryFeaturesKHR ray_query = {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_QUERY_FEATURES_KHR};
+    const bool want_rays = config_get_bool("experimental", "rt_visible_reflections", false);
+    const bool ray_extensions = want_rays && has_dext(VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME) &&
+                                has_dext(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME) && has_dext(VK_KHR_RAY_QUERY_EXTENSION_NAME);
+    if (ray_extensions) {
+        dev_exts.push_back(VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME);
+        add_ext(VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME, &accel);
+        add_ext(VK_KHR_RAY_QUERY_EXTENSION_NAME, &ray_query);
+    }
     // 8-bit index buffers (the EXT and the KHR extension share the feature struct)
     const bool x_u8 = add_ext(VK_EXT_INDEX_TYPE_UINT8_EXTENSION_NAME, &au8) || add_ext("VK_KHR_index_type_uint8", &au8);
     // pipelines linked from separately compiled shader parts (nvn_gpl.cpp): needs VK_KHR_pipeline_library next to the extension itself
@@ -846,6 +856,9 @@ bool Device::init(const DeviceDesc& desc, std::string* error) {
     a11.pNext = &a12; a12.pNext = &a13; a13.pNext = chain;
     VkPhysicalDeviceFeatures2 avail = {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2, &a11};
     vkGetPhysicalDeviceFeatures2(physical_, &avail);
+    features_.ray_query = ray_extensions && accel.accelerationStructure && ray_query.rayQuery && a12.bufferDeviceAddress && features_.push_descriptor;
+    if (want_rays) NXLOG_I(kTag, "experimental visible-surface reflections: Vulkan ray queries %s on %s",
+                            features_.ray_query ? "enabled" : "unavailable", props_.deviceName);
     // the same chain, as it was filled in, enables everything that is available (minus robustness, which costs speed)
     a13.dynamicRendering = VK_TRUE;
     a13.synchronization2 = VK_TRUE;
@@ -1042,6 +1055,7 @@ bool Device::init(const DeviceDesc& desc, std::string* error) {
     aci.instance = instance_;
     aci.vulkanApiVersion = VK_API_VERSION_1_3;
     aci.pVulkanFunctions = &vf;
+    if (features_.ray_query) aci.flags |= VMA_ALLOCATOR_CREATE_BUFFER_DEVICE_ADDRESS_BIT;
     if (x_membudget) aci.flags |= VMA_ALLOCATOR_CREATE_EXT_MEMORY_BUDGET_BIT;
     g_budget_exact = x_membudget;
     const bool mem_priority = x_mpri && ampri.memoryPriority;

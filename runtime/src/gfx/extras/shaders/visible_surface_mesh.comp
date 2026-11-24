@@ -1,0 +1,40 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+#version 460
+layout(local_size_x=8, local_size_y=8) in;
+layout(set=0,binding=0) uniform sampler2D sceneDepth;
+layout(std430,set=0,binding=1) writeonly buffer Triangles { vec4 points[]; };
+layout(push_constant) uniform Params {
+    ivec2 size;
+    ivec2 colorBase;
+    vec2 depthBase;
+    vec2 depthRatio;
+    int reversed;
+} pc;
+const uvec2 grid = uvec2(96,54);
+vec3 position(vec2 uv) {
+    // Build the vertex at the centre of the texel whose depth we actually read. Using the
+    // grid boundary here shifts shallow planes towards the camera and rays hit the source floor.
+    ivec2 scenePixel = clamp(ivec2(uv * vec2(pc.size)), ivec2(0), pc.size - 1);
+    vec2 centre = vec2(scenePixel) + 0.5;
+    ivec2 pixel = ivec2(pc.depthBase + centre * pc.depthRatio);
+    float d = texelFetch(sceneDepth, clamp(pixel,ivec2(0),textureSize(sceneDepth,0)-1),0).r;
+    float invZ = pc.reversed != 0 ? d : 1.0-d;
+    if (!(invZ > 1e-6)) return vec3(0);
+    // Relative view space. Absolute near distance cancels from all reflected ray tests.
+    vec2 ndc = centre / vec2(pc.size) * 2.0 - 1.0;
+    return vec3(ndc*vec2(float(pc.size.x)/float(pc.size.y),1.0),1.0)/invZ;
+}
+void triangle(uint index, vec3 a, vec3 b, vec3 c) {
+    // Avoid joining foreground and background silhouettes with invented triangles.
+    float lo = min(a.z,min(b.z,c.z)), hi = max(a.z,max(b.z,c.z));
+    if (!(lo > 0.0) || hi > 1.18*lo) a=b=c=vec3(0);
+    points[index]=vec4(a,0); points[index+1]=vec4(b,0); points[index+2]=vec4(c,0);
+}
+void main() {
+    uvec2 cell=gl_GlobalInvocationID.xy;
+    if(any(greaterThanEqual(cell,grid))) return;
+    vec2 uv=vec2(cell)/vec2(grid), stepUV=1.0/vec2(grid);
+    vec3 a=position(uv), b=position(uv+vec2(stepUV.x,0)), c=position(uv+vec2(0,stepUV.y)), d=position(uv+stepUV);
+    uint start=6*(cell.y*grid.x+cell.x);
+    triangle(start,a,b,c); triangle(start+3,b,d,c);
+}
