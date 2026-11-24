@@ -68,6 +68,27 @@ std::vector<uint8_t> read_file(const char* p) {
     return v;
 }
 
+void put_u32(std::vector<uint8_t>& v, size_t off, uint32_t value) { std::memcpy(v.data() + off, &value, sizeof value); }
+
+std::vector<uint8_t> minimal_nso(bool lz4 = false) {
+    const uint32_t stored_size = lz4 ? 9 : 8;
+    std::vector<uint8_t> v(0x100 + stored_size, 0);
+    std::memcpy(v.data(), "NSO0", 4);
+    put_u32(v, 0x0C, lz4 ? 1 : 0);
+    put_u32(v, 0x10, 0x100);       // text: eight decoded bytes at image offset zero
+    put_u32(v, 0x14, 0);
+    put_u32(v, 0x18, 8);
+    put_u32(v, 0x20, 0x100 + stored_size);       // empty rodata and data segments follow the text
+    put_u32(v, 0x24, 8);
+    put_u32(v, 0x30, 0x100 + stored_size);
+    put_u32(v, 0x34, 8);
+    if (lz4) {
+        put_u32(v, 0x60, stored_size);
+        v[0x100] = 0x80;            // one final sequence containing eight literal zero bytes
+    }
+    return v;
+}
+
 }  // namespace
 
 NXTEST(map_and_symbols) {
@@ -362,5 +383,41 @@ NXTEST(malformed_images_are_rejected) {
         if (m) module_link_all();
         modules_unload_all();
     }
+    reset();
+}
+
+NXTEST(well_formed_nso_segments_load) {
+    reset();
+    std::vector<uint8_t> nso = minimal_nso();
+    std::string err;
+    Module* m = module_load_nso_memory(nso.data(), nso.size(), {}, &err);
+    REQUIRE(m);
+    CHECK_EQ(m->size(), 0x1000u);
+    reset();
+    nso = minimal_nso(true);
+    m = module_load_nso_memory(nso.data(), nso.size(), {}, &err);
+    REQUIRE(m);
+    CHECK_EQ(m->size(), 0x1000u);
+    reset();
+}
+
+NXTEST(wrapped_nso_segment_span_is_rejected) {
+    reset();
+    std::vector<uint8_t> nso = minimal_nso(true);
+    put_u32(nso, 0x14, 0x1001);
+    put_u32(nso, 0x18, 0xFFFFFFFFu);   // the old 32-bit end calculation wrapped to 0x1000
+    put_u32(nso, 0x60, 2);
+    nso[0x100] = 0x10;                 // one literal byte, formerly copied beyond the undersized image
+    nso[0x101] = 0x41;
+    put_u32(nso, 0x20, 0x102);
+    put_u32(nso, 0x24, 0x1000);
+    put_u32(nso, 0x28, 0);
+    put_u32(nso, 0x30, 0x102);
+    put_u32(nso, 0x34, 0x1000);
+    put_u32(nso, 0x38, 0);
+    std::string err;
+    CHECK(module_load_nso_memory(nso.data(), nso.size(), {}, &err) == nullptr);
+    CHECK(err.find("overlap") != std::string::npos);
+    CHECK(modules().empty());
     reset();
 }
