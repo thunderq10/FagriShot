@@ -33,7 +33,8 @@ class PortableBuild(unittest.TestCase):
         self.enterContext(patch.multiple(player, ROOT=self.root, PRIVATE=private, EXE=self.exe, CATALOG=catalog))
         self.revision = self.enterContext(patch.object(player, "source_state", return_value={"commit": "fixture"}))
         self.backend = self.enterContext(patch.object(player, "run", side_effect=self.compile))
-        self.resources = {"fefw_rt.dll": b"runtime", "fonts/DejaVuSans.ttf": b"font", "locales/en.ini": b"locale",
+        self.resources = {"FagriShotLauncher.exe": b"launcher", "fefw_rt.dll": b"runtime",
+                          "fonts/DejaVuSans.ttf": b"font", "locales/en.ini": b"locale",
                           "tools/build/fefw_build.py": b"driver", "tools/build/sdk/fefw_rt.lib": b"import",
                           "tools/build/zig/zig.exe": b"compiler", "tools/python/python.exe": b"python"}
         self.write_package()
@@ -87,7 +88,7 @@ class PortableBuild(unittest.TestCase):
         self.revision.return_value = {"commit": "frontend-change"}
         self.build()
         self.backend.assert_called_once()
-        self.assertEqual(json.loads(self.stamp.read_bytes())["source"], self.revision.return_value)
+        self.assertEqual(json.loads(self.stamp.read_bytes())["source"], {"commit": "fixture"})
         self.revision.return_value = {"commit": "compiler-change"}
         self.resources["tools/build/zig/zig.exe"] = b"new compiler"
         self.write_package()
@@ -102,6 +103,52 @@ class PortableBuild(unittest.TestCase):
         self.build()
         self.assertEqual(self.backend.call_count, 2)
         self.assertEqual((self.exe.parent / "fefw.sites").read_bytes(), b"original test sites")
+
+    def legacy_install(self):
+        self.build()
+        record = json.loads(self.stamp.read_bytes())
+        del record["build_id"]  # The previous release kept this only in verified-link.json.
+        self.stamp.write_text(json.dumps(record))
+        ready = {"source": record["source"], "exe_sha256": record["exe_sha256"], "cache_key": "a" * 64}
+        (self.stamp.parent / "play-ready.json").write_text(json.dumps(ready))
+        settings = self.root / "profile/settings"
+        settings.mkdir(parents=True)
+        (settings / "fefw.ini").write_text(f'[fs]\nexefs = "{self.stamp.parent / "prepared-exefs"}"\n')
+        new_install = self.root / "new release"
+        for name in [*self.resources, "player-package.json"]:
+            dst = new_install / name
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(self.root / name, dst)
+        private = self.root / "profile/build"
+        return new_install, private, settings, ready
+
+    def test_adopts_old_build_and_relocates_launcher_without_compiling(self):
+        install, private, settings, ready = self.legacy_install()
+        exe = private / "game/FagriShot.exe"
+        self.revision.return_value = {"commit": "launcher-only-update"}
+        with patch.multiple(player, ROOT=install, PRIVATE=private, EXE=exe):
+            player.open_player_build(settings)
+            record = json.loads((private / "linked.json").read_bytes())
+            self.assertTrue(player.compatible_link(record))
+            self.assertEqual(exe.read_bytes(), self.exe.read_bytes())
+            self.assertEqual(json.loads((private / "play-ready.json").read_bytes()), ready)
+            self.assertEqual((exe.parent / "player-root.txt").read_text(), str(install))
+            self.build()
+        moved = self.root / "renamed release"
+        install.rename(moved)
+        with patch.multiple(player, ROOT=moved, PRIVATE=private, EXE=exe):
+            player.open_player_build(settings)
+            self.assertEqual((exe.parent / "player-root.txt").read_text(), str(moved))
+            self.assertEqual((exe.parent / "FagriShotLauncher.exe").read_bytes(), self.resources["FagriShotLauncher.exe"])
+        self.backend.assert_called_once()
+
+    def test_damaged_previous_game_cannot_publish_a_managed_receipt(self):
+        install, private, settings, _ = self.legacy_install()
+        self.exe.write_bytes(b"damaged installation")
+        with patch.multiple(player, ROOT=install, PRIVATE=private, EXE=private / "game/FagriShot.exe"):
+            player.open_player_build(settings)
+        self.assertFalse((private / "linked.json").exists())
+        self.assertFalse((private / "play-ready.json").exists())
 
     def test_failed_or_wrong_link_is_never_published(self):
         self.backend.side_effect = ValueError("compiler failed")

@@ -56,6 +56,37 @@ class CliTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Unsupported settings version"):
             self.invoke("configure", "--exefs", self.exefs, "--romfs", self.romfs)
         self.assertEqual(self.config.read_bytes(), future)
+
+    def test_sibling_game_folders_are_detected_and_saved_external_folders_take_priority(self):
+        install = self.root / "player"
+        for folder in (install / "exefs", self.exefs):
+            folder.mkdir(parents=True)
+            (folder / "main").touch()
+            (folder / "main.npdm").touch()
+        (install / "romfs").mkdir()
+        self.romfs.mkdir(parents=True)
+        with patch.object(cli, "ROOT", install):
+            status = json.loads(self.invoke("status", "--json"))
+            self.assertTrue(status["locations_detected"])
+            self.assertFalse(status["locations_saved"])
+            self.assertEqual(status["romfs"], str(install / "romfs"))
+            self.invoke("configure", "--exefs", self.exefs, "--romfs", self.romfs)
+            status = json.loads(self.invoke("status", "--json"))
+            self.assertFalse(status["locations_detected"])
+            self.assertEqual(status["exefs"], str(self.exefs))
+            (self.exefs / "main").unlink()
+            self.assertTrue(json.loads(self.invoke("status", "--json"))["locations_detected"])
+
+    def test_missing_bundled_tool_names_its_file_and_the_repair(self):
+        from fagrishot.requirements import PLAYER_TOOLS, check_tools
+        for rel in PLAYER_TOOLS.values():
+            path = self.root / rel
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.touch()
+        check_tools(self.root)
+        (self.root / PLAYER_TOOLS["Bundled Python"]).unlink()
+        with self.assertRaisesRegex(ValueError, r"tools/python/python\.exe.*Extract the entire"):
+            check_tools(self.root)
         self.assertIn("No backups", self.invoke("backups"))
 
     def test_configure_rejects_overlapping_folders_before_writing(self):
@@ -138,14 +169,35 @@ class CliTests(unittest.TestCase):
             self.assertFalse(json.loads(self.invoke("status", "--json"))["play_ready"])
             (cache / "ready.json").write_text("{}")
             self.assertTrue(json.loads(self.invoke("status", "--json"))["play_ready"])
-            with patch("fagrishot.shaders.require_ready", side_effect=ValueError("cache changed")), \
-                    self.assertRaisesRegex(ValueError, "cache changed"):
+            previous = (private / "play-ready.json").read_bytes()
+            with patch("fagrishot.shaders.require_ready", side_effect=PermissionError("cache temporarily locked")), \
+                    self.assertRaisesRegex(PermissionError, "cache temporarily locked"):
                 self.invoke("play")
-            self.assertFalse(json.loads(self.invoke("status", "--json"))["play_ready"])
+            self.assertEqual((private / "play-ready.json").read_bytes(), previous)
+            self.assertTrue(json.loads(self.invoke("status", "--json"))["play_ready"])
             supported.side_effect = cli.InputError("wrong game folders")
             with self.assertRaisesRegex(cli.InputError, "wrong game folders"):
                 self.invoke(*args)
             self.assertEqual(build.call_count, 2)
+
+    def test_existing_build_can_play_after_its_old_readiness_hint_is_lost(self):
+        paths = {"exefs": self.exefs, "romfs": self.romfs}
+        for folder in paths.values():
+            folder.mkdir(parents=True)
+        (self.exefs / "main").touch()
+        self.config.write_text(json.dumps({key: str(value) for key, value in paths.items()}))
+        cache = self.dirs["caches"] / "shaders" / ("c" * 64)
+        cache.mkdir(parents=True)
+        (cache / "ready.json").write_text("{}")
+        package = self.root / "player-package.json"
+        package.touch()
+        linked = {"input": {"romfs": {}, "exefs": {}}}
+        with (patch.object(cli, "PRIVATE", self.root / "build"), patch.object(cli, "PLAYER_PACKAGE", package),
+              patch("fagrishot.player_build.compatible_link", return_value=True),
+              patch("fagrishot.shaders.shader_cache", return_value=cache)):
+            self.assertTrue(cli.play_ready(paths, self.dirs, linked))
+            (cache / "ready.json").unlink()
+            self.assertFalse(cli.play_ready(paths, self.dirs, linked))
 
     def test_explicit_enrollment_and_inspection_of_private_trial(self):
         private = self.root / "private"

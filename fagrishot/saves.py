@@ -77,7 +77,7 @@ def _prune(dirs):
             print(f"Could not verify or prune backup {key}. Inspect it before removing any files.", file=sys.stderr)
 
 
-def snapshot(dirs, *, apply_retention=True):
+def snapshot(dirs, *, apply_retention=True, reuse_latest=False):
     saves, backups = dirs["saves"], dirs["backups"]
     if not saves.exists():
         return None
@@ -86,6 +86,16 @@ def snapshot(dirs, *, apply_retention=True):
         return None
     backups.mkdir(parents=True, exist_ok=True)
     ordinary(backups)
+    if reuse_latest:
+        previous = list_backups(dirs)
+        if previous:
+            latest = previous[-1]
+            try:
+                if verify(backups / latest, latest) == inventory(saves):
+                    return latest
+            except (OSError, ValueError):
+                # An unreadable or damaged backup cannot cover the current save.
+                pass
     key = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ-") + uuid.uuid4().hex[:8]
     temp = backups / ("pending-" + key)
     temp.mkdir()

@@ -26,13 +26,13 @@ function controls() {
   const exefs = q('exefs').value;
   const romfs = q('romfs').value;
   const bothEntered = Boolean(exefs.trim() && romfs.trim());
-  const saved = status?.locations_saved && exefs === status.exefs && romfs === status.romfs;
+  const selected = (status?.locations_saved || status?.locations_detected) && exefs === status.exefs && romfs === status.romfs;
   const needsRepair = Boolean(status?.settings_warning);
   for (const button of document.querySelectorAll('[data-action],[data-pick]')) {
     button.disabled = blocked;
   }
-  q('build-code').disabled = blocked || !bothEntered || !status?.build_available;
-  q('play').disabled = blocked || needsRepair || !saved || !bothEntered || status?.play_ready !== true;
+  q('build-code').disabled = blocked || !bothEntered || !status?.build_available || Boolean(status?.setup_error || status?.cpu_error);
+  q('play').disabled = blocked || needsRepair || Boolean(status?.cpu_error) || !selected || !bothEntered || status?.play_ready !== true;
   q('restore').disabled = q('snapshot').disabled = blocked || !q('snapshot').value;
   q('exefs').disabled = q('romfs').disabled = blocked;
   q('cancel').hidden = !active?.canCancel;
@@ -40,38 +40,42 @@ function controls() {
   if (status) {
     q('input-state').textContent = !exefs.trim() && !romfs.trim() ? 'Choose both folders' :
       !exefs.trim() ? 'Choose ExeFS' : !romfs.trim() ? 'Choose RomFS' :
-      !saved ? 'New folder selection' : status.play_ready ? 'Ready to play' : !status.exefs_present ? 'Awaiting ExeFS' :
-      !status.romfs_present ? 'Awaiting RomFS' : 'Folders found';
+      !selected ? 'New folder selection' : status.play_ready ? 'Ready to play' : !status.exefs_present ? 'Awaiting ExeFS' :
+      !status.romfs_present ? 'Awaiting RomFS' : status.locations_detected ? 'Detected beside launcher' : 'Folders found';
   }
 }
 
 async function refresh(reloadLocations = false) {
   const next = await invoke('overview');
   for (const key of ['exefs','romfs']) {
-    const previous = status?.locations_saved ? status[key] : '';
-    if (!loadedLocations || reloadLocations || q(key).value === previous) q(key).value = next.locations_saved ? next[key] : '';
+    const previous = status?.locations_saved || status?.locations_detected ? status[key] : '';
+    if (!loadedLocations || reloadLocations || q(key).value === previous) {
+      q(key).value = next.locations_saved || next.locations_detected ? next[key] : '';
+    }
   }
   loadedLocations = true;
   status = next;
   for (const key of ['settings','saves','logs']) q('loc-'+key).textContent = status[key];
-  q('settings-warning').textContent = status.settings_warning || '';
-  q('settings-warning').hidden = !status.settings_warning;
+  q('settings-warning').textContent = [status.settings_warning, status.setup_error, status.cpu_error].filter(Boolean).join(' ');
+  q('settings-warning').hidden = !q('settings-warning').textContent;
   const snapshots = q('snapshot');
   const previous = snapshots.value;
   snapshots.replaceChildren();
   for (const id of [...status.backup_ids].reverse()) snapshots.add(new Option(id,id));
   if (status.backup_ids.includes(previous)) snapshots.value = previous;
   if (!snapshots.options.length) snapshots.add(new Option('No backups yet',''));
-  q('build-help').textContent = status.build_available
-    ? 'Build game code verifies both folders, compiles your game and prepares its shaders. The first build can take a while.'
-    : 'To build the game, extract the complete FagriShot Windows player ZIP into a fresh folder and open its launcher.';
+  q('build-help').textContent = status.play_ready ? 'Your build is ready. Choose Play to start the game.' :
+    status.build_available ? 'Choose Build game code once to verify your files, compile the game and prepare shaders. On your next visit, choose Play.' :
+    'To build the game, extract the complete FagriShot Windows player ZIP and open its launcher.';
   q('retry').hidden = true;
   controls();
 }
 
 function statusFailed(error) {
   status = undefined;
-  q('feedback').textContent = `Could not load launcher status. ${error}`;
+  q('settings-warning').textContent = String(error);
+  q('settings-warning').hidden = false;
+  q('feedback').textContent = 'Could not load launcher status.';
   q('retry').hidden = false;
   controls();
 }
@@ -97,7 +101,7 @@ async function run(action) {
   q('build-progress').hidden = !building;
   if (building) q('build-phase').textContent = 'Starting build…';
   controls();
-  q('feedback').textContent = 'Running\u2026';
+  q('feedback').textContent = action === 'play' ? 'Opening your built game…' : 'Running\u2026';
   q('output').replaceChildren();
   try {
     await invoke('action',{action, exefs:q('exefs').value, romfs:q('romfs').value, backupId});

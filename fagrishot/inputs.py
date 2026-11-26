@@ -9,6 +9,8 @@ from pathlib import Path
 import stat
 import struct
 
+from .file_state import directory_stamp, read_verified, write_verified
+
 
 class InputError(ValueError):
     """An input or catalog cannot be used for the requested operation."""
@@ -132,7 +134,8 @@ def _romfs_file(path, listed):
         _regular_romfs_entry(end)
         if size != start.st_size or _stable_stat(start) != _stable_stat(end):
             raise InputError(changed)
-    return size, digest.digest()
+    # NTFS directory metadata for one hard link may lag writes made via a different name.
+    return size, digest.digest(), start.st_nlink == end.st_nlink == 1
 
 
 def _romfs_tree(root, workers=4):
@@ -140,12 +143,14 @@ def _romfs_tree(root, workers=4):
     digest = hashlib.sha256(b"FagriShot extracted tree v1\0")
     folders = []
     files = total = 0
+    single_links = True
 
     def entries(folder, prefix):
         before = os.lstat(folder)
         _regular_romfs_entry(before)
         if not stat.S_ISDIR(before.st_mode):
-            raise InputError("RomFS directory changed during inspection. Finish extracting it and retry.")
+            raise InputError(f"RomFS directory changed during inspection: {os.path.relpath(folder, root)}. "
+                             "Finish extracting it and retry.")
         folders.append((folder, _stable_stat(before)))
         with os.scandir(folder) as scan:
             children = sorted(scan, key=lambda entry: entry.name.encode("utf-8"))
@@ -161,11 +166,12 @@ def _romfs_tree(root, workers=4):
                 yield b"F" + framed, executor.submit(_romfs_file, entry.path, listed)
 
     def append(item):
-        nonlocal files, total
+        nonlocal files, total, single_links
         framed, future = item
         digest.update(framed)
         if future is not None:
-            size, file_hash = future.result()
+            size, file_hash, single = future.result()
+            single_links &= single
             digest.update(struct.pack(">Q", size) + file_hash)
             files += 1
             total += size
@@ -182,10 +188,25 @@ def _romfs_tree(root, workers=4):
         after = os.lstat(folder)
         _regular_romfs_entry(after)
         if not stat.S_ISDIR(after.st_mode) or before != _stable_stat(after):
-            raise InputError("RomFS directory changed during inspection. Finish extracting it and retry.")
+            raise InputError(f"RomFS directory changed during inspection: {os.path.relpath(folder, root)}. "
+                             "Finish extracting it and retry.")
     if not files:
         raise InputError("RomFS is empty. Select the extracted content directory.")
-    return {"tree_sha256": digest.hexdigest(), "files": files, "bytes": total}
+    return {"tree_sha256": digest.hexdigest(), "files": files, "bytes": total}, single_links
+
+
+def _verified_romfs(root, cache, refresh):
+    stamp = directory_stamp(root) if cache is not None else None
+    if stamp and not refresh:
+        record = read_verified(cache, b"romfs")
+        if isinstance(record, dict) and record.get("stamp") == stamp:
+            return record["tree"]
+    tree, single_links = _romfs_tree(root)
+    if stamp and single_links:
+        if directory_stamp(root) != stamp:
+            raise InputError("RomFS changed during verification. Finish extracting it and retry.")
+        write_verified(cache, b"romfs", {"stamp": stamp, "tree": tree})
+    return tree
 
 
 def _module(header, size):
@@ -291,7 +312,7 @@ def _cnmt(path, kind):
     return {**metadata, "size": size, "sha256": digest.hex()}
 
 
-def inspect_inputs(exefs, romfs, *, base_cnmt=None, update_cnmt=None):
+def inspect_inputs(exefs, romfs, *, base_cnmt=None, update_cnmt=None, romfs_cache=None, refresh=False):
     """Inventory the selected ExeFS and effective RomFS. Optional raw CNMTs identify releases."""
     exe_root = _plain_path(exefs, "ExeFS", directory=True)
     rom_root = _plain_path(romfs, "RomFS", directory=True)
@@ -301,7 +322,8 @@ def inspect_inputs(exefs, romfs, *, base_cnmt=None, update_cnmt=None):
         if base and update and (base["id"] != update["application_id"] or base["patch_id"] != update["id"]):
             raise InputError("The base and update CNMTs identify different applications. Select a matching pair.")
         inventory = inspect_exefs(exe_root)
-        return {**inventory, "base_cnmt": base, "update_cnmt": update, "romfs": _romfs_tree(rom_root)}
+        return {**inventory, "base_cnmt": base, "update_cnmt": update,
+                "romfs": _verified_romfs(rom_root, romfs_cache, refresh)}
     except (OSError, UnicodeError):
         raise InputError("Could not read all game inputs. Check extraction, permissions and filenames.") from None
 

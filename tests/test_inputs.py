@@ -49,6 +49,45 @@ def cnmt(patch=False, application=PROGRAM):
 
 
 class GameInputs(unittest.TestCase):
+    def test_repeat_romfs_verification_detects_nested_replacement_and_preserved_mtime(self):
+        nested = self.rom / "nest"
+        nested.mkdir()
+        leaf = nested / "game-data"
+        leaf.write_bytes(b"one")
+        receipt = self.root / "verified-romfs.json"
+        first = inspect_inputs(self.exe, self.rom, romfs_cache=receipt)
+        if not receipt.is_file():
+            self.skipTest("This filesystem requires full content verification")
+        with patch.object(inputs, "_romfs_file", side_effect=AssertionError("unexpected content read")):
+            self.assertEqual(inspect_inputs(self.exe, self.rom, romfs_cache=receipt), first)
+            (self.exe / "main").write_bytes(nso(b"different executable"))
+            self.assertNotEqual(inspect_inputs(self.exe, self.rom, romfs_cache=receipt)["exefs"], first["exefs"])
+        receipt.write_text("incomplete verification receipt")
+        with patch.object(inputs, "_romfs_file", wraps=inputs._romfs_file) as read:
+            self.assertEqual(inspect_inputs(self.exe, self.rom, romfs_cache=receipt)["romfs"], first["romfs"])
+            self.assertGreater(read.call_count, 0)
+        saved = leaf.stat()
+        leaf.write_bytes(b"two")
+        os.utime(leaf, ns=(saved.st_atime_ns, saved.st_mtime_ns))
+        updated = inspect_inputs(self.exe, self.rom, romfs_cache=receipt)
+        self.assertNotEqual(updated["romfs"], first["romfs"])
+        second = nested / "renamed"
+        leaf.rename(second)
+        self.assertNotEqual(inspect_inputs(self.exe, self.rom, romfs_cache=receipt)["romfs"], updated["romfs"])
+
+    def test_hard_linked_inputs_are_content_verified_on_every_launch(self):
+        leaf = self.rom / "asset"
+        leaf.write_bytes(b"first")
+        alias = self.root / "external-alias"
+        os.link(leaf, alias)
+        receipt = self.root / "verified-romfs.json"
+        before = inspect_inputs(self.exe, self.rom, romfs_cache=receipt)
+        self.assertFalse(receipt.exists())
+        saved = leaf.stat()
+        alias.write_bytes(b"other")
+        os.utime(alias, ns=(saved.st_atime_ns, saved.st_mtime_ns))
+        self.assertNotEqual(inspect_inputs(self.exe, self.rom, romfs_cache=receipt)["romfs"], before["romfs"])
+
     def setUp(self):
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)

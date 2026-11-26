@@ -33,6 +33,17 @@ class StorageTests(unittest.TestCase):
         self.assertEqual(len(saved), 2)
         self.assertEqual((self.dirs["backups"] / saved[-1] / "data/slot").read_bytes(), b"second synthetic save")
 
+    def test_automatic_backup_reuses_only_an_intact_snapshot_of_current_saves(self):
+        first = snapshot(self.dirs, reuse_latest=True)
+        self.assertEqual(snapshot(self.dirs, reuse_latest=True), first)
+        (self.dirs["backups"] / first / "data/slot").write_bytes(b"damaged")
+        second = snapshot(self.dirs, reuse_latest=True)
+        self.assertNotEqual(second, first)
+        self.slot.write_bytes(b"new save")
+        third = snapshot(self.dirs, reuse_latest=True)
+        self.assertNotEqual(third, second)
+        self.assertEqual((self.dirs["backups"] / third / "data/slot").read_bytes(), b"new save")
+
     def test_corruption_rejected_before_existing_saves_touched(self):
         key = snapshot(self.dirs)
         (self.dirs["backups"] / key / "data/slot").write_bytes(b"corrupt")
@@ -173,7 +184,8 @@ class StorageTests(unittest.TestCase):
             restore(self.dirs, "../another-app")
         with patch("sys.platform","win32"), patch.dict("os.environ",{"LOCALAPPDATA":str(self.root)}):
             self.assertEqual(locations()["settings"], self.root / "FagriShot/settings")
-            self.assertEqual(len(set(locations().values())),6)
+            self.assertEqual(locations()["build"], self.root / "FagriShot/build")
+            self.assertTrue(all(path.is_dir() for path in locations().values()))
 
     def test_namespace_requires_absolute_windows_location_and_checks_each_input(self):
         with patch("sys.platform", "win32"):

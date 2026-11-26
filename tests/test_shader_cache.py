@@ -1,5 +1,6 @@
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import struct
@@ -187,7 +188,14 @@ OpFunctionEnd
             self.assertEqual(marker["tables"]["shader-report.json"], hashlib.sha256(report_file.read_bytes()).hexdigest())
             manifest = (cache / "corpus/manifest.tsv").read_text(encoding="utf-8")
             self.assertIn(asset.name, manifest)
-            next((cache / "spirv").glob("*.spv")).write_bytes(b"changed")
+            spv = next((cache / "spirv").glob("*.spv"))
+            if (cache / "verified-modules.json").exists():
+                with patch.object(shaders, "sha", wraps=shaders.sha) as digest:
+                    self.assertEqual(cache, shaders.require_ready(inv, dirs))
+                    self.assertNotIn(spv, [call.args[0] for call in digest.call_args_list])
+            original = spv.stat()
+            spv.write_bytes(bytes(original.st_size))
+            os.utime(spv, ns=(original.st_atime_ns, original.st_mtime_ns))
             with self.assertRaisesRegex(ValueError, "missing or changed"):
                 shaders.require_ready(inv, dirs)
             self.assertEqual(cache, shaders.prepare_shaders({"romfs": romfs}, inv, dirs, 1))

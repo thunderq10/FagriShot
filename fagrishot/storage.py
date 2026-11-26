@@ -7,7 +7,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 
-def locations():
+def locations(*, create=True):
     if sys.platform == "win32":
         local = Path(os.environ.get("LOCALAPPDATA", ""))
         if not local.is_absolute():
@@ -24,8 +24,12 @@ def locations():
         data = xdg("XDG_DATA_HOME", ".local/share")
         state = xdg("XDG_STATE_HOME", ".local/state")
         cache = xdg("XDG_CACHE_HOME", ".cache")
-    return {"settings": config, "saves": data / "saves", "backups": data / "backups",
-            "mods": data / "mods", "logs": state / "logs", "caches": cache}
+    folders = {"settings": config, "saves": data / "saves", "backups": data / "backups",
+               "mods": data / "mods", "logs": state / "logs", "caches": cache, "build": data / "build"}
+    if create:
+        for path in folders.values():
+            path.mkdir(parents=True, exist_ok=True)
+    return folders
 
 
 def write_json(path, value):
@@ -47,6 +51,10 @@ def write_json(path, value):
         temp.unlink(missing_ok=True)
 
 
+class OperationBusy(ValueError):
+    """The other operation holding the lock must finish first."""
+
+
 @contextmanager
 def build_lock(path):
     """The OS releases the lock when a cancelled build process terminates."""
@@ -61,7 +69,7 @@ def build_lock(path):
                 import fcntl
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except OSError as exc:
-            raise ValueError(f"Another FagriShot operation is using {path.name}. Wait for it to finish.") from exc
+            raise OperationBusy(f"Another FagriShot operation is using {path.name}. Wait for it to finish.") from exc
         yield
 
 

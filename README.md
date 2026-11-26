@@ -9,11 +9,17 @@ Play *Fire Emblem: Fortune’s Weave* on Windows using files extracted from your
 ## Start playing
 
 1. Extract the entire ZIP to a folder you can write to. Open **`FagriShotLauncher.exe`**.
-2. Select your **ExeFS** folder (the one containing `main` and `main.npdm`) and your **RomFS** folder (the game content with update 131072 applied).
+2. Use **Browse** to select your **ExeFS** and **RomFS** folders on any accessible drive. Alternatively, place folders named `exefs` and `romfs` beside the launcher before opening it to have them selected automatically. ExeFS contains `main` and `main.npdm`. RomFS contains the game content merged with update 131072.
 3. Click **Build game code** and wait for it to finish. The launcher checks your files, builds the game on your PC and prepares the shaders.
 4. Click **Play**. On later visits, open the same launcher and click **Play** again. At the first Autosave notice, press **Enter** or **Space**.
 
-The build tools come in the ZIP. The game files stay on your PC. The player was tested on Windows 11 x64. It requires Microsoft Edge WebView2 and a Vulkan 1.3-capable graphics driver. Checking the game files can take several minutes.
+### What the laptop needs
+
+- **Windows x64.** The tested configuration is Windows 11 x64. The ZIP includes Python, the Zig compiler and the shader tools. Extract the entire ZIP before opening the launcher, keeping its `tools` folder beside the executable.
+- **Microsoft Edge WebView2 Runtime** displays the launcher. If Windows reports it missing, install Microsoft's Evergreen Runtime, then reopen FagriShot. [Microsoft WebView2 download](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download)
+- **A Vulkan 1.3-capable GPU and graphics driver** are required to play. If Vulkan is missing, install the current graphics driver from your laptop or GPU manufacturer. **Local files** shows the Windows Vulkan loader check and available space for the build and caches.
+
+The first build verifies the complete game and prepares its shaders. Later launches reuse the completed build and shader cache under your Windows account. Keep your original game folders accessible. Changed inputs or a filesystem that cannot reliably identify unchanged files may need a full check again.
 
 If setup stops, the launcher shows which step needs attention. For a folder mismatch, check that both folders come from the supported update. **Local files** shows your logs, saves and backup options. [Input details](docs/inputs.md) · [Save recovery](docs/storage.md)
 

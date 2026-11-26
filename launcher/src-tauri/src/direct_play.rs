@@ -12,14 +12,13 @@ mod progress {
 
     impl Dialog {
         pub fn show() -> Option<Self> {
-            // The Shell updates its modeless progress dialog on its own thread while Python hashes the files.
+            // Keep direct Play responsive while the backend checks the saved build.
             unsafe {
                 CoInitializeEx(None, COINIT_APARTMENTTHREADED).ok().ok()?;
                 let dialog: Option<IProgressDialog> = CoCreateInstance(&CLSID_ProgressDialog, None, CLSCTX_INPROC_SERVER).ok();
                 if let Some(d) = &dialog {
                     let _ = d.SetTitle(w!("FagriShot"));
-                    let _ = d.SetLine(1, w!("Checking game files before Play."), false, None);
-                    let _ = d.SetLine(2, w!("Checking every file can take several minutes."), false, None);
+                    let _ = d.SetLine(1, w!("Opening your built game…"), false, None);
                     let _ = d.StartProgressDialog(None, None, PROGDLG_MARQUEEPROGRESS | PROGDLG_NOCANCEL, None);
                 }
                 Some(Self(dialog))

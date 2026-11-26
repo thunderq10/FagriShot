@@ -6,6 +6,7 @@ With Microsoft Store Python, Windows can redirect this folder into the Python pa
 
 | Folder | Contents |
 | --- | --- |
+| build | Compiled game and prepared executable modules for the Windows player. Compatible installs under the same Windows account reuse this folder. |
 | settings | Selected input paths in `launcher.json`, runtime `fefw.ini`, controls and a save-operation lock. |
 | saves | The game’s local save tree. The launcher provides this root explicitly at launch. |
 | backups | Timestamped snapshots with per-file SHA-256 digests. Retention keeps the ten most recent verified snapshots. It also preserves damaged or unrecognized backup folders for inspection. |
@@ -15,7 +16,7 @@ With Microsoft Store Python, Windows can redirect this folder into the Python pa
 
 On Linux the CLI maps configuration to `$XDG_CONFIG_HOME/fagrishot`, saves/backups/mods to `$XDG_DATA_HOME/fagrishot`, logs to `$XDG_STATE_HOME/fagrishot` and caches to `$XDG_CACHE_HOME/fagrishot`, with the standard home-directory defaults. Native Linux and Proton gameplay both await separate verification. The current game build and the distributed launcher target Windows x64.
 
-Save paths are managed inside the dedicated namespace. FagriShot copies and hashes its own save directory before a managed play session and before restoring a backup. Empty initial directories have no snapshot. The following commands operate on the current FagriShot profile. Close any independently started game process first.
+The launcher creates its profile directories on first use. Before a managed play session, it takes a snapshot of the saves or verifies that the latest backup already contains the same files. It also snapshots the current saves before restoring a backup. Empty initial directories have no snapshot. The following commands operate on the current FagriShot profile. Close any independently started game process first.
 
 ```powershell
 python -I scripts/fagrishot.py backup

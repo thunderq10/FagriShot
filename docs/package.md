@@ -2,7 +2,7 @@
 
 Download the complete **FagriShot-Windows-x64.zip** for Windows 11 x64 and extract it into its own writable folder. The ZIP includes the launcher, compiler, Python, shader translator, validator and Arabic translation pack. The launcher uses Microsoft Edge WebView2, and the game requires a Vulkan 1.3-capable graphics driver. [Download the Windows player](https://github.com/thunderq10/FagriShot/releases/latest/download/FagriShot-Windows-x64.zip)
 
-1. Open **FagriShotLauncher.exe**. Select the **ExeFS** and merged **RomFS** from your own copy of the supported Nintendo Switch 2 update **131072**.
+1. Extract the complete ZIP and open **FagriShotLauncher.exe**. Browse to the **ExeFS** and merged **RomFS** from your own copy of update **131072**, or place them beside the launcher as `exefs` and `romfs` for automatic selection.
 2. Click **Build game code** to check your files, compile the game locally and prepare its shaders. Checking the folders can take several minutes.
 3. For Arabic, select **Arabic text preview** in **Game setup**. Click **Play**. On later visits open the same launcher and click **Play** again.
 
@@ -10,7 +10,7 @@ The Arabic dialogue update for 0.3.0 covers all 64,503 visible message entries, 
 
 ## Saves and updates
 
-**Local files** shows the paths to your logs, saves and backups. When updating, extract the new player into a fresh folder. Keep the previous copy until the new one is working, and use the same Windows account to access your saved games. [Save backup and recovery](storage.md)
+**Local files** shows the paths to your logs, saves and backups. When updating, extract the new player into a fresh folder and use the same Windows account. Older releases kept the build in the extracted player. Keep that folder available so the new launcher can import a compatible build from the location used on your last Play. If you built with an older release and never opened the game, open the game once from that release before upgrading, or extract the update into that installation with its `work/private` folder in place. [Save backup and recovery](storage.md)
 
 ## Packaging from source
 

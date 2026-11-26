@@ -81,23 +81,51 @@ await session(exe,[],path.join(run,'first-webview'),local,async({evaluate,wait,c
   await fs.writeFile(path.join(run,'first-open.png'),Buffer.from((await cdp('Page.captureScreenshot')).data,'base64'));
   passed.push('fresh player profile opens Game setup with empty inputs, two available folder pickers, Build and Play disabled');
 });
-// A failed build deliberately invalidates play-ready.json. Give that test a private copy of the CLI.
+// Keep synthetic selections, the built game receipt and repair checks isolated from the supplied player.
 const packaged=await exists(path.join(path.dirname(exe),'player-package.json'));
 const installed=packaged ? path.dirname(exe) : root;
 const isolated=path.join(run,'real-cli'), isolatedExe=path.join(isolated,'FagriShotLauncher.exe');
-for (const sub of ['scripts','compatibility',...(packaged ? ['tools'] : ['recomp/games/fefw'])])
+for (const sub of ['scripts','compatibility',...(packaged ? [] : ['recomp/games/fefw'])])
   await fs.mkdir(path.join(isolated,sub),{recursive:true});
 await fs.copyFile(exe,isolatedExe);
 await fs.cp(path.join(installed,'fagrishot'),path.join(isolated,'fagrishot'),{recursive:true});
 for (const file of ['compatibility/supported.json','scripts/fagrishot.py',packaged?'player-package.json':'recomp/games/fefw/config.py'])
   await fs.copyFile(path.join(installed,file),path.join(isolated,file));
-if (packaged) await fs.symlink(path.join(installed,'tools/python'),path.join(isolated,'tools/python'),'junction');
+if (packaged) {
+  await fs.symlink(path.join(installed,'tools'),path.join(isolated,'tools'),'junction');
+  await fs.copyFile(path.join(installed,'fefw_rt.dll'),path.join(isolated,'fefw_rt.dll'));
+}
 else if (await exists(path.join(installed,'tools/.venv/Scripts/python.exe'))) {
   await fs.mkdir(path.join(isolated,'tools'),{recursive:true});
   await fs.symlink(path.join(installed,'tools/.venv'),path.join(isolated,'tools/.venv'),'junction');
 }
 await fs.mkdir(path.join(isolated,'fonts'),{recursive:true});
 await fs.copyFile(path.join(installed,packaged?'fonts/DejaVuSans.ttf':'runtime/assets/fonts/DejaVuSans.ttf'),path.join(isolated,'fonts/DejaVuSans.ttf'));
+
+const adjacentProfile=path.join(run,'adjacent-profile');
+for (const kind of ['exefs','romfs']) await fs.mkdir(path.join(isolated,kind));
+for (const entry of ['main','main.npdm']) await fs.writeFile(path.join(isolated,'exefs',entry),'fixture');
+await session(isolatedExe,[],path.join(run,'adjacent-webview'),adjacentProfile,async({evaluate,wait})=>{
+  await wait("document.querySelector('#input-state').textContent==='Detected beside launcher'",'automatic folder detection');
+  assert.equal(await evaluate("document.querySelector('#exefs').value"),path.join(isolated,'exefs'));
+  assert.equal(await evaluate("document.querySelector('#romfs').value"),path.join(isolated,'romfs'));
+  assert.equal(await evaluate("document.querySelector('#build-code').disabled"),false);
+});
+passed.push('folders beside the launcher populate automatically and enable the first build');
+
+if (packaged) {
+  const managed=path.join(adjacentProfile,'FagriShot/build/game');
+  await fs.mkdir(managed,{recursive:true});
+  const copy=path.join(managed,'FagriShotLauncher.exe'), locator=path.join(managed,'player-root.txt');
+  await fs.copyFile(isolatedExe,copy);
+  const options={env:{...process.env,LOCALAPPDATA:adjacentProfile},windowsHide:true};
+  await assert.rejects(promisify(execFile)(copy,['status','--json'],options),
+    e=>e.code===2 && e.stderr.includes('extracted player folder'));
+  await fs.writeFile(locator,isolated);
+  const response=await promisify(execFile)(copy,['status','--json'],options);
+  assert.equal(JSON.parse(response.stdout).exefs,path.join(isolated,'exefs'));
+  passed.push('the persistent game launcher reconnects to its player and explains how to recover a missing location');
+}
 
 await fs.mkdir(path.dirname(settingsFile),{recursive:true});
 await fs.writeFile(settingsFile,JSON.stringify({schema:42}));
@@ -130,7 +158,7 @@ await session(isolatedExe,direct?['--play-game']:[],path.join(run,'webview'),loc
   passed.push('setup and retry', 'UTF-8 title and version', 'two folder pickers, one build button and Play');
   const existingIni=path.join(path.dirname(settingsFile),'fefw.ini');
   await fs.writeFile(existingIni,'; keep this comment\n[fefw]\nrender = 800x600\n[other]\nvalue = untouched\n');
-  const receipt=path.join(isolated,'work/private/play-ready.json');
+  const receipt=packaged ? path.join(local,'FagriShot/build/play-ready.json') : path.join(isolated,'work/private/play-ready.json');
   await fs.mkdir(path.dirname(receipt),{recursive:true});
   await fs.writeFile(receipt,'{"test":"unchanged"}');
   await click('#graphics-open');
@@ -203,13 +231,19 @@ const interpreter=path.join(path.dirname(exe),'tools/python');
 const marker = path.join(fixture,'player-package.json');
 await fs.writeFile(marker,JSON.stringify({schema:1,kind:'fagrishot-player'}));
 await assert.rejects(promisify(execFile)(fakeExe,['status','--json'],{env:{...process.env,LOCALAPPDATA:local},windowsHide:true}),
-  error => error.code===2 && error.stderr.includes('player installation is incomplete'));
+  error => error.code===2 && error.stderr.includes('missing tools/python/python.exe') && error.stderr.includes('Extract All'));
+await session(fakeExe,[],path.join(run,'missing-python-webview'),local,async({evaluate,wait})=>{
+  await wait("!document.querySelector('#settings-warning').hidden && document.querySelector('#settings-warning').textContent.includes('missing tools/python/python.exe')",'missing bundled Python on Game setup');
+  assert.equal(await evaluate("document.querySelector('#build-code').disabled"),true);
+});
 passed.push('incomplete player bundle reports extraction error without a system-Python fallback');
 if (await exists(path.join(interpreter,'python.exe'))) {
   await fs.mkdir(path.join(fixture,'tools'),{recursive:true});
   await fs.symlink(interpreter,path.join(fixture,'tools/python'),'junction');
 } else {
   await fs.unlink(marker);
+  await fs.mkdir(path.join(fixture,'recomp/games/fefw'),{recursive:true});
+  await fs.writeFile(path.join(fixture,'recomp/games/fefw/config.py'),'');
 }
 const fakeData=path.join(run,'fixture-data'), state=path.join(fakeData,'FagriShot');
 const exefs=path.join(run,'exefs あ'),romfs=path.join(run,'romfs é');

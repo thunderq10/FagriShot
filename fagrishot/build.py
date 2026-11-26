@@ -10,13 +10,13 @@ import sys
 
 from . import UPSTREAM, VERSION
 from .inputs import check_executable, inspect_exefs
-from .storage import write_json
+from .storage import locations, write_json
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "compatibility" / "supported.json"
-PRIVATE = ROOT / "work" / "private"
-EXE = PRIVATE / "game" / "FagriShot.exe"
 PLAYER_PACKAGE = ROOT / "player-package.json"
+PRIVATE = locations(create=False)["build"] if PLAYER_PACKAGE.is_file() else ROOT / "work" / "private"
+EXE = PRIVATE / "game" / "FagriShot.exe"
 VENV = ROOT / ("tools/python/python.exe" if PLAYER_PACKAGE.is_file() else "tools/.venv/Scripts/python.exe")
 
 

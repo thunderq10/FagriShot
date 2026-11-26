@@ -15,6 +15,7 @@ import tempfile
 import uuid
 
 from .build import EXE, PLAYER_PACKAGE, PRIVATE, ROOT, VENV, run, sha
+from .file_state import directory_stamp, read_verified, write_verified
 from .storage import write_json
 
 
@@ -42,15 +43,19 @@ def _validator():
     return Path(path)
 
 
-def _identity(inv):
+def _identity(inv, verified_link=None):
     required = [HARNESS, HARNESS.with_suffix(".deps.json"), HARNESS.with_suffix(".runtimeconfig.json"),
                 EXTRACT, ROOT / "scripts/requirements-win64-py313.txt", EXE]
     if not all(p.is_file() for p in required):
         raise ValueError("Build the game and translator first. See docs/shader-verification.md.")
     dependencies = {p.relative_to(HARNESS.parent).as_posix(): sha(p) for p in sorted(HARNESS.parent.rglob("*.dll"))}
+    # Play has just checked the linked executable and every packaged runtime file.
+    # Still enumerate the directory so added or missing runtime DLLs change the key.
+    runtime = verified_link["runtime_files"] if verified_link and PLAYER_PACKAGE.is_file() else {}
     return {"schema": 2, "shader_policy": "nvn-and-host-dlss-v1",
             "romfs": inv["romfs"]["tree_sha256"], "exefs": inv["exefs"]["tree_sha256"],
-            "game": sha(EXE), "runtime_dlls": {p.name: sha(p) for p in sorted(EXE.parent.glob("*.dll"))},
+            "game": verified_link["exe_sha256"] if verified_link else sha(EXE),
+            "runtime_dlls": {p.name: runtime.get(p.name) or sha(p) for p in sorted(EXE.parent.glob("*.dll"))},
             "extractor": sha(EXTRACT), "python_packages": sha(required[-2]), "translator_dlls": dependencies,
             "dependency_manifest": sha(required[1]), "dotnet_settings": sha(required[2]),
             "validator": sha(_validator()), "target": TARGET, "host": "desktop",
@@ -191,22 +196,37 @@ TABLES = ("corpus/manifest.tsv", "corpus/unique.tsv", "corpus/cuda_kernels.tsv",
           "programs.bin", "shader-report.json")
 
 
-def _ready(cache, identity):
+def _ready(cache, identity, *, refresh=True):
     try:
-        marker = json.loads((cache / "ready.json").read_text(encoding="utf-8"))
+        marker_bytes = (cache / "ready.json").read_bytes()
+        marker = json.loads(marker_bytes)
         if marker["identity"] != identity or marker["tables"] != {rel: sha(cache / rel) for rel in TABLES}:
             raise ValueError
-        modules = {p.stem: sha(p) for p in (cache / "spirv").glob("*.spv")}
+        folder = cache / "spirv"
+        ledger = cache / "verified-modules.json"
+        before = directory_stamp(folder, suffix=".spv")
+        expected = {"files": before, "receipt": hashlib.sha256(marker_bytes).hexdigest()}
+        if before and not refresh and read_verified(ledger, b"spirv") == expected:
+            return cache
+        modules = {}
+        single_links = True
+        for path in folder.glob("*.spv"):
+            single_links &= path.stat().st_nlink == 1
+            modules[path.stem] = sha(path)
         if not modules or modules != marker["modules"]:
             raise ValueError
+        if before and single_links:
+            if directory_stamp(folder, suffix=".spv") != before:
+                raise ValueError
+            write_verified(ledger, b"spirv", expected)
     except (KeyError, TypeError, ValueError, OSError):
         raise ValueError("The validated shader cache is missing or changed. Choose Build game code in the launcher to prepare it again.") from None
     return cache
 
 
-def require_ready(inv, dirs):
-    identity = _identity(inv)
-    return _ready(dirs["caches"] / "shaders" / _key(identity), identity)
+def require_ready(inv, dirs, *, verified_link=None):
+    identity = _identity(inv, verified_link)
+    return _ready(dirs["caches"] / "shaders" / _key(identity), identity, refresh=False)
 
 
 def _dotnet():
@@ -254,6 +274,7 @@ def prepare_shaders(paths, inv, dirs, jobs):
     env = {**os.environ, "DOTNET_CLI_TELEMETRY_OPTOUT": "1"}
     run([*harness_cmd, "--batch", corpus, "--out", spirv, "--jobs", str(jobs), "--target-env", TARGET,
          "--host", "desktop", "--no-val"], env=env)
+    module_stamp = directory_stamp(spirv, suffix=".spv")
     modules = _check_outputs(spirv, expected, validator, jobs, console_cuda)
     fields = ["hash", "status", "stages_using", "error"]
     console_results = {row["hash"]: {"status": row["status"], "occurrences": int(row["stages_using"]),
@@ -264,6 +285,11 @@ def prepare_shaders(paths, inv, dirs, jobs):
                "validated_spirv": len(modules), "host_replaced_subsdk0_cuda": console_results})
     write_json(stage / "ready.json", {"identity": identity, "modules": modules,
                                      "tables": {rel: sha(stage / rel) for rel in TABLES}})
+    if module_stamp and all(p.stat().st_nlink == 1 for p in spirv.glob("*.spv")):
+        if directory_stamp(spirv, suffix=".spv") != module_stamp:
+            raise ValueError("Shader outputs changed during validation. Run Build game code again.")
+        write_verified(stage / "verified-modules.json", b"spirv",
+                       {"files": module_stamp, "receipt": sha(stage / "ready.json")})
     # The CLI holds its build lock through preparation and launch. Keep failed attempts for diagnostics.
     previous = None
     if cache.exists():

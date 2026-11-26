@@ -5,7 +5,7 @@ mod direct_play;
 
 use std::io::{BufRead, BufReader, Write};
 use std::collections::BTreeMap;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 use std::sync::Mutex;
 use tauri::{Emitter, Manager};
@@ -22,9 +22,39 @@ struct Task(Mutex<Option<ActiveTask>>);
 
 fn source() -> Result<PathBuf, String> {
     let exe = std::env::current_exe().map_err(|e| e.to_string())?;
-    exe.ancestors().skip(1).find(|p| p.join("player-package.json").is_file() ||
-        (p.join("fagrishot/__main__.py").is_file() && p.join("compatibility/supported.json").is_file()))
-        .map(|p| p.to_owned()).ok_or_else(|| "Extract the entire player ZIP into one folder, then open FagriShotLauncher.exe there.".into())
+    let folder = exe.parent().ok_or("Could not locate the launcher folder.")?;
+    if folder.join("player-package.json").is_file() {
+        return Ok(folder.to_owned());
+    }
+    // The built game can open its sibling launcher in the user's persistent game directory.
+    if let Some(local) = std::env::var_os("LOCALAPPDATA").map(PathBuf::from) {
+        let managed = local.join("FagriShot/build/game");
+        if local.is_absolute() && managed.is_dir() && managed.canonicalize().ok().is_some_and(|p| folder.canonicalize().ok().as_ref() == Some(&p)) {
+            return managed_source(folder, &exe);
+        }
+    }
+    let mut checkout = folder;
+    if folder.ends_with("work/tools") {
+        checkout = folder.parent().and_then(Path::parent).unwrap_or(folder);
+    }
+    if checkout.join("recomp/games/fefw/config.py").is_file() && checkout.join("scripts/fagrishot.py").is_file() {
+        return Ok(checkout.to_owned());
+    }
+    Err("Could not find player-package.json beside the launcher. Download FagriShot-Windows-x64.zip, use Extract All, and open FagriShotLauncher.exe from the extracted folder.".into())
+}
+
+fn managed_source(folder: &Path, exe: &Path) -> Result<PathBuf, String> {
+    let repair = "The saved player location is missing or has changed. Open FagriShotLauncher.exe from the extracted player folder to reconnect the built game.";
+    let recorded = std::fs::read_to_string(folder.join("player-root.txt")).map_err(|_| repair)?;
+    let root = PathBuf::from(recorded.trim_end_matches(['\r', '\n']));
+    if !root.is_absolute() || !root.join("player-package.json").is_file() { return Err(repair.into()); }
+    let installed = root.join("FagriShotLauncher.exe");
+    let len = std::fs::metadata(exe).map_err(|_| repair)?.len();
+    if std::fs::metadata(&installed).map_err(|_| repair)?.len() != len ||
+        std::fs::read(installed).map_err(|_| repair)? != std::fs::read(exe).map_err(|_| repair)? {
+        return Err(repair.into());
+    }
+    Ok(root)
 }
 
 fn command(args: &[String]) -> Result<Command, String> {
@@ -32,9 +62,12 @@ fn command(args: &[String]) -> Result<Command, String> {
     let local = root.join("tools/.venv/Scripts/python.exe");
     let bundled = root.join("tools/python/python.exe");
     let python = if root.join("player-package.json").is_file() || bundled.is_file() {
-        if !bundled.is_file() || !root.join("player-package.json").is_file() ||
-            !root.join("scripts/fagrishot.py").is_file() {
-            return Err("The player installation is incomplete. Extract the entire FagriShot ZIP into a fresh folder and open its launcher.".into());
+        for file in ["tools/python/python.exe", "tools/python/python313.dll", "tools/python/python313.zip",
+                     "tools/python/python313._pth", "tools/python/vcruntime140.dll", "tools/python/vcruntime140_1.dll",
+                     "player-package.json", "scripts/fagrishot.py"] {
+            if !root.join(file).is_file() {
+                return Err(format!("The player installation is incomplete: missing {file}. Python is included in FagriShot-Windows-x64.zip. Use Extract All on the entire ZIP and open the launcher in the extracted folder."));
+            }
         }
         bundled
     } else if local.is_file() {
@@ -63,14 +96,23 @@ async fn pick(app: tauri::AppHandle, kind: String) -> Option<String> {
 async fn json_command(args: Vec<String>) -> Result<serde_json::Value, String> {
     tauri::async_runtime::spawn_blocking(move || {
         let output = command(&args)?.output().map_err(|e| format!("Could not start FagriShot's local tools: {e}"))?;
-        if !output.status.success() { return Err(String::from_utf8_lossy(&output.stderr).into_owned()); }
+        if !output.status.success() {
+            let diagnostic = String::from_utf8_lossy(&output.stderr);
+            return Err(if diagnostic.trim().is_empty() {
+                format!("The local tools exited with {}. Extract the full FagriShot Windows player ZIP, including its bundled Python and DLLs.", output.status)
+            } else { diagnostic.trim().to_owned() });
+        }
         serde_json::from_slice(&output.stdout).map_err(|e| format!("Could not read the response from FagriShot: {e}"))
     }).await.map_err(|e| e.to_string())?
 }
 
 #[tauri::command]
 async fn overview() -> Result<serde_json::Value, String> {
-    json_command(vec!["status".into(), "--json".into()]).await
+    let mut status = json_command(vec!["status".into(), "--json".into()]).await?;
+    if let Some(reason) = cpu::check() {
+        status["cpu_error"] = reason.into();
+    }
+    Ok(status)
 }
 
 #[tauri::command]
@@ -160,6 +202,23 @@ fn startup_play_error(error: tauri::State<'_, Option<String>>) -> Option<String>
     error.inner().clone()
 }
 
+#[cfg(windows)]
+fn require_webview(play_error: Option<&str>) {
+    if std::env::var_os("WEBVIEW2_BROWSER_EXECUTABLE_FOLDER").is_some() || tauri::webview_version().is_ok() { return; }
+    use windows::core::{w, HSTRING, PCWSTR};
+    use windows::Win32::UI::Shell::ShellExecuteW;
+    use windows::Win32::UI::WindowsAndMessaging::{MessageBoxW, IDYES, MB_ICONERROR, MB_YESNO, SW_SHOWNORMAL};
+    let page = "https://developer.microsoft.com/microsoft-edge/webview2/#download-section";
+    let previous = play_error.map(|e| format!("{e}\n\n")).unwrap_or_default();
+    let message = format!("{previous}Game setup needs Microsoft Edge WebView2 Runtime. Install the Evergreen Runtime for Windows x64, then reopen FagriShot.\n\n{page}\n\nOpen Microsoft's download page?");
+    unsafe {
+        if MessageBoxW(None, &HSTRING::from(message), w!("FagriShot setup"), MB_YESNO | MB_ICONERROR) == IDYES {
+            let _ = ShellExecuteW(None, w!("open"), &HSTRING::from(page), PCWSTR::null(), PCWSTR::null(), SW_SHOWNORMAL);
+        }
+    }
+    std::process::exit(2);
+}
+
 fn main() {
     let args: Vec<_> = std::env::args().skip(1).collect();
     let play_error = if args == ["--play-game"] {
@@ -176,6 +235,8 @@ fn main() {
     } else {
         None
     };
+    #[cfg(windows)]
+    require_webview(play_error.as_deref());
     let startup = tauri::Builder::default().plugin(tauri_plugin_dialog::init()).manage(Task::default()).manage(play_error.clone())
         .on_window_event(|win, ev| {
             if matches!(ev, tauri::WindowEvent::Destroyed) { let _ = stop(&win.state::<Task>()); }
@@ -183,7 +244,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![overview, graphics, arabic_text, pick, action, cancel, startup_play_error])
         .run(tauri::generate_context!());
     if let Err(error) = startup {
-        let detail = format!("{}Could not open Game setup. Check that Microsoft Edge WebView2 Runtime is installed.\n{error}",
+        let detail = format!("{}Could not open Game setup. Check that Microsoft Edge WebView2 Runtime is working and your Windows profile is writable.\n{error}\n\nWebView2 help: https://developer.microsoft.com/microsoft-edge/webview2/",
             play_error.map(|e| format!("{e}\n\n")).unwrap_or_default());
         let _ = writeln!(std::io::stderr(), "{detail}");
         #[cfg(windows)]

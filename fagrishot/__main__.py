@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import platform
+import shutil
 import subprocess
 import sys
 
@@ -37,9 +38,21 @@ def selections(opts, dirs):
         if opts.command not in ("status", "doctor") and not can_repair:
             raise ValueError(warning) from None
     locations_saved = bool(settings.get("exefs") and settings.get("romfs"))
-    paths = {k: Path(getattr(opts, k, None) or settings.get(k) or ROOT / k).absolute()
+    adjacent = {key: ROOT / key for key in ("exefs", "romfs")}
+    def present(pair):
+        return ((pair["exefs"] / "main").is_file() and (pair["exefs"] / "main.npdm").is_file()
+                and pair["romfs"].is_dir())
+
+    explicit = any(getattr(opts, key, None) is not None for key in adjacent)
+    detected = False
+    if not explicit and not warning and present(adjacent):
+        if not locations_saved or not present({key: Path(settings[key]) for key in adjacent}):
+            settings = {}
+            locations_saved = False
+            detected = True
+    paths = {k: Path(getattr(opts, k, None) or settings.get(k) or adjacent[k]).absolute()
              for k in ("exefs", "romfs")}
-    return paths, warning, locations_saved
+    return paths, warning, locations_saved, detected
 
 
 def parser():
@@ -70,20 +83,24 @@ def parser():
 
 
 def diagnostic(dirs, paths):
+    from .requirements import PLAYER_TOOLS, vulkan_loader
     print(f"FagriShot {VERSION} | {platform.platform()} | {platform.machine()}")
     print(f"Python {platform.python_version()} | {os.cpu_count()} logical processors")
     print(f"Engine {UPSTREAM}")
     for name, path in paths.items():
         print(f"{name}: {path} ({'directory present' if path.is_dir() else 'missing'})")
     for name, path in dirs.items():
-        print(f"{name}: {path}")
-    runtime = ROOT / ("fefw_rt.dll" if PLAYER_PACKAGE.is_file() else "runtime-bin/fefw_rt.dll")
-    if not runtime.is_file():
-        runtime = ROOT / "work/runtime-release/fefw_rt.dll"
-    compiler = (("Bundled Zig compiler", ROOT / "tools/build/zig/zig.exe") if PLAYER_PACKAGE.is_file()
-                else ("Local LLVM", ROOT / "work/toolchain/llvm-23.1.5/bin/clang-cl.exe"))
-    for label, path in (("Game Python", VENV), ("Runtime DLL", runtime), compiler, ("Game executable", EXE)):
-        print(f"{label}: {path if path.is_file() else 'not built or installed here'}")
+        print(f"{name}: {path} ({'directory present' if path.is_dir() else 'missing'})")
+    if PLAYER_PACKAGE.is_file():
+        for label, rel in PLAYER_TOOLS.items():
+            path = ROOT / rel
+            print(f"{label}: {path} ({'present' if path.is_file() else 'missing; re-extract the complete Windows ZIP'})")
+        print(vulkan_loader()[1])
+    else:
+        print(f"Development Python: {VENV}")
+    print(f"Game executable: {EXE}" if EXE.is_file() else "Game executable: created when Build game code finishes.")
+    if dirs["caches"].is_dir():
+        print(f"Available space on the cache drive: {shutil.disk_usage(dirs['caches']).free / 1024**3:.1f} GiB")
     print("Updates: manual. Download the Windows player ZIP from GitHub Releases.")
 
 
@@ -108,7 +125,7 @@ def ensure_exe(inv):
         raise ValueError(f"A complete game build is required. {repair}")
     if record["input"].get("exefs") != inv["exefs"] or record["exe_sha256"] != sha(EXE):
         raise ValueError(f"The linked game differs from this ExeFS or has changed. {repair}")
-    if record.get("source") != source_state() or inspect_exefs(PRIVATE / "prepared-exefs")["exefs"] != record.get("prepared_exefs"):
+    if not _compatible_build(record) or inspect_exefs(PRIVATE / "prepared-exefs")["exefs"] != record.get("prepared_exefs"):
         raise ValueError(f"The runtime source or prepared module set changed. {repair}")
     if PLAYER_PACKAGE.is_file():
         from .player_build import verify_player_runtime
@@ -116,23 +133,47 @@ def ensure_exe(inv):
     return record
 
 
+def _compatible_build(linked):
+    if PLAYER_PACKAGE.is_file():
+        from .player_build import compatible_link
+        return compatible_link(linked)
+    return linked.get("source") == source_state()
+
+
 def remember_ready(paths, linked, cache):
     write_json(PRIVATE / "play-ready.json", {
         "paths": {k: str(p.resolve()) for k, p in paths.items()},
-        "source": linked["source"], "exe_sha256": linked["exe_sha256"], "cache_key": cache.name})
+        "source": linked["source"], "package": source_state() if PLAYER_PACKAGE.is_file() else linked["source"],
+        "exe_sha256": linked["exe_sha256"], "cache_key": cache.name})
 
 
 def play_ready(paths, dirs, linked):
     if not linked or not (paths["exefs"] / "main").is_file() or not paths["romfs"].is_dir():
         return False
     try:
-        ready = json.loads((PRIVATE / "play-ready.json").read_bytes())
+        try:
+            ready = json.loads((PRIVATE / "play-ready.json").read_bytes())
+        except FileNotFoundError:
+            # Older players discarded this hint on any failed launch. Recover from the
+            # independently committed build and shader receipts; Play still verifies the inputs.
+            if not PLAYER_PACKAGE.is_file() or not _compatible_build(linked):
+                return False
+            saved = json.loads((dirs["settings"] / "launcher.json").read_bytes())
+            if any(Path(saved[k]).resolve() != p.resolve() for k, p in paths.items()):
+                return False
+            from .shaders import shader_cache
+            return (shader_cache(linked["input"], dirs) / "ready.json").is_file()
         key = ready["cache_key"]
-        return (isinstance(key, str) and len(key) == 64 and all(c in "0123456789abcdef" for c in key)
-                and ready["paths"] == {k: str(p.resolve()) for k, p in paths.items()}
-                and ready["exe_sha256"] == linked["exe_sha256"]
-                and ready["source"] == linked["source"] == source_state()
-                and (dirs["caches"] / "shaders" / key / "ready.json").is_file())
+        if (not isinstance(key, str) or len(key) != 64 or any(c not in "0123456789abcdef" for c in key)
+                or not all(Path(ready["paths"][k]) == p.resolve() for k, p in paths.items())
+                or ready["exe_sha256"] != linked["exe_sha256"] or ready["source"] != linked["source"]
+                or not _compatible_build(linked)):
+            return False
+        if PLAYER_PACKAGE.is_file() and ready.get("package", ready["source"]) != source_state():
+            from .shaders import shader_cache
+            if shader_cache(linked["input"], dirs).name != key:
+                return False
+        return (dirs["caches"] / "shaders" / key / "ready.json").is_file()
     except (OSError, ValueError, KeyError, TypeError):
         return False
 
@@ -143,11 +184,17 @@ def setup_game(opts, paths, dirs, source_checkout):
     if not packaged and not source_checkout:
         raise ValueError("Download and extract the FagriShot Windows player ZIP to build the game.")
     with build_lock(PRIVATE / "build.lock"):
-        (PRIVATE / "play-ready.json").unlink(missing_ok=True)
         print("[setup 1/3] Checking game files", flush=True)
         check_input_roots(paths["exefs"], paths["romfs"])
+        if packaged:
+            from .requirements import check_tools, vulkan_loader
+            check_tools(ROOT)
+            can_play, graphics_message = vulkan_loader()
+            if can_play is False:
+                print(f"Graphics driver check: {graphics_message} You can still build the game code.", flush=True)
         check_executable(inspect_exefs(paths["exefs"]), CATALOG)
-        inv = inspect_inputs(**paths, base_cnmt=opts.base_cnmt, update_cnmt=opts.update_cnmt)
+        inv = inspect_inputs(**paths, base_cnmt=opts.base_cnmt, update_cnmt=opts.update_cnmt,
+                             romfs_cache=PRIVATE / "verified-romfs.json", refresh=True)
         write_json(dirs["logs"] / "input-inventory.json", inv)
         check_support(inv, CATALOG)
         if packaged:
@@ -197,7 +244,7 @@ def launch(paths, cache, dirs):
             ini.set(section, key, f'"{value.as_posix()}"' if isinstance(value, Path) else value)
     ini.save()
     from .saves import snapshot
-    snapshot(dirs)
+    snapshot(dirs, reuse_latest=True)
     env = {k: v for k, v in os.environ.items() if not k.upper().startswith(("NXRT_", "FEFW_"))}
     env["NXRT_LAUNCHER_DIR"] = str(ROOT)
     if arabic.enabled(dirs["settings"]):
@@ -213,8 +260,10 @@ def launch(paths, cache, dirs):
 
 
 def inspect_selected(opts, paths, dirs):
-    print("Reading the selected ExeFS and RomFS. Fingerprints cover every file.", flush=True)
-    inv = inspect_inputs(**paths, base_cnmt=opts.base_cnmt, update_cnmt=opts.update_cnmt)
+    print("Checking the selected ExeFS and RomFS.", flush=True)
+    inv = inspect_inputs(**paths, base_cnmt=opts.base_cnmt, update_cnmt=opts.update_cnmt,
+                         romfs_cache=PRIVATE / "verified-romfs.json" if opts.command in ("play", "prepare") else None,
+                         refresh=opts.command != "play")
     write_json(dirs["logs"] / "input-inventory.json", inv)
     candidate = check_executable(inv, CATALOG)
     print(f"Executable modules match {candidate['version']}. Inventory saved to {dirs['logs'] / 'input-inventory.json'}.", flush=True)
@@ -239,6 +288,9 @@ def supported_inventory(opts, paths, dirs, source_checkout):
 def execute(opts):
     dirs = locations()
     cmd = opts.command
+    if PLAYER_PACKAGE.is_file() and cmd in ("status", "doctor", "build-and-prepare", "prepare", "play"):
+        from .player_build import open_player_build
+        open_player_build(dirs["settings"])
     if cmd in ("arabic-status", "arabic-set"):
         from . import arabic
         result = (arabic.status(dirs["settings"], ROOT) if cmd == "arabic-status"
@@ -262,10 +314,17 @@ def execute(opts):
                 restore(dirs, opts.backup_id)
                 print("Restored the verified snapshot.")
         return
-    paths, warning, locations_saved = selections(opts, dirs)
+    paths, warning, locations_saved, locations_detected = selections(opts, dirs)
     source_checkout = (ROOT / "recomp/games/fefw/config.py").is_file()
     if cmd == "status":
+        from .requirements import check_tools
         from .saves import list_backups
+        setup_error = None
+        if PLAYER_PACKAGE.is_file():
+            try:
+                check_tools(ROOT)
+            except ValueError as exc:
+                setup_error = str(exc)
         trial = read_trial() if source_checkout else None
         linked = linked_record()
         result = {"version": VERSION, **{k: str(p) for k,p in paths.items()},
@@ -275,6 +334,8 @@ def execute(opts):
                   "build_available": source_checkout or PLAYER_PACKAGE.is_file(),
                   "play_ready": play_ready(paths, dirs, linked),
                   "source_checkout": source_checkout, "settings_warning": warning, "locations_saved": locations_saved,
+                  "locations_detected": locations_detected,
+                  "setup_error": setup_error,
                   "backup_ids": list_backups(dirs),
                   "has_pair": bool(json.loads(CATALOG.read_text("utf-8"))["supported"]),
                   "local_trial": bool(trial and local_trial_scope_matches(
@@ -332,13 +393,15 @@ def execute(opts):
         else:
             from .saves import recover
             from .shaders import require_ready
-            try:
-                inv = supported_inventory(opts, paths, dirs, source_checkout)
-                ensure_exe(inv)
-                cache = require_ready(inv, dirs)
-            except (OSError, ValueError):
-                (PRIVATE / "play-ready.json").unlink(missing_ok=True)
-                raise
+            if PLAYER_PACKAGE.is_file():
+                from .requirements import vulkan_loader
+                available, message = vulkan_loader()
+                if available is False:
+                    raise ValueError(message)
+            inv = supported_inventory(opts, paths, dirs, source_checkout)
+            linked = ensure_exe(inv)
+            cache = require_ready(inv, dirs, verified_link=linked)
+            remember_ready(paths, linked, cache)
             with build_lock(dirs["settings"] / "save.lock"):
                 recover(dirs)
                 launch(paths, cache, dirs)
