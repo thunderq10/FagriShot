@@ -219,6 +219,27 @@ class ArabicPreviewTests(unittest.TestCase):
         self.assertEqual(arabic.wrap_message(("aaaaaaaaaa\nbbbbbbbbbb",), ["اااا ببب في جججج"], advances, same),
                          ["اااا ببب\nفي جججج"])
 
+    def test_short_highlighted_term_is_not_split_across_lines(self):
+        color, reset = bytes.fromhex("0e0000030002000400"), bytes.fromhex("0e000003000200ff00")
+        advances = {"?": 1, "0": 1}
+        same = lambda value: value
+        # Even lines would break between the two highlighted words. The name stays whole instead.
+        source = ("aaaaaaaaaaaa ", color, "bbbb cccc", reset, "\ndddddddddddd.")
+        wrapped = arabic.wrap_message(source, ["اااا بببب جججج ", "دددد هههه", " وووو زززز."], advances, same)
+        self.assertEqual(wrapped[1], "دددد هههه")
+        self.assertLessEqual(max(arabic.line_widths(source, wrapped, advances, same)), 21)
+        # The comma after a name belongs to its last word and does not hide the name from this rule.
+        comma = ("aaaaaaaaaaaa ", color, "bbbb cccc", reset, ",\ndddddddddddd.")
+        with_comma = arabic.wrap_message(comma, ["اااا بببب جججج ", "دددد هههه", "، وووو زززز."], advances, same)
+        self.assertEqual(with_comma[1], "دددد هههه")
+        # A highlighted clause is ordinary text and wraps. So does a term wider than the line.
+        long_span = ("aaaa bbbb\ncc ", color, "dd ee", reset, ".")
+        clause = arabic.wrap_message(long_span, ["اا ", "بب جج دد هه وو زز", "."], advances, same)
+        self.assertIn("\n", clause[1])
+        self.assertLessEqual(max(arabic.line_widths(long_span, clause, advances, same)), 9)
+        narrow = ("aaa\nbb ", color, "cc dd", reset, ".")
+        self.assertIn("\n", "".join(arabic.wrap_message(narrow, ["اا ", "بببب جججج", "."], advances, same)))
+
     def test_latin_notice_signs_and_numbers_are_not_mirrored(self):
         marked = lambda text: "<" + text + ">"
         entry = lambda parts, **more: {"source_sha256": "1" * 64, "parts": parts, **more}

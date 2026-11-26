@@ -177,7 +177,8 @@ def _flatten(source_parts, texts, advances, visual):
     A palette change draws nothing and does not interrupt joining. A controller
     icon, a substituted value and a singular/plural choice each occupy the line.
     Returns the string, the (part, offset) owner of each character, the object
-    widths in logical order and the measuring function.
+    widths in logical order, the measuring function and the highlight each
+    character belongs to (None outside a highlight).
     """
     from .localization import _choice_texts
     from .localization_flow import _kind
@@ -188,9 +189,10 @@ def _flatten(source_parts, texts, advances, visual):
         return sum(advances.get(c, default) for c in string)
 
     nominal = 4 * advances.get("0", default)
-    flat, owners, objects = [], [], []
+    flat, owners, objects, spans = [], [], [], []
     replacements = iter(texts)
     index = -1
+    span, opened = None, 0
     for part in source_parts:
         if isinstance(part, str):
             index += 1
@@ -199,10 +201,15 @@ def _flatten(source_parts, texts, advances, visual):
                 raise ValueError("Unexpected inline object character in translated text.")
             flat.extend(text)
             owners.extend((index, offset) for offset in range(len(text)))
+            spans.extend([span] * len(text))
             continue
         control = part.startswith((b"\x0e", b"\x0f"))
         kind = _kind(part)
-        if kind in ("directive", "color", "reset") or (kind == "unknown" and control):
+        if kind in ("color", "reset"):
+            opened += kind == "color"
+            span = opened if kind == "color" else None
+            continue
+        if kind == "directive" or (kind == "unknown" and control):
             continue
         options = _choice_texts(part) if control else None
         if options is not None:
@@ -214,7 +221,8 @@ def _flatten(source_parts, texts, advances, visual):
         flat.append(_OBJECT)
         owners.append(None)
         objects.append(amount)
-    return "".join(flat), owners, objects, width
+        spans.append(span)
+    return "".join(flat), owners, objects, width, spans
 
 
 def _measure(text, objects, width, visual):
@@ -230,7 +238,7 @@ def _measure(text, objects, width, visual):
 
 def line_widths(source_parts, texts, advances, visual):
     """Width of every displayed line, measured across styled runs, icons and substituted values."""
-    flat, _, objects, width = _flatten(source_parts, texts, advances, visual)
+    flat, _, objects, width, _ = _flatten(source_parts, texts, advances, visual)
     return [_measure(line, objects, width, visual) for line in flat.split("\n")]
 
 
@@ -248,10 +256,10 @@ def wrap_message(source_parts, texts, advances, visual, floor=0):
     if len(original) != len(texts):
         raise ValueError("An Arabic campaign entry changed its number of text parts.")
     plain = lambda value: value
-    source, _, source_objects, width = _flatten(source_parts, original, advances, plain)
+    source, _, source_objects, width, _ = _flatten(source_parts, original, advances, plain)
     if "\n" not in source or not "".join(texts).strip():
         return texts
-    flat, owners, objects, _ = _flatten(source_parts, texts, advances, visual)
+    flat, owners, objects, _, spans = _flatten(source_parts, texts, advances, visual)
     pieces, translated = _BREAK.split(source), _BREAK.split(flat)
     if len(pieces) != len(translated):
         raise ValueError("An Arabic campaign entry changed its original paragraph breaks.")
@@ -264,9 +272,18 @@ def wrap_message(source_parts, texts, advances, visual, floor=0):
         sizes = [_measure(word.group(), objects, width, visual) for word in words]
         gaps = [piece[a.end():b.start()] for a, b in zip(words, words[1:])]
         spaces = [width(gap.replace("\n", "")) or width(" ") for gap in gaps]
+        # A highlighted term of two or three words is a name: it stays on one line when one line can hold it.
+        # A word belongs to the highlight it starts in. The comma that follows a name is attached to its last word.
+        inside = [spans[start + w.start()] for w in words]
+        held = set()
+        for span in set(inside) - {None}:
+            members = [i for i, s in enumerate(inside) if s == span]
+            joined = sum(sizes[i] for i in members) + sum(spaces[i - 1] for i in members[1:])
+            if 2 <= len(members) <= 3 and members == list(range(members[0], members[-1] + 1)) and joined <= budget:
+                held.update(members[1:])
         # An icon or a substituted value stays on the line of the word it follows, as in «اضغط» and its button.
-        firsts = [0] + [i for i in range(1, len(words)) if not (words[i].group().startswith(_OBJECT)
-                                                               and words[i - 1].group()[-1] not in ".!?:؟،؛")]
+        firsts = [0] + [i for i in range(1, len(words)) if i not in held and not (
+            words[i].group().startswith(_OBJECT) and words[i - 1].group()[-1] not in ".!?:؟،؛")]
         groups = list(zip(firsts, firsts[1:] + [len(words)]))
         sizes = [sum(sizes[a:b]) + sum(spaces[a:b - 1]) for a, b in groups]
         spaces = [spaces[a - 1] for a, _ in groups[1:]]
