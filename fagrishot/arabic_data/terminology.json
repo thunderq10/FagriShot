@@ -2781,13 +2781,13 @@
     "MID_RewindMsg_PlayerPhase": {
       "source_sha256": "5b7523939b840e01de37a9cd4efe6e1d7bc562afea78fdbbe006c8c23aab13a8",
       "parts": [
-        "بدأ دور اللاعب."
+        "بدأ طور اللاعب."
       ]
     },
     "MID_RewindMsg_EnemyPhase": {
       "source_sha256": "38f5cfa8e7339a2af10a39678a8b77057883aaed1f01ad9be6c0a87bd737787b",
       "parts": [
-        "بدأ دور العدو."
+        "بدأ طور العدو."
       ]
     },
     "MID_RewindMsg_ThirdPhase": {

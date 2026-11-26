@@ -605,7 +605,7 @@
     "MPID_ToolMaker_F": {
       "source_sha256": "5dc0d2a53f5a0cf78f334240e4cd865bb3ca3a99943303c4d32dc5a3b71668fd",
       "parts": [
-        "صاحب متجر الأدوات"
+        "صاحبة متجر الأدوات"
       ]
     },
     "MPID_Armorer": {
@@ -617,7 +617,7 @@
     "MPID_Armorer_F": {
       "source_sha256": "4235994acee5d4732861b36da3e55ec2b30319d75f3d48acf4ef6ec728435985",
       "parts": [
-        "صانع الدروع"
+        "صانعة الدروع"
       ]
     },
     "MPID_Blacksmith": {
@@ -629,7 +629,7 @@
     "MPID_Blacksmith_F": {
       "source_sha256": "e91f59c1ee4ed6721432f1562b6da529877d1d30bf0fcc8c367b5fe1ab538e12",
       "parts": [
-        "الحداد"
+        "الحدادةة"
       ]
     },
     "MPID_Showman": {
@@ -641,7 +641,7 @@
     "MPID_Showman_F": {
       "source_sha256": "5f0539b5db83f82f165b910df4ea6953ecfa318315d649d3ad9fd7066e57c09f",
       "parts": [
-        "مالك حانة"
+        "مالكة حانة"
       ]
     },
     "MPID_Marketter": {
@@ -653,7 +653,7 @@
     "MPID_Marketter_F": {
       "source_sha256": "ac5de7d0b2810ec230237ae4c3a2724b8c4c4367634b017188d1147f0d49c160",
       "parts": [
-        "بائع السوق"
+        "بائعة السوق"
       ]
     },
     "MPID_DrinkSeller": {
@@ -665,7 +665,7 @@
     "MPID_DrinkSeller_F": {
       "source_sha256": "14959dffa7d58959a046d7db7662b747e863945b6237098551156bd21c7783c4",
       "parts": [
-        "بائع شراب"
+        "بائعة شراب"
       ]
     },
     "MPID_MercenaryGuildHead": {
@@ -677,7 +677,7 @@
     "MPID_MercenaryGuildHead_F": {
       "source_sha256": "28e7ee1a11ac585de1c40b7b1c5ca566b07fdd6fd9d4cfa786617fc84be02e20",
       "parts": [
-        "رئيس النقل"
+        "رئيسة النقل"
       ]
     },
     "MPID_VirtualSoldier": {
@@ -689,7 +689,7 @@
     "MPID_VirtualSoldier_F": {
       "source_sha256": "0231e1ad990d32aec869bcbea67f70fba72b683e65fe65d26801ea5b701cf792",
       "parts": [
-        "جندي افتراضي"
+        "جندية افتراضية"
       ]
     },
     "MPID_AragoSoldier": {
@@ -701,7 +701,7 @@
     "MPID_AragoSoldier_F": {
       "source_sha256": "185f08471e1f6091d874784206b873651d0f15d3274359455408ed093dd0a1f7",
       "parts": [
-        "جندي أراغوني"
+        "جندية أراغونية"
       ]
     },
     "MPID_Soldier": {
@@ -713,7 +713,7 @@
     "MPID_Soldier_F": {
       "source_sha256": "c8fd26706e6c83dbfa1211d51addb46375c778fa9b6227b5fa23c50eff0b2623",
       "parts": [
-        "جندي"
+        "جنديةة"
       ]
     },
     "MPID_Merchant": {
@@ -725,7 +725,7 @@
     "MPID_Merchant_F": {
       "source_sha256": "c2ae62c4b8981b19b2a5674a4fc8b3f2f2dc0422238becdaba22ba97b76f7cda",
       "parts": [
-        "التاجر"
+        "التاجرةة"
       ]
     },
     "MPID_Hellsoldier": {
@@ -743,7 +743,7 @@
     "MPID_Gladiator_F": {
       "source_sha256": "2d3db65b3869b5b45252658901f97036778007c739dde383f758e5ee7ac18bd2",
       "parts": [
-        "المصارع"
+        "المصارعةة"
       ]
     },
     "MPID_Hunter": {
