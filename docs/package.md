@@ -6,7 +6,7 @@ Download the complete **FagriShot-Windows-x64.zip** for Windows 11 x64 and extra
 2. Click **Build game code** to check your files, compile the game locally and prepare its shaders. Checking the folders can take several minutes.
 3. For Arabic, select **Arabic text preview** in **Game setup**. Click **Play**. On later visits open the same launcher and click **Play** again.
 
-The Arabic dialogue update for 0.3.0 covers all 64,503 visible message entries, with 4,501 editorially reviewed and 60,002 machine-translated drafts. The first Arabic launch builds the text, fonts and illustrations from your files. The guides cover native 4K, frame-rate targets, optional NVIDIA DLSS and experimental ray-traced reflections. [English player guide](../README.md) · [دليل التشغيل بالعربية](../README.ar.md)
+The Arabic text for 0.3.0 covers all 64,503 visible message entries: 4,510 in the edited catalog, 10,110 interface entries retranslated from English, and 49,883 first-pass machine drafts. None of it has been checked by a human reviewer. The first Arabic launch builds the text, fonts and illustrations from your files. The guides cover native 4K, frame-rate targets, optional NVIDIA DLSS and experimental ray-traced reflections. [English player guide](../README.md) · [دليل التشغيل بالعربية](../README.ar.md)
 
 ## Saves and updates
 
