@@ -33,14 +33,22 @@ fn source() -> Result<PathBuf, String> {
             return managed_source(folder, &exe);
         }
     }
-    let mut checkout = folder;
-    if folder.ends_with("work/tools") {
-        checkout = folder.parent().and_then(Path::parent).unwrap_or(folder);
-    }
-    if checkout.join("recomp/games/fefw/config.py").is_file() && checkout.join("scripts/fagrishot.py").is_file() {
-        return Ok(checkout.to_owned());
+    for root in folder.ancestors() {
+        if folder.strip_prefix(root).is_ok_and(development_output) && root.join("recomp/games/fefw/config.py").is_file()
+            && root.join("scripts/fagrishot.py").is_file() {
+            return Ok(root.to_owned());
+        }
     }
     Err("Could not find player-package.json beside the launcher. Download FagriShot-Windows-x64.zip, use Extract All, and open FagriShotLauncher.exe from the extracted folder.".into())
+}
+
+fn development_output(relative: &Path) -> bool {
+    if relative.as_os_str().is_empty() || relative == Path::new("work/tools") { return true; }
+    if !matches!(relative.file_name().and_then(|s| s.to_str()), Some("debug" | "release")) { return false; }
+    let Some(profile_parent) = relative.parent() else { return false; };
+    // Cargo may insert the target triple before the profile when invoked with --target.
+    ["target", "launcher/target", "launcher/src-tauri/target", "work/launcher/target"]
+        .iter().map(Path::new).any(|target| profile_parent == target || profile_parent.parent() == Some(target))
 }
 
 fn managed_source(folder: &Path, exe: &Path) -> Result<PathBuf, String> {
