@@ -1225,13 +1225,13 @@
     "MID_Sys_Status": {
       "source_sha256": "96927e89e33fc100cd6fe36acce72006bf4f5706d8a821c3c023baf8ba644a70",
       "parts": [
-        "إحصاءات القتال"
+        "خصائص القتال"
       ]
     },
     "MID_Sys_Capability": {
       "source_sha256": "c424457f1bdf974f9d23100c0f6d75b7537ea36ba946ac309472c9d937f6d102",
       "parts": [
-        "الإحصاءات الأساسية"
+        "الخصائص الأساسية"
       ]
     },
     "MID_Sys_StatusTotal": {
@@ -2215,13 +2215,13 @@
     "MID_TroopList_Page3": {
       "source_sha256": "96927e89e33fc100cd6fe36acce72006bf4f5706d8a821c3c023baf8ba644a70",
       "parts": [
-        "إحصاءات القتال"
+        "خصائص القتال"
       ]
     },
     "MID_TroopList_Page4": {
       "source_sha256": "c424457f1bdf974f9d23100c0f6d75b7537ea36ba946ac309472c9d937f6d102",
       "parts": [
-        "الإحصاءات الأساسية"
+        "الخصائص الأساسية"
       ]
     },
     "MID_TransportMenu_Tool": {
