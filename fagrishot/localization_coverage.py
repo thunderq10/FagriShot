@@ -143,7 +143,7 @@ def assess(entry, record, *, table="", label=""):
     # Support ranks are displayed as fixed Latin grade symbols throughout the
     # Arabic interface. Only an unchanged, one-byte source at its exact rank
     # label is eligible. Ordinary Latin text is still reported for review.
-    preserved_rank = (table == "System.msbt.zst" and target in ("A", "B", "C")
+    preserved_rank = (table == "System.msbt.zst" and target in ("A", "B", "C", "S")
                       and label == "MID_Sys_Reliance_Rank_" + target
                       and entry.raw == target.encode("ascii") + b"\0" and rebuilt == entry.raw)
     # The title footer names the rights holders. It is shown exactly as published.

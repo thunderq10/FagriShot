@@ -21,6 +21,12 @@ class CoverageTests(unittest.TestCase):
             self.assertIn("lexical_target_without_arabic", assess(source, record, table=table, label=key)[1])
         record["parts"] = ["A"]
         self.assertIn("lexical_target_without_arabic", assess(source, record, table="System.msbt.zst", label=label)[1])
+        # The highest grade is a symbol like the other three.
+        top = Message.parse(b"S\0")
+        kept = {"source_sha256": top.source_sha256, "parts": ["S"]}
+        counts, flags = assess(top, kept, table="System.msbt.zst", label="MID_Sys_Reliance_Rank_S")
+        self.assertFalse(flags)
+        self.assertEqual(counts["preserved_support_grade_symbols"], 1)
 
     def test_only_the_unchanged_title_notice_may_stay_in_latin(self):
         source = Message.parse("©Maker / STUDIO NAME".encode() + b"\0")
