@@ -22,6 +22,19 @@ class CoverageTests(unittest.TestCase):
         record["parts"] = ["A"]
         self.assertIn("lexical_target_without_arabic", assess(source, record, table="System.msbt.zst", label=label)[1])
 
+    def test_only_the_unchanged_title_notice_may_stay_in_latin(self):
+        source = Message.parse("©Maker / STUDIO NAME".encode() + b"\0")
+        record = {"source_sha256": source.source_sha256, "parts": ["©Maker / STUDIO NAME"]}
+        counts, flags = assess(source, record, table="System.msbt.zst", label="MID_Title_Previlefe")
+        self.assertFalse(flags)
+        self.assertEqual(counts["preserved_legal_notices"], 1)
+        self.assertEqual(counts["passed_automated_checks"], 1)
+        _, flags = assess(source, record, table="System.msbt.zst", label="MID_Title_Other")
+        self.assertEqual(flags, {"lexical_target_without_arabic", "unchanged_lexical_part_review"})
+        record["parts"] = ["Maker / STUDIO NAME©"]
+        _, flags = assess(source, record, table="System.msbt.zst", label="MID_Title_Previlefe")
+        self.assertIn("lexical_target_without_arabic", flags)
+
     def test_choice_only_and_incomplete_choice_have_distinct_issues(self):
         entry = Message.parse(b" " + CHOICE + b"\0")
         counts, issues = assess(entry, None)

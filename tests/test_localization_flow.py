@@ -21,6 +21,24 @@ class InlineFlowTests(unittest.TestCase):
         self.assertTrue(supports(["a", COLOR, COLOR, RESET]))
         self.assertFalse(supports(["a", b"<DLG>", "b"]))
 
+    def test_value_only_formats_keep_their_source_order(self):
+        second, third = start_tag(1, 1, b""), start_tag(1, 2, b"")
+        for raw, texts in [(ARG + b":" + second, [":"]), (second + b"/" + third + b"/" + ARG, ["/", "/"]),
+                           (b"+" + ARG, ["+"]), (ARG + b"%", ["%"]), (ARG + b"/" + second, ["/"])]:
+            with self.subTest(format=texts):
+                source = Message.parse(raw + b"\0")
+                self.assertTrue(supports(source.parts))
+                # 12:30 must not become 30:12, nor +5 become 5+.
+                self.assertEqual(render(source, texts), source.raw)
+
+    @unittest.skipUnless(os.name == "nt", "The player uses Windows ICU.")
+    def test_arabic_label_still_reads_before_its_value(self):
+        source = Message.parse(b"Ver. " + ARG + b"\0")
+        placed = Message.parse(render(source, ["الإصدار "]))
+        self.assertEqual(placed.parts[0], ARG)
+        self.assertEqual(placed.parts[1], visual_text("الإصدار "))
+        self.assertTrue(placed.parts[1].startswith(" "))
+
     @unittest.skipUnless(os.name == "nt", "The player uses Windows ICU.")
     def test_mixed_line_matches_complete_icu_paragraph_and_keeps_substitution(self):
         src = Message.parse(b"Select " + ARG + b" here\0")

@@ -1,0 +1,17 @@
+{
+  "System.msbt.zst": {
+    "MID_Title_Previlefe": {
+      "source_sha256": "f6e9679559f8faed7b7c4cbe9c3b371ba15a8ce508ae0ea10f090b871592e20d",
+      "parts": [
+        "©Nintendo / INTELLIGENT SYSTEMS"
+      ]
+    },
+    "MID_Title_Version": {
+      "source_sha256": "879d02ba242a0d4e9ae4ace853e139c3fe22962ea1d67648e06ae9a872747c5d",
+      "parts": [
+        "الإصدار "
+      ],
+      "flow": "auto"
+    }
+  }
+}

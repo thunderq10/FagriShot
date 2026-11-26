@@ -5,8 +5,12 @@ import hashlib
 from contextlib import contextmanager
 from functools import lru_cache
 from pathlib import Path
+import re
 import struct
 
+
+# Letters, Arabic punctuation and presentation forms. One of them makes a line right-to-left.
+ARABIC_SCRIPT = re.compile(r"[؀-ۿݐ-ݿﭐ-﷿ﹰ-ﻼ]")
 
 _FONT_DIGESTS = {
     "System": "a5dcf44e6e942878a7a529eecfef5555868fedca4ddf20884afa8006468f0855",
@@ -16,6 +20,9 @@ _FONT_DIGESTS = {
     "FEFont": "afc4400e2c88ae14f82ba4707b7e60be7b837ffc3b08469c95c905a3eda18021",
     "FEFont_Large": "044eccde7bbc7fbd14ab6c7b22bc53827e067c22429a26d29d3ce3390111f71b",
     "Cyber": "50c243467c4a980aa4bf5ab731b353e361bf353eaf3b0589387e1dd1faf51cdc",
+    # Counters, dates, the staff roll and the title footer use this face. Without
+    # Arabic cells it draws its fallback square for every shaped letter.
+    "Number": "2defb38af5cc04e8aaa0dbe8f5396b6254cf84c5cc3d318109eb71d555c3a0d2",
 }
 FONT_NAMES = tuple(f"__{name}.bffnt.zst" for name in _FONT_DIGESTS)
 _ptr = C.c_void_p

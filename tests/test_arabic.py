@@ -2,6 +2,7 @@ import json
 import hashlib
 from pathlib import Path
 import tempfile
+import unicodedata
 import unittest
 from unittest.mock import patch
 
@@ -28,6 +29,47 @@ class OpeningCoverageTests(unittest.TestCase):
                     entry = data[filename][label]
                     self.assertRegex("".join(entry["parts"]), r"[\u0621-\u064a]")
                     self.assertRegex(entry["source_sha256"], r"^[0-9a-f]{64}$")
+
+
+class PhotographedScreenTests(unittest.TestCase):
+    """The title footer and the Threat Range tutorial, as stored in the reviewed catalog."""
+
+    @classmethod
+    def setUpClass(cls):
+        root = Path(__file__).resolve().parents[1]
+        cls.data = arabic.catalog_data(arabic.assets(root)[0])
+
+    def test_title_footer_keeps_the_notice_and_translates_the_version_label(self):
+        system = self.data["System.msbt.zst"]
+        notice = system["MID_Title_Previlefe"]
+        self.assertEqual(notice["parts"][0][0], "©")
+        self.assertNotIn("flow", notice)
+        self.assertIsNone(arabic.ARABIC_SCRIPT.search(notice["parts"][0]))
+        changes, _, _ = arabic.translate({"System.msbt.zst": {"MID_Title_Previlefe": notice}}, lambda text: text[::-1])
+        self.assertEqual(changes["System.msbt.zst"]["MID_Title_Previlefe"]["parts"], notice["parts"])
+        version = system["MID_Title_Version"]
+        self.assertEqual(version.get("flow"), "auto")
+        self.assertRegex(version["parts"][0], r"^[ء-ي]+ $")
+        self.assertIn("__Number.bffnt.zst", FONT_NAMES)
+
+    def test_threat_range_pages_keep_both_highlights_and_one_enemy_apart_from_all(self):
+        tutorial = self.data["Tutorial.msbt.zst"]
+        one = tutorial["MID_TUT_Bmap_HazardRange_m01_002"]
+        every = tutorial["MID_TUT_Bmap_HazardRange_m01_003"]
+        self.assertEqual((len(one["parts"]), one.get("flow")), (5, "auto"))
+        always, press = one["parts"][1], one["parts"][3]
+        self.assertTrue(always.strip() and press.strip())
+        self.assertTrue(press.startswith("اضغط") and press.endswith(" "), "The icon follows its verb.")
+        self.assertEqual("".join(one["parts"]).count("\n"), 1)
+        self.assertIn("\n(", one["parts"][4], "The second press is a sentence of its own.")
+        self.assertIn("هذا العدو", one["parts"][0])
+        self.assertIn("قوات العدو", every["parts"][3])
+        for label in ("MID_TUT_Bmap_HazardRange_t", "MID_TUT_Bmap_HazardRange_m01_001",
+                      "MID_TUT_Bmap_HazardRange_m01_002", "MID_TUT_Bmap_HazardRange_m01_003"):
+            text = "".join(tutorial[label]["parts"])
+            self.assertIn("نطاق", text)
+            self.assertFalse(any(unicodedata.category(c) == "Mn" for c in text), "The bitmap font has no marks.")
+            self.assertLessEqual(max(map(len, text.split("\n"))), 56)
 
 
 class ArabicPreviewTests(unittest.TestCase):
@@ -124,6 +166,64 @@ class ArabicPreviewTests(unittest.TestCase):
         self.assertEqual(wrap("كلمةطويلةجدا", "aa\nbbb"), "كلمةطويلةجدا")
         with self.assertRaisesRegex(ValueError, "paragraph breaks"):
             wrap("الجملة الأولى ثم الثانية", "One\n\nTwo")
+
+    def test_whole_line_budget_spans_emphasis_icon_and_closing_remark(self):
+        # Same shape as a tutorial page: two highlighted spans, a button icon and a remark in brackets.
+        color, reset = bytes.fromhex("0e0000030002000400"), bytes.fromhex("0e000003000200ff00")
+        icon = "".encode()
+        source = ("aaaa bbbb cccc\ndddd ", color, "eeee ffff", reset, " gg ", color, "hhhh ", icon, reset,
+                  ".\n(iiii jjjj kkkk llll)")
+        draft = ["اااا بببب جججج دددد ", "هههه وووو", " زز ", "حححح ", "(طططط يييي كككك لللل مممم)"]
+        advances = {"?": 1, "0": 1, "": 3}
+        same = lambda value: value
+        original = [p for p in source if isinstance(p, str)]
+        budget = max(arabic.line_widths(source, original, advances, same))
+        self.assertEqual(budget, 27)
+        # Each part fits the lines of its own source part. Side by side they leave the panel.
+        apart = [arabic.wrap_draft(t, s, advances, same) for t, s in zip(draft, original)]
+        self.assertGreater(max(arabic.line_widths(source, apart, advances, same)), budget * 3 // 2)
+        wrapped = arabic.wrap_message(source, draft, advances, same)
+        widths = arabic.line_widths(source, wrapped, advances, same)
+        self.assertLessEqual(max(widths), budget)
+        self.assertEqual(len(widths), 3)
+        self.assertEqual("".join(wrapped).split(), "".join(draft).split())
+        # A wider line that the same window is known to show removes a needless third line.
+        roomy = arabic.wrap_message(source, draft, advances, same, floor=40)
+        self.assertEqual(len(arabic.line_widths(source, roomy, advances, same)), 2)
+        # The verb and its button icon stay on one line at every width that can hold them.
+        for limit in range(8, 60):
+            placed = arabic.wrap_message(source, draft, advances, same, floor=limit)
+            self.assertEqual(placed[3], "حححح ", limit)
+
+    def test_whole_line_wrap_keeps_structure(self):
+        advances = {"?": 1, "0": 1}
+        same = lambda value: value
+        arg = bytes.fromhex("0e010000000000")
+        self.assertEqual(arabic.wrap_message(("Name ", arg), ["اسم طويل جدا "], advances, same), ["اسم طويل جدا "])
+        # An English line break is not kept. A blank line is.
+        self.assertEqual(arabic.wrap_message(("aaaa bbbb\ncc\n\nddddd\nee",), ["اا\nبب جج\n\nدد هه وو"], advances, same),
+                         ["اا بب جج\n\nدد هه\nوو"])
+        with self.assertRaisesRegex(ValueError, "paragraph breaks"):
+            arabic.wrap_message(("One\n\nTwo",), ["واحد اثنان"], advances, same)
+        with self.assertRaisesRegex(ValueError, "text parts"):
+            arabic.wrap_message(("One\nTwo",), ["واحد", "اثنان"], advances, same)
+        # A substituted value takes room beside the word it follows. A particle is not left at a line end.
+        self.assertEqual(arabic.wrap_message(("aaaaaaaa\nbb ", arg), ["اااا بب جج "], advances, same), ["اااا بب\nجج "])
+        self.assertEqual(arabic.wrap_message(("aaaaaaaaaa\nbbbbbbbbbb",), ["اااا ببب في جججج"], advances, same),
+                         ["اااا ببب\nفي جججج"])
+
+    def test_latin_notice_signs_and_numbers_are_not_mirrored(self):
+        marked = lambda text: "<" + text + ">"
+        entry = lambda parts, **more: {"source_sha256": "1" * 64, "parts": parts, **more}
+        changes, _, glyphs = arabic.translate({"System.msbt.zst": {
+            "notice": entry(["©Maker / STUDIO NAME"]), "level": entry(["+1"]), "year": entry(["14--"]),
+            "label": entry(["الإصدار "]), "heading": entry([": "], argument_order=[1, 0]),
+            "pause": entry(["، "])}}, marked)
+        rows = {label: row["parts"] for label, row in changes["System.msbt.zst"].items()}
+        self.assertEqual(rows["notice"], ["©Maker / STUDIO NAME"])
+        self.assertEqual((rows["level"], rows["year"]), (["+1"], ["14--"]))
+        self.assertEqual((rows["label"], rows["heading"], rows["pause"]), (["<الإصدار >"], ["<: >"], ["<، >"]))
+        self.assertIn("ص", glyphs)
 
     def test_player_switch_changes_only_the_runtime_environment(self):
         dirs = {key: self.root / key for key in ("settings", "saves", "logs")}

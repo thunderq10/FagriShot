@@ -19,6 +19,7 @@ SOURCE_131072 = "8504750f4bf61634bca56e83e008fab028431c90d03883ba4c191c4566e8397
 ARABIC = re.compile(r"[\u0620-\u063f\u0641-\u064a\u066e-\u06d3\u0750-\u077f]")
 LATIN = re.compile(r"[A-Za-z]")
 LOCALES = frozenset("CNzh EUde EUen EUes EUfr EUit JPja KRko TWzh USen USes USfr".split())
+LEGAL_NOTICE = ("System.msbt.zst", "MID_Title_Previlefe")
 _ARGUMENT = b"\x0e\x01\x00"
 _COLOR = b"\x0e\x00\x00\x03\x00"
 
@@ -145,8 +146,13 @@ def assess(entry, record, *, table="", label=""):
     preserved_rank = (table == "System.msbt.zst" and target in ("A", "B", "C")
                       and label == "MID_Sys_Reliance_Rank_" + target
                       and entry.raw == target.encode("ascii") + b"\0" and rebuilt == entry.raw)
+    # The title footer names the rights holders. It is shown exactly as published.
+    preserved_notice = (table, label) == LEGAL_NOTICE and rebuilt == entry.raw
     if preserved_rank:
         counts["preserved_support_grade_symbols"] += 1
+    elif preserved_notice:
+        counts["preserved_legal_notices"] += 1
+        issues.discard("unchanged_lexical_part_review")
     elif counts["source_lexical"] and not ARABIC.search(target):
         issues.add("lexical_target_without_arabic")
     if any(unicodedata.category(c).startswith("M") for c in target):

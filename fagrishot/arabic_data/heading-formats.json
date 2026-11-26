@@ -1,0 +1,14 @@
+{
+  "System.msbt.zst": {
+    "MID_Chapter_PartStory": {
+      "source_sha256": "77e5e7ca8ba60c2a0d3ab0a61a7b0c89599e7ce7431ea99c1977334cec091e15",
+      "parts": [
+        ": "
+      ],
+      "argument_order": [
+        1,
+        0
+      ]
+    }
+  }
+}

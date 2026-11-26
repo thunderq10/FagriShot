@@ -5,7 +5,7 @@ import ctypes as C
 from functools import lru_cache
 import unicodedata
 
-from .arabic_font import _icu, visual_text
+from .arabic_font import ARABIC_SCRIPT, _icu, visual_text
 from .localization import LocalizationError, Message, _choice_texts
 
 
@@ -246,6 +246,11 @@ def _visual_parts(parts):
 def render(entry, texts, choices=None):
     if not supports(entry.parts):
         raise LocalizationError("Unsupported inline control requires an authored Arabic layout.")
+    written = list(texts) + [s for pair in (choices or {}).values() for s in pair]
+    if not any(map(ARABIC_SCRIPT.search, written)):
+        # A clock, a date, a signed amount or a fraction has no Arabic text to read from the
+        # right. Mirroring the line would exchange its values: 12:30 would be shown as 30:12.
+        return entry.replaced(texts, choices)
     options = None
     if choices is not None:
         options = {i: [visual_text(s) for s in pair] for i, pair in choices.items()}

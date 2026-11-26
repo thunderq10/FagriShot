@@ -1,0 +1,63 @@
+{
+  "Tutorial.msbt.zst": {
+    "MID_TUT_Bmap_HazardRange_t": {
+      "source_sha256": "2a21f19e1d4ee5c3b81f3d17664bfecda783e3702dccb7c6af3fe9ef8250a444",
+      "parts": [
+        "نطاق التهديد"
+      ]
+    },
+    "MID_TUT_Bmap_HazardRange_m01_001": {
+      "source_sha256": "436f997548bbf51b0bac56a3d010969b13179963046789ceaf7cabd9dd46d021",
+      "parts": [
+        "عند تحريك ",
+        "المؤشر",
+        " إلى وحدة معادية،\nيظهر ",
+        "نطاق التهديد",
+        " الذي يبلغه هجومها."
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Bmap_HazardRange_m01_002": {
+      "source_sha256": "cafe62a929a60c9a25dcf6bb822e1b7ed50c7d062c7d4d4f7cac1b6caed45de5",
+      "parts": [
+        "لإبقاء نطاق تهديد هذا العدو ",
+        "ظاهرا دائما",
+        "، ",
+        "اضغط ",
+        ".\n(اضغطه مرة أخرى لإخفائه.)"
+      ],
+      "flow": "auto"
+    },
+    "MID_TUT_Bmap_HazardRange_m01_003": {
+      "source_sha256": "b30e97d2e93929f418e3843e96493c6ba56776a3d251aff9b2e416982e561c44",
+      "parts": [
+        "اضغط ",
+        " ",
+        "لإبقاء ",
+        "نطاق تهديد قوات العدو كلها ظاهرا دائما",
+        "،\nبمعزل عن نطاق كل عدو على حدة.\n(اضغط ",
+        " ",
+        "مرة أخرى لإخفائه.)"
+      ],
+      "flow": "auto"
+    }
+  },
+  "Tips.msbt.zst": {
+    "MID_Tips_Bmap_HazardRange_m01": {
+      "source_sha256": "0a22067682da656557368c24b45e3cb10001931467075e155729c2c1dc15eeeb",
+      "parts": [
+        "حرك المؤشر إلى عدو لترى نطاق تهديده. اضغط ",
+        " ليبقى ظاهرا دائما."
+      ],
+      "flow": "auto"
+    },
+    "MID_Tips_Bmap_AllHazardRange_m01": {
+      "source_sha256": "81934a5c774ba3572f3ad9126a6a958341bee80e5d91a2708882b29f66e1114b",
+      "parts": [
+        "اضغط ",
+        " في خريطة المعركة لإظهار نطاق تهديد الأعداء كافة."
+      ],
+      "flow": "auto"
+    }
+  }
+}
