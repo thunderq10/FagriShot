@@ -39,6 +39,13 @@ class PhotographedScreenTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         cls.data = arabic.catalog_data(arabic.assets(root)[0])
 
+    def test_no_reviewed_entry_has_a_doubled_ta_marbuta(self):
+        # A repeated mechanical edit once turned «جندية» into «جنديةة». No Arabic word doubles this letter.
+        for table, entries in self.data.items():
+            for label, record in entries.items():
+                written = record["parts"] + [s for pair in record.get("choices", {}).values() for s in pair]
+                self.assertFalse(any("ةة" in text for text in written), (table, label))
+
     def test_title_footer_keeps_the_notice_and_translates_the_version_label(self):
         system = self.data["System.msbt.zst"]
         notice = system["MID_Title_Previlefe"]

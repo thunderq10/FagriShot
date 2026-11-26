@@ -473,7 +473,7 @@
     "MJID_Vates": {
       "source_sha256": "c1aee8ff073587bfda44cf7d2793776999d3f4c0f9eabd7ea7e8537bd3522c89",
       "parts": [
-        "كاهن"
+        "عراف"
       ]
     },
     "MJID_Bishop": {
@@ -629,7 +629,7 @@
     "MPID_Blacksmith_F": {
       "source_sha256": "e91f59c1ee4ed6721432f1562b6da529877d1d30bf0fcc8c367b5fe1ab538e12",
       "parts": [
-        "الحدادةة"
+        "الحدادة"
       ]
     },
     "MPID_Showman": {
@@ -713,7 +713,7 @@
     "MPID_Soldier_F": {
       "source_sha256": "c8fd26706e6c83dbfa1211d51addb46375c778fa9b6227b5fa23c50eff0b2623",
       "parts": [
-        "جنديةة"
+        "جندية"
       ]
     },
     "MPID_Merchant": {
@@ -725,7 +725,7 @@
     "MPID_Merchant_F": {
       "source_sha256": "c2ae62c4b8981b19b2a5674a4fc8b3f2f2dc0422238becdaba22ba97b76f7cda",
       "parts": [
-        "التاجرةة"
+        "التاجرة"
       ]
     },
     "MPID_Hellsoldier": {
@@ -743,7 +743,7 @@
     "MPID_Gladiator_F": {
       "source_sha256": "2d3db65b3869b5b45252658901f97036778007c739dde383f758e5ee7ac18bd2",
       "parts": [
-        "المصارعةة"
+        "المصارعة"
       ]
     },
     "MPID_Hunter": {
