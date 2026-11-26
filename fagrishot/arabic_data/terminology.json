@@ -2343,19 +2343,19 @@
     "MID_Sys_PlayerPhase": {
       "source_sha256": "cf5ea0d60817a1a91753bcfdb496f96d2218f3ad88b94d7af257f22975d62a76",
       "parts": [
-        "دور اللاعب"
+        "طور اللاعب"
       ]
     },
     "MID_Sys_EnemyPhase": {
       "source_sha256": "f1b7fdf707951625c81a84bf57a46d6f8ef493526754476d8218cecae9e1682b",
       "parts": [
-        "دور العدو"
+        "طور العدو"
       ]
     },
     "MID_Sys_AllyPhase": {
       "source_sha256": "b9e497e79a5b5e7afef21ae4d08f10d56cc58d01c013f2e0eb189c34a535c35e",
       "parts": [
-        "دور الحلفاء"
+        "طور الحلفاء"
       ]
     },
     "MID_Battle_Damage_NoDamage": {

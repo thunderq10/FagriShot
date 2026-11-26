@@ -29,7 +29,7 @@
     "MID_ADVICE_WeaponRank_004": {
       "source_sha256": "7cf4a3957fca7860a3cb427ea86d57084423919abf008b9485762609fb1dc7de",
       "parts": [
-        "فضة"
+        "فضي"
       ]
     }
   },
@@ -2203,7 +2203,7 @@
     "MID_SysMenu_End_Phase": {
       "source_sha256": "a49da57c97837aa89e9d63ddb30161d9dc9b7af3f2cf0058a451f7cdb54c15aa",
       "parts": [
-        "إنهاء المرحلة"
+        "إنهاء الطور"
       ]
     },
     "MID_Menu_All": {
@@ -3297,7 +3297,7 @@
     "MID_HubMenu_FastTravel": {
       "source_sha256": "79844f5d852f445788f7ee5718aff735310fd70893c4687db2748fb14d0ebc98",
       "parts": [
-        "خريطة المعسكر"
+        "خريطة القاعدة"
       ]
     },
     "MID_FastTravelMenu_Area": {
@@ -4009,7 +4009,7 @@
     "MID_TUT_Hub_Map_t": {
       "source_sha256": "79844f5d852f445788f7ee5718aff735310fd70893c4687db2748fb14d0ebc98",
       "parts": [
-        "خريطة المعسكر"
+        "خريطة القاعدة"
       ]
     },
     "MID_TUT_Hub_IndividualAction_t": {
