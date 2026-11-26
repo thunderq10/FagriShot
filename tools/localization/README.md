@@ -24,6 +24,12 @@ Use the format in [setup.json](../../fagrishot/arabic_data/setup.json) and [open
 
 Some controls encode pairs of visible alternatives inside their binary arguments. The private catalog exposes these as `choices`, indexed by the control's zero-based position in the complete source parts array. An optional translation can provide the same two choices in the same order. The patcher recalculates their UTF-8 byte lengths and preserves the command type. Help text, alternative forms, images and voiced dialogue need separate coverage checks.
 
+Reviewed catalog entries carry their own line breaks. Campaign entries are set by the player when it builds the overlay. `wrap_message` in `fagrishot/arabic.py` measures each displayed line as a whole, across every text part, controller icon and substituted value, against the widest line of the same source message. It keeps blank-line paragraph breaks, fills the lines evenly and keeps an icon or value on the line of the word before it. When the Arabic would need an extra line, it uses the line width that the other multi-line messages of the same table are known to display. Measure a reviewed entry with `line_widths` before committing it. A highlighted span and a button icon each take room on the line.
+
+An entry with no Arabic script keeps its source order. A clock, a date, a signed amount, a fraction and the rights-holder notice on the title screen are shown exactly as the game stores them. Only a heading whose arguments are Arabic names needs an `argument_order`.
+
+The eight game faces that receive Arabic cells are listed in `fagrishot/arabic_font.py`. They include `Number`, which draws counters, dates, the staff roll and the title footer. A face without Arabic cells draws its fallback square for each shaped letter.
+
 The chapter card inserts three separately rendered labels. Its fingerprinted format uses `argument_order` to arrange them for Arabic reading order. The patcher accepts only a complete permutation of bare indexed argument references separated by punctuation or spaces. Each reference keeps its original bytes.
 
 ## دليل الصياغة العربية
